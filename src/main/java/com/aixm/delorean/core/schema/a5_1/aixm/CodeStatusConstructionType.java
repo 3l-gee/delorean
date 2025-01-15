@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeStatusConstructionType {
 
     @XmlValue
-    @Column(name = "statusconstructionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "statusconstructiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codestatusconstruction_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

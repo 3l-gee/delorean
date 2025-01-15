@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachdistancetabletype", schema = "approach")
+@Table(name = "approachdistancetable", schema = "approach")
 public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
@@ -78,41 +78,41 @@ public class ApproachDistanceTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "startingmeasurementpoint_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "startingmeasurementpoint"))
+        @AttributeOverride(name = "value", column = @Column(name = "startingmeasurementpoint_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "startingmeasurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType startingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "valuehat_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "valuehat_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "valuehat"))
+        @AttributeOverride(name = "value", column = @Column(name = "valuehat_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "valuehat_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "valuehat_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType valueHAT;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "endingmeasurementpoint_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "endingmeasurementpoint"))
+        @AttributeOverride(name = "value", column = @Column(name = "endingmeasurementpoint_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "endingmeasurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType endingMeasurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "distance"))
+        @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachdistancetable_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachdistancetablepropertygroup_id")
+        @JoinColumn(name = "approachdistancetable_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

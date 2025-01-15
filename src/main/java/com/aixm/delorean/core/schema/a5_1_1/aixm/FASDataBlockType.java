@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fasdatablocktype", schema = "segment_leg")
+@Table(name = "fasdatablock", schema = "segment_leg")
 public class FASDataBlockType
     extends AbstractAIXMObjectType
 {
@@ -86,97 +86,97 @@ public class FASDataBlockType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "horizontalalarmlimit_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "horizontalalarmlimit"))
+        @AttributeOverride(name = "value", column = @Column(name = "horizontalalarmlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "horizontalalarmlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAlarmLimitType horizontalAlarmLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalalarmlimit_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "verticalalarmlimit"))
+        @AttributeOverride(name = "value", column = @Column(name = "verticalalarmlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalalarmlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAlarmLimitType verticalAlarmLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "thresholdcoursewidth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "thresholdcoursewidth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "thresholdcoursewidth"))
+        @AttributeOverride(name = "value", column = @Column(name = "thresholdcoursewidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "thresholdcoursewidth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "thresholdcoursewidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType thresholdCourseWidth;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lengthoffset_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthoffset_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lengthoffset"))
+        @AttributeOverride(name = "value", column = @Column(name = "lengthoffset_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lengthoffset_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthoffset_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lengthOffset;
     @XmlElement(name = "CRCRemainder", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "crcremainder_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "crcremainder"))
+        @AttributeOverride(name = "value", column = @Column(name = "crcremainder_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "crcremainder_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValHexType crcRemainder;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operationtype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "operationtype"))
+        @AttributeOverride(name = "value", column = @Column(name = "operation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType operationType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "serviceprovidersbas_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "serviceprovidersbas"))
+        @AttributeOverride(name = "value", column = @Column(name = "serviceprovidersbas_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "serviceprovidersbas_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType serviceProviderSBAS;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachperformancedesignator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachperformancedesignator"))
+        @AttributeOverride(name = "value", column = @Column(name = "approachperformancedesignator_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachperformancedesignator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType approachPerformanceDesignator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "routeindicator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "routeindicator"))
+        @AttributeOverride(name = "value", column = @Column(name = "routeindicator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "routeindicator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRouteIndicatorType routeIndicator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "referencepathdataselector_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "referencepathdataselector"))
+        @AttributeOverride(name = "value", column = @Column(name = "referencepathdataselector_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "referencepathdataselector_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType referencePathDataSelector;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "referencepathidentifier_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "referencepathidentifier"))
+        @AttributeOverride(name = "value", column = @Column(name = "referencepathidentifier_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "referencepathidentifier_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeReferencePathIdentifierType referencePathIdentifier;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "codeicao_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "codeicao"))
+        @AttributeOverride(name = "value", column = @Column(name = "codeicao_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "codeicao_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeICAOCountryType codeICAO;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "fasdatablock_pg_annotation", joinColumns = {
-        @JoinColumn(name = "fasdatablockpropertygroup_id")
+        @JoinColumn(name = "fasdatablock_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

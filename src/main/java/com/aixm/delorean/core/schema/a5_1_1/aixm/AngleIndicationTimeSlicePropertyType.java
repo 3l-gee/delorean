@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "angleIndicationTimeSlice"
 })
 @Entity
-@Table(name = "angleindicationtimeslicepropertytype", schema = "point_reference")
+@Table(name = "angleindication_tsp", schema = "point_reference")
 public class AngleIndicationTimeSlicePropertyType {
 
     @XmlElement(name = "AngleIndicationTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AngleIndicationTimeSlicePropertyType {
     protected AngleIndicationTimeSliceType angleIndicationTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

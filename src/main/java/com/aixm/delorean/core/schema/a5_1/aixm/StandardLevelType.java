@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardleveltype", schema = "standard_levels")
+@Table(name = "standardlevel", schema = "standard_levels")
 public class StandardLevelType
     extends AbstractAIXMObjectType
 {
@@ -75,19 +75,19 @@ public class StandardLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "verticaldistance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldistance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "verticaldistance"))
+        @AttributeOverride(name = "value", column = @Column(name = "verticaldistance_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "verticaldistance_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType verticalDistance;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "standardlevel_pg_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelpropertygroup_id")
+        @JoinColumn(name = "standardlevel_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

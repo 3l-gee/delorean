@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "unitTimeSlice"
 })
 @Entity
-@Table(name = "unittimeslicepropertytype", schema = "organisation")
+@Table(name = "unit_tsp", schema = "organisation")
 public class UnitTimeSlicePropertyType {
 
     @XmlElement(name = "UnitTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class UnitTimeSlicePropertyType {
     protected UnitTimeSliceType unitTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

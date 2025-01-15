@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "directionFinderTimeSlice"
 })
 @Entity
-@Table(name = "directionfindertimeslicepropertytype", schema = "navaids")
+@Table(name = "directionfinder_tsp", schema = "navaids")
 public class DirectionFinderTimeSlicePropertyType {
 
     @XmlElement(name = "DirectionFinderTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class DirectionFinderTimeSlicePropertyType {
     protected DirectionFinderTimeSliceType directionFinderTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

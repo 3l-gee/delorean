@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardlevelsectortimeslicetype", schema = "standard_levels")
+@Table(name = "standardlevelsector_ts", schema = "standard_levels")
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,39 +80,39 @@ public class StandardLevelSectorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flightrule_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flightrule"))
+        @AttributeOverride(name = "value", column = @Column(name = "flightrule_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightrule_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightRuleType flightRule;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "fromtrack_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "fromtrack"))
+        @AttributeOverride(name = "value", column = @Column(name = "fromtrack_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "fromtrack_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType fromTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "totrack_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "totrack"))
+        @AttributeOverride(name = "value", column = @Column(name = "totrack_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "totrack_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType toTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "angletype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "angletype"))
+        @AttributeOverride(name = "value", column = @Column(name = "angle_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNorthReferenceType angleType;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "standardlevelsector_pg_applicableairspace", joinColumns = {
-        @JoinColumn(name = "standardlevelsectorpropertygroup_id")
+        @JoinColumn(name = "standardlevelsector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacepropertytype_id")
+        @JoinColumn(name = "airspace_pt_id")
     })
     protected List<AirspacePropertyType> applicableAirspace;
     @XmlElement(nillable = true)
@@ -122,13 +122,13 @@ public class StandardLevelSectorTimeSliceType
     @JoinColumn(name = "applicablelevelcolumn_id", referencedColumnName = "id")
     protected StandardLevelColumnPropertyType applicableLevelColumn;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "standardlevelsector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelsectorpropertygroup_id")
+        @JoinColumn(name = "standardlevelsector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

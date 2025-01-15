@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "groundtrafficcontrolservicetype", schema = "service")
+@Table(name = "groundtrafficcontrolservice", schema = "service")
 public class GroundTrafficControlServiceType
     extends AbstractTrafficSeparationServiceType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundtrafficcontrolservicetype_timeslice", joinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetype_id")
+    @JoinTable(name = "groundtrafficcontrolservice_timeslice", joinColumns = {
+        @JoinColumn(name = "groundtrafficcontrolservice_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundtrafficcontrolservicetimeslicepropertytype_id")
+        @JoinColumn(name = "groundtrafficcontrolservice_tsp_id")
     })
     protected List<GroundTrafficControlServiceTimeSlicePropertyType> timeSlice;
 

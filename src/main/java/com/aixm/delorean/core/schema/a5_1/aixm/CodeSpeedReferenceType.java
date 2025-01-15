@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSpeedReferenceType {
 
     @XmlValue
-    @Column(name = "speedreferencebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "speedreferencetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codespeedreference_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

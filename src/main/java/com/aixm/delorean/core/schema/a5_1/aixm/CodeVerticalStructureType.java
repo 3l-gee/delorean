@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalStructureType {
 
     @XmlValue
-    @Column(name = "verticalstructurebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "verticalstructuretype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeverticalstructure_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

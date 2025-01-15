@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightactivationtype", schema = "lighting")
+@Table(name = "lightactivation", schema = "lighting")
 public class LightActivationType
     extends AbstractAIXMObjectType
 {
@@ -77,32 +77,32 @@ public class LightActivationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "clicks_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "clicks"))
+        @AttributeOverride(name = "value", column = @Column(name = "clicks_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "clicks_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType clicks;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "activation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "activation"))
+        @AttributeOverride(name = "value", column = @Column(name = "activation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "activation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSystemActivationType activation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "lightactivation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "lightactivationpropertygroup_id")
+        @JoinColumn(name = "lightactivation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalarrivalareasectortype", schema = "terminal")
+@Table(name = "terminalarrivalareasector", schema = "terminal")
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -80,22 +80,22 @@ public class TerminalArrivalAreaSectorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flybycode_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flybycode"))
+        @AttributeOverride(name = "value", column = @Column(name = "flybycode_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flybycode_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flyByCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "procedureturnrequired_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "procedureturnrequired"))
+        @AttributeOverride(name = "value", column = @Column(name = "procedureturnrequired_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "procedureturnrequired_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType procedureTurnRequired;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudedescription_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitudedescription"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudedescription_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudedescription_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeUseType altitudeDescription;
     @XmlElement(nillable = true)
@@ -111,23 +111,23 @@ public class TerminalArrivalAreaSectorType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "terminalarrivalareasector_pg_significantobstacle", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareasectorpropertygroup_id")
+        @JoinColumn(name = "terminalarrivalareasector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstructionpropertytype_id")
+        @JoinColumn(name = "obstruction_pt_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "terminalarrivalareasector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareasectorpropertygroup_id")
+        @JoinColumn(name = "terminalarrivalareasector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "missedapproachgrouptype", schema = "approach")
+@Table(name = "missedapproachgroup", schema = "approach")
 public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
@@ -78,43 +78,43 @@ public class MissedApproachGroupType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbinstruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbinstruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType alternateClimbInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "alternateclimbaltitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbaltitude_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbaltitude"))
+        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "alternateclimbaltitude_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType alternateClimbAltitude;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "missedapproachgroup_pg_altimeter", joinColumns = {
-        @JoinColumn(name = "missedapproachgrouppropertygroup_id")
+        @JoinColumn(name = "missedapproachgroup_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersourcepropertytype_id")
+        @JoinColumn(name = "altimetersource_pt_id")
     })
     protected List<AltimeterSourcePropertyType> altimeter;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "missedapproachgroup_pg_annotation", joinColumns = {
-        @JoinColumn(name = "missedapproachgrouppropertygroup_id")
+        @JoinColumn(name = "missedapproachgroup_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "abstractPropertiesWithSchedule"
 })
 @Entity
-@Table(name = "propertieswithschedulepropertytype", schema = "schedules")
+@Table(name = "propertieswithschedule_pt", schema = "schedules")
 public class PropertiesWithSchedulePropertyType
     extends AbstractAIXMPropertyType
 {

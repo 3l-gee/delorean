@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightcharacteristictype", schema = "aircraft_and_flight")
+@Table(name = "flightcharacteristic", schema = "aircraft_and_flight")
 public class FlightCharacteristicType
     extends AbstractAIXMObjectType
 {
@@ -80,53 +80,53 @@ public class FlightCharacteristicType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rule_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "rule"))
+        @AttributeOverride(name = "value", column = @Column(name = "rule_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rule_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightRuleType rule;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "status"))
+        @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightStatusType status;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "military"))
+        @AttributeOverride(name = "value", column = @Column(name = "military_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMilitaryStatusType military;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "origin_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "origin"))
+        @AttributeOverride(name = "value", column = @Column(name = "origin_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "origin_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightOriginType origin;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "purpose"))
+        @AttributeOverride(name = "value", column = @Column(name = "purpose_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightPurposeType purpose;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightcharacteristic_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightcharacteristicpropertygroup_id")
+        @JoinColumn(name = "flightcharacteristic_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

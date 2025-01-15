@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "ndbTimeSlice"
 })
 @Entity
-@Table(name = "ndbtimeslicepropertytype", schema = "navaids")
+@Table(name = "ndb_tsp", schema = "navaids")
 public class NDBTimeSlicePropertyType {
 
     @XmlElement(name = "NDBTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class NDBTimeSlicePropertyType {
     protected NDBTimeSliceType ndbTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

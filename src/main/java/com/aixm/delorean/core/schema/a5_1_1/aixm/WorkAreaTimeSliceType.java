@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "workareatimeslicetype", schema = "airport_heliport")
+@Table(name = "workarea_ts", schema = "airport_heliport")
 public class WorkAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,15 +79,15 @@ public class WorkAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeWorkAreaType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedoperational_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "plannedoperational"))
+        @AttributeOverride(name = "value", column = @Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateType plannedOperational;
     @XmlElement(nillable = true)
@@ -103,23 +103,23 @@ public class WorkAreaTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "workarea_pg_activation", joinColumns = {
-        @JoinColumn(name = "workareapropertygroup_id")
+        @JoinColumn(name = "workarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "workareaactivitypropertytype_id")
+        @JoinColumn(name = "workareaactivity_pt_id")
     })
     protected List<WorkareaActivityPropertyType> activation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "workarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "workareapropertygroup_id")
+        @JoinColumn(name = "workarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

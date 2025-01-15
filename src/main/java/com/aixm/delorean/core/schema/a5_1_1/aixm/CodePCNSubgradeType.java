@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNSubgradeType {
 
     @XmlValue
-    @Column(name = "pcnsubgradebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pcnsubgradetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codepcnsubgrade_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

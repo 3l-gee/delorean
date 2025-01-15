@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "pointReference"
 })
 @Entity
-@Table(name = "pointreferencepropertytype", schema = "point_reference")
+@Table(name = "pointreference_pt", schema = "point_reference")
 public class PointReferencePropertyType
     extends AbstractAIXMPropertyType
 {

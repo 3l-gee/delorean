@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLogicalOperatorType {
 
     @XmlValue
-    @Column(name = "logicaloperatorbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "logicaloperatortype_nilreason", nullable = true, unique = false)
+    @Column(name = "codelogicaloperator_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTelecomNetworkType {
 
     @XmlValue
-    @Column(name = "telecomnetworkbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "telecomnetworktype_nilreason", nullable = true, unique = false)
+    @Column(name = "codetelecomnetwork_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

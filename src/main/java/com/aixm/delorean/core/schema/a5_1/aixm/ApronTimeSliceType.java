@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aprontimeslicetype", schema = "apron")
+@Table(name = "apron_ts", schema = "apron")
 public class ApronTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,15 +80,15 @@ public class ApronTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned"))
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
@@ -104,33 +104,33 @@ public class ApronTimeSliceType
     @JoinColumn(name = "associatedairportheliport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apron_pg_contaminant", joinColumns = {
-        @JoinColumn(name = "apronpropertygroup_id")
+        @JoinColumn(name = "apron_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aproncontaminationpropertytype_id")
+        @JoinColumn(name = "aproncontamination_pt_id")
     })
     protected List<ApronContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apron_pg_annotation", joinColumns = {
-        @JoinColumn(name = "apronpropertygroup_id")
+        @JoinColumn(name = "apron_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apron_pg_availability", joinColumns = {
-        @JoinColumn(name = "apronpropertygroup_id")
+        @JoinColumn(name = "apron_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronareaavailabilitypropertytype_id")
+        @JoinColumn(name = "apronareaavailability_pt_id")
     })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient

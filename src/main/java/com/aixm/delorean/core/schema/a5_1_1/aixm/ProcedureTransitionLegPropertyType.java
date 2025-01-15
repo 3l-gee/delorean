@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "procedureTransitionLeg"
 })
 @Entity
-@Table(name = "proceduretransitionlegpropertytype", schema = "procedure")
+@Table(name = "proceduretransitionleg_pt", schema = "procedure")
 public class ProcedureTransitionLegPropertyType
     extends AbstractAIXMPropertyType
 {

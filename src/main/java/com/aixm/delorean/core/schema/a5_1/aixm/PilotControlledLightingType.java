@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "pilotcontrolledlightingtype", schema = "service")
+@Table(name = "pilotcontrolledlighting", schema = "service")
 public class PilotControlledLightingType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlightingtype_timeslice", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlightingtype_id")
+    @JoinTable(name = "pilotcontrolledlighting_timeslice", joinColumns = {
+        @JoinColumn(name = "pilotcontrolledlighting_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "pilotcontrolledlightingtimeslicepropertytype_id")
+        @JoinColumn(name = "pilotcontrolledlighting_tsp_id")
     })
     protected List<PilotControlledLightingTimeSlicePropertyType> timeSlice;
 

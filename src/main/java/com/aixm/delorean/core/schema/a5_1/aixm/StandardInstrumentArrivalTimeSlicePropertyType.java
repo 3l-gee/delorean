@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardInstrumentArrivalTimeSlice"
 })
 @Entity
-@Table(name = "standardinstrumentarrivaltimeslicepropertytype", schema = "arrival")
+@Table(name = "standardinstrumentarrival_tsp", schema = "arrival")
 public class StandardInstrumentArrivalTimeSlicePropertyType {
 
     @XmlElement(name = "StandardInstrumentArrivalTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class StandardInstrumentArrivalTimeSlicePropertyType {
     protected StandardInstrumentArrivalTimeSliceType standardInstrumentArrivalTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNavigationAreaRestrictionType {
 
     @XmlValue
-    @Column(name = "navigationarearestrictionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "navigationarearestrictiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codenavigationarearestriction_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

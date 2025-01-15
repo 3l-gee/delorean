@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightCharacteristic"
 })
 @Entity
-@Table(name = "flightcharacteristicpropertytype", schema = "aircraft_and_flight")
+@Table(name = "flightcharacteristic_pt", schema = "aircraft_and_flight")
 public class FlightCharacteristicPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "unitDependency"
 })
 @Entity
-@Table(name = "unitdependencypropertytype", schema = "organisation")
+@Table(name = "unitdependency_pt", schema = "organisation")
 public class UnitDependencyPropertyType
     extends AbstractAIXMPropertyType
 {

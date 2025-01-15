@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "primarySurveillanceRadarTimeSlice"
 })
 @Entity
-@Table(name = "primarysurveillanceradartimeslicepropertytype", schema = "surveillance")
+@Table(name = "primarysurveillanceradar_tsp", schema = "surveillance")
 public class PrimarySurveillanceRadarTimeSlicePropertyType {
 
     @XmlElement(name = "PrimarySurveillanceRadarTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class PrimarySurveillanceRadarTimeSlicePropertyType {
     protected PrimarySurveillanceRadarTimeSliceType primarySurveillanceRadarTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

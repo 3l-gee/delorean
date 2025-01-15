@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "guidancelinemarkingtype", schema = "markings")
+@Table(name = "guidancelinemarking", schema = "markings")
 public class GuidanceLineMarkingType
     extends AbstractMarkingType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinemarkingtype_timeslice", joinColumns = {
-        @JoinColumn(name = "guidancelinemarkingtype_id")
+    @JoinTable(name = "guidancelinemarking_timeslice", joinColumns = {
+        @JoinColumn(name = "guidancelinemarking_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "guidancelinemarkingtimeslicepropertytype_id")
+        @JoinColumn(name = "guidancelinemarking_tsp_id")
     })
     protected List<GuidanceLineMarkingTimeSlicePropertyType> timeSlice;
 

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "apronTimeSlice"
 })
 @Entity
-@Table(name = "aprontimeslicepropertytype", schema = "apron")
+@Table(name = "apron_tsp", schema = "apron")
 public class ApronTimeSlicePropertyType {
 
     @XmlElement(name = "ApronTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class ApronTimeSlicePropertyType {
     protected ApronTimeSliceType apronTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

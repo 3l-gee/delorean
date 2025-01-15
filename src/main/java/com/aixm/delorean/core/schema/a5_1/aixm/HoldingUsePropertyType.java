@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingUse"
 })
 @Entity
-@Table(name = "holdingusepropertytype", schema = "procedure")
+@Table(name = "holdinguse_pt", schema = "procedure")
 public class HoldingUsePropertyType
     extends AbstractAIXMPropertyType
 {

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "aerialRefuellingAnchor"
 })
 @Entity
-@Table(name = "aerialrefuellinganchorpropertytype", schema = "aerial_refuelling")
+@Table(name = "aerialrefuellinganchor_pt", schema = "aerial_refuelling")
 public class AerialRefuellingAnchorPropertyType
     extends AbstractAIXMPropertyType
 {

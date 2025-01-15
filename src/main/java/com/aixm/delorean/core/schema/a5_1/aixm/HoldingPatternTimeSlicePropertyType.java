@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingPatternTimeSlice"
 })
 @Entity
-@Table(name = "holdingpatterntimeslicepropertytype", schema = "holding")
+@Table(name = "holdingpattern_tsp", schema = "holding")
 public class HoldingPatternTimeSlicePropertyType {
 
     @XmlElement(name = "HoldingPatternTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class HoldingPatternTimeSlicePropertyType {
     protected HoldingPatternTimeSliceType holdingPatternTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

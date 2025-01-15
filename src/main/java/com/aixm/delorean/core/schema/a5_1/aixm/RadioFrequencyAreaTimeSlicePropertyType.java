@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioFrequencyAreaTimeSlice"
 })
 @Entity
-@Table(name = "radiofrequencyareatimeslicepropertytype", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea_tsp", schema = "radio_frequency_limitation")
 public class RadioFrequencyAreaTimeSlicePropertyType {
 
     @XmlElement(name = "RadioFrequencyAreaTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class RadioFrequencyAreaTimeSlicePropertyType {
     protected RadioFrequencyAreaTimeSliceType radioFrequencyAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

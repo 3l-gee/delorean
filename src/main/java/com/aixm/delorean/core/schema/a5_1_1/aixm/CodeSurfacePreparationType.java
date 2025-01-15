@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfacePreparationType {
 
     @XmlValue
-    @Column(name = "surfacepreparationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "surfacepreparationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codesurfacepreparation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

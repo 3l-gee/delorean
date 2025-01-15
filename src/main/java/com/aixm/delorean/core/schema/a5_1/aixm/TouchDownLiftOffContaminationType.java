@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -80,7 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftoffcontaminationtype", schema = "surface_contamination")
+@Table(name = "touchdownliftoffcontamination", schema = "surface_contamination")
 public class TouchDownLiftOffContaminationType
     extends AbstractSurfaceContaminationType
 {
@@ -88,102 +88,102 @@ public class TouchDownLiftOffContaminationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "observationtime"))
+        @AttributeOverride(name = "value", column = @Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateTimeType observationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "depth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "depth"))
+        @AttributeOverride(name = "value", column = @Column(name = "depth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "depth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDepthType depth;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "frictioncoefficient_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "frictioncoefficient"))
+        @AttributeOverride(name = "value", column = @Column(name = "frictioncoefficient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frictioncoefficient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValFrictionType frictionCoefficient;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "frictionestimation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "frictionestimation"))
+        @AttributeOverride(name = "value", column = @Column(name = "frictionestimation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frictionestimation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFrictionEstimateType frictionEstimation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "frictiondevice_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "frictiondevice"))
+        @AttributeOverride(name = "value", column = @Column(name = "frictiondevice_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "frictiondevice_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFrictionDeviceType frictionDevice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "obscuredlights_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "obscuredlights"))
+        @AttributeOverride(name = "value", column = @Column(name = "obscuredlights_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "obscuredlights_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType obscuredLights;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "furtherclearancetime_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "furtherclearancetime"))
+        @AttributeOverride(name = "value", column = @Column(name = "furtherclearancetime_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "furtherclearancetime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TimeType furtherClearanceTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "furthertotalclearance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "furthertotalclearance"))
+        @AttributeOverride(name = "value", column = @Column(name = "furthertotalclearance_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "furthertotalclearance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType furtherTotalClearance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime"))
+        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateTimeType nextObservationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "proportion_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "proportion"))
+        @AttributeOverride(name = "value", column = @Column(name = "proportion_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "proportion_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValPercentType proportion;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "surfacecontamination_pg_criticalridge", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationpropertygroup_id")
+        @JoinColumn(name = "surfacecontamination_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "ridgepropertytype_id")
+        @JoinColumn(name = "ridge_pt_id")
     })
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "surfacecontamination_pg_layer", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationpropertygroup_id")
+        @JoinColumn(name = "surfacecontamination_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayerpropertytype_id")
+        @JoinColumn(name = "surfacecontaminationlayer_pt_id")
     })
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "surfacecontamination_pg_annotation", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationpropertygroup_id")
+        @JoinColumn(name = "surfacecontamination_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

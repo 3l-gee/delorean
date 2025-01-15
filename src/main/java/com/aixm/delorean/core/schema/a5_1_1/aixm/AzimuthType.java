@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "azimuthtype", schema = "navaids")
+@Table(name = "azimuth", schema = "navaids")
 public class AzimuthType
     extends AbstractNavaidEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "azimuthtype_timeslice", joinColumns = {
-        @JoinColumn(name = "azimuthtype_id")
+    @JoinTable(name = "azimuth_timeslice", joinColumns = {
+        @JoinColumn(name = "azimuth_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "azimuthtimeslicepropertytype_id")
+        @JoinColumn(name = "azimuth_tsp_id")
     })
     protected List<AzimuthTimeSlicePropertyType> timeSlice;
 

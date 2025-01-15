@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureAvailabilityType {
 
     @XmlValue
-    @Column(name = "procedureavailabilitybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "procedureavailabilitytype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeprocedureavailability_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

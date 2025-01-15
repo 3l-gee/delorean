@@ -42,13 +42,12 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValDistanceVerticalType {
 
     @XmlValue
-    @Column(name = "distanceverticalbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "uom")
-    @Column(name = "distanceverticaltype_uom", nullable = true, unique = false)
+    @Column(name = "valdistancevertical_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "distanceverticaltype_nilreason", nullable = true, unique = false)
+    @Column(name = "valdistancevertical_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

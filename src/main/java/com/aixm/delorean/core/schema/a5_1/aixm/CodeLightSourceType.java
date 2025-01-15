@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeLightSourceType {
 
     @XmlValue
-    @Column(name = "lightsourcebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "lightsourcetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codelightsource_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

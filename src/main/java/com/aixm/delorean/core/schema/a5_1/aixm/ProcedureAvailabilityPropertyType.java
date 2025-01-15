@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "procedureAvailability"
 })
 @Entity
-@Table(name = "procedureavailabilitypropertytype", schema = "usage")
+@Table(name = "procedureavailability_pt", schema = "usage")
 public class ProcedureAvailabilityPropertyType
     extends AbstractAIXMPropertyType
 {

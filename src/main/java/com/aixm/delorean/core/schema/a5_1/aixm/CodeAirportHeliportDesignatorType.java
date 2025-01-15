@@ -43,7 +43,7 @@ public class CodeAirportHeliportDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "airportheliportdesignatortype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeairportheliportdesignator_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

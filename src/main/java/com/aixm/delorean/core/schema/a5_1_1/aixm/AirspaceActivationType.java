@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -75,83 +75,83 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspaceactivationtype", schema = "airspace")
+@Table(name = "airspaceactivation", schema = "airspace")
 public class AirspaceActivationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "airspaceactivation_timeinterval", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheetpropertytype_id")
+        @JoinColumn(name = "timesheet_pt_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "airspaceactivation_annotation", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "airspaceactivation_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "activity_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "activity"))
+        @AttributeOverride(name = "value", column = @Column(name = "activity_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "activity_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAirspaceActivityType activity;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "status"))
+        @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusAirspaceType status;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "airspaceactivation_pg_levels", joinColumns = {
-        @JoinColumn(name = "airspaceactivationpropertygroup_id")
+        @JoinColumn(name = "airspaceactivation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayerpropertytype_id")
+        @JoinColumn(name = "airspacelayer_pt_id")
     })
     protected List<AirspaceLayerPropertyType> levels;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivation_pg_user", joinColumns = {
-        @JoinColumn(name = "airspaceactivationpropertygroup_id")
+    @JoinTable(name = "airspaceactivation_pg_user_", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> user;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "airspaceactivation_pg_aircraft", joinColumns = {
-        @JoinColumn(name = "airspaceactivationpropertygroup_id")
+        @JoinColumn(name = "airspaceactivation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+        @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraft;
     @Transient

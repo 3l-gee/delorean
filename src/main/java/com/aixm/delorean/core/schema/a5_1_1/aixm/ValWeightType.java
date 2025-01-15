@@ -43,13 +43,12 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValWeightType {
 
     @XmlValue
-    @Column(name = "weightbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "weighttype_uom", nullable = true, unique = false)
+    @Column(name = "valweight_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "weighttype_nilreason", nullable = true, unique = false)
+    @Column(name = "valweight_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

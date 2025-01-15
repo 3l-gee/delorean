@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "finalLegTimeSlice"
 })
 @Entity
-@Table(name = "finallegtimeslicepropertytype", schema = "procedure")
+@Table(name = "finalleg_tsp", schema = "procedure")
 public class FinalLegTimeSlicePropertyType {
 
     @XmlElement(name = "FinalLegTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class FinalLegTimeSlicePropertyType {
     protected FinalLegTimeSliceType finalLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

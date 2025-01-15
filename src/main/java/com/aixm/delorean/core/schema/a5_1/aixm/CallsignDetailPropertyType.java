@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "callsignDetail"
 })
 @Entity
-@Table(name = "callsigndetailpropertytype", schema = "service")
+@Table(name = "callsigndetail_pt", schema = "service")
 public class CallsignDetailPropertyType
     extends AbstractAIXMPropertyType
 {

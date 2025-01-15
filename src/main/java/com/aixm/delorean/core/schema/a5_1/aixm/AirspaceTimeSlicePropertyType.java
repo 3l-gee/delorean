@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airspaceTimeSlice"
 })
 @Entity
-@Table(name = "airspacetimeslicepropertytype", schema = "airspace")
+@Table(name = "airspace_tsp", schema = "airspace")
 public class AirspaceTimeSlicePropertyType {
 
     @XmlElement(name = "AirspaceTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AirspaceTimeSlicePropertyType {
     protected AirspaceTimeSliceType airspaceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

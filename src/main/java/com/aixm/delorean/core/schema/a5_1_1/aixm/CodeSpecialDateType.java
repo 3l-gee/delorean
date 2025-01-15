@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSpecialDateType {
 
     @XmlValue
-    @Column(name = "specialbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "specialtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codespecialdate_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

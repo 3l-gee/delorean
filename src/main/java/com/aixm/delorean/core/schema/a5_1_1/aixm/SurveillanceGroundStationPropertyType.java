@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "surveillanceGroundStation"
 })
 @Entity
-@Table(name = "surveillancegroundstationpropertytype", schema = "surveillance")
+@Table(name = "surveillancegroundstation_pt", schema = "surveillance")
 public class SurveillanceGroundStationPropertyType
     extends AbstractAIXMPropertyType
 {

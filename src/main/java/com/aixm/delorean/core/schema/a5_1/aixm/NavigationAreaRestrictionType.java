@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "navigationarearestrictiontype", schema = "procedure")
+@Table(name = "navigationarearestriction", schema = "procedure")
 public class NavigationAreaRestrictionType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestrictiontype_timeslice", joinColumns = {
-        @JoinColumn(name = "navigationarearestrictiontype_id")
+    @JoinTable(name = "navigationarearestriction_timeslice", joinColumns = {
+        @JoinColumn(name = "navigationarearestriction_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navigationarearestrictiontimeslicepropertytype_id")
+        @JoinColumn(name = "navigationarearestriction_tsp_id")
     })
     protected List<NavigationAreaRestrictionTimeSlicePropertyType> timeSlice;
 

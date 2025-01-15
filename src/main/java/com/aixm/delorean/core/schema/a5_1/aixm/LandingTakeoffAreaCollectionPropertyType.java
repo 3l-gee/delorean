@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "landingTakeoffAreaCollection"
 })
 @Entity
-@Table(name = "landingtakeoffareacollectionpropertytype", schema = "procedure")
+@Table(name = "landingtakeoffareacollection_pt", schema = "procedure")
 public class LandingTakeoffAreaCollectionPropertyType
     extends AbstractAIXMPropertyType
 {

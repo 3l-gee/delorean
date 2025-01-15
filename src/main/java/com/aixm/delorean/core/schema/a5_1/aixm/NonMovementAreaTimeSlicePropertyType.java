@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "nonMovementAreaTimeSlice"
 })
 @Entity
-@Table(name = "nonmovementareatimeslicepropertytype", schema = "airport_heliport")
+@Table(name = "nonmovementarea_tsp", schema = "airport_heliport")
 public class NonMovementAreaTimeSlicePropertyType {
 
     @XmlElement(name = "NonMovementAreaTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class NonMovementAreaTimeSlicePropertyType {
     protected NonMovementAreaTimeSliceType nonMovementAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxiholdingpositiontimeslicetype", schema = "taxiway")
+@Table(name = "taxiholdingposition_ts", schema = "taxiway")
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,15 +79,15 @@ public class TaxiHoldingPositionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "landingcategory_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "landingcategory"))
+        @AttributeOverride(name = "value", column = @Column(name = "landingcategory_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "landingcategory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHoldingCategoryType landingCategory;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "status"))
+        @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
     @XmlElement(nillable = true)
@@ -97,29 +97,29 @@ public class TaxiHoldingPositionTimeSliceType
     @JoinColumn(name = "associatedguidanceline_id", referencedColumnName = "id")
     protected GuidanceLinePropertyType associatedGuidanceLine;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "taxiholdingposition_pg_protectedrunway", joinColumns = {
-        @JoinColumn(name = "taxiholdingpositionpropertygroup_id")
+        @JoinColumn(name = "taxiholdingposition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaypropertytype_id")
+        @JoinColumn(name = "runway_pt_id")
     })
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "taxiholdingposition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "taxiholdingpositionpropertygroup_id")
+        @JoinColumn(name = "taxiholdingposition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

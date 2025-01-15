@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydirectiontimeslicetype", schema = "runway")
+@Table(name = "runwaydirection_ts", schema = "runway")
 public class RunwayDirectionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,87 +89,87 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearing_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "truebearing"))
+        @AttributeOverride(name = "value", column = @Column(name = "truebearing_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearing_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType trueBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearingaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "truebearingaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "truebearingaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "truebearingaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType trueBearingAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticbearing_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "magneticbearing"))
+        @AttributeOverride(name = "value", column = @Column(name = "magneticbearing_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticbearing_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType magneticBearing;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "patternvfr_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "patternvfr"))
+        @AttributeOverride(name = "value", column = @Column(name = "patternvfr_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "patternvfr_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType patternVFR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slopetdz_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "slopetdz"))
+        @AttributeOverride(name = "value", column = @Column(name = "slopetdz_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slopetdz_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType slopeTDZ;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdz_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdz_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "elevationtdz"))
+        @AttributeOverride(name = "value", column = @Column(name = "elevationtdz_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdz_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdz_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType elevationTDZ;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdzaccuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdzaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "elevationtdzaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "elevationtdzaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "elevationtdzaccuracy_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevationtdzaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType elevationTDZAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingtype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingtype"))
+        @AttributeOverride(name = "value", column = @Column(name = "approachmarking_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarking_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayMarkingType approachMarkingType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingcondition_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingcondition"))
+        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingcondition_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingcondition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMarkingConditionType approachMarkingCondition;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "classlightingjar_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "classlightingjar"))
+        @AttributeOverride(name = "value", column = @Column(name = "classlightingjar_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "classlightingjar_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightingJARType classLightingJAR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "precisionapproachguidance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "precisionapproachguidance"))
+        @AttributeOverride(name = "value", column = @Column(name = "precisionapproachguidance_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "precisionapproachguidance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachGuidanceType precisionApproachGuidance;
     @XmlElement(nillable = true)
@@ -185,23 +185,23 @@ public class RunwayDirectionTimeSliceType
     @JoinColumn(name = "startingelement_id", referencedColumnName = "id")
     protected RunwayElementPropertyType startingElement;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydirection_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertygroup_id")
+    @JoinTable(name = "runwaydirection_ts_annotation", joinColumns = {
+        @JoinColumn(name = "runwaydirection_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydirection_pg_availability", joinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertygroup_id")
+    @JoinTable(name = "runwaydirection_ts_availability", joinColumns = {
+        @JoinColumn(name = "runwaydirection_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+        @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient

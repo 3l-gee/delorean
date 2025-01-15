@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAirportHeliportCollocationType {
 
     @XmlValue
-    @Column(name = "airportheliportcollocationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "airportheliportcollocationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeairportheliportcollocation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

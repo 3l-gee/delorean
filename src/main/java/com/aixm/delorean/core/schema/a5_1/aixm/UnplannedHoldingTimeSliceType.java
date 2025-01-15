@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unplannedholdingtimeslicetype", schema = "holding")
+@Table(name = "unplannedholding_ts", schema = "holding")
 public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,30 +79,30 @@ public class UnplannedHoldingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "unplannedholding_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "unplannedholding"))
+        @AttributeOverride(name = "value", column = @Column(name = "unplannedholding_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "unplannedholding_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApprovalType unplannedHolding;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "authorizedaltitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "authorizedaltitude_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "authorizedaltitude"))
+        @AttributeOverride(name = "value", column = @Column(name = "authorizedaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "authorizedaltitude_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "authorizedaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType authorizedAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitudereference"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudereference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "controlledairspace_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "controlledairspace"))
+        @AttributeOverride(name = "value", column = @Column(name = "controlledairspace_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "controlledairspace_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType controlledAirspace;
     @XmlElement(nillable = true)
@@ -112,13 +112,13 @@ public class UnplannedHoldingTimeSliceType
     @JoinColumn(name = "holdingpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "unplannedholding_pg_annotation", joinColumns = {
-        @JoinColumn(name = "unplannedholdingpropertygroup_id")
+        @JoinColumn(name = "unplannedholding_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

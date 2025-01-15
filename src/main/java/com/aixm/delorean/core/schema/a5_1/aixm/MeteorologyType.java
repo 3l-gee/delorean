@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "meteorologytype", schema = "meteorology")
+@Table(name = "meteorology", schema = "meteorology")
 public class MeteorologyType
     extends AbstractAIXMObjectType
 {
@@ -79,48 +79,48 @@ public class MeteorologyType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flightconditions_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flightconditions"))
+        @AttributeOverride(name = "value", column = @Column(name = "flightconditions_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightconditions_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMeteoConditionsType flightConditions;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "visibility_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "visibility"))
+        @AttributeOverride(name = "value", column = @Column(name = "visibility_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "visibility_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType visibility;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityinterpretation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "visibilityinterpretation"))
+        @AttributeOverride(name = "value", column = @Column(name = "visibilityinterpretation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType visibilityInterpretation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "runwayvisualrange_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrange_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrange"))
+        @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrange_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "runwayvisualrange_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrange_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType runwayVisualRange;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrangeinterpretation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrangeinterpretation"))
+        @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrangeinterpretation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrangeinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType runwayVisualRangeInterpretation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "meteorology_pg_annotation", joinColumns = {
-        @JoinColumn(name = "meteorologypropertygroup_id")
+        @JoinColumn(name = "meteorology_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeDesignStandardType {
 
     @XmlValue
-    @Column(name = "designstandardbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "designstandardtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codedesignstandard_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

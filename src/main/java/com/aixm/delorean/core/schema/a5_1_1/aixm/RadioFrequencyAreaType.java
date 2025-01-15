@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "radiofrequencyareatype", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea", schema = "radio_frequency_limitation")
 public class RadioFrequencyAreaType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyareatype_timeslice", joinColumns = {
-        @JoinColumn(name = "radiofrequencyareatype_id")
+    @JoinTable(name = "radiofrequencyarea_timeslice", joinColumns = {
+        @JoinColumn(name = "radiofrequencyarea_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiofrequencyareatimeslicepropertytype_id")
+        @JoinColumn(name = "radiofrequencyarea_tsp_id")
     })
     protected List<RadioFrequencyAreaTimeSlicePropertyType> timeSlice;
 

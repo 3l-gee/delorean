@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holdingusetype", schema = "procedure")
+@Table(name = "holdinguse", schema = "procedure")
 public class HoldingUseType
     extends AbstractAIXMObjectType
 {
@@ -79,40 +79,40 @@ public class HoldingUseType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "holdinguse_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "holdinguse"))
+        @AttributeOverride(name = "value", column = @Column(name = "holdinguse_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "holdinguse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHoldingUseType holdingUse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "instructedaltitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instructedaltitude_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instructedaltitude"))
+        @AttributeOverride(name = "value", column = @Column(name = "instructedaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "instructedaltitude_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instructedaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType instructedAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instructionaltitudereference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instructionaltitudereference"))
+        @AttributeOverride(name = "value", column = @Column(name = "instructionaltitudereference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instructionaltitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType instructionAltitudeReference;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "holdinguse_pg_annotation", joinColumns = {
-        @JoinColumn(name = "holdingusepropertygroup_id")
+        @JoinColumn(name = "holdinguse_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

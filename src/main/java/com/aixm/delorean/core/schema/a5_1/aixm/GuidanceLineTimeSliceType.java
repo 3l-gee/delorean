@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "guidancelinetimeslicetype", schema = "taxiway")
+@Table(name = "guidanceline_ts", schema = "taxiway")
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,70 +84,70 @@ public class GuidanceLineTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeGuidanceLineType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "maxspeed_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "maxspeed_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "maxspeed"))
+        @AttributeOverride(name = "value", column = @Column(name = "maxspeed_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "maxspeed_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "maxspeed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType maxSpeed;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "usagedirection_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "usagedirection"))
+        @AttributeOverride(name = "value", column = @Column(name = "usagedirection_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "usagedirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionType usageDirection;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_connectedtouchdownliftoff", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertytype_id")
+        @JoinColumn(name = "touchdownliftoff_pt_id")
     })
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_connectedrunwaycentrelinepoint", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycentrelinepointpropertytype_id")
+        @JoinColumn(name = "runwaycentrelinepoint_pt_id")
     })
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_connectedapron", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronpropertytype_id")
+        @JoinColumn(name = "apron_pt_id")
     })
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_connectedstand", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstandpropertytype_id")
+        @JoinColumn(name = "aircraftstand_pt_id")
     })
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElement(nillable = true)
@@ -157,23 +157,23 @@ public class GuidanceLineTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_connectedtaxiway", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "taxiwaypropertytype_id")
+        @JoinColumn(name = "taxiway_pt_id")
     })
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "guidanceline_pg_annotation", joinColumns = {
-        @JoinColumn(name = "guidancelinepropertygroup_id")
+        @JoinColumn(name = "guidanceline_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

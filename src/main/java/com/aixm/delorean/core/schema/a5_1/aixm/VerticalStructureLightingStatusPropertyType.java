@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalStructureLightingStatus"
 })
 @Entity
-@Table(name = "verticalstructurelightingstatuspropertytype", schema = "obstacles")
+@Table(name = "verticalstructurelightingstatus_pt", schema = "obstacles")
 public class VerticalStructureLightingStatusPropertyType
     extends AbstractAIXMPropertyType
 {

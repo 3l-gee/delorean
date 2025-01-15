@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "intermediateLegTimeSlice"
 })
 @Entity
-@Table(name = "intermediatelegtimeslicepropertytype", schema = "procedure")
+@Table(name = "intermediateleg_tsp", schema = "procedure")
 public class IntermediateLegTimeSlicePropertyType {
 
     @XmlElement(name = "IntermediateLegTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class IntermediateLegTimeSlicePropertyType {
     protected IntermediateLegTimeSliceType intermediateLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

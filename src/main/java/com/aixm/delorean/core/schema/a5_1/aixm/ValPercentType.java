@@ -42,10 +42,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValPercentType {
 
     @XmlValue
-    @Column(name = "percentbasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "percenttype_nilreason", nullable = true, unique = false)
+    @Column(name = "valpercent_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

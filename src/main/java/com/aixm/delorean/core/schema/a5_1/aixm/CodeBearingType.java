@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeBearingType {
 
     @XmlValue
-    @Column(name = "bearingbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "bearingtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codebearing_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

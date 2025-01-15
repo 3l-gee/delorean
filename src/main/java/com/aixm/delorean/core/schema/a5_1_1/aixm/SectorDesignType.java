@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sectordesigntype", schema = "departure")
+@Table(name = "sectordesign", schema = "departure")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
@@ -78,40 +78,40 @@ public class SectorDesignType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "turndirection"))
+        @AttributeOverride(name = "value", column = @Column(name = "turndirection_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designgradient_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designgradient"))
+        @AttributeOverride(name = "value", column = @Column(name = "designgradient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designgradient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType designGradient;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "terminationaltitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "terminationaltitude_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "terminationaltitude"))
+        @AttributeOverride(name = "value", column = @Column(name = "terminationaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "terminationaltitude_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "terminationaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType terminationAltitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turnpermitted_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "turnpermitted"))
+        @AttributeOverride(name = "value", column = @Column(name = "turnpermitted_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turnpermitted_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType turnPermitted;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "sectordesign_pg_annotation", joinColumns = {
-        @JoinColumn(name = "sectordesignpropertygroup_id")
+        @JoinColumn(name = "sectordesign_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeCourseQualityILSType {
 
     @XmlValue
-    @Column(name = "coursequalityilsbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coursequalityilstype_nilreason", nullable = true, unique = false)
+    @Column(name = "codecoursequalityils_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

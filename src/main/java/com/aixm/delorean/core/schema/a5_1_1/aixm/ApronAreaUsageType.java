@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronareausagetype", schema = "apron")
+@Table(name = "apronareausage", schema = "apron")
 public class ApronAreaUsageType
     extends AbstractUsageConditionType
 {
@@ -80,26 +80,26 @@ public class ApronAreaUsageType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeUsageLimitationType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "priorpermission_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "priorpermission_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "priorpermission"))
+        @AttributeOverride(name = "value", column = @Column(name = "priorpermission_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "priorpermission_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "priorpermission_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDurationType priorPermission;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usagecondition_pg_contact", joinColumns = {
-        @JoinColumn(name = "usageconditionpropertygroup_id")
+    @JoinTable(name = "apronareausage_contact", joinColumns = {
+        @JoinColumn(name = "apronareausage_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformationpropertytype_id")
+        @JoinColumn(name = "contactinformation_pt_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
@@ -109,13 +109,13 @@ public class ApronAreaUsageType
     @JoinColumn(name = "selection_id", referencedColumnName = "id")
     protected ConditionCombinationPropertyType selection;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "usagecondition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "usageconditionpropertygroup_id")
+    @JoinTable(name = "apronareausage_annotation", joinColumns = {
+        @JoinColumn(name = "apronareausage_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

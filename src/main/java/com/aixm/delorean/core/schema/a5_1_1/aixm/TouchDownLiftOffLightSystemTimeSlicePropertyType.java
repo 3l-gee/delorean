@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffLightSystemTimeSlice"
 })
 @Entity
-@Table(name = "touchdownliftofflightsystemtimeslicepropertytype", schema = "lighting")
+@Table(name = "touchdownliftofflightsystem_tsp", schema = "lighting")
 public class TouchDownLiftOffLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "TouchDownLiftOffLightSystemTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class TouchDownLiftOffLightSystemTimeSlicePropertyType {
     protected TouchDownLiftOffLightSystemTimeSliceType touchDownLiftOffLightSystemTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

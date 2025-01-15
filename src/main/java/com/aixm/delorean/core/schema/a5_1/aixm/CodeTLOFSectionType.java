@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTLOFSectionType {
 
     @XmlValue
-    @Column(name = "tlofsectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "tlofsectiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codetlofsection_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

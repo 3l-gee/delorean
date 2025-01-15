@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "markingElement"
 })
 @Entity
-@Table(name = "markingelementpropertytype", schema = "markings")
+@Table(name = "markingelement_pt", schema = "markings")
 public class MarkingElementPropertyType
     extends AbstractAIXMPropertyType
 {

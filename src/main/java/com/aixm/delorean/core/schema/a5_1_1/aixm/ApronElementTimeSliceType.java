@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronelementtimeslicetype", schema = "apron")
+@Table(name = "apronelement_ts", schema = "apron")
 public class ApronElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,52 +86,52 @@ public class ApronElementTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApronElementType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "jetwayavailability_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "jetwayavailability"))
+        @AttributeOverride(name = "value", column = @Column(name = "jetwayavailability_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "jetwayavailability_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType jetwayAvailability;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "towingavailability_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "towingavailability"))
+        @AttributeOverride(name = "value", column = @Column(name = "towingavailability_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "towingavailability_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType towingAvailability;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "dockingavailability_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "dockingavailability"))
+        @AttributeOverride(name = "value", column = @Column(name = "dockingavailability_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "dockingavailability_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType dockingAvailability;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "groundpoweravailability_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "groundpoweravailability"))
+        @AttributeOverride(name = "value", column = @Column(name = "groundpoweravailability_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "groundpoweravailability_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType groundPowerAvailability;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "length"))
+        @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "width"))
+        @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
@@ -153,33 +153,33 @@ public class ApronElementTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apronelement_pg_supplyservice", joinColumns = {
-        @JoinColumn(name = "apronelementpropertygroup_id")
+        @JoinColumn(name = "apronelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportsuppliesservicepropertytype_id")
+        @JoinColumn(name = "airportsuppliesservice_pt_id")
     })
     protected List<AirportSuppliesServicePropertyType> supplyService;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apronelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "apronelementpropertygroup_id")
+        @JoinColumn(name = "apronelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "apronelement_pg_availability", joinColumns = {
-        @JoinColumn(name = "apronelementpropertygroup_id")
+        @JoinColumn(name = "apronelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronareaavailabilitypropertytype_id")
+        @JoinColumn(name = "apronareaavailability_pt_id")
     })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient

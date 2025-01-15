@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standmarkingtype", schema = "markings")
+@Table(name = "standmarking", schema = "markings")
 public class StandMarkingType
     extends AbstractMarkingType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standmarkingtype_timeslice", joinColumns = {
-        @JoinColumn(name = "standmarkingtype_id")
+    @JoinTable(name = "standmarking_timeslice", joinColumns = {
+        @JoinColumn(name = "standmarking_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standmarkingtimeslicepropertytype_id")
+        @JoinColumn(name = "standmarking_tsp_id")
     })
     protected List<StandMarkingTimeSlicePropertyType> timeSlice;
 

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditioncircumstancetype", schema = "flight_restrictions")
+@Table(name = "flightconditioncircumstance", schema = "flight_restrictions")
 public class FlightConditionCircumstanceType
     extends AbstractAIXMObjectType
 {
@@ -76,25 +76,25 @@ public class FlightConditionCircumstanceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "referencelocation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "referencelocation"))
+        @AttributeOverride(name = "value", column = @Column(name = "referencelocation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "referencelocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType referenceLocation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "relationwithlocation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "relationwithlocation"))
+        @AttributeOverride(name = "value", column = @Column(name = "relationwithlocation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "relationwithlocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLocationQualifierType relationWithLocation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightconditioncircumstance_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightconditioncircumstancepropertygroup_id")
+        @JoinColumn(name = "flightconditioncircumstance_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "airspacebordercrossingtype", schema = "flight_restrictions")
+@Table(name = "airspacebordercrossing", schema = "flight_restrictions")
 public class AirspaceBorderCrossingType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacebordercrossingtype_timeslice", joinColumns = {
-        @JoinColumn(name = "airspacebordercrossingtype_id")
+    @JoinTable(name = "airspacebordercrossing_timeslice", joinColumns = {
+        @JoinColumn(name = "airspacebordercrossing_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacebordercrossingtimeslicepropertytype_id")
+        @JoinColumn(name = "airspacebordercrossing_tsp_id")
     })
     protected List<AirspaceBorderCrossingTimeSlicePropertyType> timeSlice;
 

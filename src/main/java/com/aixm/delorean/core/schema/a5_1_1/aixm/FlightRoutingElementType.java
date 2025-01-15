@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightroutingelementtype", schema = "flight_restrictions")
+@Table(name = "flightroutingelement", schema = "flight_restrictions")
 public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
@@ -92,40 +92,40 @@ public class FlightRoutingElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "ordernumber_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "ordernumber"))
+        @AttributeOverride(name = "value", column = @Column(name = "ordernumber_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "ordernumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType orderNumber;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "speed_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "speed"))
+        @AttributeOverride(name = "value", column = @Column(name = "speed_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "speed_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speed;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speedreference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "speedreference"))
+        @AttributeOverride(name = "value", column = @Column(name = "speedreference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSpeedReferenceType speedReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speedcriteria_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "speedcriteria"))
+        @AttributeOverride(name = "value", column = @Column(name = "speedcriteria_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedcriteria_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeComparisonType speedCriteria;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightroutingelement_pg_flightlevel", joinColumns = {
-        @JoinColumn(name = "flightroutingelementpropertygroup_id")
+        @JoinColumn(name = "flightroutingelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestrictionlevelpropertytype_id")
+        @JoinColumn(name = "flightrestrictionlevel_pt_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(name = "element_directFlightElement", nillable = true)
@@ -207,13 +207,13 @@ public class FlightRoutingElementType
     @JoinColumn(name = "element_aerialrefuellingelement_id", referencedColumnName = "id")
     protected AerialRefuellingPropertyType elementAerialRefuellingElement;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightroutingelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightroutingelementpropertygroup_id")
+        @JoinColumn(name = "flightroutingelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

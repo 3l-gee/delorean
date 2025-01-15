@@ -261,35 +261,44 @@ exterior_ring_other AS (
 ),
 exterior_ring_geoborder AS (
     SELECT 
-		points.id,
-		ST_LineMerge(ST_Collect(points.geom))
-		ST_Collect(points.points) AS points
-    FROM (
-			SELECT 
-				id,
-				geom,
-		        (ST_DumpPoints(geom)).geom as points
-		    FROM 
-				linked_segments
-		    WHERE 	
-		        linked_segments.part = 0
-				AND
-				interpretation = 4
-	) points
-	GROUP BY
-		id, geom
-),
-split_points AS (
-    SELECT 
-        exterior_ring_other.id,
-		ST_ClosestPoint(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)),
-		ST_ClosestPoint(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom))
+		id,
+		ST_LineMerge(ST_Collect(geom)) AS geom
     FROM 
-        exterior_ring_other,
-        exterior_ring_geoborder
+        linked_segments
+    WHERE 
+        part = 0
+		AND
+		interpretation = 4
+    GROUP BY 
+        id
+),
+split_data AS (
+	SELECT 
+		(ST_Dump(
+		  ST_Split(
+			ST_ReducePrecision(exterior_ring_geoborder.geom,0.001),
+		  	ST_ReducePrecision(
+				ST_Union(
+					ST_ClosestPoint(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)),
+					ST_ClosestPoint(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom))
+				)
+			, 0.001)
+		  )
+		)).geom AS geom,
+		ST_ShortestLine(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)) AS  start_segment,
+		ST_ShortestLine(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom)) AS end_segment
+	FROM 
+		exterior_ring_geoborder,
+		exterior_ring_other
 )
-SELECT * FROM split_points;
-
+SELECT 
+ST_Union(ARRAY[start_segment, geom, end_segment])
+FROM split_data;
+-- SELECT 
+-- ST_Union(ARRAY[start_segment, geom, end_segment])
+-- FROM split_data
+-- WHERE
+-- ST_Touches(geom, start_segment) AND ST_Touches(geom, end_segment)
 -- split_geom AS (
 --     SELECT 
 --         exterior_ring_geoborder.id, 

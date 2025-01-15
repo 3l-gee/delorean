@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayelementtimeslicetype", schema = "runway")
+@Table(name = "runwayelement_ts", schema = "runway")
 public class RunwayElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,31 +82,31 @@ public class RunwayElementTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayElementType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "length"))
+        @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "width"))
+        @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "gradeseparation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "gradeseparation"))
+        @AttributeOverride(name = "value", column = @Column(name = "gradeseparation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "gradeseparation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeGradeSeparationType gradeSeparation;
     @XmlElement(nillable = true)
@@ -116,13 +116,13 @@ public class RunwayElementTimeSliceType
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "runwayelement_pg_associatedrunway", joinColumns = {
-        @JoinColumn(name = "runwayelementpropertygroup_id")
+        @JoinColumn(name = "runwayelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaypropertytype_id")
+        @JoinColumn(name = "runway_pt_id")
     })
     protected List<RunwayPropertyType> associatedRunway;
     @XmlElement(nillable = true)
@@ -132,23 +132,23 @@ public class RunwayElementTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "runwayelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwayelementpropertygroup_id")
+        @JoinColumn(name = "runwayelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "runwayelement_pg_availability", joinColumns = {
-        @JoinColumn(name = "runwayelementpropertygroup_id")
+        @JoinColumn(name = "runwayelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+        @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient

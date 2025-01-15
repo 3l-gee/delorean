@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerialrefuellingtracktype", schema = "aerial_refuelling")
+@Table(name = "aerialrefuellingtrack", schema = "aerial_refuelling")
 public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
@@ -77,33 +77,33 @@ public class AerialRefuellingTrackType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected CurvePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellingtrack_pg_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingpointpropertytype_id")
+        @JoinColumn(name = "aerialrefuellingpoint_pt_id")
     })
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellingtrack_pg_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayerpropertytype_id")
+        @JoinColumn(name = "airspacelayer_pt_id")
     })
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellingtrack_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrackpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

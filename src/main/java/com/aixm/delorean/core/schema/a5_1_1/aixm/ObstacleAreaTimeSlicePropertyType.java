@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "obstacleAreaTimeSlice"
 })
 @Entity
-@Table(name = "obstacleareatimeslicepropertytype", schema = "obstacles")
+@Table(name = "obstaclearea_tsp", schema = "obstacles")
 public class ObstacleAreaTimeSlicePropertyType {
 
     @XmlElement(name = "ObstacleAreaTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class ObstacleAreaTimeSlicePropertyType {
     protected ObstacleAreaTimeSliceType obstacleAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

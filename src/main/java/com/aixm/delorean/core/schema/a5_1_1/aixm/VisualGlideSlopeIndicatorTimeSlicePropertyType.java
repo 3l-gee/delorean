@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "visualGlideSlopeIndicatorTimeSlice"
 })
 @Entity
-@Table(name = "visualglideslopeindicatortimeslicepropertytype", schema = "runway")
+@Table(name = "visualglideslopeindicator_tsp", schema = "runway")
 public class VisualGlideSlopeIndicatorTimeSlicePropertyType {
 
     @XmlElement(name = "VisualGlideSlopeIndicatorTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class VisualGlideSlopeIndicatorTimeSlicePropertyType {
     protected VisualGlideSlopeIndicatorTimeSliceType visualGlideSlopeIndicatorTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

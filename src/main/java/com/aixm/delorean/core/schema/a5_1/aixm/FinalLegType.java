@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "finallegtype", schema = "procedure")
+@Table(name = "finalleg", schema = "procedure")
 public class FinalLegType
     extends AbstractApproachLegType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finallegtype_timeslice", joinColumns = {
-        @JoinColumn(name = "finallegtype_id")
+    @JoinTable(name = "finalleg_timeslice", joinColumns = {
+        @JoinColumn(name = "finalleg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "finallegtimeslicepropertytype_id")
+        @JoinColumn(name = "finalleg_tsp_id")
     })
     protected List<FinalLegTimeSlicePropertyType> timeSlice;
 

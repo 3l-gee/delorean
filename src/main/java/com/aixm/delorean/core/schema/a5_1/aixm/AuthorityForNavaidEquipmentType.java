@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "authorityfornavaidequipmenttype", schema = "navaids")
+@Table(name = "authorityfornavaidequipment", schema = "navaids")
 public class AuthorityForNavaidEquipmentType
     extends AbstractAIXMObjectType
 {
@@ -76,18 +76,18 @@ public class AuthorityForNavaidEquipmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAuthorityRoleType type;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "authorityfornavaidequipment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "authorityfornavaidequipmentpropertygroup_id")
+    @JoinTable(name = "authorityforauthorityfornavaidequipment_annotation", joinColumns = {
+        @JoinColumn(name = "authorityforauthorityfornavaidequipment_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

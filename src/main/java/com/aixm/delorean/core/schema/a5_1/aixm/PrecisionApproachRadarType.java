@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "precisionapproachradartype", schema = "surveillance")
+@Table(name = "precisionapproachradar", schema = "surveillance")
 public class PrecisionApproachRadarType
     extends AbstractRadarEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "precisionapproachradartype_timeslice", joinColumns = {
-        @JoinColumn(name = "precisionapproachradartype_id")
+    @JoinTable(name = "precisionapproachradar_timeslice", joinColumns = {
+        @JoinColumn(name = "precisionapproachradar_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "precisionapproachradartimeslicepropertytype_id")
+        @JoinColumn(name = "precisionapproachradar_tsp_id")
     })
     protected List<PrecisionApproachRadarTimeSlicePropertyType> timeSlice;
 

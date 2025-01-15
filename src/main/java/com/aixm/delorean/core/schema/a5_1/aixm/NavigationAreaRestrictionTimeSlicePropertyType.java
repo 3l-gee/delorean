@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navigationAreaRestrictionTimeSlice"
 })
 @Entity
-@Table(name = "navigationarearestrictiontimeslicepropertytype", schema = "procedure")
+@Table(name = "navigationarearestriction_tsp", schema = "procedure")
 public class NavigationAreaRestrictionTimeSlicePropertyType {
 
     @XmlElement(name = "NavigationAreaRestrictionTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class NavigationAreaRestrictionTimeSlicePropertyType {
     protected NavigationAreaRestrictionTimeSliceType navigationAreaRestrictionTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

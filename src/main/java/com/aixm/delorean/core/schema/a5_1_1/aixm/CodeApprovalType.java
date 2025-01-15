@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApprovalType {
 
     @XmlValue
-    @Column(name = "approvalbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "approvaltype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeapproval_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

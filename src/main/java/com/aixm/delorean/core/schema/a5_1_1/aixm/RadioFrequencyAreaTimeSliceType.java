@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radiofrequencyareatimeslicetype", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea_ts", schema = "radio_frequency_limitation")
 public class RadioFrequencyAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -84,22 +84,22 @@ public class RadioFrequencyAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioFrequencyAreaType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "anglescallop_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "anglescallop"))
+        @AttributeOverride(name = "value", column = @Column(name = "anglescallop_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "anglescallop_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType angleScallop;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signaltype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "signaltype"))
+        @AttributeOverride(name = "value", column = @Column(name = "signal_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioSignalType signalType;
     @XmlElement(name = "equipment_radar", nillable = true)
@@ -133,33 +133,33 @@ public class RadioFrequencyAreaTimeSliceType
     @JoinColumn(name = "equipment_navaidequipment_id", referencedColumnName = "id")
     protected NavaidEquipmentPropertyType equipmentNavaidEquipment;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radiofrequencyarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "radiofrequencyareapropertygroup_id")
+        @JoinColumn(name = "radiofrequencyarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "circlesectorpropertytype_id")
+        @JoinColumn(name = "circlesector_pt_id")
     })
     protected List<CircleSectorPropertyType> sector;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radiofrequencyarea_pg_extent", joinColumns = {
-        @JoinColumn(name = "radiofrequencyareapropertygroup_id")
+        @JoinColumn(name = "radiofrequencyarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surfacepropertytype_id")
+        @JoinColumn(name = "surface_pt_id")
     })
     protected List<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radiofrequencyarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radiofrequencyareapropertygroup_id")
+        @JoinColumn(name = "radiofrequencyarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

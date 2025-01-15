@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runwaydirectiontype", schema = "runway")
+@Table(name = "runwaydirection", schema = "runway")
 public class RunwayDirectionType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydirectiontype_timeslice", joinColumns = {
-        @JoinColumn(name = "runwaydirectiontype_id")
+    @JoinTable(name = "runwaydirection_timeslice", joinColumns = {
+        @JoinColumn(name = "runwaydirection_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirectiontimeslicepropertytype_id")
+        @JoinColumn(name = "runwaydirection_tsp_id")
     })
     protected List<RunwayDirectionTimeSlicePropertyType> timeSlice;
 

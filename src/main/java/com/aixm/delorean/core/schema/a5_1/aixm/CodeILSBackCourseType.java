@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeILSBackCourseType {
 
     @XmlValue
-    @Column(name = "ilsbackcoursebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "ilsbackcoursetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeilsbackcourse_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

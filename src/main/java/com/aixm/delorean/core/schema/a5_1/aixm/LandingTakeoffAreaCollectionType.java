@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -64,39 +64,39 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "landingtakeoffareacollectiontype", schema = "procedure")
+@Table(name = "landingtakeoffareacollection", schema = "procedure")
 public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "landingtakeoffareacollection_pg_runway", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertytype_id")
+        @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> runway;
     @XmlElement(name = "TLOF", nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "landingtakeoffareacollection_pg_tlof", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertytype_id")
+        @JoinColumn(name = "touchdownliftoff_pt_id")
     })
     protected List<TouchDownLiftOffPropertyType> tlof;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "landingtakeoffareacollection_pg_annotation", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollectionpropertygroup_id")
+        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

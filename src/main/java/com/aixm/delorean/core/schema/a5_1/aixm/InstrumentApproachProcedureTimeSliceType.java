@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -94,7 +94,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "instrumentapproachproceduretimeslicetype", schema = "approach")
+@Table(name = "instrumentapproachprocedure_ts", schema = "approach")
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -102,90 +102,90 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "communicationfailureinstruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "communicationfailureinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType communicationFailureInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designcriteria_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designcriteria"))
+        @AttributeOverride(name = "value", column = @Column(name = "designcriteria_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designcriteria_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDesignStandardType designCriteria;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "codingstandard_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "codingstandard"))
+        @AttributeOverride(name = "value", column = @Column(name = "codingstandard_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "codingstandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureCodingStandardType codingStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flightchecked"))
+        @AttributeOverride(name = "value", column = @Column(name = "flightchecked_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(name = "RNAV", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "rnav"))
+        @AttributeOverride(name = "value", column = @Column(name = "rnav_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType rnav;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedure_pg_availability", joinColumns = {
-        @JoinColumn(name = "procedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachprocedure_ts_availability", joinColumns = {
+        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedureavailabilitypropertytype_id")
+        @JoinColumn(name = "procedureavailability_pt_id")
     })
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedure_pg_airportheliport", joinColumns = {
-        @JoinColumn(name = "procedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachprocedure_ts_airportheliport", joinColumns = {
+        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportpropertytype_id")
+        @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedure_pg_aircraftcharacteristic", joinColumns = {
-        @JoinColumn(name = "procedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachprocedure_ts_aircraftcharacteristic", joinColumns = {
+        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+        @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedure_pg_flighttransition", joinColumns = {
-        @JoinColumn(name = "procedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachprocedure_ts_flighttransition", joinColumns = {
+        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "proceduretransitionpropertytype_id")
+        @JoinColumn(name = "proceduretransition_pt_id")
     })
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElement(name = "guidanceFacility_navaid", nillable = true)
@@ -207,13 +207,13 @@ public class InstrumentApproachProcedureTimeSliceType
     @JoinColumn(name = "guidancefacility_radar_id", referencedColumnName = "id")
     protected RadarSystemPropertyType guidanceFacilityRadar;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "procedure_pg_annotation", joinColumns = {
-        @JoinColumn(name = "procedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachprocedure_ts_annotation", joinColumns = {
+        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
@@ -225,64 +225,64 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachprefix_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachprefix"))
+        @AttributeOverride(name = "value", column = @Column(name = "approachprefix_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachprefix_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachPrefixType approachPrefix;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachtype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachtype"))
+        @AttributeOverride(name = "value", column = @Column(name = "approach_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approach_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachType approachType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "multipleidentification_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "multipleidentification"))
+        @AttributeOverride(name = "value", column = @Column(name = "multipleidentification_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "multipleidentification_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeUpperAlphaType multipleIdentification;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "coptertrack_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "coptertrack"))
+        @AttributeOverride(name = "value", column = @Column(name = "coptertrack_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coptertrack_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType copterTrack;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "circlingidentification_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "circlingidentification"))
+        @AttributeOverride(name = "value", column = @Column(name = "circlingidentification_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "circlingidentification_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeUpperAlphaType circlingIdentification;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "coursereversalinstruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "coursereversalinstruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "coursereversalinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursereversalinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType courseReversalInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "additionalequipment_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "additionalequipment"))
+        @AttributeOverride(name = "value", column = @Column(name = "additionalequipment_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "additionalequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachEquipmentAdditionalType additionalEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "channelgnss_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "channelgnss"))
+        @AttributeOverride(name = "value", column = @Column(name = "channelgnss_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "channelgnss_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValChannelNumberType channelGNSS;
     @XmlElement(name = "WAASReliable", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "waasreliable_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "waasreliable"))
+        @AttributeOverride(name = "value", column = @Column(name = "waasreliable_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "waasreliable_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType waasReliable;
     @XmlElement(nillable = true)
@@ -292,13 +292,13 @@ public class InstrumentApproachProcedureTimeSliceType
     @JoinColumn(name = "landing_id", referencedColumnName = "id")
     protected LandingTakeoffAreaCollectionPropertyType landing;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_pg_missedinstruction", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedurepropertygroup_id")
+    @JoinTable(name = "instrumentapproachinstrumentapproachprocedure_ts_missedinstruction", joinColumns = {
+        @JoinColumn(name = "instrumentapproachinstrumentapproachprocedure_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "missedapproachgrouppropertytype_id")
+        @JoinColumn(name = "missedapproachgroup_pt_id")
     })
     protected List<MissedApproachGroupPropertyType> missedInstruction;
     @XmlElement(nillable = true)

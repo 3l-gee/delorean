@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeNDBUsageType {
 
     @XmlValue
-    @Column(name = "ndbusagebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "ndbusagetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codendbusage_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

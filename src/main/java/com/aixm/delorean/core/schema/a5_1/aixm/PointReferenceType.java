@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "pointreferencetype", schema = "point_reference")
+@Table(name = "pointreference", schema = "point_reference")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
@@ -81,24 +81,24 @@ public class PointReferenceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "role_"))
+        @AttributeOverride(name = "value", column = @Column(name = "role_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeReferenceRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "priorfixtolerance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "priorfixtolerance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "priorfixtolerance"))
+        @AttributeOverride(name = "value", column = @Column(name = "priorfixtolerance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "priorfixtolerance_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "priorfixtolerance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType priorFixTolerance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "postfixtolerance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "postfixtolerance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "postfixtolerance"))
+        @AttributeOverride(name = "value", column = @Column(name = "postfixtolerance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "postfixtolerance_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "postfixtolerance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType postFixTolerance;
     @XmlElement(nillable = true)
@@ -108,23 +108,23 @@ public class PointReferenceType
     @JoinColumn(name = "point_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType point;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "pointreference_pg_facilityangle", joinColumns = {
-        @JoinColumn(name = "pointreferencepropertygroup_id")
+        @JoinColumn(name = "pointreference_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "angleusepropertytype_id")
+        @JoinColumn(name = "angleuse_pt_id")
     })
     protected List<AngleUsePropertyType> facilityAngle;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "pointreference_pg_facilitydistance", joinColumns = {
-        @JoinColumn(name = "pointreferencepropertygroup_id")
+        @JoinColumn(name = "pointreference_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "distanceindicationpropertytype_id")
+        @JoinColumn(name = "distanceindication_pt_id")
     })
     protected List<DistanceIndicationPropertyType> facilityDistance;
     @XmlElement(nillable = true)
@@ -134,13 +134,13 @@ public class PointReferenceType
     @JoinColumn(name = "fixtolerancearea_id", referencedColumnName = "id")
     protected SurfacePropertyType fixToleranceArea;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "pointreference_pg_annotation", joinColumns = {
-        @JoinColumn(name = "pointreferencepropertygroup_id")
+        @JoinColumn(name = "pointreference_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

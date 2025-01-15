@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "contactinformationtype", schema = "address")
+@Table(name = "contactinformation", schema = "address")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
@@ -79,55 +79,55 @@ public class ContactInformationType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "title_"))
+        @AttributeOverride(name = "value", column = @Column(name = "title_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType title;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "contactinformation_pg_address", joinColumns = {
-        @JoinColumn(name = "contactinformationpropertygroup_id")
+        @JoinColumn(name = "contactinformation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "postaladdresspropertytype_id")
+        @JoinColumn(name = "postaladdress_pt_id")
     })
     protected List<PostalAddressPropertyType> address;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "contactinformation_pg_networknode", joinColumns = {
-        @JoinColumn(name = "contactinformationpropertygroup_id")
+        @JoinColumn(name = "contactinformation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "onlinecontactpropertytype_id")
+        @JoinColumn(name = "onlinecontact_pt_id")
     })
     protected List<OnlineContactPropertyType> networkNode;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "contactinformation_pg_phonefax", joinColumns = {
-        @JoinColumn(name = "contactinformationpropertygroup_id")
+        @JoinColumn(name = "contactinformation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "telephonecontactpropertytype_id")
+        @JoinColumn(name = "telephonecontact_pt_id")
     })
     protected List<TelephoneContactPropertyType> phoneFax;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "contactinformation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "contactinformationpropertygroup_id")
+        @JoinColumn(name = "contactinformation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

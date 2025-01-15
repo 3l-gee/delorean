@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standardlevelcolumntype", schema = "standard_levels")
+@Table(name = "standardlevelcolumn", schema = "standard_levels")
 public class StandardLevelColumnType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelcolumntype_timeslice", joinColumns = {
-        @JoinColumn(name = "standardlevelcolumntype_id")
+    @JoinTable(name = "standardlevelcolumn_timeslice", joinColumns = {
+        @JoinColumn(name = "standardlevelcolumn_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardlevelcolumntimeslicepropertytype_id")
+        @JoinColumn(name = "standardlevelcolumn_tsp_id")
     })
     protected List<StandardLevelColumnTimeSlicePropertyType> timeSlice;
 

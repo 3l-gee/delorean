@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airportheliportcollocationtimeslicetype", schema = "airport_heliport")
+@Table(name = "airportheliportcollocation_ts", schema = "airport_heliport")
 public class AirportHeliportCollocationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,8 +77,8 @@ public class AirportHeliportCollocationTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAirportHeliportCollocationType type;
     @XmlElement(nillable = true)
@@ -94,13 +94,13 @@ public class AirportHeliportCollocationTimeSliceType
     @JoinColumn(name = "dependentairport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType dependentAirport;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "airportheliportcollocation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliportcollocationpropertygroup_id")
+        @JoinColumn(name = "airportheliportcollocation_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

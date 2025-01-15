@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "specialDateTimeSlice"
 })
 @Entity
-@Table(name = "specialdatetimeslicepropertytype", schema = "schedules")
+@Table(name = "specialdate_tsp", schema = "schedules")
 public class SpecialDateTimeSlicePropertyType {
 
     @XmlElement(name = "SpecialDateTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class SpecialDateTimeSlicePropertyType {
     protected SpecialDateTimeSliceType specialDateTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayvisualrangetimeslicetype", schema = "runway")
+@Table(name = "runwayvisualrange_ts", schema = "runway")
 public class RunwayVisualRangeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,34 +77,34 @@ public class RunwayVisualRangeTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "readingposition_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "readingposition"))
+        @AttributeOverride(name = "value", column = @Column(name = "readingposition_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "readingposition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRVRReadingType readingPosition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayvisualrange_pg_associatedrunwaydirection", joinColumns = {
-        @JoinColumn(name = "runwayvisualrangepropertygroup_id")
+    @JoinTable(name = "runwayvisualrange_ts_associatedrunwaydirection", joinColumns = {
+        @JoinColumn(name = "runwayvisualrange_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertytype_id")
+        @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> associatedRunwayDirection;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayvisualrange_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwayvisualrangepropertygroup_id")
+    @JoinTable(name = "runwayvisualrange_ts_annotation", joinColumns = {
+        @JoinColumn(name = "runwayvisualrange_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

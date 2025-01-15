@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightelementtype", schema = "light_element")
+@Table(name = "lightelement", schema = "light_element")
 public class LightElementType
     extends AbstractAIXMObjectType
 {
@@ -80,56 +80,56 @@ public class LightElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "colour"))
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "intensity_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "intensity"))
+        @AttributeOverride(name = "value", column = @Column(name = "intensity_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "intensity_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensity_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValLightIntensityType intensity;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightSourceType type;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "lightelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "lightelementpropertygroup_id")
+        @JoinColumn(name = "lightelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "lightelement_pg_availability", joinColumns = {
-        @JoinColumn(name = "lightelementpropertygroup_id")
+        @JoinColumn(name = "lightelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelementstatuspropertytype_id")
+        @JoinColumn(name = "lightelementstatus_pt_id")
     })
     protected List<LightElementStatusPropertyType> availability;
     @Transient

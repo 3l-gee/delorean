@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodePCNPavementType {
 
     @XmlValue
-    @Column(name = "pcnpavementbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "pcnpavementtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codepcnpavement_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

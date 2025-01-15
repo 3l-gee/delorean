@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "directionfindertype", schema = "navaids")
+@Table(name = "directionfinder", schema = "navaids")
 public class DirectionFinderType
     extends AbstractNavaidEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfindertype_timeslice", joinColumns = {
-        @JoinColumn(name = "directionfindertype_id")
+    @JoinTable(name = "directionfinder_timeslice", joinColumns = {
+        @JoinColumn(name = "directionfinder_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "directionfindertimeslicepropertytype_id")
+        @JoinColumn(name = "directionfinder_tsp_id")
     })
     protected List<DirectionFinderTimeSlicePropertyType> timeSlice;
 

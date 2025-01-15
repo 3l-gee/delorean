@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMilitaryRoutePointType {
 
     @XmlValue
-    @Column(name = "militaryroutepointbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "militaryroutepointtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codemilitaryroutepoint_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

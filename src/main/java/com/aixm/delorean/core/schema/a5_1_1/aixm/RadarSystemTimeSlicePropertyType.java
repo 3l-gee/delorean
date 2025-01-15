@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radarSystemTimeSlice"
 })
 @Entity
-@Table(name = "radarsystemtimeslicepropertytype", schema = "surveillance")
+@Table(name = "radarsystem_tsp", schema = "surveillance")
 public class RadarSystemTimeSlicePropertyType {
 
     @XmlElement(name = "RadarSystemTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class RadarSystemTimeSlicePropertyType {
     protected RadarSystemTimeSliceType radarSystemTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

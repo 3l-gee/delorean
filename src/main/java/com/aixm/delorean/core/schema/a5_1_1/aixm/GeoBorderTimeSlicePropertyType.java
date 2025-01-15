@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "geoBorderTimeSlice"
 })
 @Entity
-@Table(name = "geobordertimeslicepropertytype", schema = "airspace")
+@Table(name = "geoborder_tsp", schema = "airspace")
 public class GeoBorderTimeSlicePropertyType {
 
     @XmlElement(name = "GeoBorderTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class GeoBorderTimeSlicePropertyType {
     protected GeoBorderTimeSliceType geoBorderTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

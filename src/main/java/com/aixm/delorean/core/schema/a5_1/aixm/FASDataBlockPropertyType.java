@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "fasDataBlock"
 })
 @Entity
-@Table(name = "fasdatablockpropertytype", schema = "segment_leg")
+@Table(name = "fasdatablock_pt", schema = "segment_leg")
 public class FASDataBlockPropertyType
     extends AbstractAIXMPropertyType
 {

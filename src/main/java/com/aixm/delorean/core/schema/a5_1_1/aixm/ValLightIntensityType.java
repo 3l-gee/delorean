@@ -43,13 +43,12 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class ValLightIntensityType {
 
     @XmlValue
-    @Column(name = "lightintensitybasetype", nullable = true, unique = false)
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "lightintensitytype_uom", nullable = true, unique = false)
+    @Column(name = "vallightintensity_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "lightintensitytype_nilreason", nullable = true, unique = false)
+    @Column(name = "vallightintensity_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

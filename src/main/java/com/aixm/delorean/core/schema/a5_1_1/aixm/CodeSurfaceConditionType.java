@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeSurfaceConditionType {
 
     @XmlValue
-    @Column(name = "surfaceconditionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "surfaceconditiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codesurfacecondition_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFlowConditionOperationType {
 
     @XmlValue
-    @Column(name = "flowconditionoperationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "flowconditionoperationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeflowconditionoperation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

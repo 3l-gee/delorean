@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "markingbuoytype", schema = "seaplanes")
+@Table(name = "markingbuoy", schema = "seaplanes")
 public class MarkingBuoyType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingbuoytype_timeslice", joinColumns = {
-        @JoinColumn(name = "markingbuoytype_id")
+    @JoinTable(name = "markingbuoy_timeslice", joinColumns = {
+        @JoinColumn(name = "markingbuoy_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "markingbuoytimeslicepropertytype_id")
+        @JoinColumn(name = "markingbuoy_tsp_id")
     })
     protected List<MarkingBuoyTimeSlicePropertyType> timeSlice;
 

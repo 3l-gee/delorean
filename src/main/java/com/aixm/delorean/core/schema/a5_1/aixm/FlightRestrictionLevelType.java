@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightrestrictionleveltype", schema = "flight_restrictions")
+@Table(name = "flightrestrictionlevel", schema = "flight_restrictions")
 public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {
@@ -78,41 +78,41 @@ public class FlightRestrictionLevelType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "upperlevel_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "upperlevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "upperlevel_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "upperlevel_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevelreference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "upperlevelreference"))
+        @AttributeOverride(name = "value", column = @Column(name = "upperlevelreference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevelreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLevelReference;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lowerlevel_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lowerlevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlevel_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lowerlevel_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevelreference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lowerlevelreference"))
+        @AttributeOverride(name = "value", column = @Column(name = "lowerlevelreference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevelreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLevelReference;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightrestrictionlevel_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightrestrictionlevelpropertygroup_id")
+        @JoinColumn(name = "flightrestrictionlevel_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

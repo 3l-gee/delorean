@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacegeometrycomponenttype", schema = "airspace")
+@Table(name = "airspacegeometrycomponent", schema = "airspace")
 public class AirspaceGeometryComponentType
     extends AbstractAIXMObjectType
 {
@@ -77,25 +77,25 @@ public class AirspaceGeometryComponentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "operation"))
+        @AttributeOverride(name = "value", column = @Column(name = "operation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAirspaceAggregationType operation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operationsequence_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "operationsequence"))
+        @AttributeOverride(name = "value", column = @Column(name = "operationsequence_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationsequence_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType operationSequence;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "airspacegeometrycomponent_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airspacegeometrycomponentpropertygroup_id")
+        @JoinColumn(name = "airspacegeometrycomponent_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

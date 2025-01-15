@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVASISType {
 
     @XmlValue
-    @Column(name = "vasisbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vasistype_nilreason", nullable = true, unique = false)
+    @Column(name = "codevasis_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

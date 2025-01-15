@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "proceduretransitiontype", schema = "procedure")
+@Table(name = "proceduretransition", schema = "procedure")
 public class ProcedureTransitionType
     extends AbstractAIXMObjectType
 {
@@ -81,29 +81,29 @@ public class ProcedureTransitionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "transitionid_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "transitionid"))
+        @AttributeOverride(name = "value", column = @Column(name = "transitionid_value", length = 5, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "transitionid_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDesignatedPointDesignatorType transitionId;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedurePhaseType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "vectorheading_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "vectorheading"))
+        @AttributeOverride(name = "value", column = @Column(name = "vectorheading_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "vectorheading_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType vectorHeading;
     @XmlElement(nillable = true)
@@ -119,23 +119,23 @@ public class ProcedureTransitionType
     @JoinColumn(name = "trajectory_id", referencedColumnName = "id")
     protected CurvePropertyType trajectory;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "proceduretransition_pg_transitionleg", joinColumns = {
-        @JoinColumn(name = "proceduretransitionpropertygroup_id")
+        @JoinColumn(name = "proceduretransition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "proceduretransitionlegpropertytype_id")
+        @JoinColumn(name = "proceduretransitionleg_pt_id")
     })
     protected List<ProcedureTransitionLegPropertyType> transitionLeg;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "proceduretransition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "proceduretransitionpropertygroup_id")
+        @JoinColumn(name = "proceduretransition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

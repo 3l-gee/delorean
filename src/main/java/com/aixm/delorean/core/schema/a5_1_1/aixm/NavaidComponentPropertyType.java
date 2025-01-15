@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navaidComponent"
 })
 @Entity
-@Table(name = "navaidcomponentpropertytype", schema = "navaids")
+@Table(name = "navaidcomponent_pt", schema = "navaids")
 public class NavaidComponentPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMinimaFinalApproachPathType {
 
     @XmlValue
-    @Column(name = "minimafinalapproachpathbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "minimafinalapproachpathtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeminimafinalapproachpath_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

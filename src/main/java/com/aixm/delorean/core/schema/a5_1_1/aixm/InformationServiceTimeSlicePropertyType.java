@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "informationServiceTimeSlice"
 })
 @Entity
-@Table(name = "informationservicetimeslicepropertytype", schema = "service")
+@Table(name = "informationservice_tsp", schema = "service")
 public class InformationServiceTimeSlicePropertyType {
 
     @XmlElement(name = "InformationServiceTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class InformationServiceTimeSlicePropertyType {
     protected InformationServiceTimeSliceType informationServiceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

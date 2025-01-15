@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
     SecondarySurveillanceRadarType.class
 })
 @Entity
-@Table(name = "abstractsurveillanceradartype", schema = "public")
+@Table(name = "abstractsurveillanceradar", schema = "public")
 public abstract class AbstractSurveillanceRadarType
     extends AbstractRadarEquipmentType
 {

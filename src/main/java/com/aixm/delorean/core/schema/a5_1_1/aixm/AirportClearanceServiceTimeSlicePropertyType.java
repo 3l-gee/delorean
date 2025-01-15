@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airportClearanceServiceTimeSlice"
 })
 @Entity
-@Table(name = "airportclearanceservicetimeslicepropertytype", schema = "service")
+@Table(name = "airportclearanceservice_tsp", schema = "service")
 public class AirportClearanceServiceTimeSlicePropertyType {
 
     @XmlElement(name = "AirportClearanceServiceTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AirportClearanceServiceTimeSlicePropertyType {
     protected AirportClearanceServiceTimeSliceType airportClearanceServiceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

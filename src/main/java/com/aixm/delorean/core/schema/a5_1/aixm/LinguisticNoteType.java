@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "linguisticnotetype", schema = "notes")
+@Table(name = "linguisticnote", schema = "notes")
 public class LinguisticNoteType
     extends AbstractAIXMObjectType
 {
@@ -72,9 +72,9 @@ public class LinguisticNoteType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "note_nilreason")),
-        @AttributeOverride(name = "lang", column = @Column(name = "note_lang")),
-        @AttributeOverride(name = "value", column = @Column(name = "note"))
+        @AttributeOverride(name = "value", column = @Column(name = "note_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "note_nilreason", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "lang", column = @Column(name = "note_lang", length = 255, nullable = true, unique = false))
     })
     protected TextNoteType note;
     @Transient

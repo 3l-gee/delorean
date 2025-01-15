@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "sdfTimeSlice"
 })
 @Entity
-@Table(name = "sdftimeslicepropertytype", schema = "navaids")
+@Table(name = "sdf_tsp", schema = "navaids")
 public class SDFTimeSlicePropertyType {
 
     @XmlElement(name = "SDFTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class SDFTimeSlicePropertyType {
     protected SDFTimeSliceType sdfTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

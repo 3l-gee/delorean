@@ -73,32 +73,32 @@ public class ElevatedSurfaceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "elevation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "elevation"))
+        @AttributeOverride(name = "value", column = @Column(name = "elevation_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "elevation_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "elevation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType elevation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "geoidundulation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "geoidundulation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "geoidundulation"))
+        @AttributeOverride(name = "value", column = @Column(name = "geoidundulation_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "geoidundulation_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "geoidundulation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType geoidUndulation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldatum_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "verticaldatum"))
+        @AttributeOverride(name = "value", column = @Column(name = "verticaldatum_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldatum_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalDatumType verticalDatum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "verticalaccuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "verticalaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "verticalaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "verticalaccuracy_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "verticalaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType verticalAccuracy;
     @Transient

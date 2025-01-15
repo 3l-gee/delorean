@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "runwayblastpadtype", schema = "runway")
+@Table(name = "runwayblastpad", schema = "runway")
 public class RunwayBlastPadType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayblastpadtype_timeslice", joinColumns = {
-        @JoinColumn(name = "runwayblastpadtype_id")
+    @JoinTable(name = "runwayblastpad_timeslice", joinColumns = {
+        @JoinColumn(name = "runwayblastpad_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwayblastpadtimeslicepropertytype_id")
+        @JoinColumn(name = "runwayblastpad_tsp_id")
     })
     protected List<RunwayBlastPadTimeSlicePropertyType> timeSlice;
 

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeYesNoType {
 
     @XmlValue
-    @Column(name = "yesnobasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "yesnotype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeyesno_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

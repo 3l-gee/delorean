@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "safealtitudeareasectortype", schema = "safe_altitude")
+@Table(name = "safealtitudeareasector", schema = "safe_altitude")
 public class SafeAltitudeAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -78,9 +78,9 @@ public class SafeAltitudeAreaSectorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "bufferwidth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "bufferwidth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "bufferwidth"))
+        @AttributeOverride(name = "value", column = @Column(name = "bufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "bufferwidth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "bufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType bufferWidth;
     @XmlElement(nillable = true)
@@ -90,13 +90,13 @@ public class SafeAltitudeAreaSectorType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "safealtitudeareasector_pg_significantobstacle", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasectorpropertygroup_id")
+        @JoinColumn(name = "safealtitudeareasector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstructionpropertytype_id")
+        @JoinColumn(name = "obstruction_pt_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
     @XmlElement(nillable = true)
@@ -106,13 +106,13 @@ public class SafeAltitudeAreaSectorType
     @JoinColumn(name = "sectordefinition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "safealtitudeareasector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasectorpropertygroup_id")
+        @JoinColumn(name = "safealtitudeareasector_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

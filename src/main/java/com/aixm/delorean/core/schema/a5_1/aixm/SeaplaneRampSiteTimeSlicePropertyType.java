@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "seaplaneRampSiteTimeSlice"
 })
 @Entity
-@Table(name = "seaplanerampsitetimeslicepropertytype", schema = "seaplanes")
+@Table(name = "seaplanerampsite_tsp", schema = "seaplanes")
 public class SeaplaneRampSiteTimeSlicePropertyType {
 
     @XmlElement(name = "SeaplaneRampSiteTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class SeaplaneRampSiteTimeSlicePropertyType {
     protected SeaplaneRampSiteTimeSliceType seaplaneRampSiteTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

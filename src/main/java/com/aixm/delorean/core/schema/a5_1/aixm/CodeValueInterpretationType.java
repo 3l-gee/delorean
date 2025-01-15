@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeValueInterpretationType {
 
     @XmlValue
-    @Column(name = "ueinterpretationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "ueinterpretationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codevalueinterpretation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

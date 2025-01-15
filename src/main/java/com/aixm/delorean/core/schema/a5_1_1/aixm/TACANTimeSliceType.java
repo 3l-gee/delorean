@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "tacantimeslicetype", schema = "navaids")
+@Table(name = "tacan_ts", schema = "navaids")
 public class TACANTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -89,117 +89,117 @@ public class TACANTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavaidDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emissionclass_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "emissionclass"))
+        @AttributeOverride(name = "value", column = @Column(name = "emissionclass_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emissionclass_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioEmissionType emissionClass;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "mobile"))
+        @AttributeOverride(name = "value", column = @Column(name = "mobile_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "mobile_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType mobile;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "magneticvariation"))
+        @AttributeOverride(name = "value", column = @Column(name = "magneticvariation_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValMagneticVariationType magneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariationaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "magneticvariationaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "magneticvariationaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariationaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType magneticVariationAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "datemagneticvariation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "datemagneticvariation"))
+        @AttributeOverride(name = "value", column = @Column(name = "datemagneticvariation_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "datemagneticvariation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateYearType dateMagneticVariation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flightchecked"))
+        @AttributeOverride(name = "value", column = @Column(name = "flightchecked_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidequipment_pg_authority", joinColumns = {
-        @JoinColumn(name = "navaidequipmentpropertygroup_id")
+    @JoinTable(name = "tacan_ts_authority", joinColumns = {
+        @JoinColumn(name = "tacan_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "authorityfornavaidequipmentpropertytype_id")
+        @JoinColumn(name = "authorityfornavaidequipment_pt_id")
     })
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidequipment_pg_monitoring", joinColumns = {
-        @JoinColumn(name = "navaidequipmentpropertygroup_id")
+    @JoinTable(name = "tacan_ts_monitoring", joinColumns = {
+        @JoinColumn(name = "tacan_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipmentmonitoringpropertytype_id")
+        @JoinColumn(name = "navaidequipmentmonitoring_pt_id")
     })
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidequipment_pg_availability", joinColumns = {
-        @JoinColumn(name = "navaidequipmentpropertygroup_id")
+    @JoinTable(name = "tacan_ts_availability", joinColumns = {
+        @JoinColumn(name = "tacan_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
+        @JoinColumn(name = "navaidoperationalstatus_pt_id")
     })
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidequipment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navaidequipmentpropertygroup_id")
+    @JoinTable(name = "tacan_ts_annotation", joinColumns = {
+        @JoinColumn(name = "tacan_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "channel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "channel"))
+        @AttributeOverride(name = "value", column = @Column(name = "channel_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "channel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTACANChannelType channel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "declination_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "declination"))
+        @AttributeOverride(name = "value", column = @Column(name = "declination_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "declination_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValMagneticVariationType declination;
     @Transient

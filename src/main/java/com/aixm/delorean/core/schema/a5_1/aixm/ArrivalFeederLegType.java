@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "arrivalfeederlegtype", schema = "procedure")
+@Table(name = "arrivalfeederleg", schema = "procedure")
 public class ArrivalFeederLegType
     extends AbstractApproachLegType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrivalfeederlegtype_timeslice", joinColumns = {
-        @JoinColumn(name = "arrivalfeederlegtype_id")
+    @JoinTable(name = "arrivalfeederleg_timeslice", joinColumns = {
+        @JoinColumn(name = "arrivalfeederleg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "arrivalfeederlegtimeslicepropertytype_id")
+        @JoinColumn(name = "arrivalfeederleg_tsp_id")
     })
     protected List<ArrivalFeederLegTimeSlicePropertyType> timeSlice;
 
