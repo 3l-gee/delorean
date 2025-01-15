@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMarkerBeaconSignalType {
 
     @XmlValue
-    @Column(name = "markerbeaconsignalbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "markerbeaconsignaltype_nilreason", nullable = true, unique = false)
+    @Column(name = "codemarkerbeaconsignal_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

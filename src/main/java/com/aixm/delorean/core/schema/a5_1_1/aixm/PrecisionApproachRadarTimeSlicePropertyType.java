@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "precisionApproachRadarTimeSlice"
 })
 @Entity
-@Table(name = "precisionapproachradartimeslicepropertytype", schema = "surveillance")
+@Table(name = "precisionapproachradar_tsp", schema = "surveillance")
 public class PrecisionApproachRadarTimeSlicePropertyType {
 
     @XmlElement(name = "PrecisionApproachRadarTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class PrecisionApproachRadarTimeSlicePropertyType {
     protected PrecisionApproachRadarTimeSliceType precisionApproachRadarTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

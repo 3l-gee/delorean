@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -66,29 +66,29 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "seaplanelandingareatimeslicetype", schema = "seaplanes")
+@Table(name = "seaplanelandingarea_ts", schema = "seaplanes")
 public class SeaplaneLandingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "seaplanelandingarea_pg_rampsite", joinColumns = {
-        @JoinColumn(name = "seaplanelandingareapropertygroup_id")
+        @JoinColumn(name = "seaplanelandingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "seaplanerampsitepropertytype_id")
+        @JoinColumn(name = "seaplanerampsite_pt_id")
     })
     protected List<SeaplaneRampSitePropertyType> rampSite;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "seaplanelandingarea_pg_docksite", joinColumns = {
-        @JoinColumn(name = "seaplanelandingareapropertygroup_id")
+        @JoinColumn(name = "seaplanelandingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "floatingdocksitepropertytype_id")
+        @JoinColumn(name = "floatingdocksite_pt_id")
     })
     protected List<FloatingDockSitePropertyType> dockSite;
     @XmlElement(nillable = true)
@@ -98,23 +98,23 @@ public class SeaplaneLandingAreaTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "seaplanelandingarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "seaplanelandingareapropertygroup_id")
+        @JoinColumn(name = "seaplanelandingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "seaplanelandingarea_pg_availability", joinColumns = {
-        @JoinColumn(name = "seaplanelandingareapropertygroup_id")
+        @JoinColumn(name = "seaplanelandingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+        @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient

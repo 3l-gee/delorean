@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "specialNavigationStationStatus"
 })
 @Entity
-@Table(name = "specialnavigationstationstatuspropertytype", schema = "navaids")
+@Table(name = "specialnavigationstationstatus_pt", schema = "navaids")
 public class SpecialNavigationStationStatusPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -65,49 +65,49 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "finalprofiletype", schema = "approach")
+@Table(name = "finalprofile", schema = "approach")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "finalprofile_pg_altitude", joinColumns = {
-        @JoinColumn(name = "finalprofilepropertygroup_id")
+        @JoinColumn(name = "finalprofile_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachaltitudetablepropertytype_id")
+        @JoinColumn(name = "approachaltitudetable_pt_id")
     })
     protected List<ApproachAltitudeTablePropertyType> altitude;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "finalprofile_pg_distance", joinColumns = {
-        @JoinColumn(name = "finalprofilepropertygroup_id")
+        @JoinColumn(name = "finalprofile_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachdistancetablepropertytype_id")
+        @JoinColumn(name = "approachdistancetable_pt_id")
     })
     protected List<ApproachDistanceTablePropertyType> distance;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "finalprofile_pg_timing", joinColumns = {
-        @JoinColumn(name = "finalprofilepropertygroup_id")
+        @JoinColumn(name = "finalprofile_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachtimingtablepropertytype_id")
+        @JoinColumn(name = "approachtimingtable_pt_id")
     })
     protected List<ApproachTimingTablePropertyType> timing;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "finalprofile_pg_annotation", joinColumns = {
-        @JoinColumn(name = "finalprofilepropertygroup_id")
+        @JoinColumn(name = "finalprofile_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

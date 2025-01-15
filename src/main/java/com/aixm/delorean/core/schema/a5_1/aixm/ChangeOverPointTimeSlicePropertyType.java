@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "changeOverPointTimeSlice"
 })
 @Entity
-@Table(name = "changeoverpointtimeslicepropertytype", schema = "en_route")
+@Table(name = "changeoverpoint_tsp", schema = "en_route")
 public class ChangeOverPointTimeSlicePropertyType {
 
     @XmlElement(name = "ChangeOverPointTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class ChangeOverPointTimeSlicePropertyType {
     protected ChangeOverPointTimeSliceType changeOverPointTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

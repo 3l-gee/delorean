@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "changeoverpointtimeslicetype", schema = "en_route")
+@Table(name = "changeoverpoint_ts", schema = "en_route")
 public class ChangeOverPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,9 +82,9 @@ public class ChangeOverPointTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "distance"))
+        @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "distance_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
     @XmlElement(name = "location_fixDesignatedPoint", nillable = true)
@@ -130,13 +130,13 @@ public class ChangeOverPointTimeSliceType
     @JoinColumn(name = "applicablerouteportion_id", referencedColumnName = "id")
     protected RoutePortionPropertyType applicableRoutePortion;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "changeoverpoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "changeoverpointpropertygroup_id")
+        @JoinColumn(name = "changeoverpoint_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

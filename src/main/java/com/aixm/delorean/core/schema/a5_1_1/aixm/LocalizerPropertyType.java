@@ -53,12 +53,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "localizerpropertytype", schema = "navaids")
+@Table(name = "localizer_pt", schema = "navaids")
 public class LocalizerPropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "owns")

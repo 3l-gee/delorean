@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeIntensityStandByType {
 
     @XmlValue
-    @Column(name = "intensitystandbybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "intensitystandbytype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeintensitystandby_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

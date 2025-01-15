@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "passengerservicetype", schema = "service")
+@Table(name = "passengerservice", schema = "service")
 public class PassengerServiceType
     extends AbstractAirportGroundServiceType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "passengerservicetype_timeslice", joinColumns = {
-        @JoinColumn(name = "passengerservicetype_id")
+    @JoinTable(name = "passengerservice_timeslice", joinColumns = {
+        @JoinColumn(name = "passengerservice_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "passengerservicetimeslicepropertytype_id")
+        @JoinColumn(name = "passengerservice_tsp_id")
     })
     protected List<PassengerServiceTimeSlicePropertyType> timeSlice;
 

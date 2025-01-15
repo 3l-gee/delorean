@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radarsystemtimeslicetype", schema = "surveillance")
+@Table(name = "radarsystem_ts", schema = "surveillance")
 public class RadarSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -83,49 +83,49 @@ public class RadarSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadarServiceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "model_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "model"))
+        @AttributeOverride(name = "value", column = @Column(name = "model_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "model_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType model;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "generalterrainmonitor_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "generalterrainmonitor"))
+        @AttributeOverride(name = "value", column = @Column(name = "generalterrainmonitor_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "generalterrainmonitor_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType generalTerrainMonitor;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "broadcastidentifier_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "broadcastidentifier"))
+        @AttributeOverride(name = "value", column = @Column(name = "broadcastidentifier_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "broadcastidentifier_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType broadcastIdentifier;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radarsystem_pg_radarequipment", joinColumns = {
-        @JoinColumn(name = "radarsystempropertygroup_id")
+        @JoinColumn(name = "radarsystem_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radarcomponentpropertytype_id")
+        @JoinColumn(name = "radarcomponent_pt_id")
     })
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radarsystem_pg_office", joinColumns = {
-        @JoinColumn(name = "radarsystempropertygroup_id")
+        @JoinColumn(name = "radarsystem_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> office;
     @XmlElement(nillable = true)
@@ -135,29 +135,29 @@ public class RadarSystemTimeSliceType
     @JoinColumn(name = "airportheliport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType airportHeliport;
     @XmlElement(name = "PARRunway", nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radarsystem_pg_parrunway", joinColumns = {
-        @JoinColumn(name = "radarsystempropertygroup_id")
+        @JoinColumn(name = "radarsystem_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaypropertytype_id")
+        @JoinColumn(name = "runway_pt_id")
     })
     protected List<RunwayPropertyType> parRunway;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radarsystem_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radarsystempropertygroup_id")
+        @JoinColumn(name = "radarsystem_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

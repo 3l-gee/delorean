@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "surfacecontaminationlayertype", schema = "surface_contamination")
+@Table(name = "surfacecontaminationlayer", schema = "surface_contamination")
 public class SurfaceContaminationLayerType
     extends AbstractAIXMObjectType
 {
@@ -77,35 +77,35 @@ public class SurfaceContaminationLayerType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "layerorder_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "layerorder"))
+        @AttributeOverride(name = "value", column = @Column(name = "layerorder_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "layerorder_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType layerOrder;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeContaminationType type;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "surfacecontaminationlayer_pg_extent", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayerpropertygroup_id")
+        @JoinColumn(name = "surfacecontaminationlayer_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "elevatedsurfacepropertytype_id")
+        @JoinColumn(name = "elevatedsurface_pt_id")
     })
     protected List<ElevatedSurfacePropertyType> extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "surfacecontaminationlayer_pg_annotation", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayerpropertygroup_id")
+        @JoinColumn(name = "surfacecontaminationlayer_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

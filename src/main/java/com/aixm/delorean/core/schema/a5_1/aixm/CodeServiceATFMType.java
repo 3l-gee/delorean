@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeServiceATFMType {
 
     @XmlValue
-    @Column(name = "serviceatfmbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "serviceatfmtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeserviceatfm_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

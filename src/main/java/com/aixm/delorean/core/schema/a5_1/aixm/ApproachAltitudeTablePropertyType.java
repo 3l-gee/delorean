@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "approachAltitudeTable"
 })
 @Entity
-@Table(name = "approachaltitudetablepropertytype", schema = "approach")
+@Table(name = "approachaltitudetable_pt", schema = "approach")
 public class ApproachAltitudeTablePropertyType
     extends AbstractAIXMPropertyType
 {

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydeclareddistancetype", schema = "runway")
+@Table(name = "runwaydeclareddistance", schema = "runway")
 public class RunwayDeclaredDistanceType
     extends AbstractAIXMObjectType
 {
@@ -76,28 +76,28 @@ public class RunwayDeclaredDistanceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDeclaredDistanceType type;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "runwaydeclareddistance_pg_declaredvalue", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancepropertygroup_id")
+        @JoinColumn(name = "runwaydeclareddistance_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancevaluepropertytype_id")
+        @JoinColumn(name = "runwaydeclareddistancevalue_pt_id")
     })
     protected List<RunwayDeclaredDistanceValuePropertyType> declaredValue;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "runwaydeclareddistance_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancepropertygroup_id")
+        @JoinColumn(name = "runwaydeclareddistance_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

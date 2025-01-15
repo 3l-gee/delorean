@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "reflector"
 })
 @Entity
-@Table(name = "reflectorpropertytype", schema = "surveillance")
+@Table(name = "reflector_pt", schema = "surveillance")
 public class ReflectorPropertyType
     extends AbstractAIXMPropertyType
 {

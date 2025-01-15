@@ -43,7 +43,7 @@ public class CodeFlightRestrictionDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "flightrestrictiondesignatortype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeflightrestrictiondesignator_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

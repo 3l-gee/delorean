@@ -43,7 +43,7 @@ public class CodeDistanceVerticalUomType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "distanceverticaluomtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codedistanceverticaluom_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

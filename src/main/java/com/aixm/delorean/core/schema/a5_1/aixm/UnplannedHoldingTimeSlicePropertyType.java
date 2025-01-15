@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "unplannedHoldingTimeSlice"
 })
 @Entity
-@Table(name = "unplannedholdingtimeslicepropertytype", schema = "holding")
+@Table(name = "unplannedholding_tsp", schema = "holding")
 public class UnplannedHoldingTimeSlicePropertyType {
 
     @XmlElement(name = "UnplannedHoldingTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class UnplannedHoldingTimeSlicePropertyType {
     protected UnplannedHoldingTimeSliceType unplannedHoldingTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

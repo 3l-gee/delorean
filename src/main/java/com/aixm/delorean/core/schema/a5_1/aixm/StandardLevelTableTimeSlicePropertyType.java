@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardLevelTableTimeSlice"
 })
 @Entity
-@Table(name = "standardleveltabletimeslicepropertytype", schema = "standard_levels")
+@Table(name = "standardleveltable_tsp", schema = "standard_levels")
 public class StandardLevelTableTimeSlicePropertyType {
 
     @XmlElement(name = "StandardLevelTableTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class StandardLevelTableTimeSlicePropertyType {
     protected StandardLevelTableTimeSliceType standardLevelTableTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

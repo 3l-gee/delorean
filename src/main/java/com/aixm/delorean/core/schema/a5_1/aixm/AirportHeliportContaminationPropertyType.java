@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airportHeliportContamination"
 })
 @Entity
-@Table(name = "airportheliportcontaminationpropertytype", schema = "surface_contamination")
+@Table(name = "airportheliportcontamination_pt", schema = "surface_contamination")
 public class AirportHeliportContaminationPropertyType
     extends AbstractAIXMPropertyType
 {

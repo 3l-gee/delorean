@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class NoSequenceType {
 
     @XmlValue
-    @Column(name = "basetype", nullable = true, unique = false)
     protected long value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "type_nilreason", nullable = true, unique = false)
+    @Column(name = "nosequence_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

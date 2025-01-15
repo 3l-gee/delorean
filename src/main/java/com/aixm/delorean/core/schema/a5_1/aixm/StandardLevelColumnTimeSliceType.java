@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardlevelcolumntimeslicetype", schema = "standard_levels")
+@Table(name = "standardlevelcolumn_ts", schema = "standard_levels")
 public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,8 +79,8 @@ public class StandardLevelColumnTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "series_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "series"))
+        @AttributeOverride(name = "value", column = @Column(name = "series_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "series_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLevelSeriesType series;
     @XmlElement(nillable = true)
@@ -89,18 +89,18 @@ public class StandardLevelColumnTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "separation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "separation"))
+        @AttributeOverride(name = "value", column = @Column(name = "separation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "separation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRVSMType separation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelcolumn_pg_level", joinColumns = {
-        @JoinColumn(name = "standardlevelcolumnpropertygroup_id")
+    @JoinTable(name = "standardlevelcolumn_pg_level_", joinColumns = {
+        @JoinColumn(name = "standardlevelcolumn_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardlevelpropertytype_id")
+        @JoinColumn(name = "standardlevel_pt_id")
     })
     protected List<StandardLevelPropertyType> level;
     @XmlElement(nillable = true)
@@ -110,13 +110,13 @@ public class StandardLevelColumnTimeSliceType
     @JoinColumn(name = "leveltable_id", referencedColumnName = "id")
     protected StandardLevelTablePropertyType levelTable;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "standardlevelcolumn_pg_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelcolumnpropertygroup_id")
+        @JoinColumn(name = "standardlevelcolumn_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

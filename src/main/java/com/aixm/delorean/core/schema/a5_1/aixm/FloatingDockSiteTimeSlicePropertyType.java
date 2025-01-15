@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "floatingDockSiteTimeSlice"
 })
 @Entity
-@Table(name = "floatingdocksitetimeslicepropertytype", schema = "seaplanes")
+@Table(name = "floatingdocksite_tsp", schema = "seaplanes")
 public class FloatingDockSiteTimeSlicePropertyType {
 
     @XmlElement(name = "FloatingDockSiteTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class FloatingDockSiteTimeSlicePropertyType {
     protected FloatingDockSiteTimeSliceType floatingDockSiteTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

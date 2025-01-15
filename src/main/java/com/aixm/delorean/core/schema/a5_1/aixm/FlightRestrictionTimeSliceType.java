@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightrestrictiontimeslicetype", schema = "flight_restrictions")
+@Table(name = "flightrestriction_ts", schema = "flight_restrictions")
 public class FlightRestrictionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -79,22 +79,22 @@ public class FlightRestrictionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightRestrictionDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightRestrictionType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "instruction"))
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
     @XmlElement(nillable = true)
@@ -104,23 +104,23 @@ public class FlightRestrictionTimeSliceType
     @JoinColumn(name = "flight_id", referencedColumnName = "id")
     protected FlightConditionCombinationPropertyType flight;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightrestriction_pg_regulatedroute", joinColumns = {
-        @JoinColumn(name = "flightrestrictionpropertygroup_id")
+        @JoinColumn(name = "flightrestriction_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestrictionroutepropertytype_id")
+        @JoinColumn(name = "flightrestrictionroute_pt_id")
     })
     protected List<FlightRestrictionRoutePropertyType> regulatedRoute;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightrestriction_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightrestrictionpropertygroup_id")
+        @JoinColumn(name = "flightrestriction_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

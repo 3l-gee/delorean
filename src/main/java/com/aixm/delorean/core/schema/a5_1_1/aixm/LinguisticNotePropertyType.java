@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "linguisticNote"
 })
 @Entity
-@Table(name = "linguisticnotepropertytype", schema = "notes")
+@Table(name = "linguisticnote_pt", schema = "notes")
 public class LinguisticNotePropertyType
     extends AbstractAIXMPropertyType
 {

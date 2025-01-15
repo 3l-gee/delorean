@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "roadtimeslicetype", schema = "apron")
+@Table(name = "road_ts", schema = "apron")
 public class RoadTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,29 +82,29 @@ public class RoadTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "status"))
+        @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRoadType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned"))
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
@@ -120,13 +120,13 @@ public class RoadTimeSliceType
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "road_pg_accessiblestand", joinColumns = {
-        @JoinColumn(name = "roadpropertygroup_id")
+        @JoinColumn(name = "road_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstandpropertytype_id")
+        @JoinColumn(name = "aircraftstand_pt_id")
     })
     protected List<AircraftStandPropertyType> accessibleStand;
     @XmlElement(nillable = true)
@@ -136,13 +136,13 @@ public class RoadTimeSliceType
     @JoinColumn(name = "surfaceextent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType surfaceExtent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "road_pg_annotation", joinColumns = {
-        @JoinColumn(name = "roadpropertygroup_id")
+        @JoinColumn(name = "road_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radarcomponenttype", schema = "surveillance")
+@Table(name = "radarcomponent", schema = "surveillance")
 public class RadarComponentType
     extends AbstractAIXMObjectType
 {
@@ -76,18 +76,18 @@ public class RadarComponentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "collocationgroup_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "collocationgroup"))
+        @AttributeOverride(name = "value", column = @Column(name = "collocationgroup_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "collocationgroup_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType collocationGroup;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "radarcomponent_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radarcomponentpropertygroup_id")
+        @JoinColumn(name = "radarcomponent_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

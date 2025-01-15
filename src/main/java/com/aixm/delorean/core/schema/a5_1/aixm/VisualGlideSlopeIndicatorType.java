@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "visualglideslopeindicatortype", schema = "runway")
+@Table(name = "visualglideslopeindicator", schema = "runway")
 public class VisualGlideSlopeIndicatorType
     extends AbstractGroundLightSystemType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicatortype_timeslice", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicatortype_id")
+    @JoinTable(name = "visualglideslopeindicator_timeslice", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicator_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "visualglideslopeindicatortimeslicepropertytype_id")
+        @JoinColumn(name = "visualglideslopeindicator_tsp_id")
     })
     protected List<VisualGlideSlopeIndicatorTimeSlicePropertyType> timeSlice;
 

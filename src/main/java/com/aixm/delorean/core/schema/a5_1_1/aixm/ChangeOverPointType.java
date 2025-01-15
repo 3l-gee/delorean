@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "changeoverpointtype", schema = "en_route")
+@Table(name = "changeoverpoint", schema = "en_route")
 public class ChangeOverPointType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "changeoverpointtype_timeslice", joinColumns = {
-        @JoinColumn(name = "changeoverpointtype_id")
+    @JoinTable(name = "changeoverpoint_timeslice", joinColumns = {
+        @JoinColumn(name = "changeoverpoint_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "changeoverpointtimeslicepropertytype_id")
+        @JoinColumn(name = "changeoverpoint_tsp_id")
     })
     protected List<ChangeOverPointTimeSlicePropertyType> timeSlice;
 

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "initialLegTimeSlice"
 })
 @Entity
-@Table(name = "initiallegtimeslicepropertytype", schema = "procedure")
+@Table(name = "initialleg_tsp", schema = "procedure")
 public class InitialLegTimeSlicePropertyType {
 
     @XmlElement(name = "InitialLegTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class InitialLegTimeSlicePropertyType {
     protected InitialLegTimeSliceType initialLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

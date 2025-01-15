@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "surfaceCharacteristics"
 })
 @Entity
-@Table(name = "surfacecharacteristicspropertytype", schema = "airport_heliport")
+@Table(name = "surfacecharacteristics_pt", schema = "airport_heliport")
 public class SurfaceCharacteristicsPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "significantpointinairspacetimeslicetype", schema = "points")
+@Table(name = "significantpointinairspace_ts", schema = "points")
 public class SignificantPointInAirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -83,15 +83,15 @@ public class SignificantPointInAirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAirspacePointRoleType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "relativelocation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "relativelocation"))
+        @AttributeOverride(name = "value", column = @Column(name = "relativelocation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "relativelocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAirspacePointPositionType relativeLocation;
     @XmlElement(nillable = true)
@@ -137,13 +137,13 @@ public class SignificantPointInAirspaceTimeSliceType
     @JoinColumn(name = "location_position_id", referencedColumnName = "id")
     protected PointPropertyType locationPosition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "significantpointinairspace_pg_annotation", joinColumns = {
-        @JoinColumn(name = "significantpointinairspacepropertygroup_id")
+        @JoinColumn(name = "significantpointinairspace_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

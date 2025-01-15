@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "nonmovementareatype", schema = "airport_heliport")
+@Table(name = "nonmovementarea", schema = "airport_heliport")
 public class NonMovementAreaType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "nonmovementareatype_timeslice", joinColumns = {
-        @JoinColumn(name = "nonmovementareatype_id")
+    @JoinTable(name = "nonmovementarea_timeslice", joinColumns = {
+        @JoinColumn(name = "nonmovementarea_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "nonmovementareatimeslicepropertytype_id")
+        @JoinColumn(name = "nonmovementarea_tsp_id")
     })
     protected List<NonMovementAreaTimeSlicePropertyType> timeSlice;
 

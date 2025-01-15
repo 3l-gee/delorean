@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "altimetersourcetype", schema = "airport_heliport")
+@Table(name = "altimetersource", schema = "airport_heliport")
 public class AltimeterSourceType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altimetersourcetype_timeslice", joinColumns = {
-        @JoinColumn(name = "altimetersourcetype_id")
+    @JoinTable(name = "altimetersource_timeslice", joinColumns = {
+        @JoinColumn(name = "altimetersource_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersourcetimeslicepropertytype_id")
+        @JoinColumn(name = "altimetersource_tsp_id")
     })
     protected List<AltimeterSourceTimeSlicePropertyType> timeSlice;
 

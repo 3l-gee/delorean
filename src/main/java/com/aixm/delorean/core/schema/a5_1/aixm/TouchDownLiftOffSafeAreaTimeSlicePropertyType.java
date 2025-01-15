@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffSafeAreaTimeSlice"
 })
 @Entity
-@Table(name = "touchdownliftoffsafeareatimeslicepropertytype", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoffsafearea_tsp", schema = "helicopter_surfaces")
 public class TouchDownLiftOffSafeAreaTimeSlicePropertyType {
 
     @XmlElement(name = "TouchDownLiftOffSafeAreaTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class TouchDownLiftOffSafeAreaTimeSlicePropertyType {
     protected TouchDownLiftOffSafeAreaTimeSliceType touchDownLiftOffSafeAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

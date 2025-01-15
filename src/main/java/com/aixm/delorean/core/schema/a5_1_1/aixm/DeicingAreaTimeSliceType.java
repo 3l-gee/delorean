@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "deicingareatimeslicetype", schema = "apron")
+@Table(name = "deicingarea_ts", schema = "apron")
 public class DeicingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -104,23 +104,23 @@ public class DeicingAreaTimeSliceType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "deicingarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "deicingareapropertygroup_id")
+        @JoinColumn(name = "deicingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "deicingarea_pg_availability", joinColumns = {
-        @JoinColumn(name = "deicingareapropertygroup_id")
+        @JoinColumn(name = "deicingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronareaavailabilitypropertytype_id")
+        @JoinColumn(name = "apronareaavailability_pt_id")
     })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient

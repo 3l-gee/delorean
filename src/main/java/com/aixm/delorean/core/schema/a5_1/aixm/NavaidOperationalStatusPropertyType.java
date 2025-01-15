@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navaidOperationalStatus"
 })
 @Entity
-@Table(name = "navaidoperationalstatuspropertytype", schema = "navaids")
+@Table(name = "navaidoperationalstatus_pt", schema = "navaids")
 public class NavaidOperationalStatusPropertyType
     extends AbstractAIXMPropertyType
 {

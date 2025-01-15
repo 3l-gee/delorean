@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "seaplanerampsitetimeslicetype", schema = "seaplanes")
+@Table(name = "seaplanerampsite_ts", schema = "seaplanes")
 public class SeaplaneRampSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -82,13 +82,13 @@ public class SeaplaneRampSiteTimeSliceType
     @JoinColumn(name = "centreline_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType centreline;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "seaplanerampsite_pg_annotation", joinColumns = {
-        @JoinColumn(name = "seaplanerampsitepropertygroup_id")
+        @JoinColumn(name = "seaplanerampsite_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

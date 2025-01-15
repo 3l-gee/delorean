@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalarrivalareatimeslicetype", schema = "terminal")
+@Table(name = "terminalarrivalarea_ts", schema = "terminal")
 public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -92,24 +92,24 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalareatype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "arrivalareatype"))
+        @AttributeOverride(name = "value", column = @Column(name = "arrivalarea_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalarea_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTAAType arrivalAreaType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "outerbufferwidth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outerbufferwidth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "outerbufferwidth"))
+        @AttributeOverride(name = "value", column = @Column(name = "outerbufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "outerbufferwidth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outerbufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType outerBufferWidth;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lateralbufferwidth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lateralbufferwidth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lateralbufferwidth"))
+        @AttributeOverride(name = "value", column = @Column(name = "lateralbufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lateralbufferwidth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lateralbufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lateralBufferWidth;
     @XmlElement(name = "IF_fixDesignatedPoint", nillable = true)
@@ -191,13 +191,13 @@ public class TerminalArrivalAreaTimeSliceType
     @JoinColumn(name = "buffer_id", referencedColumnName = "id")
     protected SurfacePropertyType buffer;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "terminalarrivalarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareapropertygroup_id")
+        @JoinColumn(name = "terminalarrivalarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "terminalarrivalareasectorpropertytype_id")
+        @JoinColumn(name = "terminalarrivalareasector_pt_id")
     })
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
     @XmlElement(nillable = true)
@@ -207,13 +207,13 @@ public class TerminalArrivalAreaTimeSliceType
     @JoinColumn(name = "approachrnav_id", referencedColumnName = "id")
     protected InstrumentApproachProcedurePropertyType approachRNAV;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "terminalarrivalarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareapropertygroup_id")
+        @JoinColumn(name = "terminalarrivalarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

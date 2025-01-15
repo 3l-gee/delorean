@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -82,7 +82,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaytimeslicetype", schema = "runway")
+@Table(name = "runway_ts", schema = "runway")
 public class RunwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -90,94 +90,94 @@ public class RunwayTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "nominallength_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nominallength_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "nominallength"))
+        @AttributeOverride(name = "value", column = @Column(name = "nominallength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "nominallength_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nominallength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType nominalLength;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lengthaccuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lengthaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "lengthaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lengthaccuracy_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lengthAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "nominalwidth_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nominalwidth_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "nominalwidth"))
+        @AttributeOverride(name = "value", column = @Column(name = "nominalwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "nominalwidth_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nominalwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType nominalWidth;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "widthaccuracy_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "widthaccuracy_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "widthaccuracy"))
+        @AttributeOverride(name = "value", column = @Column(name = "widthaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "widthaccuracy_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthAccuracy;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "widthshoulder_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "widthshoulder_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "widthshoulder"))
+        @AttributeOverride(name = "value", column = @Column(name = "widthshoulder_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "widthshoulder_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthshoulder_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthShoulder;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lengthstrip_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthstrip_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lengthstrip"))
+        @AttributeOverride(name = "value", column = @Column(name = "lengthstrip_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lengthstrip_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthstrip_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lengthStrip;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "widthstrip_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "widthstrip_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "widthstrip"))
+        @AttributeOverride(name = "value", column = @Column(name = "widthstrip_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "widthstrip_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthstrip_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthStrip;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "lengthoffset_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthoffset_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "lengthoffset"))
+        @AttributeOverride(name = "value", column = @Column(name = "lengthoffset_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "lengthoffset_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "lengthoffset_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType lengthOffset;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "widthoffset_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "widthoffset_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "widthoffset"))
+        @AttributeOverride(name = "value", column = @Column(name = "widthoffset_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "widthoffset_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "widthoffset_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType widthOffset;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned"))
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
@@ -193,33 +193,33 @@ public class RunwayTimeSliceType
     @JoinColumn(name = "associatedairportheliport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType associatedAirportHeliport;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_pg_overallcontaminant", joinColumns = {
-        @JoinColumn(name = "runwaypropertygroup_id")
+    @JoinTable(name = "runway_ts_overallcontaminant", joinColumns = {
+        @JoinColumn(name = "runway_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycontaminationpropertytype_id")
+        @JoinColumn(name = "runwaycontamination_pt_id")
     })
     protected List<RunwayContaminationPropertyType> overallContaminant;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwaypropertygroup_id")
+    @JoinTable(name = "runway_ts_annotation", joinColumns = {
+        @JoinColumn(name = "runway_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_pg_areacontaminant", joinColumns = {
-        @JoinColumn(name = "runwaypropertygroup_id")
+    @JoinTable(name = "runway_ts_areacontaminant", joinColumns = {
+        @JoinColumn(name = "runway_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaysectioncontaminationpropertytype_id")
+        @JoinColumn(name = "runwaysectioncontamination_pt_id")
     })
     protected List<RunwaySectionContaminationPropertyType> areaContaminant;
     @Transient

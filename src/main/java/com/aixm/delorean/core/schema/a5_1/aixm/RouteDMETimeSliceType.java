@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routedmetimeslicetype", schema = "en_route")
+@Table(name = "routedme_ts", schema = "en_route")
 public class RouteDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -78,15 +78,15 @@ public class RouteDMETimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "criticaldme_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "criticaldme"))
+        @AttributeOverride(name = "value", column = @Column(name = "criticaldme_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "criticaldme_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType criticalDME;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "satisfactory"))
+        @AttributeOverride(name = "value", column = @Column(name = "satisfactory_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType satisfactory;
     @XmlElement(nillable = true)
@@ -102,13 +102,13 @@ public class RouteDMETimeSliceType
     @JoinColumn(name = "applicablerouteportion_id", referencedColumnName = "id")
     protected RoutePortionPropertyType applicableRoutePortion;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "routedme_pg_annotation", joinColumns = {
-        @JoinColumn(name = "routedmepropertygroup_id")
+        @JoinColumn(name = "routedme_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

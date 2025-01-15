@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "obstruction"
 })
 @Entity
-@Table(name = "obstructionpropertytype", schema = "surface_assessment")
+@Table(name = "obstruction_pt", schema = "surface_assessment")
 public class ObstructionPropertyType
     extends AbstractAIXMPropertyType
 {

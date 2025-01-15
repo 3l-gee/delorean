@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeTimeEventCombinationType {
 
     @XmlValue
-    @Column(name = "timeeventcombinationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "timeeventcombinationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codetimeeventcombination_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

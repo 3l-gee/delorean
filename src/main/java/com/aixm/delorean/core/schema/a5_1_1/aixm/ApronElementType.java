@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "apronelementtype", schema = "apron")
+@Table(name = "apronelement", schema = "apron")
 public class ApronElementType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelementtype_timeslice", joinColumns = {
-        @JoinColumn(name = "apronelementtype_id")
+    @JoinTable(name = "apronelement_timeslice", joinColumns = {
+        @JoinColumn(name = "apronelement_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronelementtimeslicepropertytype_id")
+        @JoinColumn(name = "apronelement_tsp_id")
     })
     protected List<ApronElementTimeSlicePropertyType> timeSlice;
 

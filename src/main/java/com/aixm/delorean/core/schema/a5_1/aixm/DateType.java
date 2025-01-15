@@ -45,10 +45,9 @@ public class DateType {
 
     @XmlValue
     @XmlJavaTypeAdapter(XMLGregorianCalendarAdapter.class)
-    @Column(name = "basetype", nullable = true, unique = false)
     protected Timestamp value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "type_nilreason", nullable = true, unique = false)
+    @Column(name = "date_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -75,74 +75,74 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "postaladdresstype", schema = "address")
+@Table(name = "postaladdress", schema = "address")
 public class PostalAddressType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "postaladdress_timeinterval", joinColumns = {
+        @JoinColumn(name = "postaladdress_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheetpropertytype_id")
+        @JoinColumn(name = "timesheet_pt_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "postaladdress_annotation", joinColumns = {
+        @JoinColumn(name = "postaladdress_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "postaladdress_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "postaladdress_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "deliverypoint_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "deliverypoint"))
+        @AttributeOverride(name = "value", column = @Column(name = "deliverypoint_value", length = 500, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "deliverypoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextAddressType deliveryPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "city_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "city"))
+        @AttributeOverride(name = "value", column = @Column(name = "city_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "city_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType city;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "administrativearea_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "administrativearea"))
+        @AttributeOverride(name = "value", column = @Column(name = "administrativearea_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "administrativearea_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType administrativeArea;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "postalcode_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "postalcode"))
+        @AttributeOverride(name = "value", column = @Column(name = "postalcode_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "postalcode_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType postalCode;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "country_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "country"))
+        @AttributeOverride(name = "value", column = @Column(name = "country_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "country_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType country;
     @Transient

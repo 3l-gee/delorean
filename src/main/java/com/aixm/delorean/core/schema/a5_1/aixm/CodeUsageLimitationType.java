@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeUsageLimitationType {
 
     @XmlValue
-    @Column(name = "usagelimitationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "usagelimitationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeusagelimitation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

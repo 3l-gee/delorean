@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "markingelementtype", schema = "markings")
+@Table(name = "markingelement", schema = "markings")
 public class MarkingElementType
     extends AbstractAIXMObjectType
 {
@@ -79,15 +79,15 @@ public class MarkingElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "colour"))
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "style_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "style"))
+        @AttributeOverride(name = "value", column = @Column(name = "style_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "style_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMarkingStyleType style;
     @XmlElement(name = "extent_surfaceExtent", nillable = true)
@@ -109,13 +109,13 @@ public class MarkingElementType
     @JoinColumn(name = "extent_location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType extentLocation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "markingelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "markingelementpropertygroup_id")
+        @JoinColumn(name = "markingelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

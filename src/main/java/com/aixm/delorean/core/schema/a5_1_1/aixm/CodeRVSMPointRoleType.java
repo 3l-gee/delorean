@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRVSMPointRoleType {
 
     @XmlValue
-    @Column(name = "rvsmpointrolebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "rvsmpointroletype_nilreason", nullable = true, unique = false)
+    @Column(name = "codervsmpointrole_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

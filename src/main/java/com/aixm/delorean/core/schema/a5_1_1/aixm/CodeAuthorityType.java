@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAuthorityType {
 
     @XmlValue
-    @Column(name = "authoritybasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "authoritytype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeauthority_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

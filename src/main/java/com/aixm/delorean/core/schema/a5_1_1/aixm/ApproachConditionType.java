@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachconditiontype", schema = "approach")
+@Table(name = "approachcondition", schema = "approach")
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
@@ -83,22 +83,22 @@ public class ApproachConditionType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "finalapproachpath_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "finalapproachpath"))
+        @AttributeOverride(name = "value", column = @Column(name = "finalapproachpath_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "finalapproachpath_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMinimaFinalApproachPathType finalApproachPath;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "requirednavigationperformance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "requirednavigationperformance"))
+        @AttributeOverride(name = "value", column = @Column(name = "requirednavigationperformance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "requirednavigationperformance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRNPType requiredNavigationPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "climbgradient_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "climbgradient"))
+        @AttributeOverride(name = "value", column = @Column(name = "climbgradient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "climbgradient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType climbGradient;
     @XmlElement(nillable = true)
@@ -108,33 +108,33 @@ public class ApproachConditionType
     @JoinColumn(name = "minimumset_id", referencedColumnName = "id")
     protected MinimaPropertyType minimumSet;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachcondition_pg_circlingrestriction", joinColumns = {
-        @JoinColumn(name = "approachconditionpropertygroup_id")
+        @JoinColumn(name = "approachcondition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "circlingrestrictionpropertytype_id")
+        @JoinColumn(name = "circlingrestriction_pt_id")
     })
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachcondition_pg_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "approachconditionpropertygroup_id")
+        @JoinColumn(name = "approachcondition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristicpropertytype_id")
+        @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachcondition_pg_landingarea", joinColumns = {
-        @JoinColumn(name = "approachconditionpropertygroup_id")
+        @JoinColumn(name = "approachcondition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollectionpropertytype_id")
+        @JoinColumn(name = "landingtakeoffareacollection_pt_id")
     })
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
     @XmlElement(nillable = true)
@@ -144,23 +144,23 @@ public class ApproachConditionType
     @JoinColumn(name = "altimeter_id", referencedColumnName = "id")
     protected AltimeterSourcePropertyType altimeter;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachcondition_pg_designsurface", joinColumns = {
-        @JoinColumn(name = "approachconditionpropertygroup_id")
+        @JoinColumn(name = "approachcondition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentareapropertytype_id")
+        @JoinColumn(name = "obstacleassessmentarea_pt_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachcondition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachconditionpropertygroup_id")
+        @JoinColumn(name = "approachcondition_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

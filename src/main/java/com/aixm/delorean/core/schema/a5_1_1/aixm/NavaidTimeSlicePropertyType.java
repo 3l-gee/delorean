@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navaidTimeSlice"
 })
 @Entity
-@Table(name = "navaidtimeslicepropertytype", schema = "navaids")
+@Table(name = "navaid_tsp", schema = "navaids")
 public class NavaidTimeSlicePropertyType {
 
     @XmlElement(name = "NavaidTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class NavaidTimeSlicePropertyType {
     protected NavaidTimeSliceType navaidTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

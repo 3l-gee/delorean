@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronmarkingtimeslicetype", schema = "markings")
+@Table(name = "apronmarking_ts", schema = "markings")
 public class ApronMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,42 +80,42 @@ public class ApronMarkingTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard"))
+        @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType markingICAOStandard;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "condition"))
+        @AttributeOverride(name = "value", column = @Column(name = "condition_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMarkingConditionType condition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "marking_pg_element", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "apronmarking_ts_element_", joinColumns = {
+        @JoinColumn(name = "apronmarking_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "markingelementpropertytype_id")
+        @JoinColumn(name = "markingelement_pt_id")
     })
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "marking_pg_annotation", joinColumns = {
-        @JoinColumn(name = "markingpropertygroup_id")
+    @JoinTable(name = "apronmarking_ts_annotation", joinColumns = {
+        @JoinColumn(name = "apronmarking_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "markinglocation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "markinglocation"))
+        @AttributeOverride(name = "value", column = @Column(name = "markinglocation_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "markinglocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApronSectionType markingLocation;
     @XmlElement(nillable = true)

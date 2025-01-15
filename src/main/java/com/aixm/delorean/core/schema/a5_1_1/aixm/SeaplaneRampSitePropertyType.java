@@ -53,12 +53,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "seaplanerampsitepropertytype", schema = "seaplanes")
+@Table(name = "seaplanerampsite_pt", schema = "seaplanes")
 public class SeaplaneRampSitePropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "nilReason")

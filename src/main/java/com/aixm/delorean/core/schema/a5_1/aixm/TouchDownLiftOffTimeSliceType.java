@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftofftimeslicetype", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoff_ts", schema = "helicopter_surfaces")
 public class TouchDownLiftOffTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,45 +87,45 @@ public class TouchDownLiftOffTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "length"))
+        @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "width"))
+        @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "slope"))
+        @AttributeOverride(name = "value", column = @Column(name = "slope_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType slope;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "helicopterclass_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "helicopterclass"))
+        @AttributeOverride(name = "value", column = @Column(name = "helicopterclass_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "helicopterclass_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHelicopterPerformanceType helicopterClass;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "abandoned"))
+        @AttributeOverride(name = "value", column = @Column(name = "abandoned_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType abandoned;
     @XmlElement(nillable = true)
@@ -159,33 +159,33 @@ public class TouchDownLiftOffTimeSliceType
     @JoinColumn(name = "approachtakeoffarea_id", referencedColumnName = "id")
     protected RunwayPropertyType approachTakeOffArea;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "touchdownliftoff_pg_contaminant", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertygroup_id")
+        @JoinColumn(name = "touchdownliftoff_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffcontaminationpropertytype_id")
+        @JoinColumn(name = "touchdownliftoffcontamination_pt_id")
     })
     protected List<TouchDownLiftOffContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "touchdownliftoff_pg_annotation", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertygroup_id")
+        @JoinColumn(name = "touchdownliftoff_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "touchdownliftoff_pg_availability", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertygroup_id")
+        @JoinColumn(name = "touchdownliftoff_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailabilitypropertytype_id")
+        @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient

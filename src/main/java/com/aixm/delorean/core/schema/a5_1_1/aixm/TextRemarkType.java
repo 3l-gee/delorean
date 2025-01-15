@@ -43,7 +43,7 @@ public class TextRemarkType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "remarktype_nilreason", nullable = true, unique = false)
+    @Column(name = "textremark_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

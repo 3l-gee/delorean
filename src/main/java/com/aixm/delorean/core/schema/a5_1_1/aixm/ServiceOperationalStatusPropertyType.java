@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "serviceOperationalStatus"
 })
 @Entity
-@Table(name = "serviceoperationalstatuspropertytype", schema = "service")
+@Table(name = "serviceoperationalstatus_pt", schema = "service")
 public class ServiceOperationalStatusPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "sdftype", schema = "navaids")
+@Table(name = "sdf", schema = "navaids")
 public class SDFType
     extends AbstractNavaidEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sdftype_timeslice", joinColumns = {
-        @JoinColumn(name = "sdftype_id")
+    @JoinTable(name = "sdf_timeslice", joinColumns = {
+        @JoinColumn(name = "sdf_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "sdftimeslicepropertytype_id")
+        @JoinColumn(name = "sdf_tsp_id")
     })
     protected List<SDFTimeSlicePropertyType> timeSlice;
 

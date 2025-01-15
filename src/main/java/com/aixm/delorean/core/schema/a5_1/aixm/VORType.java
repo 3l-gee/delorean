@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "vortype", schema = "navaids")
+@Table(name = "vor", schema = "navaids")
 public class VORType
     extends AbstractNavaidEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "vortype_timeslice", joinColumns = {
-        @JoinColumn(name = "vortype_id")
+    @JoinTable(name = "vor_timeslice", joinColumns = {
+        @JoinColumn(name = "vor_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "vortimeslicepropertytype_id")
+        @JoinColumn(name = "vor_tsp_id")
     })
     protected List<VORTimeSlicePropertyType> timeSlice;
 

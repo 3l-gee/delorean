@@ -43,7 +43,7 @@ public class TextNameType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "nametype_nilreason", nullable = true, unique = false)
+    @Column(name = "textname_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

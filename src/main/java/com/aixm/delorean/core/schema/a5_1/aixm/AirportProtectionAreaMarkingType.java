@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "airportprotectionareamarkingtype", schema = "markings")
+@Table(name = "airportprotectionareamarking", schema = "markings")
 public class AirportProtectionAreaMarkingType
     extends AbstractMarkingType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportprotectionareamarkingtype_timeslice", joinColumns = {
-        @JoinColumn(name = "airportprotectionareamarkingtype_id")
+    @JoinTable(name = "airportprotectionareamarking_timeslice", joinColumns = {
+        @JoinColumn(name = "airportprotectionareamarking_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportprotectionareamarkingtimeslicepropertytype_id")
+        @JoinColumn(name = "airportprotectionareamarking_tsp_id")
     })
     protected List<AirportProtectionAreaMarkingTimeSlicePropertyType> timeSlice;
 

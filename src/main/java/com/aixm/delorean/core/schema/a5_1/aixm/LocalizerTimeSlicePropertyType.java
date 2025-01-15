@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "localizerTimeSlice"
 })
 @Entity
-@Table(name = "localizertimeslicepropertytype", schema = "navaids")
+@Table(name = "localizer_tsp", schema = "navaids")
 public class LocalizerTimeSlicePropertyType {
 
     @XmlElement(name = "LocalizerTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class LocalizerTimeSlicePropertyType {
     protected LocalizerTimeSliceType localizerTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

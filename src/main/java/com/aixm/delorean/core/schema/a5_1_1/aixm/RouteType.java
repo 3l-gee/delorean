@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "routetype", schema = "en_route")
+@Table(name = "route", schema = "en_route")
 public class RouteType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routetype_timeslice", joinColumns = {
-        @JoinColumn(name = "routetype_id")
+    @JoinTable(name = "route_timeslice", joinColumns = {
+        @JoinColumn(name = "route_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routetimeslicepropertytype_id")
+        @JoinColumn(name = "route_tsp_id")
     })
     protected List<RouteTimeSlicePropertyType> timeSlice;
 

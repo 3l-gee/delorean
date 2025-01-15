@@ -36,8 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -50,17 +50,14 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "approachlightingsystempropertytype", schema = "lighting")
+@Table(name = "approachlightingsystem_pt", schema = "lighting")
 public class ApproachLightingSystemPropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
-    @XmlAttribute(name = "owns")
-    @Transient
-    protected Boolean owns;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
     protected List<String> nilReason;
@@ -114,6 +111,9 @@ public class ApproachLightingSystemPropertyType {
      */
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     protected String actuate;
+    @XmlAttribute(name = "owns")
+    @Transient
+    protected Boolean owns;
 
     /**
      * Gets the value of the dbid property.
@@ -141,42 +141,6 @@ public class ApproachLightingSystemPropertyType {
 
     public boolean isSetDbid() {
         return (this.dbid!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
     /**
@@ -436,6 +400,42 @@ public class ApproachLightingSystemPropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standardinstrumentarrivaltype", schema = "arrival")
+@Table(name = "standardinstrumentarrival", schema = "arrival")
 public class StandardInstrumentArrivalType
     extends AbstractProcedureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentarrivaltype_timeslice", joinColumns = {
-        @JoinColumn(name = "standardinstrumentarrivaltype_id")
+    @JoinTable(name = "standardinstrumentarrival_timeslice", joinColumns = {
+        @JoinColumn(name = "standardinstrumentarrival_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardinstrumentarrivaltimeslicepropertytype_id")
+        @JoinColumn(name = "standardinstrumentarrival_tsp_id")
     })
     protected List<StandardInstrumentArrivalTimeSlicePropertyType> timeSlice;
 

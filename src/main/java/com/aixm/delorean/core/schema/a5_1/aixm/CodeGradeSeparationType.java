@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeGradeSeparationType {
 
     @XmlValue
-    @Column(name = "gradeseparationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "gradeseparationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codegradeseparation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlingareatimeslicetype", schema = "circling")
+@Table(name = "circlingarea_ts", schema = "circling")
 public class CirclingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,13 +85,13 @@ public class CirclingAreaTimeSliceType
     @JoinColumn(name = "approach_id", referencedColumnName = "id")
     protected InstrumentApproachProcedurePropertyType approach;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingarea_pg_condition", joinColumns = {
-        @JoinColumn(name = "circlingareapropertygroup_id")
+    @JoinTable(name = "circlingarea_pg_condition_", joinColumns = {
+        @JoinColumn(name = "circlingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachconditionpropertytype_id")
+        @JoinColumn(name = "approachcondition_pt_id")
     })
     protected List<ApproachConditionPropertyType> condition;
     @XmlElement(nillable = true)
@@ -101,23 +101,23 @@ public class CirclingAreaTimeSliceType
     @JoinColumn(name = "aircraftcategory_id", referencedColumnName = "id")
     protected AircraftCharacteristicPropertyType aircraftCategory;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "circlingarea_pg_designsurface", joinColumns = {
-        @JoinColumn(name = "circlingareapropertygroup_id")
+        @JoinColumn(name = "circlingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentareapropertytype_id")
+        @JoinColumn(name = "obstacleassessmentarea_pt_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "circlingarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "circlingareapropertygroup_id")
+        @JoinColumn(name = "circlingarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

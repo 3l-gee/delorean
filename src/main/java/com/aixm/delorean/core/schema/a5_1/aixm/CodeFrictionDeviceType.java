@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFrictionDeviceType {
 
     @XmlValue
-    @Column(name = "frictiondevicebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "frictiondevicetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codefrictiondevice_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

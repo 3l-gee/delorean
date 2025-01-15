@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "equipmentunavailableadjustmentcolumntype", schema = "minima")
+@Table(name = "equipmentunavailableadjustmentcolumn", schema = "minima")
 public class EquipmentUnavailableAdjustmentColumnType
     extends AbstractAIXMObjectType
 {
@@ -79,47 +79,47 @@ public class EquipmentUnavailableAdjustmentColumnType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "guidanceequipment_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "guidanceequipment"))
+        @AttributeOverride(name = "value", column = @Column(name = "guidanceequipment_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "guidanceequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachType guidanceEquipment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "landingsystemlights_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "landingsystemlights"))
+        @AttributeOverride(name = "value", column = @Column(name = "landingsystemlights_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "landingsystemlights_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType landingSystemLights;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "equipmentrvr_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "equipmentrvr"))
+        @AttributeOverride(name = "value", column = @Column(name = "equipmentrvr_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "equipmentrvr_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType equipmentRVR;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "visibilityadjustment_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityadjustment_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "visibilityadjustment"))
+        @AttributeOverride(name = "value", column = @Column(name = "visibilityadjustment_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "visibilityadjustment_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityadjustment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType visibilityAdjustment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachlightinginoperative_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "approachlightinginoperative"))
+        @AttributeOverride(name = "value", column = @Column(name = "approachlightinginoperative_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachlightinginoperative_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType approachLightingInoperative;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "equipmentunavailableadjustmentcolumn_pg_annotation", joinColumns = {
-        @JoinColumn(name = "equipmentunavailableadjustmentcolumnpropertygroup_id")
+        @JoinColumn(name = "equipmentunavailableadjustmentcolumn_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

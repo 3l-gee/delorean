@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "specialdatetype", schema = "schedules")
+@Table(name = "specialdate", schema = "schedules")
 public class SpecialDateType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialdatetype_timeslice", joinColumns = {
-        @JoinColumn(name = "specialdatetype_id")
+    @JoinTable(name = "specialdate_timeslice", joinColumns = {
+        @JoinColumn(name = "specialdate_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialdatetimeslicepropertytype_id")
+        @JoinColumn(name = "specialdate_tsp_id")
     })
     protected List<SpecialDateTimeSlicePropertyType> timeSlice;
 

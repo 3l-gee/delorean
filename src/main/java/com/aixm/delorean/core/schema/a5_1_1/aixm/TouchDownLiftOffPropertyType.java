@@ -53,12 +53,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "touchdownliftoffpropertytype", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoff_pt", schema = "helicopter_surfaces")
 public class TouchDownLiftOffPropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "owns")

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -71,46 +71,46 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "groundlightingavailabilitytype", schema = "lighting")
+@Table(name = "groundlightingavailability", schema = "lighting")
 public class GroundLightingAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "groundlightingavailability_timeinterval", joinColumns = {
+        @JoinColumn(name = "groundlightingavailability_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheetpropertytype_id")
+        @JoinColumn(name = "timesheet_pt_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "groundlightingavailability_annotation", joinColumns = {
+        @JoinColumn(name = "groundlightingavailability_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "groundlightingavailability_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "groundlightingavailability_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operationalstatus_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "operationalstatus"))
+        @AttributeOverride(name = "value", column = @Column(name = "operationalstatus_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationalstatus_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType operationalStatus;
     @Transient

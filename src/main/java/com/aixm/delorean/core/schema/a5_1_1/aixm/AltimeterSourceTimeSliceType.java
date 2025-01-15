@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altimetersourcetimeslicetype", schema = "airport_heliport")
+@Table(name = "altimetersource_ts", schema = "airport_heliport")
 public class AltimeterSourceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -77,35 +77,35 @@ public class AltimeterSourceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "isremote_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "isremote"))
+        @AttributeOverride(name = "value", column = @Column(name = "isremote_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "isremote_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType isRemote;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "isprimary_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "isprimary"))
+        @AttributeOverride(name = "value", column = @Column(name = "isprimary_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "isprimary_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType isPrimary;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "altimetersource_pg_availability", joinColumns = {
-        @JoinColumn(name = "altimetersourcepropertygroup_id")
+        @JoinColumn(name = "altimetersource_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersourcestatuspropertytype_id")
+        @JoinColumn(name = "altimetersourcestatus_pt_id")
     })
     protected List<AltimeterSourceStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "altimetersource_pg_annotation", joinColumns = {
-        @JoinColumn(name = "altimetersourcepropertygroup_id")
+        @JoinColumn(name = "altimetersource_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

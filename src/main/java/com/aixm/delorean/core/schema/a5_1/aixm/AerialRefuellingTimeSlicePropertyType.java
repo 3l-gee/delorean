@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "aerialRefuellingTimeSlice"
 })
 @Entity
-@Table(name = "aerialrefuellingtimeslicepropertytype", schema = "aerial_refuelling")
+@Table(name = "aerialrefuelling_tsp", schema = "aerial_refuelling")
 public class AerialRefuellingTimeSlicePropertyType {
 
     @XmlElement(name = "AerialRefuellingTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AerialRefuellingTimeSlicePropertyType {
     protected AerialRefuellingTimeSliceType aerialRefuellingTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

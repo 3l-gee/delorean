@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "meteorology"
 })
 @Entity
-@Table(name = "meteorologypropertytype", schema = "meteorology")
+@Table(name = "meteorology_pt", schema = "meteorology")
 public class MeteorologyPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaycentrelinepointtimeslicetype", schema = "runway")
+@Table(name = "runwaycentrelinepoint_ts", schema = "runway")
 public class RunwayCentrelinePointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -80,22 +80,22 @@ public class RunwayCentrelinePointTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "role_"))
+        @AttributeOverride(name = "value", column = @Column(name = "role_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayPointRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designator;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -104,33 +104,33 @@ public class RunwayCentrelinePointTimeSliceType
     @JoinColumn(name = "onrunway_id", referencedColumnName = "id")
     protected RunwayDirectionPropertyType onRunway;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_pg_associateddeclareddistance", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
+    @JoinTable(name = "runwaycentrelinepoint_ts_associateddeclareddistance", joinColumns = {
+        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancepropertytype_id")
+        @JoinColumn(name = "runwaydeclareddistance_pt_id")
     })
     protected List<RunwayDeclaredDistancePropertyType> associatedDeclaredDistance;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_pg_navaidequipment", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
+    @JoinTable(name = "runwaycentrelinepoint_ts_navaidequipment", joinColumns = {
+        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipmentdistancepropertytype_id")
+        @JoinColumn(name = "navaidequipmentdistance_pt_id")
     })
     protected List<NavaidEquipmentDistancePropertyType> navaidEquipment;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepointpropertygroup_id")
+    @JoinTable(name = "runwaycentrelinepoint_ts_annotation", joinColumns = {
+        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

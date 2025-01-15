@@ -53,12 +53,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "passengerservicepropertytype", schema = "service")
+@Table(name = "passengerservice_pt", schema = "service")
 public class PassengerServicePropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "owns")

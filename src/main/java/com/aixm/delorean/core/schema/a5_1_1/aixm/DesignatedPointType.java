@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "designatedpointtype", schema = "points")
+@Table(name = "designatedpoint", schema = "points")
 public class DesignatedPointType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "designatedpointtype_timeslice", joinColumns = {
-        @JoinColumn(name = "designatedpointtype_id")
+    @JoinTable(name = "designatedpoint_timeslice", joinColumns = {
+        @JoinColumn(name = "designatedpoint_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "designatedpointtimeslicepropertytype_id")
+        @JoinColumn(name = "designatedpoint_tsp_id")
     })
     protected List<DesignatedPointTimeSlicePropertyType> timeSlice;
 

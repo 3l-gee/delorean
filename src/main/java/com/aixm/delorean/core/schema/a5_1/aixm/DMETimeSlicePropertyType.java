@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "dmeTimeSlice"
 })
 @Entity
-@Table(name = "dmetimeslicepropertytype", schema = "navaids")
+@Table(name = "dme_tsp", schema = "navaids")
 public class DMETimeSlicePropertyType {
 
     @XmlElement(name = "DMETimeSlice", required = true)
@@ -63,7 +63,7 @@ public class DMETimeSlicePropertyType {
     protected DMETimeSliceType dmeTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

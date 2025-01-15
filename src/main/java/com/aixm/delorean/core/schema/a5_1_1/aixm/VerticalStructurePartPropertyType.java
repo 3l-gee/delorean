@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalStructurePart"
 })
 @Entity
-@Table(name = "verticalstructurepartpropertytype", schema = "obstacles")
+@Table(name = "verticalstructurepart_pt", schema = "obstacles")
 public class VerticalStructurePartPropertyType
     extends AbstractAIXMPropertyType
 {

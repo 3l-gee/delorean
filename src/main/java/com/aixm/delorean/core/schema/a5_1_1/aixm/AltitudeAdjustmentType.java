@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altitudeadjustmenttype", schema = "surface_assessment")
+@Table(name = "altitudeadjustment", schema = "surface_assessment")
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
@@ -78,40 +78,40 @@ public class AltitudeAdjustmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustmenttype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustmenttype"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustment_type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustment_type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeAdjustmentType altitudeAdjustmentType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "primaryalternateminimum_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "primaryalternateminimum"))
+        @AttributeOverride(name = "value", column = @Column(name = "primaryalternateminimum_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "primaryalternateminimum_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType primaryAlternateMinimum;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "altitudeadjustment_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustment_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustment"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustment_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "altitudeadjustment_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType altitudeAdjustment;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "localremotecode_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "localremotecode"))
+        @AttributeOverride(name = "value", column = @Column(name = "localremotecode_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "localremotecode_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType localRemoteCode;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "altitudeadjustment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "altitudeadjustmentpropertygroup_id")
+        @JoinColumn(name = "altitudeadjustment_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

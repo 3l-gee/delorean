@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachaltitudetabletype", schema = "approach")
+@Table(name = "approachaltitudetable", schema = "approach")
 public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {
@@ -77,33 +77,33 @@ public class ApproachAltitudeTableType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "measurementpoint_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "measurementpoint"))
+        @AttributeOverride(name = "value", column = @Column(name = "measurementpoint_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "measurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType measurementPoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitude"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "altitude_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType altitude;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "altitudereference"))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudereference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType altitudeReference;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "approachaltitudetable_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachaltitudetablepropertygroup_id")
+        @JoinColumn(name = "approachaltitudetable_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

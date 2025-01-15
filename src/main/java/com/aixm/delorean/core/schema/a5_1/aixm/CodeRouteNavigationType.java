@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteNavigationType {
 
     @XmlValue
-    @Column(name = "routenavigationbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "routenavigationtype_nilreason", nullable = true, unique = false)
+    @Column(name = "coderoutenavigation_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

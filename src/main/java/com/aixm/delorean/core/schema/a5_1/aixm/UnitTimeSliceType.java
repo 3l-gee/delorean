@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "unittimeslicetype", schema = "organisation")
+@Table(name = "unit_ts", schema = "organisation")
 public class UnitTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,43 +85,43 @@ public class UnitTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeUnitType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "complianticao"))
+        @AttributeOverride(name = "value", column = @Column(name = "complianticao_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType compliantICAO;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 12, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeOrganisationDesignatorType designator;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "military"))
+        @AttributeOverride(name = "value", column = @Column(name = "military_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "military_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMilitaryOperationsType military;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    @JoinColumn(name = "position__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -136,43 +136,43 @@ public class UnitTimeSliceType
     @JoinColumn(name = "ownerorganisation_id", referencedColumnName = "id")
     protected OrganisationAuthorityPropertyType ownerOrganisation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_pg_contact", joinColumns = {
-        @JoinColumn(name = "unitpropertygroup_id")
+        @JoinColumn(name = "unit_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformationpropertytype_id")
+        @JoinColumn(name = "contactinformation_pt_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_pg_relatedunit", joinColumns = {
-        @JoinColumn(name = "unitpropertygroup_id")
+        @JoinColumn(name = "unit_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "unitdependencypropertytype_id")
+        @JoinColumn(name = "unitdependency_pt_id")
     })
     protected List<UnitDependencyPropertyType> relatedUnit;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_pg_availability", joinColumns = {
-        @JoinColumn(name = "unitpropertygroup_id")
+        @JoinColumn(name = "unit_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "unitavailabilitypropertytype_id")
+        @JoinColumn(name = "unitavailability_pt_id")
     })
     protected List<UnitAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "unit_pg_annotation", joinColumns = {
-        @JoinColumn(name = "unitpropertygroup_id")
+        @JoinColumn(name = "unit_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

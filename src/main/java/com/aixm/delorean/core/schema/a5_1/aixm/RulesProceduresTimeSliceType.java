@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "rulesprocedurestimeslicetype", schema = "rules_procedures")
+@Table(name = "rulesprocedures_ts", schema = "rules_procedures")
 public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -81,48 +81,48 @@ public class RulesProceduresTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "category"))
+        @AttributeOverride(name = "value", column = @Column(name = "category_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRuleProcedureType category;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "title_"))
+        @AttributeOverride(name = "value", column = @Column(name = "title_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRuleProcedureTitleType title;
     @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1", type = JAXBElement.class, required = false)
     @Transient
     protected JAXBElement<XHTMLType> content;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_pg_affectedlocation", joinColumns = {
-        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    @JoinTable(name = "rulesprocedures_ts_affectedlocation", joinColumns = {
+        @JoinColumn(name = "rulesprocedures_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportpropertytype_id")
+        @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> affectedLocation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_pg_affectedarea", joinColumns = {
-        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    @JoinTable(name = "rulesprocedures_ts_affectedarea", joinColumns = {
+        @JoinColumn(name = "rulesprocedures_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacepropertytype_id")
+        @JoinColumn(name = "airspace_pt_id")
     })
     protected List<AirspacePropertyType> affectedArea;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_pg_annotation", joinColumns = {
-        @JoinColumn(name = "rulesprocedurespropertygroup_id")
+    @JoinTable(name = "rulesprocedures_ts_annotation", joinColumns = {
+        @JoinColumn(name = "rulesprocedures_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

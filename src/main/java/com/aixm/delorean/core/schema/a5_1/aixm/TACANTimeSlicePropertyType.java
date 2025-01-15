@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "tacanTimeSlice"
 })
 @Entity
-@Table(name = "tacantimeslicepropertytype", schema = "navaids")
+@Table(name = "tacan_tsp", schema = "navaids")
 public class TACANTimeSlicePropertyType {
 
     @XmlElement(name = "TACANTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class TACANTimeSlicePropertyType {
     protected TACANTimeSliceType tacanTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "obstacleareatype", schema = "obstacles")
+@Table(name = "obstaclearea", schema = "obstacles")
 public class ObstacleAreaType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleareatype_timeslice", joinColumns = {
-        @JoinColumn(name = "obstacleareatype_id")
+    @JoinTable(name = "obstaclearea_timeslice", joinColumns = {
+        @JoinColumn(name = "obstaclearea_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleareatimeslicepropertytype_id")
+        @JoinColumn(name = "obstaclearea_tsp_id")
     })
     protected List<ObstacleAreaTimeSlicePropertyType> timeSlice;
 

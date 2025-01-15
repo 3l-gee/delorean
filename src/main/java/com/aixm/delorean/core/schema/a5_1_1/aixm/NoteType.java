@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "notetype", schema = "notes")
+@Table(name = "note", schema = "notes")
 public class NoteType
     extends AbstractAIXMObjectType
 {
@@ -76,25 +76,25 @@ public class NoteType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "propertyname_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "propertyname"))
+        @AttributeOverride(name = "value", column = @Column(name = "propertyname_value", length = 60, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "propertyname_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextPropertyNameType propertyName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "purpose"))
+        @AttributeOverride(name = "value", column = @Column(name = "purpose_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNotePurposeType purpose;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "note_pg_translatednote", joinColumns = {
-        @JoinColumn(name = "notepropertygroup_id")
+        @JoinColumn(name = "note_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "linguisticnotepropertytype_id")
+        @JoinColumn(name = "linguisticnote_pt_id")
     })
     protected List<LinguisticNotePropertyType> translatedNote;
     @Transient

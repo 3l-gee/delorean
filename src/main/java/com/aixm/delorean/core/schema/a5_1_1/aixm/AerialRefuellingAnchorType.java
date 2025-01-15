@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aerialrefuellinganchortype", schema = "aerial_refuelling")
+@Table(name = "aerialrefuellinganchor", schema = "aerial_refuelling")
 public class AerialRefuellingAnchorType
     extends AbstractAIXMObjectType
 {
@@ -86,68 +86,68 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "outboundcourse"))
+        @AttributeOverride(name = "value", column = @Column(name = "outboundcourse_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType outboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcoursetype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "outboundcoursetype"))
+        @AttributeOverride(name = "value", column = @Column(name = "outboundcourse_type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "inboundcourse_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "inboundcourse"))
+        @AttributeOverride(name = "value", column = @Column(name = "inboundcourse_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "inboundcourse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType inboundCourse;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "turndirection"))
+        @AttributeOverride(name = "value", column = @Column(name = "turndirection_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType turnDirection;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "speedlimit_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "speedlimit"))
+        @AttributeOverride(name = "value", column = @Column(name = "speedlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "speedlimit_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speedLimit;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "legseparation_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "legseparation_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "legseparation"))
+        @AttributeOverride(name = "value", column = @Column(name = "legseparation_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "legseparation_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "legseparation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType legSeparation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "leglength_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "leglength_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "leglength"))
+        @AttributeOverride(name = "value", column = @Column(name = "leglength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "leglength_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leglength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType legLength;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "refuellingbaselevel_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "refuellingbaselevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "refuellingbaselevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "refuellingbaselevel_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "refuellingbaselevel_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "refuellingbaselevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType refuellingBaseLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "refuellingbaselevelreference_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "refuellingbaselevelreference"))
+        @AttributeOverride(name = "value", column = @Column(name = "refuellingbaselevelreference_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "refuellingbaselevelreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType refuellingBaseLevelReference;
     @XmlElement(nillable = true)
@@ -157,33 +157,33 @@ public class AerialRefuellingAnchorType
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellinganchor_pg_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchorpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayerpropertytype_id")
+        @JoinColumn(name = "airspacelayer_pt_id")
     })
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellinganchor_pg_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchorpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingpointpropertytype_id")
+        @JoinColumn(name = "aerialrefuellingpoint_pt_id")
     })
     protected List<AerialRefuellingPointPropertyType> point;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "aerialrefuellinganchor_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchorpropertygroup_id")
+        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

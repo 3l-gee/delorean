@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "missedApproachLegTimeSlice"
 })
 @Entity
-@Table(name = "missedapproachlegtimeslicepropertytype", schema = "procedure")
+@Table(name = "missedapproachleg_tsp", schema = "procedure")
 public class MissedApproachLegTimeSlicePropertyType {
 
     @XmlElement(name = "MissedApproachLegTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class MissedApproachLegTimeSlicePropertyType {
     protected MissedApproachLegTimeSliceType missedApproachLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

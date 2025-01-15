@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "checkpointINSTimeSlice"
 })
 @Entity
-@Table(name = "checkpointinstimeslicepropertytype", schema = "navaids")
+@Table(name = "checkpointins_tsp", schema = "navaids")
 public class CheckpointINSTimeSlicePropertyType {
 
     @XmlElement(name = "CheckpointINSTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class CheckpointINSTimeSlicePropertyType {
     protected CheckpointINSTimeSliceType checkpointINSTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

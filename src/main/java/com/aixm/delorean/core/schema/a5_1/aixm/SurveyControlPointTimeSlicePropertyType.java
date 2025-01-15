@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "surveyControlPointTimeSlice"
 })
 @Entity
-@Table(name = "surveycontrolpointtimeslicepropertytype", schema = "airport_heliport")
+@Table(name = "surveycontrolpoint_tsp", schema = "airport_heliport")
 public class SurveyControlPointTimeSlicePropertyType {
 
     @XmlElement(name = "SurveyControlPointTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class SurveyControlPointTimeSlicePropertyType {
     protected SurveyControlPointTimeSliceType surveyControlPointTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

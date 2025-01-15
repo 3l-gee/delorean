@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "altimeterSourceTimeSlice"
 })
 @Entity
-@Table(name = "altimetersourcetimeslicepropertytype", schema = "airport_heliport")
+@Table(name = "altimetersource_tsp", schema = "airport_heliport")
 public class AltimeterSourceTimeSlicePropertyType {
 
     @XmlElement(name = "AltimeterSourceTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AltimeterSourceTimeSlicePropertyType {
     protected AltimeterSourceTimeSliceType altimeterSourceTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "rulesprocedurestype", schema = "rules_procedures")
+@Table(name = "rulesprocedures", schema = "rules_procedures")
 public class RulesProceduresType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedurestype_timeslice", joinColumns = {
-        @JoinColumn(name = "rulesprocedurestype_id")
+    @JoinTable(name = "rulesprocedures_timeslice", joinColumns = {
+        @JoinColumn(name = "rulesprocedures_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "rulesprocedurestimeslicepropertytype_id")
+        @JoinColumn(name = "rulesprocedures_tsp_id")
     })
     protected List<RulesProceduresTimeSlicePropertyType> timeSlice;
 

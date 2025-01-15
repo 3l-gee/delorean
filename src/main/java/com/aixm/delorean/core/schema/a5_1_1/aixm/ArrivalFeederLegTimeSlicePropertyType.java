@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "arrivalFeederLegTimeSlice"
 })
 @Entity
-@Table(name = "arrivalfeederlegtimeslicepropertytype", schema = "procedure")
+@Table(name = "arrivalfeederleg_tsp", schema = "procedure")
 public class ArrivalFeederLegTimeSlicePropertyType {
 
     @XmlElement(name = "ArrivalFeederLegTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class ArrivalFeederLegTimeSlicePropertyType {
     protected ArrivalFeederLegTimeSliceType arrivalFeederLegTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

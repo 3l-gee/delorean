@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigationareatimeslicetype", schema = "departure")
+@Table(name = "navigationarea_ts", schema = "departure")
 public class NavigationAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,24 +85,24 @@ public class NavigationAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationareatype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "navigationareatype"))
+        @AttributeOverride(name = "value", column = @Column(name = "navigationarea_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationarea_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavigationAreaType navigationAreaType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "minimumceiling_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumceiling_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "minimumceiling"))
+        @AttributeOverride(name = "value", column = @Column(name = "minimumceiling_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumceiling_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumceiling_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumCeiling;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "minimumvisibility_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumvisibility_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "minimumvisibility"))
+        @AttributeOverride(name = "value", column = @Column(name = "minimumvisibility_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumvisibility_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumvisibility_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType minimumVisibility;
     @XmlElement(nillable = true)
@@ -112,13 +112,13 @@ public class NavigationAreaTimeSliceType
     @JoinColumn(name = "departure_id", referencedColumnName = "id")
     protected StandardInstrumentDeparturePropertyType departure;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navigationarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "navigationareapropertygroup_id")
+        @JoinColumn(name = "navigationarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navigationareasectorpropertytype_id")
+        @JoinColumn(name = "navigationareasector_pt_id")
     })
     protected List<NavigationAreaSectorPropertyType> sector;
     @XmlElement(name = "centrePoint_fixDesignatedPoint", nillable = true)
@@ -158,13 +158,13 @@ public class NavigationAreaTimeSliceType
     @JoinColumn(name = "centrepoint_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType centrePointAirportReferencePoint;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navigationarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navigationareapropertygroup_id")
+        @JoinColumn(name = "navigationarea_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

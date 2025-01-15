@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeVerticalDatumType {
 
     @XmlValue
-    @Column(name = "verticaldatumbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "verticaldatumtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeverticaldatum_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "instrumentApproachProcedureTimeSlice"
 })
 @Entity
-@Table(name = "instrumentapproachproceduretimeslicepropertytype", schema = "approach")
+@Table(name = "instrumentapproachprocedure_tsp", schema = "approach")
 public class InstrumentApproachProcedureTimeSlicePropertyType {
 
     @XmlElement(name = "InstrumentApproachProcedureTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class InstrumentApproachProcedureTimeSlicePropertyType {
     protected InstrumentApproachProcedureTimeSliceType instrumentApproachProcedureTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

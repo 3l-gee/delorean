@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -72,56 +72,56 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditioncombinationtype", schema = "flight_restrictions")
+@Table(name = "flightconditioncombination", schema = "flight_restrictions")
 public class FlightConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_timeinterval", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "flightconditioncombination_timeinterval", joinColumns = {
+        @JoinColumn(name = "flightconditioncombination_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheetpropertytype_id")
+        @JoinColumn(name = "timesheet_pt_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_annotation", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "flightconditioncombination_annotation", joinColumns = {
+        @JoinColumn(name = "flightconditioncombination_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "propertieswithschedule_pg_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "propertieswithschedulepropertygroup_id")
+    @JoinTable(name = "flightconditioncombination_specialdateauthority", joinColumns = {
+        @JoinColumn(name = "flightconditioncombination_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthoritypropertytype_id")
+        @JoinColumn(name = "organisationauthority_pt_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "logicaloperator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "logicaloperator"))
+        @AttributeOverride(name = "value", column = @Column(name = "logicaloperator_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "logicaloperator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlowConditionOperationType logicalOperator;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombination_pg_element", joinColumns = {
-        @JoinColumn(name = "flightconditioncombinationpropertygroup_id")
+    @JoinTable(name = "flightconditioncombination_pg_element_", joinColumns = {
+        @JoinColumn(name = "flightconditioncombination_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightconditionelementpropertytype_id")
+        @JoinColumn(name = "flightconditionelement_pt_id")
     })
     protected List<FlightConditionElementPropertyType> element;
     @Transient

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "verticalStructureTimeSlice"
 })
 @Entity
-@Table(name = "verticalstructuretimeslicepropertytype", schema = "obstacles")
+@Table(name = "verticalstructure_tsp", schema = "obstacles")
 public class VerticalStructureTimeSlicePropertyType {
 
     @XmlElement(name = "VerticalStructureTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class VerticalStructureTimeSlicePropertyType {
     protected VerticalStructureTimeSliceType verticalStructureTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

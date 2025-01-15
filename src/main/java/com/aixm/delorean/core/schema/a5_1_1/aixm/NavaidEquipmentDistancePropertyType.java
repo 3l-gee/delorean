@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "navaidEquipmentDistance"
 })
 @Entity
-@Table(name = "navaidequipmentdistancepropertytype", schema = "runway")
+@Table(name = "navaidequipmentdistance_pt", schema = "runway")
 public class NavaidEquipmentDistancePropertyType
     extends AbstractAIXMPropertyType
 {

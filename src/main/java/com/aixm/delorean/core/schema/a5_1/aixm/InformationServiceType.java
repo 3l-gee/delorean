@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "informationservicetype", schema = "service")
+@Table(name = "informationservice", schema = "service")
 public class InformationServiceType
     extends AbstractServiceType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservicetype_timeslice", joinColumns = {
-        @JoinColumn(name = "informationservicetype_id")
+    @JoinTable(name = "informationservice_timeslice", joinColumns = {
+        @JoinColumn(name = "informationservice_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "informationservicetimeslicepropertytype_id")
+        @JoinColumn(name = "informationservice_tsp_id")
     })
     protected List<InformationServiceTimeSlicePropertyType> timeSlice;
 

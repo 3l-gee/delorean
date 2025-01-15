@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timesheet"
 })
 @Entity
-@Table(name = "timesheetpropertytype", schema = "schedules")
+@Table(name = "timesheet_pt", schema = "schedules")
 public class TimesheetPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "terminalarrivalareatype", schema = "terminal")
+@Table(name = "terminalarrivalarea", schema = "terminal")
 public class TerminalArrivalAreaType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalareatype_timeslice", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareatype_id")
+    @JoinTable(name = "terminalarrivalarea_timeslice", joinColumns = {
+        @JoinColumn(name = "terminalarrivalarea_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "terminalarrivalareatimeslicepropertytype_id")
+        @JoinColumn(name = "terminalarrivalarea_tsp_id")
     })
     protected List<TerminalArrivalAreaTimeSlicePropertyType> timeSlice;
 

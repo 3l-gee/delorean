@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeRouteDesignatorPrefixType {
 
     @XmlValue
-    @Column(name = "routedesignatorprefixbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "routedesignatorprefixtype_nilreason", nullable = true, unique = false)
+    @Column(name = "coderoutedesignatorprefix_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

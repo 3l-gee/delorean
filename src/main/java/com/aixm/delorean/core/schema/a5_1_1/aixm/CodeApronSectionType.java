@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeApronSectionType {
 
     @XmlValue
-    @Column(name = "apronsectionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "apronsectiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeapronsection_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

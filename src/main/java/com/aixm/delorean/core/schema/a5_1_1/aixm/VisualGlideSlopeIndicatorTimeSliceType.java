@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "visualglideslopeindicatortimeslicetype", schema = "runway")
+@Table(name = "visualglideslopeindicator_ts", schema = "runway")
 public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -87,95 +87,95 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "emergencylighting"))
+        @AttributeOverride(name = "value", column = @Column(name = "emergencylighting_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType emergencyLighting;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "intensitylevel_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightIntensityType intensityLevel;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "colour"))
+        @AttributeOverride(name = "value", column = @Column(name = "colour_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeColourType colour;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystem_pg_element", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicator_ts_element_", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicator_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelementpropertytype_id")
+        @JoinColumn(name = "lightelement_pt_id")
     })
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystem_pg_availability", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicator_ts_availability", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicator_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightingavailabilitypropertytype_id")
+        @JoinColumn(name = "groundlightingavailability_pt_id")
     })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "groundlightsystem_pg_annotation", joinColumns = {
-        @JoinColumn(name = "groundlightsystempropertygroup_id")
+    @JoinTable(name = "visualglideslopeindicator_ts_annotation", joinColumns = {
+        @JoinColumn(name = "visualglideslopeindicator_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVASISType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "position"))
+        @AttributeOverride(name = "value", column = @Column(name = "position_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType position;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "numberbox_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "numberbox"))
+        @AttributeOverride(name = "value", column = @Column(name = "numberbox_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "numberbox_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType numberBox;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "portable_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "portable"))
+        @AttributeOverride(name = "value", column = @Column(name = "portable_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "portable_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType portable;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "slopeangle_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "slopeangle"))
+        @AttributeOverride(name = "value", column = @Column(name = "slopeangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "slopeangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType slopeAngle;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "minimumeyeheightoverthreshold_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumeyeheightoverthreshold_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "minimumeyeheightoverthreshold"))
+        @AttributeOverride(name = "value", column = @Column(name = "minimumeyeheightoverthreshold_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "minimumeyeheightoverthreshold_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "minimumeyeheightoverthreshold_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumEyeHeightOverThreshold;
     @XmlElement(nillable = true)

@@ -50,12 +50,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "airspacebordercrossingpropertytype", schema = "flight_restrictions")
+@Table(name = "airspacebordercrossing_pt", schema = "flight_restrictions")
 public class AirspaceBorderCrossingPropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "nilReason")

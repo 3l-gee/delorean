@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -88,7 +88,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditionelementtype", schema = "flight_restrictions")
+@Table(name = "flightconditionelement", schema = "flight_restrictions")
 public class FlightConditionElementType
     extends AbstractAIXMObjectType
 {
@@ -96,8 +96,8 @@ public class FlightConditionElementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "index_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "index"))
+        @AttributeOverride(name = "value", column = @Column(name = "index_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "index_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType index;
     @XmlElement(name = "flightCondition_weather", nillable = true)
@@ -221,23 +221,23 @@ public class FlightConditionElementType
     @JoinColumn(name = "operationalcondition_id", referencedColumnName = "id")
     protected FlightConditionCircumstancePropertyType operationalCondition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightconditionelement_pg_flightlevel", joinColumns = {
-        @JoinColumn(name = "flightconditionelementpropertygroup_id")
+        @JoinColumn(name = "flightconditionelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestrictionlevelpropertytype_id")
+        @JoinColumn(name = "flightrestrictionlevel_pt_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "flightconditionelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightconditionelementpropertygroup_id")
+        @JoinColumn(name = "flightconditionelement_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

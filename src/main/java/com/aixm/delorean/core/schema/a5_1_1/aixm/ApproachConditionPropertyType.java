@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "approachCondition"
 })
 @Entity
-@Table(name = "approachconditionpropertytype", schema = "approach")
+@Table(name = "approachcondition_pt", schema = "approach")
 public class ApproachConditionPropertyType
     extends AbstractAIXMPropertyType
 {

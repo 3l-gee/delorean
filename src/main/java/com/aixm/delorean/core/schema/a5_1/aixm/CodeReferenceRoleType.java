@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeReferenceRoleType {
 
     @XmlValue
-    @Column(name = "referencerolebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "referenceroletype_nilreason", nullable = true, unique = false)
+    @Column(name = "codereferencerole_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

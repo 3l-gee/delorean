@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "approachlightingsystemtype", schema = "lighting")
+@Table(name = "approachlightingsystem", schema = "lighting")
 public class ApproachLightingSystemType
     extends AbstractGroundLightSystemType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachlightingsystemtype_timeslice", joinColumns = {
-        @JoinColumn(name = "approachlightingsystemtype_id")
+    @JoinTable(name = "approachlightingsystem_timeslice", joinColumns = {
+        @JoinColumn(name = "approachlightingsystem_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachlightingsystemtimeslicepropertytype_id")
+        @JoinColumn(name = "approachlightingsystem_tsp_id")
     })
     protected List<ApproachLightingSystemTimeSlicePropertyType> timeSlice;
 

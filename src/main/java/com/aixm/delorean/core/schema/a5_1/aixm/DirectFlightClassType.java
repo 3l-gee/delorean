@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -69,27 +69,27 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "directflightclasstype", schema = "flight_restrictions")
+@Table(name = "directflightclass", schema = "flight_restrictions")
 public class DirectFlightClassType
     extends AbstractDirectFlightType
 {
 
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "directflight_pg_annotation", joinColumns = {
-        @JoinColumn(name = "directflightpropertygroup_id")
+        @JoinColumn(name = "directflight_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "exceedlength_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "exceedlength_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "exceedlength"))
+        @AttributeOverride(name = "value", column = @Column(name = "exceedlength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "exceedlength_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "exceedlength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType exceedLength;
     @Transient

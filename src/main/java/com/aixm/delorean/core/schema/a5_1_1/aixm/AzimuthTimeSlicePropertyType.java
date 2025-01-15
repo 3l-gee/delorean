@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "azimuthTimeSlice"
 })
 @Entity
-@Table(name = "azimuthtimeslicepropertytype", schema = "navaids")
+@Table(name = "azimuth_tsp", schema = "navaids")
 public class AzimuthTimeSlicePropertyType {
 
     @XmlElement(name = "AzimuthTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AzimuthTimeSlicePropertyType {
     protected AzimuthTimeSliceType azimuthTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

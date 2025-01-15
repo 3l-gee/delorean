@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "approachTimingTable"
 })
 @Entity
-@Table(name = "approachtimingtablepropertytype", schema = "approach")
+@Table(name = "approachtimingtable_pt", schema = "approach")
 public class ApproachTimingTablePropertyType
     extends AbstractAIXMPropertyType
 {

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "vorTimeSlice"
 })
 @Entity
-@Table(name = "vortimeslicepropertytype", schema = "navaids")
+@Table(name = "vor_tsp", schema = "navaids")
 public class VORTimeSlicePropertyType {
 
     @XmlElement(name = "VORTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class VORTimeSlicePropertyType {
     protected VORTimeSliceType vorTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingPatternDuration"
 })
 @Entity
-@Table(name = "holdingpatterndurationpropertytype", schema = "holding")
+@Table(name = "holdingpatternduration_pt", schema = "holding")
 public class HoldingPatternDurationPropertyType
     extends AbstractAIXMPropertyType
 {

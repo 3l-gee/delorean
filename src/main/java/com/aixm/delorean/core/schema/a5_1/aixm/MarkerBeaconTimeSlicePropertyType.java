@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "markerBeaconTimeSlice"
 })
 @Entity
-@Table(name = "markerbeacontimeslicepropertytype", schema = "navaids")
+@Table(name = "markerbeacon_tsp", schema = "navaids")
 public class MarkerBeaconTimeSlicePropertyType {
 
     @XmlElement(name = "MarkerBeaconTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class MarkerBeaconTimeSlicePropertyType {
     protected MarkerBeaconTimeSliceType markerBeaconTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

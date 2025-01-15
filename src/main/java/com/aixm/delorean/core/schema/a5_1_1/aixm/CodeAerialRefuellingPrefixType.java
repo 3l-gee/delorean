@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeAerialRefuellingPrefixType {
 
     @XmlValue
-    @Column(name = "aerialrefuellingprefixbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "aerialrefuellingprefixtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeaerialrefuellingprefix_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

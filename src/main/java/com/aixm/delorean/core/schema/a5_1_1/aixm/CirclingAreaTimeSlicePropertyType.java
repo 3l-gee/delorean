@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "circlingAreaTimeSlice"
 })
 @Entity
-@Table(name = "circlingareatimeslicepropertytype", schema = "circling")
+@Table(name = "circlingarea_tsp", schema = "circling")
 public class CirclingAreaTimeSlicePropertyType {
 
     @XmlElement(name = "CirclingAreaTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class CirclingAreaTimeSlicePropertyType {
     protected CirclingAreaTimeSliceType circlingAreaTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeProcedureFixRoleType {
 
     @XmlValue
-    @Column(name = "procedurefixrolebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "procedurefixroletype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeprocedurefixrole_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

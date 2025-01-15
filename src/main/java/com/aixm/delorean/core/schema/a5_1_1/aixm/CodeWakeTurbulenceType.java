@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeWakeTurbulenceType {
 
     @XmlValue
-    @Column(name = "waketurbulencebasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "waketurbulencetype_nilreason", nullable = true, unique = false)
+    @Column(name = "codewaketurbulence_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

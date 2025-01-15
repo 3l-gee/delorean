@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEmissionBandType {
 
     @XmlValue
-    @Column(name = "emissionbandbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "emissionbandtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeemissionband_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

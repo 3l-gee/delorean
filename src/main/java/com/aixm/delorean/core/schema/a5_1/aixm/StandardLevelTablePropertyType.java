@@ -50,12 +50,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "standardleveltablepropertytype", schema = "standard_levels")
+@Table(name = "standardleveltable_pt", schema = "standard_levels")
 public class StandardLevelTablePropertyType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
     @XmlAttribute(name = "owns")

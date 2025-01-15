@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "airspaceLayer"
 })
 @Entity
-@Table(name = "airspacelayerpropertytype", schema = "airspace_layer")
+@Table(name = "airspacelayer_pt", schema = "airspace_layer")
 public class AirspaceLayerPropertyType
     extends AbstractAIXMPropertyType
 {

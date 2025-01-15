@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingPatternDistance"
 })
 @Entity
-@Table(name = "holdingpatterndistancepropertytype", schema = "holding")
+@Table(name = "holdingpatterndistance_pt", schema = "holding")
 public class HoldingPatternDistancePropertyType
     extends AbstractAIXMPropertyType
 {

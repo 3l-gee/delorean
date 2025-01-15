@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "elevationtype", schema = "navaids")
+@Table(name = "elevation", schema = "navaids")
 public class ElevationType
     extends AbstractNavaidEquipmentType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "elevationtype_timeslice", joinColumns = {
-        @JoinColumn(name = "elevationtype_id")
+    @JoinTable(name = "elevation_timeslice", joinColumns = {
+        @JoinColumn(name = "elevation_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "elevationtimeslicepropertytype_id")
+        @JoinColumn(name = "elevation_tsp_id")
     })
     protected List<ElevationTimeSlicePropertyType> timeSlice;
 

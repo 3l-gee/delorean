@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "radarsystemtype", schema = "surveillance")
+@Table(name = "radarsystem", schema = "surveillance")
 public class RadarSystemType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystemtype_timeslice", joinColumns = {
-        @JoinColumn(name = "radarsystemtype_id")
+    @JoinTable(name = "radarsystem_timeslice", joinColumns = {
+        @JoinColumn(name = "radarsystem_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radarsystemtimeslicepropertytype_id")
+        @JoinColumn(name = "radarsystem_tsp_id")
     })
     protected List<RadarSystemTimeSlicePropertyType> timeSlice;
 

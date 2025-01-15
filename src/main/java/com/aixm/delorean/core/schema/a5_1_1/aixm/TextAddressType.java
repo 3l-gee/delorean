@@ -43,7 +43,7 @@ public class TextAddressType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "addresstype_nilreason", nullable = true, unique = false)
+    @Column(name = "textaddress_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

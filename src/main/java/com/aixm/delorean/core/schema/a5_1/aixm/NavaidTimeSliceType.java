@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -80,7 +80,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidtimeslicetype", schema = "navaids")
+@Table(name = "navaid_ts", schema = "navaids")
 public class NavaidTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -88,123 +88,123 @@ public class NavaidTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "type"))
+        @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavaidServiceType type;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "designator"))
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavaidDesignatorType designator;
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "name"))
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flightchecked"))
+        @AttributeOverride(name = "value", column = @Column(name = "flightchecked_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flightChecked;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "purpose"))
+        @AttributeOverride(name = "value", column = @Column(name = "purpose_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "purpose_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavaidPurposeType purpose;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signalperformance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "signalperformance"))
+        @AttributeOverride(name = "value", column = @Column(name = "signalperformance_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signalperformance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSignalPerformanceILSType signalPerformance;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "coursequality_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "coursequality"))
+        @AttributeOverride(name = "value", column = @Column(name = "coursequality_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursequality_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseQualityILSType courseQuality;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "integritylevel_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "integritylevel"))
+        @AttributeOverride(name = "value", column = @Column(name = "integritylevel_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "integritylevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeIntegrityLevelILSType integrityLevel;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_touchdownliftoff", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffpropertytype_id")
+        @JoinColumn(name = "touchdownliftoff_pt_id")
     })
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_navaidequipment", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidcomponentpropertytype_id")
+        @JoinColumn(name = "navaidcomponent_pt_id")
     })
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JoinColumn(name = "location__id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_runwaydirection", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertytype_id")
+        @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_servedairport", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportpropertytype_id")
+        @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> servedAirport;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_availability", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidoperationalstatuspropertytype_id")
+        @JoinColumn(name = "navaidoperationalstatus_pt_id")
     })
     protected List<NavaidOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "navaid_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navaidpropertygroup_id")
+        @JoinColumn(name = "navaid_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

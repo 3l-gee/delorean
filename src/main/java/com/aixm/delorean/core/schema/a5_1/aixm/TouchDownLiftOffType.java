@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -46,19 +46,19 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touchdownliftofftype", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoff", schema = "helicopter_surfaces")
 public class TouchDownLiftOffType
     extends AbstractAIXMFeatureType
 {
 
     @XmlElement(required = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftofftype_timeslice", joinColumns = {
-        @JoinColumn(name = "touchdownliftofftype_id")
+    @JoinTable(name = "touchdownliftoff_timeslice", joinColumns = {
+        @JoinColumn(name = "touchdownliftoff_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftofftimeslicepropertytype_id")
+        @JoinColumn(name = "touchdownliftoff_tsp_id")
     })
     protected List<TouchDownLiftOffTimeSlicePropertyType> timeSlice;
 

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "elevationTimeSlice"
 })
 @Entity
-@Table(name = "elevationtimeslicepropertytype", schema = "navaids")
+@Table(name = "elevation_tsp", schema = "navaids")
 public class ElevationTimeSlicePropertyType {
 
     @XmlElement(name = "ElevationTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class ElevationTimeSlicePropertyType {
     protected ElevationTimeSliceType elevationTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

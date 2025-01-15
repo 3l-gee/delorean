@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "arrestinggeartimeslicetype", schema = "runway")
+@Table(name = "arrestinggear_ts", schema = "runway")
 public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -86,63 +86,63 @@ public class ArrestingGearTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "status"))
+        @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "length_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "length"))
+        @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "length_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "width_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "width"))
+        @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "width_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "engagedevice_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "engagedevice"))
+        @AttributeOverride(name = "value", column = @Column(name = "engagedevice_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "engagedevice_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeArrestingGearEngageDeviceType engageDevice;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "absorbtype_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "absorbtype"))
+        @AttributeOverride(name = "value", column = @Column(name = "absorb_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "absorb_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeArrestingGearEnergyAbsorbType absorbType;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectional_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "bidirectional"))
+        @AttributeOverride(name = "value", column = @Column(name = "bidirectional_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectional_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType bidirectional;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "location_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "location_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "location"))
+        @AttributeOverride(name = "value", column = @Column(name = "location_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "location_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "location_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType location;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggear_pg_runwaydirection", joinColumns = {
-        @JoinColumn(name = "arrestinggearpropertygroup_id")
+    @JoinTable(name = "arrestinggear_ts_runwaydirection", joinColumns = {
+        @JoinColumn(name = "arrestinggear_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirectionpropertytype_id")
+        @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
@@ -170,13 +170,13 @@ public class ArrestingGearTimeSliceType
     @JoinColumn(name = "extent_pointextent_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType extentPointExtent;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggear_pg_annotation", joinColumns = {
-        @JoinColumn(name = "arrestinggearpropertygroup_id")
+    @JoinTable(name = "arrestinggear_ts_annotation", joinColumns = {
+        @JoinColumn(name = "arrestinggear_ts_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

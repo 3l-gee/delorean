@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routeportiontype", schema = "en_route")
+@Table(name = "routeportion", schema = "en_route")
 public class RoutePortionType
     extends AbstractAIXMObjectType
 {
@@ -201,13 +201,13 @@ public class RoutePortionType
     @JoinColumn(name = "end_position_id", referencedColumnName = "id")
     protected PointPropertyType endPosition;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinTable(name = "routeportion_pg_annotation", joinColumns = {
-        @JoinColumn(name = "routeportionpropertygroup_id")
+        @JoinColumn(name = "routeportion_pg_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

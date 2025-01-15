@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeEquipmentAntiCollisionType {
 
     @XmlValue
-    @Column(name = "equipmentanticollisionbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "equipmentanticollisiontype_nilreason", nullable = true, unique = false)
+    @Column(name = "codeequipmentanticollision_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

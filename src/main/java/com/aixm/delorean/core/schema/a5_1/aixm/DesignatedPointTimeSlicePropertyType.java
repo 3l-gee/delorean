@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "designatedPointTimeSlice"
 })
 @Entity
-@Table(name = "designatedpointtimeslicepropertytype", schema = "points")
+@Table(name = "designatedpoint_tsp", schema = "points")
 public class DesignatedPointTimeSlicePropertyType {
 
     @XmlElement(name = "DesignatedPointTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class DesignatedPointTimeSlicePropertyType {
     protected DesignatedPointTimeSliceType designatedPointTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

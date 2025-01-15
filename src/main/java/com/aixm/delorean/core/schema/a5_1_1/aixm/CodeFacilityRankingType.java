@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeFacilityRankingType {
 
     @XmlValue
-    @Column(name = "facilityrankingbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "facilityrankingtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codefacilityranking_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

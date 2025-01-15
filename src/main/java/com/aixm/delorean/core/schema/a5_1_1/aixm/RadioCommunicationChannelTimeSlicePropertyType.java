@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioCommunicationChannelTimeSlice"
 })
 @Entity
-@Table(name = "radiocommunicationchanneltimeslicepropertytype", schema = "service")
+@Table(name = "radiocommunicationchannel_tsp", schema = "service")
 public class RadioCommunicationChannelTimeSlicePropertyType {
 
     @XmlElement(name = "RadioCommunicationChannelTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class RadioCommunicationChannelTimeSlicePropertyType {
     protected RadioCommunicationChannelTimeSliceType radioCommunicationChannelTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")

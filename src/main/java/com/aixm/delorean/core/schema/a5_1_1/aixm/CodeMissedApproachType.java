@@ -41,10 +41,9 @@ import jakarta.xml.bind.annotation.XmlValue;
 public class CodeMissedApproachType {
 
     @XmlValue
-    @Column(name = "missedapproachbasetype", nullable = true, unique = false)
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "missedapproachtype_nilreason", nullable = true, unique = false)
+    @Column(name = "codemissedapproach_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

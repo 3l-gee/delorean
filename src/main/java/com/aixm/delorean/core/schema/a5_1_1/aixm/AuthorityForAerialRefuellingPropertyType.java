@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "authorityForAerialRefuelling"
 })
 @Entity
-@Table(name = "authorityforaerialrefuellingpropertytype", schema = "aerial_refuelling")
+@Table(name = "authorityforaerialrefuelling_pt", schema = "aerial_refuelling")
 public class AuthorityForAerialRefuellingPropertyType
     extends AbstractAIXMPropertyType
 {

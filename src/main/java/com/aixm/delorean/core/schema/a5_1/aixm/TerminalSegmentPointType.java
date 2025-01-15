@@ -18,7 +18,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalsegmentpointtype", schema = "point_reference")
+@Table(name = "terminalsegmentpoint", schema = "point_reference")
 public class TerminalSegmentPointType
     extends AbstractSegmentPointType
 {
@@ -92,39 +92,39 @@ public class TerminalSegmentPointType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "reportingatc_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "reportingatc"))
+        @AttributeOverride(name = "value", column = @Column(name = "reportingatc_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "reportingatc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeATCReportingType reportingATC;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "flyover_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "flyover"))
+        @AttributeOverride(name = "value", column = @Column(name = "flyover_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "flyover_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flyOver;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "waypoint"))
+        @AttributeOverride(name = "value", column = @Column(name = "waypoint_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType waypoint;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "radarguidance_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "radarguidance"))
+        @AttributeOverride(name = "value", column = @Column(name = "radarguidance_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "radarguidance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType radarGuidance;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentpoint_pg_facilitymakeup", joinColumns = {
-        @JoinColumn(name = "segmentpointpropertygroup_id")
+    @JoinTable(name = "terminalsegmentpoint_facilitymakeup", joinColumns = {
+        @JoinColumn(name = "terminalsegmentpoint_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "pointreferencepropertytype_id")
+        @JoinColumn(name = "pointreference_pt_id")
     })
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
@@ -170,42 +170,42 @@ public class TerminalSegmentPointType
     @JoinColumn(name = "extendedservicevolume_id", referencedColumnName = "id")
     protected RadioFrequencyAreaPropertyType extendedServiceVolume;
     @XmlElement(nillable = true)
-    @ManyToMany(cascade = {
+    @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "segmentpoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "segmentpointpropertygroup_id")
+    @JoinTable(name = "terminalsegmentpoint_annotation", joinColumns = {
+        @JoinColumn(name = "terminalsegmentpoint_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "notepropertytype_id")
+        @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "role_"))
+        @AttributeOverride(name = "value", column = @Column(name = "role_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureFixRoleType role;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "leadradial_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "leadradial"))
+        @AttributeOverride(name = "value", column = @Column(name = "leadradial_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leadradial_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType leadRadial;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "uom", column = @Column(name = "leaddme_uom")),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "leaddme_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "leaddme"))
+        @AttributeOverride(name = "value", column = @Column(name = "leaddme_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
+        @AttributeOverride(name = "uom", column = @Column(name = "leaddme_uom", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "leaddme_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType leadDME;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "nilReason", column = @Column(name = "indicatorfacf_nilreason")),
-        @AttributeOverride(name = "value", column = @Column(name = "indicatorfacf"))
+        @AttributeOverride(name = "value", column = @Column(name = "indicatorfacf_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "indicatorfacf_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType indicatorFACF;
     @Transient

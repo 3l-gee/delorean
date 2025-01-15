@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "aeronauticalGroundLightTimeSlice"
 })
 @Entity
-@Table(name = "aeronauticalgroundlighttimeslicepropertytype", schema = "visual_navigation")
+@Table(name = "aeronauticalgroundlight_tsp", schema = "visual_navigation")
 public class AeronauticalGroundLightTimeSlicePropertyType {
 
     @XmlElement(name = "AeronauticalGroundLightTimeSlice", required = true)
@@ -63,7 +63,7 @@ public class AeronauticalGroundLightTimeSlicePropertyType {
     protected AeronauticalGroundLightTimeSliceType aeronauticalGroundLightTimeSlice;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @XmlAttribute(name = "owns")
