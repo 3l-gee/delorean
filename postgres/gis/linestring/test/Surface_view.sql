@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW surface_view AS
+CREATE MATERIALIZED VIEW surface_view AS
 WITH
 segment_ref AS(
 	SELECT 
@@ -183,11 +183,8 @@ ordered_segments AS (
 		ST_IsClosed(segement_ownership.geom) AS closed
     FROM 
         segement_ownership
--- 	WHERE
--- 		xml_id = 'Ase_Proj_1560989'
     ORDER BY 
         xml_id, part, member, sequence
-	
 ),
 linked_segments AS (
     SELECT 
@@ -251,7 +248,6 @@ linked_segments AS (
 		next.interpretation != 4
     ORDER BY 
         id, part, member, sequence
-	
 ),
 partial_ring AS (
     SELECT 
@@ -272,7 +268,7 @@ raw_geoborder AS (
 		part,
 		member,
 		ST_LineMerge(ST_Collect(geom)) AS geom,
-		(ST_DumpPoints(ST_LineMerge(ST_Collect(geom)))).geom AS points
+		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points
     FROM 
         linked_segments
     WHERE 
@@ -349,9 +345,9 @@ exterior_ring AS (
 		partial_ring
 	WHERE
 		partial_ring.closed = true
-	
 )
 SELECT 
+	(row_number() OVER ())::integer AS row,
     exterior_ring.id,
     ST_MakePolygon(
 		exterior_ring.geom
