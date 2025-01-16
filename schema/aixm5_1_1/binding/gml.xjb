@@ -111,6 +111,7 @@
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractTimeSliceType']//xs:element[@ref='gml:aixmValidTime']">
 			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "beginPosition", column = @jakarta.persistence.Column(name = "valid_time_begin")), @jakarta.persistence.AttributeOverride(name = "endPosition", column = @jakarta.persistence.Column(name = "valid_time_end"))})</annox:annotate>
 			<annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "validTime",required = true, type = com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType.class)</annox:annotate>
 			<annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter.class)</annox:annotate>
 			<jaxb:property name="validTime"/>

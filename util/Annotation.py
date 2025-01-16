@@ -920,7 +920,8 @@ class Util:
         return result
 
     def snake_case_column(name):
-        value = Util.short_name(name)
+        # value = Util.short_name(name)
+        value = name
 
         try: 
             value = value.split(':')[-1]
