@@ -47,11 +47,6 @@ schema = {
             "UsageCondition",
             "WorkArea",
             "WorkareaActivity",
-        ],
-    },
-    "Apron " : {
-        "schema" : "apron",
-        "list" : [
             "AircraftStand",
             "Apron",
             "ApronAreaAvailability",
@@ -60,18 +55,8 @@ schema = {
             "DeicingArea",
             "PassengerLoadingBridge",
             "Road",
-        ],
-    }, 
-    "Helicopter Surfaces" : {
-        "schema" : "helicopter_surfaces",
-        "list" : [
             "TouchDownLiftOff",
             "TouchDownLiftOffSafeArea",
-        ],
-    },
-    "Lighting" : {
-        "schema" : "lighting",
-        "list" : [
             "ApproachLightingSystem",
             "ApronLightSystem",
             "GroundLightSystem",
@@ -83,11 +68,6 @@ schema = {
             "TaxiHoldingPositionLightSystem",
             "TaxiwayLightSystem",
             "TouchDownLiftOffLightSystem",
-        ],
-    },
-    "Markings" : {
-        "schema" : "markings",
-        "list" : [
             "AirportProtectionAreaMarking",
             "ApronMarking",
             "DeicingAreaMarking",
@@ -100,11 +80,6 @@ schema = {
             "TaxiHoldingPositionMarking",
             "TaxiwayMarking",
             "TouchDownLiftOffMarking",
-        ],
-    },
-    "Runway" : {
-        "schema" : "runway",
-        "list" : [
             "ArrestingGear",
             "ArrestingGearExtent",
             "ManoeuvringAreaAvailability",
@@ -120,20 +95,10 @@ schema = {
             "RunwayProtectArea",
             "RunwayVisualRange",
             "VisualGlideSlopeIndicator",
-        ],
-    },
-    "Seaplanes" : {
-        "schema" : "seaplanes",
-        "list" : [
             "FloatingDockSite",
             "MarkingBuoy",
             "SeaplaneLandingArea",
             "SeaplaneRampSite",
-        ],
-    },
-    "Surface Contamination" : {
-        "schema" : "surface_contamination",
-        "list" : [
             "AircraftStandContamination",
             "AirportHeliportContamination",
             "ApronContamination",
@@ -144,11 +109,6 @@ schema = {
             "SurfaceContaminationLayer",
             "TaxiwayContamination",
             "TouchDownLiftOffContamination",
-        ],
-    },
-    "Taxiway" : {
-        "schema" : "taxiway",
-        "list" : [
             "GuidanceLine",
             "TaxiHoldingPosition",
             "Taxiway",
@@ -189,15 +149,10 @@ schema = {
             "UnplannedHolding",
         ],
     },
-    "Guidance Service" : {
-        "schema" : "guidance_service",
+    "Navaids Points" : {
+        "schema" : "navaids_points",
         "list" : [
             "GuidanceService",
-            ],
-    },
-    "Navaids" : {
-        "schema" : "navaids",
-        "list" : [
             "AuthorityForNavaidEquipment",
             "AuthorityForSpecialNavigationStation",
             "AuthorityForSpecialNavigationSystem",
@@ -223,11 +178,6 @@ schema = {
             "SpecialNavigationSystem",
             "TACAN",
             "VOR",
-        ],
-    },
-    "Point Reference" : {
-        "schema" : "point_reference",
-        "list" : [
             "AngleIndication",
             "AngleUse",
             "DistanceIndication",
@@ -235,19 +185,9 @@ schema = {
             "PointReference",
             "SegmentPoint",
             "TerminalSegmentPoint",
-        ],
-    },
-    "Points" : {
-        "schema" : "points",
-        "list" : [
             "DesignatedPoint",
             "SignificantPoint",
             "SignificantPointInAirspace",
-        ],
-    },
-    "Visual Navigation" : {
-        "schema" : "visual_navigation",
-        "list" : [
             "AeronauticalGroundLight",
         ],
     },
@@ -279,8 +219,8 @@ schema = {
             "UnitDependency",
         ],
     },
-    "Approach" : {
-        "schema" : "approach",
+    "Procedure" : {
+        "schema" : "procedure",
         "list" : [
             "ApproachAltitudeTable",
             "ApproachCondition",
@@ -289,63 +229,22 @@ schema = {
             "FinalProfile",
             "InstrumentApproachProcedure",
             "MissedApproachGroup",
-
-        ],
-    },
-    "Terminal" : {
-        "schema" : "terminal",
-        "list" : [
             "TerminalArrivalArea",
             "TerminalArrivalAreaSector",
-        ],
-    },
-    "Segment Leg" : {
-        "schema" : "segment_leg",
-        "list" : [
             "FASDataBlock"
-        ],
-    },
-    "Circling" : {
-        "schema" : "circling",
-        "list" : [
             "CirclingArea",
             "CirclingRestriction",
-        ],
-    },
-    "Minima" : {
-        "schema" : "minima",
-        "list" : [
             "EquipmentUnavailableAdjustment",
             "EquipmentUnavailableAdjustmentColumn",
             "Minima",
-        ],
-    },
-    "Arrival" : {
-        "schema" : "arrival",
-        "list" : [
             "StandardInstrumentArrival",
-        ],
-    },
-    "Departure" : {
-        "schema" : "departure",
-        "list" : [
             "DepartureArrivalCondition",
             "NavigationArea",
             "NavigationAreaSector",
             "SectorDesign",
             "StandardInstrumentDeparture",
-        ],
-    },
-    "Safe Altitude" : {
-        "schema" : "safe_altitude",
-        "list" : [
             "SafeAltitudeArea",
             "SafeAltitudeAreaSector",
-        ],
-    },
-    "Procedure Overview" : {
-        "schema" : "procedure",
-        "list" : [
             "ApproachLeg",
             "ArrivalFeederLeg",
             "ArrivalLeg",
@@ -362,16 +261,11 @@ schema = {
             "ProcedureTransition",  
             "ProcedureTransitionLeg",
             "SegmentLeg",
-        ],
-    },
-    "Usage" : {
-        "schema" : "usage",
-        "list" : [
             "ProcedureAvailability",
         ],
     },
-    "En Route" : {
-        "schema" : "en_route",
+    "Routes" : {
+        "schema" : "routes",
         "list" : [
             "ChangeOverPoint",
             "Route",
@@ -379,11 +273,6 @@ schema = {
             "RouteDME",
             "RoutePortion",  
             "RouteSegment",
-        ],
-    },
-    "Flight Restrictions" : {
-        "schema" : "flight_restrictions",
-        "list" : [
             "AirspaceBorderCrossing",
             "DirectFlight",
             "DirectFlightClass",
@@ -432,74 +321,29 @@ schema = {
             "TrafficSeparationService",
         ],
     },
-    "Address" : {
-        "schema" : "address",
+    "Shared" : {
+        "schema" : "shared",
         "list" : [
             "ContactInformation",
             "OnlineContact",
             "PostalAddress",
             "TelephoneContact",
-        ],
-    },
-    "Aircraft And Flight" : {
-        "schema" : "aircraft_and_flight",
-        "list" : [
             "AircraftCharacteristic",
             "FlightCharacteristic",
-        ],
-    },
-    "Airspace Layer" : {
-        "schema" : "airspace_layer",
-        "list" : [
             "AirspaceLayer",
-        ],
-    },
-    "Circle Sector" : {
-        "schema" : "circle_sector",
-        "list" : [
             "CircleSector",
-        ],
-    },
-    "Light Element" : {
-        "schema" : "light_element",
-        "list" : [
             "LightElement",
             "LightElementStatus",
-        ],
-    },
-    "Meteorology" : {
-        "schema" : "meteorology",
-        "list" : [
             "Meteorology",
-        ],
-    },
-    "Radio Frequency Limitation" : {
-        "schema" : "radio_frequency_limitation",
-        "list" : [
             "EquipmentChoice",
             "RadioFrequencyArea",
-        ],
-    },
-    "Schedules" : {
-        "schema" : "schedules",
-        "list" : [
             "PropertiesWithSchedule",
             "SpecialDate",
             "Timesheet",
-        ],
-    },
-    "Standard Levels" : {
-        "schema" : "standard_levels",
-        "list" : [
             "StandardLevel",
             "StandardLevelColumn",
             "StandardLevelSector",
             "StandardLevelTable",
-        ],
-    },
-    "Surface Assessment" : {
-        "schema" : "surface_assessment",
-        "list" : [
             "AltitudeAdjustment",
             "HoldingAssessment",
             "ObstacleAssessmentArea",
@@ -521,8 +365,6 @@ schema = {
             "SurveillanceRadar",
         ],
     }
-
-
 }
 
 config = {
@@ -759,6 +601,4 @@ message = {
     "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message],)
-
-# machinery = Machinery(config, debug, schema, [data_types],)
+machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message])

@@ -155,7 +155,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element ref="aixm:correctionNumber" minOccurs="0"/>
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
-					<element ref="aixm:featureLifetime" minOccurs="0"/>
+					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
+					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
 					<!-- Adding dbid as a new field -->
                 	<element name="dbid" type="xs:long"/>
 				</sequence>
@@ -225,11 +226,13 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<restriction base="unsignedInt"/>
 		</simpleType>
 	</element>
-	<element name="featureLifetime" type="gml:TimePrimitivePropertyType">
+	<!-- timelice / feature lifetime handeling-->
+	<!-- <element name="featureLifetime" type="gml:TimePrimitivePropertyType"> -->
+	<!-- <element name="featureLifetime" type="string">
 		<annotation>
 			<documentation>The start and end of life of the feature. See the AIXM Temporality model for details.</documentation>
 		</annotation>
-	</element>
+	</element> -->
 	<!--====================================================================-->
 	<!--Base AIXM Metadata Property Types-->
 	<!--====================================================================-->

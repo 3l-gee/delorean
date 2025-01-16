@@ -14,6 +14,7 @@ class View:
             "TimeSlice": "",
             "Type": "", 
         }
+        self.list = set()
 
     def _format_to_feature(self, schema):
         for key, value in schema.items():
@@ -37,5 +38,6 @@ class View:
             what="",
             success=True,
             why="self.feature_to_schema.get(name)",
-        )     
+        )
+        self.list.add(str(self.feature_to_schema.get(name)+ "." + name))
         return self.feature_to_schema.get(name)

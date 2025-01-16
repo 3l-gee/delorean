@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.math.BigDecimal;
+import java.util.logging.Logger;
 
 import org.locationtech.jts.geom.Point;
 
@@ -623,15 +624,29 @@ public class GisHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value, com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curveType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
+
         //output object
+        if (value == null) {
+            return curveType;
+        }
+
+        //setting id
+        curveType.setXmlId(value.getId());
 
 
         return curveType;
     }
 
     public static com.aixm.delorean.core.schema.a5_1.aixm.CurveType printAIXMCurve(AixmCurveType value, com.aixm.delorean.core.schema.a5_1.aixm.CurveType curveType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
+        if (value == null) {
+            return curveType;
+        }
 
+        //setting id
+        curveType.setXmlId(value.getId());
 
         return curveType;
     }
@@ -667,13 +682,27 @@ public class GisHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value, com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType elevatedCurve) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
+        if (value == null) {
+            return elevatedCurve;
+        }
+
+        //setting id
+        elevatedCurve.setXmlId(value.getId());
 
         return elevatedCurve;
     }
 
     public static com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType printAIXMElevatedCurve(AixmElevatedCurveType value, com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType elevatedCurve) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
+        if (value == null) {
+            return elevatedCurve;
+        }
+
+        //setting id
+        elevatedCurve.setXmlId(value.getId());
 
         return elevatedCurve;
     }
@@ -704,12 +733,27 @@ public class GisHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value, com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType surfaceType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
+        if (value == null) {
+            return surfaceType;
+        }
+
+        //setting id
+        surfaceType.setXmlId(value.getId());
+
         return surfaceType;
     }
 
     public static com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType printAIXMSurface(AixmSurfaceType value, com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType surfaceType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         //output object
+        if(value == null) {
+            return surfaceType;
+        }
+        
+        //setting id
+        surfaceType.setXmlId(value.getId());
 
         return surfaceType;
     }
@@ -747,12 +791,28 @@ public class GisHelper {
     }
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value, com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType elevatedSurfaceType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
+        //output object
+        if (value == null) {
+            return elevatedSurfaceType;
+        }
+
+        //setting id
+        elevatedSurfaceType.setXmlId(value.getId());
 
         return elevatedSurfaceType;
     }
 
     public static com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType printAIXMElevatedSurface(AixmElevatedSurfaceType value, com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType elevatedSurfaceType) {
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
+        //output object
+        if (value == null) {
+            return elevatedSurfaceType;
+        }
 
+        //setting id
+        elevatedSurfaceType.setXmlId(value.getId());
+        
         return elevatedSurfaceType;
     }
 }
