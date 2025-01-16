@@ -1,4 +1,4 @@
--- CREATE OR REPLACE VIEW elevated_surface_view AS
+CREATE MATERIALIZED VIEW elevated_surface_view AS
 WITH
 segment_ref AS(
 	SELECT 
@@ -13,13 +13,13 @@ segment_ref AS(
 ),
 segment_value AS(
 	SELECT 
-		SUBSTRING(airspace.geoborder_t.xml_id::text FROM POSITION('.' IN airspace.geoborder_t.xml_id::text) + 1) AS uuid,
+		SUBSTRING(airspace.geoborder.xml_id::text FROM POSITION('.' IN airspace.geoborder.xml_id::text) + 1) AS uuid,
 		geom
-	FROM airspace.geoborder_t
-	INNER JOIN public.geoborder_t_timeslice
-		ON airspace.geoborder_t.id = public.geoborder_t_timeslice.geoborder_t_id
+	FROM airspace.geoborder
+	INNER JOIN public.geoborder_timeslice
+		ON airspace.geoborder.id = public.geoborder_timeslice.geoborder_id
 	INNER JOIN airspace.geoborder_tsp
-		ON public.geoborder_t_timeslice.geoborder_tsp_id = airspace.geoborder_tsp.id
+		ON public.geoborder_timeslice.geoborder_tsp_id = airspace.geoborder_tsp.id
 	INNER JOIN airspace.geoborder_ts
 		ON airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
 	INNER JOIN public.curve
@@ -220,6 +220,8 @@ linked_segments AS (
 		ST_IsClosed(curr.geom) = false
 		AND
 		curr.interpretation != 4
+		AND
+		next.interpretation != 4
     UNION ALL
     SELECT 
         curr.id,
@@ -242,83 +244,114 @@ linked_segments AS (
 		ST_IsClosed(curr.geom) = false
 		AND
 		curr.interpretation != 4
+		AND
+		next.interpretation != 4
     ORDER BY 
         id, part, member, sequence
 	
 ),
-exterior_ring_other AS (
+partial_ring AS (
     SELECT 
         id, 
+		part,
+		ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
 		ST_LineMerge(ST_Collect(geom)) AS geom
     FROM 
         linked_segments
-    WHERE 
-        part = 0
-		AND
+    WHERE
 		interpretation != 4
     GROUP BY 
-        id
+        id, part
 ),
-exterior_ring_geoborder AS (
+raw_geoborder AS (
     SELECT 
-		id,
-		ST_LineMerge(ST_Collect(geom)) AS geom
+        id, 
+		part,
+		member,
+		ST_LineMerge(ST_Collect(geom)) AS geom,
+		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points
     FROM 
         linked_segments
     WHERE 
-        part = 0
-		AND
 		interpretation = 4
     GROUP BY 
-        id
+        id, part, member, sequence
 ),
-split_data AS (
-	SELECT 
+split_geoborder AS (
+	SELECT
+		raw_geoborder.id, 
 		(ST_Dump(
 		  ST_Split(
-			ST_ReducePrecision(exterior_ring_geoborder.geom,0.001),
-		  	ST_ReducePrecision(
-				ST_Union(
-					ST_ClosestPoint(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)),
-					ST_ClosestPoint(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom))
-				)
-			, 0.001)
+			raw_geoborder.geom,
+			ST_Union(
+				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)),
+				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom))
+			)
 		  )
 		)).geom AS geom,
-		ST_ShortestLine(exterior_ring_geoborder.geom, ST_StartPoint(exterior_ring_other.geom)) AS  start_segment,
-		ST_ShortestLine(exterior_ring_geoborder.geom, ST_EndPoint(exterior_ring_other.geom)) AS end_segment
+		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)) AS  start_segment,
+		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom)) AS end_segment
 	FROM 
-		exterior_ring_geoborder,
-		exterior_ring_other
+		raw_geoborder
+	INNER JOIN
+		partial_ring
+	ON 
+		raw_geoborder.id = partial_ring.id
+	WHERE 
+		raw_geoborder.part = partial_ring.part
+	GROUP BY
+		raw_geoborder.id, 
+		raw_geoborder.geom,
+		partial_ring.geom
+),
+exterior_ring AS (
+	SELECT
+		partial_ring.id,
+		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, split_geoborder.geom, end_segment, start_segment])) AS geom
+	FROM
+		split_geoborder
+	INNER JOIN
+		partial_ring	
+	ON 
+		split_geoborder.id = partial_ring.id
+	WHERE
+		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
+		AND 
+		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
+		AND 
+		NOT ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
+	UNION ALL
+		SELECT
+		partial_ring.id,
+		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])) AS geom
+	FROM
+		split_geoborder
+	INNER JOIN
+		partial_ring	
+	ON 
+		split_geoborder.id = partial_ring.id
+	WHERE
+		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
+		AND 
+		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
+		AND 
+		ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
+	GROUP BY 
+		partial_ring.id, ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment]))
+	UNION ALL
+	SELECT
+		partial_ring.id,
+		partial_ring.geom
+	FROM
+		partial_ring
+	WHERE
+		partial_ring.closed = true	
 )
 SELECT 
-ST_Union(ARRAY[start_segment, geom, end_segment])
-FROM split_data;
--- SELECT 
--- ST_Union(ARRAY[start_segment, geom, end_segment])
--- FROM split_data
--- WHERE
--- ST_Touches(geom, start_segment) AND ST_Touches(geom, end_segment)
--- split_geom AS (
---     SELECT 
---         exterior_ring_geoborder.id, 
---         ST_Split(exterior_ring_geoborder.geom, split_points.points) AS geom
---     FROM 
---         exterior_ring_geoborder, 
---         split_points
---     WHERE 
---         exterior_ring_geoborder.id = split_points.id
--- )
--- SELECT * FROM split_points;
-
--- SELECT 
--- 	ST_Split(exterior_ring_geoborder.geom, 
--- 		ST_Collect(
--- 			ST_ClosestPoint(exterior_ring_geoborder.geom,ST_StartPoint(exterior_ring.geom)),
--- 			ST_ClosestPoint(exterior_ring_geoborder.geom,ST_EndPoint(exterior_ring.geom))
--- 		)
--- 	)
--- FROM 
--- 	exterior_ring,
--- 	exterior_ring_geoborder
-
+    exterior_ring.id,
+    ST_MakePolygon(
+		exterior_ring.geom
+-- 		COALESCE(interior_rings.geoms, ARRAY[]::geometry[])
+	) AS geom
+FROM 
+    exterior_ring
