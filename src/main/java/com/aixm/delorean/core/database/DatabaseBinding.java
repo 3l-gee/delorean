@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
 
 import org.hibernate.Transaction;
 

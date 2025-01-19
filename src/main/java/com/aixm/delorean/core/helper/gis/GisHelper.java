@@ -16,20 +16,6 @@ import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType;
-// import com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedPointType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType;
-// import com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType;
 
 public class GisHelper {    
     
@@ -352,9 +338,6 @@ public class GisHelper {
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.PointType printAIXMPoint(AixmPointType value, com.aixm.delorean.core.schema.a5_1_1.aixm.PointType pointType) {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
-        //output object
-        DirectPositionType pos = new DirectPositionType();
-
         if (value == null) {
             return new com.aixm.delorean.core.schema.a5_1_1.aixm.PointType();
         }
@@ -362,19 +345,8 @@ public class GisHelper {
         //setting id
         pointType.setXmlId(value.getId());
     
-        //attributes extraction
-        Point point = value.getPoint();
-
-        // setting point
-        if (point == null) {
-            return pointType;
-        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
-            return pointType;
-        } else {
-            pos.getValue().add(point.getX());
-            pos.getValue().add(point.getY());
-            pointType.setPos(pos);
-        }
+        // setting direct position
+        pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         //setting srsName
         pointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
@@ -402,19 +374,8 @@ public class GisHelper {
         //setting id
         pointType.setXmlId(value.getId());
     
-        //attributes extraction
-        Point point = value.getPoint();
-
-        // setting point
-        if (point == null) {
-            return pointType;
-        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
-            return pointType;
-        } else {
-            pos.getValue().add(point.getX());
-            pos.getValue().add(point.getY());
-            pointType.setPos(pos);
-        }
+        // setting direct position
+        pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         //setting srsName
         pointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
@@ -476,19 +437,8 @@ public class GisHelper {
         // setting id
         elevatedPointType.setXmlId(value.getId());
 
-        //attributes extraction
-        Point point = value.getPoint();
-
-        // setting point
-        if (point == null) {
-            return elevatedPointType;
-        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
-            return elevatedPointType;
-        } else {
-            pos.getValue().add(point.getX());
-            pos.getValue().add(point.getY());
-            elevatedPointType.setPos(pos);
-        } 
+        // setting direct position
+        elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         // setting srsName
         elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
@@ -543,19 +493,8 @@ public class GisHelper {
         // setting id
         elevatedPointType.setXmlId(value.getId());
 
-        //attributes extraction
-        Point point = value.getPoint();
-
-        // setting point
-        if (point == null) {
-            return elevatedPointType;
-        } else if (point.getX() == Double.NaN || point.getY() == Double.NaN) {
-            return elevatedPointType;
-        } else {
-            pos.getValue().add(point.getX());
-            pos.getValue().add(point.getY());
-            elevatedPointType.setPos(pos);
-        } 
+        // setting direct position
+        elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         // setting srsName
         elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
@@ -625,7 +564,6 @@ public class GisHelper {
 
     public static com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType printAIXMCurve(AixmCurveType value, com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType curveType) {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
-
         //output object
         if (value == null) {
             return curveType;
@@ -634,7 +572,17 @@ public class GisHelper {
         //setting id
         curveType.setXmlId(value.getId());
 
+        //setting segments
+        curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
 
+        //setting horizontal accuracy
+        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        curveType.setHorizontalAccuracy(valDistance);
+
+        ConsoleLogger.log(LogLevel.DEBUG, "CurveType : " + curveType.toString(), new Exception().getStackTrace()[0]);
         return curveType;
     }
 
@@ -648,6 +596,17 @@ public class GisHelper {
         //setting id
         curveType.setXmlId(value.getId());
 
+        //setting segments
+        curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
+
+        //setting horizontal accuracy
+        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        curveType.setHorizontalAccuracy(valDistance);
+
+        ConsoleLogger.log(LogLevel.DEBUG, "CurveType : " + curveType.toString(), new Exception().getStackTrace()[0]);
         return curveType;
     }
 
@@ -691,6 +650,44 @@ public class GisHelper {
         //setting id
         elevatedCurve.setXmlId(value.getId());
 
+        //setting segments
+        elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
+
+        //setting horizontal accuracy
+        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        elevatedCurve.setHorizontalAccuracy(valDistance);
+
+        // setting vertical accuracy
+        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType();
+        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setUom(value.getElevation_uom());
+        valDistanceVertical.setNilReason(value.getElevation_nilReason());
+        elevatedCurve.setElevation(valDistanceVertical);
+
+        // setting geoid undulation
+        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType valDistanceSigned = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType();
+        valDistanceSigned.setValue(value.getGeoidUndulation());
+        valDistanceSigned.setUom(value.getGeoidUndulation_uom());
+        valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
+        elevatedCurve.setGeoidUndulation(valDistanceSigned);
+
+        // setting vertical datum
+        com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType codeVerticalDatum = new com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType();
+        codeVerticalDatum.setValue(value.getVerticalDatum());
+        codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
+        elevatedCurve.setVerticalDatum(codeVerticalDatum);
+
+        // setting vertical accuracy
+        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistanceVerticalAccuracy = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
+        valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
+        valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
+        valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
+        elevatedCurve.setVerticalAccuracy(valDistanceVerticalAccuracy);
+
+        ConsoleLogger.log(LogLevel.DEBUG, "CurveType : " + elevatedCurve.toString(), new Exception().getStackTrace()[0]);
         return elevatedCurve;
     }
 
@@ -704,6 +701,44 @@ public class GisHelper {
         //setting id
         elevatedCurve.setXmlId(value.getId());
 
+        //setting segments
+        elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
+
+        //setting horizontal accuracy
+        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
+        valDistance.setValue(value.getHorizontalAccuracy());
+        valDistance.setUom(value.getHorizontalAccuracy_uom());
+        valDistance.setNilReason(value.getHorizontalAccuracy_nilReason());
+        elevatedCurve.setHorizontalAccuracy(valDistance);
+
+        // setting vertical accuracy
+        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType();
+        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setUom(value.getElevation_uom());
+        valDistanceVertical.setNilReason(value.getElevation_nilReason());
+        elevatedCurve.setElevation(valDistanceVertical);
+
+        // setting geoid undulation
+        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType valDistanceSigned = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType();
+        valDistanceSigned.setValue(value.getGeoidUndulation());
+        valDistanceSigned.setUom(value.getGeoidUndulation_uom());
+        valDistanceSigned.setNilReason(value.getGeoidUndulation_nilReason());
+        elevatedCurve.setGeoidUndulation(valDistanceSigned);
+
+        // setting vertical datum
+        com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType codeVerticalDatum = new com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType();
+        codeVerticalDatum.setValue(value.getVerticalDatum());
+        codeVerticalDatum.setNilReason(value.getVerticalDatum_nilReason());
+        elevatedCurve.setVerticalDatum(codeVerticalDatum);
+
+        // setting vertical accuracy
+        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistanceVerticalAccuracy = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
+        valDistanceVerticalAccuracy.setValue(value.getVerticalAccuracy());
+        valDistanceVerticalAccuracy.setUom(value.getVerticalAccuracy_uom());
+        valDistanceVerticalAccuracy.setNilReason(value.getVerticalAccuracy_nilReason());
+        elevatedCurve.setVerticalAccuracy(valDistanceVerticalAccuracy);
+
+        ConsoleLogger.log(LogLevel.DEBUG, "CurveType : " + elevatedCurve.toString(), new Exception().getStackTrace()[0]);
         return elevatedCurve;
     }
 

@@ -2,11 +2,15 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.Arrays;
 
+import org.hibernate.boot.jaxb.mapping.JaxbHbmFilter.JaxbAliases;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
-import org.locationtech.jts.geom.Point;     
+import org.locationtech.jts.geom.Point;
+import javax.xml.namespace.QName;
 
 import jakarta.xml.bind.JAXBElement;
 
@@ -153,8 +157,36 @@ public class CurveGmlHelper {
         return segment;
     }
 
-    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (){
+    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (List<LinestringSegment> value){
+        ConsoleLogger.log(LogLevel.DEBUG, "start printCurveSegmentArrayPropertyType : " + value.toString(), new Exception().getStackTrace()[0]);
+        CurveSegmentArrayPropertyType curveSegment = new CurveSegmentArrayPropertyType();
+        value.sort(Comparator.comparingLong(LinestringSegment::getSequence));
+        for (LinestringSegment segment : value) {
+            if (segment.getInterpretation() == LinestringSegment.Interpretation.ARCBYCENTER) {
+                ArcByCenterPointType arcByCenterPoint = printArcByCenterPoint(segment);
+                JAXBElement<ArcByCenterPointType> arcByCenterPointElement = new JAXBElement<ArcByCenterPointType>(new QName("http://www.opengis.net/gml/3.2", "ArcByCenterPoint"), ArcByCenterPointType.class, arcByCenterPoint);
+                curveSegment.getAbstractCurveSegment().add(arcByCenterPointElement);
 
+            } else if (segment.getInterpretation() == LinestringSegment.Interpretation.GEODESIC) {
+                GeodesicStringType geodesicString = printGeodesicString(segment);
+                JAXBElement<GeodesicStringType> geodesicStringElement = new JAXBElement<GeodesicStringType>(new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), GeodesicStringType.class, geodesicString);
+                curveSegment.getAbstractCurveSegment().add(geodesicStringElement);
+
+            } else if (segment.getInterpretation() == LinestringSegment.Interpretation.LINESTRING) {
+                LineStringSegmentType lineStringSegment = printLineStringSegment(segment);
+                JAXBElement<LineStringSegmentType> lineStringSegmentElement = new JAXBElement<LineStringSegmentType>(new QName("http://www.opengis.net/gml/3.2", "LineStringSegment"), LineStringSegmentType.class, lineStringSegment);
+                curveSegment.getAbstractCurveSegment().add(lineStringSegmentElement);
+
+            } else if (segment.getInterpretation() == LinestringSegment.Interpretation.CIRCLEBYCENTER) {
+                CircleByCenterPointType circleByCenterPoint = printCircleByCenterPoint(segment);
+                JAXBElement<CircleByCenterPointType> circleByCenterPointElement = new JAXBElement<CircleByCenterPointType>(new QName("http://www.opengis.net/gml/3.2", "CircleByCenterPoint"), CircleByCenterPointType.class, circleByCenterPoint);
+                curveSegment.getAbstractCurveSegment().add(circleByCenterPointElement);
+
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Interpretation is not supported", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Interpretation is not supported");
+            }
+        }
         return new CurveSegmentArrayPropertyType();
     }
 
@@ -193,8 +225,8 @@ public class CurveGmlHelper {
         }
 
         Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
-        Double startAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(startAngle.getValue(), startAngle.getUom(), actualSrsName);
-        Double endAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(endAngle.getValue(), endAngle.getUom(), actualSrsName);
+        Double startAngle_rad = UnitTransformHelper.convertAngleToBearing(startAngle.getValue(), startAngle.getUom(),"rad", actualSrsName);
+        Double endAngle_rad = UnitTransformHelper.convertAngleToBearing(endAngle.getValue(), endAngle.getUom(), "rad", actualSrsName);
 
         ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m + " first bearing[rad]: " + startAngle_rad + " second bearing[rad]: " + endAngle_rad);
 
@@ -212,17 +244,41 @@ public class CurveGmlHelper {
 
 
 
-    public static ArcByCenterPointType printArcByCenterPoint (LineString value) {
-        return new ArcByCenterPointType();
-    }
+    public static ArcByCenterPointType printArcByCenterPoint (LinestringSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        ArcByCenterPointType arcByCenterPoint = new ArcByCenterPointType();
 
-    //TODO: to implement
-    public static List<Coordinate> parseArc(ArcType value) {
-        return new ArrayList<Coordinate>();
-    }
+        Point point = value.getPoint();
+        Coordinate center = point.getCoordinate();
+        int srs = point.getSRID();
+        Double radius = value.getRadius();
+        Double startAngle = value.getStartAngle();
+        Double endAngle = value.getEndAngle();
+        
+        // setting direct position
+        DirectPositionType directPosition = PointGmlHelper.printCoordinateToDirectPosition(center);
+        directPosition.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        arcByCenterPoint.setPos(directPosition);
 
-    public static ArcType printArc (LineString value) {
-        return new ArcType();
+        // setting radius
+        LengthType lengthType = new LengthType();
+        lengthType.setValue(radius);
+        lengthType.setUom("m");
+        arcByCenterPoint.setRadius(lengthType);
+
+        // setting start angle
+        AngleType angleType = new AngleType();
+        angleType.setValue(UnitTransformHelper.convertAngle(startAngle, "rad", "deg"));
+        angleType.setUom("deg");
+        arcByCenterPoint.setStartAngle(angleType);
+
+        // setting end angle
+        AngleType angleType2 = new AngleType();
+        angleType2.setValue(UnitTransformHelper.convertAngle(endAngle, "rad", "deg"));
+        angleType2.setUom("deg");
+        arcByCenterPoint.setEndAngle(angleType2);
+
+        return arcByCenterPoint;
     }
 
     public static LinestringSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter) {
@@ -271,17 +327,27 @@ public class CurveGmlHelper {
         return linestringSegment;
     }  
 
-    public static CircleByCenterPointType printCircleByCenterPoint (LineString value) {
-        return new CircleByCenterPointType();
-    }
+    public static CircleByCenterPointType printCircleByCenterPoint (LinestringSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        CircleByCenterPointType circleByCenterPoint = new CircleByCenterPointType();
 
-    //TODO: to implement
-    public static List<Coordinate> parseCircle(CircleType value) {
-        return new ArrayList<Coordinate>();
-    }
+        Point point = value.getPoint();
+        Coordinate center = point.getCoordinate();
+        int srs = point.getSRID();
+        Double radius = value.getRadius();
+        
+        // setting direct position
+        DirectPositionType directPosition = PointGmlHelper.printCoordinateToDirectPosition(center);
+        directPosition.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        circleByCenterPoint.setPos(directPosition);
 
-    public static CircleType printCircle (LineString value) {
-        return new CircleType();
+        // setting radius
+        LengthType lengthType = new LengthType();
+        lengthType.setValue(radius);
+        lengthType.setUom("m");
+        circleByCenterPoint.setRadius(lengthType);
+
+        return circleByCenterPoint;
     }
 
     public static LinestringSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter) {
@@ -300,13 +366,19 @@ public class CurveGmlHelper {
         throw new RuntimeException("DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName());
     }
 
-    public static GeodesicStringType printGeodesicString (List<Coordinate> value) {
+    public static GeodesicStringType printGeodesicString (LinestringSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
         GeodesicStringType geodesicString = new GeodesicStringType();
-        if (value == null) {
-            throw new IllegalArgumentException("Coordinate values cannot be null" + value.getClass().getName());
-        }
-        DirectPositionListType posList = printDirectPositionList(value);
+
+        LineString line = value.getLinestring();
+        int srs = line.getSRID();
+        Coordinate[] coordinates = line.getCoordinates();
+
+        // setting direct position list
+        DirectPositionListType posList = printDirectPositionList(Arrays.asList(coordinates));
+        posList.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
         geodesicString.setPosList(posList);
+
         return geodesicString;
     }
 
@@ -329,9 +401,20 @@ public class CurveGmlHelper {
         throw new RuntimeException("DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName());
     }
 
-    public static LineStringSegmentType printLineStringSegment (LineString value) {
+    public static LineStringSegmentType printLineStringSegment (LinestringSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        LineStringSegmentType lineStringSegment = new LineStringSegmentType();
 
-        return new LineStringSegmentType();
+        LineString line = value.getLinestring();
+        int srs = line.getSRID();
+        Coordinate[] coordinates = line.getCoordinates();
+
+        // setting direct position list
+        DirectPositionListType posList = printDirectPositionList(Arrays.asList(coordinates));
+        posList.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        lineStringSegment.setPosList(posList);
+
+        return lineStringSegment;
     }
 
     public static LinestringSegment parseDirectPositionList (DirectPositionListType value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
@@ -374,7 +457,7 @@ public class CurveGmlHelper {
     }
 
     public static DirectPositionListType printDirectPositionList (List<Coordinate> value) {
-        ConsoleLogger.log(LogLevel.DEBUG, "start printDirectPositionList : " + value.toString(), new Exception().getStackTrace()[0]);
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
 
         DirectPositionListType posList = new DirectPositionListType();
         for (Coordinate coordinate : value) {

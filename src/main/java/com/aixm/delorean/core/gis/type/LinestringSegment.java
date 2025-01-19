@@ -27,7 +27,7 @@ public class LinestringSegment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "linestring_segment_seq")
     @SequenceGenerator(name = "linestring_segment_seq", sequenceName = "linestring_segment_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
-    protected Long dbid;
+    protected long dbid;
 
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString lineString;

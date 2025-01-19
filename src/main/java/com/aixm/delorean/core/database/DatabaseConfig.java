@@ -14,8 +14,8 @@ public enum DatabaseConfig {
         5,                         // Connection pool min size
         20,                        // Connection pool max size
         false,                                   // Hibernate show_sql
-        "create",                           // Hibernate hbm2ddl.auto
-        "",                                 // Hibernate path
+        "update",                            // Hibernate hbm2ddl.auto
+        "postgres/init/schema.sql", // Hibernate path
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -811,8 +811,8 @@ public enum DatabaseConfig {
         5,                         // Connection pool min size
         20,                        // Connection pool max size
         false,                                   // Hibernate show_sql
-        "create",                            // Hibernate hbm2ddl.auto
-        "resources/postgres/init/schema.sql", // Hibernate schemapath
+        "update",                            // Hibernate hbm2ddl.auto
+        "postgres/init/schema.sql", // Hibernate schemapath
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
