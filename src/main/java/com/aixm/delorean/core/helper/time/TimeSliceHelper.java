@@ -1,6 +1,8 @@
 package com.aixm.delorean.core.helper.time;
 
 import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimeGeometricPrimitiveType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimePrimitiveType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractTimeTopologyPrimitiveType;
@@ -143,10 +145,16 @@ public class TimeSliceHelper {
     }
 
     public static TimePeriodType printTimePeriodType (AixmTimeSliceType v){
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + v, new Exception().getStackTrace()[0]);
         TimePeriodType timePeriod = new TimePeriodType();
         TimePositionType beginPosition = new TimePositionType();
         TimePositionType endPosition = new TimePositionType();
 
+        if (v == null) {
+            // ConsoleLogger.log(LogLevel.FATAL, "value can't be null : " + v, new Exception().getStackTrace()[0]);
+            // throw new IllegalArgumentException("value can't be null");
+            return null;
+        }
         
         if (v.getBeginPosition() == null) {
             beginPosition.setIndeterminatePosition(TimeIndeterminateValueType.UNKNOWN);

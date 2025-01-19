@@ -9,7 +9,7 @@ public enum XMLConfig {
 
     AIXM_5_1_1(
         "a5_1_1", 
-        "src/main/resources/a5_1_1/AIXM_BasicMessage.xsd"
+        "src/main/resources/a5_1_1/aixm-5.1.1/message/AIXM_BasicMessage.xsd"
     ),
     AIXM_5_1(
         "a5_1", 

@@ -74,6 +74,23 @@ public class PointGmlHelper {
         }
     }
 
+    public static DirectPositionType printDirectPosition (Point value){
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
+        DirectPositionType pos = new DirectPositionType();
+        if (value == null) {
+            return pos;
+
+        } else if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
+            return pos;
+
+        } else {
+            pos.getValue().add(value.getX());
+            pos.getValue().add(value.getY());
+        }
+        
+        return pos;
+    }
+
     public static Coordinate parseDirectPositionToCoordinate (DirectPositionType value){
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         if (value == null) {
@@ -109,5 +126,22 @@ public class PointGmlHelper {
             ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is not 2 or 3", new Exception());
             throw new RuntimeException("DirectPositionType is null");
         }
+    }
+
+    public static DirectPositionType printCoordinateToDirectPosition (Coordinate value){
+        ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
+        DirectPositionType pos = new DirectPositionType();
+        if (value == null) {
+            return pos;
+
+        } else if (value.getX() == Double.NaN || value.getY() == Double.NaN) {
+            return pos;
+
+        } else {
+            pos.getValue().add(value.getX());
+            pos.getValue().add(value.getY());
+        }
+
+        return pos;
     }
 }

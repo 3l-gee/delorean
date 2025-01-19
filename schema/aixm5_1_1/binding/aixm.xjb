@@ -11455,7 +11455,7 @@
     <jaxb:bindings node="//xs:group[@name='AirportHeliportAvailabilityPropertyGroup']//xs:element[@name='usage']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportheliportavailability_pg_usage_", joinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportusage_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportheliportavailability_pg_usage", joinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportusage_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportCollocationPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -11705,7 +11705,7 @@
     <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -11795,7 +11795,7 @@
     <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='apronLocation']">
       <jaxb:property generateElementProperty="false"/>
@@ -11870,7 +11870,7 @@
     <jaxb:bindings node="//xs:group[@name='ApronAreaAvailabilityPropertyGroup']//xs:element[@name='usage']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apronareaavailability_pg_usage_", joinColumns = @jakarta.persistence.JoinColumn(name = "apronareaavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apronareausage_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apronareaavailability_pg_usage", joinColumns = @jakarta.persistence.JoinColumn(name = "apronareaavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apronareausage_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ApronElementPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -12175,7 +12175,7 @@
     <jaxb:bindings node="//xs:group[@name='GroundLightSystemPropertyGroup']//xs:element[@name='element']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "groundlightsystem_pg_element_", joinColumns = @jakarta.persistence.JoinColumn(name = "groundlightsystem_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "lightelement_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "groundlightsystem_pg_element", joinColumns = @jakarta.persistence.JoinColumn(name = "groundlightsystem_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "lightelement_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='GroundLightSystemPropertyGroup']//xs:element[@name='availability']">
       <jaxb:property generateElementProperty="false"/>
@@ -12305,7 +12305,7 @@
     <jaxb:bindings node="//xs:group[@name='MarkingPropertyGroup']//xs:element[@name='element']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "marking_pg_element_", joinColumns = @jakarta.persistence.JoinColumn(name = "marking_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "markingelement_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "marking_pg_element", joinColumns = @jakarta.persistence.JoinColumn(name = "marking_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "markingelement_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='MarkingPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -12465,7 +12465,7 @@
     <jaxb:bindings node="//xs:group[@name='ManoeuvringAreaAvailabilityPropertyGroup']//xs:element[@name='usage']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "manoeuvringareaavailability_pg_usage_", joinColumns = @jakarta.persistence.JoinColumn(name = "manoeuvringareaavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "manoeuvringareausage_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "manoeuvringareaavailability_pg_usage", joinColumns = @jakarta.persistence.JoinColumn(name = "manoeuvringareaavailability_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "manoeuvringareausage_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ManoeuvringAreaUsagePropertyGroup']//xs:element[@name='operation']">
       <jaxb:property generateElementProperty="false"/>
@@ -12620,7 +12620,7 @@
     <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='onRunway']">
       <jaxb:property generateElementProperty="false"/>
@@ -12820,7 +12820,7 @@
     <jaxb:bindings node="//xs:group[@name='RunwayVisualRangePropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RunwayVisualRangePropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -12895,7 +12895,7 @@
     <jaxb:bindings node="//xs:group[@name='MarkingBuoyPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='MarkingBuoyPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -13180,7 +13180,7 @@
     <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='TaxiHoldingPositionPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -13325,7 +13325,7 @@
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='class']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspace_pg_class_", joinColumns = @jakarta.persistence.JoinColumn(name = "airspace_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airspacelayerclass_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspace_pg_class", joinColumns = @jakarta.persistence.JoinColumn(name = "airspace_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airspacelayerclass_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='protectedRoute']">
       <jaxb:property generateElementProperty="false"/>
@@ -13365,7 +13365,7 @@
     <jaxb:bindings node="//xs:group[@name='AirspaceActivationPropertyGroup']//xs:element[@name='user']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspaceactivation_pg_user_", joinColumns = @jakarta.persistence.JoinColumn(name = "airspaceactivation_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "organisationauthority_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspaceactivation_pg_user", joinColumns = @jakarta.persistence.JoinColumn(name = "airspaceactivation_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "organisationauthority_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirspaceActivationPropertyGroup']//xs:element[@name='aircraft']">
       <jaxb:property generateElementProperty="false"/>
@@ -14040,7 +14040,7 @@
     <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='runwayDirection']">
       <jaxb:property generateElementProperty="false"/>
@@ -14130,7 +14130,7 @@
     <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='authority']">
       <jaxb:property generateElementProperty="false"/>
@@ -14210,7 +14210,7 @@
     <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='position']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavigationSystemCheckpointPropertyGroup']//xs:element[@name='airportHeliport']">
       <jaxb:property generateElementProperty="false"/>
@@ -14285,7 +14285,7 @@
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='position']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='availability']">
       <jaxb:property generateElementProperty="false"/>
@@ -14660,7 +14660,7 @@
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='aimingPoint']">
       <jaxb:property generateElementProperty="false"/>
@@ -14765,7 +14765,7 @@
     <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -15095,7 +15095,7 @@
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='position']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="position_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='airportLocation']">
       <jaxb:property generateElementProperty="false"/>
@@ -15580,7 +15580,7 @@
     <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='condition']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "circlingarea_pg_condition_", joinColumns = @jakarta.persistence.JoinColumn(name = "circlingarea_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "circlingarea_pg_condition", joinColumns = @jakarta.persistence.JoinColumn(name = "circlingarea_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='CirclingAreaPropertyGroup']//xs:element[@name='aircraftCategory']">
       <jaxb:property generateElementProperty="false"/>
@@ -15940,7 +15940,7 @@
     <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "safealtitudearea_pg_location_", joinColumns = @jakarta.persistence.JoinColumn(name = "safealtitudearea_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliport_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "safealtitudearea_pg_location", joinColumns = @jakarta.persistence.JoinColumn(name = "safealtitudearea_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliport_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SafeAltitudeAreaPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -16010,7 +16010,7 @@
     <jaxb:bindings node="//xs:group[@name='DepartureLegPropertyGroup']//xs:element[@name='condition']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "departureleg_pg_condition_", joinColumns = @jakarta.persistence.JoinColumn(name = "departureleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "departurearrivalcondition_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "departureleg_pg_condition", joinColumns = @jakarta.persistence.JoinColumn(name = "departureleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "departurearrivalcondition_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='guidanceSystem']">
       <jaxb:property generateElementProperty="false"/>
@@ -16060,7 +16060,7 @@
     <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='condition']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "finalleg_pg_condition_", joinColumns = @jakarta.persistence.JoinColumn(name = "finalleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "finalleg_pg_condition", joinColumns = @jakarta.persistence.JoinColumn(name = "finalleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='FinalLegPropertyGroup']//xs:element[@name='finalPathAlignmentPoint_fixDesignatedPoint']">
       <jaxb:property generateElementProperty="false"/>
@@ -16180,7 +16180,7 @@
     <jaxb:bindings node="//xs:group[@name='MissedApproachLegPropertyGroup']//xs:element[@name='condition']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "missedapproachleg_pg_condition_", joinColumns = @jakarta.persistence.JoinColumn(name = "missedapproachleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "missedapproachleg_pg_condition", joinColumns = @jakarta.persistence.JoinColumn(name = "missedapproachleg_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachcondition_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -16190,7 +16190,7 @@
     <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='procedure']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "navigationarearestriction_pg_procedure_", joinColumns = @jakarta.persistence.JoinColumn(name = "navigationarearestriction_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "procedure_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "navigationarearestriction_pg_procedure", joinColumns = @jakarta.persistence.JoinColumn(name = "navigationarearestriction_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "procedure_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavigationAreaRestrictionPropertyGroup']//xs:element[@name='designSurface']">
       <jaxb:property generateElementProperty="false"/>
@@ -16910,7 +16910,7 @@
     <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='start']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="start__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="start_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='routeFormed']">
       <jaxb:property generateElementProperty="false"/>
@@ -16930,7 +16930,7 @@
     <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='end']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="end__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="end_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RouteSegmentPropertyGroup']//xs:element[@name='availability']">
       <jaxb:property generateElementProperty="false"/>
@@ -17050,7 +17050,7 @@
     <jaxb:bindings node="//xs:group[@name='FlightConditionCombinationPropertyGroup']//xs:element[@name='element']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "flightconditioncombination_pg_element_", joinColumns = @jakarta.persistence.JoinColumn(name = "flightconditioncombination_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "flightconditionelement_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "flightconditioncombination_pg_element", joinColumns = @jakarta.persistence.JoinColumn(name = "flightconditioncombination_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "flightconditionelement_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='FlightConditionElementPropertyGroup']//xs:element[@name='index']">
       <jaxb:property generateElementProperty="false"/>
@@ -17693,7 +17693,7 @@
     <jaxb:bindings node="//xs:group[@name='RadioCommunicationChannelPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "radiocommunicationchannel_pg_location_", joinColumns = @jakarta.persistence.JoinColumn(name = "radiocommunicationchannel_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "elevatedpoint_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "radiocommunicationchannel_pg_location", joinColumns = @jakarta.persistence.JoinColumn(name = "radiocommunicationchannel_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "elevatedpoint_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadioCommunicationChannelPropertyGroup']//xs:element[@name='availability']">
       <jaxb:property generateElementProperty="false"/>
@@ -17748,7 +17748,7 @@
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='serviceProvider']">
       <jaxb:property generateElementProperty="false"/>
@@ -18148,7 +18148,7 @@
     <jaxb:bindings node="//xs:group[@name='LightElementPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='LightElementPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -18403,7 +18403,7 @@
     <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='level']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardlevelcolumn_pg_level_", joinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelcolumn_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardlevel_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardlevelcolumn_pg_level", joinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelcolumn_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardlevel_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='StandardLevelColumnPropertyGroup']//xs:element[@name='levelTable']">
       <jaxb:property generateElementProperty="false"/>
@@ -18818,7 +18818,7 @@
     <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -18868,7 +18868,7 @@
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location__id", referencedColumnName="id")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="location_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>

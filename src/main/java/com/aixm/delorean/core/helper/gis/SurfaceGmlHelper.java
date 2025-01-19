@@ -247,16 +247,7 @@ public class SurfaceGmlHelper {
     }
     
     public static RingType printRingType(List<Coordinate> value){
-
         RingType ringType = new RingType();
-        CurveType curveType = new CurveType();
-        CurveSegmentArrayPropertyType segments = new CurveSegmentArrayPropertyType();
-        GeodesicStringType geodesicString = CurveGmlHelper.printGeodesicString(value);
-        segments.getAbstractCurveSegment().add(new JAXBElement<GeodesicStringType>(new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), GeodesicStringType.class, geodesicString));
-        curveType.setSegments(segments);
-        CurvePropertyType curvePropertyType = new CurvePropertyType();
-        curvePropertyType.setAbstractCurve(new JAXBElement<CurveType>(new QName("http://www.opengis.net/gml/3.2", "CurveType"), CurveType.class, curveType));
-        ringType.getCurveMember().add(curvePropertyType);
         return ringType;
     }
 
@@ -443,8 +434,8 @@ public class SurfaceGmlHelper {
         }
 
         Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
-        Double startAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(startAngle.getValue(), startAngle.getUom(), actualSrsName);
-        Double endAngle_rad = UnitTransformHelper.convertAngleToBearingInRadians(endAngle.getValue(), endAngle.getUom(), actualSrsName);
+        Double startAngle_rad = UnitTransformHelper.convertAngleToBearing(startAngle.getValue(), startAngle.getUom(), "rad", actualSrsName);
+        Double endAngle_rad = UnitTransformHelper.convertAngleToBearing(endAngle.getValue(), endAngle.getUom(), "rad", actualSrsName);
 
         ConsoleLogger.log(LogLevel.DEBUG, "radius[m]: " + radius_m + " first bearing[rad]: " + startAngle_rad + " second bearing[rad]: " + endAngle_rad);
 

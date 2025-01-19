@@ -35,27 +35,27 @@ public class UnitTransformHelper {
         }
     }
 
-    public static Double convertAngleToRadians(Double value, String unit) {
-        if (ANGLE_UNIT_CONVERSION.containsKey(unit)) {
-            return value * ANGLE_UNIT_CONVERSION.get(unit);
+    public static Double convertAngle (Double value, String source, String target) {
+        if (ANGLE_UNIT_CONVERSION.containsKey(source) && ANGLE_UNIT_CONVERSION.containsKey(target)) {
+            return value * ANGLE_UNIT_CONVERSION.get(source) / ANGLE_UNIT_CONVERSION.get(target);
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + unit, new Exception().getStackTrace()[0]);
-            throw new RuntimeException("Unsupported angle unit: " + unit);
+            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + source + " or " + target, new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unsupported angle unit: " + source + " or " + target);
         }
     }
 
-    public static Double convertAngleToBearingInRadians(Double angle, String unit, String srs) {
-        if (ANGLE_UNIT_CONVERSION.containsKey(unit)) {
+    public static Double convertAngleToBearing(Double value, String source, String target, String srs) {
+        if (ANGLE_UNIT_CONVERSION.containsKey(source) && ANGLE_UNIT_CONVERSION.containsKey(target)) {
             if (srs.equals("urn:ogc:def:crs:OGC:1.3:CRS84")) {
-                return 2 * Math.PI - (angle * ANGLE_UNIT_CONVERSION.get(unit)) + Math.PI / 2;
+                return (2 * Math.PI - (value * ANGLE_UNIT_CONVERSION.get(source)) + Math.PI / 2) / ANGLE_UNIT_CONVERSION.get(target);
             } else if (srs.equals("urn:ogc:def:crs:EPSG::4326")) {
-                return angle * ANGLE_UNIT_CONVERSION.get(unit);
+                return value * ANGLE_UNIT_CONVERSION.get(source) / ANGLE_UNIT_CONVERSION.get(target);
             } else {
-                return angle * ANGLE_UNIT_CONVERSION.get(unit);
+                return value * ANGLE_UNIT_CONVERSION.get(source) / ANGLE_UNIT_CONVERSION.get(target);
             }
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + unit, new Exception().getStackTrace()[0]);
-            throw new RuntimeException("Unknown angle unit: " + unit);
+            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + source + " or " + target, new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Unknown angle unit: " + source + " or " + target);
         }
     }
 }
