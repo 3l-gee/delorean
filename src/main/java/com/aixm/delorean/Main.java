@@ -52,7 +52,15 @@ public class Main {
     private void run() {
         Scanner scanner = new Scanner(System.in);
         String command;
-        ConsoleLogger.log(LogLevel.INFO, "Delorean 1.0.0- alpha");
+
+        System.out.println("██████╗ ███████╗██╗      ██████╗ ██████╗ ███████╗ █████╗ ███╗   ██╗");
+        System.out.println("██╔══██╗██╔════╝██║     ██╔═══██╗██╔══██╗██╔════╝██╔══██╗████╗  ██║");
+        System.out.println("██║  ██║█████╗  ██║     ██║   ██║██████╔╝█████╗  ███████║██╔██╗ ██║");
+        System.out.println("██║  ██║██╔══╝  ██║     ██║   ██║██╔══██╗██╔══╝  ██╔══██║██║╚██╗██║");
+        System.out.println("██████╔╝███████╗███████╗╚██████╔╝██║  ██║███████╗██║  ██║██║ ╚████║");
+        System.out.println("╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝");
+        System.out.println("Author : Raphaël Gerth");
+        ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0 - alpha");
 
         while (true) {
             System.out.print("> ");

@@ -4,6 +4,29 @@ public class ConsoleLogger implements Logger {
     private static ConsoleLogger instance;
     private LogLevel currentLevel;
 
+    // Define ANSI color codes
+    private static final String RESET = "\u001B[0m";
+    private static final String RED = "\u001B[31m";
+    private static final String YELLOW = "\u001B[33m";
+    private static final String GREEN = "\u001B[32m";
+    private static final String CYAN = "\u001B[36m";
+
+    // Method to get the color based on the log level
+    private String getColor(LogLevel level) {
+        switch (level) {
+            case ERROR:
+                return RED;
+            case WARN:
+                return YELLOW;
+            case INFO:
+                return GREEN;
+            case DEBUG:
+                return CYAN;
+            default:
+                return RESET;
+        }
+    }
+
     // Private constructor to prevent external instantiation
     private ConsoleLogger(LogLevel level) {
         this.currentLevel = level;
@@ -67,13 +90,15 @@ public class ConsoleLogger implements Logger {
 
     // Method to format the log message
     private String formatMessage(LogLevel level, String message) {
-        return String.format("[%s] %s", level, message);
+        String color = getColor(level);
+        return String.format("%s[%s]%s %s", color, level, RESET, message);
     }
 
-        // Method to format the log message
-        private String formatMessage(LogLevel level, String message, StackTraceElement element) {
-            return String.format("[%s] %s : %s", level, element,  message);
-        }
+    // Method to format the log message
+    private String formatMessage(LogLevel level, String message, StackTraceElement element) {
+        String color = getColor(level);
+        return String.format("%s[%s]%s %s : %s", color, level, RESET, element, message);
+    }
 
     // Set the log level dynamically if needed
     private void setLevel(LogLevel level) {
