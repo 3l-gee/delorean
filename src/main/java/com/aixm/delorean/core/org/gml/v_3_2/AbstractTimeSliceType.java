@@ -10,6 +10,9 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 import com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter;
 import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMTimeSliceBaseType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
@@ -58,6 +61,10 @@ public abstract class AbstractTimeSliceType
     @XmlElement(name = "validTime", required = true, type = TimePrimitivePropertyType.class)
     @XmlJavaTypeAdapter(TimePrimitivePropertyTypeAdapter.class)
     @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "beginPosition", column = @Column(name = "valid_time_begin")),
+        @AttributeOverride(name = "endPosition", column = @Column(name = "valid_time_end"))
+    })
     protected AixmTimeSliceType validTime;
     @Transient
     protected StringOrRefType dataSource;

@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "navigationarea", schema = "departure")
+@Table(name = "navigationarea", schema = "procedure")
 public class NavigationAreaType
     extends AbstractAIXMFeatureType
 {

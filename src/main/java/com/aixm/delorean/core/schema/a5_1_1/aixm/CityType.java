@@ -83,8 +83,8 @@ public class CityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "city_pg_annotation", joinColumns = {
-        @JoinColumn(name = "city_pg_id")
+    @JoinTable(name = "city_annotation", joinColumns = {
+        @JoinColumn(name = "city_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

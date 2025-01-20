@@ -43,7 +43,7 @@ public class CodeMilitaryTrainingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemilitarytraining_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemilitarytrainingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

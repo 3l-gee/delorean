@@ -43,7 +43,7 @@ public class TimeType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "time_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "timetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

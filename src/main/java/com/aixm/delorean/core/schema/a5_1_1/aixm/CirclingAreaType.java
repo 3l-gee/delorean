@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "circlingarea", schema = "circling")
+@Table(name = "circlingarea", schema = "public")
 public class CirclingAreaType
     extends AbstractAIXMFeatureType
 {

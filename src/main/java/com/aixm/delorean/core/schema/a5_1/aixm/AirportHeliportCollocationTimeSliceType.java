@@ -97,8 +97,8 @@ public class AirportHeliportCollocationTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportcollocation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliportcollocation_pg_id")
+    @JoinTable(name = "airportheliportcollocation_ts_annotation", joinColumns = {
+        @JoinColumn(name = "airportheliportcollocation_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

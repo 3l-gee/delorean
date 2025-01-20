@@ -43,7 +43,7 @@ public class CodeMinimaFinalApproachPathType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeminimafinalapproachpath_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeminimafinalapproachpathtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

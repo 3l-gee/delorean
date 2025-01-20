@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "designatedpoint_pt", schema = "points")
+@Table(name = "designatedpoint_pt", schema = "navaids_points")
 public class DesignatedPointPropertyType {
 
     @Id

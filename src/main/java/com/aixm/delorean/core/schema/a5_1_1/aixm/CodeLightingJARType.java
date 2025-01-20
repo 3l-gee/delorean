@@ -43,7 +43,7 @@ public class CodeLightingJARType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codelightingjar_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codelightingjartype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidcomponent", schema = "navaids")
+@Table(name = "navaidcomponent", schema = "navaids_points")
 public class NavaidComponentType
     extends AbstractAIXMObjectType
 {
@@ -100,8 +100,8 @@ public class NavaidComponentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaidcomponent_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navaidcomponent_pg_id")
+    @JoinTable(name = "navaidcomponent_annotation", joinColumns = {
+        @JoinColumn(name = "navaidcomponent_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

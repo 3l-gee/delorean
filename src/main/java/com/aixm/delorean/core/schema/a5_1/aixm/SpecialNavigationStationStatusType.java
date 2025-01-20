@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "specialnavigationstationstatus", schema = "navaids")
+@Table(name = "specialnavigationstationstatus", schema = "navaids_points")
 public class SpecialNavigationStationStatusType
     extends AbstractPropertiesWithScheduleType
 {

@@ -43,7 +43,7 @@ public class CodeReferenceRoleType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codereferencerole_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codereferenceroletype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

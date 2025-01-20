@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "localizerTimeSlice"
 })
 @Entity
-@Table(name = "localizer_tsp", schema = "navaids")
+@Table(name = "localizer_tsp", schema = "navaids_points")
 public class LocalizerTimeSlicePropertyType {
 
     @XmlElement(name = "LocalizerTimeSlice", required = true)

@@ -43,7 +43,7 @@ public class CodeEmissionBandType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeemissionband_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeemissionbandtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

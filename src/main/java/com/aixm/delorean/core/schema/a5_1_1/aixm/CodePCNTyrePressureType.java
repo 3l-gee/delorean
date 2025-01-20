@@ -43,7 +43,7 @@ public class CodePCNTyrePressureType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codepcntyrepressure_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codepcntyrepressuretype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

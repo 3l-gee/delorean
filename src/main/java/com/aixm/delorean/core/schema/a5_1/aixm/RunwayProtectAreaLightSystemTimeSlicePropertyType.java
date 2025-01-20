@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "runwayProtectAreaLightSystemTimeSlice"
 })
 @Entity
-@Table(name = "runwayprotectarealightsystem_tsp", schema = "lighting")
+@Table(name = "runwayprotectarealightsystem_tsp", schema = "airport_heliport")
 public class RunwayProtectAreaLightSystemTimeSlicePropertyType {
 
     @XmlElement(name = "RunwayProtectAreaLightSystemTimeSlice", required = true)

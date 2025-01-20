@@ -43,7 +43,7 @@ public class CodeRVRReadingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codervrreading_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codervrreadingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

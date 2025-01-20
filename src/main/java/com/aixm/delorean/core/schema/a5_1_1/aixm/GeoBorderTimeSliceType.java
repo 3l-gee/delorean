@@ -98,8 +98,8 @@ public class GeoBorderTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "geoborder_pg_annotation", joinColumns = {
-        @JoinColumn(name = "geoborder_pg_id")
+    @JoinTable(name = "geoborder_ts_annotation", joinColumns = {
+        @JoinColumn(name = "geoborder_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

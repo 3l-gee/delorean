@@ -43,7 +43,7 @@ public class CodeWakeTurbulenceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codewaketurbulence_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codewaketurbulencetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

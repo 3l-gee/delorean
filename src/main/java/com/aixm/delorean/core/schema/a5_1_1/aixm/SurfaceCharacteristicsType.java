@@ -114,8 +114,8 @@ public class SurfaceCharacteristicsType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pavementpcn_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "pavementpcn_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "pavementtypepcn_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "pavementtypepcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePCNPavementType pavementTypePCN;
     @XmlElement(nillable = true)
@@ -174,8 +174,8 @@ public class SurfaceCharacteristicsType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecharacteristics_pg_annotation", joinColumns = {
-        @JoinColumn(name = "surfacecharacteristics_pg_id")
+    @JoinTable(name = "surfacecharacteristics_annotation", joinColumns = {
+        @JoinColumn(name = "surfacecharacteristics_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

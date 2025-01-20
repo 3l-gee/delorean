@@ -43,7 +43,7 @@ public class CodeReflectorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codereflector_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codereflectortype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

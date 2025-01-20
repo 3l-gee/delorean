@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "circlingAreaTimeSlice"
 })
 @Entity
-@Table(name = "circlingarea_tsp", schema = "circling")
+@Table(name = "circlingarea_tsp", schema = "public")
 public class CirclingAreaTimeSlicePropertyType {
 
     @XmlElement(name = "CirclingAreaTimeSlice", required = true)

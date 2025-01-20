@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "runwaycentrelinepoint_pt", schema = "runway")
+@Table(name = "runwaycentrelinepoint_pt", schema = "airport_heliport")
 public class RunwayCentrelinePointPropertyType {
 
     @Id

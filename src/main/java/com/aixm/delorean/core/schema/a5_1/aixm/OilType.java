@@ -83,8 +83,8 @@ public class OilType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "oil_pg_annotation", joinColumns = {
-        @JoinColumn(name = "oil_pg_id")
+    @JoinTable(name = "oil_annotation", joinColumns = {
+        @JoinColumn(name = "oil_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

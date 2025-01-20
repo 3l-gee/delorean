@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "safealtitudeareasector", schema = "safe_altitude")
+@Table(name = "safealtitudeareasector", schema = "procedure")
 public class SafeAltitudeAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -93,8 +93,8 @@ public class SafeAltitudeAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_pg_significantobstacle", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_pg_id")
+    @JoinTable(name = "safealtitudeareasector_significantobstacle", joinColumns = {
+        @JoinColumn(name = "safealtitudeareasector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstruction_pt_id")
     })
@@ -109,8 +109,8 @@ public class SafeAltitudeAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_pg_id")
+    @JoinTable(name = "safealtitudeareasector_annotation", joinColumns = {
+        @JoinColumn(name = "safealtitudeareasector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

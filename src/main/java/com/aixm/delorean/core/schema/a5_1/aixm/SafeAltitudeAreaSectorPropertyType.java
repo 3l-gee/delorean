@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "safeAltitudeAreaSector"
 })
 @Entity
-@Table(name = "safealtitudeareasector_pt", schema = "safe_altitude")
+@Table(name = "safealtitudeareasector_pt", schema = "procedure")
 public class SafeAltitudeAreaSectorPropertyType
     extends AbstractAIXMPropertyType
 {

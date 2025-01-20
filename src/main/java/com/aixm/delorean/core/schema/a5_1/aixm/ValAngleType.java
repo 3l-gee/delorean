@@ -44,7 +44,7 @@ public class ValAngleType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valangle_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valangletype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

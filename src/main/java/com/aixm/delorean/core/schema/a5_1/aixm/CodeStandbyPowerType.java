@@ -43,7 +43,7 @@ public class CodeStandbyPowerType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codestandbypower_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codestandbypowertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

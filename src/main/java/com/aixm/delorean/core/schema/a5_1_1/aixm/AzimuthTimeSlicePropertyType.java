@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "azimuthTimeSlice"
 })
 @Entity
-@Table(name = "azimuth_tsp", schema = "navaids")
+@Table(name = "azimuth_tsp", schema = "navaids_points")
 public class AzimuthTimeSlicePropertyType {
 
     @XmlElement(name = "AzimuthTimeSlice", required = true)

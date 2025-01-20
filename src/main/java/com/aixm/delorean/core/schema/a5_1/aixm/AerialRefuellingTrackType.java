@@ -80,8 +80,8 @@ public class AerialRefuellingTrackType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_pg_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
+    @JoinTable(name = "aerialrefuellingtrack_point", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrack_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingpoint_pt_id")
     })
@@ -90,8 +90,8 @@ public class AerialRefuellingTrackType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_pg_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
+    @JoinTable(name = "aerialrefuellingtrack_verticalextent", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrack_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayer_pt_id")
     })
@@ -100,8 +100,8 @@ public class AerialRefuellingTrackType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_pg_id")
+    @JoinTable(name = "aerialrefuellingtrack_annotation", joinColumns = {
+        @JoinColumn(name = "aerialrefuellingtrack_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

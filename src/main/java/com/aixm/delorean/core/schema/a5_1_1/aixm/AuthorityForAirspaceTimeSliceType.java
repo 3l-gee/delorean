@@ -97,8 +97,8 @@ public class AuthorityForAirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "authorityforairspace_pg_annotation", joinColumns = {
-        @JoinColumn(name = "authorityforairspace_pg_id")
+    @JoinTable(name = "authorityforauthorityforairspace_ts_annotation", joinColumns = {
+        @JoinColumn(name = "authorityforauthorityforairspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -45,10 +45,10 @@ public class ValPressureType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valpressure_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valpressuretype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valpressure_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valpressuretype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

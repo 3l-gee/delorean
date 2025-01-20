@@ -126,8 +126,8 @@ public class AirportHeliportAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportavailability_pg_usage_", joinColumns = {
-        @JoinColumn(name = "airportheliportavailability_pg_id")
+    @JoinTable(name = "airportheliportavailability_usage", joinColumns = {
+        @JoinColumn(name = "airportheliportavailability_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportusage_pt_id")
     })

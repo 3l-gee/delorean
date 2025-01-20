@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightactivation", schema = "lighting")
+@Table(name = "lightactivation", schema = "airport_heliport")
 public class LightActivationType
     extends AbstractAIXMObjectType
 {
@@ -99,8 +99,8 @@ public class LightActivationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightactivation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "lightactivation_pg_id")
+    @JoinTable(name = "lightactivation_annotation", joinColumns = {
+        @JoinColumn(name = "lightactivation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

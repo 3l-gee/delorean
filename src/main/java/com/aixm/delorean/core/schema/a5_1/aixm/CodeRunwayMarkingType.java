@@ -43,7 +43,7 @@ public class CodeRunwayMarkingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderunwaymarking_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderunwaymarkingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

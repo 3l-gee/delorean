@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "visualglideslopeindicator_pt", schema = "runway")
+@Table(name = "visualglideslopeindicator_pt", schema = "airport_heliport")
 public class VisualGlideSlopeIndicatorPropertyType {
 
     @Id

@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "roadTimeSlice"
 })
 @Entity
-@Table(name = "road_tsp", schema = "apron")
+@Table(name = "road_tsp", schema = "airport_heliport")
 public class RoadTimeSlicePropertyType {
 
     @XmlElement(name = "RoadTimeSlice", required = true)

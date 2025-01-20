@@ -63,7 +63,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "floatingdocksite_ts", schema = "seaplanes")
+@Table(name = "floatingdocksite_ts", schema = "airport_heliport")
 public class FloatingDockSiteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -78,8 +78,8 @@ public class FloatingDockSiteTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "floatingdocksite_pg_annotation", joinColumns = {
-        @JoinColumn(name = "floatingdocksite_pg_id")
+    @JoinTable(name = "floatingdocksite_ts_annotation", joinColumns = {
+        @JoinColumn(name = "floatingdocksite_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

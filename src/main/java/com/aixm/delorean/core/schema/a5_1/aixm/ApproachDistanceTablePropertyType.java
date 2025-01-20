@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "approachDistanceTable"
 })
 @Entity
-@Table(name = "approachdistancetable_pt", schema = "approach")
+@Table(name = "approachdistancetable_pt", schema = "procedure")
 public class ApproachDistanceTablePropertyType
     extends AbstractAIXMPropertyType
 {

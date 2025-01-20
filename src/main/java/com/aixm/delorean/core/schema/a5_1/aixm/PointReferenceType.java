@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "pointreference", schema = "point_reference")
+@Table(name = "pointreference", schema = "navaids_points")
 public class PointReferenceType
     extends AbstractAIXMObjectType
 {
@@ -111,8 +111,8 @@ public class PointReferenceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_pg_facilityangle", joinColumns = {
-        @JoinColumn(name = "pointreference_pg_id")
+    @JoinTable(name = "pointreference_facilityangle", joinColumns = {
+        @JoinColumn(name = "pointreference_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "angleuse_pt_id")
     })
@@ -121,8 +121,8 @@ public class PointReferenceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_pg_facilitydistance", joinColumns = {
-        @JoinColumn(name = "pointreference_pg_id")
+    @JoinTable(name = "pointreference_facilitydistance", joinColumns = {
+        @JoinColumn(name = "pointreference_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "distanceindication_pt_id")
     })
@@ -137,8 +137,8 @@ public class PointReferenceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_pg_annotation", joinColumns = {
-        @JoinColumn(name = "pointreference_pg_id")
+    @JoinTable(name = "pointreference_annotation", joinColumns = {
+        @JoinColumn(name = "pointreference_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

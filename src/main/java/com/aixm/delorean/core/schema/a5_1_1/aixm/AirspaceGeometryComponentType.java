@@ -92,8 +92,8 @@ public class AirspaceGeometryComponentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacegeometrycomponent_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airspacegeometrycomponent_pg_id")
+    @JoinTable(name = "airspacegeometrycomponent_annotation", joinColumns = {
+        @JoinColumn(name = "airspacegeometrycomponent_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

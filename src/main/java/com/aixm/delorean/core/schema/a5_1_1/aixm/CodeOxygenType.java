@@ -43,7 +43,7 @@ public class CodeOxygenType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeoxygen_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeoxygentype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

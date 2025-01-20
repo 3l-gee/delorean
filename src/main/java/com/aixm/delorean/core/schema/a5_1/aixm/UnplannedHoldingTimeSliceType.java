@@ -115,8 +115,8 @@ public class UnplannedHoldingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unplannedholding_pg_annotation", joinColumns = {
-        @JoinColumn(name = "unplannedholding_pg_id")
+    @JoinTable(name = "unplannedholding_ts_annotation", joinColumns = {
+        @JoinColumn(name = "unplannedholding_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

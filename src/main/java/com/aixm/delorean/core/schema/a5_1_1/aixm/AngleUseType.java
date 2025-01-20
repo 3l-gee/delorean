@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "angleuse", schema = "point_reference")
+@Table(name = "angleuse", schema = "navaids_points")
 public class AngleUseType
     extends AbstractAIXMObjectType
 {
@@ -84,8 +84,8 @@ public class AngleUseType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "angleuse_pg_annotation", joinColumns = {
-        @JoinColumn(name = "angleuse_pg_id")
+    @JoinTable(name = "angleuse_annotation", joinColumns = {
+        @JoinColumn(name = "angleuse_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

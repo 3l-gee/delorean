@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "visualGlideSlopeIndicatorTimeSlice"
 })
 @Entity
-@Table(name = "visualglideslopeindicator_tsp", schema = "runway")
+@Table(name = "visualglideslopeindicator_tsp", schema = "airport_heliport")
 public class VisualGlideSlopeIndicatorTimeSlicePropertyType {
 
     @XmlElement(name = "VisualGlideSlopeIndicatorTimeSlice", required = true)

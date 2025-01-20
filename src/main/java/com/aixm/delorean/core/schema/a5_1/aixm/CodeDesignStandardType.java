@@ -43,7 +43,7 @@ public class CodeDesignStandardType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codedesignstandard_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codedesignstandardtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

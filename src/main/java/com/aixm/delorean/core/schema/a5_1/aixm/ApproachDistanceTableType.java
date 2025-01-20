@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachdistancetable", schema = "approach")
+@Table(name = "approachdistancetable", schema = "procedure")
 public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
@@ -109,8 +109,8 @@ public class ApproachDistanceTableType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachdistancetable_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachdistancetable_pg_id")
+    @JoinTable(name = "approachdistancetable_annotation", joinColumns = {
+        @JoinColumn(name = "approachdistancetable_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

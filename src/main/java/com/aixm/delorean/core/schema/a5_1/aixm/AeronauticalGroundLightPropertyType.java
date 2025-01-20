@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "aeronauticalgroundlight_pt", schema = "visual_navigation")
+@Table(name = "aeronauticalgroundlight_pt", schema = "navaids_points")
 public class AeronauticalGroundLightPropertyType {
 
     @Id

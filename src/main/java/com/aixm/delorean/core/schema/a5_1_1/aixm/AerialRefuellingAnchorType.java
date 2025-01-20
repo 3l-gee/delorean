@@ -93,8 +93,8 @@ public class AerialRefuellingAnchorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outboundcourse_type_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_type_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "outboundcoursetype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcoursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
@@ -160,8 +160,8 @@ public class AerialRefuellingAnchorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_pg_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
+    @JoinTable(name = "aerialrefuellinganchor_verticalextent", joinColumns = {
+        @JoinColumn(name = "aerialrefuellinganchor_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayer_pt_id")
     })
@@ -170,8 +170,8 @@ public class AerialRefuellingAnchorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_pg_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
+    @JoinTable(name = "aerialrefuellinganchor_point", joinColumns = {
+        @JoinColumn(name = "aerialrefuellinganchor_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingpoint_pt_id")
     })
@@ -180,8 +180,8 @@ public class AerialRefuellingAnchorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_pg_id")
+    @JoinTable(name = "aerialrefuellinganchor_annotation", joinColumns = {
+        @JoinColumn(name = "aerialrefuellinganchor_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

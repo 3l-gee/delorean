@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightrestrictionroute", schema = "flight_restrictions")
+@Table(name = "flightrestrictionroute", schema = "routes")
 public class FlightRestrictionRouteType
     extends AbstractAIXMObjectType
 {
@@ -85,8 +85,8 @@ public class FlightRestrictionRouteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_pg_routeelement", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_pg_id")
+    @JoinTable(name = "flightrestrictionroute_routeelement", joinColumns = {
+        @JoinColumn(name = "flightrestrictionroute_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightroutingelement_pt_id")
     })
@@ -95,8 +95,8 @@ public class FlightRestrictionRouteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_pg_contact", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_pg_id")
+    @JoinTable(name = "flightrestrictionroute_contact", joinColumns = {
+        @JoinColumn(name = "flightrestrictionroute_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformation_pt_id")
     })
@@ -105,8 +105,8 @@ public class FlightRestrictionRouteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_pg_id")
+    @JoinTable(name = "flightrestrictionroute_annotation", joinColumns = {
+        @JoinColumn(name = "flightrestrictionroute_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

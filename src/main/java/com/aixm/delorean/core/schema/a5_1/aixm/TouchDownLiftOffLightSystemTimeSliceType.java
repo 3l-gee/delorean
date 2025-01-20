@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftofflightsystem_ts", schema = "lighting")
+@Table(name = "touchdownliftofflightsystem_ts", schema = "airport_heliport")
 public class TouchDownLiftOffLightSystemTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -104,7 +104,7 @@ public class TouchDownLiftOffLightSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftofflightsystem_ts_element_", joinColumns = {
+    @JoinTable(name = "touchdownliftofflightsystem_ts_element", joinColumns = {
         @JoinColumn(name = "touchdownliftofflightsystem_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelement_pt_id")

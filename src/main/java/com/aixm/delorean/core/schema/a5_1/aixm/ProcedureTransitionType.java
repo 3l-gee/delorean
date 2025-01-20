@@ -122,8 +122,8 @@ public class ProcedureTransitionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduretransition_pg_transitionleg", joinColumns = {
-        @JoinColumn(name = "proceduretransition_pg_id")
+    @JoinTable(name = "proceduretransition_transitionleg", joinColumns = {
+        @JoinColumn(name = "proceduretransition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "proceduretransitionleg_pt_id")
     })
@@ -132,8 +132,8 @@ public class ProcedureTransitionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduretransition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "proceduretransition_pg_id")
+    @JoinTable(name = "proceduretransition_annotation", joinColumns = {
+        @JoinColumn(name = "proceduretransition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

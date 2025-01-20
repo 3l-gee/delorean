@@ -105,8 +105,8 @@ public class HoldingPatternTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "outboundcourse_type_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_type_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "outboundcoursetype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcoursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType outboundCourseType;
     @XmlElement(nillable = true)
@@ -209,8 +209,8 @@ public class HoldingPatternTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpattern_pg_annotation", joinColumns = {
-        @JoinColumn(name = "holdingpattern_pg_id")
+    @JoinTable(name = "holdingpattern_ts_annotation", joinColumns = {
+        @JoinColumn(name = "holdingpattern_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

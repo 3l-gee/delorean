@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "manoeuvringAreaUsage"
 })
 @Entity
-@Table(name = "manoeuvringareausage_pt", schema = "runway")
+@Table(name = "manoeuvringareausage_pt", schema = "airport_heliport")
 public class ManoeuvringAreaUsagePropertyType
     extends AbstractAIXMPropertyType
 {

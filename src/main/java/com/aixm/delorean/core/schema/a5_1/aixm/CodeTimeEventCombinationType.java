@@ -43,7 +43,7 @@ public class CodeTimeEventCombinationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetimeeventcombination_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetimeeventcombinationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

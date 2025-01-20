@@ -43,7 +43,7 @@ public class DateMonthDayType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "datemonthday_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "datemonthdaytype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

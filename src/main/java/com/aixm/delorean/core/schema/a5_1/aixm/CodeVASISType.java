@@ -43,7 +43,7 @@ public class CodeVASISType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codevasis_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codevasistype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

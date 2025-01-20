@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "changeOverPointTimeSlice"
 })
 @Entity
-@Table(name = "changeoverpoint_tsp", schema = "en_route")
+@Table(name = "changeoverpoint_tsp", schema = "routes")
 public class ChangeOverPointTimeSlicePropertyType {
 
     @XmlElement(name = "ChangeOverPointTimeSlice", required = true)

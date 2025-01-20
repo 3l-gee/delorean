@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "glidepath", schema = "navaids")
+@Table(name = "glidepath", schema = "navaids_points")
 public class GlidepathType
     extends AbstractNavaidEquipmentType
 {

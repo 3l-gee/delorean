@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "designatedpoint_ts", schema = "points")
+@Table(name = "designatedpoint_ts", schema = "navaids_points")
 public class DesignatedPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -103,7 +103,7 @@ public class DesignatedPointTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected PointPropertyType location;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -127,8 +127,8 @@ public class DesignatedPointTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "designatedpoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "designatedpoint_pg_id")
+    @JoinTable(name = "designatedpoint_ts_annotation", joinColumns = {
+        @JoinColumn(name = "designatedpoint_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

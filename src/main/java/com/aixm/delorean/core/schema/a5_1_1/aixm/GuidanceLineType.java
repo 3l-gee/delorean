@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "guidanceline", schema = "taxiway")
+@Table(name = "guidanceline", schema = "airport_heliport")
 public class GuidanceLineType
     extends AbstractAIXMFeatureType
 {

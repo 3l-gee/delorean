@@ -43,7 +43,7 @@ public class CodeStatusConstructionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codestatusconstruction_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codestatusconstructiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

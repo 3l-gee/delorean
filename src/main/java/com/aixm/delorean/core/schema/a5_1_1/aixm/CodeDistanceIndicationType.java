@@ -43,7 +43,7 @@ public class CodeDistanceIndicationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codedistanceindication_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codedistanceindicationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

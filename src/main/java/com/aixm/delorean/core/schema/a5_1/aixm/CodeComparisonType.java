@@ -43,7 +43,7 @@ public class CodeComparisonType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecomparison_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecomparisontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -92,8 +92,8 @@ public class AltimeterSourceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altimetersource_pg_availability", joinColumns = {
-        @JoinColumn(name = "altimetersource_pg_id")
+    @JoinTable(name = "altimetersource_ts_availability", joinColumns = {
+        @JoinColumn(name = "altimetersource_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altimetersourcestatus_pt_id")
     })
@@ -102,8 +102,8 @@ public class AltimeterSourceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altimetersource_pg_annotation", joinColumns = {
-        @JoinColumn(name = "altimetersource_pg_id")
+    @JoinTable(name = "altimetersource_ts_annotation", joinColumns = {
+        @JoinColumn(name = "altimetersource_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

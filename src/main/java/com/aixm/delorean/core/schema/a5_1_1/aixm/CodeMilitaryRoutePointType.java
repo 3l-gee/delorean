@@ -43,7 +43,7 @@ public class CodeMilitaryRoutePointType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemilitaryroutepoint_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemilitaryroutepointtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

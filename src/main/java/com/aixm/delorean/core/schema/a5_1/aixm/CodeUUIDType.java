@@ -43,7 +43,7 @@ public class CodeUUIDType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeuuid_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeuuidtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

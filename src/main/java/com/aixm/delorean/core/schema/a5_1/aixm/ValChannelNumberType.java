@@ -44,7 +44,7 @@ public class ValChannelNumberType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valchannelnumber_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valchannelnumbertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

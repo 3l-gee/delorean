@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftoffsafearea_ts", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoffsafearea_ts", schema = "airport_heliport")
 public class TouchDownLiftOffSafeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {

@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydeclareddistance", schema = "runway")
+@Table(name = "runwaydeclareddistance", schema = "airport_heliport")
 public class RunwayDeclaredDistanceType
     extends AbstractAIXMObjectType
 {
@@ -84,8 +84,8 @@ public class RunwayDeclaredDistanceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistance_pg_declaredvalue", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistance_pg_id")
+    @JoinTable(name = "runwaydeclareddistance_declaredvalue", joinColumns = {
+        @JoinColumn(name = "runwaydeclareddistance_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydeclareddistancevalue_pt_id")
     })
@@ -94,8 +94,8 @@ public class RunwayDeclaredDistanceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistance_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistance_pg_id")
+    @JoinTable(name = "runwaydeclareddistance_annotation", joinColumns = {
+        @JoinColumn(name = "runwaydeclareddistance_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

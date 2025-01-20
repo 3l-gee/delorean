@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "touchdownliftoff_ts", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoff_ts", schema = "airport_heliport")
 public class TouchDownLiftOffTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -162,8 +162,8 @@ public class TouchDownLiftOffTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoff_pg_contaminant", joinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pg_id")
+    @JoinTable(name = "touchdownliftoff_ts_contaminant", joinColumns = {
+        @JoinColumn(name = "touchdownliftoff_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "touchdownliftoffcontamination_pt_id")
     })
@@ -172,8 +172,8 @@ public class TouchDownLiftOffTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoff_pg_annotation", joinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pg_id")
+    @JoinTable(name = "touchdownliftoff_ts_annotation", joinColumns = {
+        @JoinColumn(name = "touchdownliftoff_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -182,8 +182,8 @@ public class TouchDownLiftOffTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoff_pg_availability", joinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pg_id")
+    @JoinTable(name = "touchdownliftoff_ts_availability", joinColumns = {
+        @JoinColumn(name = "touchdownliftoff_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })

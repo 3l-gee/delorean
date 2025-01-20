@@ -43,7 +43,7 @@ public class CodeSurfaceCompositionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codesurfacecomposition_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesurfacecompositiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

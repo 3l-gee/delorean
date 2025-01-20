@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "standardlevelcolumn_pt", schema = "standard_levels")
+@Table(name = "standardlevelcolumn_pt", schema = "shared")
 public class StandardLevelColumnPropertyType {
 
     @Id

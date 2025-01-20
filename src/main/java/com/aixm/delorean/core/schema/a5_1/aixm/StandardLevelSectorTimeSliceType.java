@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardlevelsector_ts", schema = "standard_levels")
+@Table(name = "standardlevelsector_ts", schema = "shared")
 public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -101,16 +101,16 @@ public class StandardLevelSectorTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "angletype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angletype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNorthReferenceType angleType;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelsector_pg_applicableairspace", joinColumns = {
-        @JoinColumn(name = "standardlevelsector_pg_id")
+    @JoinTable(name = "standardlevelsector_ts_applicableairspace", joinColumns = {
+        @JoinColumn(name = "standardlevelsector_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspace_pt_id")
     })
@@ -125,8 +125,8 @@ public class StandardLevelSectorTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelsector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelsector_pg_id")
+    @JoinTable(name = "standardlevelsector_ts_annotation", joinColumns = {
+        @JoinColumn(name = "standardlevelsector_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

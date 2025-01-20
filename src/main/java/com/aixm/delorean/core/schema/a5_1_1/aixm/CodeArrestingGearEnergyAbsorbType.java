@@ -43,7 +43,7 @@ public class CodeArrestingGearEnergyAbsorbType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codearrestinggearenergyabsorb_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codearrestinggearenergyabsorbtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

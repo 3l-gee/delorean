@@ -43,7 +43,7 @@ public class CodeLevelTableDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeleveltabledesignator_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeleveltabledesignatortype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

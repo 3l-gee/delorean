@@ -44,7 +44,7 @@ public class ValMagneticVariationChangeType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valmagneticvariationchange_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valmagneticvariationchangetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

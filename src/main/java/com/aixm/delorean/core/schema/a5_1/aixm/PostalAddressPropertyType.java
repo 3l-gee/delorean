@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "postalAddress"
 })
 @Entity
-@Table(name = "postaladdress_pt", schema = "address")
+@Table(name = "postaladdress_pt", schema = "shared")
 public class PostalAddressPropertyType
     extends AbstractAIXMPropertyType
 {

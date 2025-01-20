@@ -43,7 +43,7 @@ public class CodeMissedApproachType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemissedapproach_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemissedapproachtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

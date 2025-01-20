@@ -43,7 +43,7 @@ public class CodeMeteoConditionsType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemeteoconditions_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemeteoconditionstype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

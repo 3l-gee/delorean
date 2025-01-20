@@ -43,7 +43,7 @@ public class CodeTelecomNetworkType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetelecomnetwork_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetelecomnetworktype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

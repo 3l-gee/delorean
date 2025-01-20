@@ -221,8 +221,8 @@ public class VerticalStructurePartType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructurepart_pg_lighting", joinColumns = {
-        @JoinColumn(name = "verticalstructurepart_pg_id")
+    @JoinTable(name = "verticalstructurepart_lighting", joinColumns = {
+        @JoinColumn(name = "verticalstructurepart_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelement_pt_id")
     })

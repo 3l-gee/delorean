@@ -91,14 +91,14 @@ public class SurveyControlPointTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surveycontrolpoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "surveycontrolpoint_pg_id")
+    @JoinTable(name = "surveycontrolpoint_ts_annotation", joinColumns = {
+        @JoinColumn(name = "surveycontrolpoint_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

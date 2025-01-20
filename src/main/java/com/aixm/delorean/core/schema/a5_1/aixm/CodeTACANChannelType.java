@@ -43,7 +43,7 @@ public class CodeTACANChannelType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetacanchannel_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetacanchanneltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

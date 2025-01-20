@@ -120,8 +120,8 @@ public class ObstacleAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_pg_obstacle", joinColumns = {
-        @JoinColumn(name = "obstaclearea_pg_id")
+    @JoinTable(name = "obstaclearea_ts_obstacle", joinColumns = {
+        @JoinColumn(name = "obstaclearea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructure_pt_id")
     })
@@ -130,8 +130,8 @@ public class ObstacleAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "obstaclearea_pg_id")
+    @JoinTable(name = "obstaclearea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "obstaclearea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

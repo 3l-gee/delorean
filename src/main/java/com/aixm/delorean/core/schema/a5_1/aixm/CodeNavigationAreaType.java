@@ -43,7 +43,7 @@ public class CodeNavigationAreaType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codenavigationarea_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codenavigationareatype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

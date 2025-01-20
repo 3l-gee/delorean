@@ -43,7 +43,7 @@ public class CodeOperationManoeuvringAreaType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeoperationmanoeuvringarea_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeoperationmanoeuvringareatype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

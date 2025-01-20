@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardInstrumentArrivalTimeSlice"
 })
 @Entity
-@Table(name = "standardinstrumentarrival_tsp", schema = "arrival")
+@Table(name = "standardinstrumentarrival_tsp", schema = "procedure")
 public class StandardInstrumentArrivalTimeSlicePropertyType {
 
     @XmlElement(name = "StandardInstrumentArrivalTimeSlice", required = true)

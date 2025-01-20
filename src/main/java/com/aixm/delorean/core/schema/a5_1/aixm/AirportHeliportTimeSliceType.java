@@ -157,8 +157,8 @@ public class AirportHeliportTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "control_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "control_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "controltype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "controltype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMilitaryOperationsType controlType;
     @XmlElement(nillable = true)
@@ -297,8 +297,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_contaminant", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_contaminant", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportcontamination_pt_id")
     })
@@ -307,8 +307,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_servedcity", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_servedcity", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "city_pt_id")
     })
@@ -335,8 +335,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_altimetersource", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_altimetersource", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altimetersource_pt_id")
     })
@@ -345,8 +345,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_contact", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_contact", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformation_pt_id")
     })
@@ -355,8 +355,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_availability", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_availability", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliportavailability_pt_id")
     })
@@ -365,8 +365,8 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliport_pg_id")
+    @JoinTable(name = "airportheliport_ts_annotation", joinColumns = {
+        @JoinColumn(name = "airportheliport_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

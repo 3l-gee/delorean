@@ -43,7 +43,7 @@ public class CodeRVSMPointRoleType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codervsmpointrole_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codervsmpointroletype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

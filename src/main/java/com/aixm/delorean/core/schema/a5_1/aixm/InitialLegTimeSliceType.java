@@ -123,8 +123,8 @@ public class InitialLegTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "legarinc_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "legarinc_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "legtypearinc_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "legtypearinc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSegmentPathType legTypeARINC;
     @XmlElement(nillable = true)
@@ -137,8 +137,8 @@ public class InitialLegTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_type_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_type_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "coursetype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType courseType;
     @XmlElement(nillable = true)

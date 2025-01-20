@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "safealtitudearea_ts", schema = "safe_altitude")
+@Table(name = "safealtitudearea_ts", schema = "procedure")
 public class SafeAltitudeAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -83,8 +83,8 @@ public class SafeAltitudeAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "safearea_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "safearea_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "safeareatype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "safeareatype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSafeAltitudeType safeAreaType;
     @XmlElement(name = "centrePoint_fixDesignatedPoint", nillable = true)
@@ -127,8 +127,8 @@ public class SafeAltitudeAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudearea_pg_sector", joinColumns = {
-        @JoinColumn(name = "safealtitudearea_pg_id")
+    @JoinTable(name = "safealtitudearea_ts_sector", joinColumns = {
+        @JoinColumn(name = "safealtitudearea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "safealtitudeareasector_pt_id")
     })
@@ -137,8 +137,8 @@ public class SafeAltitudeAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudearea_pg_location_", joinColumns = {
-        @JoinColumn(name = "safealtitudearea_pg_id")
+    @JoinTable(name = "safealtitudearea_ts_location", joinColumns = {
+        @JoinColumn(name = "safealtitudearea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airportheliport_pt_id")
     })
@@ -147,8 +147,8 @@ public class SafeAltitudeAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudearea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "safealtitudearea_pg_id")
+    @JoinTable(name = "safealtitudearea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "safealtitudearea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachtimingtable", schema = "approach")
+@Table(name = "approachtimingtable", schema = "procedure")
 public class ApproachTimingTableType
     extends AbstractAIXMObjectType
 {
@@ -109,8 +109,8 @@ public class ApproachTimingTableType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachtimingtable_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachtimingtable_pg_id")
+    @JoinTable(name = "approachtimingtable_annotation", joinColumns = {
+        @JoinColumn(name = "approachtimingtable_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

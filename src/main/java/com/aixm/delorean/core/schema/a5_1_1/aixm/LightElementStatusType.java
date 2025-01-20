@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightelementstatus", schema = "light_element")
+@Table(name = "lightelementstatus", schema = "shared")
 public class LightElementStatusType
     extends AbstractPropertiesWithScheduleType
 {

@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "significantpointinairspace_ts", schema = "points")
+@Table(name = "significantpointinairspace_ts", schema = "navaids_points")
 public class SignificantPointInAirspaceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -140,8 +140,8 @@ public class SignificantPointInAirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "significantpointinairspace_pg_annotation", joinColumns = {
-        @JoinColumn(name = "significantpointinairspace_pg_id")
+    @JoinTable(name = "significantpointinsignificantpointinairspace_ts_annotation", joinColumns = {
+        @JoinColumn(name = "significantpointinsignificantpointinairspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

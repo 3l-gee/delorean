@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "fasdatablock", schema = "segment_leg")
+@Table(name = "fasdatablock", schema = "public")
 public class FASDataBlockType
     extends AbstractAIXMObjectType
 {
@@ -123,8 +123,8 @@ public class FASDataBlockType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "operation_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "operation_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "operationtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "operationtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType operationType;
     @XmlElement(nillable = true)
@@ -173,8 +173,8 @@ public class FASDataBlockType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "fasdatablock_pg_annotation", joinColumns = {
-        @JoinColumn(name = "fasdatablock_pg_id")
+    @JoinTable(name = "fasdatablock_annotation", joinColumns = {
+        @JoinColumn(name = "fasdatablock_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

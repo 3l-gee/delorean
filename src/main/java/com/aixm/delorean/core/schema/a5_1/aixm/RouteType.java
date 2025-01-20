@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "route", schema = "en_route")
+@Table(name = "route", schema = "routes")
 public class RouteType
     extends AbstractAIXMFeatureType
 {

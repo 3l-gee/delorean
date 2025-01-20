@@ -68,7 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlingrestriction", schema = "circling")
+@Table(name = "circlingrestriction", schema = "procedure")
 public class CirclingRestrictionType
     extends AbstractPropertiesWithScheduleType
 {

@@ -43,7 +43,7 @@ public class CodeCheckpointCategoryType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecheckpointcategory_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecheckpointcategorytype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

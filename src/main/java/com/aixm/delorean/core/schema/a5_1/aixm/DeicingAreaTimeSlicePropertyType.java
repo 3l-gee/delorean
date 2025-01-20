@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "deicingAreaTimeSlice"
 })
 @Entity
-@Table(name = "deicingarea_tsp", schema = "apron")
+@Table(name = "deicingarea_tsp", schema = "airport_heliport")
 public class DeicingAreaTimeSlicePropertyType {
 
     @XmlElement(name = "DeicingAreaTimeSlice", required = true)

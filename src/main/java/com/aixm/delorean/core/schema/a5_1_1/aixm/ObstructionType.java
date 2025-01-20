@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstruction", schema = "surface_assessment")
+@Table(name = "obstruction", schema = "shared")
 public class ObstructionType
     extends AbstractAIXMObjectType
 {
@@ -134,8 +134,8 @@ public class ObstructionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_pg_adjustment", joinColumns = {
-        @JoinColumn(name = "obstruction_pg_id")
+    @JoinTable(name = "obstruction_adjustment", joinColumns = {
+        @JoinColumn(name = "obstruction_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altitudeadjustment_pt_id")
     })
@@ -144,8 +144,8 @@ public class ObstructionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_pg_obstacleplacement", joinColumns = {
-        @JoinColumn(name = "obstruction_pg_id")
+    @JoinTable(name = "obstruction_obstacleplacement", joinColumns = {
+        @JoinColumn(name = "obstruction_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleplacement_pt_id")
     })
@@ -154,8 +154,8 @@ public class ObstructionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_pg_annotation", joinColumns = {
-        @JoinColumn(name = "obstruction_pg_id")
+    @JoinTable(name = "obstruction_annotation", joinColumns = {
+        @JoinColumn(name = "obstruction_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

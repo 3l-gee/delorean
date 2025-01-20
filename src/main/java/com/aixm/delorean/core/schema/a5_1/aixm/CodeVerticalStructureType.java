@@ -43,7 +43,7 @@ public class CodeVerticalStructureType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeverticalstructure_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeverticalstructuretype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

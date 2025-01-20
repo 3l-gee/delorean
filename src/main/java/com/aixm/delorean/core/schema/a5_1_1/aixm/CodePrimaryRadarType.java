@@ -43,7 +43,7 @@ public class CodePrimaryRadarType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeprimaryradar_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeprimaryradartype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

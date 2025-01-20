@@ -85,8 +85,8 @@ public class NonMovementAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "nonmovementarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "nonmovementarea_pg_id")
+    @JoinTable(name = "nonmovementarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "nonmovementarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

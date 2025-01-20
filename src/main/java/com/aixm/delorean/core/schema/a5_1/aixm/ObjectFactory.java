@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1.aixm;
 
 import javax.xml.namespace.QName;
-import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
@@ -37,7 +36,6 @@ public class ObjectFactory {
     private static final QName _Interpretation_QNAME = new QName("http://www.aixm.aero/schema/5.1", "interpretation");
     private static final QName _SequenceNumber_QNAME = new QName("http://www.aixm.aero/schema/5.1", "sequenceNumber");
     private static final QName _CorrectionNumber_QNAME = new QName("http://www.aixm.aero/schema/5.1", "correctionNumber");
-    private static final QName _FeatureLifetime_QNAME = new QName("http://www.aixm.aero/schema/5.1", "featureLifetime");
     private static final QName _RunwayProtectArea_QNAME = new QName("http://www.aixm.aero/schema/5.1", "RunwayProtectArea");
     private static final QName _AbstractAirportHeliportProtectionArea_QNAME = new QName("http://www.aixm.aero/schema/5.1", "AbstractAirportHeliportProtectionArea");
     private static final QName _RunwayProtectAreaTimeSlice_QNAME = new QName("http://www.aixm.aero/schema/5.1", "RunwayProtectAreaTimeSlice");
@@ -13681,19 +13679,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1", name = "correctionNumber")
     public JAXBElement<Long> createCorrectionNumber(Long value) {
         return new JAXBElement<>(_CorrectionNumber_QNAME, Long.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TimePrimitivePropertyType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link TimePrimitivePropertyType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1", name = "featureLifetime")
-    public JAXBElement<TimePrimitivePropertyType> createFeatureLifetime(TimePrimitivePropertyType value) {
-        return new JAXBElement<>(_FeatureLifetime_QNAME, TimePrimitivePropertyType.class, null, value);
     }
 
     /**

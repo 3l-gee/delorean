@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightRestrictionRoute"
 })
 @Entity
-@Table(name = "flightrestrictionroute_pt", schema = "flight_restrictions")
+@Table(name = "flightrestrictionroute_pt", schema = "routes")
 public class FlightRestrictionRoutePropertyType
     extends AbstractAIXMPropertyType
 {

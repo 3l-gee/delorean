@@ -84,8 +84,8 @@ public class UnitDependencyType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unitdependency_pg_annotation", joinColumns = {
-        @JoinColumn(name = "unitdependency_pg_id")
+    @JoinTable(name = "unitdependency_annotation", joinColumns = {
+        @JoinColumn(name = "unitdependency_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

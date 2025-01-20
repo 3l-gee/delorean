@@ -43,7 +43,7 @@ public class CodeProcedureDistanceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeproceduredistance_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeproceduredistancetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

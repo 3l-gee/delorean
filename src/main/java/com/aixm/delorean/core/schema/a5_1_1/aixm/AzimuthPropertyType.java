@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "azimuth_pt", schema = "navaids")
+@Table(name = "azimuth_pt", schema = "navaids_points")
 public class AzimuthPropertyType {
 
     @Id

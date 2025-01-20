@@ -43,7 +43,7 @@ public class CodeWorkAreaType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeworkarea_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeworkareatype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

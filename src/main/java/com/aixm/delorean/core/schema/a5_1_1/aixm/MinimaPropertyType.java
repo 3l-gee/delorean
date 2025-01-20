@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "minima"
 })
 @Entity
-@Table(name = "minima_pt", schema = "minima")
+@Table(name = "minima_pt", schema = "procedure")
 public class MinimaPropertyType
     extends AbstractAIXMPropertyType
 {

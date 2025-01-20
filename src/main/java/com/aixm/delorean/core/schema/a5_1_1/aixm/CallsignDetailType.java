@@ -91,8 +91,8 @@ public class CallsignDetailType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "callsigndetail_pg_annotation", joinColumns = {
-        @JoinColumn(name = "callsigndetail_pg_id")
+    @JoinTable(name = "callsigndetail_annotation", joinColumns = {
+        @JoinColumn(name = "callsigndetail_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

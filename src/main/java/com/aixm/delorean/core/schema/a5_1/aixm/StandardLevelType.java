@@ -67,7 +67,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardlevel", schema = "standard_levels")
+@Table(name = "standardlevel", schema = "shared")
 public class StandardLevelType
     extends AbstractAIXMObjectType
 {
@@ -84,8 +84,8 @@ public class StandardLevelType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevel_pg_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevel_pg_id")
+    @JoinTable(name = "standardlevel_annotation", joinColumns = {
+        @JoinColumn(name = "standardlevel_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

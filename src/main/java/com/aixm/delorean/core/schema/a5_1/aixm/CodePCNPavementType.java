@@ -43,7 +43,7 @@ public class CodePCNPavementType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codepcnpavement_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codepcnpavementtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

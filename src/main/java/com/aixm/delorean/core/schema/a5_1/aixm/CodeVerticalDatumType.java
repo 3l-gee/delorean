@@ -43,7 +43,7 @@ public class CodeVerticalDatumType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeverticaldatum_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeverticaldatumtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

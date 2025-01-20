@@ -43,7 +43,7 @@ public class CodeBearingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codebearing_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codebearingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

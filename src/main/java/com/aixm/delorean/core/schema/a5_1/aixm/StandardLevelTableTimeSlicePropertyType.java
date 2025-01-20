@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardLevelTableTimeSlice"
 })
 @Entity
-@Table(name = "standardleveltable_tsp", schema = "standard_levels")
+@Table(name = "standardleveltable_tsp", schema = "shared")
 public class StandardLevelTableTimeSlicePropertyType {
 
     @XmlElement(name = "StandardLevelTableTimeSlice", required = true)

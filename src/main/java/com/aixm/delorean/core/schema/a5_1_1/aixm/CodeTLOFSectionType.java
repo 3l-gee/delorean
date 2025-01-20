@@ -43,7 +43,7 @@ public class CodeTLOFSectionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetlofsection_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetlofsectiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

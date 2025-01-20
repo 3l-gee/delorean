@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "minima", schema = "minima")
+@Table(name = "minima", schema = "procedure")
 public class MinimaType
     extends AbstractAIXMObjectType
 {
@@ -178,8 +178,8 @@ public class MinimaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "minima_pg_adjustmentinop", joinColumns = {
-        @JoinColumn(name = "minima_pg_id")
+    @JoinTable(name = "minima_adjustmentinop", joinColumns = {
+        @JoinColumn(name = "minima_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "equipmentunavailableadjustment_pt_id")
     })
@@ -188,8 +188,8 @@ public class MinimaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "minima_pg_annotation", joinColumns = {
-        @JoinColumn(name = "minima_pg_id")
+    @JoinTable(name = "minima_annotation", joinColumns = {
+        @JoinColumn(name = "minima_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

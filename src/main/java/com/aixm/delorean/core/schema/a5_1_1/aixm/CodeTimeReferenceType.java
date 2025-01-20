@@ -43,7 +43,7 @@ public class CodeTimeReferenceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetimereference_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetimereferencetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

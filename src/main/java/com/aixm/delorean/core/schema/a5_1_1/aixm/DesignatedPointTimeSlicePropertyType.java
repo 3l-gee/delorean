@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "designatedPointTimeSlice"
 })
 @Entity
-@Table(name = "designatedpoint_tsp", schema = "points")
+@Table(name = "designatedpoint_tsp", schema = "navaids_points")
 public class DesignatedPointTimeSlicePropertyType {
 
     @XmlElement(name = "DesignatedPointTimeSlice", required = true)

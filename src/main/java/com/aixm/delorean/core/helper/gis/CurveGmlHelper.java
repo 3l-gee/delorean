@@ -187,7 +187,7 @@ public class CurveGmlHelper {
                 throw new RuntimeException("Interpretation is not supported");
             }
         }
-        return new CurveSegmentArrayPropertyType();
+        return curveSegment;
     }
 
     public static LinestringSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter) {

@@ -83,8 +83,8 @@ public class NitrogenType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "nitrogen_pg_annotation", joinColumns = {
-        @JoinColumn(name = "nitrogen_pg_id")
+    @JoinTable(name = "nitrogen_annotation", joinColumns = {
+        @JoinColumn(name = "nitrogen_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

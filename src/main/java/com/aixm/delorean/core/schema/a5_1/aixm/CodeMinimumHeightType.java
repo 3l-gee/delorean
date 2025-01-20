@@ -43,7 +43,7 @@ public class CodeMinimumHeightType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeminimumheight_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeminimumheighttype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

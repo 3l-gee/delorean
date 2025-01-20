@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "abstractSegmentPoint"
 })
 @Entity
-@Table(name = "segmentpoint_pt", schema = "point_reference")
+@Table(name = "segmentpoint_pt", schema = "navaids_points")
 public class SegmentPointPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 
 import org.hibernate.Transaction;
 
@@ -31,6 +33,48 @@ public class DatabaseBinding {
     public void setPassword(String password){
         this.configuration.setProperty("hibernate.connection.password", password);
     }
+
+    private enum hbm2ddlEnum {
+        NONE("none"),
+        CREATE_ONLY("create-only"),
+        DROP("drop"),
+        CREATE("create"),
+        CREATE_DROP("create-drop"),
+        VALIDATE("validate"),
+        UPDATE("update");
+    
+        private final String value;
+    
+        hbm2ddlEnum(String value) {
+            this.value = value;
+        }
+    
+        public String getValue() {
+            return value;
+        }
+    
+        public static hbm2ddlEnum fromString(String value) {
+            for (hbm2ddlEnum e : hbm2ddlEnum.values()) {
+                if (e.value.equalsIgnoreCase(value)) {
+                    return e;
+                }
+            }
+            throw new IllegalArgumentException("Invalid hbm2ddl value: " + value);
+        }
+    }
+
+    public void setHbm2ddl(String hbm2ddlAuto) {
+        if (hbm2ddlAuto != null) {
+            try {
+                hbm2ddlEnum hbm2ddl = hbm2ddlEnum.fromString(hbm2ddlAuto);
+                this.configuration.setProperty("hibernate.hbm2ddl.auto", hbm2ddl.getValue());
+            } catch (IllegalArgumentException e) {            
+                ConsoleLogger.log(LogLevel.ERROR, "Invalid hbm2ddl value: " + hbm2ddlAuto, new Exception().getStackTrace()[0]);
+                System.err.println("Invalid hbm2ddl value provided: " + hbm2ddlAuto);
+            }
+        }
+    }
+    
 
     public void startup() {
         try{

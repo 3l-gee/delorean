@@ -44,7 +44,7 @@ public class ValSlopeType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valslope_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valslopetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

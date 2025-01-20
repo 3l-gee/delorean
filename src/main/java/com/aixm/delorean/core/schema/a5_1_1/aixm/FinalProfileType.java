@@ -65,7 +65,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "finalprofile", schema = "approach")
+@Table(name = "finalprofile", schema = "procedure")
 public class FinalProfileType
     extends AbstractAIXMObjectType
 {
@@ -74,8 +74,8 @@ public class FinalProfileType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_pg_altitude", joinColumns = {
-        @JoinColumn(name = "finalprofile_pg_id")
+    @JoinTable(name = "finalprofile_altitude", joinColumns = {
+        @JoinColumn(name = "finalprofile_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachaltitudetable_pt_id")
     })
@@ -84,8 +84,8 @@ public class FinalProfileType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_pg_distance", joinColumns = {
-        @JoinColumn(name = "finalprofile_pg_id")
+    @JoinTable(name = "finalprofile_distance", joinColumns = {
+        @JoinColumn(name = "finalprofile_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachdistancetable_pt_id")
     })
@@ -94,8 +94,8 @@ public class FinalProfileType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_pg_timing", joinColumns = {
-        @JoinColumn(name = "finalprofile_pg_id")
+    @JoinTable(name = "finalprofile_timing", joinColumns = {
+        @JoinColumn(name = "finalprofile_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachtimingtable_pt_id")
     })
@@ -104,8 +104,8 @@ public class FinalProfileType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_pg_annotation", joinColumns = {
-        @JoinColumn(name = "finalprofile_pg_id")
+    @JoinTable(name = "finalprofile_annotation", joinColumns = {
+        @JoinColumn(name = "finalprofile_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "touchDownLiftOffContamination"
 })
 @Entity
-@Table(name = "touchdownliftoffcontamination_pt", schema = "surface_contamination")
+@Table(name = "touchdownliftoffcontamination_pt", schema = "airport_heliport")
 public class TouchDownLiftOffContaminationPropertyType
     extends AbstractAIXMPropertyType
 {

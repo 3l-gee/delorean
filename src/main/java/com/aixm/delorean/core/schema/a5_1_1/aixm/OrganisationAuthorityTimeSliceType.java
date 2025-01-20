@@ -109,8 +109,8 @@ public class OrganisationAuthorityTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthority_pg_contact", joinColumns = {
-        @JoinColumn(name = "organisationauthority_pg_id")
+    @JoinTable(name = "organisationauthority_ts_contact", joinColumns = {
+        @JoinColumn(name = "organisationauthority_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformation_pt_id")
     })
@@ -119,8 +119,8 @@ public class OrganisationAuthorityTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthority_pg_relatedorganisationauthority", joinColumns = {
-        @JoinColumn(name = "organisationauthority_pg_id")
+    @JoinTable(name = "organisationauthority_ts_relatedorganisationauthority", joinColumns = {
+        @JoinColumn(name = "organisationauthority_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthorityassociation_pt_id")
     })
@@ -129,8 +129,8 @@ public class OrganisationAuthorityTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthority_pg_annotation", joinColumns = {
-        @JoinColumn(name = "organisationauthority_pg_id")
+    @JoinTable(name = "organisationauthority_ts_annotation", joinColumns = {
+        @JoinColumn(name = "organisationauthority_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

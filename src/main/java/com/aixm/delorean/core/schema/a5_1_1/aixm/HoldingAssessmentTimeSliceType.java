@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "holdingassessment_ts", schema = "surface_assessment")
+@Table(name = "holdingassessment_ts", schema = "shared")
 public class HoldingAssessmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -174,8 +174,8 @@ public class HoldingAssessmentTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_pg_obstacleassessment", joinColumns = {
-        @JoinColumn(name = "holdingassessment_pg_id")
+    @JoinTable(name = "holdingassessment_ts_obstacleassessment", joinColumns = {
+        @JoinColumn(name = "holdingassessment_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentarea_pt_id")
     })
@@ -184,8 +184,8 @@ public class HoldingAssessmentTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "holdingassessment_pg_id")
+    @JoinTable(name = "holdingassessment_ts_annotation", joinColumns = {
+        @JoinColumn(name = "holdingassessment_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

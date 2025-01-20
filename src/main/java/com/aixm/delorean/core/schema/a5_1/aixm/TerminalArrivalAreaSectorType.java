@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalarrivalareasector", schema = "terminal")
+@Table(name = "terminalarrivalareasector", schema = "procedure")
 public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
@@ -114,8 +114,8 @@ public class TerminalArrivalAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalareasector_pg_significantobstacle", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareasector_pg_id")
+    @JoinTable(name = "terminalarrivalareasector_significantobstacle", joinColumns = {
+        @JoinColumn(name = "terminalarrivalareasector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstruction_pt_id")
     })
@@ -124,8 +124,8 @@ public class TerminalArrivalAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalareasector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "terminalarrivalareasector_pg_id")
+    @JoinTable(name = "terminalarrivalareasector_annotation", joinColumns = {
+        @JoinColumn(name = "terminalarrivalareasector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -105,8 +105,8 @@ public class ProcedureDMETimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "proceduredme_pg_annotation", joinColumns = {
-        @JoinColumn(name = "proceduredme_pg_id")
+    @JoinTable(name = "proceduredme_ts_annotation", joinColumns = {
+        @JoinColumn(name = "proceduredme_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -43,7 +43,7 @@ public class CodeFlightOriginType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeflightorigin_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeflightorigintype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

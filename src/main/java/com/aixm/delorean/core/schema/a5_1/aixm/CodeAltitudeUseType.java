@@ -43,7 +43,7 @@ public class CodeAltitudeUseType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codealtitudeuse_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codealtitudeusetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

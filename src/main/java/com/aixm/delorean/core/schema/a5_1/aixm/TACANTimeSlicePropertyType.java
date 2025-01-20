@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "tacanTimeSlice"
 })
 @Entity
-@Table(name = "tacan_tsp", schema = "navaids")
+@Table(name = "tacan_tsp", schema = "navaids_points")
 public class TACANTimeSlicePropertyType {
 
     @XmlElement(name = "TACANTimeSlice", required = true)

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "curve"
 })
 @Entity
-@Table(name = "curve", schema = "public")
+@Table(name = "curve_pt", schema = "public")
 public class CurvePropertyType
     extends AbstractAIXMPropertyType
 {

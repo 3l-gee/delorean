@@ -43,7 +43,7 @@ public class CodeTimeEventType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetimeevent_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetimeeventtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

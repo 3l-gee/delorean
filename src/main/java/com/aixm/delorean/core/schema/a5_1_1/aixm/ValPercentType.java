@@ -44,7 +44,7 @@ public class ValPercentType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valpercent_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valpercenttype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

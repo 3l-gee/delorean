@@ -43,7 +43,7 @@ public class CodeRelativePositionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderelativeposition_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderelativepositiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aeronauticalgroundlight_ts", schema = "visual_navigation")
+@Table(name = "aeronauticalgroundlight_ts", schema = "navaids_points")
 public class AeronauticalGroundLightTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -122,14 +122,14 @@ public class AeronauticalGroundLightTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aeronauticalgroundlight_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aeronauticalgroundlight_pg_id")
+    @JoinTable(name = "aeronauticalgroundlight_ts_annotation", joinColumns = {
+        @JoinColumn(name = "aeronauticalgroundlight_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

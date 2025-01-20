@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "checkpointins", schema = "navaids")
+@Table(name = "checkpointins", schema = "navaids_points")
 public class CheckpointINSType
     extends AbstractNavigationSystemCheckpointType
 {

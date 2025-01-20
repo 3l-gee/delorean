@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "radiofrequencyarea_pt", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea_pt", schema = "shared")
 public class RadioFrequencyAreaPropertyType {
 
     @Id

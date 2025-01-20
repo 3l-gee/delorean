@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "approachcondition", schema = "approach")
+@Table(name = "approachcondition", schema = "procedure")
 public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
@@ -111,8 +111,8 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_pg_circlingrestriction", joinColumns = {
-        @JoinColumn(name = "approachcondition_pg_id")
+    @JoinTable(name = "approachcondition_circlingrestriction", joinColumns = {
+        @JoinColumn(name = "approachcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "circlingrestriction_pt_id")
     })
@@ -121,8 +121,8 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_pg_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "approachcondition_pg_id")
+    @JoinTable(name = "approachcondition_aircraftcategory", joinColumns = {
+        @JoinColumn(name = "approachcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
@@ -131,8 +131,8 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_pg_landingarea", joinColumns = {
-        @JoinColumn(name = "approachcondition_pg_id")
+    @JoinTable(name = "approachcondition_landingarea", joinColumns = {
+        @JoinColumn(name = "approachcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "landingtakeoffareacollection_pt_id")
     })
@@ -147,8 +147,8 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_pg_designsurface", joinColumns = {
-        @JoinColumn(name = "approachcondition_pg_id")
+    @JoinTable(name = "approachcondition_designsurface", joinColumns = {
+        @JoinColumn(name = "approachcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstacleassessmentarea_pt_id")
     })
@@ -157,8 +157,8 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "approachcondition_pg_id")
+    @JoinTable(name = "approachcondition_annotation", joinColumns = {
+        @JoinColumn(name = "approachcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -89,7 +89,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaycontamination", schema = "surface_contamination")
+@Table(name = "runwaycontamination", schema = "airport_heliport")
 public class RunwayContaminationType
     extends AbstractSurfaceContaminationType
 {
@@ -169,8 +169,8 @@ public class RunwayContaminationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontamination_pg_criticalridge", joinColumns = {
-        @JoinColumn(name = "surfacecontamination_pg_id")
+    @JoinTable(name = "runwaycontamination_criticalridge", joinColumns = {
+        @JoinColumn(name = "runwaycontamination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "ridge_pt_id")
     })
@@ -179,8 +179,8 @@ public class RunwayContaminationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontamination_pg_layer", joinColumns = {
-        @JoinColumn(name = "surfacecontamination_pg_id")
+    @JoinTable(name = "runwaycontamination_layer", joinColumns = {
+        @JoinColumn(name = "runwaycontamination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "surfacecontaminationlayer_pt_id")
     })
@@ -189,8 +189,8 @@ public class RunwayContaminationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontamination_pg_annotation", joinColumns = {
-        @JoinColumn(name = "surfacecontamination_pg_id")
+    @JoinTable(name = "runwaycontamination_annotation", joinColumns = {
+        @JoinColumn(name = "runwaycontamination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

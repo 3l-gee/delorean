@@ -43,7 +43,7 @@ public class CodeMarkerBeaconSignalType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemarkerbeaconsignal_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemarkerbeaconsignaltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

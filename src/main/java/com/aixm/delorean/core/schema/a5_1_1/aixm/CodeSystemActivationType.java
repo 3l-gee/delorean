@@ -43,7 +43,7 @@ public class CodeSystemActivationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codesystemactivation_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesystemactivationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

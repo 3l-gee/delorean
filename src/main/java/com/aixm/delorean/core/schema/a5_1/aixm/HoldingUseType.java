@@ -109,8 +109,8 @@ public class HoldingUseType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdinguse_pg_annotation", joinColumns = {
-        @JoinColumn(name = "holdinguse_pg_id")
+    @JoinTable(name = "holdinguse_annotation", joinColumns = {
+        @JoinColumn(name = "holdinguse_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

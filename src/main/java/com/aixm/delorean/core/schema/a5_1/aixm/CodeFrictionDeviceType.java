@@ -43,7 +43,7 @@ public class CodeFrictionDeviceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codefrictiondevice_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codefrictiondevicetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

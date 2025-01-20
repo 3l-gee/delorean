@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.aixm.aero/schema/5.1" xmlns:ns4="http://www.aixm.aero/schema/5.1.1" xmlns:ns5="http://www.isotc211.org/2005/gco" xmlns:ns6="http://www.isotc211.org/2005/gmd" xmlns:ns7="http://www.isotc211.org/2005/gts" xmlns:ns8="http://www.aixm.aero/schema/5.1.1/message" xmlns:ns9="http://www.aixm.aero/schema/5.1/message" ns1:id="1">
+    <ns1:boundedBy/>
+    <ns4:messageMetadata/>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-000000000000">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-000000000000</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_A.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_A.1">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:LineStringSegment>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-000000000001">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-000000000001</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_A.2">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_A.2">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:LineStringSegment>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-100000000000">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-100000000000</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_B.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_B.1">
+                            <ns1:segments>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-100000000001">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-100000000001</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_B.2">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_B.2">
+                            <ns1:segments>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-200000000000">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-200000000000</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_C.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_C.1">
+                            <ns1:segments>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-200000000001">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-200000000001</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_C.2">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_C.2">
+                            <ns1:segments>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-300000000000">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-300000000000</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_D.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_D.1">
+                            <ns1:segments>
+<ns1:ArcByCenterPoint interpolation="circularArcCenterPointWithRadius" numArc="1">
+    <ns1:pos srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601</ns1:pos>
+    <ns1:radius uom="m">37040.0</ns1:radius>
+    <ns1:startAngle uom="deg">0.0</ns1:startAngle>
+    <ns1:endAngle uom="deg">90.0</ns1:endAngle>
+</ns1:ArcByCenterPoint>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-400000000000">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000000</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_E.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_E.1">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">38.89763528280979 -77.03654820204511 -24.589287528217096 -70.1916580926402</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">-24.589287528217096 -70.1916580926402 -33.85704607534651 151.21496554537183</ns1:posList>
+</ns1:LineStringSegment>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-400000000001">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000001</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_E.2">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_E.2">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">38.89763528280979 -77.03654820204511 -24.589287528217096 -70.1916580926402</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">-24.589287528217096 -70.1916580926402 -33.85704607534651 151.21496554537183</ns1:posList>
+</ns1:LineStringSegment>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-400000000002">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000002</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_E.3">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_E.3">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 38.89763528280979 -77.03654820204511</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">38.89763528280979 -77.03654820204511 -24.589287528217096 -70.1916580926402</ns1:posList>
+</ns1:GeodesicString>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">-24.589287528217096 -70.1916580926402 -33.85704607534651 151.21496554537183</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-400000000003">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-400000000003</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_E.4">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_E.4">
+                            <ns1:segments>
+<ns1:LineStringSegment interpolation="linear">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601 52.84916014045031 13.377717264212702</ns1:posList>
+</ns1:LineStringSegment>
+<ns1:ArcByCenterPoint interpolation="circularArcCenterPointWithRadius" numArc="1">
+    <ns1:pos srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601</ns1:pos>
+    <ns1:radius uom="m">37040.0</ns1:radius>
+    <ns1:startAngle uom="deg">0.0</ns1:startAngle>
+    <ns1:endAngle uom="deg">90.0</ns1:endAngle>
+</ns1:ArcByCenterPoint>
+<ns1:GeodesicString interpolation="geodesic">
+    <ns1:posList srsName="urn:ogc:def:crs:EPSG::4326">52.5150492751612 13.9233346732643 52.3189173 13.554735 52.51630693440871 13.377717264214601</ns1:posList>
+</ns1:GeodesicString>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:RouteSegment ns1:id="uuid.00000000-0000-4000-9001-500000000001">
+            <ns1:identifier codeSpace="urn:uuid:">00000000-0000-4000-9001-500000000001</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:RouteSegmentTimeSlice ns1:id="Curve_F.1">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>1</ns4:sequenceNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2025-01-01T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:upperLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:lowerLimitReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumObstacleClearanceAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:pathType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:trueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:magneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseTrueTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:reverseMagneticTrack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:length xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthLeft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:widthRight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:turnDirection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:signalGap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumEnrouteAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:minimumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEnd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:maximumCrossingAtEndReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:navigationType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:requiredNavigationPerformance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:designatorSuffix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:start xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:routeFormed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:evaluationArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns4:curveExtent>
+                        <ns4:Curve ns1:id="Curve_F.1">
+                            <ns1:segments>
+<ns1:CircleByCenterPoint interpolation="circularArcCenterPointWithRadius" numArc="1">
+    <ns1:pos srsName="urn:ogc:def:crs:EPSG::4326">52.51630693440871 13.377717264214601</ns1:pos>
+    <ns1:radius uom="m">37040.0</ns1:radius>
+</ns1:CircleByCenterPoint>
+                            </ns1:segments>
+                            <ns4:horizontalAccuracy/>
+                        </ns4:Curve>
+                    </ns4:curveExtent>
+                    <ns4:end xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                </ns4:RouteSegmentTimeSlice>
+            </ns4:timeSlice>
+        </ns4:RouteSegment>
+    </ns8:hasMember>
+</ns4:AIXMBasicMessage>

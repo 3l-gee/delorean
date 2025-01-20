@@ -66,7 +66,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "seaplanelandingarea_ts", schema = "seaplanes")
+@Table(name = "seaplanelandingarea_ts", schema = "airport_heliport")
 public class SeaplaneLandingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -75,8 +75,8 @@ public class SeaplaneLandingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanelandingarea_pg_rampsite", joinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_pg_id")
+    @JoinTable(name = "seaplanelandingarea_ts_rampsite", joinColumns = {
+        @JoinColumn(name = "seaplanelandingarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "seaplanerampsite_pt_id")
     })
@@ -85,8 +85,8 @@ public class SeaplaneLandingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanelandingarea_pg_docksite", joinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_pg_id")
+    @JoinTable(name = "seaplanelandingarea_ts_docksite", joinColumns = {
+        @JoinColumn(name = "seaplanelandingarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "floatingdocksite_pt_id")
     })
@@ -101,8 +101,8 @@ public class SeaplaneLandingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanelandingarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_pg_id")
+    @JoinTable(name = "seaplanelandingarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "seaplanelandingarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -111,8 +111,8 @@ public class SeaplaneLandingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanelandingarea_pg_availability", joinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_pg_id")
+    @JoinTable(name = "seaplanelandingarea_ts_availability", joinColumns = {
+        @JoinColumn(name = "seaplanelandingarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })

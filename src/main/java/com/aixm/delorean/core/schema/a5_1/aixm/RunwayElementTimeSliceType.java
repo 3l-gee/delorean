@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayelement_ts", schema = "runway")
+@Table(name = "runwayelement_ts", schema = "airport_heliport")
 public class RunwayElementTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -119,8 +119,8 @@ public class RunwayElementTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayelement_pg_associatedrunway", joinColumns = {
-        @JoinColumn(name = "runwayelement_pg_id")
+    @JoinTable(name = "runwayelement_ts_associatedrunway", joinColumns = {
+        @JoinColumn(name = "runwayelement_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runway_pt_id")
     })
@@ -135,8 +135,8 @@ public class RunwayElementTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "runwayelement_pg_id")
+    @JoinTable(name = "runwayelement_ts_annotation", joinColumns = {
+        @JoinColumn(name = "runwayelement_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -145,8 +145,8 @@ public class RunwayElementTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayelement_pg_availability", joinColumns = {
-        @JoinColumn(name = "runwayelement_pg_id")
+    @JoinTable(name = "runwayelement_ts_availability", joinColumns = {
+        @JoinColumn(name = "runwayelement_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "manoeuvringareaavailability_pt_id")
     })

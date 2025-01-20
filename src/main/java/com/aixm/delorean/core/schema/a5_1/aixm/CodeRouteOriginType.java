@@ -43,7 +43,7 @@ public class CodeRouteOriginType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderouteorigin_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderouteorigintype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -43,7 +43,7 @@ public class CodeRunwayElementType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderunwayelement_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderunwayelementtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

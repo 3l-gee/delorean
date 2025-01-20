@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "taxiholdingposition_ts", schema = "taxiway")
+@Table(name = "taxiholdingposition_ts", schema = "airport_heliport")
 public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -100,8 +100,8 @@ public class TaxiHoldingPositionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_pg_protectedrunway", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_pg_id")
+    @JoinTable(name = "taxiholdingposition_ts_protectedrunway", joinColumns = {
+        @JoinColumn(name = "taxiholdingposition_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runway_pt_id")
     })
@@ -110,14 +110,14 @@ public class TaxiHoldingPositionTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_pg_id")
+    @JoinTable(name = "taxiholdingposition_ts_annotation", joinColumns = {
+        @JoinColumn(name = "taxiholdingposition_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

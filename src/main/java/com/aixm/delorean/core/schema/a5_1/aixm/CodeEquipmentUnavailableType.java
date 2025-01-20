@@ -43,7 +43,7 @@ public class CodeEquipmentUnavailableType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeequipmentunavailable_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeequipmentunavailabletype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routeportion", schema = "en_route")
+@Table(name = "routeportion", schema = "routes")
 public class RoutePortionType
     extends AbstractAIXMObjectType
 {
@@ -204,8 +204,8 @@ public class RoutePortionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeportion_pg_annotation", joinColumns = {
-        @JoinColumn(name = "routeportion_pg_id")
+    @JoinTable(name = "routeportion_annotation", joinColumns = {
+        @JoinColumn(name = "routeportion_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

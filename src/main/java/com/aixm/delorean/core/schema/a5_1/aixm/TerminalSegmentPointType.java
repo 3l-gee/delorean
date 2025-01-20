@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalsegmentpoint", schema = "point_reference")
+@Table(name = "terminalsegmentpoint", schema = "navaids_points")
 public class TerminalSegmentPointType
     extends AbstractSegmentPointType
 {
@@ -131,37 +131,37 @@ public class TerminalSegmentPointType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_fixdesignatedpoint_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
     @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_navaidsystem_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType pointChoiceNavaidSystem;
     @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_aimingpoint_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
     @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_runwaypoint_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
     @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_airportreferencepoint_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
     @XmlElement(name = "pointChoice_position", nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pointchoice_position_id", referencedColumnName = "id")
+    @JoinColumn(name = "terminalsegmentpoint_position_id", referencedColumnName = "id")
     protected PointPropertyType pointChoicePosition;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {

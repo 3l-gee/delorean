@@ -73,8 +73,8 @@ public class LandingTakeoffAreaCollectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_pg_runway", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
+    @JoinTable(name = "landingtakeoffareacollection_runway", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollection_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaydirection_pt_id")
     })
@@ -83,8 +83,8 @@ public class LandingTakeoffAreaCollectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_pg_tlof", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
+    @JoinTable(name = "landingtakeoffareacollection_tlof", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollection_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "touchdownliftoff_pt_id")
     })
@@ -93,8 +93,8 @@ public class LandingTakeoffAreaCollectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_pg_annotation", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_pg_id")
+    @JoinTable(name = "landingtakeoffareacollection_annotation", joinColumns = {
+        @JoinColumn(name = "landingtakeoffareacollection_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

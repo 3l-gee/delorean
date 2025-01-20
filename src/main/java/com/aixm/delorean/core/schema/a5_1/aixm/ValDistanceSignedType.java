@@ -45,10 +45,10 @@ public class ValDistanceSignedType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valdistancesigned_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valdistancesignedtype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valdistancesigned_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valdistancesignedtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

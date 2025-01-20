@@ -43,7 +43,7 @@ public class CodeLevelType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codelevel_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeleveltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

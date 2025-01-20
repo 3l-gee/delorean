@@ -43,7 +43,7 @@ public class CodeUnitType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeunit_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeunittype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

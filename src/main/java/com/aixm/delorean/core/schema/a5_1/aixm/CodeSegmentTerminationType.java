@@ -43,7 +43,7 @@ public class CodeSegmentTerminationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codesegmenttermination_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesegmentterminationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

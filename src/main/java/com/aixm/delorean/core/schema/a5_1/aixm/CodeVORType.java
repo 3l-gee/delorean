@@ -43,7 +43,7 @@ public class CodeVORType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codevor_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codevortype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

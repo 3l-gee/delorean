@@ -43,7 +43,7 @@ public class CodeOilType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeoil_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeoiltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

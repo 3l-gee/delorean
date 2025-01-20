@@ -43,7 +43,7 @@ public class CodeRouteIndicatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderouteindicator_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderouteindicatortype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

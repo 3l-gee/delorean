@@ -45,10 +45,10 @@ public class ValTemperatureType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valtemperature_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valtemperaturetype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valtemperature_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valtemperaturetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

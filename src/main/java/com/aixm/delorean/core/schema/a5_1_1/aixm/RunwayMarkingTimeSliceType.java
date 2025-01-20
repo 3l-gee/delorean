@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaymarking_ts", schema = "markings")
+@Table(name = "runwaymarking_ts", schema = "airport_heliport")
 public class RunwayMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -95,7 +95,7 @@ public class RunwayMarkingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaymarking_ts_element_", joinColumns = {
+    @JoinTable(name = "runwaymarking_ts_element", joinColumns = {
         @JoinColumn(name = "runwaymarking_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "markingelement_pt_id")
