@@ -7,8 +7,13 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
+import com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter;
+import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
 import com.aixm.delorean.core.org.gml.v_3_2.TimePrimitivePropertyType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,6 +30,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -43,7 +49,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}sequenceNumber" minOccurs="0"/>
  *         <element ref="{http://www.aixm.aero/schema/5.1.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
- *         <element ref="{http://www.aixm.aero/schema/5.1.1}featureLifetime" minOccurs="0"/>
+ *         <element name="featureLifetime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
@@ -204,8 +210,14 @@ public abstract class AbstractAIXMTimeSliceType
     protected Long correctionNumber;
     @Transient
     protected FeatureTimeSliceMetadataPropertyType timeSliceMetadata;
-    @Transient
-    protected TimePrimitivePropertyType featureLifetime;
+    @XmlElement(type = TimePrimitivePropertyType.class, name = "featureLifetime", required = true)
+    @XmlJavaTypeAdapter(TimePrimitivePropertyTypeAdapter.class)
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "beginPosition", column = @Column(name = "feature_lifetime_begin")),
+        @AttributeOverride(name = "endPosition", column = @Column(name = "feature_lifetime_end"))
+    })
+    protected AixmTimeSliceType featureLifetime;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_property_seq")
     @SequenceGenerator(name = "aixm_property_seq", sequenceName = "aixm_property_seq", allocationSize = 1)
@@ -330,10 +342,10 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link TimePrimitivePropertyType }
+     *     {@link String }
      *     
      */
-    public TimePrimitivePropertyType getFeatureLifetime() {
+    public AixmTimeSliceType getFeatureLifetime() {
         return featureLifetime;
     }
 
@@ -342,10 +354,10 @@ public abstract class AbstractAIXMTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link TimePrimitivePropertyType }
+     *     {@link String }
      *     
      */
-    public void setFeatureLifetime(TimePrimitivePropertyType value) {
+    public void setFeatureLifetime(AixmTimeSliceType value) {
         this.featureLifetime = value;
     }
 

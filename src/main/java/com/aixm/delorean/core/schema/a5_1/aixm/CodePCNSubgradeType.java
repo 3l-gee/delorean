@@ -43,7 +43,7 @@ public class CodePCNSubgradeType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codepcnsubgrade_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codepcnsubgradetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

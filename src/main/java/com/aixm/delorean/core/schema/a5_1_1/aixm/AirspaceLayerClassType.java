@@ -118,8 +118,8 @@ public class AirspaceLayerClassType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacelayerclass_pg_associatedlevels", joinColumns = {
-        @JoinColumn(name = "airspacelayerclass_pg_id")
+    @JoinTable(name = "airspacelayerclass_associatedlevels", joinColumns = {
+        @JoinColumn(name = "airspacelayerclass_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayer_pt_id")
     })

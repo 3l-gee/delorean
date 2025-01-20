@@ -43,7 +43,7 @@ public class CodeATCReportingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeatcreporting_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeatcreportingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

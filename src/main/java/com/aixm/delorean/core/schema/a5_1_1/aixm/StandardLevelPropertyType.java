@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "standardLevel"
 })
 @Entity
-@Table(name = "standardlevel_pt", schema = "standard_levels")
+@Table(name = "standardlevel_pt", schema = "shared")
 public class StandardLevelPropertyType
     extends AbstractAIXMPropertyType
 {

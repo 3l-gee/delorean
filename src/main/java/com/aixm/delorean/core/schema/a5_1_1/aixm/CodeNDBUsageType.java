@@ -43,7 +43,7 @@ public class CodeNDBUsageType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codendbusage_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codendbusagetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

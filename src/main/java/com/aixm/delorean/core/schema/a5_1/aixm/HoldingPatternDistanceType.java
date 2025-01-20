@@ -84,8 +84,8 @@ public class HoldingPatternDistanceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpatterndistance_pg_annotation", joinColumns = {
-        @JoinColumn(name = "holdingpatterndistance_pg_id")
+    @JoinTable(name = "holdingpatterndistance_annotation", joinColumns = {
+        @JoinColumn(name = "holdingpatterndistance_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

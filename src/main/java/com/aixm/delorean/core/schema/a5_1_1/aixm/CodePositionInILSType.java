@@ -43,7 +43,7 @@ public class CodePositionInILSType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codepositioninils_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codepositioninilstype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

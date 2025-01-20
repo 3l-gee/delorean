@@ -94,7 +94,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "instrumentapproachprocedure_ts", schema = "approach")
+@Table(name = "instrumentapproachprocedure_ts", schema = "procedure")
 public class InstrumentApproachProcedureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -232,8 +232,8 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approach_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approach_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "approachtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachType approachType;
     @XmlElement(nillable = true)

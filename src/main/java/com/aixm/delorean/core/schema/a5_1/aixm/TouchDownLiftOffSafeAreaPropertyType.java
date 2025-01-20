@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "touchdownliftoffsafearea_pt", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoffsafearea_pt", schema = "airport_heliport")
 public class TouchDownLiftOffSafeAreaPropertyType {
 
     @Id

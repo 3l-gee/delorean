@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routeavailability", schema = "en_route")
+@Table(name = "routeavailability", schema = "routes")
 public class RouteAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -134,8 +134,8 @@ public class RouteAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routeavailability_pg_levels", joinColumns = {
-        @JoinColumn(name = "routeavailability_pg_id")
+    @JoinTable(name = "routeavailability_levels", joinColumns = {
+        @JoinColumn(name = "routeavailability_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayer_pt_id")
     })

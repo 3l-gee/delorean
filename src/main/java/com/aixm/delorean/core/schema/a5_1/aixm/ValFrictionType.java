@@ -44,7 +44,7 @@ public class ValFrictionType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valfriction_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valfrictiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

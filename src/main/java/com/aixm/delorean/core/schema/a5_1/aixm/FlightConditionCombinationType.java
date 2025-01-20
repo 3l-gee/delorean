@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightconditioncombination", schema = "flight_restrictions")
+@Table(name = "flightconditioncombination", schema = "routes")
 public class FlightConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
@@ -118,8 +118,8 @@ public class FlightConditionCombinationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditioncombination_pg_element_", joinColumns = {
-        @JoinColumn(name = "flightconditioncombination_pg_id")
+    @JoinTable(name = "flightflightconditioncombination_element", joinColumns = {
+        @JoinColumn(name = "flightflightconditioncombination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightconditionelement_pt_id")
     })

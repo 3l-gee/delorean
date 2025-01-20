@@ -43,7 +43,7 @@ public class CodeApproachType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeapproach_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeapproachtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

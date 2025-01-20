@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydirection_ts", schema = "runway")
+@Table(name = "runwaydirection_ts", schema = "airport_heliport")
 public class RunwayDirectionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -147,8 +147,8 @@ public class RunwayDirectionTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "approachmarking_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarking_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "approachmarkingtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "approachmarkingtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayMarkingType approachMarkingType;
     @XmlElement(nillable = true)

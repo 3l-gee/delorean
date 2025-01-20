@@ -43,7 +43,7 @@ public class CodeSpeedReferenceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codespeedreference_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codespeedreferencetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

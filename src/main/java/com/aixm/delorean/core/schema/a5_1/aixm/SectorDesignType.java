@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "sectordesign", schema = "departure")
+@Table(name = "sectordesign", schema = "procedure")
 public class SectorDesignType
     extends AbstractAIXMObjectType
 {
@@ -108,8 +108,8 @@ public class SectorDesignType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sectordesign_pg_annotation", joinColumns = {
-        @JoinColumn(name = "sectordesign_pg_id")
+    @JoinTable(name = "sectordesign_annotation", joinColumns = {
+        @JoinColumn(name = "sectordesign_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -128,8 +128,8 @@ public class AirspaceActivationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivation_pg_levels", joinColumns = {
-        @JoinColumn(name = "airspaceactivation_pg_id")
+    @JoinTable(name = "airspaceactivation_levels", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayer_pt_id")
     })
@@ -138,8 +138,8 @@ public class AirspaceActivationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivation_pg_user_", joinColumns = {
-        @JoinColumn(name = "airspaceactivation_pg_id")
+    @JoinTable(name = "airspaceactivation_user", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthority_pt_id")
     })
@@ -148,8 +148,8 @@ public class AirspaceActivationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspaceactivation_pg_aircraft", joinColumns = {
-        @JoinColumn(name = "airspaceactivation_pg_id")
+    @JoinTable(name = "airspaceactivation_aircraft", joinColumns = {
+        @JoinColumn(name = "airspaceactivation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })

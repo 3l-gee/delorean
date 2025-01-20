@@ -203,8 +203,8 @@ public class SecondarySurveillanceRadarTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarequipment_pg_contact", joinColumns = {
-        @JoinColumn(name = "radarequipment_pg_id")
+    @JoinTable(name = "secondarysurveillanceradar_ts_contact", joinColumns = {
+        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformation_pt_id")
     })
@@ -213,14 +213,14 @@ public class SecondarySurveillanceRadarTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarequipment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radarequipment_pg_id")
+    @JoinTable(name = "secondarysurveillanceradar_ts_annotation", joinColumns = {
+        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -273,8 +273,8 @@ public class SecondarySurveillanceRadarTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surveillanceradar_pg_groundstation", joinColumns = {
-        @JoinColumn(name = "surveillanceradar_pg_id")
+    @JoinTable(name = "secondarysurveillanceradar_ts_groundstation", joinColumns = {
+        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "surveillancegroundstation_pt_id")
     })

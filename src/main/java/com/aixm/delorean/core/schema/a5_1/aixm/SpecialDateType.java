@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "specialdate", schema = "schedules")
+@Table(name = "specialdate", schema = "shared")
 public class SpecialDateType
     extends AbstractAIXMFeatureType
 {

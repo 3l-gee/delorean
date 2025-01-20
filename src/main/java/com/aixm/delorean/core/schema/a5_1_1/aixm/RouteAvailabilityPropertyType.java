@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "routeAvailability"
 })
 @Entity
-@Table(name = "routeavailability_pt", schema = "en_route")
+@Table(name = "routeavailability_pt", schema = "routes")
 public class RouteAvailabilityPropertyType
     extends AbstractAIXMPropertyType
 {

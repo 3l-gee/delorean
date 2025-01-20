@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "aircraftstand", schema = "apron")
+@Table(name = "aircraftstand", schema = "airport_heliport")
 public class AircraftStandType
     extends AbstractAIXMFeatureType
 {

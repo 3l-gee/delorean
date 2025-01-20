@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "azimuth", schema = "navaids")
+@Table(name = "azimuth", schema = "navaids_points")
 public class AzimuthType
     extends AbstractNavaidEquipmentType
 {

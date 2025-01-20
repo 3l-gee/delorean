@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "lightelement", schema = "light_element")
+@Table(name = "lightelement", schema = "shared")
 public class LightElementType
     extends AbstractAIXMObjectType
 {
@@ -110,14 +110,14 @@ public class LightElementType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "lightelement_pg_id")
+    @JoinTable(name = "lightelement_annotation", joinColumns = {
+        @JoinColumn(name = "lightelement_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -126,8 +126,8 @@ public class LightElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelement_pg_availability", joinColumns = {
-        @JoinColumn(name = "lightelement_pg_id")
+    @JoinTable(name = "lightelement_availability", joinColumns = {
+        @JoinColumn(name = "lightelement_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelementstatus_pt_id")
     })

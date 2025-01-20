@@ -44,10 +44,10 @@ public class ValFLType {
     @XmlValue
     protected long value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valfl_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valfltype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valfl_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valfltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

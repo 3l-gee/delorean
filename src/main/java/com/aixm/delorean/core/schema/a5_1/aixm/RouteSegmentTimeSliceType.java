@@ -96,7 +96,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routesegment_ts", schema = "en_route")
+@Table(name = "routesegment_ts", schema = "routes")
 public class RouteSegmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -149,8 +149,8 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "path_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "path_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "pathtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "pathtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRouteSegmentPathType pathType;
     @XmlElement(nillable = true)
@@ -260,8 +260,8 @@ public class RouteSegmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigation_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "navigation_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "navigationtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRouteNavigationType navigationType;
     @XmlElement(nillable = true)
@@ -282,7 +282,7 @@ public class RouteSegmentTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "start__id", referencedColumnName = "id")
+    @JoinColumn(name = "start_id", referencedColumnName = "id")
     protected EnRouteSegmentPointPropertyType start;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -306,14 +306,14 @@ public class RouteSegmentTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "end__id", referencedColumnName = "id")
+    @JoinColumn(name = "end_id", referencedColumnName = "id")
     protected EnRouteSegmentPointPropertyType end;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegment_pg_availability", joinColumns = {
-        @JoinColumn(name = "routesegment_pg_id")
+    @JoinTable(name = "routesegment_ts_availability", joinColumns = {
+        @JoinColumn(name = "routesegment_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeavailability_pt_id")
     })
@@ -322,8 +322,8 @@ public class RouteSegmentTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "routesegment_pg_id")
+    @JoinTable(name = "routesegment_ts_annotation", joinColumns = {
+        @JoinColumn(name = "routesegment_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

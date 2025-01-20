@@ -43,7 +43,7 @@ public class CodeUpperAlphaType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeupperalpha_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeupperalphatype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

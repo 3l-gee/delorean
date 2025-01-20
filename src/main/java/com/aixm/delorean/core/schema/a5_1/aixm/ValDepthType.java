@@ -45,10 +45,10 @@ public class ValDepthType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valdepth_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valdepthtype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valdepth_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valdepthtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

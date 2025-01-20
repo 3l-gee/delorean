@@ -83,8 +83,8 @@ public class FuelType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "fuel_pg_annotation", joinColumns = {
-        @JoinColumn(name = "fuel_pg_id")
+    @JoinTable(name = "fuel_annotation", joinColumns = {
+        @JoinColumn(name = "fuel_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

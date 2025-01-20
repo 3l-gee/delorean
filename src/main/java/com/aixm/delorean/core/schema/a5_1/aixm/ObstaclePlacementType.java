@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacleplacement", schema = "surface_assessment")
+@Table(name = "obstacleplacement", schema = "shared")
 public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
@@ -93,8 +93,8 @@ public class ObstaclePlacementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "point_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "point_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "pointtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "pointtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType pointType;
     @XmlElement(nillable = true)
@@ -108,8 +108,8 @@ public class ObstaclePlacementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleplacement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "obstacleplacement_pg_id")
+    @JoinTable(name = "obstacleplacement_annotation", joinColumns = {
+        @JoinColumn(name = "obstacleplacement_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

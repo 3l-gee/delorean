@@ -43,7 +43,7 @@ public class CodeGradeSeparationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codegradeseparation_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codegradeseparationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

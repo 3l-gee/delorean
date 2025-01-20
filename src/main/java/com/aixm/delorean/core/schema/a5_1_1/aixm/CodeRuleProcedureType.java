@@ -43,7 +43,7 @@ public class CodeRuleProcedureType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderuleprocedure_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderuleproceduretype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

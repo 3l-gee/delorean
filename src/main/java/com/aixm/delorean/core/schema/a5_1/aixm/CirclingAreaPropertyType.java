@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "circlingarea_pt", schema = "circling")
+@Table(name = "circlingarea_pt", schema = "public")
 public class CirclingAreaPropertyType {
 
     @Id

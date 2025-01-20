@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "routedme_ts", schema = "en_route")
+@Table(name = "routedme_ts", schema = "routes")
 public class RouteDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -105,8 +105,8 @@ public class RouteDMETimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routedme_pg_annotation", joinColumns = {
-        @JoinColumn(name = "routedme_pg_id")
+    @JoinTable(name = "routedme_ts_annotation", joinColumns = {
+        @JoinColumn(name = "routedme_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

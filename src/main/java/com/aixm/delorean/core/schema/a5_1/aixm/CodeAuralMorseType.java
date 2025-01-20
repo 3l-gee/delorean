@@ -43,7 +43,7 @@ public class CodeAuralMorseType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeauralmorse_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeauralmorsetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

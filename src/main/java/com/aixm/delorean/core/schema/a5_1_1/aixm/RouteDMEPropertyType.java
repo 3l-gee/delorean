@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "routedme_pt", schema = "en_route")
+@Table(name = "routedme_pt", schema = "routes")
 public class RouteDMEPropertyType {
 
     @Id

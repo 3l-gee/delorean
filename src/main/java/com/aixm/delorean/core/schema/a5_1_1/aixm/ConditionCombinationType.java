@@ -121,8 +121,8 @@ public class ConditionCombinationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_pg_weather", joinColumns = {
-        @JoinColumn(name = "conditioncombination_pg_id")
+    @JoinTable(name = "conditioncombination_weather", joinColumns = {
+        @JoinColumn(name = "conditioncombination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "meteorology_pt_id")
     })
@@ -131,8 +131,8 @@ public class ConditionCombinationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_pg_aircraft", joinColumns = {
-        @JoinColumn(name = "conditioncombination_pg_id")
+    @JoinTable(name = "conditioncombination_aircraft", joinColumns = {
+        @JoinColumn(name = "conditioncombination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
@@ -141,8 +141,8 @@ public class ConditionCombinationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_pg_flight", joinColumns = {
-        @JoinColumn(name = "conditioncombination_pg_id")
+    @JoinTable(name = "conditioncombination_flight", joinColumns = {
+        @JoinColumn(name = "conditioncombination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "flightcharacteristic_pt_id")
     })
@@ -151,8 +151,8 @@ public class ConditionCombinationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_pg_subcondition", joinColumns = {
-        @JoinColumn(name = "conditioncombination_pg_id")
+    @JoinTable(name = "conditioncombination_subcondition", joinColumns = {
+        @JoinColumn(name = "conditioncombination_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "conditioncombination_pt_id")
     })

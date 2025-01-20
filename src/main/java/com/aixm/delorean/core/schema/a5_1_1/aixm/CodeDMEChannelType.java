@@ -43,7 +43,7 @@ public class CodeDMEChannelType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codedmechannel_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codedmechanneltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

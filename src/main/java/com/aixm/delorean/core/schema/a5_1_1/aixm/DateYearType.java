@@ -43,7 +43,7 @@ public class DateYearType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "dateyear_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "dateyeartype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

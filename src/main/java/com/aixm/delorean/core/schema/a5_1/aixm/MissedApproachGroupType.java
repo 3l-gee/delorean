@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "missedapproachgroup", schema = "approach")
+@Table(name = "missedapproachgroup", schema = "procedure")
 public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
@@ -101,8 +101,8 @@ public class MissedApproachGroupType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_pg_altimeter", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_pg_id")
+    @JoinTable(name = "missedapproachgroup_altimeter", joinColumns = {
+        @JoinColumn(name = "missedapproachgroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "altimetersource_pt_id")
     })
@@ -111,8 +111,8 @@ public class MissedApproachGroupType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_pg_annotation", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_pg_id")
+    @JoinTable(name = "missedapproachgroup_annotation", joinColumns = {
+        @JoinColumn(name = "missedapproachgroup_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

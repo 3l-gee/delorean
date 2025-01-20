@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "aeronauticalGroundLightTimeSlice"
 })
 @Entity
-@Table(name = "aeronauticalgroundlight_tsp", schema = "visual_navigation")
+@Table(name = "aeronauticalgroundlight_tsp", schema = "navaids_points")
 public class AeronauticalGroundLightTimeSlicePropertyType {
 
     @XmlElement(name = "AeronauticalGroundLightTimeSlice", required = true)

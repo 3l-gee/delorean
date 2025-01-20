@@ -79,7 +79,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "visualglideslopeindicator_ts", schema = "runway")
+@Table(name = "visualglideslopeindicator_ts", schema = "airport_heliport")
 public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -109,7 +109,7 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicator_ts_element_", joinColumns = {
+    @JoinTable(name = "visualglideslopeindicator_ts_element", joinColumns = {
         @JoinColumn(name = "visualglideslopeindicator_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightelement_pt_id")

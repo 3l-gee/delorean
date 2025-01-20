@@ -43,7 +43,7 @@ public class TextDesignatorType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "textdesignator_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "textdesignatortype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -43,7 +43,7 @@ public class CodeProcedurePhaseType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeprocedurephase_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeprocedurephasetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

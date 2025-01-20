@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "distanceindication_pt", schema = "point_reference")
+@Table(name = "distanceindication_pt", schema = "navaids_points")
 public class DistanceIndicationPropertyType {
 
     @Id

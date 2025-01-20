@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "obstacleassessmentarea", schema = "surface_assessment")
+@Table(name = "obstacleassessmentarea", schema = "shared")
 public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
@@ -145,8 +145,8 @@ public class ObstacleAssessmentAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_pg_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pg_id")
+    @JoinTable(name = "obstacleassessmentarea_aircraftcategory", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentarea_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
@@ -155,8 +155,8 @@ public class ObstacleAssessmentAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_pg_significantobstacle", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pg_id")
+    @JoinTable(name = "obstacleassessmentarea_significantobstacle", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentarea_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "obstruction_pt_id")
     })
@@ -177,8 +177,8 @@ public class ObstacleAssessmentAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pg_id")
+    @JoinTable(name = "obstacleassessmentarea_annotation", joinColumns = {
+        @JoinColumn(name = "obstacleassessmentarea_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

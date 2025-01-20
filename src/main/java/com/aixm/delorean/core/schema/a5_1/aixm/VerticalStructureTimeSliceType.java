@@ -174,8 +174,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_part", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_part", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructurepart_pt_id")
     })
@@ -184,8 +184,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_hostedpassengerservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_hostedpassengerservice", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "passengerservice_pt_id")
     })
@@ -194,8 +194,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_supportedgroundlight", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_supportedgroundlight", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightsystem_pt_id")
     })
@@ -204,8 +204,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_hostednavaidequipment", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_hostednavaidequipment", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navaidequipment_pt_id")
     })
@@ -214,8 +214,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_hostedspecialnavstation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_hostedspecialnavstation", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "specialnavigationstation_pt_id")
     })
@@ -224,8 +224,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_hostedunit", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_hostedunit", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unit_pt_id")
     })
@@ -234,8 +234,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_hostedorganisation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_hostedorganisation", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthority_pt_id")
     })
@@ -244,8 +244,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_supportedservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_supportedservice", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "service_pt_id")
     })
@@ -254,8 +254,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_annotation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_annotation", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -264,8 +264,8 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_pg_lightingavailability", joinColumns = {
-        @JoinColumn(name = "verticalstructure_pg_id")
+    @JoinTable(name = "verticalstructure_ts_lightingavailability", joinColumns = {
+        @JoinColumn(name = "verticalstructure_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "verticalstructurelightingstatus_pt_id")
     })

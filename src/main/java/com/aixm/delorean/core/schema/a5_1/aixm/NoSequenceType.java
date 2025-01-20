@@ -43,7 +43,7 @@ public class NoSequenceType {
     @XmlValue
     protected long value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "nosequence_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "nosequencetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

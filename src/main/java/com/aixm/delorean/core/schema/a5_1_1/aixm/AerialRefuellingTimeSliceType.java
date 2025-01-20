@@ -193,8 +193,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_availability", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_availability", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "routeavailability_pt_id")
     })
@@ -203,8 +203,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_protectingairspace", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_protectingairspace", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspace_pt_id")
     })
@@ -213,8 +213,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_track", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_track", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellingtrack_pt_id")
     })
@@ -223,8 +223,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_anchor", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_anchor", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aerialrefuellinganchor_pt_id")
     })
@@ -239,8 +239,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_managingorganisation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_managingorganisation", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "authorityforaerialrefuelling_pt_id")
     })
@@ -249,8 +249,8 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pg_id")
+    @JoinTable(name = "aerialrefuelling_ts_annotation", joinColumns = {
+        @JoinColumn(name = "aerialrefuelling_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -43,7 +43,7 @@ public class CodeRouteDesignatorPrefixType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderoutedesignatorprefix_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderoutedesignatorprefixtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

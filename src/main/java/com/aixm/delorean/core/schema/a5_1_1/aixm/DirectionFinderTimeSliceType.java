@@ -81,7 +81,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "directionfinder_ts", schema = "navaids")
+@Table(name = "directionfinder_ts", schema = "navaids_points")
 public class DirectionFinderTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -146,7 +146,7 @@ public class DirectionFinderTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
@@ -199,8 +199,8 @@ public class DirectionFinderTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_pg_informationprovision", joinColumns = {
-        @JoinColumn(name = "directionfinder_pg_id")
+    @JoinTable(name = "directionfinder_ts_informationprovision", joinColumns = {
+        @JoinColumn(name = "directionfinder_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "informationservice_pt_id")
     })

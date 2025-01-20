@@ -43,7 +43,7 @@ public class CodeVerticalStructureMarkingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeverticalstructuremarking_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeverticalstructuremarkingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

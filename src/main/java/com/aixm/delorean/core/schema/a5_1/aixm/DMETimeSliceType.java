@@ -83,7 +83,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "dme_ts", schema = "navaids")
+@Table(name = "dme_ts", schema = "navaids_points")
 public class DMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -148,7 +148,7 @@ public class DMETimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {

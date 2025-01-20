@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwaydeclareddistancevalue", schema = "runway")
+@Table(name = "runwaydeclareddistancevalue", schema = "airport_heliport")
 public class RunwayDeclaredDistanceValueType
     extends AbstractPropertiesWithScheduleType
 {

@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "arrestinggear_ts", schema = "runway")
+@Table(name = "arrestinggear_ts", schema = "airport_heliport")
 public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -116,8 +116,8 @@ public class ArrestingGearTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "absorb_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "absorb_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "absorbtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "absorbtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeArrestingGearEnergyAbsorbType absorbType;
     @XmlElement(nillable = true)

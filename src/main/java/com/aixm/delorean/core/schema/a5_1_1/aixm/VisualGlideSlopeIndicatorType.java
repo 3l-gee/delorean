@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "visualglideslopeindicator", schema = "runway")
+@Table(name = "visualglideslopeindicator", schema = "airport_heliport")
 public class VisualGlideSlopeIndicatorType
     extends AbstractGroundLightSystemType
 {

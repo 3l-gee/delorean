@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "markerbeacon", schema = "navaids")
+@Table(name = "markerbeacon", schema = "navaids_points")
 public class MarkerBeaconType
     extends AbstractNavaidEquipmentType
 {

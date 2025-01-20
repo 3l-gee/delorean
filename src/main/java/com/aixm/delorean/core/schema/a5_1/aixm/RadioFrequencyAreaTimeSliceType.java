@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "radiofrequencyarea_ts", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea_ts", schema = "shared")
 public class RadioFrequencyAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -98,8 +98,8 @@ public class RadioFrequencyAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "signaltype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signaltype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioSignalType signalType;
     @XmlElement(name = "equipment_navaidEquipment", nillable = true)
@@ -136,8 +136,8 @@ public class RadioFrequencyAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_pg_id")
+    @JoinTable(name = "radiofrequencyarea_ts_sector", joinColumns = {
+        @JoinColumn(name = "radiofrequencyarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "circlesector_pt_id")
     })
@@ -146,8 +146,8 @@ public class RadioFrequencyAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_pg_extent", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_pg_id")
+    @JoinTable(name = "radiofrequencyarea_ts_extent", joinColumns = {
+        @JoinColumn(name = "radiofrequencyarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "surface_pt_id")
     })
@@ -156,8 +156,8 @@ public class RadioFrequencyAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_pg_id")
+    @JoinTable(name = "radiofrequencyarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "radiofrequencyarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

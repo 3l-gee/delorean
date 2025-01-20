@@ -43,7 +43,7 @@ public class CodeHoldingUsageType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeholdingusage_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeholdingusagetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

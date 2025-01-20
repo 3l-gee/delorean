@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "circlingRestriction"
 })
 @Entity
-@Table(name = "circlingrestriction_pt", schema = "circling")
+@Table(name = "circlingrestriction_pt", schema = "procedure")
 public class CirclingRestrictionPropertyType
     extends AbstractAIXMPropertyType
 {

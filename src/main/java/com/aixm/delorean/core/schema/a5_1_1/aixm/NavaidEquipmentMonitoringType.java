@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidequipmentmonitoring", schema = "navaids")
+@Table(name = "navaidequipmentmonitoring", schema = "navaids_points")
 public class NavaidEquipmentMonitoringType
     extends AbstractPropertiesWithScheduleType
 {

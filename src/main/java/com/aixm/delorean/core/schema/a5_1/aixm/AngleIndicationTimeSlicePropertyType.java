@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "angleIndicationTimeSlice"
 })
 @Entity
-@Table(name = "angleindication_tsp", schema = "point_reference")
+@Table(name = "angleindication_tsp", schema = "navaids_points")
 public class AngleIndicationTimeSlicePropertyType {
 
     @XmlElement(name = "AngleIndicationTimeSlice", required = true)

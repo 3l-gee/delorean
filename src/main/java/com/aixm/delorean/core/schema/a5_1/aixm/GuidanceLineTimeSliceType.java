@@ -76,7 +76,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "guidanceline_ts", schema = "taxiway")
+@Table(name = "guidanceline_ts", schema = "airport_heliport")
 public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -114,8 +114,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_connectedtouchdownliftoff", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_connectedtouchdownliftoff", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "touchdownliftoff_pt_id")
     })
@@ -124,8 +124,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_connectedrunwaycentrelinepoint", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_connectedrunwaycentrelinepoint", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runwaycentrelinepoint_pt_id")
     })
@@ -134,8 +134,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_connectedapron", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_connectedapron", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "apron_pt_id")
     })
@@ -144,8 +144,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_connectedstand", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_connectedstand", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftstand_pt_id")
     })
@@ -160,8 +160,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_connectedtaxiway", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_connectedtaxiway", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "taxiway_pt_id")
     })
@@ -170,8 +170,8 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_pg_annotation", joinColumns = {
-        @JoinColumn(name = "guidanceline_pg_id")
+    @JoinTable(name = "guidanceline_ts_annotation", joinColumns = {
+        @JoinColumn(name = "guidanceline_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

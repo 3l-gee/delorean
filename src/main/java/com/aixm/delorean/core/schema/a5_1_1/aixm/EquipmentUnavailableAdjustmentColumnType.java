@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "equipmentunavailableadjustmentcolumn", schema = "minima")
+@Table(name = "equipmentunavailableadjustmentcolumn", schema = "procedure")
 public class EquipmentUnavailableAdjustmentColumnType
     extends AbstractAIXMObjectType
 {
@@ -116,8 +116,8 @@ public class EquipmentUnavailableAdjustmentColumnType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "equipmentunavailableadjustmentcolumn_pg_annotation", joinColumns = {
-        @JoinColumn(name = "equipmentunavailableadjustmentcolumn_pg_id")
+    @JoinTable(name = "equipmentunavailableadjustmentcolumn_annotation", joinColumns = {
+        @JoinColumn(name = "equipmentunavailableadjustmentcolumn_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

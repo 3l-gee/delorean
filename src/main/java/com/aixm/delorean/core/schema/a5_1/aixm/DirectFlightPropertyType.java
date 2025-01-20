@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "abstractDirectFlight"
 })
 @Entity
-@Table(name = "directflight_pt", schema = "flight_restrictions")
+@Table(name = "directflight_pt", schema = "routes")
 public class DirectFlightPropertyType
     extends AbstractAIXMPropertyType
 {

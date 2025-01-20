@@ -43,7 +43,7 @@ public class CodeRVSMType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codervsm_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codervsmtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

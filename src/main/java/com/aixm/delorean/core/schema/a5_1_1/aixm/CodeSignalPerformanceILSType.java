@@ -43,7 +43,7 @@ public class CodeSignalPerformanceILSType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codesignalperformanceils_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesignalperformanceilstype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

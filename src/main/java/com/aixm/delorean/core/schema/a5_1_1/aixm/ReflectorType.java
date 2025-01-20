@@ -90,8 +90,8 @@ public class ReflectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "reflector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "reflector_pg_id")
+    @JoinTable(name = "reflector_annotation", joinColumns = {
+        @JoinColumn(name = "reflector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

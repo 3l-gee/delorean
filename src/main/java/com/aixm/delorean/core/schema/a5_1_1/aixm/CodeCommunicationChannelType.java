@@ -43,7 +43,7 @@ public class CodeCommunicationChannelType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecommunicationchannel_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecommunicationchanneltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

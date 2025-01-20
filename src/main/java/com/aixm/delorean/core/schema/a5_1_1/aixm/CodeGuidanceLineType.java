@@ -43,7 +43,7 @@ public class CodeGuidanceLineType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeguidanceline_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeguidancelinetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

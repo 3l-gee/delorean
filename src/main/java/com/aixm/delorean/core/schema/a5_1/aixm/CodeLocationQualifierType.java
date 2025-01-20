@@ -43,7 +43,7 @@ public class CodeLocationQualifierType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codelocationqualifier_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codelocationqualifiertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

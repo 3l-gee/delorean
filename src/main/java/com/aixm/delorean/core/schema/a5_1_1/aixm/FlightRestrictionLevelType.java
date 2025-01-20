@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "flightrestrictionlevel", schema = "flight_restrictions")
+@Table(name = "flightrestrictionlevel", schema = "routes")
 public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {
@@ -109,8 +109,8 @@ public class FlightRestrictionLevelType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionlevel_pg_annotation", joinColumns = {
-        @JoinColumn(name = "flightrestrictionlevel_pg_id")
+    @JoinTable(name = "flightrestrictionlevel_annotation", joinColumns = {
+        @JoinColumn(name = "flightrestrictionlevel_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

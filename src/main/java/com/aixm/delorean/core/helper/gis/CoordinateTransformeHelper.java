@@ -235,6 +235,7 @@ public class CoordinateTransformeHelper {
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         Coordinate targetCoordinate = instance.transform(sourceCRS, targetCRS, sourceCoordinate);
         Point point = geometryFactory.createPoint(targetCoordinate);
+        point.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "point: " + point, new Exception().getStackTrace()[0]);
         return point;
     }
@@ -245,6 +246,7 @@ public class CoordinateTransformeHelper {
         List<Coordinate> targetCoordinatesList = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
         LineString line = geometryFactory.createLineString(targetCoordinates);
+        line.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
         return line;
     }
@@ -257,6 +259,7 @@ public class CoordinateTransformeHelper {
         Coordinate targetCoordinate2 = instance.ProjectPoint(targetCoordinate, distance, bearing2);
         Coordinate[] targetCoordinates = {targetCoordinate1, targetCoordinate, targetCoordinate2};
         LineString line =  geometryFactory.createLineString(targetCoordinates);
+        line.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
         return line;
     }
@@ -271,6 +274,7 @@ public class CoordinateTransformeHelper {
 
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
         LineString line = geometryFactory.createLineString(targetCoordinates);
+        line.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "line: " + line, new Exception().getStackTrace()[0]);
         return line;
     }
@@ -290,6 +294,7 @@ public class CoordinateTransformeHelper {
         Coordinate[] targetShellArray = targetShell.toArray(new Coordinate[0]);
         LinearRing targetShellRing = geometryFactory.createLinearRing(targetShellArray);
         Polygon polygon = geometryFactory.createPolygon(targetShellRing, targetHoles);
+        polygon.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "polygon: " + polygon, new Exception().getStackTrace()[0]);
         return polygon;
     }
@@ -298,6 +303,7 @@ public class CoordinateTransformeHelper {
         ConsoleLogger.log(LogLevel.DEBUG, "polygons: " + polygons, new Exception().getStackTrace()[0]);
         Polygon[] polygonArray = polygons.toArray(new Polygon[0]);
         MultiPolygon multiPolygon = geometryFactory.createMultiPolygon(polygonArray);
+        multiPolygon.setSRID(4326);
         ConsoleLogger.log(LogLevel.DEBUG, "multiPolygon: " + multiPolygon, new Exception().getStackTrace()[0]);
         return multiPolygon;
     }

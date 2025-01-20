@@ -44,10 +44,10 @@ public class ValDistanceVerticalType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valdistancevertical_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valdistanceverticaltype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valdistancevertical_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valdistanceverticaltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

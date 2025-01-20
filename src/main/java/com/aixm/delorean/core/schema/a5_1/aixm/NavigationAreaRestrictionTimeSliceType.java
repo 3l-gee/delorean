@@ -86,8 +86,8 @@ public class NavigationAreaRestrictionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestriction_pg_procedure_", joinColumns = {
-        @JoinColumn(name = "navigationarearestriction_pg_id")
+    @JoinTable(name = "navigationarearestriction_ts_procedure", joinColumns = {
+        @JoinColumn(name = "navigationarearestriction_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "procedure_pt_id")
     })
@@ -108,8 +108,8 @@ public class NavigationAreaRestrictionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestriction_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navigationarearestriction_pg_id")
+    @JoinTable(name = "navigationarearestriction_ts_annotation", joinColumns = {
+        @JoinColumn(name = "navigationarearestriction_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

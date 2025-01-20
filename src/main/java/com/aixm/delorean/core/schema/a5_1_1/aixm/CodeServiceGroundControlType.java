@@ -43,7 +43,7 @@ public class CodeServiceGroundControlType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeservicegroundcontrol_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeservicegroundcontroltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

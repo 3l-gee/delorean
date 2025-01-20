@@ -43,7 +43,7 @@ public class CodeApproachLightingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeapproachlighting_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeapproachlightingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

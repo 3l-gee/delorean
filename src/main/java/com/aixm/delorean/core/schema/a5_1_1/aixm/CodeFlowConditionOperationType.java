@@ -43,7 +43,7 @@ public class CodeFlowConditionOperationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeflowconditionoperation_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeflowconditionoperationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

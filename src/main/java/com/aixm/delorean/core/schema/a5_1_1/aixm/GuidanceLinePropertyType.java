@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "guidanceline_pt", schema = "taxiway")
+@Table(name = "guidanceline_pt", schema = "airport_heliport")
 public class GuidanceLinePropertyType {
 
     @Id

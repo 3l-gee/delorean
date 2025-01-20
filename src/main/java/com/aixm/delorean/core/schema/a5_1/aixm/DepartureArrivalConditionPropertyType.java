@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "departureArrivalCondition"
 })
 @Entity
-@Table(name = "departurearrivalcondition_pt", schema = "departure")
+@Table(name = "departurearrivalcondition_pt", schema = "procedure")
 public class DepartureArrivalConditionPropertyType
     extends AbstractAIXMPropertyType
 {

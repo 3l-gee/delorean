@@ -43,7 +43,7 @@ public class CodeCourseQualityILSType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecoursequalityils_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecoursequalityilstype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

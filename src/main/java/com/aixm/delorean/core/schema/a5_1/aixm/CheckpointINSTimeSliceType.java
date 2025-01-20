@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "checkpointins_ts", schema = "navaids")
+@Table(name = "checkpointins_ts", schema = "navaids_points")
 public class CheckpointINSTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -145,7 +145,7 @@ public class CheckpointINSTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "position__id", referencedColumnName = "id")
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -157,8 +157,8 @@ public class CheckpointINSTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationsystemcheckpoint_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navigationsystemcheckpoint_pg_id")
+    @JoinTable(name = "checkpointins_ts_annotation", joinColumns = {
+        @JoinColumn(name = "checkpointins_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

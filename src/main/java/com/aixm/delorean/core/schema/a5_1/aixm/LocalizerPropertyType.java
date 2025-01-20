@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "localizer_pt", schema = "navaids")
+@Table(name = "localizer_pt", schema = "navaids_points")
 public class LocalizerPropertyType {
 
     @Id

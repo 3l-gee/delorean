@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navaidoperationalstatus", schema = "navaids")
+@Table(name = "navaidoperationalstatus", schema = "navaids_points")
 public class NavaidOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
@@ -117,8 +117,8 @@ public class NavaidOperationalStatusType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "signal_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "signal_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "signaltype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "signaltype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioSignalType signalType;
     @Transient

@@ -50,7 +50,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "holdingassessment_pt", schema = "surface_assessment")
+@Table(name = "holdingassessment_pt", schema = "shared")
 public class HoldingAssessmentPropertyType {
 
     @Id

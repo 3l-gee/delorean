@@ -78,7 +78,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "route_ts", schema = "en_route")
+@Table(name = "route_ts", schema = "routes")
 public class RouteTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -156,8 +156,8 @@ public class RouteTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "militarytraining_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "militarytraining_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "militarytrainingtype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "militarytrainingtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMilitaryTrainingType militaryTrainingType;
     @XmlElement(nillable = true)
@@ -170,8 +170,8 @@ public class RouteTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "route_pg_annotation", joinColumns = {
-        @JoinColumn(name = "route_pg_id")
+    @JoinTable(name = "route_ts_annotation", joinColumns = {
+        @JoinColumn(name = "route_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

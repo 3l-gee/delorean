@@ -43,7 +43,7 @@ public class CodeRouteDesignatorLetterType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderoutedesignatorletter_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderoutedesignatorlettertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

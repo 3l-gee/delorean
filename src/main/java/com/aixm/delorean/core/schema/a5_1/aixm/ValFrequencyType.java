@@ -45,10 +45,10 @@ public class ValFrequencyType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valfrequency_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valfrequencytype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valfrequency_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valfrequencytype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

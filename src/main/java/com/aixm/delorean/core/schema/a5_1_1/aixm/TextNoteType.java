@@ -47,12 +47,12 @@ public class TextNoteType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "textnote_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "textnotetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "language")
-    @Column(name = "textnote_lang", length = 255, nullable = true, unique = false)
+    @Column(name = "textnotetype_lang", length = 255, nullable = true, unique = false)
     protected String lang;
 
     /**

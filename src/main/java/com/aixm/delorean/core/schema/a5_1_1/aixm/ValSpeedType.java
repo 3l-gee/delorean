@@ -45,10 +45,10 @@ public class ValSpeedType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "valspeed_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "valspeedtype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valspeed_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valspeedtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

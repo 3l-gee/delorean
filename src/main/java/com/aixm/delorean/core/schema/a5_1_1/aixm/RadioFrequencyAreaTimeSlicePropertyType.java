@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "radioFrequencyAreaTimeSlice"
 })
 @Entity
-@Table(name = "radiofrequencyarea_tsp", schema = "radio_frequency_limitation")
+@Table(name = "radiofrequencyarea_tsp", schema = "shared")
 public class RadioFrequencyAreaTimeSlicePropertyType {
 
     @XmlElement(name = "RadioFrequencyAreaTimeSlice", required = true)

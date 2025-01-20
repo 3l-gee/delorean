@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "missedApproachGroup"
 })
 @Entity
-@Table(name = "missedapproachgroup_pt", schema = "approach")
+@Table(name = "missedapproachgroup_pt", schema = "procedure")
 public class MissedApproachGroupPropertyType
     extends AbstractAIXMPropertyType
 {

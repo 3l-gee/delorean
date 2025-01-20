@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "sdfTimeSlice"
 })
 @Entity
-@Table(name = "sdf_tsp", schema = "navaids")
+@Table(name = "sdf_tsp", schema = "navaids_points")
 public class SDFTimeSlicePropertyType {
 
     @XmlElement(name = "SDFTimeSlice", required = true)

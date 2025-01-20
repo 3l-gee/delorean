@@ -84,8 +84,8 @@ public class AuthorityForAerialRefuellingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "authorityforaerialrefuelling_pg_annotation", joinColumns = {
-        @JoinColumn(name = "authorityforaerialrefuelling_pg_id")
+    @JoinTable(name = "authorityforauthorityforaerialrefuelling_annotation", joinColumns = {
+        @JoinColumn(name = "authorityforauthorityforaerialrefuelling_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

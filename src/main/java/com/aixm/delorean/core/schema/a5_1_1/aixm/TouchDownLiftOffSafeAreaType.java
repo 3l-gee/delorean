@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touchdownliftoffsafearea", schema = "helicopter_surfaces")
+@Table(name = "touchdownliftoffsafearea", schema = "airport_heliport")
 public class TouchDownLiftOffSafeAreaType
     extends AbstractAirportHeliportProtectionAreaType
 {

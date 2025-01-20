@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "ndbTimeSlice"
 })
 @Entity
-@Table(name = "ndb_tsp", schema = "navaids")
+@Table(name = "ndb_tsp", schema = "navaids_points")
 public class NDBTimeSlicePropertyType {
 
     @XmlElement(name = "NDBTimeSlice", required = true)

@@ -43,7 +43,7 @@ public class CodeMarkingConditionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemarkingcondition_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemarkingconditiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

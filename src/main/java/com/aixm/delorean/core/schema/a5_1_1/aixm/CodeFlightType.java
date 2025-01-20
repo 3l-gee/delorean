@@ -43,7 +43,7 @@ public class CodeFlightType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeflight_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeflighttype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

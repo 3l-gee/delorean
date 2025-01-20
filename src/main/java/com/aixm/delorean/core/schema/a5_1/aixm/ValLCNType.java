@@ -44,7 +44,7 @@ public class ValLCNType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vallcn_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "vallcntype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

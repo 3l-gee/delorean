@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "standardlevelsector", schema = "standard_levels")
+@Table(name = "standardlevelsector", schema = "shared")
 public class StandardLevelSectorType
     extends AbstractAIXMFeatureType
 {

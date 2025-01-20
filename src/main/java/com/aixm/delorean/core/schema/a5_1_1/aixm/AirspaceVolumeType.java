@@ -173,8 +173,8 @@ public class AirspaceVolumeType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacevolume_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airspacevolume_pg_id")
+    @JoinTable(name = "airspacevolume_annotation", joinColumns = {
+        @JoinColumn(name = "airspacevolume_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

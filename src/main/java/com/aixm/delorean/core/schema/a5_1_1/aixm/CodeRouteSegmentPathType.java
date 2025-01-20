@@ -43,7 +43,7 @@ public class CodeRouteSegmentPathType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderoutesegmentpath_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderoutesegmentpathtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

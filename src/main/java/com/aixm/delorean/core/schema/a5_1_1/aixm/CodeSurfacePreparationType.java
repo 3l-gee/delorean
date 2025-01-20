@@ -43,7 +43,7 @@ public class CodeSurfacePreparationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codesurfacepreparation_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesurfacepreparationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

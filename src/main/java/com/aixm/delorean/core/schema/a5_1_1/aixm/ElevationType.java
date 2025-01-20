@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "elevation", schema = "navaids")
+@Table(name = "elevation", schema = "navaids_points")
 public class ElevationType
     extends AbstractNavaidEquipmentType
 {

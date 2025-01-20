@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "flightRestrictionTimeSlice"
 })
 @Entity
-@Table(name = "flightrestriction_tsp", schema = "flight_restrictions")
+@Table(name = "flightrestriction_tsp", schema = "routes")
 public class FlightRestrictionTimeSlicePropertyType {
 
     @XmlElement(name = "FlightRestrictionTimeSlice", required = true)

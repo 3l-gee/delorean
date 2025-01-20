@@ -43,7 +43,7 @@ public class CodeDeclaredDistanceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codedeclareddistance_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codedeclareddistancetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

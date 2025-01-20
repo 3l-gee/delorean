@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "holdingAssessmentTimeSlice"
 })
 @Entity
-@Table(name = "holdingassessment_tsp", schema = "surface_assessment")
+@Table(name = "holdingassessment_tsp", schema = "shared")
 public class HoldingAssessmentTimeSlicePropertyType {
 
     @XmlElement(name = "HoldingAssessmentTimeSlice", required = true)

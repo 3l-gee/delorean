@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "distanceIndicationTimeSlice"
 })
 @Entity
-@Table(name = "distanceindication_tsp", schema = "point_reference")
+@Table(name = "distanceindication_tsp", schema = "navaids_points")
 public class DistanceIndicationTimeSlicePropertyType {
 
     @XmlElement(name = "DistanceIndicationTimeSlice", required = true)

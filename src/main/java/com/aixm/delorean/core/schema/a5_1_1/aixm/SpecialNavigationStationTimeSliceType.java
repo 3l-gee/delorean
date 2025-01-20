@@ -74,7 +74,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "specialnavigationstation_ts", schema = "navaids")
+@Table(name = "specialnavigationstation_ts", schema = "navaids_points")
 public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -124,14 +124,14 @@ public class SpecialNavigationStationTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "position__id", referencedColumnName = "id")
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstation_pg_availability", joinColumns = {
-        @JoinColumn(name = "specialnavigationstation_pg_id")
+    @JoinTable(name = "specialnavigationstation_ts_availability", joinColumns = {
+        @JoinColumn(name = "specialnavigationstation_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "specialnavigationstationstatus_pt_id")
     })
@@ -140,8 +140,8 @@ public class SpecialNavigationStationTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "specialnavigationstation_pg_id")
+    @JoinTable(name = "specialnavigationstation_ts_annotation", joinColumns = {
+        @JoinColumn(name = "specialnavigationstation_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

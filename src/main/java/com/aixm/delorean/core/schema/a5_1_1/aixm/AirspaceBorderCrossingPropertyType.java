@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "airspacebordercrossing_pt", schema = "flight_restrictions")
+@Table(name = "airspacebordercrossing_pt", schema = "routes")
 public class AirspaceBorderCrossingPropertyType {
 
     @Id

@@ -44,7 +44,7 @@ public class ValAlarmLimitType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valalarmlimit_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valalarmlimittype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

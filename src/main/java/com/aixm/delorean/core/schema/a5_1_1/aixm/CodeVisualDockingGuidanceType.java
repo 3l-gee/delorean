@@ -43,7 +43,7 @@ public class CodeVisualDockingGuidanceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codevisualdockingguidance_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codevisualdockingguidancetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

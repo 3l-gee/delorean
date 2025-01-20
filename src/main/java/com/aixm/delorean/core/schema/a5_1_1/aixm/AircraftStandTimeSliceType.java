@@ -75,7 +75,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "aircraftstand_ts", schema = "apron")
+@Table(name = "aircraftstand_ts", schema = "airport_heliport")
 public class AircraftStandTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -111,7 +111,7 @@ public class AircraftStandTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -129,8 +129,8 @@ public class AircraftStandTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aircraftstand_pg_contaminant", joinColumns = {
-        @JoinColumn(name = "aircraftstand_pg_id")
+    @JoinTable(name = "aircraftstand_ts_contaminant", joinColumns = {
+        @JoinColumn(name = "aircraftstand_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "aircraftstandcontamination_pt_id")
     })
@@ -139,8 +139,8 @@ public class AircraftStandTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aircraftstand_pg_annotation", joinColumns = {
-        @JoinColumn(name = "aircraftstand_pg_id")
+    @JoinTable(name = "aircraftstand_ts_annotation", joinColumns = {
+        @JoinColumn(name = "aircraftstand_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })
@@ -149,8 +149,8 @@ public class AircraftStandTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aircraftstand_pg_availability", joinColumns = {
-        @JoinColumn(name = "aircraftstand_pg_id")
+    @JoinTable(name = "aircraftstand_ts_availability", joinColumns = {
+        @JoinColumn(name = "aircraftstand_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "apronareaavailability_pt_id")
     })

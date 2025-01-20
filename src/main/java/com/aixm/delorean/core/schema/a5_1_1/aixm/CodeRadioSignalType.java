@@ -43,7 +43,7 @@ public class CodeRadioSignalType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderadiosignal_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderadiosignaltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

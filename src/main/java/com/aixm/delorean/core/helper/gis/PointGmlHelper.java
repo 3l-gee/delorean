@@ -84,8 +84,9 @@ public class PointGmlHelper {
             return pos;
 
         } else {
-            pos.getValue().add(value.getX());
             pos.getValue().add(value.getY());
+            pos.getValue().add(value.getX());
+
         }
         
         return pos;
@@ -138,8 +139,9 @@ public class PointGmlHelper {
             return pos;
 
         } else {
-            pos.getValue().add(value.getX());
             pos.getValue().add(value.getY());
+            pos.getValue().add(value.getX());
+
         }
 
         return pos;

@@ -43,7 +43,7 @@ public class TextInstructionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "textinstruction_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "textinstructiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

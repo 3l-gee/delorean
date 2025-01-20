@@ -43,7 +43,7 @@ public class CodeSideType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeside_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codesidetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

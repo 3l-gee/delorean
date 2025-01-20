@@ -69,7 +69,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "runwayvisualrange_ts", schema = "runway")
+@Table(name = "runwayvisualrange_ts", schema = "airport_heliport")
 public class RunwayVisualRangeTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -95,7 +95,7 @@ public class RunwayVisualRangeTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {

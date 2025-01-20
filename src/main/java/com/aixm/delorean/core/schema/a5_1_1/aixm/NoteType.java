@@ -91,8 +91,8 @@ public class NoteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "note_pg_translatednote", joinColumns = {
-        @JoinColumn(name = "note_pg_id")
+    @JoinTable(name = "note_translatednote", joinColumns = {
+        @JoinColumn(name = "note_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "linguisticnote_pt_id")
     })

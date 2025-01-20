@@ -364,9 +364,6 @@ public class GisHelper {
 
     public static com.aixm.delorean.core.schema.a5_1.aixm.PointType printAIXMPoint(AixmPointType value, com.aixm.delorean.core.schema.a5_1.aixm.PointType pointType) {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
-        //output object
-        DirectPositionType pos = new DirectPositionType();
-
         if (value == null) {
             return new com.aixm.delorean.core.schema.a5_1.aixm.PointType();
         }

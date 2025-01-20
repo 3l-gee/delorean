@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "contactinformation", schema = "address")
+@Table(name = "contactinformation", schema = "shared")
 public class ContactInformationType
     extends AbstractAIXMObjectType
 {
@@ -94,8 +94,8 @@ public class ContactInformationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_pg_address", joinColumns = {
-        @JoinColumn(name = "contactinformation_pg_id")
+    @JoinTable(name = "contactinformation_address", joinColumns = {
+        @JoinColumn(name = "contactinformation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "postaladdress_pt_id")
     })
@@ -104,8 +104,8 @@ public class ContactInformationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_pg_networknode", joinColumns = {
-        @JoinColumn(name = "contactinformation_pg_id")
+    @JoinTable(name = "contactinformation_networknode", joinColumns = {
+        @JoinColumn(name = "contactinformation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "onlinecontact_pt_id")
     })
@@ -114,8 +114,8 @@ public class ContactInformationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_pg_phonefax", joinColumns = {
-        @JoinColumn(name = "contactinformation_pg_id")
+    @JoinTable(name = "contactinformation_phonefax", joinColumns = {
+        @JoinColumn(name = "contactinformation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "telephonecontact_pt_id")
     })
@@ -124,8 +124,8 @@ public class ContactInformationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "contactinformation_pg_id")
+    @JoinTable(name = "contactinformation_annotation", joinColumns = {
+        @JoinColumn(name = "contactinformation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

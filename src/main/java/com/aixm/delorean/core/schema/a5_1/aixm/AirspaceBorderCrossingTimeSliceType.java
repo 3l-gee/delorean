@@ -64,7 +64,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "airspacebordercrossing_ts", schema = "flight_restrictions")
+@Table(name = "airspacebordercrossing_ts", schema = "routes")
 public class AirspaceBorderCrossingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,8 +85,8 @@ public class AirspaceBorderCrossingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacebordercrossing_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airspacebordercrossing_pg_id")
+    @JoinTable(name = "airspacebordercrossing_ts_annotation", joinColumns = {
+        @JoinColumn(name = "airspacebordercrossing_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

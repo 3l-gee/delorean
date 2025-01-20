@@ -52,7 +52,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "runwayVisualRangeTimeSlice"
 })
 @Entity
-@Table(name = "runwayvisualrange_tsp", schema = "runway")
+@Table(name = "runwayvisualrange_tsp", schema = "airport_heliport")
 public class RunwayVisualRangeTimeSlicePropertyType {
 
     @XmlElement(name = "RunwayVisualRangeTimeSlice", required = true)

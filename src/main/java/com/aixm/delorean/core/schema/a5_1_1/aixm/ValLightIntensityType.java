@@ -45,10 +45,10 @@ public class ValLightIntensityType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "uom")
-    @Column(name = "vallightintensity_uom", length = 255, nullable = true, unique = false)
+    @Column(name = "vallightintensitytype_uom", length = 255, nullable = true, unique = false)
     protected String uom;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "vallightintensity_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "vallightintensitytype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

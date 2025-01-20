@@ -43,7 +43,7 @@ public class CodeLightSourceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codelightsource_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codelightsourcetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

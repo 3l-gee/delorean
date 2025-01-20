@@ -72,7 +72,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "departurearrivalcondition", schema = "departure")
+@Table(name = "departurearrivalcondition", schema = "procedure")
 public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
@@ -125,8 +125,8 @@ public class DepartureArrivalConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "departurearrivalcondition_pg_annotation", joinColumns = {
-        @JoinColumn(name = "departurearrivalcondition_pg_id")
+    @JoinTable(name = "departurearrivalcondition_annotation", joinColumns = {
+        @JoinColumn(name = "departurearrivalcondition_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

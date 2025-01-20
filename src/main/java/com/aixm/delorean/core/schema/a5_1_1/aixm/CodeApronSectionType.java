@@ -43,7 +43,7 @@ public class CodeApronSectionType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeapronsection_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeapronsectiontype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

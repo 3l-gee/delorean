@@ -43,7 +43,7 @@ public class CodeContaminationType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecontamination_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecontaminationtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

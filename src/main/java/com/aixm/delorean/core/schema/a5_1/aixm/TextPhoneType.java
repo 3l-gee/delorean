@@ -43,7 +43,7 @@ public class TextPhoneType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "textphone_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "textphonetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

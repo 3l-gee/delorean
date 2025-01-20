@@ -7,9 +7,11 @@ import com.aixm.delorean.core.database.DatabaseBinding;
 import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
+import com.aixm.delorean.core.util.Util;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -73,6 +75,7 @@ public class Main {
     }
 
     private void testRun() {
+        Map<String, String> dictonary = Util.parseToMap("{url:jdbc:postgresql://localhost:5432/delorean, username:postgres, password:postgres, hbm2ddl:create}");
         ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
         executeNewCommand("a5_1_1");
 
@@ -82,19 +85,17 @@ public class Main {
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
-        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLSurface.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLSurface.xml");
-        ConsoleLogger.log(LogLevel.INFO, "xml - load src/main/resources/a5_1_1/a5_1_1_dataset.xm");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/main/resources/a5_1_1/a5_1_1_dataset.xml");
 
-        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/export.xml");
+        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/export.xml");
         
         ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", dictonary);
 
         ConsoleLogger.log(LogLevel.INFO, "db - startup");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
@@ -102,23 +103,23 @@ public class Main {
         ConsoleLogger.log(LogLevel.INFO, "db - load");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
 
-        // ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        // executeNewCommand("a5_1_1");
+        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
+        executeNewCommand("a5_1_1");
 
-        // ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
 
-        // ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", "");
+        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", dictonary);
 
-        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+        ConsoleLogger.log(LogLevel.INFO, "db - startup");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
 
-        // ConsoleLogger.log(LogLevel.INFO, "db - retrieve 1");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
+        ConsoleLogger.log(LogLevel.INFO, "db - retrieve 1");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
 
-        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
-        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retrive.xml");
+        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retrive.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 
@@ -140,6 +141,7 @@ public class Main {
         String argument = null;
         String parameter = null;
         String option = null;
+        Map<String, String> dictonary = Util.parseToMap(command);
 
         if (parts.length > 1) {
             argument = parts[1];
@@ -156,6 +158,7 @@ public class Main {
             option = parts[3];
         }
 
+
         switch (action.toLowerCase()) {
             case "new":
                 executeNewCommand(argument);
@@ -170,7 +173,7 @@ public class Main {
                 break;
 
             case "db_config":
-                executeDbConfigurationCommand(argument,parameter, option);
+                executeDbConfigurationCommand(argument,parameter, dictonary);
                 break;
 
             case "db" :
@@ -254,7 +257,7 @@ public class Main {
         }
     }
 
-    private void executeDbConfigurationCommand(String argument, String parameter, String option){
+    private void executeDbConfigurationCommand(String argument, String parameter, Map<String, String> dictionary){
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -265,14 +268,20 @@ public class Main {
 
         if (this.containerWarehouse.getIds().contains(argument)) {
             DatabaseConfig databaseConfiguration = DatabaseConfig.fromString(parameter);
-            String url = "jdbc:postgresql://localhost:5432/delorean";
-            String username = "postgres";
-            String password = "postgres";
-            DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration);
-            this.containerWarehouse.getContainer(argument).setDbBiding(dbBinding);
-            this.containerWarehouse.getContainer(argument).databaseBinding.setUrl(url);
-            this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
-            this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
+            try{
+                String url = dictionary.get("url");
+                String username = dictionary.get("username");
+                String password = dictionary.get("password");
+                String hbm2ddl = dictionary.get("hbm2ddl");
+                DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration);
+                this.containerWarehouse.getContainer(argument).setDbBiding(dbBinding);
+                this.containerWarehouse.getContainer(argument).databaseBinding.setUrl(url);
+                this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
+                this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
+                this.containerWarehouse.getContainer(argument).databaseBinding.setHbm2ddl(hbm2ddl);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid argument: " + e.getMessage());
+            }
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
         }

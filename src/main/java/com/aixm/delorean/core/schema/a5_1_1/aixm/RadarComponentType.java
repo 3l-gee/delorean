@@ -84,8 +84,8 @@ public class RadarComponentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarcomponent_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radarcomponent_pg_id")
+    @JoinTable(name = "radarcomponent_annotation", joinColumns = {
+        @JoinColumn(name = "radarcomponent_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -46,7 +46,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "timeSlice"
 })
 @Entity
-@Table(name = "touchdownliftoffmarking", schema = "markings")
+@Table(name = "touchdownliftoffmarking", schema = "airport_heliport")
 public class TouchDownLiftOffMarkingType
     extends AbstractMarkingType
 {

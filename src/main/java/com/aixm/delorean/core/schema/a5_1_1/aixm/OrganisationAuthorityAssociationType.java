@@ -84,8 +84,8 @@ public class OrganisationAuthorityAssociationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "organisationauthorityassociation_pg_annotation", joinColumns = {
-        @JoinColumn(name = "organisationauthorityassociation_pg_id")
+    @JoinTable(name = "organisationauthorityassociation_annotation", joinColumns = {
+        @JoinColumn(name = "organisationauthorityassociation_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

@@ -70,7 +70,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "altitudeadjustment", schema = "surface_assessment")
+@Table(name = "altitudeadjustment", schema = "shared")
 public class AltitudeAdjustmentType
     extends AbstractAIXMObjectType
 {
@@ -78,8 +78,8 @@ public class AltitudeAdjustmentType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustment_type_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustment_type_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "altitudeadjustmenttype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeadjustmenttype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeAdjustmentType altitudeAdjustmentType;
     @XmlElement(nillable = true)
@@ -108,8 +108,8 @@ public class AltitudeAdjustmentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "altitudeadjustment_pg_annotation", joinColumns = {
-        @JoinColumn(name = "altitudeadjustment_pg_id")
+    @JoinTable(name = "altitudeadjustment_annotation", joinColumns = {
+        @JoinColumn(name = "altitudeadjustment_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

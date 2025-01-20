@@ -43,7 +43,7 @@ public class CodeProcedureFixRoleType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeprocedurefixrole_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeprocedurefixroletype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

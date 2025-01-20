@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "markingelement", schema = "markings")
+@Table(name = "markingelement", schema = "airport_heliport")
 public class MarkingElementType
     extends AbstractAIXMObjectType
 {
@@ -112,8 +112,8 @@ public class MarkingElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markingelement_pg_annotation", joinColumns = {
-        @JoinColumn(name = "markingelement_pg_id")
+    @JoinTable(name = "markingelement_annotation", joinColumns = {
+        @JoinColumn(name = "markingelement_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

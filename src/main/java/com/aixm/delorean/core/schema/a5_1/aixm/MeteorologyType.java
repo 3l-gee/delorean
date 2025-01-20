@@ -71,7 +71,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "meteorology", schema = "meteorology")
+@Table(name = "meteorology", schema = "shared")
 public class MeteorologyType
     extends AbstractAIXMObjectType
 {
@@ -117,8 +117,8 @@ public class MeteorologyType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "meteorology_pg_annotation", joinColumns = {
-        @JoinColumn(name = "meteorology_pg_id")
+    @JoinTable(name = "meteorology_annotation", joinColumns = {
+        @JoinColumn(name = "meteorology_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

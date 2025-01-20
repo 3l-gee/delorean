@@ -43,7 +43,7 @@ public class CodeMLSAzimuthType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codemlsazimuth_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codemlsazimuthtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

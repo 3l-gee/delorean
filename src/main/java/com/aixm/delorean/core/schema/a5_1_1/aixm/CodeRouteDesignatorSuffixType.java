@@ -43,7 +43,7 @@ public class CodeRouteDesignatorSuffixType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "coderoutedesignatorsuffix_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "coderoutedesignatorsuffixtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

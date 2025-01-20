@@ -43,7 +43,7 @@ public class CodeApproachPrefixType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeapproachprefix_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeapproachprefixtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -99,8 +99,8 @@ public class AirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "local_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "local_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "localtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "localtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType localType;
     @XmlElement(name = "name", nillable = true)
@@ -120,8 +120,8 @@ public class AirspaceTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "control_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "control_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "controltype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "controltype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMilitaryOperationsType controlType;
     @XmlElement(nillable = true)
@@ -136,8 +136,8 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_pg_class_", joinColumns = {
-        @JoinColumn(name = "airspace_pg_id")
+    @JoinTable(name = "airspace_ts_class", joinColumns = {
+        @JoinColumn(name = "airspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacelayerclass_pt_id")
     })
@@ -152,8 +152,8 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_pg_geometrycomponent", joinColumns = {
-        @JoinColumn(name = "airspace_pg_id")
+    @JoinTable(name = "airspace_ts_geometrycomponent", joinColumns = {
+        @JoinColumn(name = "airspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspacegeometrycomponent_pt_id")
     })
@@ -162,8 +162,8 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_pg_activation", joinColumns = {
-        @JoinColumn(name = "airspace_pg_id")
+    @JoinTable(name = "airspace_ts_activation", joinColumns = {
+        @JoinColumn(name = "airspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "airspaceactivation_pt_id")
     })
@@ -172,8 +172,8 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_pg_annotation", joinColumns = {
-        @JoinColumn(name = "airspace_pg_id")
+    @JoinTable(name = "airspace_ts_annotation", joinColumns = {
+        @JoinColumn(name = "airspace_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

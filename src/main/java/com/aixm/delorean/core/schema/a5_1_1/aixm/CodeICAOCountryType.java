@@ -43,7 +43,7 @@ public class CodeICAOCountryType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeicaocountry_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeicaocountrytype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

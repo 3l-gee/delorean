@@ -43,7 +43,7 @@ public class CodeSpecialNavigationSystemType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codespecialnavigationsystem_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codespecialnavigationsystemtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

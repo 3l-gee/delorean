@@ -85,7 +85,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "standardinstrumentdeparture_ts", schema = "departure")
+@Table(name = "standardinstrumentdeparture_ts", schema = "procedure")
 public class StandardInstrumentDepartureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {

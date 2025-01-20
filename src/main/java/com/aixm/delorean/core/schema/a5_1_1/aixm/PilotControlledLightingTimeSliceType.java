@@ -127,8 +127,8 @@ public class PilotControlledLightingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_pg_controlledlightintensity", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_pg_id")
+    @JoinTable(name = "pilotcontrolledlighting_ts_controlledlightintensity", joinColumns = {
+        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "lightactivation_pt_id")
     })
@@ -137,8 +137,8 @@ public class PilotControlledLightingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_pg_activatedgroundlighting", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_pg_id")
+    @JoinTable(name = "pilotcontrolledlighting_ts_activatedgroundlighting", joinColumns = {
+        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "groundlightsystem_pt_id")
     })
@@ -147,8 +147,8 @@ public class PilotControlledLightingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_pg_annotation", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_pg_id")
+    @JoinTable(name = "pilotcontrolledlighting_ts_annotation", joinColumns = {
+        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

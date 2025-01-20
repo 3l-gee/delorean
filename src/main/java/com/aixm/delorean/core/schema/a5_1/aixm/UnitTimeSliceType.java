@@ -121,7 +121,7 @@ public class UnitTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "position__id", referencedColumnName = "id")
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
     @XmlElement(nillable = true)
     @OneToOne(cascade = {
@@ -139,8 +139,8 @@ public class UnitTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_pg_contact", joinColumns = {
-        @JoinColumn(name = "unit_pg_id")
+    @JoinTable(name = "unit_ts_contact", joinColumns = {
+        @JoinColumn(name = "unit_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "contactinformation_pt_id")
     })
@@ -149,8 +149,8 @@ public class UnitTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_pg_relatedunit", joinColumns = {
-        @JoinColumn(name = "unit_pg_id")
+    @JoinTable(name = "unit_ts_relatedunit", joinColumns = {
+        @JoinColumn(name = "unit_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unitdependency_pt_id")
     })
@@ -159,8 +159,8 @@ public class UnitTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_pg_availability", joinColumns = {
-        @JoinColumn(name = "unit_pg_id")
+    @JoinTable(name = "unit_ts_availability", joinColumns = {
+        @JoinColumn(name = "unit_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "unitavailability_pt_id")
     })
@@ -169,8 +169,8 @@ public class UnitTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unit_pg_annotation", joinColumns = {
-        @JoinColumn(name = "unit_pg_id")
+    @JoinTable(name = "unit_ts_annotation", joinColumns = {
+        @JoinColumn(name = "unit_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

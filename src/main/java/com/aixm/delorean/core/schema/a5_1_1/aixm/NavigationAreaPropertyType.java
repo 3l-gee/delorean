@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "navigationarea_pt", schema = "departure")
+@Table(name = "navigationarea_pt", schema = "procedure")
 public class NavigationAreaPropertyType {
 
     @Id

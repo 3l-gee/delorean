@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "angleUse"
 })
 @Entity
-@Table(name = "angleuse_pt", schema = "point_reference")
+@Table(name = "angleuse_pt", schema = "navaids_points")
 public class AngleUsePropertyType
     extends AbstractAIXMPropertyType
 {

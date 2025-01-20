@@ -43,7 +43,7 @@ public class CodeLoadingBridgeType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeloadingbridge_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeloadingbridgetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

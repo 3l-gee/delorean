@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "altitudeAdjustment"
 })
 @Entity
-@Table(name = "altitudeadjustment_pt", schema = "surface_assessment")
+@Table(name = "altitudeadjustment_pt", schema = "shared")
 public class AltitudeAdjustmentPropertyType
     extends AbstractAIXMPropertyType
 {

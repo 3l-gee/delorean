@@ -106,8 +106,8 @@ public class WorkAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_pg_activation", joinColumns = {
-        @JoinColumn(name = "workarea_pg_id")
+    @JoinTable(name = "workarea_ts_activation", joinColumns = {
+        @JoinColumn(name = "workarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "workareaactivity_pt_id")
     })
@@ -116,8 +116,8 @@ public class WorkAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "workarea_pg_id")
+    @JoinTable(name = "workarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "workarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

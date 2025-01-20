@@ -43,7 +43,7 @@ public class NoNumberType {
     @XmlValue
     protected long value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "nonumber_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "nonumbertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -73,7 +73,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "apronareaavailability", schema = "apron")
+@Table(name = "apronareaavailability", schema = "airport_heliport")
 public class ApronAreaAvailabilityType
     extends AbstractPropertiesWithScheduleType
 {
@@ -126,8 +126,8 @@ public class ApronAreaAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronareaavailability_pg_usage_", joinColumns = {
-        @JoinColumn(name = "apronareaavailability_pg_id")
+    @JoinTable(name = "apronareaavailability_usage", joinColumns = {
+        @JoinColumn(name = "apronareaavailability_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "apronareausage_pt_id")
     })

@@ -43,7 +43,7 @@ public class CodeColourType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codecolour_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codecolourtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -43,7 +43,7 @@ public class CodeApprovalType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeapproval_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeapprovaltype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

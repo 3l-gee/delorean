@@ -43,7 +43,7 @@ public class CodeTransponderType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codetransponder_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codetranspondertype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

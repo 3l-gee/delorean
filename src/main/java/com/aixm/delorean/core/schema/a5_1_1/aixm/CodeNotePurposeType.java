@@ -43,7 +43,7 @@ public class CodeNotePurposeType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codenotepurpose_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codenotepurposetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -140,8 +140,8 @@ public class FinalLegTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "legarinc_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "legarinc_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "legtypearinc_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "legtypearinc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSegmentPathType legTypeARINC;
     @XmlElement(nillable = true)
@@ -154,8 +154,8 @@ public class FinalLegTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "course_type_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "course_type_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "coursetype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "coursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType courseType;
     @XmlElement(nillable = true)
@@ -431,8 +431,8 @@ public class FinalLegTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalleg_pg_condition_", joinColumns = {
-        @JoinColumn(name = "finalleg_pg_id")
+    @JoinTable(name = "finalleg_ts_condition", joinColumns = {
+        @JoinColumn(name = "finalleg_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "approachcondition_pt_id")
     })

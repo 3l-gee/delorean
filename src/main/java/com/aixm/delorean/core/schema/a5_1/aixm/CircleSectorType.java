@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "circlesector", schema = "circle_sector")
+@Table(name = "circlesector", schema = "shared")
 public class CircleSectorType
     extends AbstractAIXMObjectType
 {
@@ -106,8 +106,8 @@ public class CircleSectorType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "angle_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "angle_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "angletype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "angletype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeBearingType angleType;
     @XmlElement(nillable = true)
@@ -167,8 +167,8 @@ public class CircleSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlesector_pg_annotation", joinColumns = {
-        @JoinColumn(name = "circlesector_pg_id")
+    @JoinTable(name = "circlesector_annotation", joinColumns = {
+        @JoinColumn(name = "circlesector_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

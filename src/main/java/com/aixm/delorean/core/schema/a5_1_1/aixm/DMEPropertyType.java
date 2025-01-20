@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "dme_pt", schema = "navaids")
+@Table(name = "dme_pt", schema = "navaids_points")
 public class DMEPropertyType {
 
     @Id

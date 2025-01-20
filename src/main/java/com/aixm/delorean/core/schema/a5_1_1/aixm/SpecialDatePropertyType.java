@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 })
 @Entity
-@Table(name = "specialdate_pt", schema = "schedules")
+@Table(name = "specialdate_pt", schema = "shared")
 public class SpecialDatePropertyType {
 
     @Id

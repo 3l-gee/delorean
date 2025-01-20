@@ -44,7 +44,7 @@ public class ValBearingType {
     @XmlValue
     protected BigDecimal value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "valbearing_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "valbearingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

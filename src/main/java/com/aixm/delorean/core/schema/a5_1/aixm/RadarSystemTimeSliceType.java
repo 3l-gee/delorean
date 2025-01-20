@@ -112,8 +112,8 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_pg_radarequipment", joinColumns = {
-        @JoinColumn(name = "radarsystem_pg_id")
+    @JoinTable(name = "radarsystem_ts_radarequipment", joinColumns = {
+        @JoinColumn(name = "radarsystem_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "radarcomponent_pt_id")
     })
@@ -122,8 +122,8 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_pg_office", joinColumns = {
-        @JoinColumn(name = "radarsystem_pg_id")
+    @JoinTable(name = "radarsystem_ts_office", joinColumns = {
+        @JoinColumn(name = "radarsystem_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "organisationauthority_pt_id")
     })
@@ -138,8 +138,8 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_pg_parrunway", joinColumns = {
-        @JoinColumn(name = "radarsystem_pg_id")
+    @JoinTable(name = "radarsystem_ts_parrunway", joinColumns = {
+        @JoinColumn(name = "radarsystem_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "runway_pt_id")
     })
@@ -148,14 +148,14 @@ public class RadarSystemTimeSliceType
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "location__id", referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_pg_annotation", joinColumns = {
-        @JoinColumn(name = "radarsystem_pg_id")
+    @JoinTable(name = "radarsystem_ts_annotation", joinColumns = {
+        @JoinColumn(name = "radarsystem_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

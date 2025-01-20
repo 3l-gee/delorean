@@ -84,7 +84,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "terminalarrivalarea_ts", schema = "terminal")
+@Table(name = "terminalarrivalarea_ts", schema = "procedure")
 public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -92,8 +92,8 @@ public class TerminalArrivalAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "arrivalarea_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalarea_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "arrivalareatype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalareatype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTAAType arrivalAreaType;
     @XmlElement(nillable = true)
@@ -194,8 +194,8 @@ public class TerminalArrivalAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "terminalarrivalarea_pg_id")
+    @JoinTable(name = "terminalarrivalarea_ts_sector", joinColumns = {
+        @JoinColumn(name = "terminalarrivalarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "terminalarrivalareasector_pt_id")
     })
@@ -210,8 +210,8 @@ public class TerminalArrivalAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "terminalarrivalarea_pg_id")
+    @JoinTable(name = "terminalarrivalarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "terminalarrivalarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

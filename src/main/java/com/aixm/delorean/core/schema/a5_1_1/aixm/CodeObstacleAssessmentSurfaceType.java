@@ -43,7 +43,7 @@ public class CodeObstacleAssessmentSurfaceType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeobstacleassessmentsurface_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeobstacleassessmentsurfacetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

@@ -77,7 +77,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "extension"
 })
 @Entity
-@Table(name = "navigationarea_ts", schema = "departure")
+@Table(name = "navigationarea_ts", schema = "procedure")
 public class NavigationAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
@@ -85,8 +85,8 @@ public class NavigationAreaTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "navigationarea_value", length = 255, nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationarea_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "navigationareatype_value", length = 255, nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "navigationareatype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavigationAreaType navigationAreaType;
     @XmlElement(nillable = true)
@@ -115,8 +115,8 @@ public class NavigationAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_pg_sector", joinColumns = {
-        @JoinColumn(name = "navigationarea_pg_id")
+    @JoinTable(name = "navigationarea_ts_sector", joinColumns = {
+        @JoinColumn(name = "navigationarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "navigationareasector_pt_id")
     })
@@ -161,8 +161,8 @@ public class NavigationAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_pg_annotation", joinColumns = {
-        @JoinColumn(name = "navigationarea_pg_id")
+    @JoinTable(name = "navigationarea_ts_annotation", joinColumns = {
+        @JoinColumn(name = "navigationarea_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "note_pt_id")
     })

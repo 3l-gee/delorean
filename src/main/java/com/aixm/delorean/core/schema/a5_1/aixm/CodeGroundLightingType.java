@@ -43,7 +43,7 @@ public class CodeGroundLightingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codegroundlighting_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codegroundlightingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

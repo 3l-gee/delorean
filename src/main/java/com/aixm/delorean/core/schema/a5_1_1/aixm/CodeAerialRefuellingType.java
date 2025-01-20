@@ -43,7 +43,7 @@ public class CodeAerialRefuellingType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codeaerialrefuelling_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codeaerialrefuellingtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**

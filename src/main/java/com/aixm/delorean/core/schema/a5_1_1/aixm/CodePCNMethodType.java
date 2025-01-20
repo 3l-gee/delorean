@@ -43,7 +43,7 @@ public class CodePCNMethodType {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "codepcnmethod_nilreason", length = 255, nullable = true, unique = false)
+    @Column(name = "codepcnmethodtype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
 
     /**
