@@ -23,7 +23,7 @@ public final class Util {
         int startIndex = input.indexOf('{');
         int endIndex = input.lastIndexOf('}');
         if (startIndex == -1 || endIndex == -1 || startIndex >= endIndex) {
-            throw new IllegalArgumentException("Invalid input format. No valid key-value pairs found.");
+            return new HashMap<>();
         }
 
         String keyValueString = input.substring(startIndex + 1, endIndex);

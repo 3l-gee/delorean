@@ -260,7 +260,6 @@ public class SurfaceGmlHelper {
             if (href == null) {
                 return new ArrayList<PolygonSegment>();
             } else {
-                ConsoleLogger.log(LogLevel.WARN, "href should be avoided at all cost" + value.getClass().getName(), new Exception().getStackTrace()[0]);
                 PolygonSegment polygonSegment = new PolygonSegment();
                 polygonSegment.setCurveRef(href);
                 polygonSegment.setPart(0);

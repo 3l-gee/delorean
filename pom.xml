@@ -7,9 +7,9 @@
 
 	<groupId>com.aixm.delorean</groupId>
 	<artifactId>delorean</artifactId>
-	<version>1.0.0</version>
+	<version>0.1.0 - alpha</version>
 	<name>delorean</name>
-	<url>http://www.example.com</url>
+	<url>https://github.com/3l-gee/delorean</url>
 
     <repositories>
         <repository>
