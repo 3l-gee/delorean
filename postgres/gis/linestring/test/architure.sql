@@ -1,0 +1,19 @@
+SELECT 
+obstacles.verticalstructure_ts.valid_time_begin,
+obstacles.verticalstructure_ts.valid_time_end,
+obstacles.verticalstructure_ts.feature_lifetime_begin,
+obstacles.verticalstructure_ts.feature_lifetime_end,
+obstacles.verticalstructure_ts.name_value, 
+obstacles.verticalstructure_ts.type_value,
+obstacles.verticalstructure_ts.lighted_value,
+obstacles.verticalstructure_ts.markingicaostandard_value,
+obstacles.verticalstructure_ts.group_value,
+*
+
+FROM obstacles.verticalstructure
+INNER JOIN public.verticalstructure_timeslice
+ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
+INNER JOIN obstacles.verticalstructure_tsp
+ON verticalstructure_timeslice.verticalstructure_tsp_id = obstacles.verticalstructure_tsp.id
+INNER JOIN obstacles.verticalstructure_ts
+ON obstacles.verticalstructure_tsp.verticalstructuretimeslice_id = obstacles.verticalstructure_ts.id
