@@ -90,14 +90,12 @@ public class ConsoleLogger implements Logger {
 
     // Method to format the log message
     private String formatMessage(LogLevel level, String message) {
-        String color = getColor(level);
-        return String.format("%s[%s]%s %s", color, level, RESET, message);
+        return String.format("[%s] %s", level, message);
     }
 
     // Method to format the log message
     private String formatMessage(LogLevel level, String message, StackTraceElement element) {
-        String color = getColor(level);
-        return String.format("%s[%s]%s %s : %s", color, level, RESET, element, message);
+        return String.format("[%s] %s : %s", level, element, message);
     }
 
     // Set the log level dynamically if needed

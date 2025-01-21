@@ -4,8 +4,8 @@
   <groupId>com.aixm.delorean</groupId>
   <artifactId>delorean</artifactId>
   <name>delorean</name>
-  <version>1.0.0</version>
-  <url>http://www.example.com</url>
+  <version>0.1.0 - alpha</version>
+  <url>https://github.com/3l-gee/delorean</url>
   <build>
     <plugins>
       <plugin>
