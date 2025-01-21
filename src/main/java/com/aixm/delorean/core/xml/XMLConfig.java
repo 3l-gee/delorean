@@ -4,26 +4,35 @@ import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Collections;
 
 public enum XMLConfig {
 
     AIXM_5_1_1(
         "a5_1_1", 
-        "a5_1_1/aixm-5.1.1/AIXM_AbstractGML_ObjectTypes.xsd",
+        "aixm-5.1.1/AIXM_AbstractGML_ObjectTypes.xsd",
         "a5_1_1"
     ),
     AIXM_5_1(
         "a5_1", 
-        "a5_1/message/AIXM_BasicMessage.xsd",
+        "message/AIXM_BasicMessage.xsd",
         "a5_1"
     );
 
@@ -38,8 +47,8 @@ public enum XMLConfig {
         this.root = root;
         this.xsd = xsd;
         this.schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        File tempDir = generateFile(root);
-        this.schema = loadSchema(root, xsd);
+        Path tempPath = generateFile(xsd);
+        this.schema = loadSchema(tempPath, root);
     }
 
     public String getVersion() {
@@ -50,83 +59,74 @@ public enum XMLConfig {
         return schema;
     }
 
-public File generateFile(String xsdRoot) {
+    public Path generateFile(String path) {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            URL rootUrl = classLoader.getResource(xsdRoot);
+            URL url = classLoader.getResource(path);
 
-            if (rootUrl == null) {
-                throw new RuntimeException("Root directory not found: " + xsdRoot);
+            if (url == null) {
+                ConsoleLogger.log(LogLevel.FATAL,"Resource not found: " + path, new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Resource not found: " + path);
             }
 
-            File tempDir = Files.createTempDirectory("temp_schema_root" + xsdRoot.hashCode()).toFile();
-            // tempDir.deleteOnExit();
+            File tempDir = Files.createTempDirectory("delorean_" + path.hashCode()).toFile();
 
-            Path rootPath = Paths.get(rootUrl.toURI());
-            Files.walk(rootPath).forEach(sourcePath -> {
-                try {
-                    Path relativePath = rootPath.relativize(sourcePath);
-                    File tempFileOrDir = new File(tempDir, relativePath.toString());
+            if ("jar".equalsIgnoreCase(url.getProtocol())) {
+                URI jarUri = URI.create(url.toString().split("!")[0]);
 
-                    if (Files.isDirectory(sourcePath)) {
-                        tempFileOrDir.mkdirs();
-                    } else if (Files.isRegularFile(sourcePath)) {
-                        tempFileOrDir.getParentFile().mkdirs();
-                        try (InputStream inputStream = Files.newInputStream(sourcePath);
-                             OutputStream outputStream = new FileOutputStream(tempFileOrDir)) {
-                            byte[] buffer = new byte[1024];
-                            int bytesRead;
-                            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                                outputStream.write(buffer, 0, bytesRead);
+                try (FileSystem xsdFileSystem = FileSystems.newFileSystem(jarUri, Collections.emptyMap())) {
+                    Path sourcePath = xsdFileSystem.getPath(path);
+                    Files.walk(sourcePath).forEach(source -> {
+                        try {
+                            Path destination = tempDir.toPath().resolve(sourcePath.relativize(source).toString());
+                            if (Files.isDirectory(source)) {
+                                Files.createDirectories(destination);
+                            } else {
+                                Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
                             }
+                        } catch (IOException e) {
+                            ConsoleLogger.log(LogLevel.FATAL,"Resource not found: " + path, new Exception().getStackTrace()[0]);
+                            throw new RuntimeException("Failed to copy file: " + source, e);
                         }
-                        // tempFileOrDir.deleteOnExit();
-                    }
-                } catch (Exception e) {
-                    throw new RuntimeException("Failed to process file: " + sourcePath, e);
+                    });
                 }
-            });
+            } else {
+                Path sourcePath = Paths.get(url.toURI());
+                Files.walk(sourcePath).forEach(source -> {
+                    try {
+                        Path destination = tempDir.toPath().resolve(sourcePath.relativize(source).toString());
+                        if (Files.isDirectory(source)) {
+                            Files.createDirectories(destination);
+                        } else {
+                            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException("Failed to copy file: " + source, e);
+                    }
+                });
+            }
 
-            return tempDir;
+            ConsoleLogger.log(LogLevel.DEBUG,"copied XSD to : " + path, new Exception().getStackTrace()[0]);
+            return tempDir.toPath();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            ConsoleLogger.log(LogLevel.FATAL,"Failed to generate temporary directory structure", new Exception().getStackTrace()[0]);
             throw new RuntimeException("Failed to generate temporary directory structure", e);
         }
     }
 
-    private Schema loadSchema(String xsdRoot, String xsdPath) {
+    private Schema loadSchema(Path path, String root) {
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            InputStream xsdStream = classLoader.getResourceAsStream(xsdPath);
+          
+            String xsdPath = path.resolve(root).toString();
+            Schema schema = this.schemaFactory.newSchema(new File(xsdPath));
             
-            if (xsdStream == null) {
-                throw new RuntimeException("Resource not found: " + xsdPath);
-            }
-            
-            File tempFile = createTempFileFromStream(xsdStream, xsdPath);
-            Schema xsdSchema = this.schemaFactory.newSchema(tempFile);
-
-            return xsdSchema;
+            return schema;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to load schema: " + xsdPath, e);
+            throw new RuntimeException("Failed to load schema: " + path + "///" + root, e);
         }
     }
-
-    private File createTempFileFromStream(InputStream xsdStream, String xsdPath) throws IOException {
-        File tempFile = File.createTempFile("schema_", xsdPath.hashCode() + ".xsd");
-        try (FileOutputStream out = new FileOutputStream(tempFile)) {
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = xsdStream.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
-            }
-        }
-        // tempFile.deleteOnExit(); // Ensure the file is deleted on exit
-        return tempFile;
-    }
-
 
     public static XMLConfig fromString(String version) {
         for (XMLConfig schemaVersion : XMLConfig.values()) {
