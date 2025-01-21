@@ -16,3 +16,5 @@ CREATE SCHEMA IF NOT EXISTS rules_procedures;
 CREATE SCHEMA IF NOT EXISTS service;
 CREATE SCHEMA IF NOT EXISTS shared;
 CREATE SCHEMA IF NOT EXISTS surveillance;
+
+-- {url:jdbc:postgresql://localhost:5432/steve, username:postgres, password:postgres, hbm2ddl:create}
