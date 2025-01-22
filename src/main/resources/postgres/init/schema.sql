@@ -1,10 +1,37 @@
 
 
 CREATE OR REPLACE VIEW point_view AS
-SELECT * FROM point_pt;
+SELECT
+    id, 
+	xml_id,
+    point as geom,
+	horizontalaccuracy,
+	horizontalaccuracy_uom,
+	horizontalaccuracy_nilreason,
+	nilreason
+FROM point_pt;
 
 CREATE OR REPLACE VIEW elevated_point_view AS
-SELECT * FROM elevated_point_pt;
+SELECT 
+    id, 
+	xml_id,
+    point as geom,
+	elevation,
+	elevation_uom,
+	eleveation_nilreason,
+	geoidundulation,
+	geoidundulation_uom,
+	geoidundulation_nilreason,
+	horizontalaccuracy,
+	horizontalaccuracy_uom,
+	horizontalaccuracy_nilreason,
+	verticalaccuracy,
+	verticalaccuracy_uom,
+	verticalaccuracy_nilreason,
+	verticaldatum,
+	verticaldatum_nilreason,
+	nilreason
+FROM elevated_point_pt;
 
 CREATE OR REPLACE VIEW curve_view AS
 WITH 
