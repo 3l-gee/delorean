@@ -234,7 +234,7 @@ SELECT
 	nilreason
 FROM merged_segments;
 
-CREATE OR REPLACE VIEW surface_view AS
+-- CREATE OR REPLACE VIEW surface_view AS
 WITH
 segment_ref AS(
 	SELECT 
@@ -322,9 +322,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(linestring, 0.00001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.00001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.00001)) as last_point
+		ST_ReducePrecision(linestring, 0.000000000000001) AS geom,
+		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
+		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
     FROM 
         public.polygon_segment 
     WHERE 
@@ -336,9 +336,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-        ST_Segmentize((ST_ReducePrecision(linestring, 0.00001)::geography), 10000)::geometry as geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.00001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.00001)) as last_point
+        ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 10000)::geometry as geom,
+		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
+		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
     FROM 
         public.polygon_segment 
     WHERE 
@@ -350,9 +350,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(geom, 0.00001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.00001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.00001)) as last_point
+		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
+		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
+		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
 	FROM
 		arc_line
 	UNION ALL
@@ -362,9 +362,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(geom, 0.00001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.00001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.00001)) as last_point
+		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
+		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
+		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
 	FROM segment_ref
 	INNER JOIN segment_value
 	ON segment_ref.uuid = segment_value.uuid		
@@ -435,7 +435,11 @@ ordered_segments AS (
     FROM 
         segement_ownership
     ORDER BY 
-        xml_id, part, member, sequence
+        xml_id, 
+		part, 
+		member, 
+		sequence
+
 ),
 linked_segments AS (
     SELECT 
@@ -460,9 +464,9 @@ linked_segments AS (
 		curr.xml_id,
         curr.part,
 		curr.member,
-        curr.sequence + 0.5 AS sequence, -- Adjust sequence for link
+        curr.sequence + 0.5 AS sequence,
 		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
+        ST_MakeLine(curr.last_point, next.first_point) AS geom,
         curr.last_point AS first_point,
         next.first_point AS last_point,
 		curr.horizontalaccuracy,
@@ -477,21 +481,22 @@ linked_segments AS (
         curr.xml_id = next.xml_id
         AND curr.part = next.part
         AND curr.sequence + 1 = next.sequence
+		AND curr.member = next.member
 	WHERE 
 		ST_IsClosed(curr.geom) = false
 		AND
 		curr.interpretation != 4
-		AND
+		OR
 		next.interpretation != 4
     UNION ALL
     SELECT 
         curr.id,
 		curr.xml_id,
         curr.part,
-		curr.member + 0.5 AS member, -- Adjust sequence for link
+		curr.member + 0.5 AS member,
         curr.sequence,
 		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
+        ST_MakeLine(curr.last_point, next.first_point) AS geom,
         curr.last_point AS first_point,
         next.first_point AS last_point,
 		curr.horizontalaccuracy,
@@ -510,10 +515,13 @@ linked_segments AS (
 		ST_IsClosed(curr.geom) = false
 		AND
 		curr.interpretation != 4
-		AND
+		OR
 		next.interpretation != 4
     ORDER BY 
-        xml_id, part, member, sequence
+        xml_id, 
+		part, 
+		member,
+		sequence
 ),
 partial_ring AS (
     SELECT 
@@ -531,7 +539,13 @@ partial_ring AS (
     WHERE
 		interpretation != 4
     GROUP BY 
-        id,xml_id, part, horizontalaccuracy, horizontalaccuracy_uom, horizontalaccuracy_nilreason,	nilreason
+        id,
+		xml_id, 
+		part, 
+		horizontalaccuracy, 
+		horizontalaccuracy_uom, 
+		horizontalaccuracy_nilreason,	
+		nilreason
 ),
 raw_geoborder AS (
     SELECT 
@@ -550,7 +564,14 @@ raw_geoborder AS (
     WHERE 
 		interpretation = 4
     GROUP BY 
-        id,xml_id, part, member, horizontalaccuracy, horizontalaccuracy_uom, horizontalaccuracy_nilreason,	nilreason
+        id,
+		xml_id, 
+		part, 
+		member, 
+		horizontalaccuracy, 
+		horizontalaccuracy_uom, 
+		horizontalaccuracy_nilreason,	
+		nilreason
 ),
 split_geoborder AS (
 	SELECT
@@ -580,12 +601,20 @@ split_geoborder AS (
 	WHERE 
 		raw_geoborder.part = partial_ring.part
 	GROUP BY
-		raw_geoborder.id, raw_geoborder.xml_id, raw_geoborder.geom, partial_ring.geom, raw_geoborder.horizontalaccuracy, raw_geoborder.horizontalaccuracy_uom, raw_geoborder.horizontalaccuracy_nilreason, raw_geoborder.nilreason
+		raw_geoborder.id, 
+		raw_geoborder.xml_id, 
+		raw_geoborder.geom, 
+		partial_ring.geom, 
+		raw_geoborder.horizontalaccuracy, 
+		raw_geoborder.horizontalaccuracy_uom, 
+		raw_geoborder.horizontalaccuracy_nilreason, 
+		raw_geoborder.nilreason
 ),
-exterior_ring AS (
+ring AS (
 	SELECT
 		partial_ring.id,
 		partial_ring.xml_id,
+		partial_ring.part,
 		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, split_geoborder.geom, end_segment, start_segment])) AS geom,
 		split_geoborder.horizontalaccuracy,
 		split_geoborder.horizontalaccuracy_uom,
@@ -607,6 +636,7 @@ exterior_ring AS (
 		SELECT
 		partial_ring.id,
 		partial_ring.xml_id,
+		partial_ring.part,
 		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])) AS geom,
 		split_geoborder.horizontalaccuracy,
 		split_geoborder.horizontalaccuracy_uom,
@@ -625,11 +655,19 @@ exterior_ring AS (
 		AND 
 		ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
 	GROUP BY 
-		partial_ring.id, partial_ring.xml_id, ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])), split_geoborder.horizontalaccuracy, split_geoborder.horizontalaccuracy_uom, split_geoborder.horizontalaccuracy_nilreason, split_geoborder.nilreason
+		partial_ring.id, 
+		partial_ring.xml_id, 
+		partial_ring.part,
+		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])), 
+		split_geoborder.horizontalaccuracy, 
+		split_geoborder.horizontalaccuracy_uom, 
+		split_geoborder.horizontalaccuracy_nilreason, 
+		split_geoborder.nilreason
 	UNION ALL
 	SELECT
 		partial_ring.id,
 		partial_ring.xml_id,
+		partial_ring.part,
 		partial_ring.geom,
 		partial_ring.horizontalaccuracy,
 		partial_ring.horizontalaccuracy_uom,
@@ -639,21 +677,51 @@ exterior_ring AS (
 		partial_ring
 	WHERE
 		partial_ring.closed = true
+		UNION ALL
+	SELECT
+		partial_ring.id,
+		partial_ring.xml_id,
+		partial_ring.part,
+		ST_AddPoint(partial_ring.geom, ST_StartPoint(partial_ring.geom)) AS geom,
+		partial_ring.horizontalaccuracy,
+		partial_ring.horizontalaccuracy_uom,
+		partial_ring.horizontalaccuracy_nilreason,
+		partial_ring.nilreason
+	FROM
+		partial_ring
+	WHERE
+		partial_ring.closed = false
 )
 SELECT 
-	(row_number() OVER ())::integer AS row,
-	exterior_ring.id,
-    exterior_ring.xml_id,
-    ST_MakePolygon(
-		exterior_ring.geom
--- 		COALESCE(interior_rings.geoms, ARRAY[]::geometry[])
-	) AS geom,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	nilreason
-FROM 
-    exterior_ring;
+ST_IsClosed(geom),
+ST_GeometryType(geom),
+-- ST_AsText(geom),
+*
+FROM ring
+
+-- ordered_segments
+-- linked_segments
+-- partial_ring
+
+-- SELECT 
+--     (row_number() OVER ())::integer AS row,
+--     ring.id,
+--     ring.xml_id,
+--     ST_MakePolygon(
+--         MAX(CASE WHEN ring.part = 0 THEN ring.geom END),
+--         COALESCE(ARRAY_AGG(CASE WHEN ring.part != 0 THEN ring.geom END) 
+--                  FILTER (WHERE ring.part != 0), ARRAY[]::geometry[])
+--     ) AS geom,
+--     MAX(horizontalaccuracy) AS horizontalaccuracy,
+--     MAX(horizontalaccuracy_uom) AS horizontalaccuracy_uom,
+--     MAX(horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
+--     MAX(nilreason) AS nilreason
+-- FROM 
+--     ring
+-- GROUP BY 
+--     ring.id, 
+-- 	ring.xml_id;
+
 
 CREATE OR REPLACE VIEW elevated_surface_view AS
 WITH

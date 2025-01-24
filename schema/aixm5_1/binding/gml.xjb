@@ -30,9 +30,8 @@
         </jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:description']">
 			<!-- TODO : define use case for description, StringOrRefType has a lot of other used data types-->
-			<annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "description"))})</annox:annotate>
-        </jaxb:bindings>
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+		</jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:descriptionReference']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
@@ -69,7 +68,7 @@
 
 	<jaxb:bindings schemaLocation="../aixm/ISO_19136_Schemas/basicTypes.xsd" node="/xs:schema">
 		<jaxb:bindings node="//xs:complexType[@name='CodeType']">
-			<annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+			<annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
 		</jaxb:bindings>
 		<jaxb:bindings node="//xs:complexType[@name='CodeWithAuthorityType']">
 			<annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
