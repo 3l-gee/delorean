@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW point_view AS
+CREATE MATERIALIZED VIEW point_view AS
 SELECT
     id, 
 	xml_id,
@@ -9,7 +9,7 @@ SELECT
 	nilreason
 FROM point_pt;
 
-CREATE OR REPLACE VIEW elevated_point_view AS
+CREATE MATERIALIZED VIEW elevated_point_view AS
 SELECT 
     id, 
 	xml_id,
@@ -31,7 +31,7 @@ SELECT
 	nilreason
 FROM elevated_point_pt;
 
-CREATE OR REPLACE VIEW curve_view AS
+CREATE MATERIALIZED VIEW curve_view AS
 WITH 
 center AS (
     SELECT 
@@ -121,7 +121,7 @@ SELECT
 FROM merged_segments;
 
 
-CREATE OR REPLACE VIEW elevated_curve_view AS
+CREATE MATERIALIZED VIEW elevated_curve_view AS
 WITH 
 center AS (
     SELECT 
@@ -232,8 +232,7 @@ SELECT
 	nilreason
 FROM merged_segments;
 
-
-CREATE OR REPLACE VIEW 	 AS
+CREATE MATERIALIZED VIEW partial_surface_view AS
 WITH
 segment_ref AS(
 	SELECT 
@@ -242,13 +241,13 @@ segment_ref AS(
 		member,
 		sequence,
 		interpretation,
-		SUBSTRING(curve_ref::text FROM POSITION('.' IN curve_ref::text) + 1) AS uuid
+		curve_ref AS uuid
     FROM public.polygon_segment 
 	WHERE public.polygon_segment.interpretation = 4
 ),
 segment_value AS(
 	SELECT 
-		SUBSTRING(airspace.geoborder.xml_id::text FROM POSITION('.' IN airspace.geoborder.xml_id::text) + 1) AS uuid,
+		CONCAT(airspace.geoborder.identifier_code_space::text, airspace.geoborder.identifier::text) AS uuid,
 		geom
 	FROM airspace.geoborder
 	INNER JOIN public.geoborder_timeslice
@@ -391,6 +390,8 @@ segement_ownership AS (
     INNER JOIN 
         segment_union 
         ON public.surface_exterior.exteriorlinestring_id = segment_union.id
+	WHERE
+		NOT ST_IsEmpty(geom)
 	UNION ALL
 	SELECT 
 		public.surface_pt.id,
@@ -414,6 +415,8 @@ segement_ownership AS (
     INNER JOIN 
         segment_union 
         ON public.surface_interior.interiorlinestring_id = segment_union.id
+	WHERE
+		NOT ST_IsEmpty(geom)
 ),
 ordered_segments AS (
     SELECT 
@@ -522,39 +525,6 @@ linked_segments AS (
 		member,
 		sequence
 ),
-clustered_segments AS (
-    SELECT 
-        id, 
-        xml_id,
-        part,
-        member,
-        geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-        nilreason,
-        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part)  AS cluster_id
-    FROM 
-        linked_segments
-    WHERE 
-        interpretation != 4
-	UNION ALL
-    SELECT 
-        id, 
-        xml_id,
-        part,
-        member,
-        geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-        nilreason,
-        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part) + 5000 + 1 AS cluster_id
-    FROM 
-        linked_segments
-    WHERE 
-        interpretation = 4
-),
 partial_ring AS (
     SELECT 
         id, 
@@ -563,19 +533,46 @@ partial_ring AS (
         MIN(member) AS member,
         ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
         ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
-        ST_LineMerge(ST_Collect(geom)) AS geom,
-        NULL::geometry AS points,
+		Null::geometry AS points,
+		ST_LineMerge(ST_Collect(geom)) AS geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
         nilreason
     FROM 
-        clustered_segments
+        linked_segments
+	WHERE 
+		interpretation != 4
     GROUP BY 
 		id,
         xml_id, 
         part, 
-        cluster_id,
+        horizontalaccuracy, 
+        horizontalaccuracy_uom, 
+        horizontalaccuracy_nilreason,	
+        nilreason
+	UNION ALL
+    SELECT 
+        id, 
+        xml_id,
+        part,
+        MIN(member) AS member,
+        ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
+        ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
+		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points,
+		ST_LineMerge(ST_Collect(geom)) AS geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        nilreason
+    FROM 
+        linked_segments
+	WHERE 
+		interpretation = 4
+    GROUP BY 
+		id,
+        xml_id, 
+        part, 
         horizontalaccuracy, 
         horizontalaccuracy_uom, 
         horizontalaccuracy_nilreason,	
@@ -584,7 +581,77 @@ partial_ring AS (
         xml_id, 
 		part, 
 		member
+),
+output AS (
+    SELECT 
+        pr.id, 
+        pr.xml_id,
+        pr.part,
+		ROW_NUMBER() OVER (PARTITION BY xml_id, part ORDER BY id) - 1 AS increment,
+		pr.points,
+        COALESCE(dumped.geom, pr.geom) AS geom,
+        pr.horizontalaccuracy,
+        pr.horizontalaccuracy_uom,
+        pr.horizontalaccuracy_nilreason,
+        pr.nilreason
+    FROM 
+        partial_ring pr
+    LEFT JOIN LATERAL (
+        SELECT (ST_Dump(pr.geom)).geom
+        WHERE ST_GeometryType(pr.geom) = 'ST_MultiLineString'
+    ) dumped ON true
+	ORDER BY
+		xml_id, 
+		part, 
+		member
+	
 )
+SELECT 
+	output.id, 
+	output.xml_id,
+	output.part,
+	output.increment,
+	output.points,
+	output.geom,
+	output.horizontalaccuracy,
+	output.horizontalaccuracy_uom,
+	output.horizontalaccuracy_nilreason,
+	output.nilreason
+FROM
+output 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 CREATE OR REPLACE VIEW partial_elevated_surface_view AS
@@ -1488,7 +1555,7 @@ ring AS (
 		partial_ring
 	WHERE
 		partial_ring.closed = true
-		UNION ALL
+	UNION ALL
 	SELECT
 		partial_ring.id,
 		partial_ring.xml_id,
