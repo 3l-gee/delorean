@@ -76,10 +76,7 @@ public abstract class AbstractGMLType {
 
     @Transient
     protected List<MetaDataPropertyType> metaDataProperty;
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "description"))
-    })
+    @Transient
     protected StringOrRefType description;
     @Transient
     protected ReferenceType descriptionReference;

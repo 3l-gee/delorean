@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.org.gml.v_3_2;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -45,7 +45,7 @@ import jakarta.xml.bind.annotation.XmlValue;
     CodeWithAuthorityType.class,
     Category.class
 })
-@Embeddable
+@MappedSuperclass
 public class CodeType {
 
     @XmlValue

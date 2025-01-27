@@ -233,7 +233,7 @@ SELECT
 FROM merged_segments;
 
 CREATE MATERIALIZED VIEW partial_surface_view AS
-WITH
+WITH  
 segment_ref AS(
 	SELECT 
 		id, 
@@ -241,13 +241,13 @@ segment_ref AS(
 		member,
 		sequence,
 		interpretation,
-		curve_ref AS uuid
+		SUBSTRING(curve_ref FROM POSITION('.' IN curve_ref) + 1) AS uuid
     FROM public.polygon_segment 
 	WHERE public.polygon_segment.interpretation = 4
 ),
 segment_value AS(
 	SELECT 
-		CONCAT(airspace.geoborder.identifier_code_space::text, airspace.geoborder.identifier::text) AS uuid,
+		airspace.geoborder.identifier AS uuid,
 		geom
 	FROM airspace.geoborder
 	INNER JOIN public.geoborder_timeslice
@@ -441,9 +441,8 @@ ordered_segments AS (
 		part, 
 		member, 
 		sequence
-
 ),
-linked_segments AS (
+connecting_segments AS (
     SELECT 
         id,
 		xml_id,
@@ -495,7 +494,7 @@ linked_segments AS (
         curr.id,
 		curr.xml_id,
         curr.part,
-		curr.member + 0. AS member,
+		curr.member + 0.5 AS member,
         curr.sequence,
 		curr.interpretation,
         ST_MakeLine(curr.last_point, next.first_point) AS geom,
@@ -525,28 +524,65 @@ linked_segments AS (
 		member,
 		sequence
 ),
+clustered_segments AS (
+    SELECT 
+        id, 
+        xml_id,
+        part,
+        member,
+        geom,
+		interpretation,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        nilreason,
+        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part)  AS cluster_id
+    FROM 
+        connecting_segments
+    WHERE 
+        interpretation != 4
+	UNION ALL
+    SELECT 
+        id, 
+        xml_id,
+        part,
+        member,
+        geom,
+		interpretation,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        nilreason,
+        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part) + 5000 + 1 AS cluster_id
+    FROM 
+        connecting_segments
+    WHERE 
+        interpretation = 4
+),
 partial_ring AS (
     SELECT 
         id, 
         xml_id,
         part,
         MIN(member) AS member,
+		MIN(interpretation) AS interpretation,
         ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
         ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
-		Null::geometry AS points,
-		ST_LineMerge(ST_Collect(geom)) AS geom,
+        ST_LineMerge(ST_Collect(geom)) AS geom,
+        NULL::geometry AS points,
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
         nilreason
     FROM 
-        linked_segments
+        clustered_segments
 	WHERE 
 		interpretation != 4
     GROUP BY 
 		id,
         xml_id, 
         part, 
+        cluster_id,
         horizontalaccuracy, 
         horizontalaccuracy_uom, 
         horizontalaccuracy_nilreason,	
@@ -557,22 +593,24 @@ partial_ring AS (
         xml_id,
         part,
         MIN(member) AS member,
+		MAX(interpretation) AS interpretation,
         ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
         ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
-		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points,
 		ST_LineMerge(ST_Collect(geom)) AS geom,
+		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points,
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
         nilreason
     FROM 
-        linked_segments
+        clustered_segments
 	WHERE 
 		interpretation = 4
     GROUP BY 
 		id,
         xml_id, 
         part, 
+		cluster_id,
         horizontalaccuracy, 
         horizontalaccuracy_uom, 
         horizontalaccuracy_nilreason,	
@@ -588,6 +626,8 @@ output AS (
         pr.xml_id,
         pr.part,
 		ROW_NUMBER() OVER (PARTITION BY xml_id, part ORDER BY id) - 1 AS increment,
+		COUNT(*) OVER (PARTITION BY xml_id, part ) AS total_count,
+		pr.interpretation,
 		pr.points,
         COALESCE(dumped.geom, pr.geom) AS geom,
         pr.horizontalaccuracy,
@@ -607,18 +647,22 @@ output AS (
 	
 )
 SELECT 
+	ST_GeometryType(geom),
 	output.id, 
 	output.xml_id,
 	output.part,
 	output.increment,
-	output.points,
+	output.total_count,
+	output.interpretation,
 	output.geom,
+	output.points,
 	output.horizontalaccuracy,
 	output.horizontalaccuracy_uom,
 	output.horizontalaccuracy_nilreason,
 	output.nilreason
 FROM
 output 
+
 
 
 
