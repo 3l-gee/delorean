@@ -7,13 +7,19 @@ import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 
 public class ElevatedCurveTypeAdapter extends XmlAdapter<ElevatedCurveType, AixmElevatedCurveType>
 {
-
-    public AixmElevatedCurveType unmarshal(ElevatedCurveType value) {
-        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedCurve(value));
+    @Override
+    public AixmElevatedCurveType unmarshal(ElevatedCurveType value) throws Exception {
+        try {
+            return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedCurve(value));
+        } catch (IllegalArgumentException e) {
+            return null;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    public ElevatedCurveType marshal(AixmElevatedCurveType value) {
+    @Override
+    public ElevatedCurveType marshal(AixmElevatedCurveType value) throws Exception {
         return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMElevatedCurve(value, new ElevatedCurveType()));
     }
-
 }

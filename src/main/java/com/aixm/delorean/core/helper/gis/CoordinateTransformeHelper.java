@@ -226,8 +226,37 @@ public class CoordinateTransformeHelper {
                 return new Coordinate(target.y, target.x, target.z); // Swap back for output
             } else {
                 return new Coordinate(target.x, target.y, target.z);
+            }   
+        }
+    }
+
+    private static void malformedCoordinates(List<Coordinate> Coordinates) {
+        for (int i = 1 ; i < Coordinates.size() ; i++) {
+            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
+                ConsoleLogger.log(LogLevel.WARN, "Malformed Linestring with identical start and end points are ignored.", new Exception().getStackTrace()[0]);
+                throw new IllegalArgumentException();
+            }
+
+            if (Coordinates.get(i).getX() == Double.NaN || Coordinates.get(i).getY() == Double.NaN) {
+                ConsoleLogger.log(LogLevel.FATAL, "Malformed Linestring with NaN coordinates are ignored.", new Exception().getStackTrace()[0]);
+                throw new RuntimeException();
             }
         }
+    }
+
+    private static void malformedCoordinates(LinkedHashMap<Integer, Coordinate> Coordinates) {
+        for (int i = 1 ; i < Coordinates.size() ; i++) {
+            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
+                ConsoleLogger.log(LogLevel.WARN, "Malformed Linestring with identical start and end points are ignored.", new Exception().getStackTrace()[0]);
+                throw new IllegalArgumentException();
+            }
+
+            if (Coordinates.get(i).getX() == Double.NaN || Coordinates.get(i).getY() == Double.NaN) {
+                ConsoleLogger.log(LogLevel.FATAL, "Malformed Linestring with NaN coordinates are ignored.", new Exception().getStackTrace()[0]);
+                throw new RuntimeException();
+            }
+        }
+
     }
 
     public static Point transformToPoint(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
@@ -242,6 +271,7 @@ public class CoordinateTransformeHelper {
 
     public static LineString transformToLineString(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinates: " + sourceCoordinates, new Exception().getStackTrace()[0]);
+        malformedCoordinates(sourceCoordinates);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
@@ -266,6 +296,7 @@ public class CoordinateTransformeHelper {
 
     public static LineString transformToLineString(LinkedHashMap<Integer, Coordinate> sourceCoordinates, LinkedHashMap<Integer, String> sourceCRSs,  String targetCRS) {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinates: " + sourceCoordinates + " sourceCRSs: " + sourceCRSs + ", targetCRS: " + targetCRS, new Exception().getStackTrace()[0]);
+        malformedCoordinates(sourceCoordinates);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = new ArrayList<>();
         for (Map.Entry<Integer, Coordinate> entry : sourceCoordinates.entrySet()) {

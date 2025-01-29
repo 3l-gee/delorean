@@ -404,9 +404,9 @@ g2_segment_filtered AS (
 	WHERE 
 		curr.interpretation = 4
 		AND
-		ST_Touches(curr.geom, before.geom) 
+		ST_Intersects(curr.geom, before.geom) 
 		AND 
-		ST_Touches(curr.geom, after.geom)
+		ST_Intersects(curr.geom, after.geom)
 		AND 
 		before.interpretation = 4
 		AND 
@@ -447,9 +447,9 @@ g2_segment_filtered AS (
 	WHERE 
 		curr.interpretation = 4
 		AND
-		ST_Touches(curr.geom, curr.start_segment)  
+		ST_Intersects(curr.geom, curr.start_segment)  
 		AND 
-		ST_Touches(curr.geom, after.geom)
+		ST_Intersects(curr.geom, after.geom)
 		AND 
 		before.interpretation != 4
 		AND 
@@ -490,9 +490,9 @@ g2_segment_filtered AS (
 	WHERE 
 		curr.interpretation = 4
 		AND
-		ST_Touches(curr.geom, before.geom) 
+		ST_Intersects(curr.geom, before.geom) 
 		AND 
-		ST_Touches(curr.geom, curr.end_segment)
+		ST_Intersects(curr.geom, curr.end_segment)
 		AND 
 		before.interpretation = 4
 		AND 
@@ -533,9 +533,9 @@ g2_segment_filtered AS (
 	WHERE 
 		curr.interpretation = 4
 		AND
-		ST_Touches(curr.geom, curr.start_segment) 
+		ST_Intersects(curr.geom, curr.start_segment) 
 		AND 
-		ST_Touches(curr.geom, curr.end_segment)
+		ST_Intersects(curr.geom, curr.end_segment)
 		AND 
 		before.interpretation != 4
 		AND 
@@ -616,11 +616,11 @@ g1 AS (
 		AND 
 		ring.increment <> geoborder.increment
 	WHERE
-		ST_Touches(geoborder.geom, geoborder.start_segment) 
+		ST_Intersects(geoborder.geom, geoborder.start_segment) 
 		AND 
-		ST_Touches(geoborder.geom, geoborder.end_segment)
+		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
-		NOT ST_Touches(geoborder.start_segment, geoborder.end_segment)
+		NOT ST_Intersects(geoborder.start_segment, geoborder.end_segment)
 	UNION ALL
 	SELECT DISTINCT 
 		ring.id,
@@ -642,11 +642,11 @@ g1 AS (
 		AND 
 		ring.increment <> geoborder.increment
 	WHERE
-		ST_Touches(geoborder.geom, geoborder.start_segment) 
+		ST_Intersects(geoborder.geom, geoborder.start_segment) 
 		AND 
-		ST_Touches(geoborder.geom, geoborder.end_segment)
+		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
-		ST_Touches(geoborder.start_segment, geoborder.end_segment)
+		ST_Intersects(geoborder.start_segment, geoborder.end_segment)
 ),
 g2 AS (	
 	SELECT 
@@ -664,9 +664,13 @@ g2 AS (
 		g2_segment_filtered.id,
 		g2_segment_filtered.xml_id,
 		g2_segment_filtered.part
+	HAVING
+		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = false
 )
-
-SELECT
-*
-FROM
-g2
+SELECT 
+-- ST_IsClosed(geom),
+* 
+FROM 
+partial_surface_view
+WHERE
+xml_id = 'gmlID1068000'
