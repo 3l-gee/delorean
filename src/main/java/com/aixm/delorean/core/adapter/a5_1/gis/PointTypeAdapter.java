@@ -7,12 +7,19 @@ import com.aixm.delorean.core.schema.a5_1.aixm.PointType;
 
 public class PointTypeAdapter extends XmlAdapter<PointType, AixmPointType>
 {
-
-    public AixmPointType unmarshal(PointType value) {
-        return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMPoint(value));
+    @Override
+    public AixmPointType unmarshal(PointType value) throws Exception {
+        try {
+            return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMPoint(value));
+        } catch (IllegalArgumentException e) {
+            return null;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    public PointType marshal(AixmPointType value) {
+    @Override
+    public PointType marshal(AixmPointType value) throws Exception {
         return (com.aixm.delorean.core.helper.gis.GisHelper.printAIXMPoint(value, new PointType()));
     }
 
