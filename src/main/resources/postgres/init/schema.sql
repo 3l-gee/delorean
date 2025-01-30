@@ -241,7 +241,10 @@ segment_ref AS(
 		member,
 		sequence,
 		interpretation,
-		SUBSTRING(curve_ref FROM POSITION(':' IN curve_ref) + 6) AS uuid
+		SUBSTRING(
+	        curve_ref 
+	        FROM '([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$'
+	    ) AS uuid
     FROM public.polygon_segment 
 	WHERE public.polygon_segment.interpretation = 4
 ),
@@ -390,8 +393,6 @@ segement_ownership AS (
     INNER JOIN 
         segment_union 
         ON public.surface_exterior.exteriorlinestring_id = segment_union.id
-	WHERE
-		NOT ST_IsEmpty(geom)
 	UNION ALL
 	SELECT 
 		public.surface_pt.id,
@@ -415,8 +416,6 @@ segement_ownership AS (
     INNER JOIN 
         segment_union 
         ON public.surface_interior.interiorlinestring_id = segment_union.id
-	WHERE
-		NOT ST_IsEmpty(geom)
 ),
 ordered_segments AS (
     SELECT 
@@ -520,9 +519,9 @@ connecting_segments AS (
 		next.interpretation != 4
     ORDER BY 
         xml_id, 
-		part, 
-		member,
-		sequence
+        part, 
+        member,
+        sequence
 ),
 clustered_segments AS (
     SELECT 
@@ -558,6 +557,10 @@ clustered_segments AS (
         connecting_segments
     WHERE 
         interpretation = 4
+	ORDER BY
+		xml_id,
+		part, 
+		member
 ),
 partial_ring AS (
     SELECT 
@@ -654,1582 +657,777 @@ FROM
 output 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE OR REPLACE VIEW partial_elevated_surface_view AS
-WITH
-segment_ref AS(
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		SUBSTRING(curve_ref::text FROM POSITION('.' IN curve_ref::text) + 1) AS uuid
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 4
-),
-segment_value AS(
-	SELECT 
-		SUBSTRING(airspace.geoborder.xml_id::text FROM POSITION('.' IN airspace.geoborder.xml_id::text) + 1) AS uuid,
-		geom
-	FROM airspace.geoborder
-	INNER JOIN public.geoborder_timeslice
-		ON airspace.geoborder.id = public.geoborder_timeslice.geoborder_id
-	INNER JOIN airspace.geoborder_tsp
-		ON public.geoborder_timeslice.geoborder_tsp_id = airspace.geoborder_tsp.id
-	INNER JOIN airspace.geoborder_ts
-		ON airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
-	INNER JOIN public.curve_pt
-		ON airspace.geoborder_ts.border_id = public.curve_pt.id
-	INNER JOIN public.curve_view
-		ON public.curve_pt.id = public.curve_view.id
-),
-center AS (
-    SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		start_angle,
-		end_angle,
-		(end_angle - start_angle) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 2
-	UNION ALL 
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		0 as start_angle,
-		2*PI() as end_angle,
-		(0 - 2*PI()) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 3
-),
-interpolated_points AS (
-    SELECT 
-        center.id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_Project(center.point::geography, center.radius, center.start_angle + center.step_size * n)::geometry AS point_geom
-    FROM 
-        generate_series(0, 256) AS n, 	
-        center
-),
-arc_line AS (
-    SELECT 
-        id,
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_MakeLine(point_geom) AS geom
-    FROM interpolated_points
-    GROUP BY id, part, member, sequence, interpretation
-),
-segment_union AS (
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(linestring, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 0
-    UNION ALL 
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 10000)::geometry as geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 1
-	UNION ALL
+-- R1 : Simple feature, closed
+-- R2 : Simple feature, unclosed
+-- G1 : Complex feature wiht a single geoborder, 
+-- G2 : Complex feature with multiple geoborder,
+CREATE MATERIALIZED VIEW surface_view AS
+WITH 
+g1_segment AS (
 	SELECT
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM
-		arc_line
-	UNION ALL
-	SELECT
-		id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM segment_ref
-	INNER JOIN segment_value
-	ON segment_ref.uuid = segment_value.uuid		
-),
-segement_ownership AS (
-	SELECT 
-		public.elevated_surface_pt.id,
-        public.elevated_surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point as first_point,
-		segment_union.last_point as last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        public.elevated_surface_pt
-    INNER JOIN 
-        public.elevatedsurface_exterior 
-        ON public.elevated_surface_pt.id = public.elevatedsurface_exterior.elevatedsurfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.elevatedsurface_exterior.exteriorlinestring_id = segment_union.id
-	UNION ALL
-	SELECT 
-	 	public.elevated_surface_pt.id,
-        public.elevated_surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point AS first_point,
-		segment_union.last_point AS last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        public.elevated_surface_pt
-    INNER JOIN 
-        public.elevatedsurface_interior 
-        ON public.elevated_surface_pt.id = public.elevatedsurface_interior.elevatedsurfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.elevatedsurface_interior.interiorlinestring_id = segment_union.id
-),
-ordered_segments AS (
-    SELECT 
-		id,
-        xml_id, 
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point, 
-        last_point,
-		ST_IsClosed(segement_ownership.geom) AS closed,
-		segement_ownership.elevation,
-		segement_ownership.elevation_uom,
-		segement_ownership.eleveation_nilreason,
-		segement_ownership.geoidundulation,
-		segement_ownership.geoidundulation_uom,
-		segement_ownership.geoidundulation_nilreason,
-		segement_ownership.horizontalaccuracy,
-		segement_ownership.horizontalaccuracy_uom,
-		segement_ownership.horizontalaccuracy_nilreason,
-		segement_ownership.verticalaccuracy,
-		segement_ownership.verticalaccuracy_uom,
-		segement_ownership.verticalaccuracy_nilreason,
-		segement_ownership.verticaldatum,
-		segement_ownership.verticaldatum_nilreason,
-		segement_ownership.nilreason
-    FROM 
-        segement_ownership
-    ORDER BY 
-        id, xml_id, part, member, sequence
-),
-linked_segments AS (
-    SELECT 
-        id,
-		xml_id,
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point,
-        last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        ordered_segments
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member,
-        curr.sequence + 0.5 AS sequence, -- Adjust sequence for link
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.elevation,
-		curr.elevation_uom,
-		curr.eleveation_nilreason,
-		curr.geoidundulation,
-		curr.geoidundulation_uom,
-		curr.geoidundulation_nilreason,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.verticalaccuracy,
-		curr.verticalaccuracy_uom,
-		curr.verticalaccuracy_nilreason,
-		curr.verticaldatum,
-		curr.verticaldatum_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.id = next.id
-        AND curr.part = next.part
-        AND curr.sequence + 1 = next.sequence
-	WHERE 
-		ST_IsClosed(curr.geom) = false
-		AND
-		curr.interpretation != 4
-		AND
-		next.interpretation != 4
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member + 0.5 AS member, -- Adjust sequence for link
-        curr.sequence,
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.elevation,
-		curr.elevation_uom,
-		curr.eleveation_nilreason,
-		curr.geoidundulation,
-		curr.geoidundulation_uom,
-		curr.geoidundulation_nilreason,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.verticalaccuracy,
-		curr.verticalaccuracy_uom,
-		curr.verticalaccuracy_nilreason,
-		curr.verticaldatum,
-		curr.verticaldatum_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.id = next.id
-        AND curr.part = next.part
-        AND curr.member + 1 = next.member
-	WHERE 
-		ST_IsClosed(curr.geom) = false
-		AND
-		curr.interpretation != 4
-		AND
-		next.interpretation != 4
-    ORDER BY 
-        id, xml_id, part, member, sequence
-	
-),
-clustered_segments AS (
-    SELECT 
-        id, 
-        xml_id,
-        part,
-        member,
-        geom,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-        nilreason,
-        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part)  AS cluster_id
-    FROM 
-        linked_segments
-    WHERE 
-        interpretation != 4
-	UNION ALL
-    SELECT 
-        id, 
-        xml_id,
-        part,
-        member,
-        geom,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-        nilreason,
-        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part) + 5000 + 1 AS cluster_id
-    FROM 
-        linked_segments
-    WHERE 
-        interpretation = 4
-),
-partial_ring AS (
-    SELECT 
-        id, 
-        xml_id,
-        part,
-        MIN(member) AS member,
-        ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
-        ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
-        ST_LineMerge(ST_Collect(geom)) AS geom,
-        NULL::geometry AS points,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-        nilreason
-    FROM 
-        clustered_segments
-    GROUP BY 
-		id,
-        xml_id, 
-        part, 
-        cluster_id,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-        nilreason
-	ORDER BY 
-        xml_id, 
-		part, 
-		member
-)
-
-
-
--- CREATE OR REPLACE VIEW surface_view AS
-WITH
-segment_ref AS(
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		SUBSTRING(curve_ref::text FROM POSITION('.' IN curve_ref::text) + 1) AS uuid
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 4
-),
-segment_value AS(
-	SELECT 
-		SUBSTRING(airspace.geoborder.xml_id::text FROM POSITION('.' IN airspace.geoborder.xml_id::text) + 1) AS uuid,
-		geom
-	FROM airspace.geoborder
-	INNER JOIN public.geoborder_timeslice
-		ON airspace.geoborder.id = public.geoborder_timeslice.geoborder_id
-	INNER JOIN airspace.geoborder_tsp
-		ON public.geoborder_timeslice.geoborder_tsp_id = airspace.geoborder_tsp.id
-	INNER JOIN airspace.geoborder_ts
-		ON airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
-	INNER JOIN public.curve_pt
-		ON airspace.geoborder_ts.border_id = public.curve_pt.id
-	INNER JOIN public.curve_view
-		ON public.curve_pt.id = public.curve_view.id
-),
-center AS (
-    SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		start_angle,
-		end_angle,
-		(end_angle - start_angle) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 2
-	UNION ALL 
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		0 as start_angle,
-		2*PI() as end_angle,
-		(0 - 2*PI()) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 3
-),
-interpolated_points AS (
-    SELECT 
-        center.id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_Project(center.point::geography, center.radius, center.start_angle + center.step_size * n)::geometry AS point_geom
-    FROM 
-        generate_series(0, 256) AS n, 	
-        center
-),
-arc_line AS (
-    SELECT 
-        id,
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_MakeLine(point_geom) AS geom
-    FROM interpolated_points
-    GROUP BY id, part, member, sequence, interpretation
-),
-segment_union AS (
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(linestring, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 0
-    UNION ALL 
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 10000)::geometry as geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 1
-	UNION ALL
-	SELECT
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM
-		arc_line
-	UNION ALL
-	SELECT
-		id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM segment_ref
-	INNER JOIN segment_value
-	ON segment_ref.uuid = segment_value.uuid		
-),
-segement_ownership AS (
-	SELECT 
-		public.surface_pt.id,
-        public.surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point as first_point,
-		segment_union.last_point as last_point,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        public.surface_pt
-    INNER JOIN 
-        public.surface_exterior 
-        ON public.surface_pt.id = public.surface_exterior.surfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.surface_exterior.exteriorlinestring_id = segment_union.id
-	UNION ALL
-	SELECT 
-		public.surface_pt.id,
-        public.surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point AS first_point,
-		segment_union.last_point AS last_point,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        public.surface_pt
-    INNER JOIN 
-        public.surface_interior 
-        ON public.surface_pt.id = public.surface_interior.surfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.surface_interior.interiorlinestring_id = segment_union.id
-),
-ordered_segments AS (
-    SELECT 
-		id,
-        xml_id, 
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point, 
-        last_point,
-		ST_IsClosed(segement_ownership.geom) AS closed,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        segement_ownership
-    ORDER BY 
-        xml_id, 
-		part, 
-		member, 
-		sequence
-
-),
-linked_segments AS (
-    SELECT 
-        id,
-		xml_id,
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point,
-        last_point,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        ordered_segments
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member,
-        curr.sequence + 0.5 AS sequence,
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom,
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.xml_id = next.xml_id
-        AND curr.part = next.part
-        AND curr.sequence + 1 = next.sequence
-		AND curr.member = next.member
-	WHERE 
-		ST_IsClosed(curr.geom) = false
-		AND
-		curr.interpretation != 4
-		OR
-		next.interpretation != 4
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member + 0.5 AS member,
-        curr.sequence,
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom,
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.xml_id = next.xml_id
-        AND curr.part = next.part
-        AND curr.member + 1 = next.member
-	WHERE 
-		ST_IsClosed(curr.geom) = false
-		AND
-		curr.interpretation != 4
-		OR
-		next.interpretation != 4
-    ORDER BY 
-        xml_id, 
-		part, 
-		member,
-		sequence
-),
-partial_ring AS (
-    SELECT 
-        id, 
-		xml_id,
-		part,
-		ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
-		ST_LineMerge(ST_Collect(geom)) AS geom,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        linked_segments
-    WHERE
-		interpretation != 4
-    GROUP BY 
-        id,
-		xml_id, 
-		part, 
-		horizontalaccuracy, 
-		horizontalaccuracy_uom, 
-		horizontalaccuracy_nilreason,	
-		nilreason
-),
-raw_geoborder AS (
-    SELECT 
-        id,
-		xml_id,
-		part,
-		member,
-		ST_LineMerge(ST_Collect(geom)) AS geom,
-		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		nilreason
-    FROM 
-        linked_segments
-    WHERE 
-		interpretation = 4
-    GROUP BY 
-        id,
-		xml_id, 
-		part, 
-		member, 
-		horizontalaccuracy, 
-		horizontalaccuracy_uom, 
-		horizontalaccuracy_nilreason,	
-		nilreason
-),
-split_geoborder AS (
-	SELECT
-		raw_geoborder.id, 
-		raw_geoborder.xml_id,
+		geoborder.id, 
+		geoborder.xml_id,
+		geoborder.part,
+		geoborder.increment,
+		geoborder.interpretation,
 		(ST_Dump(
 		  ST_Split(
-			raw_geoborder.geom,
+			geoborder.geom,
 			ST_Union(
-				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)),
-				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom))
+				ST_ClosestPoint(ST_Collect(geoborder.points), ST_StartPoint(ring.geom)),
+				ST_ClosestPoint(ST_Collect(geoborder.points), ST_EndPoint(ring.geom))
 			)
 		  )
 		)).geom AS geom,
-		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)) AS  start_segment,
-		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom)) AS end_segment,
-		raw_geoborder.horizontalaccuracy, 
-		raw_geoborder.horizontalaccuracy_uom, 
-		raw_geoborder.horizontalaccuracy_nilreason, 
-		raw_geoborder.nilreason
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(ring.geom)) AS  start_segment,
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_EndPoint(ring.geom)) AS end_segment,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
 	FROM 
-		raw_geoborder
-	INNER JOIN
-		partial_ring
+		partial_surface_view geoborder
+	JOIN
+		partial_surface_view ring
 	ON 
-		raw_geoborder.xml_id = partial_ring.xml_id
+        ring.xml_id = geoborder.xml_id
+		AND
+		ring.part = geoborder.part
+		AND 
+		ring.increment <> geoborder.increment
 	WHERE 
-		raw_geoborder.part = partial_ring.part
+		geoborder.total_count = 2
+		AND
+		geoborder.interpretation = 4
 	GROUP BY
-		raw_geoborder.id, 
-		raw_geoborder.xml_id, 
-		raw_geoborder.geom, 
-		partial_ring.geom, 
-		raw_geoborder.horizontalaccuracy, 
-		raw_geoborder.horizontalaccuracy_uom, 
-		raw_geoborder.horizontalaccuracy_nilreason, 
-		raw_geoborder.nilreason
-),
-ring AS (
-	SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		partial_ring.part,
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, split_geoborder.geom, end_segment, start_segment])) AS geom,
-		split_geoborder.horizontalaccuracy,
-		split_geoborder.horizontalaccuracy_uom,
-		split_geoborder.horizontalaccuracy_nilreason,
-		split_geoborder.nilreason
-	FROM
-		split_geoborder
-	INNER JOIN
-		partial_ring	
-	ON 
-		split_geoborder.xml_id = partial_ring.xml_id
-	WHERE
-		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
-		AND 
-		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
-		AND 
-		NOT ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
-	UNION ALL
-		SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		partial_ring.part,
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])) AS geom,
-		split_geoborder.horizontalaccuracy,
-		split_geoborder.horizontalaccuracy_uom,
-		split_geoborder.horizontalaccuracy_nilreason,
-		split_geoborder.nilreason
-	FROM
-		split_geoborder
-	INNER JOIN
-		partial_ring	
-	ON 
-		split_geoborder.xml_id = partial_ring.xml_id
-	WHERE
-		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
-		AND 
-		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
-		AND 
-		ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
-	GROUP BY 
-		partial_ring.id, 
-		partial_ring.xml_id, 
-		partial_ring.part,
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])), 
-		split_geoborder.horizontalaccuracy, 
-		split_geoborder.horizontalaccuracy_uom, 
-		split_geoborder.horizontalaccuracy_nilreason, 
-		split_geoborder.nilreason
+		geoborder.id, 
+		geoborder.xml_id, 
+		geoborder.part,
+		geoborder.geom, 
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.geom, 
+		ring.geom,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
 	UNION ALL
 	SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		partial_ring.part,
-		partial_ring.geom,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.nilreason
-	FROM
-		partial_ring
-	WHERE
-		partial_ring.closed = true
-	UNION ALL
-	SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		partial_ring.part,
-		ST_AddPoint(partial_ring.geom, ST_StartPoint(partial_ring.geom)) AS geom,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.nilreason
-	FROM
-		partial_ring
-	WHERE
-		partial_ring.closed = false
-)
-SELECT 
-ST_IsClosed(geom),
-ST_GeometryType(geom),
--- ST_AsText(geom),
-*
-FROM ring
-
--- ordered_segments
--- linked_segments
--- partial_ring
-
--- SELECT 
---     (row_number() OVER ())::integer AS row,
---     ring.id,
---     ring.xml_id,
---     ST_MakePolygon(
---         MAX(CASE WHEN ring.part = 0 THEN ring.geom END),
---         COALESCE(ARRAY_AGG(CASE WHEN ring.part != 0 THEN ring.geom END) 
---                  FILTER (WHERE ring.part != 0), ARRAY[]::geometry[])
---     ) AS geom,
---     MAX(horizontalaccuracy) AS horizontalaccuracy,
---     MAX(horizontalaccuracy_uom) AS horizontalaccuracy_uom,
---     MAX(horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
---     MAX(nilreason) AS nilreason
--- FROM 
---     ring
--- GROUP BY 
---     ring.id, 
--- 	ring.xml_id;
-
-
-CREATE OR REPLACE VIEW elevated_surface_view AS
-WITH
-segment_ref AS(
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		SUBSTRING(curve_ref::text FROM POSITION('.' IN curve_ref::text) + 1) AS uuid
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 4
-),
-segment_value AS(
-	SELECT 
-		SUBSTRING(airspace.geoborder.xml_id::text FROM POSITION('.' IN airspace.geoborder.xml_id::text) + 1) AS uuid,
-		geom
-	FROM airspace.geoborder
-	INNER JOIN public.geoborder_timeslice
-		ON airspace.geoborder.id = public.geoborder_timeslice.geoborder_id
-	INNER JOIN airspace.geoborder_tsp
-		ON public.geoborder_timeslice.geoborder_tsp_id = airspace.geoborder_tsp.id
-	INNER JOIN airspace.geoborder_ts
-		ON airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
-	INNER JOIN public.curve_pt
-		ON airspace.geoborder_ts.border_id = public.curve_pt.id
-	INNER JOIN public.curve_view
-		ON public.curve_pt.id = public.curve_view.id
-),
-center AS (
-    SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		start_angle,
-		end_angle,
-		(end_angle - start_angle) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 2
-	UNION ALL 
-	SELECT 
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		point,
-		radius,
-		0 as start_angle,
-		2*PI() as end_angle,
-		(0 - 2*PI()) / 256 AS step_size
-    FROM public.polygon_segment 
-	WHERE public.polygon_segment.interpretation = 3
-),
-interpolated_points AS (
-    SELECT 
-        center.id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_Project(center.point::geography, center.radius, center.start_angle + center.step_size * n)::geometry AS point_geom
-    FROM 
-        generate_series(0, 256) AS n, 	
-        center
-),
-arc_line AS (
-    SELECT 
-        id,
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_MakeLine(point_geom) AS geom
-    FROM interpolated_points
-    GROUP BY id, part, member, sequence, interpretation
-),
-segment_union AS (
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(linestring, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 0
-    UNION ALL 
-    SELECT 
-        id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-        ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 10000)::geometry as geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
-    FROM 
-        public.polygon_segment 
-    WHERE 
-        public.polygon_segment.interpretation = 1
-	UNION ALL
-	SELECT
-		id, 
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM
-		arc_line
-	UNION ALL
-	SELECT
-		id,
-		part,
-		member,
-		sequence,
-		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
-	FROM segment_ref
-	INNER JOIN segment_value
-	ON segment_ref.uuid = segment_value.uuid		
-),
-segement_ownership AS (
-	SELECT 
-		public.elevated_surface_pt.id,
-        public.elevated_surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point as first_point,
-		segment_union.last_point as last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        public.elevated_surface_pt
-    INNER JOIN 
-        public.elevatedsurface_exterior 
-        ON public.elevated_surface_pt.id = public.elevatedsurface_exterior.elevatedsurfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.elevatedsurface_exterior.exteriorlinestring_id = segment_union.id
-	UNION ALL
-	SELECT 
-	 	public.elevated_surface_pt.id,
-        public.elevated_surface_pt.xml_id,
-		segment_union.part AS part,
-		segment_union.member AS member,
-		segment_union.sequence AS sequence,
-		segment_union.interpretation AS interpretation,
-		segment_union.geom AS geom,
-		segment_union.first_point AS first_point,
-		segment_union.last_point AS last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        public.elevated_surface_pt
-    INNER JOIN 
-        public.elevatedsurface_interior 
-        ON public.elevated_surface_pt.id = public.elevatedsurface_interior.elevatedsurfacepropertytype_id
-    INNER JOIN 
-        segment_union 
-        ON public.elevatedsurface_interior.interiorlinestring_id = segment_union.id
-),
-ordered_segments AS (
-    SELECT 
-		id,
-        xml_id, 
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point, 
-        last_point,
-		ST_IsClosed(segement_ownership.geom) AS closed,
-		segement_ownership.elevation,
-		segement_ownership.elevation_uom,
-		segement_ownership.eleveation_nilreason,
-		segement_ownership.geoidundulation,
-		segement_ownership.geoidundulation_uom,
-		segement_ownership.geoidundulation_nilreason,
-		segement_ownership.horizontalaccuracy,
-		segement_ownership.horizontalaccuracy_uom,
-		segement_ownership.horizontalaccuracy_nilreason,
-		segement_ownership.verticalaccuracy,
-		segement_ownership.verticalaccuracy_uom,
-		segement_ownership.verticalaccuracy_nilreason,
-		segement_ownership.verticaldatum,
-		segement_ownership.verticaldatum_nilreason,
-		segement_ownership.nilreason
-    FROM 
-        segement_ownership
-    ORDER BY 
-        id, xml_id, part, member, sequence
-),
-linked_segments AS (
-    SELECT 
-        id,
-		xml_id,
-        part,
-		member,
-        sequence,
-		interpretation,
-        geom,
-        first_point,
-        last_point,
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
-    FROM 
-        ordered_segments
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member,
-        curr.sequence + 0.5 AS sequence, -- Adjust sequence for link
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.elevation,
-		curr.elevation_uom,
-		curr.eleveation_nilreason,
-		curr.geoidundulation,
-		curr.geoidundulation_uom,
-		curr.geoidundulation_nilreason,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.verticalaccuracy,
-		curr.verticalaccuracy_uom,
-		curr.verticalaccuracy_nilreason,
-		curr.verticaldatum,
-		curr.verticaldatum_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.id = next.id
-        AND curr.part = next.part
-        AND curr.sequence + 1 = next.sequence
+		partial_surface_view.id, 
+		partial_surface_view.xml_id,
+		partial_surface_view.part,
+		partial_surface_view.increment,
+		partial_surface_view.interpretation,
+		partial_surface_view.geom,
+		Null::geometry AS start_segment,
+		Null::geometry AS end_segment,
+		partial_surface_view.horizontalaccuracy, 
+		partial_surface_view.horizontalaccuracy_uom, 
+		partial_surface_view.horizontalaccuracy_nilreason, 
+		partial_surface_view.nilreason
+	FROM 
+		partial_surface_view
 	WHERE 
-		ST_IsClosed(curr.geom) = false
+		partial_surface_view.total_count = 2 
 		AND
-		curr.interpretation != 4
-		AND
-		next.interpretation != 4
-    UNION ALL
-    SELECT 
-        curr.id,
-		curr.xml_id,
-        curr.part,
-		curr.member + 0.5 AS member, -- Adjust sequence for link
-        curr.sequence,
-		curr.interpretation,
-        ST_MakeLine(curr.last_point, next.first_point) AS geom, -- Linking segment
-        curr.last_point AS first_point,
-        next.first_point AS last_point,
-		curr.elevation,
-		curr.elevation_uom,
-		curr.eleveation_nilreason,
-		curr.geoidundulation,
-		curr.geoidundulation_uom,
-		curr.geoidundulation_nilreason,
-		curr.horizontalaccuracy,
-		curr.horizontalaccuracy_uom,
-		curr.horizontalaccuracy_nilreason,
-		curr.verticalaccuracy,
-		curr.verticalaccuracy_uom,
-		curr.verticalaccuracy_nilreason,
-		curr.verticaldatum,
-		curr.verticaldatum_nilreason,
-		curr.nilreason
-    FROM 
-        ordered_segments curr
-    JOIN 
-        ordered_segments next
-    ON 
-        curr.id = next.id
-        AND curr.part = next.part
-        AND curr.member + 1 = next.member
-	WHERE 
-		ST_IsClosed(curr.geom) = false
-		AND
-		curr.interpretation != 4
-		AND
-		next.interpretation != 4
-    ORDER BY 
-        id, xml_id, part, member, sequence
-	
-),
-partial_ring AS (
-    SELECT 
-        id, 
-		xml_id,
+		partial_surface_view.interpretation != 4
+	ORDER BY
+		id, 
+		xml_id, 
 		part,
-		ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
-		ST_LineMerge(ST_Collect(geom)) AS geom,
-		linked_segments.elevation,
-		linked_segments.elevation_uom,
-		linked_segments.eleveation_nilreason,
-		linked_segments.geoidundulation,
-		linked_segments.geoidundulation_uom,
-		linked_segments.geoidundulation_nilreason,
-		linked_segments.horizontalaccuracy,
-		linked_segments.horizontalaccuracy_uom,
-		linked_segments.horizontalaccuracy_nilreason,
-		linked_segments.verticalaccuracy,
-		linked_segments.verticalaccuracy_uom,
-		linked_segments.verticalaccuracy_nilreason,
-		linked_segments.verticaldatum,
-		linked_segments.verticaldatum_nilreason,
-		linked_segments.nilreason
-    FROM 
-        linked_segments
-    WHERE
-		interpretation != 4
-    GROUP BY 
-        id, xml_id, part,	
-		elevation,
-		elevation_uom,
-		eleveation_nilreason,
-		geoidundulation,
-		geoidundulation_uom,
-		geoidundulation_nilreason,
-		horizontalaccuracy,
-		horizontalaccuracy_uom,
-		horizontalaccuracy_nilreason,
-		verticalaccuracy,
-		verticalaccuracy_uom,
-		verticalaccuracy_nilreason,
-		verticaldatum,
-		verticaldatum_nilreason,
-		nilreason
+		increment
 ),
-raw_geoborder AS (
-    SELECT 
-        id, 
-		xml_id,
-		part,
-		member,
-		ST_LineMerge(ST_Collect(geom)) AS geom,
-		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points
-    FROM 
-        linked_segments
-    WHERE 
-		interpretation = 4
-    GROUP BY 
-        id, xml_id, part, member, sequence
-),
-split_geoborder AS (
+g2_segment AS (
 	SELECT
-		raw_geoborder.id, 
-		raw_geoborder.xml_id,
+		geoborder.id, 
+		geoborder.xml_id,
+		geoborder.part,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		geoborder.geom AS geom,
+		Null::geometry AS  start_segment,
+		Null::geometry AS end_segment,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	FROM 
+		partial_surface_view geoborder
+	JOIN
+		partial_surface_view before
+	ON 
+        before.xml_id = geoborder.xml_id
+		AND
+		before.part = geoborder.part
+	    AND (
+	        before.increment = geoborder.increment - 1
+	        OR (before.increment = geoborder.total_count - 1 AND geoborder.increment = 0)
+	    )
+	JOIN
+		partial_surface_view after
+	ON 
+        after.xml_id = geoborder.xml_id
+		AND
+		after.part = geoborder.part
+	    AND (
+	        after.increment = geoborder.increment + 1
+	        OR (after.increment = 0 AND geoborder.increment = geoborder.total_count - 1)
+	    )
+	WHERE 
+		geoborder.total_count > 2 
+		AND
+		geoborder.interpretation = 4
+		AND 
+		before.interpretation = 4
+		AND 
+		after.interpretation = 4
+	GROUP BY
+		geoborder.id, 
+		geoborder.xml_id, 
+		geoborder.part,
+		before.geom, 
+		after.geom,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		before.increment,
+		after.increment,
+		geoborder.geom, 
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	UNION ALL
+	SELECT
+		geoborder.id, 
+		geoborder.xml_id,
+		geoborder.part,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
 		(ST_Dump(
 		  ST_Split(
-			raw_geoborder.geom,
+			geoborder.geom,
 			ST_Union(
-				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)),
-				ST_ClosestPoint(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom))
+				ST_ClosestPoint(ST_Collect(geoborder.points), ST_EndPoint(before.geom)),
+				ST_ClosestPoint(ST_Collect(geoborder.points), ST_StartPoint(after.geom))
 			)
 		  )
 		)).geom AS geom,
-		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_StartPoint(partial_ring.geom)) AS  start_segment,
-		ST_ShortestLine(ST_Collect(raw_geoborder.points), ST_EndPoint(partial_ring.geom)) AS end_segment,
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_EndPoint(before.geom)) AS  start_segment,
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
 	FROM 
-		raw_geoborder
-	INNER JOIN
-		partial_ring
+		partial_surface_view geoborder
+	JOIN
+		partial_surface_view before
 	ON 
-		raw_geoborder.xml_id = partial_ring.xml_id
+        before.xml_id = geoborder.xml_id
+		AND
+		before.part = geoborder.part
+	    AND (
+	        before.increment = geoborder.increment - 1
+	        OR (before.increment = geoborder.total_count - 1 AND geoborder.increment = 0)
+	    )
+	JOIN
+		partial_surface_view after
+	ON 
+        after.xml_id = geoborder.xml_id
+		AND
+		after.part = geoborder.part
+	    AND (
+	        after.increment = geoborder.increment + 1
+	        OR (after.increment = 0 AND geoborder.increment = geoborder.total_count - 1)
+	    )
 	WHERE 
-		raw_geoborder.part = partial_ring.part
+		geoborder.total_count > 2 
+		AND
+		geoborder.interpretation = 4
+		AND 
+		before.interpretation != 4
+		AND 
+		after.interpretation != 4
 	GROUP BY
-		raw_geoborder.id, 
-		raw_geoborder.xml_id,
-		raw_geoborder.geom,
-		partial_ring.geom,
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
+		geoborder.id, 
+		geoborder.xml_id, 
+		geoborder.part,
+		before.geom, 
+		after.geom,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		before.increment,
+		after.increment,
+		geoborder.geom, 
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	UNION ALL
+	SELECT
+		geoborder.id, 
+		geoborder.xml_id,
+		geoborder.part,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		(ST_Dump(
+		  ST_Split(
+			geoborder.geom, ST_ClosestPoint(ST_Collect(geoborder.points), ST_EndPoint(before.geom))
+			)
+		  )
+		).geom AS geom,
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_EndPoint(before.geom)) AS  start_segment,
+		Null::geometry AS end_segment,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	FROM 
+		partial_surface_view geoborder
+	JOIN
+		partial_surface_view before
+	ON 
+        before.xml_id = geoborder.xml_id
+		AND
+		before.part = geoborder.part
+	    AND (
+	        before.increment = geoborder.increment - 1
+	        OR (before.increment = geoborder.total_count - 1 AND geoborder.increment = 0)
+	    )
+	JOIN
+		partial_surface_view after
+	ON 
+        after.xml_id = geoborder.xml_id
+		AND
+		after.part = geoborder.part
+	    AND (
+	        after.increment = geoborder.increment + 1
+	        OR (after.increment = 0 AND geoborder.increment = geoborder.total_count - 1)
+	    )
+	WHERE 
+		geoborder.total_count > 2 
+		AND
+		geoborder.interpretation = 4
+		AND 
+		before.interpretation != 4
+		AND 
+		after.interpretation = 4
+	GROUP BY
+		geoborder.id, 
+		geoborder.xml_id, 
+		geoborder.part,
+		before.geom, 
+		after.geom,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		before.increment,
+		after.increment,
+		geoborder.geom, 
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	UNION ALL
+	SELECT
+		geoborder.id, 
+		geoborder.xml_id,
+		geoborder.part,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		(ST_Dump(
+		  ST_Split(
+			geoborder.geom,	ST_ClosestPoint(ST_Collect(geoborder.points), ST_StartPoint(after.geom))
+			)
+		  )
+		).geom AS geom,
+		Null::geometry AS  start_segment,
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment,
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	FROM 
+		partial_surface_view geoborder
+	JOIN
+		partial_surface_view before
+	ON 
+        before.xml_id = geoborder.xml_id
+		AND
+		before.part = geoborder.part
+	    AND (
+	        before.increment = geoborder.increment - 1
+	        OR (before.increment = geoborder.total_count - 1 AND geoborder.increment = 0)
+	    )
+	JOIN
+		partial_surface_view after
+	ON 
+        after.xml_id = geoborder.xml_id
+		AND
+		after.part = geoborder.part
+	    AND (
+	        after.increment = geoborder.increment + 1
+	        OR (after.increment = 0 AND geoborder.increment = geoborder.total_count - 1)
+	    )
+	WHERE 
+		geoborder.total_count > 2 
+		AND
+		geoborder.interpretation = 4
+		AND 
+		before.interpretation = 4
+		AND 
+		after.interpretation != 4
+	GROUP BY
+		geoborder.id, 
+		geoborder.xml_id, 
+		geoborder.part,
+		before.geom, 
+		after.geom,
+		geoborder.increment,
+		geoborder.interpretation,
+		geoborder.total_count,
+		before.increment,
+		after.increment,
+		geoborder.geom, 
+		geoborder.horizontalaccuracy, 
+		geoborder.horizontalaccuracy_uom, 
+		geoborder.horizontalaccuracy_nilreason, 
+		geoborder.nilreason
+	UNION ALL
+	SELECT
+		partial_surface_view.id, 
+		partial_surface_view.xml_id,
+		partial_surface_view.part,
+		partial_surface_view.increment,
+		partial_surface_view.interpretation,
+		partial_surface_view.total_count,
+		partial_surface_view.geom,
+		Null::geometry AS start_segment,
+		Null::geometry AS end_segment,
+		partial_surface_view.horizontalaccuracy, 
+		partial_surface_view.horizontalaccuracy_uom, 
+		partial_surface_view.horizontalaccuracy_nilreason, 
+		partial_surface_view.nilreason
+	FROM 
+		partial_surface_view
+	WHERE 
+		partial_surface_view.total_count > 2 
+		AND
+		partial_surface_view.interpretation != 4
+	ORDER BY
+		id, 
+		xml_id, 
+		part,
+		increment
 ),
-exterior_ring AS (
-	SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, split_geoborder.geom, end_segment, start_segment])) AS geom,
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
+g2_segment_filtered AS (
+	SELECT 
+		curr.id, 
+		curr.xml_id,
+		curr.part,
+		curr.increment,
+		curr.geom AS geom,
+		curr.horizontalaccuracy, 
+		curr.horizontalaccuracy_uom, 
+		curr.horizontalaccuracy_nilreason, 
+		curr.nilreason
 	FROM
-		split_geoborder
-	INNER JOIN
-		partial_ring	
+		g2_segment curr
+	JOIN
+		g2_segment before
 	ON 
-		split_geoborder.xml_id = partial_ring.xml_id
-	WHERE
-		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
-		AND 
-		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
-		AND 
-		NOT ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
-	UNION ALL
-		SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])) AS geom,
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
-	FROM
-		split_geoborder
-	INNER JOIN
-		partial_ring	
+        before.xml_id = curr.xml_id
+		AND
+		before.part = curr.part
+	    AND (
+	        before.increment = curr.increment - 1
+	        OR (before.increment = curr.total_count - 1 AND curr.increment = 0)
+	    )
+	JOIN	
+		g2_segment after
 	ON 
-		split_geoborder.xml_id = partial_ring.xml_id
-	WHERE
-		ST_Touches(split_geoborder.geom, split_geoborder.start_segment) 
+        after.xml_id = curr.xml_id
+		AND
+		after.part = curr.part
+	    AND (
+	        after.increment = curr.increment + 1
+	        OR (after.increment = 0 AND curr.increment = curr.total_count - 1)
+	    )
+	WHERE 
+		curr.interpretation = 4
+		AND
+		ST_Intersects(curr.geom, before.geom) 
 		AND 
-		ST_Touches(split_geoborder.geom, split_geoborder.end_segment)
+		ST_Intersects(curr.geom, after.geom)
 		AND 
-		ST_Touches(split_geoborder.start_segment, split_geoborder.end_segment)
-	GROUP BY 
-		partial_ring.id, 
-		partial_ring.xml_id, 
-		ST_LineMerge(ST_Collect(ARRAY[partial_ring.geom, end_segment, start_segment])),
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
+		before.interpretation = 4
+		AND 
+		after.interpretation = 4
+	UNION ALL
+	SELECT 
+		curr.id, 
+		curr.xml_id,
+		curr.part,
+		curr.increment,
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.start_segment])) AS geom,
+		curr.horizontalaccuracy, 
+		curr.horizontalaccuracy_uom, 
+		curr.horizontalaccuracy_nilreason, 
+		curr.nilreason
+	FROM
+		g2_segment curr
+	JOIN
+		g2_segment before
+	ON 
+        before.xml_id = curr.xml_id
+		AND
+		before.part = curr.part
+	    AND (
+	        before.increment = curr.increment - 1
+	        OR (before.increment = curr.total_count - 1 AND curr.increment = 0)
+	    )
+	JOIN	
+		g2_segment after
+	ON 
+        after.xml_id = curr.xml_id
+		AND
+		after.part = curr.part
+	    AND (
+	        after.increment = curr.increment + 1
+	        OR (after.increment = 0 AND curr.increment = curr.total_count - 1)
+	    )
+	WHERE 
+		curr.interpretation = 4
+		AND
+		ST_Intersects(curr.geom, curr.start_segment)  
+		AND 
+		ST_Intersects(curr.geom, after.geom)
+		AND 
+		before.interpretation != 4
+		AND 
+		after.interpretation = 4
+	UNION ALL
+	SELECT 
+		curr.id, 
+		curr.xml_id,
+		curr.part,
+		curr.increment,
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment])) AS geom,
+		curr.horizontalaccuracy, 
+		curr.horizontalaccuracy_uom, 
+		curr.horizontalaccuracy_nilreason, 
+		curr.nilreason
+	FROM
+		g2_segment curr
+	JOIN
+		g2_segment before
+	ON 
+        before.xml_id = curr.xml_id
+		AND
+		before.part = curr.part
+	    AND (
+	        before.increment = curr.increment - 1
+	        OR (before.increment = curr.total_count - 1 AND curr.increment = 0)
+	    )
+	JOIN	
+		g2_segment after
+	ON 
+        after.xml_id = curr.xml_id
+		AND
+		after.part = curr.part
+	    AND (
+	        after.increment = curr.increment + 1
+	        OR (after.increment = 0 AND curr.increment = curr.total_count - 1)
+	    )
+	WHERE 
+		curr.interpretation = 4
+		AND
+		ST_Intersects(curr.geom, before.geom) 
+		AND 
+		ST_Intersects(curr.geom, curr.end_segment)
+		AND 
+		before.interpretation = 4
+		AND 
+		after.interpretation != 4
+	UNION ALL
+	SELECT 
+		curr.id, 
+		curr.xml_id,
+		curr.part,
+		curr.increment,
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment, curr.start_segment])) AS geom,
+		curr.horizontalaccuracy, 
+		curr.horizontalaccuracy_uom, 
+		curr.horizontalaccuracy_nilreason, 
+		curr.nilreason
+	FROM
+		g2_segment curr
+	JOIN
+		g2_segment before
+	ON 
+        before.xml_id = curr.xml_id
+		AND
+		before.part = curr.part
+	    AND (
+	        before.increment = curr.increment - 1
+	        OR (before.increment = curr.total_count - 1 AND curr.increment = 0)
+	    )
+	JOIN	
+	g2_segment after
+	ON 
+        after.xml_id = curr.xml_id
+		AND
+		after.part = curr.part
+	    AND (
+	        after.increment = curr.increment + 1
+	        OR (after.increment = 0 AND curr.increment = curr.total_count - 1)
+	    )
+	WHERE 
+		curr.interpretation = 4
+		AND
+		ST_Intersects(curr.geom, curr.start_segment) 
+		AND 
+		ST_Intersects(curr.geom, curr.end_segment)
+		AND 
+		before.interpretation != 4
+		AND 
+		after.interpretation != 4
 	UNION ALL
 	SELECT
-		partial_ring.id,
-		partial_ring.xml_id,
-		partial_ring.geom,
-		partial_ring.elevation,
-		partial_ring.elevation_uom,
-		partial_ring.eleveation_nilreason,
-		partial_ring.geoidundulation,
-		partial_ring.geoidundulation_uom,
-		partial_ring.geoidundulation_nilreason,
-		partial_ring.horizontalaccuracy,
-		partial_ring.horizontalaccuracy_uom,
-		partial_ring.horizontalaccuracy_nilreason,
-		partial_ring.verticalaccuracy,
-		partial_ring.verticalaccuracy_uom,
-		partial_ring.verticalaccuracy_nilreason,
-		partial_ring.verticaldatum,
-		partial_ring.verticaldatum_nilreason,
-		partial_ring.nilreason
+		g2_segment.id, 
+		g2_segment.xml_id,
+		g2_segment.part,
+		g2_segment.increment,
+		g2_segment.geom,
+		g2_segment.horizontalaccuracy, 
+		g2_segment.horizontalaccuracy_uom, 
+		g2_segment.horizontalaccuracy_nilreason, 
+		g2_segment.nilreason
+	FROM 
+		g2_segment
+	WHERE 
+		g2_segment.interpretation != 4
+	ORDER BY
+		id, 
+		xml_id, 
+		part,
+		increment
+),
+r1 AS (
+	SELECT
+		partial_surface_view.id,
+		partial_surface_view.xml_id,
+		partial_surface_view.part,
+		partial_surface_view.geom,
+		partial_surface_view.horizontalaccuracy,
+		partial_surface_view.horizontalaccuracy_uom,
+		partial_surface_view.horizontalaccuracy_nilreason,
+		partial_surface_view.nilreason
 	FROM
-		partial_ring
+		partial_surface_view
 	WHERE
-		partial_ring.closed = true	
+		ST_IsClosed(partial_surface_view.geom) = true
+		AND 
+		partial_surface_view.total_count = 1
+),
+r2 AS (
+	SELECT
+		partial_surface_view.id,
+		partial_surface_view.xml_id,
+		partial_surface_view.part,
+		ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom)) AS geom,
+		partial_surface_view.horizontalaccuracy,
+		partial_surface_view.horizontalaccuracy_uom,
+		partial_surface_view.horizontalaccuracy_nilreason,
+		partial_surface_view.nilreason
+	FROM
+		partial_surface_view
+	WHERE
+		ST_IsClosed(partial_surface_view.geom) = false
+		AND 
+		partial_surface_view.total_count = 1
+),
+g1 AS (
+	SELECT 
+		ring.id,
+		ring.xml_id,
+		ring.part,
+		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
+		ring.horizontalaccuracy,
+		ring.horizontalaccuracy_uom,
+		ring.horizontalaccuracy_nilreason,
+		ring.nilreason
+	FROM
+	g1_segment ring
+	JOIN
+	g1_segment geoborder
+	ON 
+		ring.xml_id = geoborder.xml_id
+		AND
+		geoborder.part = geoborder.part
+		AND 
+		ring.increment <> geoborder.increment
+	WHERE
+		ST_Intersects(geoborder.geom, geoborder.start_segment) 
+		AND 
+		ST_Intersects(geoborder.geom, geoborder.end_segment)
+		AND 
+		NOT ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+	UNION ALL
+	SELECT DISTINCT 
+		ring.id,
+		ring.xml_id,
+		ring.part,
+		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
+		ring.horizontalaccuracy,
+		ring.horizontalaccuracy_uom,
+		ring.horizontalaccuracy_nilreason,
+		ring.nilreason
+	FROM
+	g1_segment ring
+	JOIN
+	g1_segment geoborder
+	ON 
+		ring.xml_id = geoborder.xml_id
+		AND
+		geoborder.part = geoborder.part
+		AND 
+		ring.increment <> geoborder.increment
+	WHERE
+		ST_Intersects(geoborder.geom, geoborder.start_segment) 
+		AND 
+		ST_Intersects(geoborder.geom, geoborder.end_segment)
+		AND 
+		ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+),
+g2 AS (	
+	SELECT 
+		MIN(g2_segment_filtered.id) AS id,
+		MIN(g2_segment_filtered.xml_id) AS xml_id,
+		MIN(g2_segment_filtered.part) AS part,
+		ST_LineMerge(ST_Collect(g2_segment_filtered.geom)) AS geom,
+		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
+		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
+		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
+		MIN(g2_segment_filtered.nilreason) AS nilreason
+	FROM
+		g2_segment_filtered
+	GROUP BY
+		g2_segment_filtered.id,
+		g2_segment_filtered.xml_id,
+		g2_segment_filtered.part
+	HAVING
+		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = true
+	UNION ALL
+	SELECT 
+		MIN(g2_segment_filtered.id) AS id,
+		MIN(g2_segment_filtered.xml_id) AS xml_id,
+		MIN(g2_segment_filtered.part) AS part,
+		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom,
+		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
+		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
+		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
+		MIN(g2_segment_filtered.nilreason) AS nilreason
+	FROM
+		g2_segment_filtered
+	GROUP BY
+		g2_segment_filtered.id,
+		g2_segment_filtered.xml_id,
+		g2_segment_filtered.part
+	HAVING
+		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = false
+),
+combined_data AS (
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        r1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        r2
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        g1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        g2
+),
+outer_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+        ST_MakePolygon(geom) AS geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part = 0
+),
+inner_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part <> 0
 )
 SELECT 
-    exterior_ring.id,
-	exterior_ring.xml_id,
+    outer_shells.id, 
+    outer_shells.xml_id, 
     ST_MakePolygon(
-		exterior_ring.geom
--- 		COALESCE(interior_rings.geoms, ARRAY[]::geometry[])
-	) AS geom,
-	elevation,
-	elevation_uom,
-	eleveation_nilreason,
-	geoidundulation,
-	geoidundulation_uom,
-	geoidundulation_nilreason,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	verticalaccuracy,
-	verticalaccuracy_uom,
-	verticalaccuracy_nilreason,
-	verticaldatum,
-	verticaldatum_nilreason,
-	nilreason
+        ST_ExteriorRing(outer_shells.geom),
+        ARRAY(
+            SELECT ST_ExteriorRing(inner_shells.geom)
+            FROM inner_shells 
+            WHERE inner_shells.id = outer_shells.id
+        )
+    ) AS geom,
+    outer_shells.horizontalaccuracy,
+    outer_shells.horizontalaccuracy_uom,
+    outer_shells.horizontalaccuracy_nilreason
 FROM 
-    exterior_ring;
+    outer_shells;
