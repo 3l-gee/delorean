@@ -30,7 +30,6 @@ public class UnitTransformHelper {
         if (DISTANCE_UNIT_CONVERSION.containsKey(unit)) {
             return value * DISTANCE_UNIT_CONVERSION.get(unit);
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "unsupported distance unit: " + unit, new Exception().getStackTrace()[0]);
             throw new RuntimeException("Unsupported distance unit: " + unit);
         }
     }
@@ -39,7 +38,6 @@ public class UnitTransformHelper {
         if (ANGLE_UNIT_CONVERSION.containsKey(source) && ANGLE_UNIT_CONVERSION.containsKey(target)) {
             return value * ANGLE_UNIT_CONVERSION.get(source) / ANGLE_UNIT_CONVERSION.get(target);
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + source + " or " + target, new Exception().getStackTrace()[0]);
             throw new RuntimeException("Unsupported angle unit: " + source + " or " + target);
         }
     }
@@ -54,7 +52,6 @@ public class UnitTransformHelper {
                 return value * ANGLE_UNIT_CONVERSION.get(source) / ANGLE_UNIT_CONVERSION.get(target);
             }
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "unsupported angle unit: " + source + " or " + target, new Exception().getStackTrace()[0]);
             throw new RuntimeException("Unknown angle unit: " + source + " or " + target);
         }
     }

@@ -1,5 +1,6 @@
 package com.aixm.delorean.core.helper.gis;
 
+import java.lang.IllegalArgumentException;
 import java.util.List;
 
 import org.locationtech.jts.geom.Coordinate;
@@ -10,11 +11,12 @@ import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionType;
 import com.aixm.delorean.core.org.gml.v_3_2.PointType;
 
+import com.aixm.delorean.core.exception.gis.MalformedGeometryException;
 
 public class PointGmlHelper {
     
     //Point
-    public static Point parseGMLPoint (PointType value){
+    public static Point parseGMLPoint (PointType value) {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         if (value == null) {
             ConsoleLogger.log(LogLevel.WARN, "parseGMLPoint is null", new Exception().getStackTrace()[0]);
@@ -23,41 +25,44 @@ public class PointGmlHelper {
         
         DirectPositionType pos = value.getPos();
         if (pos == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception());
+            ConsoleLogger.log(LogLevel.WARN, "DirectPositionType is null", new Exception().getStackTrace()[0]);
             return null;
         }
 
         String srsName = value.getSrsName();
         if (srsName == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "srsName is null", new Exception());
-            return null;
+            ConsoleLogger.log(LogLevel.WARN, "srsName is null, Asummed 4326 ()", new Exception().getStackTrace()[0]);
+            srsName = "urn:ogc:def:crs:EPSG::4326";
         }
         try {
             return parseDirectPosition(pos, srsName);
+        } catch (IllegalArgumentException e) {
+            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition encoutered a Illegal Argument Input at id : " + value.getXmlId(), e);
+            return null;       
         } catch (Exception e) {
-            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition failed : " + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition encoutered an ??? id : " + value.getXmlId(), e);
             return null;
         }
     }
 
-    public static Point parseDirectPosition (DirectPositionType value, String srsName){
+    public static Point parseDirectPosition (DirectPositionType value, String srsName) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         if (value == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception());
+            throw new IllegalArgumentException("DirectPositionType is null");
         }
 
         String actualSrsName = value.getSrsName() != null ? value.getSrsName() : srsName;
         List<Double> coordinatesList = value.getValue();
 
         if (coordinatesList == null || coordinatesList.isEmpty()) {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty", new Exception());
+            throw new IllegalArgumentException("list<Double> value is null or empty");
         }
 
         if (coordinatesList.size() == 2) {
             Double x = coordinatesList.get(0);
             Double y = coordinatesList.get(1);
             if (x == null || y == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y (in 2d config) is null", new Exception());
+                throw new IllegalArgumentException("x or y (in 2d config) is null");
             }
             return CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", new Coordinate(x, y));
         } else if (coordinatesList.size() == 3) {
@@ -65,12 +70,11 @@ public class PointGmlHelper {
             Double y = coordinatesList.get(1);
             Double z = coordinatesList.get(2);
             if (x == null || y == null || z == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y or z (in 3d config) is null", new Exception());
+                throw new IllegalArgumentException("x or y or z (in 3d config) is null");
             }
             return CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", new Coordinate(x, y, z));
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is not 2 or 3", new Exception());
-            return null;
+            throw new IllegalArgumentException("list<Double> value is not 2 or 3");
         }
     }
 
@@ -92,26 +96,23 @@ public class PointGmlHelper {
         return pos;
     }
 
-    public static Coordinate parseDirectPositionToCoordinate (DirectPositionType value){
+    public static Coordinate parseDirectPositionToCoordinate (DirectPositionType value) throws IllegalArgumentException,MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "start", new Exception().getStackTrace()[0]);
         if (value == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("DirectPositionType is null");
+            throw new IllegalArgumentException("DirectPositionType is null");
         }
 
         List<Double> coordinatesList = value.getValue();
 
         if (coordinatesList == null || coordinatesList.isEmpty()) {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty", new Exception().getStackTrace()[0]);
-            throw new RuntimeException("DirectPositionType is null");
+            throw new IllegalArgumentException("list<Double> value is null or empty");
         }
 
         if (coordinatesList.size() == 2) {
             Double x = coordinatesList.get(0);
             Double y = coordinatesList.get(1);
             if (x == null || y == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y (in 2d config) is null", new Exception().getStackTrace()[0]);
-                throw new RuntimeException("DirectPositionType is null");
+                throw new IllegalArgumentException("x or y (in 2d config) is null");
             }
             return  new Coordinate(x, y);
         } else if (coordinatesList.size() == 3) {
@@ -119,13 +120,11 @@ public class PointGmlHelper {
             Double y = coordinatesList.get(1);
             Double z = coordinatesList.get(2);
             if (x == null || y == null || z == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "x or y or z (in 3d config) is null", new Exception().getStackTrace()[0]);
-                throw new RuntimeException("DirectPositionType is null");}
-
-            return  new Coordinate(x, y, z);
+                throw new IllegalArgumentException("x or y or z (in 3d config) is null");
+            }
+            return new Coordinate(x, y, z);
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is not 2 or 3", new Exception());
-            throw new RuntimeException("DirectPositionType is null");
+            throw new IllegalArgumentException("list<Double> value is not 2 or 3");
         }
     }
 
