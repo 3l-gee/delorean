@@ -11,8 +11,6 @@ public class ElevatedCurveTypeAdapter extends XmlAdapter<ElevatedCurveType, Aixm
     public AixmElevatedCurveType unmarshal(ElevatedCurveType value) throws Exception {
         try {
             return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedCurve(value));
-        } catch (IllegalArgumentException e) {
-            return null;
         } catch (Exception e) {
             throw e;
         }

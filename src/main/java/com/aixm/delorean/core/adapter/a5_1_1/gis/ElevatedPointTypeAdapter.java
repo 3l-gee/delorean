@@ -11,8 +11,6 @@ public class ElevatedPointTypeAdapter extends XmlAdapter<ElevatedPointType, Aixm
     public AixmElevatedPointType unmarshal(ElevatedPointType value) throws Exception{
         try {
             return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedPoint(value));
-        } catch (IllegalArgumentException e) {
-            return null;
         } catch (Exception e) {
             throw e;
         }

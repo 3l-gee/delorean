@@ -3,6 +3,7 @@ package com.aixm.delorean.core.helper.gis;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.IllegalFormatException;
 import java.util.LinkedHashMap;
 import java.util.Arrays;
 
@@ -39,6 +40,8 @@ import com.aixm.delorean.core.org.gml.v_3_2.CircleType;
 import com.aixm.delorean.core.org.gml.v_3_2.ClothoidType;
 import com.aixm.delorean.core.org.gml.v_3_2.CubicSplineType;
 import com.aixm.delorean.core.org.gml.v_3_2.ArcStringType;
+
+import com.aixm.delorean.core.exception.gis.MalformedGeometryException;
 public class CurveGmlHelper {
 
     public static List<LinestringSegment> parseGMLcurve (CurveType value) {
@@ -62,14 +65,17 @@ public class CurveGmlHelper {
         }
         try {
             return parseCurveSegementArrayProperty(segments, srsName);
+        } catch (IllegalArgumentException e) {
+            ConsoleLogger.log(LogLevel.FATAL, "parseCurveSegementArrayProperty encoutered a Illegal Format at id : " + value.getXmlId(), e);
+            return null;
         } catch (Exception e) {
-            ConsoleLogger.log(LogLevel.FATAL, "Error parsing CurveSegmentArrayPropertyType" + value.getClass().getName() + " id : " + value.getXmlId(), e);
+            ConsoleLogger.log(LogLevel.FATAL, "parseCurveSegementArrayProperty encoutered an ??? at id : " + value.getXmlId(), e);
             return null;
         }
     }
 
 
-    public static List<LinestringSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName) {
+    public static List<LinestringSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName) throws IllegalArgumentException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString(), new Exception().getStackTrace()[0]);
         List<LinestringSegment> segment = new ArrayList<>();
         long counter = 0;
@@ -86,8 +92,12 @@ public class CurveGmlHelper {
 
             } else if (element.getValue().getClass().equals(ArcByCenterPointType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "ArcByCenterPointType");
-                segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, counter));
-                counter++;
+                try {
+                    segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, counter));
+                    counter++;
+                } catch (MalformedGeometryException e) {
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);
+                }
                 continue;
 
             } else if (element.getValue().getClass().equals(ArcStringByBulgeType.class)) {
@@ -111,8 +121,12 @@ public class CurveGmlHelper {
                 continue;
                 
             } else if (element.getValue().getClass().equals(CircleByCenterPointType.class)) {
-                segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, counter));
-                counter++;
+                try {
+                    segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, counter));
+                    counter++;
+                } catch (MalformedGeometryException e) {
+                    ConsoleLogger.log(LogLevel.WARN, "parseCircleByCenterPoint encoutered a Malformed Geometry : ", e);
+                }
 
             } else if (element.getValue().getClass().equals(CircleType.class)) {
                 ConsoleLogger.log(LogLevel.WARN, "AIXM-5.1_RULE-1A3EC3 : ArcStringType is not supported", new Exception().getStackTrace()[0]);
@@ -128,20 +142,32 @@ public class CurveGmlHelper {
 
             } else if (element.getValue().getClass().equals(GeodesicStringType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicStringType");
-                segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, counter));
-                counter++;
+                try {
+                    segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, counter));
+                    counter++;
+                } catch (MalformedGeometryException e) {
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                }
                 continue;
 
             } else if (element.getValue().getClass().equals(GeodesicType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicType");
-                segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, counter));
-                counter++;
+                try {
+                    segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, counter));
+                    counter++;
+                } catch (MalformedGeometryException e) {
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                }
                 continue;
 
             } else if (element.getValue().getClass().equals(LineStringSegmentType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "LineStringSegmentType");
-                segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, counter));
-                counter++;
+                try {
+                    segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, counter));
+                    counter++;
+                } catch (MalformedGeometryException e) {
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                }
                 continue;
 
             } else if (element.getValue().getClass().equals(OffsetCurveType.class)) {
@@ -149,8 +175,7 @@ public class CurveGmlHelper {
                 continue;
 
             } else {
-                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
-                throw new RuntimeException("element is not supported");
+                throw new IllegalArgumentException("Unsupported type " + element.getValue().getClass().getName());
             }
         }
 
@@ -190,14 +215,13 @@ public class CurveGmlHelper {
         return curveSegment;
     }
 
-    public static LinestringSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter) {
+    public static LinestringSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long counter) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
         AngleType startAngle = value.getStartAngle();
         AngleType endAngle = value.getEndAngle();
         if (radius == null || startAngle == null || endAngle == null) {
-            ConsoleLogger.log(LogLevel.FATAL, "radius or startangle or endangle can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("radius or startangle or endangle can't be null" + value.getClass().getName());
+            throw new MalformedGeometryException("radius or startangle or endangle can't be null");
         }
         DirectPositionType pos = value.getPos();
         DirectPositionListType posList = value.getPosList();
@@ -215,13 +239,11 @@ public class CurveGmlHelper {
             } else if (posList.getValue().size() == 3) {
                 coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
             } else {
-                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+                throw new MalformedGeometryException("Invalid number of coordinates");
             }
             
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("DirectPositionType is null" + value.getClass().getName());
+            throw new MalformedGeometryException("DirectPositionType is null");
         }
 
         Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
@@ -281,13 +303,12 @@ public class CurveGmlHelper {
         return arcByCenterPoint;
     }
 
-    public static LinestringSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter) {
+    public static LinestringSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long counter) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
 
         if (radius == null ) {
-            ConsoleLogger.log(LogLevel.FATAL, "radius can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("radius can't be null" + value.getClass().getName());
+            throw new MalformedGeometryException("radius can't be null");
         }
         DirectPositionType pos = value.getPos();
         DirectPositionListType posList = value.getPosList();
@@ -305,13 +326,11 @@ public class CurveGmlHelper {
             } else if (posList.getValue().size() == 3) {
                 coordinate = new Coordinate(posList.getValue().get(0), posList.getValue().get(1), posList.getValue().get(2));
             } else {
-                ConsoleLogger.log(LogLevel.FATAL, "Invalid number of coordinates" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                throw new RuntimeException("Invalid number of coordinates" + value.getClass().getName());
+                throw new MalformedGeometryException("Invalid number of coordinates");
             }
             
         } else {
-            ConsoleLogger.log(LogLevel.FATAL, "DirectPositionType is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("DirectPositionType is null" + value.getClass().getName());
+            throw new MalformedGeometryException("DirectPositionType is null");
         }
 
         Double radius_m = UnitTransformHelper.convertDistanceToMeters(radius.getValue(), radius.getUom());
@@ -350,7 +369,7 @@ public class CurveGmlHelper {
         return circleByCenterPoint;
     }
 
-    public static LinestringSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter) {
+    public static LinestringSegment parseGeodesicString (GeodesicStringType value, String srsName, long counter) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]);   
         DirectPositionListType posList = value.getPosList();
         List<Object> geometricPositionGroup = value.getGeometricPositionGroup();
@@ -361,9 +380,7 @@ public class CurveGmlHelper {
         } else if (geometricPositionGroup != null) {
             return parseListOfDirectPosition(geometricPositionGroup, srsName, LinestringSegment.Interpretation.GEODESIC, counter, null);
         }
-
-        ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-        throw new RuntimeException("DirectPositionListType and geometricPositionGroup is null" + value.getClass().getName());
+        throw new MalformedGeometryException("DirectPositionListType and geometricPositionGroup is null");
     }
 
     public static GeodesicStringType printGeodesicString (LinestringSegment value) {
@@ -382,7 +399,7 @@ public class CurveGmlHelper {
         return geodesicString;
     }
 
-    public static LinestringSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter) {
+    public static LinestringSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long counter) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " counter : " + counter, new Exception().getStackTrace()[0]); 
         DirectPositionListType posList = value.getPosList();
         List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
@@ -397,8 +414,7 @@ public class CurveGmlHelper {
             return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, LinestringSegment.Interpretation.LINESTRING, counter);
 
         }  
-        ConsoleLogger.log(LogLevel.FATAL, "DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-        throw new RuntimeException("DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName());
+        throw new MalformedGeometryException("DirectPositionListType and posOrPointPropertyOrPointRep is null");
     }
 
     public static LineStringSegmentType printLineStringSegment (LinestringSegment value) {
@@ -417,30 +433,27 @@ public class CurveGmlHelper {
         return lineStringSegment;
     }
 
-    public static LinestringSegment parseDirectPositionList (DirectPositionListType value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
+    public static LinestringSegment parseDirectPositionList (DirectPositionListType value, String srsName, LinestringSegment.Interpretation interpretation, long counter) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
         
         List<Double> posList = value.getValue();
 
         if (posList == null || posList.isEmpty()) {
-            ConsoleLogger.log(LogLevel.FATAL, "list<Double> value is null or empty" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("list<Double> value is null or empty" + value.getClass().getName());
+            throw new MalformedGeometryException("list<Double> value is null or empty");
         }
         int srsDimension = value.getSrsDimension() != null ? value.getSrsDimension().intValue() : 2;
         List<Coordinate> coordinates = new ArrayList<>();
 
         for (int i = 0; i < posList.size(); i += srsDimension) {
             if (posList.get(i) == null || posList.get(i + 1) == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "Coordinate values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                throw new RuntimeException("Coordinate values cannot be null" + value.getClass().getName());
+                throw new MalformedGeometryException("Coordinate values cannot be null");
             }
 
             if (srsDimension == 2) {
                 coordinates.add(new Coordinate(posList.get(i), posList.get(i + 1)));
             } else if (srsDimension == 3) {
                 if (posList.get(i + 2) == null) {
-                    ConsoleLogger.log(LogLevel.FATAL, "Coordinate values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                    throw new RuntimeException("Coordinate values cannot be null" + value.getClass().getName());
+                    throw new MalformedGeometryException("Coordinate values cannot be null");
                 }
                 coordinates.add(new Coordinate(posList.get(i), posList.get(i + 1), posList.get(i + 2)));
             }
@@ -478,15 +491,14 @@ public class CurveGmlHelper {
         return posList;
         }
 
-    public static LinestringSegment parseListOfDirectPosition(List<Object> value, String srsName, LinestringSegment.Interpretation interpretation, long counter, String type) {
+    public static LinestringSegment parseListOfDirectPosition(List<Object> value, String srsName, LinestringSegment.Interpretation interpretation, long counter, String type) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);
     
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (Object element : value) {
             if (element == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "content of geometricPositionGroup can't be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                throw new RuntimeException("content of geometricPositionGroup can't be null" + value.getClass().getName());
+                throw new MalformedGeometryException("content of geometricPositionGroup can't be null");
             }
 
             if (element.getClass().equals(DirectPositionType.class)) {
@@ -495,8 +507,7 @@ public class CurveGmlHelper {
                 coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
                 srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
-                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
-                throw new RuntimeException("element is not supported");
+                throw new MalformedGeometryException("element is not supported");
             }
         }
 
@@ -510,15 +521,14 @@ public class CurveGmlHelper {
         return linestringSegment;
     }
 
-    public static LinestringSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, LinestringSegment.Interpretation interpretation, long counter) {
+    public static LinestringSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, LinestringSegment.Interpretation interpretation, long counter) throws IllegalArgumentException, MalformedGeometryException{
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " counter : " + counter, new Exception().getStackTrace()[0]);    
 
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (JAXBElement<?> element : value) {
             if (element.getValue() == null) {
-                ConsoleLogger.log(LogLevel.FATAL, "JAXBElement<?> values cannot be null" + value.getClass().getName(), new Exception().getStackTrace()[0]);
-                throw new RuntimeException("JAXBElement<?> values cannot be null" + value.getClass().getName());
+                throw new MalformedGeometryException("JAXBElement<?> values cannot be null");
             }
 
             if (element.getValue().getClass().equals(DirectPositionType.class)) {
@@ -527,8 +537,7 @@ public class CurveGmlHelper {
                 coordinatesMap.put(value.indexOf(element), PointGmlHelper.parseDirectPositionToCoordinate(pos));
                 srsNameMap.put(value.indexOf(element), actualSrsName);
             } else {
-                ConsoleLogger.log(LogLevel.FATAL, "element is not supported", new Exception().getStackTrace()[0]);
-                throw new RuntimeException("element is not supported");
+                throw new MalformedGeometryException("element is not supported");
             }
         }
 

@@ -24,6 +24,8 @@ import java.util.Set;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 
+import com.aixm.delorean.core.exception.gis.MalformedGeometryException;
+
 public class CoordinateTransformeHelper {
     //TODO should this be configurable?
     private static final PrecisionModel precisionModel = new PrecisionModel(0.001);
@@ -230,37 +232,9 @@ public class CoordinateTransformeHelper {
         }
     }
 
-    private static void malformedCoordinates(List<Coordinate> Coordinates) {
-        for (int i = 1 ; i < Coordinates.size() ; i++) {
-            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
-                ConsoleLogger.log(LogLevel.WARN, "Malformed Linestring with identical start and end points are ignored.", new Exception().getStackTrace()[0]);
-                throw new IllegalArgumentException();
-            }
-
-            if (Coordinates.get(i).getX() == Double.NaN || Coordinates.get(i).getY() == Double.NaN) {
-                ConsoleLogger.log(LogLevel.FATAL, "Malformed Linestring with NaN coordinates are ignored.", new Exception().getStackTrace()[0]);
-                throw new RuntimeException();
-            }
-        }
-    }
-
-    private static void malformedCoordinates(LinkedHashMap<Integer, Coordinate> Coordinates) {
-        for (int i = 1 ; i < Coordinates.size() ; i++) {
-            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
-                ConsoleLogger.log(LogLevel.WARN, "Malformed Linestring with identical start and end points are ignored.", new Exception().getStackTrace()[0]);
-                throw new IllegalArgumentException();
-            }
-
-            if (Coordinates.get(i).getX() == Double.NaN || Coordinates.get(i).getY() == Double.NaN) {
-                ConsoleLogger.log(LogLevel.FATAL, "Malformed Linestring with NaN coordinates are ignored.", new Exception().getStackTrace()[0]);
-                throw new RuntimeException();
-            }
-        }
-
-    }
-
-    public static Point transformToPoint(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) {
+    public static Point transformToPoint(String sourceCRS, String targetCRS, Coordinate sourceCoordinate) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinate: " + sourceCoordinate, new Exception().getStackTrace()[0]);
+        GeometryValidationHelper.validGeometryPoint(sourceCoordinate);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         Coordinate targetCoordinate = instance.transform(sourceCRS, targetCRS, sourceCoordinate);
         Point point = geometryFactory.createPoint(targetCoordinate);
@@ -269,9 +243,9 @@ public class CoordinateTransformeHelper {
         return point;
     }
 
-    public static LineString transformToLineString(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) {
+    public static LineString transformToLineString(String sourceCRS, String targetCRS, List<Coordinate> sourceCoordinates) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinates: " + sourceCoordinates, new Exception().getStackTrace()[0]);
-        malformedCoordinates(sourceCoordinates);
+        GeometryValidationHelper.validGeometryLine(sourceCoordinates);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = instance.transform(sourceCRS, targetCRS, sourceCoordinates);
         Coordinate[] targetCoordinates = targetCoordinatesList.toArray(new Coordinate[0]);
@@ -281,8 +255,9 @@ public class CoordinateTransformeHelper {
         return line;
     }
 
-    public static LineString transformToLineString(String sourceCRS, String targetCRS, Coordinate sourceCoordinate, double distance, double bearing1, double bearing2) {
+    public static LineString transformToLineString(String sourceCRS, String targetCRS, Coordinate sourceCoordinate, double distance, double bearing1, double bearing2) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", sourceCoordinate: " + sourceCoordinate + ", distance: " + distance + ", bearing1: " + bearing1 + ", bearing2: " + bearing2, new Exception().getStackTrace()[0]);
+        GeometryValidationHelper.validGeometryPoint(sourceCoordinate);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         Coordinate targetCoordinate = instance.transform(sourceCRS, targetCRS, sourceCoordinate);
         Coordinate targetCoordinate1 = instance.ProjectPoint(targetCoordinate, distance, bearing1);
@@ -294,9 +269,9 @@ public class CoordinateTransformeHelper {
         return line;
     }
 
-    public static LineString transformToLineString(LinkedHashMap<Integer, Coordinate> sourceCoordinates, LinkedHashMap<Integer, String> sourceCRSs,  String targetCRS) {
+    public static LineString transformToLineString(LinkedHashMap<Integer, Coordinate> sourceCoordinates, LinkedHashMap<Integer, String> sourceCRSs,  String targetCRS) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCoordinates: " + sourceCoordinates + " sourceCRSs: " + sourceCRSs + ", targetCRS: " + targetCRS, new Exception().getStackTrace()[0]);
-        malformedCoordinates(sourceCoordinates);
+        GeometryValidationHelper.validGeometryLine(sourceCoordinates);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetCoordinatesList = new ArrayList<>();
         for (Map.Entry<Integer, Coordinate> entry : sourceCoordinates.entrySet()) {
@@ -310,12 +285,14 @@ public class CoordinateTransformeHelper {
         return line;
     }
 
-    public static Polygon transformToPolygon(String sourceCRS, String targetCRS, List<Coordinate> shell, List<List<Coordinate>> holes) {
+    public static Polygon transformToPolygon(String sourceCRS, String targetCRS, List<Coordinate> shell, List<List<Coordinate>> holes) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "sourceCRS: " + sourceCRS + ", targetCRS: " + targetCRS + ", shell: " + shell + ", holes: " + holes, new Exception().getStackTrace()[0]);
+        GeometryValidationHelper.validGeometryLine(shell);
         CoordinateTransformeHelper instance = CoordinateTransformeHelper.getInstance();
         List<Coordinate> targetShell = instance.transform(sourceCRS, targetCRS, shell);
         LinearRing[] targetHoles = new LinearRing[holes.size()];
         for (List<Coordinate> hole : holes) {
+            GeometryValidationHelper.validGeometryLine(hole);
             List<Coordinate> targetHole = instance.transform(sourceCRS, targetCRS, hole);
             Coordinate[] targetHoleArray = targetHole.toArray(new Coordinate[0]);
             LinearRing targetHoleRing = geometryFactory.createLinearRing(targetHoleArray);
@@ -330,7 +307,7 @@ public class CoordinateTransformeHelper {
         return polygon;
     }
 
-    public static MultiPolygon mergeToMultiPolygon(List<Polygon> polygons) {
+    public static MultiPolygon mergeToMultiPolygon(List<Polygon> polygons) throws IllegalArgumentException, MalformedGeometryException {
         ConsoleLogger.log(LogLevel.DEBUG, "polygons: " + polygons, new Exception().getStackTrace()[0]);
         Polygon[] polygonArray = polygons.toArray(new Polygon[0]);
         MultiPolygon multiPolygon = geometryFactory.createMultiPolygon(polygonArray);

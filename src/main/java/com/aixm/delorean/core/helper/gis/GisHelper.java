@@ -1,9 +1,6 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.math.BigDecimal;
-import java.util.logging.Logger;
-
-import org.locationtech.jts.geom.Point;
 
 import com.aixm.delorean.core.org.gml.v_3_2.DirectPositionType;
 import com.aixm.delorean.core.adapter.type.gis.AixmGeometryType;
