@@ -2,7 +2,7 @@
 -- R2 : Simple feature, unclosed
 -- G1 : Complex feature wiht a single geoborder, 
 -- G2 : Complex feature with multiple geoborder,
-
+CREATE MATERIALIZED VIEW surface_view AS
 WITH 
 g1_segment AS (
 	SELECT
@@ -577,6 +577,8 @@ r1 AS (
 		ST_IsClosed(partial_surface_view.geom) = true
 		AND 
 		partial_surface_view.total_count = 1
+		AND 
+		ST_NPoints(geom) >= 4
 ),
 r2 AS (
 	SELECT
@@ -594,6 +596,8 @@ r2 AS (
 		ST_IsClosed(partial_surface_view.geom) = false
 		AND 
 		partial_surface_view.total_count = 1
+		AND 
+		ST_NPoints(ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom))) >= 4
 ),
 g1 AS (
 	SELECT 
@@ -621,6 +625,8 @@ g1 AS (
 		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
 		NOT ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+		AND
+		ST_NPoints(ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment]))) >= 4
 	UNION ALL
 	SELECT DISTINCT 
 		ring.id,
@@ -647,6 +653,8 @@ g1 AS (
 		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
 		ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+		AND 
+		ST_NPoints(ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.end_segment, geoborder.start_segment]))) >= 4
 ),
 g2 AS (	
 	SELECT 
@@ -665,12 +673,119 @@ g2 AS (
 		g2_segment_filtered.xml_id,
 		g2_segment_filtered.part
 	HAVING
+		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = true
+		AND
+		ST_GeometryType(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = 'ST_LineString'
+		AND 
+		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
+	UNION ALL
+	SELECT 
+		MIN(g2_segment_filtered.id) AS id,
+		MIN(g2_segment_filtered.xml_id) AS xml_id,
+		MIN(g2_segment_filtered.part) AS part,
+		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom,
+		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
+		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
+		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
+		MIN(g2_segment_filtered.nilreason) AS nilreason
+	FROM
+		g2_segment_filtered
+	GROUP BY
+		g2_segment_filtered.id,
+		g2_segment_filtered.xml_id,
+		g2_segment_filtered.part
+	HAVING
 		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = false
+		AND
+		ST_GeometryType(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = 'ST_LineString'
+		AND 
+		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
+	
+),
+combined_data AS (
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        r1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        r2
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        g1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason,
+        part
+    FROM 
+        g2
+),
+outer_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+        ST_MakePolygon(geom) AS geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part = 0
+),
+inner_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+        geom,
+        horizontalaccuracy,
+        horizontalaccuracy_uom,
+        horizontalaccuracy_nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part <> 0
 )
 SELECT 
--- ST_IsClosed(geom),
-* 
+    outer_shells.id, 
+    outer_shells.xml_id, 
+    ST_MakePolygon(
+        ST_ExteriorRing(outer_shells.geom),
+        ARRAY(
+            SELECT ST_ExteriorRing(inner_shells.geom)
+            FROM inner_shells 
+            WHERE inner_shells.id = outer_shells.id
+        )
+    ) AS geom,
+    outer_shells.horizontalaccuracy,
+    outer_shells.horizontalaccuracy_uom,
+    outer_shells.horizontalaccuracy_nilreason
 FROM 
-partial_surface_view
-WHERE
-xml_id = 'gmlID1068000'
+    outer_shells;
