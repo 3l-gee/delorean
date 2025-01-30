@@ -41,7 +41,7 @@ public class GeometryValidationHelper {
 
     public static void validGeometryLine(List<Coordinate> Coordinates) throws IllegalArgumentException, MalformedGeometryException {
         for (int i = 1 ; i < Coordinates.size() ; i++) {
-            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
+            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY() && Coordinates.size() == 2) {
                 throw new MalformedGeometryException("Malformed Linestring with identical start and end points are ignored.");
             }
 
@@ -53,7 +53,7 @@ public class GeometryValidationHelper {
 
     public static void validGeometryLine(LinkedHashMap<Integer, Coordinate> Coordinates) throws IllegalArgumentException, MalformedGeometryException {
         for (int i = 1 ; i < Coordinates.size() ; i++) {
-            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY()) {
+            if (Coordinates.get(i).getX() == Coordinates.get(i-1).getX() && Coordinates.get(i).getY() == Coordinates.get(i-1).getY() && Coordinates.size() == 2) {
                 throw new MalformedGeometryException("Malformed Linestring with identical start and end points are ignored.");
             }
 

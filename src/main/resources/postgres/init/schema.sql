@@ -241,7 +241,7 @@ segment_ref AS(
 		member,
 		sequence,
 		interpretation,
-		SUBSTRING(curve_ref FROM POSITION('.' IN curve_ref) + 1) AS uuid
+		SUBSTRING(curve_ref FROM POSITION(':' IN curve_ref) + 6) AS uuid
     FROM public.polygon_segment 
 	WHERE public.polygon_segment.interpretation = 4
 ),
@@ -466,7 +466,7 @@ connecting_segments AS (
         curr.part,
 		curr.member,
         curr.sequence + 0.5 AS sequence,
-		curr.interpretation,
+		1,
         ST_MakeLine(curr.last_point, next.first_point) AS geom,
         curr.last_point AS first_point,
         next.first_point AS last_point,
@@ -496,7 +496,7 @@ connecting_segments AS (
         curr.part,
 		curr.member + 0.5 AS member,
         curr.sequence,
-		curr.interpretation,
+		1,
         ST_MakeLine(curr.last_point, next.first_point) AS geom,
         curr.last_point AS first_point,
         next.first_point AS last_point,
@@ -553,7 +553,7 @@ clustered_segments AS (
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
         nilreason,
-        ST_ClusterDBSCAN(geom, eps := 0, minpoints := 1) OVER (PARTITION BY xml_id, part) + 5000 + 1 AS cluster_id
+        Null AS cluster_id
     FROM 
         connecting_segments
     WHERE 
@@ -592,12 +592,12 @@ partial_ring AS (
         id, 
         xml_id,
         part,
-        MIN(member) AS member,
-		MAX(interpretation) AS interpretation,
-        ST_IsClosed(ST_LineMerge(ST_Collect(geom))) AS closed,
-        ST_GeometryType(ST_LineMerge(ST_Collect(geom))) AS type, 
-		ST_LineMerge(ST_Collect(geom)) AS geom,
-		ST_Points(ST_LineMerge(ST_Collect(geom))) AS points,
+        member,
+		interpretation,
+        ST_IsClosed(geom) AS closed,
+        ST_GeometryType(geom) AS type, 
+		geom AS geom,
+		ST_Points(geom) AS points,
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
@@ -606,15 +606,6 @@ partial_ring AS (
         clustered_segments
 	WHERE 
 		interpretation = 4
-    GROUP BY 
-		id,
-        xml_id, 
-        part, 
-		cluster_id,
-        horizontalaccuracy, 
-        horizontalaccuracy_uom, 
-        horizontalaccuracy_nilreason,	
-        nilreason
 	ORDER BY 
         xml_id, 
 		part, 
@@ -644,7 +635,6 @@ output AS (
 		xml_id, 
 		part, 
 		member
-	
 )
 SELECT 
 	ST_GeometryType(geom),

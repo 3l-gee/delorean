@@ -29,6 +29,9 @@ public class PolygonSegment {
     @Column(name = "id", nullable = false)
     protected Long dbid;
 
+    @Column(name = "xml_id")
+    protected String id;
+
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")
     protected LineString lineString;
 
@@ -73,6 +76,14 @@ public class PolygonSegment {
 
     public void setId(Long value) {
         this.dbid = value;
+    }
+
+    public String getXmlId() {
+        return id;
+    }
+
+    public void setXmlId(String value) {
+        this.id = value;
     }
 
     public LineString getLinestring() {

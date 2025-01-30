@@ -11,8 +11,6 @@ public class ElevatedSurfaceTypeAdapter extends XmlAdapter<ElevatedSurfaceType, 
     public AixmElevatedSurfaceType unmarshal(ElevatedSurfaceType value) throws Exception {
         try {
             return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMElevatedSurface(value));
-        } catch (IllegalArgumentException e) {
-            return null;
         } catch (Exception e) {
             throw e;
         }

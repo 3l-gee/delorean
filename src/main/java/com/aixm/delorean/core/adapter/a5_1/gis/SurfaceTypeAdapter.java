@@ -11,8 +11,6 @@ public class SurfaceTypeAdapter extends XmlAdapter<SurfaceType, AixmSurfaceType>
     public AixmSurfaceType unmarshal(SurfaceType value) throws Exception {
         try {
             return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMSurface(value));
-        } catch (IllegalArgumentException e) {
-            return null;
         } catch (Exception e) {
             throw e;
         }
