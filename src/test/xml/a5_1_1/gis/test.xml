@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message:AIXMBasicMessage 
+	xmlns:message="http://www.aixm.aero/schema/5.1.1/message" 
+	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:gss="http://www.isotc211.org/2005/gss" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gsr="http://www.isotc211.org/2005/gsr" 
+	xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.aixm.aero/schema/5.1.1/message 
+	http://www.aixm.aero/schema/5.1.1/message/AIXM_BasicMessage.xsd" 
+	gml:id="1">
+	<gml:boundedBy>
+    </gml:boundedBy>
+    <aixm:messageMetadata>
+    </aixm:messageMetadata>
+	<message:hasMember>    	
+		<aixm:RunwayElement gml:id="uuid.00000000-0000-4000-9002-000000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9002-000000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:RunwayElementTimeSlice gml:id="Surface_A.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="ID_1">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ID_1">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:extent>
+                        <aixm:ElevatedSurface srsName="urn:ogc:def:crs:OGC:1.3:CRS84" srsDimension="2" gml:id="gmlID1000517">
+                            <gml:patches>
+                                <gml:PolygonPatch>
+                                    <gml:exterior>
+                                        <gml:Ring>
+                                            <gml:curveMember>
+                                                <gml:Curve gml:id="gmlID1000518">
+                                                    <gml:segments>
+                                                        <gml:GeodesicString>
+                                                            <gml:pos>8.9777777778 46.6055555556</gml:pos>
+                                                            <gml:pos>9.1108333333 46.6052777778</gml:pos>
+                                                        </gml:GeodesicString>
+                                                        <gml:LineStringSegment>
+                                                            <gml:pos>9.1108333333 46.6052777778</gml:pos>
+                                                            <gml:pos>9.1661111111 46.6052777778</gml:pos>
+                                                        </gml:LineStringSegment>
+                                                        <gml:GeodesicString>
+                                                            <gml:pos>9.1661111111 46.6052777778</gml:pos>
+                                                            <gml:pos>9.2138888889 46.5933333333</gml:pos>
+                                                            <gml:pos>9.2505555556 46.57</gml:pos>
+                                                            <gml:pos>9.2744444444 46.5391666667</gml:pos>
+                                                            <gml:pos>9.2783333333 46.5102777778</gml:pos>
+                                                            <gml:pos>9.28137 46.4942705556</gml:pos>
+                                                        </gml:GeodesicString>
+                                                    </gml:segments>
+                                                </gml:Curve>
+                                            </gml:curveMember>
+                                            <gml:curveMember xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="urn:uuid:d163a00d-609f-4b15-9584-165f12599442"/>
+                                            <gml:curveMember>
+                                                <gml:Curve gml:id="gmlID1000519">
+                                                    <gml:segments>
+                                                        <gml:GeodesicString>
+                                                            <gml:pos>9.0785472222 46.0723055556</gml:pos>
+                                                            <gml:pos>9.0783280556 46.0718691667</gml:pos>
+                                                            <gml:pos>9.0663888889 46.0730555556</gml:pos>
+                                                            <gml:pos>9.0355555556 46.0766666667</gml:pos>
+                                                            <gml:pos>9.0075 46.0908333333</gml:pos>
+                                                            <gml:pos>8.9861111111 46.1019444444</gml:pos>
+                                                            <gml:pos>8.9583333333 46.1344444444</gml:pos>
+                                                            <gml:pos>8.8816666667 46.4813888889</gml:pos>
+                                                            <gml:pos>8.875 46.5111111111</gml:pos>
+                                                            <gml:pos>8.8861111111 46.5497222222</gml:pos>
+                                                            <gml:pos>8.9225 46.5830555556</gml:pos>
+                                                            <gml:pos>8.9777777778 46.6055555556</gml:pos>
+                                                            <gml:pos>8.9777777778 46.6055555556</gml:pos>
+                                                        </gml:GeodesicString>
+                                                    </gml:segments>
+                                                </gml:Curve>
+                                            </gml:curveMember>
+                                        </gml:Ring>
+                                    </gml:exterior>
+                                </gml:PolygonPatch>
+                            </gml:patches>
+                            <aixm:horizontalAccuracy xsi:nil="true" nilReason="unknown"/>
+                        </aixm:ElevatedSurface>
+                    </aixm:extent>
+				</aixm:RunwayElementTimeSlice>
+			</aixm:timeSlice>
+		</aixm:RunwayElement>
+	</message:hasMember>
+</message:AIXMBasicMessage>

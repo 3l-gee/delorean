@@ -10,8 +10,6 @@ public class CurveTypeAdapter extends XmlAdapter<com.aixm.delorean.core.schema.a
     public AixmCurveType unmarshal(com.aixm.delorean.core.schema.a5_1.aixm.CurveType value) throws Exception {
         try {
             return (com.aixm.delorean.core.helper.gis.GisHelper.parseAIXMCurve(value));
-        } catch (IllegalArgumentException e) {
-            return null;
         } catch (Exception e) {
             throw e;
         }
