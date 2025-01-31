@@ -27,9 +27,9 @@ public class PolygonSegment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "polygon_segment_seq")
     @SequenceGenerator(name = "polygon_segment_seq", sequenceName = "polygon_segment_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
-    protected Long dbid;
+    protected long dbid;
 
-    @Column(name = "xml_id")
+    @Column(name = "curve_xml_id")
     protected String id;
 
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")

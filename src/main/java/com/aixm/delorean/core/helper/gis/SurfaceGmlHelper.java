@@ -284,7 +284,7 @@ public class SurfaceGmlHelper {
             if (curveType == null || curveType.getSegments() == null) {
                 return coordinates;
             } else {
-                coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), srsName, part, member));
+                coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), curveType.getXmlId(), srsName, part, member));
             }
         } else if (element.getValue().getClass().equals(LineStringType.class)){
             //TODO is this allowed in AIXM?
@@ -304,8 +304,8 @@ public class SurfaceGmlHelper {
         return coordinates;
     }
 
-    public static List<PolygonSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String srsName, long part, long member) throws IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member, new Exception().getStackTrace()[0]);
+    public static List<PolygonSegment> parseCurveSegementArrayProperty (CurveSegmentArrayPropertyType value, String xml_id, String srsName, long part, long member) throws IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + "xml_id : " + xml_id + " srsName : " + srsName + " part : " + part + " member : " + member, new Exception().getStackTrace()[0]);
         List<PolygonSegment> segment = new ArrayList<>();
         long counter = 0;
 
@@ -321,10 +321,10 @@ public class SurfaceGmlHelper {
             } else if (element.getValue().getClass().equals(ArcByCenterPointType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "ArcByCenterPointType");
                 try {
-                    segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, part, member, counter));
+                    segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), xml_id, srsName, part, member, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);    
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry at id : " + xml_id, e.getStackTrace()[0]);    
                 }
                 continue;
 
@@ -350,10 +350,10 @@ public class SurfaceGmlHelper {
                 
             } else if (element.getValue().getClass().equals(CircleByCenterPointType.class)) {
                 try {
-                    segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, part, member, counter));
+                    segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), xml_id, srsName, part, member, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);    
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry at id : "  + xml_id, e.getStackTrace()[0]);    
                 }
                 continue;
 
@@ -372,30 +372,30 @@ public class SurfaceGmlHelper {
             } else if (element.getValue().getClass().equals(GeodesicStringType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicStringType");
                 try {
-                    segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, part, member, counter));
+                    segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), xml_id, srsName, part, member, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);    
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry at id : "  + xml_id, e.getStackTrace()[0]);    
                 }
                 continue;
 
             } else if (element.getValue().getClass().equals(GeodesicType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "GeodesicType");
                 try { 
-                    segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, part, member, counter));
+                    segment.add(parseGeodesicString((GeodesicType) element.getValue(), xml_id, srsName, part, member, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);    
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry at id : "  + xml_id, e.getStackTrace()[0]);    
                 }
                 continue;
 
             } else if (element.getValue().getClass().equals(LineStringSegmentType.class)) {
                 ConsoleLogger.log(LogLevel.DEBUG, "LineStringSegmentType");
                 try {
-                    segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, part, member, counter));
+                    segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), xml_id, srsName, part, member, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);    
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry at id : "  + xml_id, e.getStackTrace()[0]);    
                 }
                 continue;
 
@@ -416,8 +416,8 @@ public class SurfaceGmlHelper {
         return new CurveSegmentArrayPropertyType();
     }
 
-    public static PolygonSegment parseArcByCenterPoint(ArcByCenterPointType value, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseArcByCenterPoint(ArcByCenterPointType value, String xml_id,  String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
         AngleType startAngle = value.getStartAngle();
         AngleType endAngle = value.getEndAngle();
@@ -456,6 +456,7 @@ public class SurfaceGmlHelper {
         Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setPoint(point);
+        polygonSegment.setXmlId(xml_id);
         polygonSegment.setRadius(radius_m);
         polygonSegment.setStartAngle(startAngle_rad);
         polygonSegment.setEndAngle(endAngle_rad);
@@ -482,8 +483,8 @@ public class SurfaceGmlHelper {
         return new ArcType();
     }
 
-public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType value, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
+public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType value, String xml_id, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsName : " + srsName.toString() + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         LengthType radius = value.getRadius();
 
         if (radius == null ) {
@@ -518,6 +519,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         Point point = CoordinateTransformeHelper.transformToPoint(actualSrsName, "urn:ogc:def:crs:EPSG::4326", coordinate);
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setPoint(point);
+        polygonSegment.setXmlId(xml_id);
         polygonSegment.setRadius(radius_m);
         polygonSegment.setInterpretation(PolygonSegment.Interpretation.CIRCLEBYCENTER);
         polygonSegment.setPart(part);
@@ -540,16 +542,16 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return new CircleType();
     }
 
-    public static PolygonSegment parseGeodesicString (GeodesicStringType value, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);   
+    public static PolygonSegment parseGeodesicString (GeodesicStringType value, String xml_id, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsName : " + srsName + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);   
         DirectPositionListType posList = value.getPosList();
         List<Object> geometricPositionGroup = value.getGeometricPositionGroup();
         
         if (posList != null) {
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
-            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter);
+            return parseDirectPositionList(posList, xml_id, actualSrsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter);
         } else if (geometricPositionGroup != null) {
-            return parseListOfDirectPosition(geometricPositionGroup, srsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter, null);
+            return parseListOfDirectPosition(geometricPositionGroup, xml_id, srsName, PolygonSegment.Interpretation.GEODESIC, part, member, counter, null);
         }
         throw new IllegalArgumentException("DirectPositionListType and geometricPositionGroup is null");
     }
@@ -564,7 +566,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return geodesicString;
     }
 
-    public static PolygonSegment parseLineStringSegment (LineStringSegmentType value, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+    public static PolygonSegment parseLineStringSegment (LineStringSegmentType value, String xml_id, String srsName, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName : " + srsName + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]); 
         DirectPositionListType posList = value.getPosList();
         List<JAXBElement<?>> posOrPointPropertyOrPointRep = value.getPosOrPointPropertyOrPointRep();
@@ -572,11 +574,11 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
             String actualSrsName = posList.getSrsName() != null ? posList.getSrsName() : srsName;
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posList.toString() + " / " + actualSrsName);
-            return parseDirectPositionList(posList, actualSrsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
+            return parseDirectPositionList(posList, xml_id, actualSrsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
         } else if (posOrPointPropertyOrPointRep != null) {
 
             ConsoleLogger.log(LogLevel.DEBUG, "end parseLineStringSegment : " + posOrPointPropertyOrPointRep.toString() + " / " + srsName);
-            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, srsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
+            return parseListOfDirectPosition(posOrPointPropertyOrPointRep, xml_id, srsName, PolygonSegment.Interpretation.LINESTRING, part, member, counter);
 
         }  
         throw new IllegalArgumentException("DirectPositionListType and posOrPointPropertyOrPointRep is null" + value.getClass().getName());
@@ -587,8 +589,8 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return new LineStringSegmentType();
     }
 
-    public static PolygonSegment parseDirectPositionList (DirectPositionListType value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsNam : " + srsName +  " interpretation :" + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseDirectPositionList (DirectPositionListType value, String xml_id, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsNam : " + srsName +  " interpretation :" + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
         
         List<Double> posList = value.getValue();
 
@@ -618,6 +620,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         LineString lineString = CoordinateTransformeHelper.transformToLineString(srsName, "urn:ogc:def:crs:EPSG::4326", coordinates);
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
+        polygonSegment.setXmlId(xml_id);
         polygonSegment.setInterpretation(interpretation);
         polygonSegment.setPart(part);
         polygonSegment.setMember(member);
@@ -647,8 +650,8 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return posList;
         }
 
-    public static PolygonSegment parseListOfDirectPosition(List<Object> value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter, String type) throws MalformedGeometryException, IllegalArgumentException {
-        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " srsName " + srsName + " interpretation : " + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
+    public static PolygonSegment parseListOfDirectPosition(List<Object> value, String xml_id, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter, String type) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsName " + srsName + " interpretation : " + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
     
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
@@ -672,6 +675,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap, "urn:ogc:def:crs:EPSG::4326");
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
+        polygonSegment.setXmlId(xml_id);
         polygonSegment.setInterpretation(interpretation);
         polygonSegment.setPart(part);
         polygonSegment.setMember(member);
@@ -679,8 +683,9 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         return polygonSegment;
     }
 
-    public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
-
+    public static PolygonSegment parseListOfDirectPosition(List<JAXBElement<?>> value, String xml_id, String srsName, PolygonSegment.Interpretation interpretation, long part, long member, long counter) throws MalformedGeometryException, IllegalArgumentException {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString() + " id : " + xml_id + " srsName " + srsName + " interpretation : " + interpretation + " part : " + part + " member : " + member + " counter : " + counter, new Exception().getStackTrace()[0]);
+        
         LinkedHashMap<Integer, Coordinate> coordinatesMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> srsNameMap = new LinkedHashMap<>();
         for (JAXBElement<?> element : value) {
@@ -703,6 +708,7 @@ public static PolygonSegment parseCircleByCenterPoint(CircleByCenterPointType va
         LineString lineString = CoordinateTransformeHelper.transformToLineString(coordinatesMap, srsNameMap, "urn:ogc:def:crs:EPSG::4326");
         PolygonSegment polygonSegment = new PolygonSegment();
         polygonSegment.setLinestring(lineString);
+        polygonSegment.setXmlId(xml_id);
         polygonSegment.setInterpretation(interpretation);
         polygonSegment.setPart(part);
         polygonSegment.setMember(member);

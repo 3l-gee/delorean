@@ -1,4 +1,4 @@
-CREATE MATERIALIZED VIEW point_view AS
+CREATE MATERIALIZED VIEW geometry.point_view AS
 SELECT
     id, 
 	xml_id,
@@ -9,7 +9,7 @@ SELECT
 	nilreason
 FROM point_pt;
 
-CREATE MATERIALIZED VIEW elevated_point_view AS
+CREATE MATERIALIZED VIEW geometry.elevated_point_view AS
 SELECT 
     id, 
 	xml_id,
@@ -31,7 +31,8 @@ SELECT
 	nilreason
 FROM elevated_point_pt;
 
-CREATE MATERIALIZED VIEW curve_view AS
+
+CREATE MATERIALIZED VIEW geometry.curve_view AS
 WITH 
 center AS (
     SELECT 
@@ -121,7 +122,7 @@ SELECT
 FROM merged_segments;
 
 
-CREATE MATERIALIZED VIEW elevated_curve_view AS
+CREATE MATERIALIZED VIEW geometry.elevated_curve_view AS
 WITH 
 center AS (
     SELECT 
@@ -237,6 +238,7 @@ WITH
 segment_ref AS(
 	SELECT 
 		id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -261,12 +263,13 @@ segment_value AS(
 		ON airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
 	INNER JOIN public.curve_pt
 		ON airspace.geoborder_ts.border_id = public.curve_pt.id
-	INNER JOIN public.curve_view
-		ON public.curve_pt.id = public.curve_view.id
+	INNER JOIN geometry.curve_view
+		ON public.curve_pt.id = geometry.curve_view.id
 ),
 center AS (
     SELECT 
 		id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -281,6 +284,7 @@ center AS (
 	UNION ALL 
 	SELECT 
 		id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -296,6 +300,7 @@ center AS (
 interpolated_points AS (
     SELECT 
         center.id,
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -308,17 +313,25 @@ interpolated_points AS (
 arc_line AS (
     SELECT 
         id,
+		curve_xml_id,
 		part,
 		member,
 		sequence,
 		interpretation,
         ST_MakeLine(point_geom) AS geom
     FROM interpolated_points
-    GROUP BY id, part, member, sequence, interpretation
+    GROUP BY 
+		id, 
+		curve_xml_id,
+		part, 
+		member, 
+		sequence, 
+		interpretation
 ),
 segment_union AS (
     SELECT 
         id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -333,6 +346,7 @@ segment_union AS (
     UNION ALL 
     SELECT 
         id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -347,6 +361,7 @@ segment_union AS (
 	UNION ALL
 	SELECT
 		id, 
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -359,6 +374,7 @@ segment_union AS (
 	UNION ALL
 	SELECT
 		id,
+		curve_xml_id,
 		part,
 		member,
 		sequence,
@@ -374,6 +390,7 @@ segement_ownership AS (
 	SELECT 
 		public.surface_pt.id,
         public.surface_pt.xml_id,
+		segment_union.curve_xml_id,
 		segment_union.part AS part,
 		segment_union.member AS member,
 		segment_union.sequence AS sequence,
@@ -397,6 +414,7 @@ segement_ownership AS (
 	SELECT 
 		public.surface_pt.id,
         public.surface_pt.xml_id,
+		segment_union.curve_xml_id,
 		segment_union.part AS part,
 		segment_union.member AS member,
 		segment_union.sequence AS sequence,
@@ -421,6 +439,7 @@ ordered_segments AS (
     SELECT 
 		id,
         xml_id, 
+		curve_xml_id,
         part,
 		member,
         sequence,
@@ -445,6 +464,7 @@ connecting_segments AS (
     SELECT 
         id,
 		xml_id,
+		curve_xml_id,
         part,
 		member,
         sequence,
@@ -462,6 +482,7 @@ connecting_segments AS (
     SELECT 
         curr.id,
 		curr.xml_id,
+		Null AS curve_xml_id,
         curr.part,
 		curr.member,
         curr.sequence + 0.5 AS sequence,
@@ -492,6 +513,7 @@ connecting_segments AS (
     SELECT 
         curr.id,
 		curr.xml_id,
+		Null AS curve_xml_id,
         curr.part,
 		curr.member + 0.5 AS member,
         curr.sequence,
@@ -527,6 +549,7 @@ clustered_segments AS (
     SELECT 
         id, 
         xml_id,
+		curve_xml_id,
         part,
         member,
         geom,
@@ -543,7 +566,8 @@ clustered_segments AS (
 	UNION ALL
     SELECT 
         id, 
-        xml_id,
+		xml_id,
+		curve_xml_id,
         part,
         member,
         geom,
@@ -566,6 +590,7 @@ partial_ring AS (
     SELECT 
         id, 
         xml_id,
+		ARRAY_AGG(curve_xml_id) as curve_xml_id,
         part,
         MIN(member) AS member,
 		MIN(interpretation) AS interpretation,
@@ -594,6 +619,7 @@ partial_ring AS (
     SELECT 
         id, 
         xml_id,
+		ARRAY[curve_xml_id] AS curve_xml_id,
         part,
         member,
 		interpretation,
@@ -618,6 +644,7 @@ output AS (
     SELECT 
         pr.id, 
         pr.xml_id,
+		pr.curve_xml_id,
         pr.part,
 		ROW_NUMBER() OVER (PARTITION BY xml_id, part ORDER BY id) - 1 AS increment,
 		COUNT(*) OVER (PARTITION BY xml_id, part ) AS total_count,
@@ -642,7 +669,8 @@ output AS (
 SELECT 
 	ST_GeometryType(geom),
 	output.id, 
-	output.xml_id,
+	output(output.xml_id) AS xml_id,
+	to_jsonb(output.curve_xml_id) AS curve_xml_id,
 	output.part,
 	output.increment,
 	output.total_count,
@@ -654,19 +682,19 @@ SELECT
 	output.horizontalaccuracy_nilreason,
 	output.nilreason
 FROM
-output 
 
 
 -- R1 : Simple feature, closed
 -- R2 : Simple feature, unclosed
 -- G1 : Complex feature wiht a single geoborder, 
 -- G2 : Complex feature with multiple geoborder,
-CREATE MATERIALIZED VIEW surface_view AS
+CREATE MATERIALIZED VIEW geometry.surface_view AS
 WITH 
 g1_segment AS (
 	SELECT
 		geoborder.id, 
 		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -702,6 +730,7 @@ g1_segment AS (
 	GROUP BY
 		geoborder.id, 
 		geoborder.xml_id, 
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.geom, 
 		geoborder.increment,
@@ -716,6 +745,7 @@ g1_segment AS (
 	SELECT
 		partial_surface_view.id, 
 		partial_surface_view.xml_id,
+		partial_surface_view.curve_xml_id,
 		partial_surface_view.part,
 		partial_surface_view.increment,
 		partial_surface_view.interpretation,
@@ -742,6 +772,7 @@ g2_segment AS (
 	SELECT
 		geoborder.id, 
 		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -786,6 +817,7 @@ g2_segment AS (
 	GROUP BY
 		geoborder.id, 
 		geoborder.xml_id, 
+		geoborder.curve_xml_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -803,6 +835,7 @@ g2_segment AS (
 	SELECT
 		geoborder.id, 
 		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -855,6 +888,7 @@ g2_segment AS (
 	GROUP BY
 		geoborder.id, 
 		geoborder.xml_id, 
+		geoborder.curve_xml_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -872,6 +906,7 @@ g2_segment AS (
 	SELECT
 		geoborder.id, 
 		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -921,6 +956,7 @@ g2_segment AS (
 	GROUP BY
 		geoborder.id, 
 		geoborder.xml_id, 
+		geoborder.curve_xml_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -938,6 +974,7 @@ g2_segment AS (
 	SELECT
 		geoborder.id, 
 		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -986,7 +1023,8 @@ g2_segment AS (
 		after.interpretation != 4
 	GROUP BY
 		geoborder.id, 
-		geoborder.xml_id, 
+		geoborder.xml_id,
+		geoborder.curve_xml_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -1004,6 +1042,7 @@ g2_segment AS (
 	SELECT
 		partial_surface_view.id, 
 		partial_surface_view.xml_id,
+		partial_surface_view.curve_xml_id,
 		partial_surface_view.part,
 		partial_surface_view.increment,
 		partial_surface_view.interpretation,
@@ -1031,6 +1070,7 @@ g2_segment_filtered AS (
 	SELECT 
 		curr.id, 
 		curr.xml_id,
+		curr.curve_xml_id,
 		curr.part,
 		curr.increment,
 		curr.geom AS geom,
@@ -1074,6 +1114,7 @@ g2_segment_filtered AS (
 	SELECT 
 		curr.id, 
 		curr.xml_id,
+		curr.curve_xml_id,
 		curr.part,
 		curr.increment,
 		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.start_segment])) AS geom,
@@ -1117,6 +1158,7 @@ g2_segment_filtered AS (
 	SELECT 
 		curr.id, 
 		curr.xml_id,
+		curr.curve_xml_id,
 		curr.part,
 		curr.increment,
 		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment])) AS geom,
@@ -1160,6 +1202,7 @@ g2_segment_filtered AS (
 	SELECT 
 		curr.id, 
 		curr.xml_id,
+		curr.curve_xml_id,
 		curr.part,
 		curr.increment,
 		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment, curr.start_segment])) AS geom,
@@ -1203,6 +1246,7 @@ g2_segment_filtered AS (
 	SELECT
 		g2_segment.id, 
 		g2_segment.xml_id,
+		g2_segment.curve_xml_id,
 		g2_segment.part,
 		g2_segment.increment,
 		g2_segment.geom,
@@ -1224,6 +1268,7 @@ r1 AS (
 	SELECT
 		partial_surface_view.id,
 		partial_surface_view.xml_id,
+		partial_surface_view.curve_xml_id,
 		partial_surface_view.part,
 		partial_surface_view.geom,
 		partial_surface_view.horizontalaccuracy,
@@ -1236,11 +1281,14 @@ r1 AS (
 		ST_IsClosed(partial_surface_view.geom) = true
 		AND 
 		partial_surface_view.total_count = 1
+		AND 
+		ST_NPoints(geom) >= 4
 ),
 r2 AS (
 	SELECT
 		partial_surface_view.id,
 		partial_surface_view.xml_id,
+		partial_surface_view.curve_xml_id,
 		partial_surface_view.part,
 		ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom)) AS geom,
 		partial_surface_view.horizontalaccuracy,
@@ -1253,11 +1301,14 @@ r2 AS (
 		ST_IsClosed(partial_surface_view.geom) = false
 		AND 
 		partial_surface_view.total_count = 1
+		AND 
+		ST_NPoints(ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom))) >= 4		
 ),
 g1 AS (
 	SELECT 
 		ring.id,
-		ring.xml_id,
+		ring.xml_id || geoborder.xml_id AS xml_id,
+		ring.curve_xml_id || geoborder.curve_xml_id AS curve_xml_id,
 		ring.part,
 		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
 		ring.horizontalaccuracy,
@@ -1280,10 +1331,13 @@ g1 AS (
 		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
 		NOT ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+		AND
+		ST_NPoints(ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment]))) >= 4
 	UNION ALL
 	SELECT DISTINCT 
 		ring.id,
-		ring.xml_id,
+		ring.xml_id || geoborder.xml_id AS xml_id,
+		ring.curve_xml_id || geoborder.curve_xml_id AS curve_xml_id,
 		ring.part,
 		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
 		ring.horizontalaccuracy,
@@ -1306,11 +1360,14 @@ g1 AS (
 		ST_Intersects(geoborder.geom, geoborder.end_segment)
 		AND 
 		ST_Intersects(geoborder.start_segment, geoborder.end_segment)
+		AND
+		ST_NPoints(ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment]))) >= 4
 ),
 g2 AS (	
 	SELECT 
 		MIN(g2_segment_filtered.id) AS id,
-		MIN(g2_segment_filtered.xml_id) AS xml_id,
+		JSONB_AGG(g2_segment_filtered.xml_id) AS xml_id,
+		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
 		MIN(g2_segment_filtered.part) AS part,
 		ST_LineMerge(ST_Collect(g2_segment_filtered.geom)) AS geom,
 		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
@@ -1325,10 +1382,15 @@ g2 AS (
 		g2_segment_filtered.part
 	HAVING
 		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = true
+		AND
+		ST_GeometryType(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = 'ST_LineString'
+		AND 
+		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
 	UNION ALL
 	SELECT 
 		MIN(g2_segment_filtered.id) AS id,
-		MIN(g2_segment_filtered.xml_id) AS xml_id,
+		JSONB_AGG(g2_segment_filtered.xml_id) AS xml_id,
+		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
 		MIN(g2_segment_filtered.part) AS part,
 		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom,
 		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
@@ -1343,12 +1405,17 @@ g2 AS (
 		g2_segment_filtered.part
 	HAVING
 		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = false
+		AND
+		ST_GeometryType(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = 'ST_LineString'
+		AND 
+		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
 ),
 combined_data AS (
     SELECT 
         id, 
         xml_id, 
-        geom,
+		curve_xml_id,
+		geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
@@ -1358,7 +1425,8 @@ combined_data AS (
     UNION ALL
     SELECT 
         id, 
-        xml_id, 
+        xml_id,
+		curve_xml_id,
         geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
@@ -1370,6 +1438,7 @@ combined_data AS (
     SELECT 
         id, 
         xml_id, 
+		curve_xml_id,
         geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
@@ -1381,6 +1450,7 @@ combined_data AS (
     SELECT 
         id, 
         xml_id, 
+		curve_xml_id,
         geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
@@ -1393,6 +1463,7 @@ outer_shells AS (
     SELECT 
         id, 
         xml_id, 
+		curve_xml_id,
         ST_MakePolygon(geom) AS geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
@@ -1406,6 +1477,7 @@ inner_shells AS (
     SELECT 
         id, 
         xml_id, 
+		curve_xml_id,
         geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,

@@ -66,7 +66,7 @@ public class CurveGmlHelper {
         try {
             return parseCurveSegementArrayProperty(segments, srsName);
         } catch (IllegalArgumentException e) {
-            ConsoleLogger.log(LogLevel.FATAL, "parseCurveSegementArrayProperty encoutered a Illegal Format at id : " + value.getXmlId(), e);
+            ConsoleLogger.log(LogLevel.FATAL, "parseCurveSegementArrayProperty encoutered a Illegal Format at id : " + value.getXmlId(), e.getStackTrace()[0]);
             return null;
         } catch (Exception e) {
             ConsoleLogger.log(LogLevel.FATAL, "parseCurveSegementArrayProperty encoutered an ??? at id : " + value.getXmlId(), e);
@@ -96,7 +96,7 @@ public class CurveGmlHelper {
                     segment.add(parseArcByCenterPoint((ArcByCenterPointType) element.getValue(), srsName, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e);
+                    ConsoleLogger.log(LogLevel.WARN, "parseArcByCenterPoint encoutered a Malformed Geometry : ", e.getStackTrace()[0]);
                 }
                 continue;
 
@@ -125,7 +125,7 @@ public class CurveGmlHelper {
                     segment.add(parseCircleByCenterPoint((CircleByCenterPointType) element.getValue(), srsName, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseCircleByCenterPoint encoutered a Malformed Geometry : ", e);
+                    ConsoleLogger.log(LogLevel.WARN, "parseCircleByCenterPoint encoutered a Malformed Geometry : ", e.getStackTrace()[0]);
                 }
 
             } else if (element.getValue().getClass().equals(CircleType.class)) {
@@ -146,7 +146,7 @@ public class CurveGmlHelper {
                     segment.add(parseGeodesicString((GeodesicStringType) element.getValue(), srsName, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e.getStackTrace()[0]);
                 }
                 continue;
 
@@ -156,7 +156,7 @@ public class CurveGmlHelper {
                     segment.add(parseGeodesicString((GeodesicType) element.getValue(), srsName, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e.getStackTrace()[0]);
                 }
                 continue;
 
@@ -166,7 +166,7 @@ public class CurveGmlHelper {
                     segment.add(parseLineStringSegment((LineStringSegmentType) element.getValue(), srsName, counter));
                     counter++;
                 } catch (MalformedGeometryException e) {
-                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e);
+                    ConsoleLogger.log(LogLevel.WARN, "parseGeodesicString encoutered a Malformed Geometry : ", e.getStackTrace()[0]);
                 }
                 continue;
 

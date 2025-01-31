@@ -37,7 +37,7 @@ public class PointGmlHelper {
         try {
             return parseDirectPosition(pos, srsName);
         } catch (IllegalArgumentException e) {
-            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition encoutered a Illegal Argument Input at id : " + value.getXmlId(), e);
+            ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition encoutered a Illegal Argument Input at id : " + value.getXmlId(), e.getStackTrace()[0]);
             return null;       
         } catch (Exception e) {
             ConsoleLogger.log(LogLevel.FATAL, "parseDirectPosition encoutered an ??? id : " + value.getXmlId(), e);
