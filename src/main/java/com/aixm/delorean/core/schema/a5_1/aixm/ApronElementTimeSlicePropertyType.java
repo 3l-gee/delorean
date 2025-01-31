@@ -16,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -62,7 +63,8 @@ public class ApronElementTimeSlicePropertyType {
     @JoinColumn(name = "apronelementtimeslice_id", referencedColumnName = "id")
     protected ApronElementTimeSliceType apronElementTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "apronelement_tsp_seq")
+    @SequenceGenerator(name = "apronelement_tsp_seq", sequenceName = "apronelement_tsp_seq", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

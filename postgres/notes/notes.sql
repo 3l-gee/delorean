@@ -5,7 +5,7 @@ notes.linguisticnote.note_lang,
 notes.linguisticnote.note_value
 FROM notes.linguisticnote_pt
 INNER JOIN notes.linguisticnote
-ON notes.linguisticnote_pt.linguisticnote_id = notes.linguisticnote.id
+ON notes.linguisticnote_pt.linguisticnote_id = notes.linguisticnote.id;
 
 CREATE OR REPLACE VIEW notes.note_view AS
 SELECT 
@@ -20,4 +20,4 @@ ON notes.note_pt.note_id = notes.note.id
 INNER JOIN public.note_translatednote
 ON notes.note.id = public.note_translatednote.note_id
 INNER JOIN notes.linguisticnote_view
-ON public.note_translatednote.linguisticnote_pt_id = notes.linguisticnote_view.id
+ON public.note_translatednote.linguisticnote_pt_id = notes.linguisticnote_view.id;

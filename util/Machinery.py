@@ -429,7 +429,8 @@ class Machinery:
             
             if element.attrib.get("name") == "dbid":
                 node.append(Annox.field_add(Jpa.id))
-                node.append(Annox.field_add(Jpa.generated_value()))
+                node.append(Annox.field_add(Jpa.generated_value("place_holder_generator_name")))
+                node.append(Annox.field_add(Jpa.sequence_generator("place_holder_generator_name")))
                 node.append(Annox.field_add(Jpa.column("id", nullable=False, unique=True)))
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Jaxb.end)
@@ -502,11 +503,12 @@ class Machinery:
                 return node
             
             if element.attrib.get("name") == "dbid":
-                node.append(Jaxb.field_add(Jpa.id))
-                node.append(Jaxb.field_add(Jpa.generated_value))
-                node.append(Jaxb.field_add(Jpa.column("id", nullable=False, unique=True)))
-                node.append(Jaxb.field_add(Xml.transient))
-                node.append(Jaxb.end)
+                node.append(Annox.field_add(Jpa.id))
+                node.append(Annox.field_add(Jpa.generated_value("place_holder_generator_name")))
+                node.append(Annox.field_add(Jpa.sequence_generator("place_holder_generator_name")))
+                node.append(Annox.field_add(Jpa.column("id", nullable=False, unique=True)))
+                node.append(Annox.field_add(Xml.transient))
+                node.append(Annox.end)
                 return node
             
             if element.attrib.get("name") == "name":

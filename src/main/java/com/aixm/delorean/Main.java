@@ -11,6 +11,7 @@ import com.aixm.delorean.core.util.Util;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
 
+import java.io.Console;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -73,7 +74,7 @@ public class Main {
             }
 
             try {
-                executeCommand(command);
+                executeCommand(command, scanner);
             } catch (IllegalArgumentException e) {
                 ConsoleLogger.log(LogLevel.ERROR,"Invalid arguments: " + e.getMessage());
                 ConsoleLogger.log(LogLevel.INFO,"Please try again.");
@@ -84,51 +85,51 @@ public class Main {
     }
 
     private void testRun() {
-        Map<String, String> dictonary = Util.parseToMap("{url:jdbc:postgresql://localhost:5432/delorean, username:postgres, password:postgres, hbm2ddl:create}");
+        Scanner scanner = new Scanner(System.in);
         ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1");
+        executeNewCommand("a5_1_1", scanner,  "", "");
 
         ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
         ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner, "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLSurface.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLSurface.xml");
 
         ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/export.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
         
         ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", dictonary);
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db - load");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"load", "");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
 
         ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1");
+        executeNewCommand("a5_1_1", scanner, "", "");
 
         ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), "a5_1_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(),"a5_1_1", dictonary);
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db - retrieve 1");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"retrieve", "1");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
 
         ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(),"export", "src/main/resources/retrive.xml");
+        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/retrive.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 
@@ -143,14 +144,13 @@ public class Main {
 
     }
 
-    private void executeCommand(String command) {
+    private void executeCommand(String command, Scanner scanner) {
         // Action Argument Parameter Optipon
         String[] parts = command.split(" ");
         String action = parts[0];
         String argument = null;
         String parameter = null;
         String option = null;
-        Map<String, String> dictonary = Util.parseToMap(command);
 
         if (parts.length > 1) {
             argument = parts[1];
@@ -170,23 +170,23 @@ public class Main {
 
         switch (action.toLowerCase()) {
             case "new":
-                executeNewCommand(argument);
+                executeNewCommand(argument, scanner, parameter, option);
                 break;
 
             case "xml_config":
-                excuteXmlConfigurationCommand(argument, parameter);
+                excuteXmlConfigurationCommand(argument,scanner, parameter, option);
                 break;
 
             case "xml" :
-                executeXmlActionCommand(argument, parameter, option);
+                executeXmlActionCommand(argument,scanner, parameter, option);
                 break;
 
             case "db_config":
-                executeDbConfigurationCommand(argument,parameter, dictonary);
+                executeDbConfigurationCommand(argument, scanner, parameter, option);
                 break;
 
             case "db" :
-                executeDbActionCommand(argument,parameter, option);
+                executeDbActionCommand(argument, scanner, parameter, option);
                 break;
 
             case "list":
@@ -206,7 +206,7 @@ public class Main {
         }
     }
 
-    private void executeNewCommand(String argument) {
+    private void executeNewCommand(String argument, Scanner scanner,  String parameter, String option) {
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -214,14 +214,14 @@ public class Main {
         try {
             StructureConfig Structure = StructureConfig.fromString(argument);
             this.containerWarehouse.addContainer(ContainerFactory.createContainer(Structure));
-            System.out.println(this.containerWarehouse.getLastContainerId() + " created");
-
         } catch (IllegalArgumentException e) {
             System.err.println("Invalid argument: " + e.getMessage());
+        } finally {
+            ConsoleLogger.log(LogLevel.INFO, "New container: " + this.containerWarehouse.getLastContainerId());
         }
     }
 
-    private void excuteXmlConfigurationCommand(String argument, String parameter) {
+    private void excuteXmlConfigurationCommand(String argument, Scanner scanner, String parameter, String option) {
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -229,17 +229,22 @@ public class Main {
         if (parameter == null) {
             throw new IllegalArgumentException("parameter is null");
         }
-
-        if (this.containerWarehouse.getIds().contains(argument)) {
-            XMLConfig xmlConfig = XMLConfig.fromString(parameter);
-            XMLBinding xmlBinding = new XMLBinding(xmlConfig, this.containerWarehouse.getContainer(argument).getStructure());
-            this.containerWarehouse.getContainer(argument).setXmlBinding(xmlBinding);
-        } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+        try {
+            if (this.containerWarehouse.getIds().contains(argument)) {
+                XMLConfig xmlConfig = XMLConfig.fromString(parameter);
+                XMLBinding xmlBinding = new XMLBinding(xmlConfig, this.containerWarehouse.getContainer(argument).getStructure());
+                this.containerWarehouse.getContainer(argument).setXmlBinding(xmlBinding);
+            } else {
+                System.err.println("Container " + argument + " does not exist or parameter is missing");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid argument: " + e.getMessage());
+        } finally {
+            ConsoleLogger.log(LogLevel.INFO, "XML configuration set");
         }
     }
 
-    private void executeXmlActionCommand(String argument, String parameter, String option){
+    private void executeXmlActionCommand(String argument, Scanner scanner, String parameter, String option){
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -266,7 +271,7 @@ public class Main {
         }
     }
 
-    private void executeDbConfigurationCommand(String argument, String parameter, Map<String, String> dictionary){
+    private void executeDbConfigurationCommand(String argument, Scanner scanner, String parameter, String option){
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }
@@ -278,25 +283,50 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             DatabaseConfig databaseConfiguration = DatabaseConfig.fromString(parameter);
             try{
-                String url = dictionary.get("url");
-                String username = dictionary.get("username");
-                String password = dictionary.get("password");
-                String hbm2ddl = dictionary.get("hbm2ddl");
                 DatabaseBinding dbBinding = new DatabaseBinding(databaseConfiguration);
                 this.containerWarehouse.getContainer(argument).setDbBiding(dbBinding);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid argument: " + e.getMessage());
+            }
+
+            Console console = System.console();
+            try {
+                // Ask for URL
+                System.out.print("Enter URL, [url:port/database] : ");
+                String url = "jdbc:postgresql://"  + scanner.nextLine();
+        
+                // Ask for username
+                System.out.print("Enter username : ");
+                String username = scanner.nextLine();
+        
+                // Ask for password (hidden input)
+                char[] passwordChars = console.readPassword("Enter password: ");
+                String password = new String(passwordChars);
+
+                // Ask for hbm2ddl
+                System.out.print("Enter hbm2ddl, [create, update, validate, none] : ");
+                String hbm2ddl = scanner.nextLine();
+
+                System.out.println("URL: " + url);
+                System.out.println("Username: " + username);
+                System.out.println("Password: " + password);
+                System.out.println("hbm2ddl: " + hbm2ddl);
+    
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUrl(url);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setHbm2ddl(hbm2ddl);
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid argument: " + e.getMessage());
+            } finally {
+                ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             }
         } else {
             System.err.println("Container " + argument + " does not exist or parameter is missing");
         }
     }
 
-    private void executeDbActionCommand(String argument, String parameter, String option) {
+    private void executeDbActionCommand(String argument, Scanner scanner, String parameter, String option) {
         if (argument == null) {
             throw new IllegalArgumentException("Argument is null");
         }

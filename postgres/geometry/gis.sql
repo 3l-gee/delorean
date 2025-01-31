@@ -669,7 +669,7 @@ output AS (
 SELECT 
 	ST_GeometryType(geom),
 	output.id, 
-	output(output.xml_id) AS xml_id,
+	to_jsonb(output.xml_id) AS xml_id,
 	to_jsonb(output.curve_xml_id) AS curve_xml_id,
 	output.part,
 	output.increment,
@@ -682,7 +682,7 @@ SELECT
 	output.horizontalaccuracy_nilreason,
 	output.nilreason
 FROM
-
+	output;
 
 -- R1 : Simple feature, closed
 -- R2 : Simple feature, unclosed

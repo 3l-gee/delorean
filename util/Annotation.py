@@ -890,8 +890,12 @@ class Jpa:
         return f'@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.{value})'
     
     @staticmethod
-    def generated_value(strategy="jakarta.persistence.GenerationType.IDENTITY"):
-        return f'@jakarta.persistence.GeneratedValue(strategy = {strategy})'
+    def generated_value(generator, strategy="jakarta.persistence.GenerationType.SEQUENCE"):
+        return f'@jakarta.persistence.GeneratedValue(strategy = {strategy}, generator = "{generator}")'
+    
+    @staticmethod
+    def sequence_generator(name):
+        return f'@jakarta.persistence.SequenceGenerator(name = "{name}", sequenceName = "{name}", allocationSize = 1)'
     
     @staticmethod
     def attribute_sub_override(attrib_name, column):

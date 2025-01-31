@@ -17,6 +17,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -39,8 +40,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -57,10 +58,14 @@ import jakarta.xml.bind.annotation.XmlType;
 public class ServicePropertyType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "service_pt_seq")
+    @SequenceGenerator(name = "service_pt_seq", sequenceName = "service_pt_seq", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
+    @XmlAttribute(name = "owns")
+    @Transient
+    protected Boolean owns;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
     protected List<String> nilReason;
@@ -88,9 +93,6 @@ public class ServicePropertyType {
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     @Transient
     protected ActuateType actuate;
-    @XmlAttribute(name = "owns")
-    @Transient
-    protected Boolean owns;
 
     /**
      * Gets the value of the dbid property.
@@ -118,6 +120,42 @@ public class ServicePropertyType {
 
     public boolean isSetDbid() {
         return (this.dbid!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -354,42 +392,6 @@ public class ServicePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

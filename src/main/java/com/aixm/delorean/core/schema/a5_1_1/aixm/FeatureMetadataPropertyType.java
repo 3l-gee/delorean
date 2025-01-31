@@ -14,6 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -57,7 +58,8 @@ public class FeatureMetadataPropertyType
     @Transient
     protected MDMetadataType mdMetadata;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "feature_metadata_property_type")
+    @SequenceGenerator(name = "feature_metadata_property_type", sequenceName = "feature_metadata_property_type", allocationSize = 1)
     @Column(name = "id", nullable = false, unique = false)
     @XmlTransient
     protected Long dbid;
