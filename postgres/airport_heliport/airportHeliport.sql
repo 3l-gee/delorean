@@ -4,7 +4,7 @@ airport_heliport.city_pt.id,
 airport_heliport.city.name_value
 FROM airport_heliport.city_pt
 INNER JOIN airport_heliport.city
-ON airport_heliport.city_pt.city_id = airport_heliport.city.id
+ON airport_heliport.city_pt.city_id = airport_heliport.city.id;
 
 CREATE OR REPLACE VIEW airport_heliport.surfacecharacteristics_view AS
 SELECT 
@@ -31,17 +31,18 @@ ON airport_heliport.surfacecharacteristics_pt.surfacecharacteristics_id = airpor
 LEFT JOIN public.surfacecharacteristics_annotation
 ON airport_heliport.surfacecharacteristics.id = public.surfacecharacteristics_annotation.surfacecharacteristics_id
 LEFT JOIN notes.note_view
-ON public.surfacecharacteristics_annotation.note_pt_id = notes.note_view.id
+ON public.surfacecharacteristics_annotation.note_pt_id = notes.note_view.id;
 
 CREATE OR REPLACE VIEW airport_heliport.airportheliport_view AS
 SELECT 
     (row_number() OVER ())::integer AS row,
     airport_heliport.airportheliport.id,
+    airport_heliport.airportheliport.identifier,
     airport_heliport.airportheliport_ts.valid_time_begin,
     airport_heliport.airportheliport_ts.valid_time_end,
     airport_heliport.airportheliport_ts.feature_lifetime_begin,
     airport_heliport.airportheliport_ts.feature_lifetime_end,
-    COALESCE(public.elevated_point_view.geom, public.elevated_surface_view.geom) AS geom,
+    COALESCE(geometry.elevated_point_view.geom, geometry.elevated_surface_view.geom) AS geom,
     airport_heliport.airportheliport_ts.designator_value,
     airport_heliport.airportheliport_ts.name_value,
     airport_heliport.airportheliport_ts.locationindicatoricao_value,
@@ -83,10 +84,10 @@ INNER JOIN airport_heliport.airportheliport_tsp
     ON public.airportheliport_timeslice.airportheliport_tsp_id = airport_heliport.airportheliport_tsp.id
 INNER JOIN airport_heliport.airportheliport_ts
     ON airport_heliport.airportheliport_tsp.airportheliporttimeslice_id = airport_heliport.airportheliport_ts.id
-LEFT JOIN public.elevated_point_view
-    ON airport_heliport.airportheliport_ts.arp_id = public.elevated_point_view.id
-LEFT JOIN public.elevated_surface_view
-    ON airport_heliport.airportheliport_ts.aviationboundary_id = public.elevated_surface_view.id
+LEFT JOIN geometry.elevated_point_view
+    ON airport_heliport.airportheliport_ts.arp_id = geometry.elevated_point_view.id
+LEFT JOIN geometry.elevated_surface_view
+    ON airport_heliport.airportheliport_ts.aviationboundary_id = geometry.elevated_surface_view.id
 LEFT JOIN public.airportheliport_ts_servedcity
     ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_servedcity.airportheliport_ts_id
 LEFT JOIN airport_heliport.city_view
@@ -101,7 +102,7 @@ GROUP BY
     airport_heliport.airportheliport_ts.valid_time_end,
     airport_heliport.airportheliport_ts.feature_lifetime_begin,
     airport_heliport.airportheliport_ts.feature_lifetime_end,
-    COALESCE(public.elevated_point_view.geom, public.elevated_surface_view.geom),
+    COALESCE(geometry.elevated_point_view.geom, geometry.elevated_surface_view.geom),
     airport_heliport.airportheliport_ts.designator_value,
     airport_heliport.airportheliport_ts.name_value,
     airport_heliport.airportheliport_ts.locationindicatoricao_value,
