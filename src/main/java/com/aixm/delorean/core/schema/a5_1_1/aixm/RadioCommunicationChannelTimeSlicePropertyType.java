@@ -16,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -62,7 +63,8 @@ public class RadioCommunicationChannelTimeSlicePropertyType {
     @JoinColumn(name = "radiocommunicationchanneltimeslice_id", referencedColumnName = "id")
     protected RadioCommunicationChannelTimeSliceType radioCommunicationChannelTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "radiocommunicationchannel_tsp_seq")
+    @SequenceGenerator(name = "radiocommunicationchannel_tsp_seq", sequenceName = "radiocommunicationchannel_tsp_seq", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

@@ -189,6 +189,13 @@ rename_config = {
             "proceduretransition_pg",
             "routeavailability_pg"
             ]
+    },
+    "sequence_renaming" : {
+        "method" : f'(?<=@Table\(name = ")([^"]+)(?=", schema =)',
+        "words" : [
+            "place_holder_generator_name"
+        ],
+        "prefix" : "_seq"
     }
 }
 
@@ -205,7 +212,8 @@ class CompilationScript :
         for key, value in config.items() :
             formatted_config[key] = {
                 "method" : value["method"],
-                "words" : sorted(value["words"], key=len, reverse=True)
+                "words" : sorted(value["words"], key=len, reverse=True),
+                "prefix" : value.get("prefix", "")
             }
         return formatted_config
 
@@ -243,7 +251,7 @@ class CompilationScript :
             for key, new_name in rename_dict.items():
                     for value in self.rename_config[key]["words"]:
                         if value in line:
-                            line = line.replace(value, new_name)
+                            line = line.replace(value, new_name + self.rename_config[key].get("prefix", ""))
 
             new_data.append(line)
         return new_data

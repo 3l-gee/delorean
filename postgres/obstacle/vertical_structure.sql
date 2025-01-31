@@ -1,0 +1,134 @@
+SELECT 
+*
+
+
+
+	obstacles.verticalstructurepart.verticalextent_value
+	obstacles.verticalstructurepart.verticalextent_uom
+	obstacles.verticalstructurepart.verticalextent_nilreason
+	obstacles.verticalstructurepartverticalextentaccuracy_value
+	obstacles.verticalstructurepart.verticalextentaccuracy_uom
+	obstacles.verticalstructurepart.verticalextentaccuracy_nilreason
+	obstacles.verticalstructurepart.type_value
+	obstacles.verticalstructurepart.type_nilreason
+	obstacles.verticalstructurepart.constructionstatus_value
+	obstacles.verticalstructurepart.constructionstatus_nilreason
+	obstacles.verticalstructurepart.markingpattern_value
+	obstacles.verticalstructurepart.markingpattern_nilreason
+	obstacles.verticalstructurepart.markingfirstcolour_value
+	obstacles.verticalstructurepart.markingfirstcolour_nilreason
+	obstacles.verticalstructurepart.markingsecondcolour_value
+	obstacles.verticalstructurepart.markingsecondcolour_nilreason
+	obstacles.verticalstructurepart.mobile_value
+	obstacles.verticalstructurepart
+	obstacles.verticalstructurepart
+	obstacles.verticalstructurepart
+	obstacles.verticalstructurepart
+	obstacles.verticalstructurepart
+	
+FROM 
+obstacles.verticalstructure_ts
+-- geometry.elevated_point_view
+-- obstacles.verticalstructurepart
+LEFT JOIN public.verticalstructure_ts_part
+	ON obstacles.verticalstructure_ts.id = public.verticalstructure_ts_part.verticalstructure_ts_id
+INNER JOIN obstacles.verticalstructurepart_pt
+	ON public.verticalstructure_ts_part.verticalstructurepart_pt_id = obstacles.verticalstructurepart_pt.id
+INNER JOIN obstacles.verticalstructurepart
+	ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+-- LEFT JOIN geometry.elevated_point_view
+-- INNER JOIN obstacles.verticalstructurepart
+-- 	ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+-- LEFT JOIN geometry.elevated_point_view
+-- 	ON obstacles.verticalstructurepart.horizontalprojection_location_id = geometry.elevated_point_view.id
+
+
+CREATE OR REPLACE VIEW verticalstructure_point_view AS
+SELECT 
+(row_number() OVER ())::integer AS row,
+obstacles.verticalstructure_ts.valid_time_begin,
+obstacles.verticalstructure_ts.valid_time_end,
+obstacles.verticalstructure_ts.feature_lifetime_begin,
+obstacles.verticalstructure_ts.feature_lifetime_end,
+obstacles.verticalstructure_ts.name_value, 
+obstacles.verticalstructure_ts.type_value,
+obstacles.verticalstructure_ts.lighted_value,
+obstacles.verticalstructure_ts.markingicaostandard_value,
+obstacles.verticalstructure_ts.group_value,
+public.elevated_point_view.point AS geom
+
+FROM obstacles.verticalstructure
+INNER JOIN public.verticalstructure_timeslice
+ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
+INNER JOIN obstacles.verticalstructure_tsp
+ON verticalstructure_timeslice.verticalstructure_tsp_id = obstacles.verticalstructure_tsp.id
+INNER JOIN obstacles.verticalstructure_ts
+ON obstacles.verticalstructure_tsp.verticalstructuretimeslice_id = obstacles.verticalstructure_ts.id
+INNER JOIN public.verticalstructure_ts_part
+ON obstacles.verticalstructure_ts.id = public.verticalstructure_ts_part.verticalstructure_ts_id
+INNER JOIN obstacles.verticalstructurepart_pt
+ON public.verticalstructure_ts_part.verticalstructurepart_pt_id = obstacles.verticalstructurepart_pt.id
+INNER JOIN obstacles.verticalstructurepart
+ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+INNER JOIN public.elevated_point_view
+ON obstacles.verticalstructurepart.horizontalprojection_location_id = public.elevated_point_view.id;
+
+CREATE OR REPLACE VIEW verticalstructure_line_view AS
+SELECT 
+(row_number() OVER ())::integer AS row,
+obstacles.verticalstructure_ts.valid_time_begin,
+obstacles.verticalstructure_ts.valid_time_end,
+obstacles.verticalstructure_ts.feature_lifetime_begin,
+obstacles.verticalstructure_ts.feature_lifetime_end,
+obstacles.verticalstructure_ts.name_value, 
+obstacles.verticalstructure_ts.type_value,
+obstacles.verticalstructure_ts.lighted_value,
+obstacles.verticalstructure_ts.markingicaostandard_value,
+obstacles.verticalstructure_ts.group_value,
+public.elevated_curve_view.geom
+
+FROM obstacles.verticalstructure
+INNER JOIN public.verticalstructure_timeslice
+ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
+INNER JOIN obstacles.verticalstructure_tsp
+ON verticalstructure_timeslice.verticalstructure_tsp_id = obstacles.verticalstructure_tsp.id
+INNER JOIN obstacles.verticalstructure_ts
+ON obstacles.verticalstructure_tsp.verticalstructuretimeslice_id = obstacles.verticalstructure_ts.id
+INNER JOIN public.verticalstructure_ts_part
+ON obstacles.verticalstructure_ts.id = public.verticalstructure_ts_part.verticalstructure_ts_id
+INNER JOIN obstacles.verticalstructurepart_pt
+ON public.verticalstructure_ts_part.verticalstructurepart_pt_id = obstacles.verticalstructurepart_pt.id
+INNER JOIN obstacles.verticalstructurepart
+ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+INNER JOIN public.elevated_curve_view
+ON obstacles.verticalstructurepart.horizontalprojection_linearextent_id = public.elevated_curve_view.id;
+
+CREATE OR REPLACE VIEW verticalstructure_surface_view AS
+SELECT 
+(row_number() OVER ())::integer AS row,
+obstacles.verticalstructure_ts.valid_time_begin,
+obstacles.verticalstructure_ts.valid_time_end,
+obstacles.verticalstructure_ts.feature_lifetime_begin,
+obstacles.verticalstructure_ts.feature_lifetime_end,
+obstacles.verticalstructure_ts.name_value, 
+obstacles.verticalstructure_ts.type_value,
+obstacles.verticalstructure_ts.lighted_value,
+obstacles.verticalstructure_ts.markingicaostandard_value,
+obstacles.verticalstructure_ts.group_value,
+public.elevated_surface_view.geom
+
+FROM obstacles.verticalstructure
+INNER JOIN public.verticalstructure_timeslice
+ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
+INNER JOIN obstacles.verticalstructure_tsp
+ON verticalstructure_timeslice.verticalstructure_tsp_id = obstacles.verticalstructure_tsp.id
+INNER JOIN obstacles.verticalstructure_ts
+ON obstacles.verticalstructure_tsp.verticalstructuretimeslice_id = obstacles.verticalstructure_ts.id
+INNER JOIN public.verticalstructure_ts_part
+ON obstacles.verticalstructure_ts.id = public.verticalstructure_ts_part.verticalstructure_ts_id
+INNER JOIN obstacles.verticalstructurepart_pt
+ON public.verticalstructure_ts_part.verticalstructurepart_pt_id = obstacles.verticalstructurepart_pt.id
+INNER JOIN obstacles.verticalstructurepart
+ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+INNER JOIN public.elevated_surface_view
+ON obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = public.elevated_surface_view.id

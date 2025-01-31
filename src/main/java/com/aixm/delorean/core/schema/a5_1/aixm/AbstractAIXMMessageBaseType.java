@@ -15,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -63,7 +64,8 @@ public abstract class AbstractAIXMMessageBaseType
     }, fetch = FetchType.EAGER)
     protected MessageMetadataPropertyType messageMetadata;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_basic_message_seq")
+    @SequenceGenerator(name = "aixm_basic_message_seq", sequenceName = "aixm_basic_message_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     @XmlTransient
     protected long dbid;
