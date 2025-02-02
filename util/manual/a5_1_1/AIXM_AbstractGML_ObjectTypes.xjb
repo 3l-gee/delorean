@@ -118,8 +118,8 @@
 
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbid']">
                 <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_property_seq")</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "aixm_property_seq", sequenceName = "aixm_property_seq", allocationSize = 1)</annox:annotate>
+                <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_time_slice_seq")</annox:annotate>
+                <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "aixm_time_slice_seq", sequenceName = "aixm_time_slice_seq", allocationSize = 1)</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>

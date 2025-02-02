@@ -219,8 +219,8 @@ public abstract class AbstractAIXMTimeSliceType
     })
     protected AixmTimeSliceType featureLifetime;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_property_seq")
-    @SequenceGenerator(name = "aixm_property_seq", sequenceName = "aixm_property_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_time_slice_seq")
+    @SequenceGenerator(name = "aixm_time_slice_seq", sequenceName = "aixm_time_slice_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     @XmlTransient
     protected long dbid;

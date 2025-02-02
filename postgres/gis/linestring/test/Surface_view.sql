@@ -904,9 +904,9 @@ g2 AS (
 		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
 		MIN(g2_segment_filtered.part) AS part,
 		ST_LineMerge(ST_Collect(g2_segment_filtered.geom)) AS geom,
-		MAX(elevation) AS elevation,
-		MAX(elevation_uom) AS elevation_uom,
-		MAX(eleveation_nilreason) AS eleveation_nilreason,
+		MAX(g2_segment_filtered.elevation) AS elevation,
+		MAX(g2_segment_filtered.elevation_uom) AS elevation_uom,
+		MAX(g2_segment_filtered.eleveation_nilreason) AS eleveation_nilreason,
 		MAX(g2_segment_filtered.geoidundulation) AS geoidundulation,
 		MAX(g2_segment_filtered.geoidundulation_uom) AS geoidundulation_uom,
 		MAX(g2_segment_filtered.geoidundulation_nilreason) AS geoidundulation_nilreason,
@@ -938,10 +938,21 @@ g2 AS (
 		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
 		MIN(g2_segment_filtered.part) AS part,
 		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom,
-		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
-		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
-		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
-		MIN(g2_segment_filtered.nilreason) AS nilreason
+		MAX(g2_segment_filtered.elevation) AS elevation,
+		MAX(g2_segment_filtered.elevation_uom) AS elevation_uom,
+		MAX(g2_segment_filtered.eleveation_nilreason) AS eleveation_nilreason,
+		MAX(g2_segment_filtered.geoidundulation) AS geoidundulation,
+		MAX(g2_segment_filtered.geoidundulation_uom) AS geoidundulation_uom,
+		MAX(g2_segment_filtered.geoidundulation_nilreason) AS geoidundulation_nilreason,
+		MAX(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
+		MAX(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
+		MAX(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
+		MAX(g2_segment_filtered.verticalaccuracy) AS verticalaccuracy,
+		MAX(g2_segment_filtered.verticalaccuracy_uom) AS verticalaccuracy_uom,
+		MAX(g2_segment_filtered.verticalaccuracy_nilreason) AS verticalaccuracy_nilreason,
+		MAX(g2_segment_filtered.verticaldatum) AS verticaldatum,
+		MAX(g2_segment_filtered.verticaldatum_nilreason) AS verticaldatum_nilreason,
+		MAX(g2_segment_filtered.nilreason) AS nilreason
 	FROM
 		g2_segment_filtered
 	GROUP BY
@@ -955,3 +966,180 @@ g2 AS (
 		AND 
 		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
 ),
+combined_data AS (
+    SELECT 
+        id, 
+        xml_id, 
+		curve_xml_id,
+		geom,
+		part,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        r1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id,
+		curve_xml_id,
+        geom,
+        part,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        r2
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+		curve_xml_id,
+        geom,
+        part,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        g1
+    UNION ALL
+    SELECT 
+        id, 
+        xml_id, 
+		curve_xml_id,
+        geom,
+        part,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        g2
+),
+outer_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+		curve_xml_id,
+        ST_MakePolygon(geom) AS geom,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part = 0
+),
+inner_shells AS (
+    SELECT 
+        id, 
+        xml_id, 
+		curve_xml_id,
+        geom,
+		elevation,
+		elevation_uom,
+		eleveation_nilreason,
+		geoidundulation,
+		geoidundulation_uom,
+		geoidundulation_nilreason,
+		horizontalaccuracy,
+		horizontalaccuracy_uom,
+		horizontalaccuracy_nilreason,
+		verticalaccuracy,
+		verticalaccuracy_uom,
+		verticalaccuracy_nilreason,
+		verticaldatum,
+		verticaldatum_nilreason,
+		nilreason
+    FROM 
+        combined_data
+    WHERE 
+        part <> 0
+)
+SELECT 
+    outer_shells.id, 
+    outer_shells.xml_id, 
+    ST_MakePolygon(
+        ST_ExteriorRing(outer_shells.geom),
+        ARRAY(
+            SELECT ST_ExteriorRing(inner_shells.geom)
+            FROM inner_shells 
+            WHERE inner_shells.id = outer_shells.id
+        )
+    ) AS geom,
+		outer_shells.elevation,
+		outer_shells.elevation_uom,
+		outer_shells.eleveation_nilreason,
+		outer_shells.geoidundulation,
+		outer_shells.geoidundulation_uom,
+		outer_shells.geoidundulation_nilreason,
+		outer_shells.horizontalaccuracy,
+		outer_shells.horizontalaccuracy_uom,
+		outer_shells.horizontalaccuracy_nilreason,
+		outer_shells.verticalaccuracy,
+		outer_shells.verticalaccuracy_uom,
+		outer_shells.verticalaccuracy_nilreason,
+		outer_shells.verticaldatum,
+		outer_shells.verticaldatum_nilreason,
+		outer_shells.nilreason
+FROM 
+outer_shells;
