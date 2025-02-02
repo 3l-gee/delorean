@@ -1,15 +1,13 @@
 CREATE OR REPLACE VIEW obstacles.verticalstructurepart_view AS
-
 SELECT 
-obstacles.verticalstructurepart.id,
+obstacles.verticalstructurepart_pt.id,
 obstacles.verticalstructurepart.xml_id,
-ST_Union(
+ST_Collect(
     COALESCE(geometry.elevated_point_view.geom, 
              geometry.elevated_curve_view.geom,  
              geometry.elevated_surface_view.geom)
 ) AS geom,
 json_build_object(
-	'id', obstacles.verticalstructurepart.id,
 	'xml_id', obstacles.verticalstructurepart.xml_id,
 	'verticalextent_value', obstacles.verticalstructurepart.verticalextent_value,
 	'verticalextent_uom', obstacles.verticalstructurepart.verticalextent_uom,
@@ -38,11 +36,9 @@ LEFT JOIN geometry.elevated_curve_view
 LEFT JOIN geometry.elevated_surface_view
 	ON obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = geometry.elevated_surface_view.id
 GROUP BY
+	obstacles.verticalstructurepart_pt.id,
 	obstacles.verticalstructurepart.id,
 	obstacles.verticalstructurepart.xml_id,
-	geometry.elevated_curve_view.geom,
-	geometry.elevated_point_view.geom,
-	geometry.elevated_surface_view.geom,
 	obstacles.verticalstructurepart.verticalextent_value,
 	obstacles.verticalstructurepart.verticalextent_uom,
 	obstacles.verticalstructurepart.verticalextentaccuracy_value,
@@ -55,36 +51,32 @@ GROUP BY
 	obstacles.verticalstructurepart.mobile_value,
 	obstacles.verticalstructurepart.frangible_value,
 	obstacles.verticalstructurepart.visiblematerial_value,
-	obstacles.verticalstructurepart.designator_value
+	obstacles.verticalstructurepart.designator_value;
 
-
+CREATE MATERIALIZED VIEW obstacles.verticalstructure_view AS
 SELECT 
 	obstacles.verticalstructure.id,
-	public.verticalstructure_ts_part.verticalstructure_ts_id,
-	public.verticalstructure_ts_part.verticalstructurepart_pt_id,
-	obstacles.verticalstructurepart_view.xml_id
-	-- obstacles.verticalstructure.id,
-	-- obstacles.verticalstructure.identifier,
-	-- obstacles.verticalstructure_ts.valid_time_begin,
-	-- obstacles.verticalstructure_ts.valid_time_end,
-	-- obstacles.verticalstructure_ts.feature_lifetime_begin,
-	-- obstacles.verticalstructure_ts.feature_lifetime_end,
-	-- obstacles.verticalstructure_ts.name_value, 
-	-- obstacles.verticalstructure_ts.type_value,
-	-- obstacles.verticalstructure_ts.lighted_value,
-	-- obstacles.verticalstructure_ts.markingicaostandard_value,
-	-- obstacles.verticalstructure_ts.group_value,
-	-- obstacles.verticalstructure_ts.length_value,
-	-- obstacles.verticalstructure_ts.length_uom,
-	-- obstacles.verticalstructure_ts.width_value,
-	-- obstacles.verticalstructure_ts.width_uom,
-	-- obstacles.verticalstructure_ts.radius_value,
-	-- obstacles.verticalstructure_ts.radius_uom,
-	-- obstacles.verticalstructure_ts.lightingicaostandard_value,
-	-- obstacles.verticalstructure_ts.synchronisedlighting_value,
-	-- ST_Union(verticalstructurepart_view.geom) AS geom,
-	-- json_agg(verticalstructurepart_view.part) AS part,
-	-- json_agg(notes.note_view.note_value) AS notes
+	obstacles.verticalstructure.identifier,
+	obstacles.verticalstructure_ts.valid_time_begin,
+	obstacles.verticalstructure_ts.valid_time_end,
+	obstacles.verticalstructure_ts.feature_lifetime_begin,
+	obstacles.verticalstructure_ts.feature_lifetime_end,
+	obstacles.verticalstructure_ts.name_value, 
+	obstacles.verticalstructure_ts.type_value,
+	obstacles.verticalstructure_ts.lighted_value,
+	obstacles.verticalstructure_ts.markingicaostandard_value,
+	obstacles.verticalstructure_ts.group_value,
+	obstacles.verticalstructure_ts.length_value,
+	obstacles.verticalstructure_ts.length_uom,
+	obstacles.verticalstructure_ts.width_value,
+	obstacles.verticalstructure_ts.width_uom,
+	obstacles.verticalstructure_ts.radius_value,
+	obstacles.verticalstructure_ts.radius_uom,
+	obstacles.verticalstructure_ts.lightingicaostandard_value,
+	obstacles.verticalstructure_ts.synchronisedlighting_value,
+	ST_Collect(verticalstructurepart_view.geom) AS geom,
+	json_agg(verticalstructurepart_view.part) AS part,
+	json_agg(notes.note_view.note_value) AS notes
 FROM obstacles.verticalstructure
 INNER JOIN public.verticalstructure_timeslice
 ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
@@ -100,26 +92,23 @@ LEFT JOIN public.runway_ts_annotation
     ON obstacles.verticalstructure_ts.id = public.runway_ts_annotation.runway_ts_id
 LEFT JOIN notes.note_view
     ON public.runway_ts_annotation.note_pt_id = notes.note_view.id
-WHERE 
-obstacles.verticalstructure.xml_id = 'gmlID2428322'
--- GROUP BY
--- 	obstacles.verticalstructure.id,
--- 	obstacles.verticalstructure.identifier,
--- 	obstacles.verticalstructure_ts.valid_time_begin,
--- 	obstacles.verticalstructure_ts.valid_time_end,
--- 	obstacles.verticalstructure_ts.feature_lifetime_begin,
--- 	obstacles.verticalstructure_ts.feature_lifetime_end,
--- 	obstacles.verticalstructure_ts.name_value, 
--- 	obstacles.verticalstructure_ts.type_value,
--- 	obstacles.verticalstructure_ts.lighted_value,
--- 	obstacles.verticalstructure_ts.markingicaostandard_value,
--- 	obstacles.verticalstructure_ts.group_value,
--- 	obstacles.verticalstructure_ts.length_value,
--- 	obstacles.verticalstructure_ts.length_uom,
--- 	obstacles.verticalstructure_ts.width_value,
--- 	obstacles.verticalstructure_ts.width_uom,
--- 	obstacles.verticalstructure_ts.radius_value,
--- 	obstacles.verticalstructure_ts.radius_uom,
--- 	obstacles.verticalstructure_ts.lightingicaostandard_value,
--- 	obstacles.verticalstructure_ts.synchronisedlighting_value
-
+GROUP BY
+	obstacles.verticalstructure.id,
+	obstacles.verticalstructure.identifier,
+	obstacles.verticalstructure_ts.valid_time_begin,
+	obstacles.verticalstructure_ts.valid_time_end,
+	obstacles.verticalstructure_ts.feature_lifetime_begin,
+	obstacles.verticalstructure_ts.feature_lifetime_end,
+	obstacles.verticalstructure_ts.name_value, 
+	obstacles.verticalstructure_ts.type_value,
+	obstacles.verticalstructure_ts.lighted_value,
+	obstacles.verticalstructure_ts.markingicaostandard_value,
+	obstacles.verticalstructure_ts.group_value,
+	obstacles.verticalstructure_ts.length_value,
+	obstacles.verticalstructure_ts.length_uom,
+	obstacles.verticalstructure_ts.width_value,
+	obstacles.verticalstructure_ts.width_uom,
+	obstacles.verticalstructure_ts.radius_value,
+	obstacles.verticalstructure_ts.radius_uom,
+	obstacles.verticalstructure_ts.lightingicaostandard_value,
+	obstacles.verticalstructure_ts.synchronisedlighting_value;
