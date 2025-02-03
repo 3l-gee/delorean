@@ -55,6 +55,7 @@ GROUP BY
 
 CREATE MATERIALIZED VIEW obstacles.verticalstructure_view AS
 SELECT 
+	(row_number() OVER ())::integer AS row,
 	obstacles.verticalstructure.id,
 	obstacles.verticalstructure.identifier,
 	obstacles.verticalstructure_ts.valid_time_begin,
