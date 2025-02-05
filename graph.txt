@@ -1,4 +1,0 @@
-{
-    "inheritance": {},
-    "attribute": {}
-}

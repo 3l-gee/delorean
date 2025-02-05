@@ -1,0 +1,117 @@
+{
+    "features": {},
+    "objects": {},
+    "properties": {},
+    "time_slices": {},
+    "aerial_refuelling.aerialrefuellingpoint": {
+        "info": {
+            "class": [
+                "AerialRefuellingPointType"
+            ],
+            "parent": [
+                "AbstractSegmentPointType"
+            ]
+        },
+        "selects": [
+            "aerialrefuellingpoint.reportingatc_value",
+            "aerialrefuellingpoint.reportingatc_nilreason",
+            "aerialrefuellingpoint.flyover_value",
+            "aerialrefuellingpoint.flyover_nilreason",
+            "aerialrefuellingpoint.waypoint_value",
+            "aerialrefuellingpoint.waypoint_nilreason",
+            "aerialrefuellingpoint.radarguidance_value",
+            "aerialrefuellingpoint.radarguidance_nilreason",
+            "aerialrefuellingpoint.sequence_value",
+            "aerialrefuellingpoint.sequence_nilreason",
+            "aerialrefuellingpoint.usage_value",
+            "aerialrefuellingpoint.usage_nilreason"
+        ],
+        "one_to_one": [
+            [
+                "pointchoice_fixdesignatedpoint_id",
+                "id"
+            ],
+            [
+                "pointchoice_navaidsystem_id",
+                "id"
+            ],
+            [
+                "pointchoice_aimingpoint_id",
+                "id"
+            ],
+            [
+                "pointchoice_runwaypoint_id",
+                "id"
+            ],
+            [
+                "pointchoice_airportreferencepoint_id",
+                "id"
+            ],
+            [
+                "pointchoice_position_id",
+                "id"
+            ],
+            [
+                "extendedservicevolume_id",
+                "id"
+            ],
+            [
+                "abstractsegmentpointextension_id",
+                "id"
+            ],
+            [
+                "abstractaerialrefuellingpointextension_id",
+                "id"
+            ]
+        ],
+        "one_to_many": [
+            [
+                "segmentpoint_pg_facilitymakeup",
+                "segmentpoint_pg_id",
+                "pointreference_pt_id"
+            ],
+            [
+                "segmentpoint_pg_annotation",
+                "segmentpoint_pg_id",
+                "note_pt_id"
+            ]
+        ]
+    },
+    "aerial_refuelling.aerialrefuelling_tsp": {
+        "info": {
+            "class": [
+                "AerialRefuellingTimeSlicePropertyType"
+            ],
+            "parent": []
+        },
+        "selects": [
+            "aerialrefuelling_tsp.id"
+        ],
+        "one_to_one": [
+            [
+                "aerialrefuellingtimeslice_id",
+                "id"
+            ]
+        ],
+        "one_to_many": []
+    },
+    "aerial_refuelling.aerialrefuelling": {
+        "info": {
+            "class": [
+                "AerialRefuellingType"
+            ],
+            "parent": [
+                "AbstractAIXMFeatureType"
+            ]
+        },
+        "selects": [],
+        "one_to_one": [],
+        "one_to_many": [
+            [
+                "aerialrefuelling_timeslice",
+                "aerialrefuelling_id",
+                "aerialrefuelling_tsp_id"
+            ]
+        ]
+    }
+}

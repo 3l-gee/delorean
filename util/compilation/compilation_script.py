@@ -4,7 +4,7 @@ import re
 adapters_config = []
 
 rename_config = {
-    "table_renaming" : {   
+    "table" : {   
         "method" : f'(?<=@Table\(name = ")([^"]+)(?=", schema =)',
         "words" : [
             "airportgroundservice_pg",
@@ -190,7 +190,7 @@ rename_config = {
             "routeavailability_pg"
             ]
     },
-    "sequence_renaming" : {
+    "sequence" : {
         "method" : f'(?<=@Table\(name = ")([^"]+)(?=", schema =)',
         "words" : [
             "place_holder_generator_name"
@@ -198,6 +198,7 @@ rename_config = {
         "prefix" : "_seq"
     }
 }
+
 
 class CompilationScript :
 
