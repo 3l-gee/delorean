@@ -1,0 +1,203 @@
+{
+    "features": {},
+    "objects": {},
+    "properties": {},
+    "time_slices": {},
+    "navaids_points.navaidcomponent_pt": {
+        "info": {
+            "class": [
+                "NavaidComponentPropertyType"
+            ],
+            "parent": [
+                "AbstractAIXMPropertyType"
+            ]
+        },
+        "columns": [
+            "navaids_points.navaidcomponent_pt.id"
+        ],
+        "one_to_one": [
+            "navaids_points.navaidcomponent_pt.('navaidcomponent_id', 'id')"
+        ],
+        "one_to_many": [],
+        "geom": []
+    },
+    "navaids_points.navaidcomponent": {
+        "info": {
+            "class": [
+                "NavaidComponentType"
+            ],
+            "parent": [
+                "AbstractAIXMObjectType"
+            ]
+        },
+        "columns": [
+            "navaids_points.navaidcomponent.id",
+            "navaids_points.navaidcomponent.identifier",
+            "navaids_points.navaidcomponent.identifier_code_space",
+            "navaids_points.navaidcomponent.xml_id"
+        ],
+        "one_to_one": [
+            "navaids_points.navaidcomponent.('thenavaidequipment_id', 'id')",
+            "navaids_points.navaidcomponent.('abstractnavaidcomponentextension_id', 'id')"
+        ],
+        "one_to_many": [
+            "navaids_points.navaidcomponent.('navaidcomponent_annotation', 'navaidcomponent_id', 'note_pt_id')"
+        ],
+        "geom": []
+    },
+    "navaids_points.navaidequipment_pt": {
+        "info": {
+            "class": [
+                "NavaidEquipmentPropertyType"
+            ],
+            "parent": [
+                null
+            ]
+        },
+        "columns": [],
+        "one_to_one": [],
+        "one_to_many": [],
+        "geom": []
+    },
+    "navaids_points.navaid_tsp": {
+        "info": {
+            "class": [
+                "NavaidTimeSlicePropertyType"
+            ],
+            "parent": [
+                null
+            ]
+        },
+        "columns": [],
+        "one_to_one": [
+            "navaids_points.navaid_tsp.('navaidtimeslice_id', 'id')"
+        ],
+        "one_to_many": [],
+        "geom": []
+    },
+    "navaids_points.navaid_ts": {
+        "info": {
+            "class": [
+                "NavaidTimeSliceType"
+            ],
+            "parent": [
+                "AbstractAIXMTimeSliceType"
+            ]
+        },
+        "columns": [
+            "navaids_points.navaid_ts.id",
+            "navaids_points.navaid_ts.xml_id",
+            "navaids_points.navaid_ts.interpretation",
+            "navaids_points.navaid_ts.sequence_number",
+            "navaids_points.navaid_ts.correction_number",
+            "navaids_points.navaid_ts.valid_time_begin",
+            "navaids_points.navaid_ts.valid_time_end",
+            "navaids_points.navaid_ts.feature_lifetime_begin",
+            "navaids_points.navaid_ts.feature_lifetime_end"
+        ],
+        "one_to_one": [
+            "navaids_points.navaid_ts.('location_id', 'id')",
+            "navaids_points.navaid_ts.('abstractnavaidextension_id', 'id')"
+        ],
+        "one_to_many": [
+            "navaids_points.navaid_ts.('navaid_ts_touchdownliftoff', 'navaid_ts_id', 'touchdownliftoff_pt_id')",
+            "navaids_points.navaid_ts.('navaid_ts_navaidequipment', 'navaid_ts_id', 'navaidcomponent_pt_id')",
+            "navaids_points.navaid_ts.('navaid_ts_runwaydirection', 'navaid_ts_id', 'runwaydirection_pt_id')",
+            "navaids_points.navaid_ts.('navaid_ts_servedairport', 'navaid_ts_id', 'airportheliport_pt_id')",
+            "navaids_points.navaid_ts.('navaid_ts_availability', 'navaid_ts_id', 'navaidoperationalstatus_pt_id')",
+            "navaids_points.navaid_ts.('navaid_ts_annotation', 'navaid_ts_id', 'note_pt_id')"
+        ],
+        "geom": []
+    },
+    "navaids_points.navaid": {
+        "info": {
+            "class": [
+                "NavaidType"
+            ],
+            "parent": [
+                "AbstractAIXMFeatureType"
+            ]
+        },
+        "columns": [
+            "navaids_points.navaid.id",
+            "navaids_points.navaid.identifier",
+            "navaids_points.navaid.identifier_code_space",
+            "navaids_points.navaid.xml_id"
+        ],
+        "one_to_one": [],
+        "one_to_many": [
+            "navaids_points.navaid.('navaid_timeslice', 'navaid_id', 'navaid_tsp_id')"
+        ],
+        "geom": []
+    },
+    "navaids_points.ndb_tsp": {
+        "info": {
+            "class": [
+                "NDBTimeSlicePropertyType"
+            ],
+            "parent": [
+                null
+            ]
+        },
+        "columns": [],
+        "one_to_one": [
+            "navaids_points.ndb_tsp.('ndbtimeslice_id', 'id')"
+        ],
+        "one_to_many": [],
+        "geom": []
+    },
+    "navaids_points.ndb_ts": {
+        "info": {
+            "class": [
+                "NDBTimeSliceType"
+            ],
+            "parent": [
+                "AbstractAIXMTimeSliceType"
+            ]
+        },
+        "columns": [
+            "navaids_points.ndb_ts.id",
+            "navaids_points.ndb_ts.xml_id",
+            "navaids_points.ndb_ts.interpretation",
+            "navaids_points.ndb_ts.sequence_number",
+            "navaids_points.ndb_ts.correction_number",
+            "navaids_points.ndb_ts.valid_time_begin",
+            "navaids_points.ndb_ts.valid_time_end",
+            "navaids_points.ndb_ts.feature_lifetime_begin",
+            "navaids_points.ndb_ts.feature_lifetime_end"
+        ],
+        "one_to_one": [
+            "navaids_points.ndb_ts.('location_id', 'id')",
+            "navaids_points.ndb_ts.('abstractndbextension_id', 'id')",
+            "navaids_points.ndb_ts.('abstractnavaidequipmentextension_id', 'id')"
+        ],
+        "one_to_many": [
+            "navaids_points.ndb_ts.('ndb_ts_authority', 'ndb_ts_id', 'authorityfornavaidequipment_pt_id')",
+            "navaids_points.ndb_ts.('ndb_ts_monitoring', 'ndb_ts_id', 'navaidequipmentmonitoring_pt_id')",
+            "navaids_points.ndb_ts.('ndb_ts_availability', 'ndb_ts_id', 'navaidoperationalstatus_pt_id')",
+            "navaids_points.ndb_ts.('ndb_ts_annotation', 'ndb_ts_id', 'note_pt_id')"
+        ],
+        "geom": []
+    },
+    "navaids_points.ndb": {
+        "info": {
+            "class": [
+                "NDBType"
+            ],
+            "parent": [
+                "AbstractNavaidEquipmentType"
+            ]
+        },
+        "columns": [
+            "navaids_points.ndb.id",
+            "navaids_points.ndb.identifier",
+            "navaids_points.ndb.identifier_code_space",
+            "navaids_points.ndb.xml_id"
+        ],
+        "one_to_one": [],
+        "one_to_many": [
+            "navaids_points.ndb.('ndb_timeslice', 'ndb_id', 'ndb_tsp_id')"
+        ],
+        "geom": []
+    }
+}
