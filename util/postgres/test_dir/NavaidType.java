@@ -23,16 +23,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AerialRefuellingType complex type</p>.
+ * <p>Java class for NavaidType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AerialRefuellingType">
+ * <complexType name="NavaidType">
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractAIXMFeatureType">
  *       <sequence>
- *         <element name="timeSlice" type="{http://www.aixm.aero/schema/5.1}AerialRefuellingTimeSlicePropertyType" maxOccurs="unbounded"/>
+ *         <element name="timeSlice" type="{http://www.aixm.aero/schema/5.1}NavaidTimeSlicePropertyType" maxOccurs="unbounded"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -42,12 +42,12 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AerialRefuellingType", propOrder = {
+@XmlType(name = "NavaidType", propOrder = {
     "timeSlice"
 })
 @Entity
-@Table(name = "aerialrefuelling", schema = "aerial_refuelling")
-public class AerialRefuellingType
+@Table(name = "navaid", schema = "navaids_points")
+public class NavaidType
     extends AbstractAIXMFeatureType
 {
 
@@ -55,12 +55,12 @@ public class AerialRefuellingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_timeslice", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_id")
+    @JoinTable(name = "navaid_timeslice", joinColumns = {
+        @JoinColumn(name = "navaid_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuelling_tsp_id")
+        @JoinColumn(name = "navaid_tsp_id")
     })
-    protected List<AerialRefuellingTimeSlicePropertyType> timeSlice;
+    protected List<NavaidTimeSlicePropertyType> timeSlice;
 
     /**
      * Gets the value of the timeSlice property.
@@ -80,14 +80,14 @@ public class AerialRefuellingType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link AerialRefuellingTimeSlicePropertyType }
+     * {@link NavaidTimeSlicePropertyType }
      * </p>
      * 
      * 
      * @return
      *     The value of the timeSlice property.
      */
-    public List<AerialRefuellingTimeSlicePropertyType> getTimeSlice() {
+    public List<NavaidTimeSlicePropertyType> getTimeSlice() {
         if (timeSlice == null) {
             timeSlice = new ArrayList<>();
         }

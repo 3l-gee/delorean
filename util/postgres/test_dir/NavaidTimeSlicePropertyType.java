@@ -28,16 +28,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AerialRefuellingTimeSlicePropertyType complex type</p>.
+ * <p>Java class for NavaidTimeSlicePropertyType complex type</p>.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.</p>
  * 
  * <pre>{@code
- * <complexType name="AerialRefuellingTimeSlicePropertyType">
+ * <complexType name="NavaidTimeSlicePropertyType">
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element ref="{http://www.aixm.aero/schema/5.1}AerialRefuellingTimeSlice"/>
+ *         <element ref="{http://www.aixm.aero/schema/5.1}NavaidTimeSlice"/>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
@@ -49,22 +49,22 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AerialRefuellingTimeSlicePropertyType", propOrder = {
-    "aerialRefuellingTimeSlice"
+@XmlType(name = "NavaidTimeSlicePropertyType", propOrder = {
+    "navaidTimeSlice"
 })
 @Entity
-@Table(name = "aerialrefuelling_tsp", schema = "aerial_refuelling")
-public class AerialRefuellingTimeSlicePropertyType {
+@Table(name = "navaid_tsp", schema = "navaids_points")
+public class NavaidTimeSlicePropertyType {
 
-    @XmlElement(name = "AerialRefuellingTimeSlice", required = true)
+    @XmlElement(name = "NavaidTimeSlice", required = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinColumn(name = "aerialrefuellingtimeslice_id", referencedColumnName = "id")
-    protected AerialRefuellingTimeSliceType aerialRefuellingTimeSlice;
+    @JoinColumn(name = "navaidtimeslice_id", referencedColumnName = "id")
+    protected NavaidTimeSliceType navaidTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aerialrefuelling_tsp_seq")
-    @SequenceGenerator(name = "aerialrefuelling_tsp_seq", sequenceName = "aerialrefuelling_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "navaid_tsp_seq")
+    @SequenceGenerator(name = "navaid_tsp_seq", sequenceName = "navaid_tsp_seq", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
@@ -73,31 +73,31 @@ public class AerialRefuellingTimeSlicePropertyType {
     protected Boolean owns;
 
     /**
-     * Gets the value of the aerialRefuellingTimeSlice property.
+     * Gets the value of the navaidTimeSlice property.
      * 
      * @return
      *     possible object is
-     *     {@link AerialRefuellingTimeSliceType }
+     *     {@link NavaidTimeSliceType }
      *     
      */
-    public AerialRefuellingTimeSliceType getAerialRefuellingTimeSlice() {
-        return aerialRefuellingTimeSlice;
+    public NavaidTimeSliceType getNavaidTimeSlice() {
+        return navaidTimeSlice;
     }
 
     /**
-     * Sets the value of the aerialRefuellingTimeSlice property.
+     * Sets the value of the navaidTimeSlice property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AerialRefuellingTimeSliceType }
+     *     {@link NavaidTimeSliceType }
      *     
      */
-    public void setAerialRefuellingTimeSlice(AerialRefuellingTimeSliceType value) {
-        this.aerialRefuellingTimeSlice = value;
+    public void setNavaidTimeSlice(NavaidTimeSliceType value) {
+        this.navaidTimeSlice = value;
     }
 
-    public boolean isSetAerialRefuellingTimeSlice() {
-        return (this.aerialRefuellingTimeSlice!= null);
+    public boolean isSetNavaidTimeSlice() {
+        return (this.navaidTimeSlice!= null);
     }
 
     /**
