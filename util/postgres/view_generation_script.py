@@ -16,6 +16,10 @@ parsing_config = {
         "method" : r'extends ([A-Z|a-z|0-9|_]+)',
         "ignore" : []
     },
+    "column" : {
+        "method" : r'    @Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\)',
+        "ignore" : [],
+    },
     "embedded_three": {
         "method": r'@AttributeOverrides\({\n.*@Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*@Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*@Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\n.*protected ([A-Z|a-z|0-9|_]+)',
         "ignore": [],
@@ -256,13 +260,15 @@ class ViewGenerationScript:
                         
             parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
             raw_parents_columns = self.attributes["parents_attributes"].get(parent_name[0], [])
+            raw_column = re.findall(self.parsing["column"]["method"], content)
             raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)	
             raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
             raw_one_to_one = re.findall(self.parsing["one_to_one"]["method"], content)
             raw_one_to_many = re.findall(self.parsing["one_to_many"]["method"], content)
 
-            parent_columns = self.process_columns(schema, table_name, raw_parents_columns)
-            columns, geom = self.process_embedded(schema, table_name, list(raw_embedded_two + raw_embedded_three), self.attributes["snowflake_attributes"])
+            parent_columns = self.process_columns(schema, table_name, raw_parents_columns, parent_name)
+            embedded_two_columns = self.process_embedded_two(schema, table_name, raw_embedded_two, self.attributes["snowflake_attributes"])
+            embedded_three_columns = self.process_embedded_three(schema, table_name, raw_embedded_two, self.attributes["snowflake_attributes"])
             one_to_one = self.process_one_to_one(schema, table_name, raw_one_to_one)
             one_to_many = self.process_one_to_many(schema, table_name, raw_one_to_many)
 
@@ -279,16 +285,12 @@ class ViewGenerationScript:
                     "geom": []
                 }
 
-            self.views["features"][feature_name] = {
-                "info" : {
-                    "class" : list(self.views["features"][feature_name]["info"]["class"] + class_name),
-                    "parent" : list(self.views["features"][feature_name]["info"]["parent"] + parent_name)
-                },
-                "columns" : list(self.views["features"][feature_name]["columns"] + columns + parent_columns),
-                "one_to_one" : list(self.views["features"][feature_name]["one_to_one"] + one_to_one),
-                "one_to_many" : list(self.views["features"][feature_name]["one_to_many"] + one_to_many),
-                "geom" : list(self.views["features"][feature_name]["geom"] + geom)
-            }
+            self.views["features"][feature_name]["info"]["class"].append(class_name)
+            self.views["features"][feature_name]["info"]["parent"].append(parent_name)
+            self.views["features"][feature_name]["columns"].append(parent_columns)
+            self.views["features"][feature_name]["one_to_one"].append(one_to_one)
+            self.views["features"][feature_name]["one_to_many"].append(one_to_many)
+            self.views["features"][feature_name]["geom"]
 
     @staticmethod
     def process_embedded_two(schema, name, columns, snowflake_attributes):
@@ -314,11 +316,11 @@ class ViewGenerationScript:
 
 
     @staticmethod
-    def process_columns(schema, name, columns):
-        res = []
-        for column in columns:
-            res.append(f"{schema}.{name}.{column}")
-        return res
+    def process_columns(schema, name, columns, parent_name):
+        return {
+            "column": [f"{schema}.{name}.{column}" for column in columns],
+            "type" : parent_name
+        }
 
     @staticmethod
     def process_one_to_one(schema, name, columns):
