@@ -24,16 +24,12 @@ parsing_config = {
         "method" : r'@AttributeOverrides\({\n.*@Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*@Column\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\n.*protected ([A-Z|a-z|0-9|_]+)',
         "ignore" : [],
     },
-    "type" : {
-        "method" : r'protected ([A-Z|a-z|0-9|_]+)',
-        "ignore" : []
-    },
     "one_to_one": {
-        "method": r'@JoinColumn\(name = "([A-Z|a-z|0-9|_]+)", referencedColumnName = "([A-Z|a-z|0-9|_]+)',
+        "method": r'@JoinColumn\(name = \"([A-Z|a-z|0-9|_]+)\", referencedColumnName = \"([A-Z|a-z|0-9|_]+).*\n.*protected ([A-Z|a-z|0-9|_]+)',
         "ignore": [],
     },
     "one_to_many": {
-        "method": r'@JoinTable\s*\(\s*name\s*=\s*"([A-Z|a-z|0-9|_]+)"\s*,\s*joinColumns\s*=\s*\{\s*@JoinColumn\s*\(\s*name\s*=\s*"([A-Z|a-z|0-9|_]+)"\s*\)\s*\},\s*inverseJoinColumns\s*=\s*\{\s*@JoinColumn\s*\(\s*name\s*=\s*"([A-Z|a-z|0-9|_]+)"\s*\)\s*\}\s*\)',
+        "method": r'@JoinTable\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\(name = \"([A-Z|a-z|0-9|_]+).*\n.*\n.*\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\n.*protected List<([A-Z|a-z|0-9|_]+)',
         "ignore": [],
     },
 }
@@ -222,7 +218,15 @@ class ViewGenerationScript:
             "features": {},
             "objects": {},
             "properties": {},
-            "time_slices": {},
+        }
+
+        self.suffix = {
+            "TimeSlicePropertyType": "",
+            "PropertyGroup": "",
+            "PropertyType": "",
+            "TimeSliceType": "",
+            "TimeSlice": "",
+            "Type": "", 
         }
 
     def run(self):
@@ -245,6 +249,11 @@ class ViewGenerationScript:
             if class_name[0] in self.attributes["ignore"]:
                 return
             
+            feature_name = class_name[0]
+            for key, value in self.suffix.items():
+                feature_name = feature_name.replace(key, value)  # Apply each replacement
+
+                        
             parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
             raw_parents_columns = self.attributes["parents_attributes"].get(parent_name[0], [])
             raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)	
@@ -257,28 +266,51 @@ class ViewGenerationScript:
             one_to_one = self.process_one_to_one(schema, table_name, raw_one_to_one)
             one_to_many = self.process_one_to_many(schema, table_name, raw_one_to_many)
 
-            self.views[full_table_name] = {
+
+            if self.views["features"].get(feature_name) is None:
+                self.views["features"][feature_name] = {
+                    "info": {
+                        "class": [],
+                        "parent": []
+                    },
+                    "columns": [],
+                    "one_to_one": [],
+                    "one_to_many": [],
+                    "geom": []
+                }
+
+            self.views["features"][feature_name] = {
                 "info" : {
-                    "class" : list(class_name),
-                    "parent" : list(parent_name)
+                    "class" : list(self.views["features"][feature_name]["info"]["class"] + class_name),
+                    "parent" : list(self.views["features"][feature_name]["info"]["parent"] + parent_name)
                 },
-                "columns" : list(columns + parent_columns),
-                "one_to_one" : list(one_to_one),
-                "one_to_many" : list(one_to_many),
-                "geom" : geom
+                "columns" : list(self.views["features"][feature_name]["columns"] + columns + parent_columns),
+                "one_to_one" : list(self.views["features"][feature_name]["one_to_one"] + one_to_one),
+                "one_to_many" : list(self.views["features"][feature_name]["one_to_many"] + one_to_many),
+                "geom" : list(self.views["features"][feature_name]["geom"] + geom)
             }
 
     @staticmethod
-    def process_embedded(schema, name, columns, snowflake_attributes):
-        columns = []
-        geoms = []
+    def process_embedded_two(schema, name, columns, snowflake_attributes):
+        res_columns = []
+        res_geoms = []
         for column in columns:
-            print(column)
-            # if column in snowflake_attributes:
-            #     geoms.append(column)
-            # else:
-            #     columns.append(column)
-        return columns, geoms
+            if column[-1] in snowflake_attributes:
+                res_geoms.append(column)
+            else:
+                res_columns.append(column)
+        return res_columns, res_geoms
+    
+    @staticmethod
+    def process_embedded_three(schema, name, columns, snowflake_attributes):
+        res_columns = []
+        res_geoms = []
+        for column in columns:
+            if column[-1] in snowflake_attributes:
+                res_geoms.append(column)
+            else:
+                res_columns.append(column)
+        return res_columns, res_geoms
 
 
     @staticmethod
