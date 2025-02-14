@@ -9,7 +9,7 @@ parsing_config = {
         "ignore": [],
     },
     "class" : {
-        "method" : r'public class ([A-Z|a-z|0-9|_]+)',
+        "method" : r'public\s+(?:abstract\s+)?class\s+([A-Za-z0-9_]+)',
         "ignore" : []
     },
     "extends" : {
@@ -35,7 +35,7 @@ parsing_config = {
     "one_to_many": {
         "method": r'@JoinTable\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\(name = \"([A-Z|a-z|0-9|_]+).*\n.*\n.*\(name = \"([A-Z|a-z|0-9|_]+)\".*\n.*\n.*protected List<([A-Z|a-z|0-9|_]+)',
         "ignore": [],
-    },
+    }
 }
 
 attributes_config = {
@@ -194,7 +194,7 @@ attributes_config = {
         "ElevatedPointPropertyType" : "geom",
         "ElevatedCurvePropertyType" : "geom",
         "ElevatedSurfacePropertyType" : "geom"
-    }, 
+    },
     "ignore" : [
         "PointPropertyType",
         "PointType",
@@ -207,7 +207,31 @@ attributes_config = {
         "ElevatedCurvePropertyType",
         "ElevatedCurveType",
         "ElevatedSurfacePropertyType"
-        "ElevatedSurfaceType"
+        "ElevatedSurfaceType",
+        "AbstractAIXMPropertyType",
+        "AbstractAIXMObjectType",
+        "AbstractSurfaceContaminationType",
+        "AbstractUsageConditionType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractSegmentPointType",
+        "AbstractAIXMTimeSliceType",
+        "AbstractAIXMFeatureType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractMarkingType",
+        "AbstractRadarEquipmentType",
+        "AbstractSurveillanceRadarType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType"
     ]
 }
 
@@ -218,13 +242,11 @@ class ViewGenerationScript:
         self.attributes = attributes_config
         self.directory = directory
         self.files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith(".java")]
-        self.views = {
-            "features": {},
-            "objects": {},
-            "properties": {},
-        }
+        self.views = {"table_name": {}, "feature" : {}}
+        self.type_table = {}
+        self.sql = ""
 
-        self.suffix = {
+        self.suffix_replacements = {
             "TimeSlicePropertyType": "",
             "PropertyGroup": "",
             "PropertyType": "",
@@ -233,114 +255,138 @@ class ViewGenerationScript:
             "Type": "", 
         }
 
-    def run(self):
+    def extract_attributes(self):
+        """Process each Java file and extract relevant information."""
         for file in self.files:
             self.process_file(file)
+        self.save_to_file()
 
-        self.save_to_file(self.views)
+    def create_views(self):
+        """Create views in the database."""
+        for key, value in self.views.items():
+            if key == "Note" : 
+                self.generate_sql(key, value)
+    
+
+    def generate_sql(self, key, feature):
+        res = f"CREATE OR REPLACE VIEW {key.lower()}_view AS"
+        res += f"\nSELECT"
+        res += self.generate_select(feature["columns"])
+        for column in feature["columns"]:
+            res += f"\n{column['info'][0]},"
+        print(res)
+
+    def generate_select(self, table_name, columns):
+        res = ""
+        for column in columns:
+            
+
+
+
+    def generate_join(self, table_name, column_name, parent_table_name, parent_column_name, inner_join = True):
+        """Generate a join statement."""
+        return f"LEFT JOIN {parent_table_name} ON {table_name}.{column_name} = {parent_table_name}.{parent_column_name}"
+                
 
     def process_file(self, file_path):
+        """Extract table, class, and column information from a Java file."""
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
 
         table_match = re.search(self.parsing["table"]["method"], content)
-        if table_match:
-            table_name = table_match.group(1)
-            schema = table_match.group(2)
-            full_table_name = f"{schema}.{table_name}"
+        if not table_match:
+            return  # Skip files that do not contain table annotations
 
-            class_name = re.findall(self.parsing["class"]["method"], content)
-            if class_name[0] in self.attributes["ignore"]:
-                return
-            
-            feature_name = class_name[0]
-            for key, value in self.suffix.items():
-                feature_name = feature_name.replace(key, value)  # Apply each replacement
-
-                        
-            parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
-            raw_parents_columns = self.attributes["parents_attributes"].get(parent_name[0], [])
-            raw_column = re.findall(self.parsing["column"]["method"], content)
-            raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)	
-            raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
-            raw_one_to_one = re.findall(self.parsing["one_to_one"]["method"], content)
-            raw_one_to_many = re.findall(self.parsing["one_to_many"]["method"], content)
-
-            parent_columns = self.process_columns(schema, table_name, raw_parents_columns, parent_name)
-            embedded_two_columns = self.process_embedded_two(schema, table_name, raw_embedded_two, self.attributes["snowflake_attributes"])
-            embedded_three_columns = self.process_embedded_three(schema, table_name, raw_embedded_two, self.attributes["snowflake_attributes"])
-            one_to_one = self.process_one_to_one(schema, table_name, raw_one_to_one)
-            one_to_many = self.process_one_to_many(schema, table_name, raw_one_to_many)
-
-
-            if self.views["features"].get(feature_name) is None:
-                self.views["features"][feature_name] = {
-                    "info": {
-                        "class": [],
-                        "parent": []
-                    },
-                    "columns": [],
-                    "one_to_one": [],
-                    "one_to_many": [],
-                    "geom": []
-                }
-
-            self.views["features"][feature_name]["info"]["class"].append(class_name)
-            self.views["features"][feature_name]["info"]["parent"].append(parent_name)
-            self.views["features"][feature_name]["columns"].append(parent_columns)
-            self.views["features"][feature_name]["one_to_one"].append(one_to_one)
-            self.views["features"][feature_name]["one_to_many"].append(one_to_many)
-            self.views["features"][feature_name]["geom"]
-
-    @staticmethod
-    def process_embedded_two(schema, name, columns, snowflake_attributes):
-        res_columns = []
-        res_geoms = []
-        for column in columns:
-            if column[-1] in snowflake_attributes:
-                res_geoms.append(column)
-            else:
-                res_columns.append(column)
-        return res_columns, res_geoms
+        table_name, schema = table_match.groups()
+        full_table_name = str(schema + "." + table_name)
+        class_name = re.findall(self.parsing["class"]["method"], content) or [None]
+        if class_name[0] in self.attributes["ignore"]:
+            return  # Ignore specific classes
     
-    @staticmethod
-    def process_embedded_three(schema, name, columns, snowflake_attributes):
-        res_columns = []
-        res_geoms = []
-        for column in columns:
-            if column[-1] in snowflake_attributes:
-                res_geoms.append(column)
-            else:
-                res_columns.append(column)
-        return res_columns, res_geoms
+        self.views["table_name"][class_name[0]] = full_table_name
 
-
-    @staticmethod
-    def process_columns(schema, name, columns, parent_name):
-        return {
-            "column": [f"{schema}.{name}.{column}" for column in columns],
-            "type" : parent_name
+        feature_name = self.clean_feature_name(class_name[0])
+        class_name = {
+            "info": class_name[0],
+            "table": full_table_name
         }
+        parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
 
-    @staticmethod
-    def process_one_to_one(schema, name, columns):
-        res = []
-        for column in columns:
-            res.append(f"{schema}.{name}.{column}")
-        return res
-    
-    @staticmethod
-    def process_one_to_many(schema, name, columns):
-        res = []
-        for column in columns:
-            res.append(f"{schema}.{name}.{column}")
-        return res
+        columns = self.extract_columns(schema, table_name, content)
+        parent_columns = self.extract_parent_columns(schema, table_name, parent_name)
+        embedded_columns = self.extract_embedded_columns(schema, table_name, content)
+        one_to_one = self.extract_one_to_one(schema, table_name, content)
+        one_to_many = self.extract_one_to_many(schema, table_name, content)
+
+        self.update_views(feature_name, class_name, parent_name, columns, parent_columns, embedded_columns, one_to_one, one_to_many)
 
 
-    def save_to_file(self, views):
-        with open('util/postgres/views.json', 'w', encoding='utf-8') as file:
-            json.dump(views, file, indent=4)
+    def clean_feature_name(self, class_name):
+        """Remove suffixes from feature names for consistency."""
+        for suffix, replacement in self.suffix_replacements.items():
+            class_name = class_name.replace(suffix, replacement)
+        return class_name
+
+    def extract_columns(self, schema, table, content):
+        """Extract simple column definitions."""
+        raw_columns = re.findall(self.parsing["column"]["method"], content)
+        return [{"info": [f"{schema}.{table}.{col}"], "type": None} for col in raw_columns]
+
+    def extract_parent_columns(self, schema, table, parent_name):
+        """Extract inherited columns from parent classes."""
+        parent_columns = self.attributes["parents_attributes"].get(parent_name[0], [])
+        return [{"info": [f"{schema}.{table}.{col}" for col in parent_columns], "type": parent_name[0]}]
+
+    def extract_embedded_columns(self, schema, table, content):
+        """Extract embedded attributes (2 or 3 columns)."""
+        embedded_columns = []
+        raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)
+        raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
+
+        for column in raw_embedded_two + raw_embedded_three:
+            column_type = column[-1]
+            for col_name in column[:-1]:  # Exclude the last element (which is the type)
+                embedded_columns.append({
+                    "info": [f"{schema}.{table}.{col_name}"],
+                    "type": self.attributes["snowflake_attributes"].get(column_type, column_type)
+                })
+        return embedded_columns
+
+    def extract_one_to_one(self, schema, table, content):
+        """Extract one-to-one relationships."""
+        raw_one_to_one = re.findall(self.parsing["one_to_one"]["method"], content)
+        return [f"{schema}.{table}.{col}" for col in raw_one_to_one]
+
+    def extract_one_to_many(self, schema, table, content):
+        """Extract one-to-many relationships."""
+        raw_one_to_many = re.findall(self.parsing["one_to_many"]["method"], content)
+        return [f"{schema}.{table}.{col}" for col in raw_one_to_many]
+
+    def update_views(self, feature_name, class_name, parent_name, columns, parent_columns, embedded_columns, one_to_one, one_to_many):
+        """Update the `views` dictionary with extracted information."""
+        if feature_name not in self.views:
+            self.views[feature_name] = {
+                "info": {"class": [], "parent": []},
+                "columns": [], "one_to_one": [], "one_to_many": [], "geom": []
+            }
+
+        feature = self.views[feature_name]
+        feature["info"]["class"].append(class_name)
+        feature["info"]["parent"].extend(parent_name)
+        feature["columns"].extend(columns + parent_columns + embedded_columns)
+        feature["one_to_one"].extend(one_to_one)
+        feature["one_to_many"].extend(one_to_many)
+
+    def save_to_file(self):
+        """Save extracted data to a JSON file."""
+        output_path = os.path.join('util/postgres/views.json')
+        with open(output_path, 'w', encoding='utf-8') as file:
+            json.dump(self.views, file, indent=4)
+        print(f"Saved view definitions to {output_path}")
 
 # Run the script
-compilationScript = ViewGenerationScript(parsing_config, attributes_config, "util/postgres/test_dir")
-compilationScript.run()
+# compilationScript = ViewGenerationScript(parsing_config, attributes_config, "util/postgres/test_dir")
+
+compilationScript = ViewGenerationScript(parsing_config, attributes_config, "src/main/java/com/aixm/delorean/core/schema/a5_1_1/aixm")
+compilationScript.extract_attributes()
+compilationScript.create_views()
