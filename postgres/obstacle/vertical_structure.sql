@@ -1,7 +1,6 @@
 CREATE OR REPLACE VIEW obstacles.verticalstructurepart_view AS
 SELECT 
 obstacles.verticalstructurepart_pt.id,
-obstacles.verticalstructurepart.xml_id,
 ST_Collect(
     COALESCE(geometry.elevated_point_view.geom, 
              geometry.elevated_curve_view.geom,  
@@ -22,19 +21,25 @@ json_build_object(
 	'frangible_value', obstacles.verticalstructurepart.frangible_value,
 	'visiblematerial_value', obstacles.verticalstructurepart.visiblematerial_value,
 	'designator_value', obstacles.verticalstructurepart.designator_value,
-	'point_attribute', json_agg(geometry.elevated_point_view.*),
-	'curve_attribute', json_agg(geometry.elevated_curve_view.*),
-	'surface_attribute', json_agg(geometry.elevated_surface_view.*)
+	'point_attribute', jsonb_agg(geometry.elevated_point_view.point),
+	'curve_attribute', jsonb_agg(geometry.elevated_curve_view.curve),
+	'surface_attribute', jsonb_agg(geometry.elevated_surface_view.surface),
+	'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb)
 ) AS part
 FROM obstacles.verticalstructurepart_pt
 INNER JOIN obstacles.verticalstructurepart
 	ON obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
+LEFT JOIN verticalstructurepart_annotation
+	ON obstacles.verticalstructurepart.id = verticalstructurepart_annotation.verticalstructurepart_id
+LEFT JOIN notes.note_view
+	ON verticalstructurepart_annotation.note_pt_id = notes.note_view.id
 LEFT JOIN geometry.elevated_point_view
 	ON obstacles.verticalstructurepart.horizontalprojection_location_id = geometry.elevated_point_view.id
 LEFT JOIN geometry.elevated_curve_view
 	ON obstacles.verticalstructurepart.horizontalprojection_linearextent_id = geometry.elevated_curve_view.id
 LEFT JOIN geometry.elevated_surface_view
 	ON obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = geometry.elevated_surface_view.id
+-- LEFT JOIN verticalstructurepart_timeinterval
 GROUP BY
 	obstacles.verticalstructurepart_pt.id,
 	obstacles.verticalstructurepart.id,
@@ -76,8 +81,8 @@ SELECT
 	obstacles.verticalstructure_ts.lightingicaostandard_value,
 	obstacles.verticalstructure_ts.synchronisedlighting_value,
 	ST_Collect(verticalstructurepart_view.geom) AS geom,
-	json_agg(verticalstructurepart_view.part) AS part,
-	json_agg(notes.note_view.note_value) AS notes
+	COALESCE(jsonb_agg(verticalstructurepart_view.part), '[]'::jsonb) AS part,
+	COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note
 FROM obstacles.verticalstructure
 INNER JOIN public.verticalstructure_timeslice
 ON obstacles.verticalstructure.id = verticalstructure_timeslice.verticalstructure_id
@@ -93,6 +98,15 @@ LEFT JOIN public.runway_ts_annotation
     ON obstacles.verticalstructure_ts.id = public.runway_ts_annotation.runway_ts_id
 LEFT JOIN notes.note_view
     ON public.runway_ts_annotation.note_pt_id = notes.note_view.id
+-- LEFT JOIN navaids_points.markerbeacon_pt
+-- LEFT JOIN verticalstructure_ts_hostedpassengerservice
+-- LEFT JOIN verticalstructure_ts_supportedgroundlight
+-- LEFT JOIN verticalstructure_ts_hostednavaidequipment
+-- LEFT JOIN verticalstructure_ts_hostedspecialnavstation
+-- LEFT JOIN verticalstructure_ts_hostedunit
+-- LEFT JOIN verticalstructure_ts_hostedorganisation
+-- LEFT JOIN verticalstructure_ts_supportedservice
+
 GROUP BY
 	obstacles.verticalstructure.id,
 	obstacles.verticalstructure.identifier,

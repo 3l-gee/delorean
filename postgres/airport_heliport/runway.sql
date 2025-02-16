@@ -1,3 +1,4 @@
+CREAtE OR REPLACE VIEW airport_heliport.runway_view AS
 SELECT 
 	airport_heliport.runway.id,
 	airport_heliport.runway.identifier,
@@ -39,10 +40,10 @@ SELECT
 	airport_heliport.runway_ts.abandoned_value,
 	airport_heliport.runway_ts.abandoned_nilreason,
 	airport_heliport.airportheliport_pt.href,
-	json_agg(airport_heliport.surfacecharacteristics_view.*) AS surface_properties,
-	json_agg(airport_heliport.airportheliport_view.*) AS associated_airportHeliport,
-	json_agg(notes.note_view.note_value) AS notes
-	
+	COALESCE(jsonb_agg(airport_heliport.surfacecharacteristics_view.surfacecharacteristics), '[]'::jsonb) AS surface_properties,
+	COALESCE(jsonb_agg(airport_heliport.airportheliport_view.*), '[]'::jsonb) AS associated_airportHeliport,
+	COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+	airport_heliport.airportheliport_view.arp AS arp
 FROM airport_heliport.runway
 INNER JOIN public.runway_timeslice
 	ON airport_heliport.runway.id = public.runway_timeslice.runway_id
@@ -60,6 +61,8 @@ LEFT JOIN public.runway_ts_annotation
 	ON airport_heliport.runway_ts.id = public.runway_ts_annotation.runway_ts_id
 LEFT JOIN notes.note_view
 	ON  public.runway_ts_annotation.note_pt_id = notes.note_view.id
+-- LEFT JOIN runway_ts_areacontaminant
+-- LEFT JOIN runway_ts_overallcontaminant
 GROUP BY 
 	airport_heliport.runway.id,
 	airport_heliport.runway.identifier,
@@ -101,4 +104,5 @@ GROUP BY
 	airport_heliport.runway_ts.abandoned_value,
 	airport_heliport.runway_ts.abandoned_nilreason,
 	airport_heliport.runway_ts.surfaceproperties_id,
-	airport_heliport.airportheliport_pt.href
+	airport_heliport.airportheliport_pt.href,
+	airport_heliport.airportheliport_view.arp;

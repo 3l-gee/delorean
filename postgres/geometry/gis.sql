@@ -1,34 +1,38 @@
 CREATE MATERIALIZED VIEW geometry.point_view AS
 SELECT
     id, 
-	xml_id,
-    point as geom,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	nilreason
+	point as geom,
+	jsonb_build_object(
+		'xml_id', xml_id,
+		'horizontalaccuracy', horizontalaccuracy,
+		'horizontalaccuracy_uom', horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', horizontalaccuracy_nilreason,
+		'nilreason', nilreason
+	) AS point
 FROM point_pt;
 
 CREATE MATERIALIZED VIEW geometry.elevated_point_view AS
 SELECT 
     id, 
-	xml_id,
     point as geom,
-	elevation,
-	elevation_uom,
-	eleveation_nilreason,
-	geoidundulation,
-	geoidundulation_uom,
-	geoidundulation_nilreason,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	verticalaccuracy,
-	verticalaccuracy_uom,
-	verticalaccuracy_nilreason,
-	verticaldatum,
-	verticaldatum_nilreason,
-	nilreason
+	jsonb_build_object(
+		'xml_id', xml_id,
+		'elevation', elevation,
+		'elevation_uom', elevation_uom,
+		'eleveation_nilreason', eleveation_nilreason,
+		'geoidundulation', geoidundulation,
+		'geoidundulation_uom', geoidundulation_uom,
+		'geoidundulation_nilreason', geoidundulation_nilreason,
+		'horizontalaccuracy', horizontalaccuracy,
+		'horizontalaccuracy_uom', horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', horizontalaccuracy_nilreason,
+		'verticalaccuracy', verticalaccuracy,
+		'verticalaccuracy_uom', verticalaccuracy_uom,
+		'verticalaccuracy_nilreason', verticalaccuracy_nilreason,
+		'verticaldatum', verticaldatum,
+		'verticaldatum_nilreason', verticaldatum_nilreason,
+		'nilreason', nilreason
+	) AS point
 FROM elevated_point_pt;
 
 
@@ -111,14 +115,15 @@ merged_segments AS (
     GROUP BY public.curve_pt.id
 )
 SELECT 
-	(row_number() OVER ())::integer AS row,
     merged_segments.id, 
-	merged_segments.xml_id,
-    merged_geom as geom,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	nilreason
+	merged_geom as geom,
+	jsonb_build_object(
+		'xml_id', merged_segments.xml_id,
+		'horizontalaccuracy', merged_segments.horizontalaccuracy,
+		'horizontalaccuracy_uom', merged_segments.horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', merged_segments.horizontalaccuracy_nilreason,
+		'nilreason', merged_segments.nilreason
+	) AS curve
 FROM merged_segments;
 
 
@@ -212,25 +217,26 @@ merged_segments AS (
     GROUP BY public.elevated_curve_pt.id
 )
 SELECT 
-	(row_number() OVER ())::integer AS row,
-    merged_segments.id, 
-	merged_segments.xml_id,
-    merged_geom as geom,
-	elevation,
-	elevation_uom,
-	eleveation_nilreason,
-	geoidundulation,
-	geoidundulation_uom,
-	geoidundulation_nilreason,
-	horizontalaccuracy,
-	horizontalaccuracy_uom,
-	horizontalaccuracy_nilreason,
-	verticalaccuracy,
-	verticalaccuracy_uom,
-	verticalaccuracy_nilreason,
-	verticaldatum,
-	verticaldatum_nilreason,
-	nilreason
+    merged_segments.id,
+	merged_geom as geom,
+	jsonb_build_object(
+		'xml_id', merged_segments.xml_id,
+		'elevation', merged_segments.elevation,
+		'elevation_uom', merged_segments.elevation_uom,
+		'eleveation_nilreason', merged_segments.eleveation_nilreason,
+		'geoidundulation', merged_segments.geoidundulation,
+		'geoidundulation_uom', merged_segments.geoidundulation_uom,
+		'geoidundulation_nilreason', merged_segments.geoidundulation_nilreason,
+		'horizontalaccuracy', merged_segments.horizontalaccuracy,
+		'horizontalaccuracy_uom', merged_segments.horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', merged_segments.horizontalaccuracy_nilreason,
+		'verticalaccuracy', merged_segments.verticalaccuracy,
+		'verticalaccuracy_uom', merged_segments.verticalaccuracy_uom,
+		'verticalaccuracy_nilreason', merged_segments.verticalaccuracy_nilreason,
+		'verticaldatum', merged_segments.verticaldatum,
+		'verticaldatum_nilreason', merged_segments.verticaldatum_nilreason,
+		'nilreason', merged_segments.nilreason
+	) AS curve
 FROM merged_segments;
 
 CREATE MATERIALIZED VIEW partial_surface_view AS
@@ -1419,6 +1425,7 @@ combined_data AS (
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
+		nilreason,
         part
     FROM 
         r1
@@ -1431,6 +1438,7 @@ combined_data AS (
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
+		nilreason,
         part
     FROM 
         r2
@@ -1443,6 +1451,7 @@ combined_data AS (
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
+		nilreason,
         part
     FROM 
         g1
@@ -1455,6 +1464,7 @@ combined_data AS (
         horizontalaccuracy,
         horizontalaccuracy_uom,
         horizontalaccuracy_nilreason,
+		nilreason,
         part
     FROM 
         g2
@@ -1467,7 +1477,8 @@ outer_shells AS (
         ST_MakePolygon(geom) AS geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason
+        horizontalaccuracy_nilreason,
+		nilreason
     FROM 
         combined_data
     WHERE 
@@ -1481,15 +1492,15 @@ inner_shells AS (
         geom,
         horizontalaccuracy,
         horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason
+        horizontalaccuracy_nilreason,
+		nilreason
     FROM 
         combined_data
     WHERE 
         part <> 0
 )
 SELECT 
-    outer_shells.id, 
-    outer_shells.xml_id, 
+    outer_shells.id,
     ST_MakePolygon(
         ST_ExteriorRing(outer_shells.geom),
         ARRAY(
@@ -1498,9 +1509,14 @@ SELECT
             WHERE inner_shells.id = outer_shells.id
         )
     ) AS geom,
-    outer_shells.horizontalaccuracy,
-    outer_shells.horizontalaccuracy_uom,
-    outer_shells.horizontalaccuracy_nilreason
+	jsonb_build_object(
+		'xml_id', outer_shells.xml_id,
+		'curve_xml_id', outer_shells.curve_xml_id,
+		'horizontalaccuracy', outer_shells.horizontalaccuracy,
+		'horizontalaccuracy_uom', outer_shells.horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', outer_shells.horizontalaccuracy_nilreason,
+		'nilreason', outer_shells.nilreason
+	) AS surface
 FROM 
 outer_shells;
 
@@ -3217,8 +3233,6 @@ inner_shells AS (
 )
 SELECT 
     outer_shells.id, 
-    outer_shells.xml_id, 
-	outer_shells.curve_xml_id,
     ST_MakePolygon(
         ST_ExteriorRing(outer_shells.geom),
         ARRAY(
@@ -3227,20 +3241,24 @@ SELECT
             WHERE inner_shells.id = outer_shells.id
         )
     ) AS geom,
-		outer_shells.elevation,
-		outer_shells.elevation_uom,
-		outer_shells.eleveation_nilreason,
-		outer_shells.geoidundulation,
-		outer_shells.geoidundulation_uom,
-		outer_shells.geoidundulation_nilreason,
-		outer_shells.horizontalaccuracy,
-		outer_shells.horizontalaccuracy_uom,
-		outer_shells.horizontalaccuracy_nilreason,
-		outer_shells.verticalaccuracy,
-		outer_shells.verticalaccuracy_uom,
-		outer_shells.verticalaccuracy_nilreason,
-		outer_shells.verticaldatum,
-		outer_shells.verticaldatum_nilreason,
-		outer_shells.nilreason
+	jsonb_build_object(
+		'xml_id', outer_shells.xml_id,
+		'curve_xml_id', outer_shells.curve_xml_id,
+		'elevation', outer_shells.elevation,
+		'elevation_uom', outer_shells.elevation_uom,
+		'eleveation_nilreason', outer_shells.eleveation_nilreason,
+		'geoidundulation', outer_shells.geoidundulation,
+		'geoidundulation_uom', outer_shells.geoidundulation_uom,
+		'geoidundulation_nilreason', outer_shells.geoidundulation_nilreason,
+		'horizontalaccuracy', outer_shells.horizontalaccuracy,
+		'horizontalaccuracy_uom', outer_shells.horizontalaccuracy_uom,
+		'horizontalaccuracy_nilreason', outer_shells.horizontalaccuracy_nilreason,
+		'verticalaccuracy', outer_shells.verticalaccuracy,
+		'verticalaccuracy_uom', outer_shells.verticalaccuracy_uom,
+		'verticalaccuracy_nilreason', outer_shells.verticalaccuracy_nilreason,
+		'verticaldatum', outer_shells.verticaldatum,
+		'verticaldatum_nilreason', outer_shells.verticaldatum_nilreason,
+		'nilreason', outer_shells.nilreason
+	) AS surface
 FROM 
 outer_shells;
