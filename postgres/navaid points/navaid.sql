@@ -25,8 +25,104 @@ GROUP BY
     navaids_points.authorityfornavaidequipment.type_value,
     navaids_points.authorityfornavaidequipment.type_nilreason;
 
-CREATE OR REPLACE VIEW navaids_points.markerbeacon_view AS
+CREATE MATERIALIZED VIEW navaids_points.sdf_view AS
 SELECT 
+    navaids_points.sdf.id,
+    navaids_points.sdf.identifier,
+    navaids_points.sdf_ts.designator_value,
+    navaids_points.sdf_ts.designator_nilreason,
+    navaids_points.sdf_ts.name_value,
+    navaids_points.sdf_ts.name_nilreason,
+    navaids_points.sdf_ts.emissionclass_value,
+    navaids_points.sdf_ts.emissionclass_nilreason,
+    navaids_points.sdf_ts.mobile_value,
+    navaids_points.sdf_ts.mobile_nilreason,
+    navaids_points.sdf_ts.magneticvariation_value,
+    navaids_points.sdf_ts.magneticvariation_nilreason,
+    navaids_points.sdf_ts.magneticvariationaccuracy_value,
+    navaids_points.sdf_ts.magneticvariationaccuracy_nilreason,
+    navaids_points.sdf_ts.datemagneticvariation_value,
+    navaids_points.sdf_ts.datemagneticvariation_nilreason,
+    navaids_points.sdf_ts.flightchecked_value,
+    navaids_points.sdf_ts.flightchecked_nilreason,
+    navaids_points.sdf_ts.magneticbearing_value,
+    navaids_points.sdf_ts.magneticbearing_nilreason,
+    navaids_points.sdf_ts.truebearing_value,
+    navaids_points.sdf_ts.truebearing_nilreason,
+    navaids_points.sdf_ts.frequency_value,
+    navaids_points.sdf_ts.frequency_uom,
+    navaids_points.sdf_ts.frequency_nilreason,
+    navaids_points.sdf_ts.interpretation,
+    navaids_points.sdf_ts.sequence_number,
+    navaids_points.sdf_ts.correction_number,
+    navaids_points.sdf_ts.valid_time_begin,
+    navaids_points.sdf_ts.valid_time_end,
+    navaids_points.sdf_ts.feature_lifetime_begin,
+    navaids_points.sdf_ts.feature_lifetime_end,
+    geometry.elevated_point_view.geom,
+    COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
+FROM navaids_points.sdf
+INNER JOIN sdf_timeslice
+    ON navaids_points.sdf.id = sdf_timeslice.sdf_id
+INNER JOIN navaids_points.sdf_tsp
+    ON sdf_timeslice.sdf_tsp_id = sdf_tsp.id
+INNER JOIN navaids_points.sdf_ts
+    ON navaids_points.sdf_tsp.sdftimeslice_id = navaids_points.sdf_ts.id
+LEFT JOIN geometry.elevated_point_view
+    ON navaids_points.sdf_ts.location_id = geometry.elevated_point_view.id
+LEFT JOIN sdf_ts_authority
+    ON navaids_points.sdf_ts.id = sdf_ts_authority.sdf_ts_id
+LEFT JOIN navaids_points.authorityfornavaidequipment_view
+    ON sdf_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN sdf_ts_annotation
+    ON navaids_points.sdf_ts.id = sdf_ts_annotation.sdf_ts_id
+LEFT JOIN notes.note_view
+    ON sdf_ts_annotation.note_pt_id = notes.note_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.sdf_ts.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
+-- LEFT JOIN dme_ts_monitoring
+-- LEFT JOIN dme_ts_availability
+GROUP BY 
+    navaids_points.sdf.id,
+    navaids_points.sdf.identifier,
+    navaids_points.sdf_ts.designator_value,
+    navaids_points.sdf_ts.designator_nilreason,
+    navaids_points.sdf_ts.name_value,
+    navaids_points.sdf_ts.name_nilreason,
+    navaids_points.sdf_ts.emissionclass_value,
+    navaids_points.sdf_ts.emissionclass_nilreason,
+    navaids_points.sdf_ts.mobile_value,
+    navaids_points.sdf_ts.mobile_nilreason,
+    navaids_points.sdf_ts.magneticvariation_value,
+    navaids_points.sdf_ts.magneticvariation_nilreason,
+    navaids_points.sdf_ts.magneticvariationaccuracy_value,
+    navaids_points.sdf_ts.magneticvariationaccuracy_nilreason,
+    navaids_points.sdf_ts.datemagneticvariation_value,
+    navaids_points.sdf_ts.datemagneticvariation_nilreason,
+    navaids_points.sdf_ts.flightchecked_value,
+    navaids_points.sdf_ts.flightchecked_nilreason,
+    navaids_points.sdf_ts.magneticbearing_value,
+    navaids_points.sdf_ts.magneticbearing_nilreason,
+    navaids_points.sdf_ts.truebearing_value,
+    navaids_points.sdf_ts.truebearing_nilreason,
+    navaids_points.sdf_ts.frequency_value,
+    navaids_points.sdf_ts.frequency_uom,
+    navaids_points.sdf_ts.frequency_nilreason,
+    navaids_points.sdf_ts.interpretation,
+    navaids_points.sdf_ts.sequence_number,
+    navaids_points.sdf_ts.correction_number,
+    navaids_points.sdf_ts.valid_time_begin,
+    navaids_points.sdf_ts.valid_time_end,
+    navaids_points.sdf_ts.feature_lifetime_begin,
+    navaids_points.sdf_ts.feature_lifetime_end,
+    geometry.elevated_point_view.geom;
+
+
+CREATE MATERIALIZED VIEW navaids_points.markerbeacon_view AS
+SELECT 
+    (row_number() OVER ())::integer AS row,
     navaids_points.markerbeacon.id,
     navaids_points.markerbeacon.identifier,
     navaids_points.markerbeacon_ts.designator_value,
@@ -63,7 +159,8 @@ SELECT
     navaids_points.markerbeacon_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.markerbeacon
 INNER JOIN markerbeacon_timeslice
     ON navaids_points.markerbeacon.id = markerbeacon_timeslice.markerbeacon_id
@@ -81,6 +178,8 @@ LEFT JOIN markerbeacon_ts_annotation
     ON navaids_points.markerbeacon_ts.location_id = markerbeacon_ts_annotation.markerbeacon_ts_id
 LEFT JOIN notes.note_view
     ON markerbeacon_ts_annotation.note_pt_id = notes.note_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.markerbeacon.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -120,8 +219,9 @@ GROUP BY
     navaids_points.markerbeacon_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
 
-CREATE OR REPLACE VIEW navaids_points.elevation_view AS
+CREATE MATERIALIZED VIEW navaids_points.elevation_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.elevation.id,
     navaids_points.elevation.identifier,
     navaids_points.elevation_ts.designator_value,
@@ -157,7 +257,8 @@ SELECT
     navaids_points.elevation_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.elevation
 INNER JOIN elevation_timeslice
     ON navaids_points.elevation.id = elevation_timeslice.elevation_id
@@ -175,6 +276,8 @@ LEFT JOIN elevation_ts_annotation
     ON navaids_points.elevation_ts.id = elevation_ts_annotation.elevation_ts_id
 LEFT JOIN notes.note_view
     ON elevation_ts_annotation.note_pt_id = notes.note_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.elevation.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -215,8 +318,9 @@ GROUP BY
 
 
 
-CREATE OR REPLACE VIEW navaids_points.directionfinder_view AS
+CREATE MATERIALIZED VIEW navaids_points.directionfinder_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.directionfinder.id,
     navaids_points.directionfinder.identifier,
     navaids_points.directionfinder_ts.designator_value,
@@ -246,7 +350,8 @@ SELECT
     navaids_points.directionfinder_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.directionfinder
 INNER JOIN directionfinder_timeslice
     ON navaids_points.directionfinder.id = directionfinder_timeslice.directionfinder_id
@@ -264,6 +369,8 @@ LEFT JOIN directionfinder_ts_authority
     ON navaids_points.directionfinder_ts.id = directionfinder_ts_authority.directionfinder_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON directionfinder_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.directionfinder.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -296,8 +403,9 @@ GROUP BY
     navaids_points.directionfinder_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
 
-CREATE OR REPLACE VIEW navaids_points.azimuth_view AS
+CREATE MATERIALIZED VIEW navaids_points.azimuth_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.azimuth.id,
     navaids_points.azimuth.identifier,
     navaids_points.azimuth_ts.designator_value,
@@ -343,7 +451,8 @@ SELECT
     navaids_points.azimuth_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.azimuth
 INNER JOIN azimuth_timeslice
     ON navaids_points.azimuth.id = azimuth_timeslice.azimuth_id
@@ -361,6 +470,8 @@ LEFT JOIN azimuth_ts_authority
     ON navaids_points.azimuth_ts.id = azimuth_ts_authority.azimuth_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON azimuth_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.azimuth.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -409,8 +520,9 @@ GROUP BY
     navaids_points.azimuth_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
 
-CREATE OR REPLACE VIEW navaids_points.glidepath_view AS
+CREATE MATERIALIZED VIEW navaids_points.glidepath_view AS
 SELECT 
+    (row_number() OVER ())::integer AS row,
     navaids_points.glidepath.id,
     navaids_points.glidepath.identifier,
     navaids_points.glidepath_ts.designator_value,
@@ -451,7 +563,8 @@ SELECT
     navaids_points.glidepath_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.glidepath
 INNER JOIN glidepath_timeslice 
     ON navaids_points.glidepath.id = glidepath_timeslice.glidepath_id
@@ -469,6 +582,8 @@ LEFT JOIN glidepath_ts_authority
     ON navaids_points.glidepath_ts.id = glidepath_ts_authority.glidepath_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON glidepath_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.glidepath.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -512,8 +627,9 @@ GROUP BY
     navaids_points.glidepath_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
 
-CREATE OR REPLACE VIEW navaids_points.localizer_view AS
-SELECT        
+CREATE MATERIALIZED VIEW navaids_points.localizer_view AS
+SELECT       
+    (row_number() OVER ())::integer AS row, 
     navaids_points.localizer.id,
     navaids_points.localizer.identifier,
     navaids_points.localizer_ts.designator_value,
@@ -560,7 +676,8 @@ SELECT
     navaids_points.localizer_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.localizer
 INNER JOIN localizer_timeslice
     ON navaids_points.localizer.id = localizer_timeslice.localizer_id
@@ -578,6 +695,8 @@ LEFT JOIN localizer_ts_authority
     ON navaids_points.localizer_ts.id = localizer_ts_authority.localizer_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON localizer_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.localizer.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -628,8 +747,9 @@ GROUP BY
     geometry.elevated_point_view.geom;
 
 
-CREATE OR REPLACE VIEW navaids_points.tacan_view AS
+CREATE MATERIALIZED VIEW navaids_points.tacan_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.tacan.id,
     navaids_points.tacan.identifier,
     navaids_points.tacan_ts.designator_value,
@@ -661,7 +781,8 @@ SELECT
     navaids_points.tacan_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.tacan
 INNER JOIN tacan_timeslice
     ON navaids_points.tacan.id = tacan_timeslice.tacan_id
@@ -679,6 +800,8 @@ LEFT JOIN tacan_ts_authority
     ON navaids_points.tacan_ts.id = tacan_ts_authority.tacan_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON tacan_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.tacan.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -714,8 +837,9 @@ GROUP BY
     geometry.elevated_point_view.geom;
 
 
-CREATE OR REPLACE VIEW navaids_points.ndb_view AS
+CREATE MATERIALIZED VIEW navaids_points.ndb_view AS
 SELECT 
+    (row_number() OVER ())::integer AS row,
     navaids_points.ndb.id,
     navaids_points.ndb.identifier,
     navaids_points.ndb_ts.designator_value,
@@ -750,7 +874,8 @@ SELECT
     navaids_points.ndb_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.ndb
 INNER JOIN ndb_timeslice
     ON navaids_points.ndb.id = ndb_timeslice.ndb_id
@@ -768,6 +893,8 @@ LEFT JOIN ndb_ts_authority
     ON navaids_points.ndb_ts.id = ndb_ts_authority.ndb_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON ndb_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.ndb.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -806,8 +933,9 @@ GROUP BY
     geometry.elevated_point_view.geom;
 
 
-CREATE OR REPLACE VIEW navaids_points.vor_view AS
+CREATE MATERIALIZED VIEW navaids_points.vor_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.vor.id,
     navaids_points.vor.identifier,
     navaids_points.vor_ts.designator_value,
@@ -844,7 +972,8 @@ SELECT
     navaids_points.vor_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.vor
 INNER JOIN vor_timeslice
     ON navaids_points.vor.id = vor_timeslice.vor_id
@@ -862,6 +991,8 @@ LEFT JOIN vor_ts_annotation
     ON navaids_points.vor_ts.id = vor_ts_annotation.vor_ts_id 
 LEFT JOIN notes.note_view
     ON vor_ts_annotation.note_pt_id = notes.note_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.vor.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 -- LEFT JOIN dme_ts_monitoring
 -- LEFT JOIN dme_ts_availability
 GROUP BY
@@ -902,8 +1033,9 @@ GROUP BY
     geometry.elevated_point_view.geom;
 
 
-CREATE OR REPLACE VIEW navaids_points.dme_view AS
+CREATE MATERIALIZED VIEW navaids_points.dme_view AS
 SELECT
+    (row_number() OVER ())::integer AS row,
     navaids_points.dme.id,
     navaids_points.dme.identifier,
     navaids_points.dme_ts.designator_value,
@@ -941,7 +1073,8 @@ SELECT
     navaids_points.dme_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority
+    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.dme
 INNER JOIN dme_timeslice
     ON dme.id = dme_timeslice.dme_id
@@ -961,6 +1094,8 @@ LEFT JOIN dme_ts_authority
     ON navaids_points.dme_ts.id = dme_ts_authority.dme_ts_id
 LEFT JOIN navaids_points.authorityfornavaidequipment_view
     ON dme_ts_authority.authorityfornavaidequipment_pt_id = navaids_points.authorityfornavaidequipment_view.id
+LEFT JOIN shared.radiofrequencyarea_view
+    ON navaids_points.dme.identifier = shared.radiofrequencyarea_view.equipmentNavaidEquipment
 GROUP BY
     navaids_points.dme.id,
     navaids_points.dme.identifier,
@@ -1002,8 +1137,21 @@ GROUP BY
     geometry.elevated_point_view.geom;
 
 
+CREATE OR REPLACE VIEW navaids_points.navaidcomponent_view AS
 SELECT 
 navaids_points.navaidcomponent_pt.id,
+	ST_UNION(
+	    COALESCE(navaids_points.dme_view.geom, 
+	             navaids_points.vor_view.geom, 
+	             navaids_points.ndb_view.geom, 
+	             navaids_points.tacan_view.geom,  
+	             navaids_points.localizer_view.geom, 
+	             navaids_points.glidepath_view.geom, 
+	             navaids_points.azimuth_view.geom,
+	             navaids_points.directionfinder_view.geom,
+	             navaids_points.elevation_view.geom,
+	             navaids_points.markerbeacon_view.geom)
+	) AS geom,
 	jsonb_build_object(
 	   'xml_id', navaids_points.navaidcomponent.xml_id,
        'collocationgroup_value', navaids_points.navaidcomponent.collocationgroup_value,
@@ -1012,8 +1160,19 @@ navaids_points.navaidcomponent_pt.id,
        'markerposition_nilreason', navaids_points.navaidcomponent.markerposition_nilreason,
        'providesnavigablelocation_value', navaids_points.navaidcomponent.providesnavigablelocation_value,
        'providesnavigablelocation_nilreason', navaids_points.navaidcomponent.providesnavigablelocation_nilreason,
-		'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb),
-        'href', navaids_points.navaidequipment_pt.href
+		'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb)
+        -- 'theNavaidEquipment', jsonb_agg(COALESCE(
+		-- 	navaids_points.dme_view.*, 
+        --     navaids_points.vor_view.*,
+        --     navaids_points.ndb_view.*,
+        --     navaids_points.tacan_view.*,
+        --     navaids_points.localizer_view.*,
+        --     navaids_points.glidepath_view.*,
+        --     navaids_points.azimuth_view.*,
+        --     navaids_points.directionfinder_view.*,
+        --     navaids_points.elevation_view.*,
+        --     navaids_points.markerbeacon_view.*
+        --     ))
     ) AS navaidcomponent
 FROM 
 navaids_points.navaidcomponent_pt
@@ -1025,7 +1184,26 @@ LEFT JOIN notes.note_view
 	ON navaidcomponent_annotation.note_pt_id = notes.note_view.id
 LEFT JOIN navaids_points.navaidequipment_pt
 	ON navaids_points.navaidcomponent.thenavaidequipment_id = navaids_points.navaidequipment_pt.id 
--- ON SUBSTRING(airport_heliport.airportheliport_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = airport_heliport.airportheliport_view.identifier
+LEFT JOIN navaids_points.dme_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.dme_view.identifier
+LEFT JOIN navaids_points.vor_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.vor_view.identifier
+LEFT JOIN navaids_points.ndb_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.ndb_view.identifier
+LEFT JOIN navaids_points.tacan_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.tacan_view.identifier
+LEFT JOIN navaids_points.localizer_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.localizer_view.identifier
+LEFT JOIN navaids_points.glidepath_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.glidepath_view.identifier
+LEFT JOIN navaids_points.azimuth_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.azimuth_view.identifier
+LEFT JOIN navaids_points.directionfinder_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.directionfinder_view.identifier
+LEFT JOIN navaids_points.elevation_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.elevation_view.identifier
+LEFT JOIN navaids_points.markerbeacon_view
+    ON SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = navaids_points.markerbeacon_view.identifier
 GROUP BY 
 navaids_points.navaidcomponent_pt.id,
 navaids_points.navaidcomponent.xml_id,
@@ -1034,46 +1212,44 @@ navaids_points.navaidcomponent.collocationgroup_nilreason,
 navaids_points.navaidcomponent.markerposition_value,
 navaids_points.navaidcomponent.markerposition_nilreason,
 navaids_points.navaidcomponent.providesnavigablelocation_value,
-navaids_points.navaidcomponent.providesnavigablelocation_nilreason,
-navaids_points.navaidequipment_pt.href
+navaids_points.navaidcomponent.providesnavigablelocation_nilreason
 
 
 
-
+CREATE MATERIALIZED VIEW navaids_points.navaid_view AS
 SELECT
-navaids_points.navaid.id, 
-navaids_points.navaid.identifier,
-navaids_points.navaid_pt.nilReason,
-navaids_points.navaid_pt.href,
-navaids_points.navaid_tsp.id,
-navaids_points.navaid_ts.type_value,
-navaids_points.navaid_ts.type_nilreason,
-navaids_points.navaid_ts.designator_value,
-navaids_points.navaid_ts.designator_nilreason,
-navaids_points.navaid_ts.name_value,
-navaids_points.navaid_ts.name_nilreason,
-navaids_points.navaid_ts.flightchecked_value,
-navaids_points.navaid_ts.flightchecked_nilreason,
-navaids_points.navaid_ts.purpose_value,
-navaids_points.navaid_ts.purpose_nilreason,
-navaids_points.navaid_ts.signalperformance_value,
-navaids_points.navaid_ts.signalperformance_nilreason,
-navaids_points.navaid_ts.coursequality_value,
-navaids_points.navaid_ts.coursequality_nilreason,
-navaids_points.navaid_ts.integritylevel_value,
-navaids_points.navaid_ts.integritylevel_nilreason,
-navaids_points.navaid_ts.xml_id,
-navaids_points.navaid_ts.interpretation,
-navaids_points.navaid_ts.sequence_number,
-navaids_points.navaid_ts.correction_number,
-navaids_points.navaid_ts.valid_time_begin,
-navaids_points.navaid_ts.valid_time_end,
-navaids_points.navaid_ts.feature_lifetime_begin,
-navaids_points.navaid_ts.feature_lifetime_end,
-navaids_points.navaid.id,
-navaids_points.navaid.identifier,
-navaids_points.navaid.identifier_code_space,
-navaids_points.navaid.xml_id
+    (row_number() OVER ())::integer AS row,
+    navaids_points.navaid.id, 
+    navaids_points.navaid.identifier,
+    navaids_points.navaid_ts.type_value,
+    navaids_points.navaid_ts.type_nilreason,
+    navaids_points.navaid_ts.designator_value,
+    navaids_points.navaid_ts.designator_nilreason,
+    navaids_points.navaid_ts.name_value,
+    navaids_points.navaid_ts.name_nilreason,
+    navaids_points.navaid_ts.flightchecked_value,
+    navaids_points.navaid_ts.flightchecked_nilreason,
+    navaids_points.navaid_ts.purpose_value,
+    navaids_points.navaid_ts.purpose_nilreason,
+    navaids_points.navaid_ts.signalperformance_value,
+    navaids_points.navaid_ts.signalperformance_nilreason,
+    navaids_points.navaid_ts.coursequality_value,
+    navaids_points.navaid_ts.coursequality_nilreason,
+    navaids_points.navaid_ts.integritylevel_value,
+    navaids_points.navaid_ts.integritylevel_nilreason,
+    navaids_points.navaid_ts.interpretation,
+    navaids_points.navaid_ts.sequence_number,
+    navaids_points.navaid_ts.correction_number,
+    navaids_points.navaid_ts.valid_time_begin,
+    navaids_points.navaid_ts.valid_time_end,
+    navaids_points.navaid_ts.feature_lifetime_begin,
+    navaids_points.navaid_ts.feature_lifetime_end,
+    ST_UNION(
+        ST_UNION(navaids_points.navaidcomponent_view.geom),
+        geometry.elevated_point_view.geom
+        ) AS geom,
+    COALESCE(jsonb_agg(navaids_points.navaidcomponent_view.navaidcomponent), '[]'::jsonb) AS navaidcomponent,
+    COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note
 FROM navaids_points.navaid
 INNER JOIN navaid_timeslice
     ON navaids_points.navaid.id = navaid_timeslice.navaid_id
@@ -1086,4 +1262,36 @@ LEFT JOIN navaid_ts_navaidequipment
     ON navaids_points.navaid_ts.id = navaid_ts_navaidequipment.navaid_ts_id
 LEFT JOIN navaids_points.navaidcomponent_view
     ON navaid_ts_navaidequipment.navaidcomponent_pt_id = navaids_points.navaidcomponent_view.id
-
+LEFT JOIN geometry.elevated_point_view
+    ON navaids_points.navaid_ts.location_id = geometry.elevated_point_view.id
+LEFT JOIN navaid_ts_annotation
+    ON navaids_points.navaid_ts.id = navaid_ts_annotation.navaid_ts_id
+LEFT JOIN notes.note_view
+    ON navaid_ts_annotation.note_pt_id = notes.note_view.id
+GROUP BY 
+	navaids_points.navaid.id, 
+	navaids_points.navaid.identifier,
+	navaids_points.navaid_ts.type_value,
+	navaids_points.navaid_ts.type_nilreason,
+	navaids_points.navaid_ts.designator_value,
+	navaids_points.navaid_ts.designator_nilreason,
+	navaids_points.navaid_ts.name_value,
+	navaids_points.navaid_ts.name_nilreason,
+	navaids_points.navaid_ts.flightchecked_value,
+	navaids_points.navaid_ts.flightchecked_nilreason,
+	navaids_points.navaid_ts.purpose_value,
+	navaids_points.navaid_ts.purpose_nilreason,
+	navaids_points.navaid_ts.signalperformance_value,
+	navaids_points.navaid_ts.signalperformance_nilreason,
+	navaids_points.navaid_ts.coursequality_value,
+	navaids_points.navaid_ts.coursequality_nilreason,
+	navaids_points.navaid_ts.integritylevel_value,
+	navaids_points.navaid_ts.integritylevel_nilreason,
+	navaids_points.navaid_ts.interpretation,
+	navaids_points.navaid_ts.sequence_number,
+	navaids_points.navaid_ts.correction_number,
+	navaids_points.navaid_ts.valid_time_begin,
+	navaids_points.navaid_ts.valid_time_end,
+	navaids_points.navaid_ts.feature_lifetime_begin,
+	navaids_points.navaid_ts.feature_lifetime_end,
+	geometry.elevated_point_view.geom

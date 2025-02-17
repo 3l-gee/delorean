@@ -275,6 +275,132 @@ GROUP BY
     shared.contactinformation.title_nilreason;
 
 
+CREATE OR REPLACE VIEW shared.circlesector_view AS
+SELECT 
+'id', shared.circlesector_pt.id,
+    jsonb_build_object(
+        'xml_id', shared.circlesector.xml_id,
+       'arcdirection_value', shared.circlesector.arcdirection_value,
+       'arcdirection_nilreason', shared.circlesector.arcdirection_nilreason,
+       'fromangle_value', shared.circlesector.fromangle_value,
+       'fromangle_nilreason', shared.circlesector.fromangle_nilreason,
+       'toangle_value', shared.circlesector.toangle_value,
+       'toangle_nilreason', shared.circlesector.toangle_nilreason,
+       'angletype_value', shared.circlesector.angletype_value,
+       'angletype_nilreason', shared.circlesector.angletype_nilreason,
+       'angledirectionreference_value', shared.circlesector.angledirectionreference_value,
+       'angledirectionreference_nilreason', shared.circlesector.angledirectionreference_nilreason,
+       'upperlimitreference_value', shared.circlesector.upperlimitreference_value,
+       'upperlimitreference_nilreason', shared.circlesector.upperlimitreference_nilreason,
+       'lowerlimitreference_value', shared.circlesector.lowerlimitreference_value,
+       'lowerlimitreference_nilreason', shared.circlesector.lowerlimitreference_nilreason,
+       'innerdistance_value', shared.circlesector.innerdistance_value,
+       'innerdistance_uom', shared.circlesector.innerdistance_uom,
+       'innerdistance_nilreason', shared.circlesector.innerdistance_nilreason,
+       'outerdistance_value', shared.circlesector.outerdistance_value,
+       'outerdistance_uom', shared.circlesector.outerdistance_uom,
+       'outerdistance_nilreason', shared.circlesector.outerdistance_nilreason,
+       'upperlimit_value', shared.circlesector.upperlimit_value,
+       'upperlimit_uom', shared.circlesector.upperlimit_uom,
+       'upperlimit_nilreason', shared.circlesector.upperlimit_nilreason,
+       'lowerlimit_value', shared.circlesector.lowerlimit_value,
+       'lowerlimit_uom', shared.circlesector.lowerlimit_uom,
+       'lowerlimit_nilreason', shared.circlesector.lowerlimit_nilreason,
+       'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb)
+    ) AS circlesector
+FROM shared.circlesector_pt
+INNER JOIN shared.circlesector
+    ON shared.circlesector_pt.circlesector_id = shared.circlesector.id
+LEFT JOIN circlesector_annotation
+    ON shared.circlesector.id = circlesector_annotation.circlesector_id
+LEFT JOIN notes.note_view
+    ON circlesector_annotation.note_pt_id = notes.note_view.id
+GROUP BY
+    shared.circlesector_pt.id,
+    shared.circlesector.xml_id,
+    shared.circlesector.arcdirection_value,
+    shared.circlesector.arcdirection_nilreason,
+    shared.circlesector.fromangle_value,
+    shared.circlesector.fromangle_nilreason,
+    shared.circlesector.toangle_value,
+    shared.circlesector.toangle_nilreason,
+    shared.circlesector.angletype_value,
+    shared.circlesector.angletype_nilreason,
+    shared.circlesector.angledirectionreference_value,
+    shared.circlesector.angledirectionreference_nilreason,
+    shared.circlesector.upperlimitreference_value,
+    shared.circlesector.upperlimitreference_nilreason,
+    shared.circlesector.lowerlimitreference_value,
+    shared.circlesector.lowerlimitreference_nilreason,
+    shared.circlesector.innerdistance_value,
+    shared.circlesector.innerdistance_uom,
+    shared.circlesector.innerdistance_nilreason,
+    shared.circlesector.outerdistance_value,
+    shared.circlesector.outerdistance_uom,
+    shared.circlesector.outerdistance_nilreason,
+    shared.circlesector.upperlimit_value,
+    shared.circlesector.upperlimit_uom,
+    shared.circlesector.upperlimit_nilreason,
+    shared.circlesector.lowerlimit_value,
+    shared.circlesector.lowerlimit_uom,
+    shared.circlesector.lowerlimit_nilreason;
 
 
-    
+CREATE OR REPLACE VIEW shared.radiofrequencyarea_view AS
+SELECT
+    shared.radiofrequencyarea.id,
+    shared.radiofrequencyarea.identifier,
+    SUBSTRING(navaids_points.navaidequipment_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') AS equipmentNavaidEquipment,
+    shared.radiofrequencyarea_ts.type_value,
+    shared.radiofrequencyarea_ts.type_nilreason,
+    shared.radiofrequencyarea_ts.anglescallop_value,
+    shared.radiofrequencyarea_ts.anglescallop_nilreason,
+    shared.radiofrequencyarea_ts.signaltype_value,
+    shared.radiofrequencyarea_ts.signaltype_nilreason,
+    shared.radiofrequencyarea_ts.interpretation,
+    shared.radiofrequencyarea_ts.sequence_number,
+    shared.radiofrequencyarea_ts.correction_number,
+    shared.radiofrequencyarea_ts.valid_time_begin,
+    shared.radiofrequencyarea_ts.valid_time_end,
+    shared.radiofrequencyarea_ts.feature_lifetime_begin,
+    shared.radiofrequencyarea_ts.feature_lifetime_end,
+    ST_UNION(geometry.surface_view.geom),
+    COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+    COALESCE(jsonb_agg(shared.circlesector_view.circlesector), '[]'::jsonb) AS sector
+FROM shared.radiofrequencyarea
+INNER JOIN radiofrequencyarea_timeslice
+    ON shared.radiofrequencyarea.id = radiofrequencyarea_timeslice.radiofrequencyarea_id
+INNER JOIN shared.radiofrequencyarea_tsp
+    ON radiofrequencyarea_timeslice.radiofrequencyarea_tsp_id = shared.radiofrequencyarea_tsp.id
+INNER JOIN shared.radiofrequencyarea_ts
+    ON shared.radiofrequencyarea_tsp.radiofrequencyareatimeslice_id = shared.radiofrequencyarea_ts.id
+LEFT JOIN navaids_points.navaidequipment_pt
+    ON shared.radiofrequencyarea_ts.equipment_navaidequipment_id = navaids_points.navaidequipment_pt.id
+LEFT JOIN radiofrequencyarea_ts_sector
+    ON shared.radiofrequencyarea_ts.id = radiofrequencyarea_ts_sector.radiofrequencyarea_ts_id
+LEFT JOIN shared.circlesector_view
+    ON radiofrequencyarea_ts_sector.circlesector_pt_id = shared.circlesector_view.id
+LEFT JOIN radiofrequencyarea_ts_extent
+    ON shared.radiofrequencyarea_ts.id = radiofrequencyarea_ts_extent.radiofrequencyarea_ts_id
+LEFT JOIN geometry.surface_view
+    ON radiofrequencyarea_ts_extent.surface_pt_id = geometry.surface_view.id
+LEFT JOIN radiofrequencyarea_ts_annotation
+    ON shared.radiofrequencyarea_ts.id = radiofrequencyarea_ts_annotation.radiofrequencyarea_ts_id
+LEFT JOIN notes.note_view
+    ON radiofrequencyarea_ts_annotation.note_pt_id = notes.note_view.id
+GROUP BY
+    shared.radiofrequencyarea.id,
+    shared.radiofrequencyarea.identifier,
+    shared.radiofrequencyarea_ts.type_value,
+    shared.radiofrequencyarea_ts.type_nilreason,
+    shared.radiofrequencyarea_ts.anglescallop_value,
+    shared.radiofrequencyarea_ts.anglescallop_nilreason,
+    shared.radiofrequencyarea_ts.signaltype_value,
+    shared.radiofrequencyarea_ts.signaltype_nilreason,
+    shared.radiofrequencyarea_ts.interpretation,
+    shared.radiofrequencyarea_ts.sequence_number,
+    shared.radiofrequencyarea_ts.correction_number,
+    shared.radiofrequencyarea_ts.valid_time_begin,
+    shared.radiofrequencyarea_ts.valid_time_end,
+    shared.radiofrequencyarea_ts.feature_lifetime_begin,
+    shared.radiofrequencyarea_ts.feature_lifetime_end;
