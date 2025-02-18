@@ -1160,19 +1160,19 @@ navaids_points.navaidcomponent_pt.id,
        'markerposition_nilreason', navaids_points.navaidcomponent.markerposition_nilreason,
        'providesnavigablelocation_value', navaids_points.navaidcomponent.providesnavigablelocation_value,
        'providesnavigablelocation_nilreason', navaids_points.navaidcomponent.providesnavigablelocation_nilreason,
-		'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb)
-        -- 'theNavaidEquipment', jsonb_agg(COALESCE(
-		-- 	navaids_points.dme_view.*, 
-        --     navaids_points.vor_view.*,
-        --     navaids_points.ndb_view.*,
-        --     navaids_points.tacan_view.*,
-        --     navaids_points.localizer_view.*,
-        --     navaids_points.glidepath_view.*,
-        --     navaids_points.azimuth_view.*,
-        --     navaids_points.directionfinder_view.*,
-        --     navaids_points.elevation_view.*,
-        --     navaids_points.markerbeacon_view.*
-        --     ))
+		'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb),
+       'theNavaidEquipment', jsonb_strip_nulls(jsonb_build_object(
+            'dme', navaids_points.dme_view.*,
+            'vor', navaids_points.vor_view.*,
+            'ndb', navaids_points.ndb_view.*,
+            'tacan', navaids_points.tacan_view.*,
+            'localizer', navaids_points.localizer_view.*,
+            'glidepath', navaids_points.glidepath_view.*,
+            'azimuth', navaids_points.azimuth_view.*,
+            'directionfinder', navaids_points.directionfinder_view.*,
+            'elevation', navaids_points.elevation_view.*,
+            'markerbeacon', navaids_points.markerbeacon_view.*
+        ))
     ) AS navaidcomponent
 FROM 
 navaids_points.navaidcomponent_pt
@@ -1212,8 +1212,17 @@ navaids_points.navaidcomponent.collocationgroup_nilreason,
 navaids_points.navaidcomponent.markerposition_value,
 navaids_points.navaidcomponent.markerposition_nilreason,
 navaids_points.navaidcomponent.providesnavigablelocation_value,
-navaids_points.navaidcomponent.providesnavigablelocation_nilreason
-
+navaids_points.navaidcomponent.providesnavigablelocation_nilreason,
+navaids_points.dme_view.*,
+navaids_points.vor_view.*,
+navaids_points.ndb_view.*,
+navaids_points.tacan_view.*,
+navaids_points.localizer_view.*,
+navaids_points.glidepath_view.*,
+navaids_points.azimuth_view.*,
+navaids_points.directionfinder_view.*,
+navaids_points.elevation_view.*,
+navaids_points.markerbeacon_view.*;
 
 
 CREATE MATERIALIZED VIEW navaids_points.navaid_view AS

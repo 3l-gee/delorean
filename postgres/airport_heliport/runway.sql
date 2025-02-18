@@ -106,3 +106,88 @@ GROUP BY
 	airport_heliport.runway_ts.surfaceproperties_id,
 	airport_heliport.airportheliport_pt.href,
 	airport_heliport.airportheliport_view.arp;
+
+SELECT 
+	airport_heliport.runwaydirection.id,
+	airport_heliport.runwaydirection.identifier,
+	airport_heliport.runwaydirection_ts.designator_value,
+	airport_heliport.runwaydirection_ts.designator_nilreason,
+	airport_heliport.runwaydirection_ts.truebearing_value,
+	airport_heliport.runwaydirection_ts.truebearing_nilreason,
+	airport_heliport.runwaydirection_ts.truebearingaccuracy_value,
+	airport_heliport.runwaydirection_ts.truebearingaccuracy_nilreason,
+	airport_heliport.runwaydirection_ts.magneticbearing_value,
+	airport_heliport.runwaydirection_ts.magneticbearing_nilreason,
+	airport_heliport.runwaydirection_ts.patternvfr_value,
+	airport_heliport.runwaydirection_ts.patternvfr_nilreason,
+	airport_heliport.runwaydirection_ts.slopetdz_value,
+	airport_heliport.runwaydirection_ts.slopetdz_nilreason,
+	airport_heliport.runwaydirection_ts.approachmarkingtype_value,
+	airport_heliport.runwaydirection_ts.approachmarkingtype_nilreason,
+	airport_heliport.runwaydirection_ts.approachmarkingcondition_value,
+	airport_heliport.runwaydirection_ts.approachmarkingcondition_nilreason,
+	airport_heliport.runwaydirection_ts.classlightingjar_value,
+	airport_heliport.runwaydirection_ts.classlightingjar_nilreason,
+	airport_heliport.runwaydirection_ts.precisionapproachguidance_value,
+	airport_heliport.runwaydirection_ts.precisionapproachguidance_nilreason,
+	airport_heliport.runwaydirection_ts.elevationtdz_value,
+	airport_heliport.runwaydirection_ts.elevationtdz_uom,
+	airport_heliport.runwaydirection_ts.elevationtdz_nilreason,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_value,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_uom,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_nilreason,
+	airport_heliport.runwaydirection_ts.interpretation,
+	airport_heliport.runwaydirection_ts.sequence_number,
+	airport_heliport.runwaydirection_ts.correction_number,
+	airport_heliport.runwaydirection_ts.valid_time_begin,
+	airport_heliport.runwaydirection_ts.valid_time_end,
+	airport_heliport.runwaydirection_ts.feature_lifetime_begin,
+	airport_heliport.runwaydirection_ts.feature_lifetime_end,
+	COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+FROM airport_heliport.runwaydirection
+INNER JOIN runwaydirection_timeslice
+	ON  airport_heliport.runwaydirection.id = runwaydirection_timeslice.runwaydirection_id
+INNER JOIN airport_heliport.runwaydirection_tsp
+	ON runwaydirection_timeslice.runwaydirection_tsp_id = airport_heliport.runwaydirection_tsp.id
+INNER JOIN airport_heliport.runwaydirection_ts
+	ON airport_heliport.runwaydirection_tsp.runwaydirectiontimeslice_id = airport_heliport.runwaydirection_ts.id
+LEFT JOIN runwaydirection_ts_annotation
+	ON airport_heliport.runwaydirection_ts.id = runwaydirection_ts_annotation.runwaydirection_ts_id
+LEFT JOIN notes.note_view
+	ON runwaydirection_ts_annotation.note_pt_id = notes.note_view.id
+GROUP BY
+	airport_heliport.runwaydirection.id,
+	airport_heliport.runwaydirection.identifier,
+	airport_heliport.runwaydirection_ts.designator_value,
+	airport_heliport.runwaydirection_ts.designator_nilreason,
+	airport_heliport.runwaydirection_ts.truebearing_value,
+	airport_heliport.runwaydirection_ts.truebearing_nilreason,
+	airport_heliport.runwaydirection_ts.truebearingaccuracy_value,
+	airport_heliport.runwaydirection_ts.truebearingaccuracy_nilreason,
+	airport_heliport.runwaydirection_ts.magneticbearing_value,
+	airport_heliport.runwaydirection_ts.magneticbearing_nilreason,
+	airport_heliport.runwaydirection_ts.patternvfr_value,
+	airport_heliport.runwaydirection_ts.patternvfr_nilreason,
+	airport_heliport.runwaydirection_ts.slopetdz_value,
+	airport_heliport.runwaydirection_ts.slopetdz_nilreason,
+	airport_heliport.runwaydirection_ts.approachmarkingtype_value,
+	airport_heliport.runwaydirection_ts.approachmarkingtype_nilreason,
+	airport_heliport.runwaydirection_ts.approachmarkingcondition_value,
+	airport_heliport.runwaydirection_ts.approachmarkingcondition_nilreason,
+	airport_heliport.runwaydirection_ts.classlightingjar_value,
+	airport_heliport.runwaydirection_ts.classlightingjar_nilreason,
+	airport_heliport.runwaydirection_ts.precisionapproachguidance_value,
+	airport_heliport.runwaydirection_ts.precisionapproachguidance_nilreason,
+	airport_heliport.runwaydirection_ts.elevationtdz_value,
+	airport_heliport.runwaydirection_ts.elevationtdz_uom,
+	airport_heliport.runwaydirection_ts.elevationtdz_nilreason,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_value,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_uom,
+	airport_heliport.runwaydirection_ts.elevationtdzaccuracy_nilreason,
+	airport_heliport.runwaydirection_ts.interpretation,
+	airport_heliport.runwaydirection_ts.sequence_number,
+	airport_heliport.runwaydirection_ts.correction_number,
+	airport_heliport.runwaydirection_ts.valid_time_begin,
+	airport_heliport.runwaydirection_ts.valid_time_end,
+	airport_heliport.runwaydirection_ts.feature_lifetime_begin,
+	airport_heliport.runwaydirection_ts.feature_lifetime_end;

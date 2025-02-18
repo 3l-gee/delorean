@@ -391,6 +391,7 @@ LEFT JOIN notes.note_view
 GROUP BY
     shared.radiofrequencyarea.id,
     shared.radiofrequencyarea.identifier,
+    navaids_points.navaidequipment_pt.href,
     shared.radiofrequencyarea_ts.type_value,
     shared.radiofrequencyarea_ts.type_nilreason,
     shared.radiofrequencyarea_ts.anglescallop_value,
