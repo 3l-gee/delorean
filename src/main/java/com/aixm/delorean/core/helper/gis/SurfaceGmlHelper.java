@@ -2,9 +2,12 @@ package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 
 import com.aixm.delorean.core.exception.gis.MalformedGeometryException;
+import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.gis.type.PolygonSegment;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -129,9 +132,152 @@ public class SurfaceGmlHelper {
         return interior;
     }
 
-    public static SurfaceType printGMLsurface(Polygon value) {
+    public static RingType printExteriorRing(List<PolygonSegment> value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        RingType ring = new RingType();
+        value.sort((a, b) -> {
+            int partCompare = Long.compare(a.getPart(), b.getPart());
+            if (partCompare != 0) return partCompare;
+            int memberCompare = Long.compare(a.getMember(), b.getMember());
+            if (memberCompare != 0) return memberCompare;
+            return Long.compare(a.getSequence(), b.getSequence());
+        });
+        for (PolygonSegment segment : value) {
+            CurvePropertyType curvePropertyType = new CurvePropertyType();
+            // Add additional processing for curvePropertyType if needed
+        }
 
-        return new SurfaceType();
+        
+        return ring;
+    }
+
+    public static RingType printInteriorRing(List<PolygonSegment> value) {
+
+        return null;
+    }
+
+    public static CurveType printCurveType (PolygonSegment value) {
+        return new CurveType();
+    }
+
+    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (List<PolygonSegment> value){
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        CurveSegmentArrayPropertyType curveSegment = new CurveSegmentArrayPropertyType();
+        for (PolygonSegment segment : value) {
+            if (segment.getInterpretation() == PolygonSegment.Interpretation.ARCBYCENTER) {
+                ArcByCenterPointType arcByCenterPoint = printArcByCenterPoint(segment);
+
+
+            } else if (segment.getInterpretation() == PolygonSegment.Interpretation.GEODESIC) {
+                GeodesicStringType geodesicString = printGeodesicString(segment);
+
+
+            } else if (segment.getInterpretation() == PolygonSegment.Interpretation.LINESTRING) {
+                LineStringSegmentType lineStringSegment = printLineStringSegment(segment);
+
+
+            } else if (segment.getInterpretation() == PolygonSegment.Interpretation.CIRCLEBYCENTER) {
+                CircleByCenterPointType circleByCenterPoint = printCircleByCenterPoint(segment);
+
+
+            } else {
+                ConsoleLogger.log(LogLevel.FATAL, "Interpretation is not supported", new Exception().getStackTrace()[0]);
+                throw new RuntimeException("Interpretation is not supported");
+            }
+        }
+        return curveSegment;
+    }
+
+    public static ArcByCenterPointType printArcByCenterPoint (PolygonSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        ArcByCenterPointType arcByCenterPoint = new ArcByCenterPointType();
+
+        Point point = value.getPoint();
+        Coordinate center = point.getCoordinate();
+        int srs = point.getSRID();
+        Double radius = value.getRadius();
+        Double startAngle = value.getStartAngle();
+        Double endAngle = value.getEndAngle();
+        
+        // setting direct position
+        DirectPositionType directPosition = PointGmlHelper.printCoordinateToDirectPosition(center);
+        directPosition.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        arcByCenterPoint.setPos(directPosition);
+
+        // setting radius
+        LengthType lengthType = new LengthType();
+        lengthType.setValue(radius);
+        lengthType.setUom("m");
+        arcByCenterPoint.setRadius(lengthType);
+
+        // setting start angle
+        AngleType angleType = new AngleType();
+        angleType.setValue(UnitTransformHelper.convertAngle(startAngle, "rad", "deg"));
+        angleType.setUom("deg");
+        arcByCenterPoint.setStartAngle(angleType);
+
+        // setting end angle
+        AngleType angleType2 = new AngleType();
+        angleType2.setValue(UnitTransformHelper.convertAngle(endAngle, "rad", "deg"));
+        angleType2.setUom("deg");
+        arcByCenterPoint.setEndAngle(angleType2);
+
+        return arcByCenterPoint;
+    }
+
+    public static CircleByCenterPointType printCircleByCenterPoint (PolygonSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        CircleByCenterPointType circleByCenterPoint = new CircleByCenterPointType();
+
+        Point point = value.getPoint();
+        Coordinate center = point.getCoordinate();
+        int srs = point.getSRID();
+        Double radius = value.getRadius();
+        
+        // setting direct position
+        DirectPositionType directPosition = PointGmlHelper.printCoordinateToDirectPosition(center);
+        directPosition.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        circleByCenterPoint.setPos(directPosition);
+
+        // setting radius
+        LengthType lengthType = new LengthType();
+        lengthType.setValue(radius);
+        lengthType.setUom("m");
+        circleByCenterPoint.setRadius(lengthType);
+
+        return circleByCenterPoint;
+    }
+
+    public static GeodesicStringType printGeodesicString (PolygonSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        GeodesicStringType geodesicString = new GeodesicStringType();
+
+        LineString line = value.getLinestring();
+        int srs = line.getSRID();
+        Coordinate[] coordinates = line.getCoordinates();
+
+        // setting direct position list
+        DirectPositionListType posList = printDirectPositionList(Arrays.asList(coordinates));
+        posList.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        geodesicString.setPosList(posList);
+
+        return geodesicString;
+    }
+
+    public static LineStringSegmentType printLineStringSegment (PolygonSegment value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        LineStringSegmentType lineStringSegment = new LineStringSegmentType();
+
+        LineString line = value.getLinestring();
+        int srs = line.getSRID();
+        Coordinate[] coordinates = line.getCoordinates();
+
+        // setting direct position list
+        DirectPositionListType posList = printDirectPositionList(Arrays.asList(coordinates));
+        posList.setSrsName("urn:ogc:def:crs:EPSG::" + srs);
+        lineStringSegment.setPosList(posList);
+
+        return lineStringSegment;
     }
 
     public static List<PolygonSegment>  parseSurfacePatchArrayProperty (JAXBElement<? extends AbstractSurfacePatchType> element, String srsName, Boolean isExterior) throws IllegalArgumentException {
@@ -274,9 +420,11 @@ public class SurfaceGmlHelper {
         if (element.getValue() instanceof com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType) {
 
         } else if (element.getValue().getClass().equals(ElevatedCurveType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "ElevatedCurveType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
 
         } else if (element.getValue().getClass().equals(CompositeCurveType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "CompositeCurveType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
 
         } else if (element.getValue().getClass().equals(com.aixm.delorean.core.org.gml.v_3_2.CurveType.class)){
@@ -287,15 +435,19 @@ public class SurfaceGmlHelper {
                 coordinates.addAll(parseCurveSegementArrayProperty(curveType.getSegments(), curveType.getXmlId(), srsName, part, member));
             }
         } else if (element.getValue().getClass().equals(LineStringType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "LineStringType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
             
         } else if (element.getValue().getClass().equals(LinearRingType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "LinearRingType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
             
         } else if (element.getValue().getClass().equals(OrientableCurveType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "OrientableCurveType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
             
         } else if (element.getValue().getClass().equals(RingType.class)){
+            ConsoleLogger.log(LogLevel.WARN, "RingType is not supported", new Exception().getStackTrace()[0]);
             //TODO is this allowed in AIXM?
             
         } else {
