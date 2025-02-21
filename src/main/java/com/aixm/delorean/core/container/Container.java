@@ -7,10 +7,17 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class Container<T> {
+    // the structure of the container 
+    /* 
+     * 5_1 : com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType,
+     * 5_1_1 : com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType
+     */
     private final Class<T> structure;
+    // The content of the container
+    private T record;
     public XMLBinding xmlBinding;
     public DatabaseBinding databaseBinding;
-    private T record;
+    
 
     public Container(Class<T> structure) {
         this.structure = structure;
@@ -64,11 +71,11 @@ public class Container<T> {
         this.databaseBinding.load(this.record);
     }
 
-    public void retrieve(Object id) {
+    public void export(Object id) {
         if (this.databaseBinding == null) {
             throw new RuntimeException("DatabaseBinding is not set");
-        }
-        this.record = (T) this.databaseBinding.retrieve(id);
+        }   
+        this.record = (T) this.databaseBinding.export(structure, id);
     }
 
     //TODO this should be cleaned up in untility function or deleted

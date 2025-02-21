@@ -7,12 +7,10 @@ import com.aixm.delorean.core.database.DatabaseBinding;
 import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-import com.aixm.delorean.core.util.Util;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
 
 import java.io.Console;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -63,6 +61,7 @@ public class Main {
         System.out.println("----------------------------------------------------------------------------");
         System.out.println("Author : Raphaël Gerth");
         ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0 - alpha");
+        ConsoleLogger.log(LogLevel.INFO, "type 'help' for a list of commands");
 
         while (true) {
             System.out.print("> ");
@@ -125,7 +124,7 @@ public class Main {
         ConsoleLogger.log(LogLevel.INFO, "db - startup");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - retrieve 1");
+        ConsoleLogger.log(LogLevel.INFO, "db - export 1");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
 
         ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
@@ -169,40 +168,61 @@ public class Main {
 
 
         switch (action.toLowerCase()) {
+            case "/h": 
+            case "--help": 
+            case "-h":
+            case "?":
+            case "help":
+            System.out.println("""
+               -={ Delorean Shell Commands }=-
+    help                                                             : Display this help message
+    new         [a5_1, a5_1_1]                                       : Create a new container with the specified argument       
+    xml_config  <container id, - >      [a5_1, a5_1_1]               : Set the XML configuration for the specified container
+    db_config   <container id, - >      [a5_1, a5_1_1]               : Set the database configuration for the specified container
+    xml         <container id, - >      load             <path>      : load the xml data from the specified path
+    xml         <container id, - >      export           <path>      : export the xml data to the specified path
+    db          <container id, - >      startup                      : start the database
+    db          <container id, - >      load                         : load the data into the database
+    db          <container id, - >      export           < id >      : export the master aixmmessage with the specified id
+    exit                                                             : Exit the shell                                    
+                """);
+            break;
+
             case "new":
-                executeNewCommand(argument, scanner, parameter, option);
-                break;
+            executeNewCommand(argument, scanner, parameter, option);
+            break;
 
             case "xml_config":
-                excuteXmlConfigurationCommand(argument,scanner, parameter, option);
-                break;
+            excuteXmlConfigurationCommand(argument,scanner, parameter, option);
+            break;
 
             case "xml" :
-                executeXmlActionCommand(argument,scanner, parameter, option);
-                break;
+            executeXmlActionCommand(argument,scanner, parameter, option);
+            break;
 
             case "db_config":
-                executeDbConfigurationCommand(argument, scanner, parameter, option);
-                break;
+            executeDbConfigurationCommand(argument, scanner, parameter, option);
+            break;
 
             case "db" :
-                executeDbActionCommand(argument, scanner, parameter, option);
-                break;
+            executeDbActionCommand(argument, scanner, parameter, option);
+            break;
 
             case "list":
-                executeListCommand();
-                break;          
+            executeListCommand();
+            break;          
 
             // case "format":
             //     executeFormatCommand();
             //     break;
 
             case "show":
-                executeShowCommand(argument);
-                break;
+            executeShowCommand(argument);
+            break;
 
             default:
-                break;
+            ConsoleLogger.log(LogLevel.ERROR, "Invalid command: " + action);
+            break;
         }
     }
 
@@ -350,8 +370,8 @@ public class Main {
                     // this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
-                case "retrieve":
-                    this.containerWarehouse.getContainer(argument).retrieve(option);
+                case "export":
+                    this.containerWarehouse.getContainer(argument).export(option);
                     break;
                 default:
                     break;

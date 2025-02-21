@@ -6,11 +6,10 @@ import org.hibernate.cfg.Configuration;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 
 import org.hibernate.Transaction;
 
-public class DatabaseBinding {
+public class DatabaseBinding<T> {
     private SessionFactory sessionFactory;
     private Configuration configuration;
     private DatabaseConfig databaseConfig;
@@ -115,7 +114,8 @@ public class DatabaseBinding {
         }
     }
 
-    public Object retrieve(Object id) {
+    public Object export(Class<T> structure, Object id) {
+        ConsoleLogger.log(LogLevel.DEBUG, "Retrieving : " + structure + " with id: " + id, new Exception().getStackTrace()[0]);
         if (this.sessionFactory == null) {
             throw new IllegalArgumentException("sessionfactory is not initialized");
         }
@@ -126,7 +126,7 @@ public class DatabaseBinding {
 
         try {
             transaction = session.beginTransaction();
-            object = session.get(AIXMBasicMessageType.class, id);
+            object = session.get(structure, id);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
