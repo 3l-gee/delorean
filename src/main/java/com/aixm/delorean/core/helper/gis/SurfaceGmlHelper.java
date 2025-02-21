@@ -1,13 +1,13 @@
 package com.aixm.delorean.core.helper.gis;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 
 import com.aixm.delorean.core.exception.gis.MalformedGeometryException;
-import com.aixm.delorean.core.gis.type.LinestringSegment;
 import com.aixm.delorean.core.gis.type.PolygonSegment;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -17,7 +17,6 @@ import javax.xml.namespace.QName;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;
-import org.locationtech.jts.geom.Polygon;
 
 import jakarta.xml.bind.JAXBElement;
 import com.aixm.delorean.core.org.gml.v_3_2.CurveType;
@@ -134,6 +133,8 @@ public class SurfaceGmlHelper {
 
     public static RingType printExteriorRing(List<PolygonSegment> value) {
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        
+        // Sort the list by Part, Member, and Sequence
         RingType ring = new RingType();
         value.sort((a, b) -> {
             int partCompare = Long.compare(a.getPart(), b.getPart());
@@ -142,50 +143,104 @@ public class SurfaceGmlHelper {
             if (memberCompare != 0) return memberCompare;
             return Long.compare(a.getSequence(), b.getSequence());
         });
-        for (PolygonSegment segment : value) {
-            CurvePropertyType curvePropertyType = new CurvePropertyType();
-            // Add additional processing for curvePropertyType if needed
+
+        // Group segments by Member number
+        Map<Long, List<PolygonSegment>> memberGroups = value.stream()
+        .collect(Collectors.groupingBy(PolygonSegment::getMember));
+
+        // Convert the map values to a list of lists
+        List<List<PolygonSegment>> groupedSegments = new ArrayList<>(memberGroups.values());
+
+        for (List<PolygonSegment> group : groupedSegments) {
+            CurvePropertyType CurveProperty= printCurveSegmentArrayPropertyType(group);
+            ring.getCurveMember().add(CurveProperty);
         }
 
-        
         return ring;
     }
 
-    public static RingType printInteriorRing(List<PolygonSegment> value) {
-
-        return null;
+    public static List<RingType> printInteriorRing(List<PolygonSegment> value) {
+        ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
+        
+        // Sort the list by Part, Member, and Sequence
+        List<RingType> rings = new ArrayList<>();
+        value.sort((a, b) -> {
+            int partCompare = Long.compare(a.getPart(), b.getPart());
+            if (partCompare != 0) return partCompare;
+            int memberCompare = Long.compare(a.getMember(), b.getMember());
+            if (memberCompare != 0) return memberCompare;
+            return Long.compare(a.getSequence(), b.getSequence());
+        });
+    
+        // Group segments by Part first, then by Member
+        Map<Long, Map<Long, List<PolygonSegment>>> partGroups = value.stream()
+            .collect(Collectors.groupingBy(PolygonSegment::getPart, 
+                Collectors.groupingBy(PolygonSegment::getMember)));
+    
+        // Process each group separately
+        for (Map<Long, List<PolygonSegment>> memberGroups : partGroups.values()) {
+            RingType ring = new RingType();
+            
+            for (List<PolygonSegment> group : memberGroups.values()) {
+                CurvePropertyType curveProperty = printCurveSegmentArrayPropertyType(group);
+                ring.getCurveMember().add(curveProperty);
+            }
+            
+            rings.add(ring);
+        }
+    
+        return rings;
     }
+    
 
     public static CurveType printCurveType (PolygonSegment value) {
         return new CurveType();
     }
 
-    public static CurveSegmentArrayPropertyType printCurveSegmentArrayPropertyType (List<PolygonSegment> value){
+    public static CurvePropertyType printCurveSegmentArrayPropertyType (List<PolygonSegment> value){
         ConsoleLogger.log(LogLevel.DEBUG, "value : " + value.toString(), new Exception().getStackTrace()[0]);
-        CurveSegmentArrayPropertyType curveSegment = new CurveSegmentArrayPropertyType();
+        CurveSegmentArrayPropertyType curveSegmentArray = new CurveSegmentArrayPropertyType();
         for (PolygonSegment segment : value) {
-            if (segment.getInterpretation() == PolygonSegment.Interpretation.ARCBYCENTER) {
+            if (segment.getInterpretation() == PolygonSegment.Interpretation.CURVEREF){
+                CurvePropertyType curveSegment = new CurvePropertyType();
+                //TODO: set title
+                curveSegment.setHref(segment.getCurveRef());
+                if (value.size() > 1) {
+                    ConsoleLogger.log(LogLevel.WARN, "Curve ref can only have one member", new Exception().getStackTrace()[0]);
+                }
+                return curveSegment;
+            } else if (segment.getInterpretation() == PolygonSegment.Interpretation.ARCBYCENTER) {
                 ArcByCenterPointType arcByCenterPoint = printArcByCenterPoint(segment);
-
+                JAXBElement<ArcByCenterPointType> jaxbArcByCenterPoint =  new JAXBElement<ArcByCenterPointType>(new QName("http://www.opengis.net/gml/3.2", "ArcByCenterPoint"), ArcByCenterPointType.class, arcByCenterPoint);
+                curveSegmentArray.getAbstractCurveSegment().add(jaxbArcByCenterPoint);
 
             } else if (segment.getInterpretation() == PolygonSegment.Interpretation.GEODESIC) {
                 GeodesicStringType geodesicString = printGeodesicString(segment);
-
+                JAXBElement<GeodesicStringType> jaxbGeodesicString = new JAXBElement<GeodesicStringType>(new QName("http://www.opengis.net/gml/3.2", "GeodesicString"), GeodesicStringType.class, geodesicString);
+                curveSegmentArray.getAbstractCurveSegment().add(jaxbGeodesicString);
 
             } else if (segment.getInterpretation() == PolygonSegment.Interpretation.LINESTRING) {
                 LineStringSegmentType lineStringSegment = printLineStringSegment(segment);
-
+                JAXBElement<LineStringSegmentType> jaxbLineStringSegment = new JAXBElement<LineStringSegmentType>(new QName("http://www.opengis.net/gml/3.2", "LineStringSegment"), LineStringSegmentType.class, lineStringSegment);
+                curveSegmentArray.getAbstractCurveSegment().add(jaxbLineStringSegment);
 
             } else if (segment.getInterpretation() == PolygonSegment.Interpretation.CIRCLEBYCENTER) {
                 CircleByCenterPointType circleByCenterPoint = printCircleByCenterPoint(segment);
-
+                JAXBElement<CircleByCenterPointType> jaxbCircleByCenterPoint = new JAXBElement<CircleByCenterPointType>(new QName("http://www.opengis.net/gml/3.2", "CircleByCenterPoint"), CircleByCenterPointType.class, circleByCenterPoint);
+                curveSegmentArray.getAbstractCurveSegment().add(jaxbCircleByCenterPoint);
 
             } else {
                 ConsoleLogger.log(LogLevel.FATAL, "Interpretation is not supported", new Exception().getStackTrace()[0]);
                 throw new RuntimeException("Interpretation is not supported");
             }
         }
-        return curveSegment;
+        CurveType curve = new CurveType();
+        curve.setSegments(curveSegmentArray);
+        JAXBElement<CurveType> jaxbCurve = new JAXBElement<CurveType>(new QName("http://www.opengis.net/gml/3.2", "Curve"), CurveType.class, curve);
+        CurvePropertyType CurveProperty = new CurvePropertyType();
+        CurveProperty.setAbstractCurve(jaxbCurve);
+
+        return CurveProperty;
     }
 
     public static ArcByCenterPointType printArcByCenterPoint (PolygonSegment value) {
