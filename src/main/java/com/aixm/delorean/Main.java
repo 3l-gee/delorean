@@ -183,7 +183,7 @@ public class Main {
     xml         <container id, - >      export           <path>      : export the xml data to the specified path
     db          <container id, - >      startup                      : start the database
     db          <container id, - >      load                         : load the data into the database
-    db          <container id, - >      export           < id >      : export the master aixmmessage with the specified id
+    db          <container id, - >      export           <id>        : export the master aixmmessage with the specified id
     exit                                                             : Exit the shell                                    
                 """);
             break;

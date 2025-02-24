@@ -7,15 +7,11 @@ import java.util.List;
 public enum DatabaseConfig {
 
     AIXM_5_1_1(
-        "a5_1_1",                                // version
-        "jdbc:postgresql://localhost:5432/delorean", // Default URL
-        "postgres",                             // Default username
-        "postgres",                             // Default password
-        5,                         // Connection pool min size
-        20,                        // Connection pool max size
-        false,                                   // Hibernate show_sql
-        "update",                            // Hibernate hbm2ddl.auto
-        "postgres/init/schema.sql", // Hibernate path
+        "a5_1_1",               // version
+        5,                      // Connection pool min size
+        20,                     // Connection pool max size
+        false,                  // Hibernate show_sql
+        "a5_1_1/postgres/init/schema.sql",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -804,15 +800,11 @@ public enum DatabaseConfig {
         } // Mapping classes
     ),
     a5_1(
-        "a5_1",                                // version
-        "jdbc:postgresql://localhost:5432/delorean", // Default URL
-        "postgres",                             // Default username
-        "postgres",                             // Default password
-        5,                         // Connection pool min size
-        20,                        // Connection pool max size
-        false,                                   // Hibernate show_sql
-        "update",                            // Hibernate hbm2ddl.auto
-        "postgres/init/schema.sql", // Hibernate schemapath
+        "a5_1",                                 // version
+        5,                                      // Connection pool min size
+        20,                                     // Connection pool max size
+        false,                                  // Hibernate show_sql
+        "a5_1/postgres/init/schema.sql",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -1597,29 +1589,21 @@ public enum DatabaseConfig {
     );
 
     private final String version;
-    private final String url;
-    private final String username;
-    private final String password;
     private final int connectionPoolMinSize;
     private final int connectionPoolMaxSize;
     private final boolean showSql;
-    private final String hbm2ddlAuto;
-    private final String schemapath;
     private final Class<?>[] mappingClasses;
     private final Configuration configuration;
+    private final String sqlInitFilePath;
 
-    DatabaseConfig(String version, String url, String username, String password, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String hbm2ddlAuto, String schemapath, Class<?>[] mappingClasses) {
+    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlInitFilePath, Class<?>[] mappingClasses) {
         this.version = version;
-        this.url = url;
-        this.username = username;
-        this.password = password;
         this.connectionPoolMinSize = connectionPoolMinSize;
         this.connectionPoolMaxSize = connectionPoolMaxSize;
         this.showSql = showSql;
-        this.hbm2ddlAuto = hbm2ddlAuto;
-        this.schemapath = schemapath;
         this.mappingClasses = mappingClasses;
         this.configuration = getHibernateConfiguration();
+        this.sqlInitFilePath = sqlInitFilePath;
     }
 
     public String getVersion() {
@@ -1640,9 +1624,6 @@ public enum DatabaseConfig {
 
         // Set database connection properties
         configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
-        configuration.setProperty("hibernate.connection.url", this.url);
-        configuration.setProperty("hibernate.connection.username", this.username);
-        configuration.setProperty("hibernate.connection.password", this.password);
 
         // Set JDBC connection pool settings
         configuration.setProperty("hibernate.c3p0.min_size", String.valueOf(this.connectionPoolMinSize));
@@ -1653,8 +1634,6 @@ public enum DatabaseConfig {
         configuration.setProperty("hibernate.format_sql", "true");  // Formats the SQL for readability
         configuration.setProperty("hibernate.generate_statistics", "true");  // Enables detailed statistics
         configuration.setProperty("hibernate.use_sql_comments", "true");  // Adds comments to the generated SQL for context
-        configuration.setProperty("hibernate.hbm2ddl.auto", this.hbm2ddlAuto);
-        configuration.setProperty("hibernate.hbm2ddl.import_files", this.schemapath);
 
         //Set PostgreSQL dialect
         configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
@@ -1674,5 +1653,9 @@ public enum DatabaseConfig {
             }
         }
         throw new IllegalArgumentException("Unsupported schema version: " + version);
+    }
+
+    public String getSqlInitFilePath() {
+        return sqlInitFilePath;
     }
 }

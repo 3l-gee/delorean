@@ -9,6 +9,18 @@ import com.aixm.delorean.core.log.LogLevel;
 
 import org.hibernate.Transaction;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.stream.Collectors;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
+
 public class DatabaseBinding<T> {
     private SessionFactory sessionFactory;
     private Configuration configuration;
@@ -77,12 +89,51 @@ public class DatabaseBinding<T> {
 
     public void startup() {
         try{
+            this.executeSchemaSetupScript();
             this.sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
+
+    private void executeSchemaSetupScript() {
+        String url = this.configuration.getProperty("hibernate.connection.url");
+        String username = this.configuration.getProperty("hibernate.connection.username");
+        String password = this.configuration.getProperty("hibernate.connection.password");
+        String sqlInitFilePath = this.databaseConfig.getSqlInitFilePath();
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(sqlInitFilePath)) {
+            if (inputStream == null) {
+                throw new IOException("SQL schema file not found: " + sqlInitFilePath);
+            }
+
+            // Read file content
+            String sql = new BufferedReader(new InputStreamReader(inputStream))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
+
+            try (Connection connection = DriverManager.getConnection(url, username, password);
+                Statement statement = connection.createStatement()) {
+
+                // Split and execute SQL statements
+                for (String query : sql.split(";")) {
+                    if (!query.trim().isEmpty()) {
+                        statement.execute(query.trim());
+                    }
+                }
+
+                ConsoleLogger.log(LogLevel.INFO, "Database schema and extensions initialized.", new Exception().getStackTrace()[0]);
+            }
+
+        } catch (IOException e) {
+            ConsoleLogger.log(LogLevel.ERROR, "Failed to read SQL file: " + e.getMessage(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Could not read SQL schema file", e);
+        } catch (SQLException e) {
+            ConsoleLogger.log(LogLevel.ERROR, "Database setup failed: " + e.getMessage(), new Exception().getStackTrace()[0]);
+            throw new RuntimeException("Database setup failed", e);
+        }
+    }
+
 
     public void shutdown(){
         this.sessionFactory.close();
