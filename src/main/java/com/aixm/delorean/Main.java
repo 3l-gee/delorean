@@ -140,7 +140,6 @@ public class Main {
 
         // logger.log(LogLevel.INFO, "db - startup");
         // executeDbActionCommand(this.containerWarehouse.getLastContainerId(),"startup", "");
-
     }
 
     private void executeCommand(String command, Scanner scanner) {

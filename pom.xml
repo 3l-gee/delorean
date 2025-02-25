@@ -7,7 +7,7 @@
 
 	<groupId>com.aixm.delorean</groupId>
 	<artifactId>delorean</artifactId>
-	<version>0.1.0 - alpha</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>delorean</name>
 	<url>https://github.com/3l-gee/delorean</url>
 
@@ -26,7 +26,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <geotools.version>32.0</geotools.version>
-        <maven.deploy.skip>true</maven.deploy.skip>
+        <!-- <maven.deploy.skip>true</maven.deploy.skip> -->
     </properties>
 
 	<dependencies>

@@ -22,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.Comparator;
 
 public enum XMLConfig {
 
@@ -70,6 +71,9 @@ public enum XMLConfig {
             }
 
             File tempDir = Files.createTempDirectory("delorean_" + path.hashCode()).toFile();
+
+            // Ensure tempDir is deleted when JVM exits
+            tempDir.deleteOnExit();
 
             if ("jar".equalsIgnoreCase(url.getProtocol())) {
                 URI jarUri = URI.create(url.toString().split("!")[0]);
