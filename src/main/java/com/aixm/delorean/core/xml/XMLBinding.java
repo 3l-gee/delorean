@@ -98,7 +98,7 @@ public class XMLBinding<T> {
             this.marshaller.setSchema(null);
 
             // Create JAXBElement with the provided class type
-            QName qName = new QName("http://www.aixm.aero/schema/5.1.1", "AIXMBasicMessage");
+            QName qName = new QName("http://www.aixm.aero/schema/5.1/message", "AIXMBasicMessage");
             JAXBElement<T> rootElement = new JAXBElement<>(qName, clazz, record);
 
             // Marshal the JAXBElement to the output stream

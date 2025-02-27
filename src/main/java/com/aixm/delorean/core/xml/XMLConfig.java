@@ -110,7 +110,7 @@ public enum XMLConfig {
                 });
             }
 
-            ConsoleLogger.log(LogLevel.DEBUG,"copied XSD to : " + path, new Exception().getStackTrace()[0]);
+            ConsoleLogger.log(LogLevel.DEBUG,"copied XSD to : " + tempDir.toPath().toAbsolutePath(), new Exception().getStackTrace()[0]);
             return tempDir.toPath();
 
         } catch (Exception e) {

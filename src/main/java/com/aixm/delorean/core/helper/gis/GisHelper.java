@@ -354,7 +354,7 @@ public class GisHelper {
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         //setting srsName
-        pointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
+        pointType.setSrsName("urn:ogc:def:crs:EPSG::" + value.getPoint().getSRID());
 
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
@@ -380,7 +380,7 @@ public class GisHelper {
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         //setting srsName
-        pointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
+        pointType.setSrsName("urn:ogc:def:crs:EPSG::" + value.getPoint().getSRID());
 
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
@@ -441,7 +441,7 @@ public class GisHelper {
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         // setting srsName
-        elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
+        elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG::" + value.getPoint().getSRID());
 
         // setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
@@ -495,7 +495,7 @@ public class GisHelper {
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
 
         // setting srsName
-        elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG:" + value.getPoint().getSRID());
+        elevatedPointType.setSrsName("urn:ogc:def:crs:EPSG::" + value.getPoint().getSRID());
 
         // setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
@@ -573,6 +573,18 @@ public class GisHelper {
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
 
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getSegments() != null) {
+            for (var exteriorLine : value.getSegments()) {
+                if (exteriorLine.getLinestring() != null) {
+                    curveType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
+
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -596,6 +608,18 @@ public class GisHelper {
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
+
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getSegments() != null) {
+            for (var exteriorLine : value.getSegments()) {
+                if (exteriorLine.getLinestring() != null) {
+                    curveType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
 
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
@@ -651,6 +675,18 @@ public class GisHelper {
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
 
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getSegments() != null) {
+            for (var exteriorLine : value.getSegments()) {
+                if (exteriorLine.getLinestring() != null) {
+                    elevatedCurve.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
+
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType();
         valDistance.setValue(value.getHorizontalAccuracy());
@@ -701,6 +737,18 @@ public class GisHelper {
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
+
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getSegments() != null) {
+            for (var exteriorLine : value.getSegments()) {
+                if (exteriorLine.getLinestring() != null) {
+                    elevatedCurve.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
 
         //setting horizontal accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType valDistance = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType();
@@ -779,6 +827,18 @@ public class GisHelper {
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getExteriorlinestring() != null) {
+            for (var exteriorLine : value.getExteriorlinestring()) {
+                if (exteriorLine.getLinestring() != null) {
+                    surfaceType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
+
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
         JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
@@ -816,6 +876,18 @@ public class GisHelper {
         surfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
+
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getExteriorlinestring() != null) {
+            for (var exteriorLine : value.getExteriorlinestring()) {
+                if (exteriorLine.getLinestring() != null) {
+                    surfaceType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
@@ -887,6 +959,18 @@ public class GisHelper {
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getExteriorlinestring() != null) {
+            for (var exteriorLine : value.getExteriorlinestring()) {
+                if (exteriorLine.getLinestring() != null) {
+                    elevatedSurfaceType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
+
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
         JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
@@ -924,6 +1008,18 @@ public class GisHelper {
         elevatedSurfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
+
+        //setting srsName
+        // TODO : While it is wrong to assume that all the content of the feature would have the same srsID, psql does not allow mixing of srsIDs.
+        // A better solution must be implemented to handle this problem. 
+        if (value.getExteriorlinestring() != null) {
+            for (var exteriorLine : value.getExteriorlinestring()) {
+                if (exteriorLine.getLinestring() != null) {
+                    elevatedSurfaceType.setSrsName("urn:ogc:def:crs:EPSG::" + exteriorLine.getLinestring().getSRID());
+                    break;
+                }
+            }
+        }
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());

@@ -189,9 +189,9 @@ public class DatabaseBinding<T> {
         }
 
         return object;
-        }
+    }
 
-        private boolean isMappedClass(Object object){ 
+    private boolean isMappedClass(Object object){ 
         if (this.databaseConfig.getMappedClasses().contains(object.getClass())){
             return true;
         }

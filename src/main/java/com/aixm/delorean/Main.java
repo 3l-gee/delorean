@@ -51,16 +51,16 @@ public class Main {
     private void run() {
         Scanner scanner = new Scanner(System.in);
         String command;
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("");
         System.out.println(" ██████╗  ███████╗ ██╗       ██████╗  ██████╗  ███████╗  █████╗  ███╗   ██╗ ");
         System.out.println(" ██╔══██╗ ██╔════╝ ██║      ██╔═══██╗ ██╔══██╗ ██╔════╝ ██╔══██╗ ████╗  ██║ ");
         System.out.println(" ██║  ██║ █████╗   ██║      ██║   ██║ ██████╔╝ █████╗   ███████║ ██╔██╗ ██║ ");
         System.out.println(" ██║  ██║ ██╔══╝   ██║      ██║   ██║ ██╔══██╗ ██╔══╝   ██╔══██║ ██║╚██╗██║ ");
         System.out.println(" ██████╔╝ ███████╗ ███████╗ ╚██████╔╝ ██║  ██║ ███████╗ ██║  ██║ ██║ ╚████║ ");
         System.out.println(" ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ");
-        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("");
         System.out.println("Author : Raphaël Gerth");
-        ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0 - alpha");
+        ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0-SNAPSHOT");
         ConsoleLogger.log(LogLevel.INFO, "type 'help' for a list of commands");
 
         while (true) {
@@ -317,19 +317,14 @@ public class Main {
                 // Ask for username
                 System.out.print("Enter username : ");
                 String username = scanner.nextLine();
-        
+
                 // Ask for password (hidden input)
-                char[] passwordChars = console.readPassword("Enter password: ");
+                char[] passwordChars = console.readPassword("Enter password : ");
                 String password = new String(passwordChars);
 
                 // Ask for hbm2ddl
                 System.out.print("Enter hbm2ddl, [create, update, validate, none] : ");
                 String hbm2ddl = scanner.nextLine();
-
-                System.out.println("URL: " + url);
-                System.out.println("Username: " + username);
-                System.out.println("Password: " + password);
-                System.out.println("hbm2ddl: " + hbm2ddl);
     
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUrl(url);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
