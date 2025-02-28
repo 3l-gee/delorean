@@ -1,5 +1,6 @@
 package com.aixm.delorean.core.xml;
 
+import java.io.Console;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,6 +10,9 @@ import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
@@ -71,13 +75,16 @@ public class XMLBinding<T> {
             if (unmarshalledObject instanceof JAXBElement<?>) {
 
                 JAXBElement<T> rootElement = (JAXBElement<T>) unmarshalledObject;
+                ConsoleLogger.log(LogLevel.INFO, "Successfully unmarshalled");
                 return rootElement.getValue();
             } else {
+                ConsoleLogger.log(LogLevel.INFO, "Successfully unmarshalled");
                 return (T) unmarshalledObject;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
     
@@ -103,6 +110,8 @@ public class XMLBinding<T> {
 
             // Marshal the JAXBElement to the output stream
             this.marshaller.marshal(rootElement, outputStream); 
+
+            ConsoleLogger.log(LogLevel.INFO, "Successfully marshalled");
 
         } catch (Exception e) {
             e.printStackTrace();
