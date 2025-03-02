@@ -1,4 +1,4 @@
-CREAtE OR REPLACE VIEW airport_heliport.runway_view AS
+CREATE OR REPLACE VIEW airport_heliport.runway_view AS
 SELECT 
 	airport_heliport.runway.id,
 	airport_heliport.runway.identifier,
@@ -107,7 +107,8 @@ GROUP BY
 	airport_heliport.airportheliport_pt.href,
 	airport_heliport.airportheliport_view.arp;
 
-SELECT 
+CREATE OR REPLACE VIEW airport_heliport.runwaydirection_view AS
+SELECT
 	airport_heliport.runwaydirection.id,
 	airport_heliport.runwaydirection.identifier,
 	airport_heliport.runwaydirection_ts.designator_value,
@@ -143,7 +144,7 @@ SELECT
 	airport_heliport.runwaydirection_ts.valid_time_end,
 	airport_heliport.runwaydirection_ts.feature_lifetime_begin,
 	airport_heliport.runwaydirection_ts.feature_lifetime_end,
-	COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+	COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note
 FROM airport_heliport.runwaydirection
 INNER JOIN runwaydirection_timeslice
 	ON  airport_heliport.runwaydirection.id = runwaydirection_timeslice.runwaydirection_id

@@ -91,6 +91,7 @@ public class DatabaseBinding<T> {
         try{
             this.executeSchemaSetupScript();
             this.sessionFactory = configuration.buildSessionFactory();
+            ConsoleLogger.log(LogLevel.INFO, "Sucessfully generated mappings");
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -122,7 +123,7 @@ public class DatabaseBinding<T> {
                     }
                 }
 
-                ConsoleLogger.log(LogLevel.INFO, "Database schema and extensions initialized.", new Exception().getStackTrace()[0]);
+                ConsoleLogger.log(LogLevel.INFO, "Sucessfully generated schema and extensions");
             }
 
         } catch (IOException e) {
@@ -155,6 +156,7 @@ public class DatabaseBinding<T> {
             transaction = session.beginTransaction();
             session.persist(object);
             transaction.commit();
+            ConsoleLogger.log(LogLevel.INFO, "Sucessfully loaded");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -187,7 +189,7 @@ public class DatabaseBinding<T> {
         } finally {
             session.close();
         }
-
+        ConsoleLogger.log(LogLevel.INFO, "Sucessfully exported");
         return object;
     }
 
