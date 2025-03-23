@@ -1,8 +1,8 @@
--- Required extension and schema
-
+-- Required extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "postgis";
 
+-- Required schema for AIXM 5.1.1
 CREATE SCHEMA IF NOT EXISTS aerial_refuelling;
 CREATE SCHEMA IF NOT EXISTS airport_heliport;
 CREATE SCHEMA IF NOT EXISTS airspace;
@@ -18,3 +18,6 @@ CREATE SCHEMA IF NOT EXISTS rules_procedures;
 CREATE SCHEMA IF NOT EXISTS service;
 CREATE SCHEMA IF NOT EXISTS shared;
 CREATE SCHEMA IF NOT EXISTS surveillance;
+
+-- Required schema for QGIS project
+CREATE SCHEMA IF NOT EXISTS qgis;

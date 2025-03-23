@@ -28,6 +28,9 @@ hs_err_pid*
 # Maven target directory
 target/
 
+#Qgis files
+qgis/
+
 # Gradle build directory
 build/
 

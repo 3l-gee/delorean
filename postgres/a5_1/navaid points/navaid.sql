@@ -1,13 +1,10 @@
 CREATE OR REPLACE VIEW navaids_points.authorityfornavaidequipment_view AS
 SELECT
 navaids_points.authorityfornavaidequipment_pt.id,
-jsonb_build_object(
-        'xml_id', navaids_points.authorityfornavaidequipment.xml_id,
-       'type_value', navaids_points.authorityfornavaidequipment.type_value,
-       'type_nilreason', navaids_points.authorityfornavaidequipment.type_nilreason,
-       'note', COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb),
-       'authorityForNavaidEquipment', COALESCE(jsonb_agg(organisation.organisation_view.*), '[]'::jsonb)
-    ) AS authorityfornavaidequipment
+COALESCE(navaids_points.authorityfornavaidequipment.type_value, '(' || navaids_points.authorityfornavaidequipment.type_nilreason || ')') AS type,
+organisation.organisationauthority_pt.title AS title,
+organisation.organisationauthority_pt.href AS uuid,
+COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS annotation
 FROM navaids_points.authorityfornavaidequipment_pt
 INNER JOIN navaids_points.authorityfornavaidequipment
     ON navaids_points.authorityfornavaidequipment_pt.authorityfornavaidequipment_id = navaids_points.authorityfornavaidequipment.id
@@ -17,13 +14,15 @@ LEFT JOIN notes.note_view
     ON authorityforauthorityfornavaidequipment_annotation.note_pt_id = notes.note_view.id
 LEFT JOIN organisation.organisationauthority_pt
     ON navaids_points.authorityfornavaidequipment.theorganisationauthority_id = organisation.organisationauthority_pt.id
-LEFT JOIN organisation.organisation_view
-    ON SUBSTRING(organisation.organisationauthority_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = organisation.organisation_view.identifier 
+-- LEFT JOIN organisation.organisation_view
+    -- ON SUBSTRING(organisation.organisationauthority_pt.href FROM'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$') = organisation.organisation_view.identifier 
 GROUP BY
     navaids_points.authorityfornavaidequipment_pt.id,
     navaids_points.authorityfornavaidequipment.xml_id,
     navaids_points.authorityfornavaidequipment.type_value,
-    navaids_points.authorityfornavaidequipment.type_nilreason;
+    navaids_points.authorityfornavaidequipment.type_nilreason,
+    organisation.organisationauthority_pt.title,
+    organisation.organisationauthority_pt.href;
 
 CREATE MATERIALIZED VIEW navaids_points.sdf_view AS
 SELECT 
@@ -1038,32 +1037,44 @@ SELECT
     (row_number() OVER ())::integer AS row,
     navaids_points.dme.id,
     navaids_points.dme.identifier,
-    navaids_points.dme_ts.designator_value,
-    navaids_points.dme_ts.designator_nilreason,
-    navaids_points.dme_ts.name_value,
-    navaids_points.dme_ts.name_nilreason,
-    navaids_points.dme_ts.emissionclass_value,
-    navaids_points.dme_ts.emissionclass_nilreason,
-    navaids_points.dme_ts.mobile_value,
-    navaids_points.dme_ts.mobile_nilreason,
-    navaids_points.dme_ts.magneticvariation_value,
-    navaids_points.dme_ts.magneticvariation_nilreason,
-    navaids_points.dme_ts.magneticvariationaccuracy_value,
-    navaids_points.dme_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.dme_ts.datemagneticvariation_value,
-    navaids_points.dme_ts.datemagneticvariation_nilreason,
-    navaids_points.dme_ts.flightchecked_value,
-    navaids_points.dme_ts.flightchecked_nilreason,
-    navaids_points.dme_ts.type_value,
-    navaids_points.dme_ts.type_nilreason,
-    navaids_points.dme_ts.channel_value,
-    navaids_points.dme_ts.channel_nilreason,
-    navaids_points.dme_ts.ghostfrequency_value,
-    navaids_points.dme_ts.ghostfrequency_uom,
-    navaids_points.dme_ts.ghostfrequency_nilreason,
-    navaids_points.dme_ts.displace_value,
-    navaids_points.dme_ts.displace_uom,
-    navaids_points.dme_ts.displace_nilreason,
+    COALESCE(navaids_points.dme_ts.type_value, '(' || navaids_points.dme_ts.type_nilreason || ')') AS type,
+    -- navaids_points.dme_ts.type_value,
+    -- navaids_points.dme_ts.type_nilreason,
+    COALESCE(navaids_points.dme_ts.channel_value, '(' || navaids_points.dme_ts.channel_nilreason || ')') AS channel,
+    -- navaids_points.dme_ts.channel_value,
+    -- navaids_points.dme_ts.channel_nilreason,
+    COALESCE(navaids_points.dme_ts.ghostfrequency_value || ' ' || navaids_points.dme_ts.ghostfrequency_uom, '(' || navaids_points.dme_ts.ghostfrequency_nilreason || ')') AS ghostfrequency,
+    -- navaids_points.dme_ts.ghostfrequency_value,
+    -- navaids_points.dme_ts.ghostfrequency_uom,
+    -- navaids_points.dme_ts.ghostfrequency_nilreason,
+    COALESCE(navaids_points.dme_ts.displace_value || ' ' || navaids_points.dme_ts.displace_uom, '(' || navaids_points.dme_ts.displace_nilreason || ')') AS displace,
+    -- navaids_points.dme_ts.displace_value,
+    -- navaids_points.dme_ts.displace_uom,
+    -- navaids_points.dme_ts.displace_nilreason,
+    COALESCE(navaids_points.dme_ts.designator_value, '(' || navaids_points.dme_ts.designator_nilreason || ')') AS designator,
+    -- navaids_points.dme_ts.designator_value,
+    -- navaids_points.dme_ts.designator_nilreason,
+    COALESCE(navaids_points.dme_ts.name_value, '(' || navaids_points.dme_ts.name_nilreason || ')') AS name,
+    -- navaids_points.dme_ts.name_value,
+    -- navaids_points.dme_ts.name_nilreason,
+    COALESCE(navaids_points.dme_ts.emissionclass_value, '(' || navaids_points.dme_ts.emissionclass_nilreason || ')') AS emissionclass,
+    -- navaids_points.dme_ts.emissionclass_value,
+    -- navaids_points.dme_ts.emissionclass_nilreason,
+    COALESCE(navaids_points.dme_ts.mobile_value, '(' || navaids_points.dme_ts.mobile_nilreason || ')') AS mobile,
+    -- navaids_points.dme_ts.mobile_value,
+    -- navaids_points.dme_ts.mobile_nilreason,
+    COALESCE(navaids_points.dme_ts.magneticvariation_value, '(' || navaids_points.dme_ts.magneticvariation_nilreason || ')') AS magneticvariation,
+    -- navaids_points.dme_ts.magneticvariation_value,
+    -- navaids_points.dme_ts.magneticvariation_nilreason,
+    COALESCE(navaids_points.dme_ts.magneticvariationaccuracy_value, '(' || navaids_points.dme_ts.magneticvariationaccuracy_nilreason || ')') AS magneticvariationaccuracy,
+    -- navaids_points.dme_ts.magneticvariationaccuracy_value,
+    -- navaids_points.dme_ts.magneticvariationaccuracy_nilreason,
+    COALESCE(navaids_points.dme_ts.datemagneticvariation_value, '(' || navaids_points.dme_ts.datemagneticvariation_nilreason || ')') AS datemagneticvariation,
+    -- navaids_points.dme_ts.datemagneticvariation_value,
+    -- navaids_points.dme_ts.datemagneticvariation_nilreason,
+    COALESCE(navaids_points.dme_ts.flightchecked_value, '(' || navaids_points.dme_ts.flightchecked_nilreason || ')') AS flightchecked,
+    -- navaids_points.dme_ts.flightchecked_value,
+    -- navaids_points.dme_ts.flightchecked_nilreason,
     navaids_points.dme_ts.interpretation,
     navaids_points.dme_ts.sequence_number,
     navaids_points.dme_ts.correction_number,
@@ -1071,10 +1082,12 @@ SELECT
     navaids_points.dme_ts.valid_time_end,
     navaids_points.dme_ts.feature_lifetime_begin,
     navaids_points.dme_ts.feature_lifetime_end,
-    geometry.elevated_point_view.geom,
-    COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+    geometry.elevated_point_view.geom AS location,
+    '[]'::jsonb AS monitoring,
+    COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS annotation,
     COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
-    COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
+    '[]'::jsonb AS availability,
+    -- COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.dme
 INNER JOIN dme_timeslice
     ON dme.id = dme_timeslice.dme_id
