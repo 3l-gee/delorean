@@ -29,7 +29,7 @@ hs_err_pid*
 target/
 
 #Qgis files
-qgis/
+# qgis/
 
 # Gradle build directory
 build/
