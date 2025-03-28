@@ -1031,8 +1031,7 @@ GROUP BY
     navaids_points.vor_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
 
-
-CREATE MATERIALIZED VIEW navaids_points.dme_view AS
+CREATE OR REPLACE VIEW navaids_points.dme_view AS
 SELECT
     (row_number() OVER ())::integer AS row,
     navaids_points.dme.id,
@@ -1063,10 +1062,10 @@ SELECT
     COALESCE(navaids_points.dme_ts.mobile_value, '(' || navaids_points.dme_ts.mobile_nilreason || ')') AS mobile,
     -- navaids_points.dme_ts.mobile_value,
     -- navaids_points.dme_ts.mobile_nilreason,
-    COALESCE(navaids_points.dme_ts.magneticvariation_value, '(' || navaids_points.dme_ts.magneticvariation_nilreason || ')') AS magneticvariation,
+    COALESCE(CAST(navaids_points.dme_ts.magneticvariation_value AS varchar), '(' || navaids_points.dme_ts.magneticvariation_nilreason || ')') AS magneticvariation,
     -- navaids_points.dme_ts.magneticvariation_value,
     -- navaids_points.dme_ts.magneticvariation_nilreason,
-    COALESCE(navaids_points.dme_ts.magneticvariationaccuracy_value, '(' || navaids_points.dme_ts.magneticvariationaccuracy_nilreason || ')') AS magneticvariationaccuracy,
+    COALESCE(CAST(navaids_points.dme_ts.magneticvariationaccuracy_value AS varchar), '(' || navaids_points.dme_ts.magneticvariationaccuracy_nilreason || ')') AS magneticvariationaccuracy,
     -- navaids_points.dme_ts.magneticvariationaccuracy_value,
     -- navaids_points.dme_ts.magneticvariationaccuracy_nilreason,
     COALESCE(navaids_points.dme_ts.datemagneticvariation_value, '(' || navaids_points.dme_ts.datemagneticvariation_nilreason || ')') AS datemagneticvariation,
@@ -1085,8 +1084,9 @@ SELECT
     geometry.elevated_point_view.geom AS location,
     '[]'::jsonb AS monitoring,
     COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS annotation,
-    COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
-    '[]'::jsonb AS availability,
+	'[]'::jsonb AS authority,
+    -- COALESCE(jsonb_agg(navaids_points.authorityfornavaidequipment_view.authorityfornavaidequipment), '[]'::jsonb) AS authority,
+    '[]'::jsonb AS availability
     -- COALESCE(jsonb_agg(shared.radiofrequencyarea_view.*), '[]'::jsonb) AS radiofrequencyarea
 FROM navaids_points.dme
 INNER JOIN dme_timeslice
@@ -1148,7 +1148,6 @@ GROUP BY
     navaids_points.dme_ts.feature_lifetime_begin,
     navaids_points.dme_ts.feature_lifetime_end,
     geometry.elevated_point_view.geom;
-
 
 CREATE OR REPLACE VIEW navaids_points.navaidcomponent_view AS
 SELECT 
