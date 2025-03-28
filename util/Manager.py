@@ -369,16 +369,19 @@ schema = {
 
 config = {
     "ignore": [
+        # TODO solve this   
         "XHTMLType",
+
+        # Core
         "AIXMBasicMessageType",
         "AIXMBasicMessagePropertyGroup",
         "BasicMessageMemberAIXMPropertyType",
-        "PointPropertyType",
-        "CurvePropertyType",
-        "SurfacePropertyType",
-        "ElevatedPointPropertyType",
-        "ElevatedCurvePropertyType",
-        "ElevatedSurfacePropertyType",
+        "MessageMetadataPropertyType",
+        "FeatureMetadataPropertyType",
+        "FeatureTimeSliceMetadataPropertyType",
+        "MessageMetadataPropertyType,",
+
+        # Abstract
         "AbstractAIXMMessageBaseType",
         "AbstractAIXMMessageType",
         "AbstractAIXMFeatureBaseType",
@@ -388,23 +391,36 @@ config = {
         "AbstractAIXMPropertyType",
         "AbstractAIXMObjectBaseType",
         "AbstractAIXMObjectType",
-        "MessageMetadataPropertyType",
-        "FeatureMetadataPropertyType",
-        "FeatureTimeSliceMetadataPropertyType",
-        "MessageMetadataPropertyType,",
+
+        # Gis
+        "PointPropertyType",
+        "CurvePropertyType",
+        "SurfacePropertyType",
+        "ElevatedPointPropertyType",
+        "ElevatedCurvePropertyType",
+        "ElevatedSurfacePropertyType",
     ],
-    "transient" : [
+    "transient" : [       
+        # TODO solve this         
+        "extension",
+        "aixm:XHTMLType",
+
+        # Core
+        "aixm:AIXMBasicMessageType",
+        "aixm:AIXMBasicMessagePropertyGroup",
+        "aixm:BasicMessageMemberAIXMPropertyType",
+        "aixm:MessageMetadataPropertyType",
+        "aixm:FeatureMetadataPropertyType",
+        "aixm:FeatureTimeSliceMetadataPropertyType",
+        "aixm:MessageMetadataPropertyType,",
+
+        # Abstract
         "aixm:AbstractDirectFlight",
         "aixm:AbstractPropertiesWithSchedule",
         "aixm:AbstractUsageConditio",
         "aixm:AbstractSurfaceContamination",
         "aixm:AbstractSegmentPoint",
         "aixm:AbstractUsageCondition",
-        "extension",
-        "aixm:XHTMLType",
-        "aixm:AIXMBasicMessageType",
-        "aixm:AIXMBasicMessagePropertyGroup",
-        "aixm:BasicMessageMemberAIXMPropertyType",
         "aixm:AbstractAIXMMessageBaseType",
         "aixm:AbstractAIXMMessageType",
         "aixm:AbstractAIXMFeatureBaseType",
@@ -414,10 +430,6 @@ config = {
         "aixm:AbstractAIXMPropertyType",
         "aixm:AbstractAIXMObjectBaseType",
         "aixm:AbstractAIXMObjectType",
-        "aixm:MessageMetadataPropertyType",
-        "aixm:FeatureMetadataPropertyType",
-        "aixm:FeatureTimeSliceMetadataPropertyType",
-        "aixm:MessageMetadataPropertyType,",
     ],
     "embed": {
         "PointType" : {},
@@ -487,17 +499,28 @@ machinery = Machinery(config, debug, schema, [data_types, feature, abstract, mes
 
 config = {
     "ignore": [
+        # TODO solve this  
         "StandardLevelColumnPropertyGroup.unitOfMeasurement",
         "XHTMLType",
+
+        # Core
         "AIXMBasicMessageType",
         "AIXMBasicMessagePropertyGroup",
         "BasicMessageMemberAIXMPropertyType",
+        "MessageMetadataPropertyType",
+        "FeatureMetadataPropertyType",
+        "FeatureTimeSliceMetadataPropertyType",
+        "MessageMetadataPropertyType,",
+
+        # Gis
         "PointPropertyType",
         "CurvePropertyType",
         "SurfacePropertyType",
         "ElevatedPointPropertyType",
         "ElevatedCurvePropertyType",
         "ElevatedSurfacePropertyType",
+
+        # Core Abstract
         "AbstractAIXMMessageBaseType",
         "AbstractAIXMMessageType",
         "AbstractAIXMFeatureBaseType",
@@ -507,23 +530,28 @@ config = {
         "AbstractAIXMPropertyType",
         "AbstractAIXMObjectBaseType",
         "AbstractAIXMObjectType",
-        "MessageMetadataPropertyType",
-        "FeatureMetadataPropertyType",
-        "FeatureTimeSliceMetadataPropertyType",
-        "MessageMetadataPropertyType,",
     ],
     "transient" : [
+        # TODO solve this    
+        "extension",
+        "aixm:XHTMLType",
+
+        # Core
+        "aixm:AIXMBasicMessageType",
+        "aixm:AIXMBasicMessagePropertyGroup",
+        "aixm:BasicMessageMemberAIXMPropertyType",
+        "aixm:MessageMetadataPropertyType",
+        "aixm:FeatureMetadataPropertyType",
+        "aixm:FeatureTimeSliceMetadataPropertyType",
+        "aixm:MessageMetadataPropertyType,",
+
+        # Feature Abstract
         "aixm:AbstractDirectFlight",
         "aixm:AbstractPropertiesWithSchedule",
         "aixm:AbstractUsageConditio",
         "aixm:AbstractSurfaceContamination",
         "aixm:AbstractSegmentPoint",
         "aixm:AbstractUsageCondition",
-        "extension",
-        "aixm:XHTMLType",
-        "aixm:AIXMBasicMessageType",
-        "aixm:AIXMBasicMessagePropertyGroup",
-        "aixm:BasicMessageMemberAIXMPropertyType",
         "aixm:AbstractAIXMMessageBaseType",
         "aixm:AbstractAIXMMessageType",
         "aixm:AbstractAIXMFeatureBaseType",
@@ -533,18 +561,14 @@ config = {
         "aixm:AbstractAIXMPropertyType",
         "aixm:AbstractAIXMObjectBaseType",
         "aixm:AbstractAIXMObjectType",
-        "aixm:MessageMetadataPropertyType",
-        "aixm:FeatureMetadataPropertyType",
-        "aixm:FeatureTimeSliceMetadataPropertyType",
-        "aixm:MessageMetadataPropertyType,",
     ],
     "embed": {
-        "PointType" : {"source" : "config"},
-        "ElevatedPointType" : {"source" : "config"},
-        "CurveType" : {"source" : "config"},
-        "ElevatedCurveType" : {"source" : "config"},
-        "SurfaceType" : {"source" : "config"},
-        "ElevatedSurfaceType" : {"source" : "config"},
+        "PointType" : {},
+        "ElevatedPointType" : {},
+        "CurveType" : {},
+        "ElevatedCurveType" : {},
+        "SurfaceType" : {},
+        "ElevatedSurfaceType" : {},
     },
     "abstract": [
         "AbstractMarkingType",

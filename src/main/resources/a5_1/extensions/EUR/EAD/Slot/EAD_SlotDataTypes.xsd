@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - EAD Slot extension Schema-->
+<!--www.aixm.aero-->
+<!--Released:  March 2012-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2012, EUROCONTROL
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: EAD: Slot: DataTypes -->
+<schema xmlns:EAD_Slot="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_DataTypes.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<simpleType name="CodeSlotSourceBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>The source of the private slot.</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="AIRAC_AMDT">
+						<annotation>
+							<appinfo>
+								<gml:description>AIRAC AIP Amendment.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="AMDT">
+						<annotation>
+							<appinfo>
+								<gml:description>Non-AIRAC AIP Amendment.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="AIRAC_SUP">
+						<annotation>
+							<appinfo>
+								<gml:description>AIRAC AIP Supplement.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="SUP">
+						<annotation>
+							<appinfo>
+								<gml:description>Non-AIRAC AIP Supplement.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="AIC">
+						<annotation>
+							<appinfo>
+								<gml:description>Aeronautical Information Circular.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="NOTAM">
+						<annotation>
+							<appinfo>
+								<gml:description>NOTAM Message.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="UPDATE">
+						<annotation>
+							<appinfo>
+								<gml:description>Database update (no source).</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeSlotSourceType">
+		<simpleContent>
+			<extension base="EAD_Slot:CodeSlotSourceBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="CodePublicSlotStatusBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>The status indicator of the public slot.</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CONSISTENT">
+						<annotation>
+							<appinfo>
+								<gml:description>After successful public slot checking.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="COMMITTED">
+						<annotation>
+							<appinfo>
+								<gml:description>After successful committing of the Public Slot.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="INCONSISTENT">
+						<annotation>
+							<appinfo>
+								<gml:description>After unsuccessful public slot checking.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="UNKNOWN">
+						<annotation>
+							<appinfo>
+								<gml:description>After adding, modifying, removing private slots.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="DELETED">
+						<annotation>
+							<appinfo>
+								<gml:description>After deletion.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="EXPIRED">
+						<annotation>
+							<appinfo>
+								<gml:description>When the planned commit date is reached and the status is not Committed.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="EMTPY">
+						<annotation>
+							<appinfo>
+								<gml:description>After its creation.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodePrivateSlotStatusBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>The status of the private slot.</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CONSISTENT">
+						<annotation>
+							<appinfo>
+								<gml:description>After successful private slot checking.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="COMMITTED">
+						<annotation>
+							<appinfo>
+								<gml:description>After successful committing of the Public Slot.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="INCONSISTENT">
+						<annotation>
+							<appinfo>
+								<gml:description>After unsuccessful private slot checking.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="CLOSED">
+						<annotation>
+							<appinfo>
+								<gml:description>After successful closing of the private slot for static data element changes.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="UNKNOWN">
+						<annotation>
+							<appinfo>
+								<gml:description>After adding, modifying, removing static data element changes.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="EXPIRED">
+						<annotation>
+							<appinfo>
+								<gml:description>When the planned commit date is reached and the status is not Committed.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="EMTPY">
+						<annotation>
+							<appinfo>
+								<gml:description>After its creation.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodePublicSlotStatusType">
+		<simpleContent>
+			<extension base="EAD_Slot:CodePublicSlotStatusBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodePrivateSlotStatusType">
+		<simpleContent>
+			<extension base="EAD_Slot:CodePrivateSlotStatusBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

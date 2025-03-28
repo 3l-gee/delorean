@@ -1,0 +1,2471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - EAD Slot extension Schema-->
+<!--www.aixm.aero-->
+<!--Released:  March 2012-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2012, EUROCONTROL
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: EAD: Slot: Features -->
+<schema xmlns:EAD_Slot="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_Features.xsd"/>
+	<include schemaLocation="./EAD_SlotDataTypes.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.0/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<complexType name="PublicSlotPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="PublicSlot" type="EAD_Slot:PublicSlotType" substitutionGroup="EAD_Slot:AbstractSlot">
+		<annotation>
+			<appinfo>
+				<gml:description>A container for all Private Slots that have the same effective date  and time and are committed together.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="PublicSlotType">
+		<complexContent>
+			<extension base="EAD_Slot:AbstractSlotType">
+				<sequence>
+					<element name="timeSlice" type="EAD_Slot:PublicSlotTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="PublicSlotTimeSlicePropertyType">
+		<sequence>
+			<element ref="EAD_Slot:PublicSlotTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="PublicSlotTimeSlice" type="EAD_Slot:PublicSlotTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="PublicSlotTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="EAD_Slot:PublicSlotPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="EAD_Slot:AbstractPublicSlotExtension"/>
+								<element ref="EAD_Slot:AbstractSlotExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PublicSlotPropertyGroup">
+		<sequence>
+			<group ref="EAD_Slot:SlotPropertyGroup" minOccurs="0"/>
+			<element name="effectiveDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The effective date and time of the public slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="system" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>System name that the public slot or subsystem replication was assigned to (e.g. EAD).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="indicatorAIRAC" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indication if the planned commit date of this public slot is in an AIRAC cycle date</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="publicationDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The planned publication date and time of this public slot</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="closingDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The closing date and time of the associated private slots.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="plannedCommitDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The planned commit date and time of this public slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="committedDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The date and time when this public slot was committed</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="committedBy" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The committer of this public slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="fastSlot" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates if this is a Fast Slot, i.e. Private slots closing date, Planned commit date, Publication date and Effective date may have the same value.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="status" type="EAD_Slot:CodePublicSlotStatusType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The status indicator of the public slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AbstractPublicSlotExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="PrivateSlotPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="PrivateSlot" type="EAD_Slot:PrivateSlotType" substitutionGroup="EAD_Slot:AbstractSlot">
+		<annotation>
+			<appinfo>
+				<gml:description>A container for EAD changes that have a common effective date and time, a common source and are committed together.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="PrivateSlotType">
+		<complexContent>
+			<extension base="EAD_Slot:AbstractSlotType">
+				<sequence>
+					<element name="timeSlice" type="EAD_Slot:PrivateSlotTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="PrivateSlotTimeSlicePropertyType">
+		<sequence>
+			<element ref="EAD_Slot:PrivateSlotTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="PrivateSlotTimeSlice" type="EAD_Slot:PrivateSlotTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="PrivateSlotTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="EAD_Slot:PrivateSlotPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="EAD_Slot:AbstractPrivateSlotExtension"/>
+								<element ref="EAD_Slot:AbstractSlotExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrivateSlotPropertyGroup">
+		<sequence>
+			<group ref="EAD_Slot:SlotPropertyGroup" minOccurs="0"/>
+			<element name="sourceType" type="EAD_Slot:CodeSlotSourceType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>source of the private slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="sourceDesignator" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The designator of the source (e.g. ARR/DEP 01, A 03).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="sourceYear" type="aixm:DateYearType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The year of the source.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="effectiveDatePublication" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The effective date and time of thet data, as mentioned on the source publication.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="designatorNOTAM" type="aixm:TextDesignatorType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The NOTAM designator.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="versionAIXM" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The version of AIXM for which the private slot stores data.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="triggerNOTAM" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates that a Trigger NOTAM is associated with the slot data.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="targetNOTAM" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates that the slot data will be included in an NOTAM.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="targetAIPAmendment" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates that the slot data will be included in an AIP amendment.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="targetAIPSupplement" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates that the slot data will be included in an AIP Supplement.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="targetAIC" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates that the slot data will be included in an AIC.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="status" type="EAD_Slot:CodePrivateSlotStatusType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The status indicator of this public slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="publicSlotAllocation" type="EAD_Slot:PublicSlotPropertyType" nillable="true" minOccurs="0"/>
+			<element name="owner" type="aixm:OrganisationAuthorityPropertyType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractPrivateSlotExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="SlotPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="AbstractSlot" type="EAD_Slot:AbstractSlotType" abstract="true" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<appinfo>
+				<gml:description>A generic container for EAD database changes.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="AbstractSlotType" abstract="true">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType"/>
+		</complexContent>
+	</complexType>
+	<group name="SlotPropertyGroup">
+		<sequence>
+			<element name="name" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The name of the slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="creationDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The creation date and time of the slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="createdBy" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The creator of the slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="creatorSystem" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The system where the slot was created.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="lastUpdateDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The date and time when the slot was last updated.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="updatedBy" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The last updater of the slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="updaterSystem" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The system where the slot was last updated.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="checked" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates whether the slot has been checked or not (NO means that the public slot is force-committed).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="checkDate" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The date and time when the last check was performed on the slot.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractSlotExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<!--	<element name="AnyAIXMFeatureExtension" type="EAD_Slot:AnyAIXMFeatureExtensionType" substitutionGroup="aixm:AbstractAnyAIXMFeatureExtension"/>
+	<complexType name="AnyAIXMFeatureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AnyAIXMFeatureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AnyAIXMFeatureExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The private slot to which the change of the feature is allocated.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group> -->
+	<!-- #######################################################################
+This Application Schema below is auto-generated from the core schema AIXM_Features.xsd.
+#######################################################################-->
+	<element name="RunwayProtectAreaExtension" type="EAD_Slot:RunwayProtectAreaExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaExtension"/>
+	<complexType name="RunwayProtectAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayProtectAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionExtension" type="EAD_Slot:RunwayDirectionExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionExtension"/>
+	<complexType name="RunwayDirectionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayDirectionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayCentrelinePointExtension" type="EAD_Slot:RunwayCentrelinePointExtensionType" substitutionGroup="aixm:AbstractRunwayCentrelinePointExtension"/>
+	<complexType name="RunwayCentrelinePointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayCentrelinePointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayCentrelinePointExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayExtension" type="EAD_Slot:RunwayExtensionType" substitutionGroup="aixm:AbstractRunwayExtension"/>
+	<complexType name="RunwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrestingGearExtension" type="EAD_Slot:ArrestingGearExtensionType" substitutionGroup="aixm:AbstractArrestingGearExtension"/>
+	<complexType name="ArrestingGearExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ArrestingGearExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrestingGearExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayElementExtension" type="EAD_Slot:RunwayElementExtensionType" substitutionGroup="aixm:AbstractRunwayElementExtension"/>
+	<complexType name="RunwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VisualGlideSlopeIndicatorExtension" type="EAD_Slot:VisualGlideSlopeIndicatorExtensionType" substitutionGroup="aixm:AbstractVisualGlideSlopeIndicatorExtension"/>
+	<complexType name="VisualGlideSlopeIndicatorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:VisualGlideSlopeIndicatorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VisualGlideSlopeIndicatorExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayVisualRangeExtension" type="EAD_Slot:RunwayVisualRangeExtensionType" substitutionGroup="aixm:AbstractRunwayVisualRangeExtension"/>
+	<complexType name="RunwayVisualRangeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayVisualRangeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayVisualRangeExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayBlastPadExtension" type="EAD_Slot:RunwayBlastPadExtensionType" substitutionGroup="aixm:AbstractRunwayBlastPadExtension"/>
+	<complexType name="RunwayBlastPadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayBlastPadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayBlastPadExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionExtension" type="EAD_Slot:TaxiHoldingPositionExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionExtension"/>
+	<complexType name="TaxiHoldingPositionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiHoldingPositionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayExtension" type="EAD_Slot:TaxiwayExtensionType" substitutionGroup="aixm:AbstractTaxiwayExtension"/>
+	<complexType name="TaxiwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayElementExtension" type="EAD_Slot:TaxiwayElementExtensionType" substitutionGroup="aixm:AbstractTaxiwayElementExtension"/>
+	<complexType name="TaxiwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineExtension" type="EAD_Slot:GuidanceLineExtensionType" substitutionGroup="aixm:AbstractGuidanceLineExtension"/>
+	<complexType name="GuidanceLineExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GuidanceLineExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronExtension" type="EAD_Slot:ApronExtensionType" substitutionGroup="aixm:AbstractApronExtension"/>
+	<complexType name="ApronExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApronExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronElementExtension" type="EAD_Slot:ApronElementExtensionType" substitutionGroup="aixm:AbstractApronElementExtension"/>
+	<complexType name="ApronElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApronElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronElementExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AircraftStandExtension" type="EAD_Slot:AircraftStandExtensionType" substitutionGroup="aixm:AbstractAircraftStandExtension"/>
+	<complexType name="AircraftStandExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AircraftStandExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftStandExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RoadExtension" type="EAD_Slot:RoadExtensionType" substitutionGroup="aixm:AbstractRoadExtension"/>
+	<complexType name="RoadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RoadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RoadExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaExtension" type="EAD_Slot:DeicingAreaExtensionType" substitutionGroup="aixm:AbstractDeicingAreaExtension"/>
+	<complexType name="DeicingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DeicingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PassengerLoadingBridgeExtension" type="EAD_Slot:PassengerLoadingBridgeExtensionType" substitutionGroup="aixm:AbstractPassengerLoadingBridgeExtension"/>
+	<complexType name="PassengerLoadingBridgeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:PassengerLoadingBridgeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerLoadingBridgeExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffSafeAreaExtension" type="EAD_Slot:TouchDownLiftOffSafeAreaExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffSafeAreaExtension"/>
+	<complexType name="TouchDownLiftOffSafeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TouchDownLiftOffSafeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffSafeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffExtension" type="EAD_Slot:TouchDownLiftOffExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffExtension"/>
+	<complexType name="TouchDownLiftOffExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TouchDownLiftOffExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GroundLightSystemExtension" type="EAD_Slot:GroundLightSystemExtensionType" substitutionGroup="aixm:AbstractGroundLightSystemExtension"/>
+	<complexType name="GroundLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GroundLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronLightSystemExtension" type="EAD_Slot:ApronLightSystemExtensionType" substitutionGroup="aixm:AbstractApronLightSystemExtension"/>
+	<complexType name="ApronLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApronLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayLightSystemExtension" type="EAD_Slot:TaxiwayLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiwayLightSystemExtension"/>
+	<complexType name="TaxiwayLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiwayLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionLightSystemExtension" type="EAD_Slot:RunwayDirectionLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionLightSystemExtension"/>
+	<complexType name="RunwayDirectionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayDirectionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffLightSystemExtension" type="EAD_Slot:TouchDownLiftOffLightSystemExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffLightSystemExtension"/>
+	<complexType name="TouchDownLiftOffLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TouchDownLiftOffLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineLightSystemExtension" type="EAD_Slot:GuidanceLineLightSystemExtensionType" substitutionGroup="aixm:AbstractGuidanceLineLightSystemExtension"/>
+	<complexType name="GuidanceLineLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GuidanceLineLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaLightSystemExtension" type="EAD_Slot:RunwayProtectAreaLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaLightSystemExtension"/>
+	<complexType name="RunwayProtectAreaLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayProtectAreaLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionLightSystemExtension" type="EAD_Slot:TaxiHoldingPositionLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionLightSystemExtension"/>
+	<complexType name="TaxiHoldingPositionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiHoldingPositionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApproachLightingSystemExtension" type="EAD_Slot:ApproachLightingSystemExtensionType" substitutionGroup="aixm:AbstractApproachLightingSystemExtension"/>
+	<complexType name="ApproachLightingSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApproachLightingSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLightingSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MarkingExtension" type="EAD_Slot:MarkingExtensionType" substitutionGroup="aixm:AbstractMarkingExtension"/>
+	<complexType name="MarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:MarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayMarkingExtension" type="EAD_Slot:TaxiwayMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiwayMarkingExtension"/>
+	<complexType name="TaxiwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronMarkingExtension" type="EAD_Slot:ApronMarkingExtensionType" substitutionGroup="aixm:AbstractApronMarkingExtension"/>
+	<complexType name="ApronMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApronMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportProtectionAreaMarkingExtension" type="EAD_Slot:AirportProtectionAreaMarkingExtensionType" substitutionGroup="aixm:AbstractAirportProtectionAreaMarkingExtension"/>
+	<complexType name="AirportProtectionAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportProtectionAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportProtectionAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffMarkingExtension" type="EAD_Slot:TouchDownLiftOffMarkingExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffMarkingExtension"/>
+	<complexType name="TouchDownLiftOffMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TouchDownLiftOffMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayMarkingExtension" type="EAD_Slot:RunwayMarkingExtensionType" substitutionGroup="aixm:AbstractRunwayMarkingExtension"/>
+	<complexType name="RunwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RunwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineMarkingExtension" type="EAD_Slot:GuidanceLineMarkingExtensionType" substitutionGroup="aixm:AbstractGuidanceLineMarkingExtension"/>
+	<complexType name="GuidanceLineMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GuidanceLineMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaMarkingExtension" type="EAD_Slot:DeicingAreaMarkingExtensionType" substitutionGroup="aixm:AbstractDeicingAreaMarkingExtension"/>
+	<complexType name="DeicingAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DeicingAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionMarkingExtension" type="EAD_Slot:TaxiHoldingPositionMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionMarkingExtension"/>
+	<complexType name="TaxiHoldingPositionMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TaxiHoldingPositionMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandMarkingExtension" type="EAD_Slot:StandMarkingExtensionType" substitutionGroup="aixm:AbstractStandMarkingExtension"/>
+	<complexType name="StandMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FloatingDockSiteExtension" type="EAD_Slot:FloatingDockSiteExtensionType" substitutionGroup="aixm:AbstractFloatingDockSiteExtension"/>
+	<complexType name="FloatingDockSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:FloatingDockSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FloatingDockSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MarkingBuoyExtension" type="EAD_Slot:MarkingBuoyExtensionType" substitutionGroup="aixm:AbstractMarkingBuoyExtension"/>
+	<complexType name="MarkingBuoyExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:MarkingBuoyExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingBuoyExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneLandingAreaExtension" type="EAD_Slot:SeaplaneLandingAreaExtensionType" substitutionGroup="aixm:AbstractSeaplaneLandingAreaExtension"/>
+	<complexType name="SeaplaneLandingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SeaplaneLandingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneLandingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneRampSiteExtension" type="EAD_Slot:SeaplaneRampSiteExtensionType" substitutionGroup="aixm:AbstractSeaplaneRampSiteExtension"/>
+	<complexType name="SeaplaneRampSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SeaplaneRampSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneRampSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="WorkAreaExtension" type="EAD_Slot:WorkAreaExtensionType" substitutionGroup="aixm:AbstractWorkAreaExtension"/>
+	<complexType name="WorkAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:WorkAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="WorkAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SurveyControlPointExtension" type="EAD_Slot:SurveyControlPointExtensionType" substitutionGroup="aixm:AbstractSurveyControlPointExtension"/>
+	<complexType name="SurveyControlPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SurveyControlPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveyControlPointExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NonMovementAreaExtension" type="EAD_Slot:NonMovementAreaExtensionType" substitutionGroup="aixm:AbstractNonMovementAreaExtension"/>
+	<complexType name="NonMovementAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NonMovementAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NonMovementAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportProtectionAreaExtension" type="EAD_Slot:AirportHeliportProtectionAreaExtensionType" substitutionGroup="aixm:AbstractAirportHeliportProtectionAreaExtension"/>
+	<complexType name="AirportHeliportProtectionAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportHeliportProtectionAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportProtectionAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportCollocationExtension" type="EAD_Slot:AirportHeliportCollocationExtensionType" substitutionGroup="aixm:AbstractAirportHeliportCollocationExtension"/>
+	<complexType name="AirportHeliportCollocationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportHeliportCollocationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportCollocationExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportExtension" type="EAD_Slot:AirportHeliportExtensionType" substitutionGroup="aixm:AbstractAirportHeliportExtension"/>
+	<complexType name="AirportHeliportExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportHeliportExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AltimeterSourceExtension" type="EAD_Slot:AltimeterSourceExtensionType" substitutionGroup="aixm:AbstractAltimeterSourceExtension"/>
+	<complexType name="AltimeterSourceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AltimeterSourceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AltimeterSourceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHotSpotExtension" type="EAD_Slot:AirportHotSpotExtensionType" substitutionGroup="aixm:AbstractAirportHotSpotExtension"/>
+	<complexType name="AirportHotSpotExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportHotSpotExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHotSpotExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AuthorityForAirspaceExtension" type="EAD_Slot:AuthorityForAirspaceExtensionType" substitutionGroup="aixm:AbstractAuthorityForAirspaceExtension"/>
+	<complexType name="AuthorityForAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AuthorityForAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AuthorityForAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension" type="EAD_Slot:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GeoBorderExtension" type="EAD_Slot:GeoBorderExtensionType" substitutionGroup="aixm:AbstractGeoBorderExtension"/>
+	<complexType name="GeoBorderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GeoBorderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GeoBorderExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PrecisionApproachRadarExtension" type="EAD_Slot:PrecisionApproachRadarExtensionType" substitutionGroup="aixm:AbstractPrecisionApproachRadarExtension"/>
+	<complexType name="PrecisionApproachRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:PrecisionApproachRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrecisionApproachRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PrimarySurveillanceRadarExtension" type="EAD_Slot:PrimarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractPrimarySurveillanceRadarExtension"/>
+	<complexType name="PrimarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:PrimarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrimarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadarEquipmentExtension" type="EAD_Slot:RadarEquipmentExtensionType" substitutionGroup="aixm:AbstractRadarEquipmentExtension"/>
+	<complexType name="RadarEquipmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RadarEquipmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarEquipmentExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadarSystemExtension" type="EAD_Slot:RadarSystemExtensionType" substitutionGroup="aixm:AbstractRadarSystemExtension"/>
+	<complexType name="RadarSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RadarSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SecondarySurveillanceRadarExtension" type="EAD_Slot:SecondarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractSecondarySurveillanceRadarExtension"/>
+	<complexType name="SecondarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SecondarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SecondarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SurveillanceRadarExtension" type="EAD_Slot:SurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractSurveillanceRadarExtension"/>
+	<complexType name="SurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="HoldingAssessmentExtension" type="EAD_Slot:HoldingAssessmentExtensionType" substitutionGroup="aixm:AbstractHoldingAssessmentExtension"/>
+	<complexType name="HoldingAssessmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:HoldingAssessmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingAssessmentExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelTableExtension" type="EAD_Slot:StandardLevelTableExtensionType" substitutionGroup="aixm:AbstractStandardLevelTableExtension"/>
+	<complexType name="StandardLevelTableExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandardLevelTableExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelTableExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelSectorExtension" type="EAD_Slot:StandardLevelSectorExtensionType" substitutionGroup="aixm:AbstractStandardLevelSectorExtension"/>
+	<complexType name="StandardLevelSectorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandardLevelSectorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelSectorExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelColumnExtension" type="EAD_Slot:StandardLevelColumnExtensionType" substitutionGroup="aixm:AbstractStandardLevelColumnExtension"/>
+	<complexType name="StandardLevelColumnExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandardLevelColumnExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelColumnExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadioFrequencyAreaExtension" type="EAD_Slot:RadioFrequencyAreaExtensionType" substitutionGroup="aixm:AbstractRadioFrequencyAreaExtension"/>
+	<complexType name="RadioFrequencyAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RadioFrequencyAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioFrequencyAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialDateExtension" type="EAD_Slot:SpecialDateExtensionType" substitutionGroup="aixm:AbstractSpecialDateExtension"/>
+	<complexType name="SpecialDateExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SpecialDateExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialDateExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ServiceExtension" type="EAD_Slot:ServiceExtensionType" substitutionGroup="aixm:AbstractServiceExtension"/>
+	<complexType name="ServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadioCommunicationChannelExtension" type="EAD_Slot:RadioCommunicationChannelExtensionType" substitutionGroup="aixm:AbstractRadioCommunicationChannelExtension"/>
+	<complexType name="RadioCommunicationChannelExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RadioCommunicationChannelExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioCommunicationChannelExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PilotControlledLightingExtension" type="EAD_Slot:PilotControlledLightingExtensionType" substitutionGroup="aixm:AbstractPilotControlledLightingExtension"/>
+	<complexType name="PilotControlledLightingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:PilotControlledLightingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PilotControlledLightingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InformationServiceExtension" type="EAD_Slot:InformationServiceExtensionType" substitutionGroup="aixm:AbstractInformationServiceExtension"/>
+	<complexType name="InformationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:InformationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InformationServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TrafficSeparationServiceExtension" type="EAD_Slot:TrafficSeparationServiceExtensionType" substitutionGroup="aixm:AbstractTrafficSeparationServiceExtension"/>
+	<complexType name="TrafficSeparationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TrafficSeparationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TrafficSeparationServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GroundTrafficControlServiceExtension" type="EAD_Slot:GroundTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractGroundTrafficControlServiceExtension"/>
+	<complexType name="GroundTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GroundTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficControlServiceExtension" type="EAD_Slot:AirTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficControlServiceExtension"/>
+	<complexType name="AirTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficManagementServiceExtension" type="EAD_Slot:AirTrafficManagementServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficManagementServiceExtension"/>
+	<complexType name="AirTrafficManagementServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirTrafficManagementServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficManagementServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SearchRescueServiceExtension" type="EAD_Slot:SearchRescueServiceExtensionType" substitutionGroup="aixm:AbstractSearchRescueServiceExtension"/>
+	<complexType name="SearchRescueServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SearchRescueServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SearchRescueServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportGroundServiceExtension" type="EAD_Slot:AirportGroundServiceExtensionType" substitutionGroup="aixm:AbstractAirportGroundServiceExtension"/>
+	<complexType name="AirportGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PassengerServiceExtension" type="EAD_Slot:PassengerServiceExtensionType" substitutionGroup="aixm:AbstractPassengerServiceExtension"/>
+	<complexType name="PassengerServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:PassengerServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AircraftGroundServiceExtension" type="EAD_Slot:AircraftGroundServiceExtensionType" substitutionGroup="aixm:AbstractAircraftGroundServiceExtension"/>
+	<complexType name="AircraftGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AircraftGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FireFightingServiceExtension" type="EAD_Slot:FireFightingServiceExtensionType" substitutionGroup="aixm:AbstractFireFightingServiceExtension"/>
+	<complexType name="FireFightingServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:FireFightingServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FireFightingServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportClearanceServiceExtension" type="EAD_Slot:AirportClearanceServiceExtensionType" substitutionGroup="aixm:AbstractAirportClearanceServiceExtension"/>
+	<complexType name="AirportClearanceServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportClearanceServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportClearanceServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportSuppliesServiceExtension" type="EAD_Slot:AirportSuppliesServiceExtensionType" substitutionGroup="aixm:AbstractAirportSuppliesServiceExtension"/>
+	<complexType name="AirportSuppliesServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirportSuppliesServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportSuppliesServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AngleIndicationExtension" type="EAD_Slot:AngleIndicationExtensionType" substitutionGroup="aixm:AbstractAngleIndicationExtension"/>
+	<complexType name="AngleIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AngleIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AngleIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DistanceIndicationExtension" type="EAD_Slot:DistanceIndicationExtensionType" substitutionGroup="aixm:AbstractDistanceIndicationExtension"/>
+	<complexType name="DistanceIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DistanceIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DistanceIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AzimuthExtension" type="EAD_Slot:AzimuthExtensionType" substitutionGroup="aixm:AbstractAzimuthExtension"/>
+	<complexType name="AzimuthExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AzimuthExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AzimuthExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CheckpointINSExtension" type="EAD_Slot:CheckpointINSExtensionType" substitutionGroup="aixm:AbstractCheckpointINSExtension"/>
+	<complexType name="CheckpointINSExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:CheckpointINSExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointINSExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CheckpointVORExtension" type="EAD_Slot:CheckpointVORExtensionType" substitutionGroup="aixm:AbstractCheckpointVORExtension"/>
+	<complexType name="CheckpointVORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:CheckpointVORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointVORExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DMEExtension" type="EAD_Slot:DMEExtensionType" substitutionGroup="aixm:AbstractDMEExtension"/>
+	<complexType name="DMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DMEExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ElevationExtension" type="EAD_Slot:ElevationExtensionType" substitutionGroup="aixm:AbstractElevationExtension"/>
+	<complexType name="ElevationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ElevationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevationExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GlidepathExtension" type="EAD_Slot:GlidepathExtensionType" substitutionGroup="aixm:AbstractGlidepathExtension"/>
+	<complexType name="GlidepathExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:GlidepathExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GlidepathExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="LocalizerExtension" type="EAD_Slot:LocalizerExtensionType" substitutionGroup="aixm:AbstractLocalizerExtension"/>
+	<complexType name="LocalizerExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:LocalizerExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="LocalizerExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MarkerBeaconExtension" type="EAD_Slot:MarkerBeaconExtensionType" substitutionGroup="aixm:AbstractMarkerBeaconExtension"/>
+	<complexType name="MarkerBeaconExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:MarkerBeaconExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkerBeaconExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavaidExtension" type="EAD_Slot:NavaidExtensionType" substitutionGroup="aixm:AbstractNavaidExtension"/>
+	<complexType name="NavaidExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NavaidExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavaidEquipmentExtension" type="EAD_Slot:NavaidEquipmentExtensionType" substitutionGroup="aixm:AbstractNavaidEquipmentExtension"/>
+	<complexType name="NavaidEquipmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NavaidEquipmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidEquipmentExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavigationSystemCheckpointExtension" type="EAD_Slot:NavigationSystemCheckpointExtensionType" substitutionGroup="aixm:AbstractNavigationSystemCheckpointExtension"/>
+	<complexType name="NavigationSystemCheckpointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NavigationSystemCheckpointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationSystemCheckpointExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SDFExtension" type="EAD_Slot:SDFExtensionType" substitutionGroup="aixm:AbstractSDFExtension"/>
+	<complexType name="SDFExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SDFExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SDFExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NDBExtension" type="EAD_Slot:NDBExtensionType" substitutionGroup="aixm:AbstractNDBExtension"/>
+	<complexType name="NDBExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NDBExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NDBExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationStationExtension" type="EAD_Slot:SpecialNavigationStationExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationStationExtension"/>
+	<complexType name="SpecialNavigationStationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SpecialNavigationStationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationStationExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VORExtension" type="EAD_Slot:VORExtensionType" substitutionGroup="aixm:AbstractVORExtension"/>
+	<complexType name="VORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:VORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VORExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TACANExtension" type="EAD_Slot:TACANExtensionType" substitutionGroup="aixm:AbstractTACANExtension"/>
+	<complexType name="TACANExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TACANExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TACANExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationSystemExtension" type="EAD_Slot:SpecialNavigationSystemExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationSystemExtension"/>
+	<complexType name="SpecialNavigationSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SpecialNavigationSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DirectionFinderExtension" type="EAD_Slot:DirectionFinderExtensionType" substitutionGroup="aixm:AbstractDirectionFinderExtension"/>
+	<complexType name="DirectionFinderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DirectionFinderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DirectionFinderExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DesignatedPointExtension" type="EAD_Slot:DesignatedPointExtensionType" substitutionGroup="aixm:AbstractDesignatedPointExtension"/>
+	<complexType name="DesignatedPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DesignatedPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DesignatedPointExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SignificantPointInAirspaceExtension" type="EAD_Slot:SignificantPointInAirspaceExtensionType" substitutionGroup="aixm:AbstractSignificantPointInAirspaceExtension"/>
+	<complexType name="SignificantPointInAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SignificantPointInAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SignificantPointInAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AeronauticalGroundLightExtension" type="EAD_Slot:AeronauticalGroundLightExtensionType" substitutionGroup="aixm:AbstractAeronauticalGroundLightExtension"/>
+	<complexType name="AeronauticalGroundLightExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AeronauticalGroundLightExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AeronauticalGroundLightExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="OrganisationAuthorityExtension" type="EAD_Slot:OrganisationAuthorityExtensionType" substitutionGroup="aixm:AbstractOrganisationAuthorityExtension"/>
+	<complexType name="OrganisationAuthorityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:OrganisationAuthorityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="OrganisationAuthorityExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="UnitExtension" type="EAD_Slot:UnitExtensionType" substitutionGroup="aixm:AbstractUnitExtension"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ObstacleAreaExtension" type="EAD_Slot:ObstacleAreaExtensionType" substitutionGroup="aixm:AbstractObstacleAreaExtension"/>
+	<complexType name="ObstacleAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ObstacleAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ObstacleAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VerticalStructureExtension" type="EAD_Slot:VerticalStructureExtensionType" substitutionGroup="aixm:AbstractVerticalStructureExtension"/>
+	<complexType name="VerticalStructureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:VerticalStructureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VerticalStructureExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CirclingAreaExtension" type="EAD_Slot:CirclingAreaExtensionType" substitutionGroup="aixm:AbstractCirclingAreaExtension"/>
+	<complexType name="CirclingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:CirclingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CirclingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TerminalArrivalAreaExtension" type="EAD_Slot:TerminalArrivalAreaExtensionType" substitutionGroup="aixm:AbstractTerminalArrivalAreaExtension"/>
+	<complexType name="TerminalArrivalAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:TerminalArrivalAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TerminalArrivalAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InstrumentApproachProcedureExtension" type="EAD_Slot:InstrumentApproachProcedureExtensionType" substitutionGroup="aixm:AbstractInstrumentApproachProcedureExtension"/>
+	<complexType name="InstrumentApproachProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:InstrumentApproachProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InstrumentApproachProcedureExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentDepartureExtension" type="EAD_Slot:StandardInstrumentDepartureExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension"/>
+	<complexType name="StandardInstrumentDepartureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandardInstrumentDepartureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentDepartureExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaExtension" type="EAD_Slot:NavigationAreaExtensionType" substitutionGroup="aixm:AbstractNavigationAreaExtension"/>
+	<complexType name="NavigationAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NavigationAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentArrivalExtension" type="EAD_Slot:StandardInstrumentArrivalExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension"/>
+	<complexType name="StandardInstrumentArrivalExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:StandardInstrumentArrivalExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentArrivalExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ProcedureExtension" type="EAD_Slot:ProcedureExtensionType" substitutionGroup="aixm:AbstractProcedureExtension"/>
+	<complexType name="ProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaRestrictionExtension" type="EAD_Slot:NavigationAreaRestrictionExtensionType" substitutionGroup="aixm:AbstractNavigationAreaRestrictionExtension"/>
+	<complexType name="NavigationAreaRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:NavigationAreaRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SegmentLegExtension" type="EAD_Slot:SegmentLegExtensionType" substitutionGroup="aixm:AbstractSegmentLegExtension"/>
+	<complexType name="SegmentLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SegmentLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SegmentLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApproachLegExtension" type="EAD_Slot:ApproachLegExtensionType" substitutionGroup="aixm:AbstractApproachLegExtension"/>
+	<complexType name="ApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrivalFeederLegExtension" type="EAD_Slot:ArrivalFeederLegExtensionType" substitutionGroup="aixm:AbstractArrivalFeederLegExtension"/>
+	<complexType name="ArrivalFeederLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ArrivalFeederLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalFeederLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrivalLegExtension" type="EAD_Slot:ArrivalLegExtensionType" substitutionGroup="aixm:AbstractArrivalLegExtension"/>
+	<complexType name="ArrivalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ArrivalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DepartureLegExtension" type="EAD_Slot:DepartureLegExtensionType" substitutionGroup="aixm:AbstractDepartureLegExtension"/>
+	<complexType name="DepartureLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:DepartureLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DepartureLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FinalLegExtension" type="EAD_Slot:FinalLegExtensionType" substitutionGroup="aixm:AbstractFinalLegExtension"/>
+	<complexType name="FinalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:FinalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FinalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InitialLegExtension" type="EAD_Slot:InitialLegExtensionType" substitutionGroup="aixm:AbstractInitialLegExtension"/>
+	<complexType name="InitialLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:InitialLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InitialLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="IntermediateLegExtension" type="EAD_Slot:IntermediateLegExtensionType" substitutionGroup="aixm:AbstractIntermediateLegExtension"/>
+	<complexType name="IntermediateLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:IntermediateLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="IntermediateLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MissedApproachLegExtension" type="EAD_Slot:MissedApproachLegExtensionType" substitutionGroup="aixm:AbstractMissedApproachLegExtension"/>
+	<complexType name="MissedApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:MissedApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MissedApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ProcedureDMEExtension" type="EAD_Slot:ProcedureDMEExtensionType" substitutionGroup="aixm:AbstractProcedureDMEExtension"/>
+	<complexType name="ProcedureDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ProcedureDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SafeAltitudeAreaExtension" type="EAD_Slot:SafeAltitudeAreaExtensionType" substitutionGroup="aixm:AbstractSafeAltitudeAreaExtension"/>
+	<complexType name="SafeAltitudeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:SafeAltitudeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SafeAltitudeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="HoldingPatternExtension" type="EAD_Slot:HoldingPatternExtensionType" substitutionGroup="aixm:AbstractHoldingPatternExtension"/>
+	<complexType name="HoldingPatternExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:HoldingPatternExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingPatternExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="UnplannedHoldingExtension" type="EAD_Slot:UnplannedHoldingExtensionType" substitutionGroup="aixm:AbstractUnplannedHoldingExtension"/>
+	<complexType name="UnplannedHoldingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:UnplannedHoldingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnplannedHoldingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceBorderCrossingExtension" type="EAD_Slot:AirspaceBorderCrossingExtensionType" substitutionGroup="aixm:AbstractAirspaceBorderCrossingExtension"/>
+	<complexType name="AirspaceBorderCrossingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AirspaceBorderCrossingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceBorderCrossingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FlightRestrictionExtension" type="EAD_Slot:FlightRestrictionExtensionType" substitutionGroup="aixm:AbstractFlightRestrictionExtension"/>
+	<complexType name="FlightRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:FlightRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteSegmentExtension" type="EAD_Slot:RouteSegmentExtensionType" substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteDMEExtension" type="EAD_Slot:RouteDMEExtensionType" substitutionGroup="aixm:AbstractRouteDMEExtension"/>
+	<complexType name="RouteDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RouteDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteExtension" type="EAD_Slot:RouteExtensionType" substitutionGroup="aixm:AbstractRouteExtension"/>
+	<complexType name="RouteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RouteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ChangeOverPointExtension" type="EAD_Slot:ChangeOverPointExtensionType" substitutionGroup="aixm:AbstractChangeOverPointExtension"/>
+	<complexType name="ChangeOverPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:ChangeOverPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ChangeOverPointExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AerialRefuellingExtension" type="EAD_Slot:AerialRefuellingExtensionType" substitutionGroup="aixm:AbstractAerialRefuellingExtension"/>
+	<complexType name="AerialRefuellingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:AerialRefuellingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AerialRefuellingExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RulesProceduresExtension" type="EAD_Slot:RulesProceduresExtensionType" substitutionGroup="aixm:AbstractRulesProceduresExtension"/>
+	<complexType name="RulesProceduresExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="EAD_Slot:RulesProceduresExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RulesProceduresExtensionPropertyGroup">
+		<sequence>
+			<element name="privateSlotAllocation" type="EAD_Slot:PrivateSlotPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+</schema>

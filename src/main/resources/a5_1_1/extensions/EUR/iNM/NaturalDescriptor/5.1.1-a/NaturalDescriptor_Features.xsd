@@ -1,0 +1,2000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:natDesc="http://www.aixm.aero/schema/5.1.1/extensions/EUR/iNM/NaturalDescriptor" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:event="http://www.aixm.aero/schema/5.1.1/event" 
+	targetNamespace="http://www.aixm.aero/schema/5.1.1/extensions/EUR/iNM/NaturalDescriptor" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1-a">
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../../../AIXM_Features.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1/event" schemaLocation="../../../../../event/version_5.1.1-k/Event_Features.xsd"/>
+	<element name="AerialRefuellingExtension" type="natDesc:AerialRefuellingExtensionType" substitutionGroup="aixm:AbstractAerialRefuellingExtension"/>
+	<complexType name="AerialRefuellingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AerialRefuellingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AerialRefuellingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportExtension" type="natDesc:AirportHeliportExtensionType" substitutionGroup="aixm:AbstractAirportHeliportExtension"/>
+	<complexType name="AirportHeliportExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportHeliportExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportCollocationExtension" type="natDesc:AirportHeliportCollocationExtensionType" substitutionGroup="aixm:AbstractAirportHeliportCollocationExtension"/>
+	<complexType name="AirportHeliportCollocationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportHeliportCollocationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportCollocationExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportHotSpotExtension" type="natDesc:AirportHotSpotExtensionType" substitutionGroup="aixm:AbstractAirportHotSpotExtension"/>
+	<complexType name="AirportHotSpotExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportHotSpotExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHotSpotExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AltimeterSourceExtension" type="natDesc:AltimeterSourceExtensionType" substitutionGroup="aixm:AbstractAltimeterSourceExtension"/>
+	<complexType name="AltimeterSourceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AltimeterSourceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AltimeterSourceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NonMovementAreaExtension" type="natDesc:NonMovementAreaExtensionType" substitutionGroup="aixm:AbstractNonMovementAreaExtension"/>
+	<complexType name="NonMovementAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:NonMovementAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NonMovementAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SurveyControlPointExtension" type="natDesc:SurveyControlPointExtensionType" substitutionGroup="aixm:AbstractSurveyControlPointExtension"/>
+	<complexType name="SurveyControlPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SurveyControlPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveyControlPointExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="WorkAreaExtension" type="natDesc:WorkAreaExtensionType" substitutionGroup="aixm:AbstractWorkAreaExtension"/>
+	<complexType name="WorkAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:WorkAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="WorkAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AircraftStandExtension" type="natDesc:AircraftStandExtensionType" substitutionGroup="aixm:AbstractAircraftStandExtension"/>
+	<complexType name="AircraftStandExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AircraftStandExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftStandExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronExtension" type="natDesc:ApronExtensionType" substitutionGroup="aixm:AbstractApronExtension"/>
+	<complexType name="ApronExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ApronExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronElementExtension" type="natDesc:ApronElementExtensionType" substitutionGroup="aixm:AbstractApronElementExtension"/>
+	<complexType name="ApronElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ApronElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronElementExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaExtension" type="natDesc:DeicingAreaExtensionType" substitutionGroup="aixm:AbstractDeicingAreaExtension"/>
+	<complexType name="DeicingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DeicingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PassengerLoadingBridgeExtension" type="natDesc:PassengerLoadingBridgeExtensionType" substitutionGroup="aixm:AbstractPassengerLoadingBridgeExtension"/>
+	<complexType name="PassengerLoadingBridgeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:PassengerLoadingBridgeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerLoadingBridgeExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RoadExtension" type="natDesc:RoadExtensionType" substitutionGroup="aixm:AbstractRoadExtension"/>
+	<complexType name="RoadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RoadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RoadExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffExtension" type="natDesc:TouchDownLiftOffExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffExtension"/>
+	<complexType name="TouchDownLiftOffExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TouchDownLiftOffExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffSafeAreaExtension" type="natDesc:TouchDownLiftOffSafeAreaExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffSafeAreaExtension"/>
+	<complexType name="TouchDownLiftOffSafeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TouchDownLiftOffSafeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffSafeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApproachLightingSystemExtension" type="natDesc:ApproachLightingSystemExtensionType" substitutionGroup="aixm:AbstractApproachLightingSystemExtension"/>
+	<complexType name="ApproachLightingSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ApproachLightingSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLightingSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronLightSystemExtension" type="natDesc:ApronLightSystemExtensionType" substitutionGroup="aixm:AbstractApronLightSystemExtension"/>
+	<complexType name="ApronLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ApronLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineLightSystemExtension" type="natDesc:GuidanceLineLightSystemExtensionType" substitutionGroup="aixm:AbstractGuidanceLineLightSystemExtension"/>
+	<complexType name="GuidanceLineLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GuidanceLineLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionLightSystemExtension" type="natDesc:RunwayDirectionLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionLightSystemExtension"/>
+	<complexType name="RunwayDirectionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayDirectionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaLightSystemExtension" type="natDesc:RunwayProtectAreaLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaLightSystemExtension"/>
+	<complexType name="RunwayProtectAreaLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayProtectAreaLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionLightSystemExtension" type="natDesc:TaxiHoldingPositionLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionLightSystemExtension"/>
+	<complexType name="TaxiHoldingPositionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiHoldingPositionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayLightSystemExtension" type="natDesc:TaxiwayLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiwayLightSystemExtension"/>
+	<complexType name="TaxiwayLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiwayLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffLightSystemExtension" type="natDesc:TouchDownLiftOffLightSystemExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffLightSystemExtension"/>
+	<complexType name="TouchDownLiftOffLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TouchDownLiftOffLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportProtectionAreaMarkingExtension" type="natDesc:AirportProtectionAreaMarkingExtensionType" substitutionGroup="aixm:AbstractAirportProtectionAreaMarkingExtension"/>
+	<complexType name="AirportProtectionAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportProtectionAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportProtectionAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ApronMarkingExtension" type="natDesc:ApronMarkingExtensionType" substitutionGroup="aixm:AbstractApronMarkingExtension"/>
+	<complexType name="ApronMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ApronMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaMarkingExtension" type="natDesc:DeicingAreaMarkingExtensionType" substitutionGroup="aixm:AbstractDeicingAreaMarkingExtension"/>
+	<complexType name="DeicingAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DeicingAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineMarkingExtension" type="natDesc:GuidanceLineMarkingExtensionType" substitutionGroup="aixm:AbstractGuidanceLineMarkingExtension"/>
+	<complexType name="GuidanceLineMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GuidanceLineMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayMarkingExtension" type="natDesc:RunwayMarkingExtensionType" substitutionGroup="aixm:AbstractRunwayMarkingExtension"/>
+	<complexType name="RunwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandMarkingExtension" type="natDesc:StandMarkingExtensionType" substitutionGroup="aixm:AbstractStandMarkingExtension"/>
+	<complexType name="StandMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionMarkingExtension" type="natDesc:TaxiHoldingPositionMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionMarkingExtension"/>
+	<complexType name="TaxiHoldingPositionMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiHoldingPositionMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayMarkingExtension" type="natDesc:TaxiwayMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiwayMarkingExtension"/>
+	<complexType name="TaxiwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffMarkingExtension" type="natDesc:TouchDownLiftOffMarkingExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffMarkingExtension"/>
+	<complexType name="TouchDownLiftOffMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TouchDownLiftOffMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrestingGearExtension" type="natDesc:ArrestingGearExtensionType" substitutionGroup="aixm:AbstractArrestingGearExtension"/>
+	<complexType name="ArrestingGearExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ArrestingGearExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrestingGearExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayExtension" type="natDesc:RunwayExtensionType" substitutionGroup="aixm:AbstractRunwayExtension"/>
+	<complexType name="RunwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayBlastPadExtension" type="natDesc:RunwayBlastPadExtensionType" substitutionGroup="aixm:AbstractRunwayBlastPadExtension"/>
+	<complexType name="RunwayBlastPadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayBlastPadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayBlastPadExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayCentrelinePointExtension" type="natDesc:RunwayCentrelinePointExtensionType" substitutionGroup="aixm:AbstractRunwayCentrelinePointExtension"/>
+	<complexType name="RunwayCentrelinePointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayCentrelinePointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayCentrelinePointExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionExtension" type="natDesc:RunwayDirectionExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionExtension"/>
+	<complexType name="RunwayDirectionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayDirectionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayElementExtension" type="natDesc:RunwayElementExtensionType" substitutionGroup="aixm:AbstractRunwayElementExtension"/>
+	<complexType name="RunwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaExtension" type="natDesc:RunwayProtectAreaExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaExtension"/>
+	<complexType name="RunwayProtectAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayProtectAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RunwayVisualRangeExtension" type="natDesc:RunwayVisualRangeExtensionType" substitutionGroup="aixm:AbstractRunwayVisualRangeExtension"/>
+	<complexType name="RunwayVisualRangeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RunwayVisualRangeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayVisualRangeExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VisualGlideSlopeIndicatorExtension" type="natDesc:VisualGlideSlopeIndicatorExtensionType" substitutionGroup="aixm:AbstractVisualGlideSlopeIndicatorExtension"/>
+	<complexType name="VisualGlideSlopeIndicatorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:VisualGlideSlopeIndicatorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VisualGlideSlopeIndicatorExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FloatingDockSiteExtension" type="natDesc:FloatingDockSiteExtensionType" substitutionGroup="aixm:AbstractFloatingDockSiteExtension"/>
+	<complexType name="FloatingDockSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:FloatingDockSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FloatingDockSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MarkingBuoyExtension" type="natDesc:MarkingBuoyExtensionType" substitutionGroup="aixm:AbstractMarkingBuoyExtension"/>
+	<complexType name="MarkingBuoyExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:MarkingBuoyExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingBuoyExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneLandingAreaExtension" type="natDesc:SeaplaneLandingAreaExtensionType" substitutionGroup="aixm:AbstractSeaplaneLandingAreaExtension"/>
+	<complexType name="SeaplaneLandingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SeaplaneLandingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneLandingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneRampSiteExtension" type="natDesc:SeaplaneRampSiteExtensionType" substitutionGroup="aixm:AbstractSeaplaneRampSiteExtension"/>
+	<complexType name="SeaplaneRampSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SeaplaneRampSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneRampSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineExtension" type="natDesc:GuidanceLineExtensionType" substitutionGroup="aixm:AbstractGuidanceLineExtension"/>
+	<complexType name="GuidanceLineExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GuidanceLineExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionExtension" type="natDesc:TaxiHoldingPositionExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionExtension"/>
+	<complexType name="TaxiHoldingPositionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiHoldingPositionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayExtension" type="natDesc:TaxiwayExtensionType" substitutionGroup="aixm:AbstractTaxiwayExtension"/>
+	<complexType name="TaxiwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayElementExtension" type="natDesc:TaxiwayElementExtensionType" substitutionGroup="aixm:AbstractTaxiwayElementExtension"/>
+	<complexType name="TaxiwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TaxiwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension" type="natDesc:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AuthorityForAirspaceExtension" type="natDesc:AuthorityForAirspaceExtensionType" substitutionGroup="aixm:AbstractAuthorityForAirspaceExtension"/>
+	<complexType name="AuthorityForAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AuthorityForAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AuthorityForAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GeoBorderExtension" type="natDesc:GeoBorderExtensionType" substitutionGroup="aixm:AbstractGeoBorderExtension"/>
+	<complexType name="GeoBorderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GeoBorderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GeoBorderExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="HoldingPatternExtension" type="natDesc:HoldingPatternExtensionType" substitutionGroup="aixm:AbstractHoldingPatternExtension"/>
+	<complexType name="HoldingPatternExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:HoldingPatternExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingPatternExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="UnplannedHoldingExtension" type="natDesc:UnplannedHoldingExtensionType" substitutionGroup="aixm:AbstractUnplannedHoldingExtension"/>
+	<complexType name="UnplannedHoldingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:UnplannedHoldingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnplannedHoldingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AzimuthExtension" type="natDesc:AzimuthExtensionType" substitutionGroup="aixm:AbstractAzimuthExtension"/>
+	<complexType name="AzimuthExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AzimuthExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AzimuthExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CheckpointINSExtension" type="natDesc:CheckpointINSExtensionType" substitutionGroup="aixm:AbstractCheckpointINSExtension"/>
+	<complexType name="CheckpointINSExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:CheckpointINSExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointINSExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CheckpointVORExtension" type="natDesc:CheckpointVORExtensionType" substitutionGroup="aixm:AbstractCheckpointVORExtension"/>
+	<complexType name="CheckpointVORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:CheckpointVORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointVORExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DirectionFinderExtension" type="natDesc:DirectionFinderExtensionType" substitutionGroup="aixm:AbstractDirectionFinderExtension"/>
+	<complexType name="DirectionFinderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DirectionFinderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DirectionFinderExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DMEExtension" type="natDesc:DMEExtensionType" substitutionGroup="aixm:AbstractDMEExtension"/>
+	<complexType name="DMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DMEExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ElevationExtension" type="natDesc:ElevationExtensionType" substitutionGroup="aixm:AbstractElevationExtension"/>
+	<complexType name="ElevationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ElevationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevationExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GlidepathExtension" type="natDesc:GlidepathExtensionType" substitutionGroup="aixm:AbstractGlidepathExtension"/>
+	<complexType name="GlidepathExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GlidepathExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GlidepathExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="LocalizerExtension" type="natDesc:LocalizerExtensionType" substitutionGroup="aixm:AbstractLocalizerExtension"/>
+	<complexType name="LocalizerExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:LocalizerExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="LocalizerExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MarkerBeaconExtension" type="natDesc:MarkerBeaconExtensionType" substitutionGroup="aixm:AbstractMarkerBeaconExtension"/>
+	<complexType name="MarkerBeaconExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:MarkerBeaconExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkerBeaconExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavaidExtension" type="natDesc:NavaidExtensionType" substitutionGroup="aixm:AbstractNavaidExtension"/>
+	<complexType name="NavaidExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:NavaidExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NDBExtension" type="natDesc:NDBExtensionType" substitutionGroup="aixm:AbstractNDBExtension"/>
+	<complexType name="NDBExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:NDBExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NDBExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SDFExtension" type="natDesc:SDFExtensionType" substitutionGroup="aixm:AbstractSDFExtension"/>
+	<complexType name="SDFExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SDFExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SDFExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationStationExtension" type="natDesc:SpecialNavigationStationExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationStationExtension"/>
+	<complexType name="SpecialNavigationStationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SpecialNavigationStationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationStationExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationSystemExtension" type="natDesc:SpecialNavigationSystemExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationSystemExtension"/>
+	<complexType name="SpecialNavigationSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SpecialNavigationSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TACANExtension" type="natDesc:TACANExtensionType" substitutionGroup="aixm:AbstractTACANExtension"/>
+	<complexType name="TACANExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TACANExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TACANExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VORExtension" type="natDesc:VORExtensionType" substitutionGroup="aixm:AbstractVORExtension"/>
+	<complexType name="VORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:VORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VORExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AngleIndicationExtension" type="natDesc:AngleIndicationExtensionType" substitutionGroup="aixm:AbstractAngleIndicationExtension"/>
+	<complexType name="AngleIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AngleIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AngleIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DistanceIndicationExtension" type="natDesc:DistanceIndicationExtensionType" substitutionGroup="aixm:AbstractDistanceIndicationExtension"/>
+	<complexType name="DistanceIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DistanceIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DistanceIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DesignatedPointExtension" type="natDesc:DesignatedPointExtensionType" substitutionGroup="aixm:AbstractDesignatedPointExtension"/>
+	<complexType name="DesignatedPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DesignatedPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DesignatedPointExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SignificantPointInAirspaceExtension" type="natDesc:SignificantPointInAirspaceExtensionType" substitutionGroup="aixm:AbstractSignificantPointInAirspaceExtension"/>
+	<complexType name="SignificantPointInAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SignificantPointInAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SignificantPointInAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AeronauticalGroundLightExtension" type="natDesc:AeronauticalGroundLightExtensionType" substitutionGroup="aixm:AbstractAeronauticalGroundLightExtension"/>
+	<complexType name="AeronauticalGroundLightExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AeronauticalGroundLightExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AeronauticalGroundLightExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ObstacleAreaExtension" type="natDesc:ObstacleAreaExtensionType" substitutionGroup="aixm:AbstractObstacleAreaExtension"/>
+	<complexType name="ObstacleAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ObstacleAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ObstacleAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="VerticalStructureExtension" type="natDesc:VerticalStructureExtensionType" substitutionGroup="aixm:AbstractVerticalStructureExtension"/>
+	<complexType name="VerticalStructureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:VerticalStructureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VerticalStructureExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="OrganisationAuthorityExtension" type="natDesc:OrganisationAuthorityExtensionType" substitutionGroup="aixm:AbstractOrganisationAuthorityExtension"/>
+	<complexType name="OrganisationAuthorityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:OrganisationAuthorityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="OrganisationAuthorityExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="UnitExtension" type="natDesc:UnitExtensionType" substitutionGroup="aixm:AbstractUnitExtension"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InstrumentApproachProcedureExtension" type="natDesc:InstrumentApproachProcedureExtensionType" substitutionGroup="aixm:AbstractInstrumentApproachProcedureExtension"/>
+	<complexType name="InstrumentApproachProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:InstrumentApproachProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InstrumentApproachProcedureExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="TerminalArrivalAreaExtension" type="natDesc:TerminalArrivalAreaExtensionType" substitutionGroup="aixm:AbstractTerminalArrivalAreaExtension"/>
+	<complexType name="TerminalArrivalAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:TerminalArrivalAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TerminalArrivalAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="CirclingAreaExtension" type="natDesc:CirclingAreaExtensionType" substitutionGroup="aixm:AbstractCirclingAreaExtension"/>
+	<complexType name="CirclingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:CirclingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CirclingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentArrivalExtension" type="natDesc:StandardInstrumentArrivalExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension"/>
+	<complexType name="StandardInstrumentArrivalExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandardInstrumentArrivalExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentArrivalExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaExtension" type="natDesc:NavigationAreaExtensionType" substitutionGroup="aixm:AbstractNavigationAreaExtension"/>
+	<complexType name="NavigationAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:NavigationAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentDepartureExtension" type="natDesc:StandardInstrumentDepartureExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension"/>
+	<complexType name="StandardInstrumentDepartureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandardInstrumentDepartureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentDepartureExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SafeAltitudeAreaExtension" type="natDesc:SafeAltitudeAreaExtensionType" substitutionGroup="aixm:AbstractSafeAltitudeAreaExtension"/>
+	<complexType name="SafeAltitudeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SafeAltitudeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SafeAltitudeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrivalFeederLegExtension" type="natDesc:ArrivalFeederLegExtensionType" substitutionGroup="aixm:AbstractArrivalFeederLegExtension"/>
+	<complexType name="ArrivalFeederLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ArrivalFeederLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalFeederLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ArrivalLegExtension" type="natDesc:ArrivalLegExtensionType" substitutionGroup="aixm:AbstractArrivalLegExtension"/>
+	<complexType name="ArrivalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ArrivalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="DepartureLegExtension" type="natDesc:DepartureLegExtensionType" substitutionGroup="aixm:AbstractDepartureLegExtension"/>
+	<complexType name="DepartureLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:DepartureLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DepartureLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FinalLegExtension" type="natDesc:FinalLegExtensionType" substitutionGroup="aixm:AbstractFinalLegExtension"/>
+	<complexType name="FinalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:FinalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FinalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InitialLegExtension" type="natDesc:InitialLegExtensionType" substitutionGroup="aixm:AbstractInitialLegExtension"/>
+	<complexType name="InitialLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:InitialLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InitialLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="IntermediateLegExtension" type="natDesc:IntermediateLegExtensionType" substitutionGroup="aixm:AbstractIntermediateLegExtension"/>
+	<complexType name="IntermediateLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:IntermediateLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="IntermediateLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="MissedApproachLegExtension" type="natDesc:MissedApproachLegExtensionType" substitutionGroup="aixm:AbstractMissedApproachLegExtension"/>
+	<complexType name="MissedApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:MissedApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MissedApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaRestrictionExtension" type="natDesc:NavigationAreaRestrictionExtensionType" substitutionGroup="aixm:AbstractNavigationAreaRestrictionExtension"/>
+	<complexType name="NavigationAreaRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:NavigationAreaRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ProcedureDMEExtension" type="natDesc:ProcedureDMEExtensionType" substitutionGroup="aixm:AbstractProcedureDMEExtension"/>
+	<complexType name="ProcedureDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ProcedureDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="ChangeOverPointExtension" type="natDesc:ChangeOverPointExtensionType" substitutionGroup="aixm:AbstractChangeOverPointExtension"/>
+	<complexType name="ChangeOverPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:ChangeOverPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ChangeOverPointExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteExtension" type="natDesc:RouteExtensionType" substitutionGroup="aixm:AbstractRouteExtension"/>
+	<complexType name="RouteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RouteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteDMEExtension" type="natDesc:RouteDMEExtensionType" substitutionGroup="aixm:AbstractRouteDMEExtension"/>
+	<complexType name="RouteDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RouteDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteSegmentExtension" type="natDesc:RouteSegmentExtensionType" substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceBorderCrossingExtension" type="natDesc:AirspaceBorderCrossingExtensionType" substitutionGroup="aixm:AbstractAirspaceBorderCrossingExtension"/>
+	<complexType name="AirspaceBorderCrossingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirspaceBorderCrossingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceBorderCrossingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FlightRestrictionExtension" type="natDesc:FlightRestrictionExtensionType" substitutionGroup="aixm:AbstractFlightRestrictionExtension"/>
+	<complexType name="FlightRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:FlightRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RulesProceduresExtension" type="natDesc:RulesProceduresExtensionType" substitutionGroup="aixm:AbstractRulesProceduresExtension"/>
+	<complexType name="RulesProceduresExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RulesProceduresExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RulesProceduresExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AircraftGroundServiceExtension" type="natDesc:AircraftGroundServiceExtensionType" substitutionGroup="aixm:AbstractAircraftGroundServiceExtension"/>
+	<complexType name="AircraftGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AircraftGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportClearanceServiceExtension" type="natDesc:AirportClearanceServiceExtensionType" substitutionGroup="aixm:AbstractAirportClearanceServiceExtension"/>
+	<complexType name="AirportClearanceServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportClearanceServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportClearanceServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirportSuppliesServiceExtension" type="natDesc:AirportSuppliesServiceExtensionType" substitutionGroup="aixm:AbstractAirportSuppliesServiceExtension"/>
+	<complexType name="AirportSuppliesServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirportSuppliesServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportSuppliesServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficControlServiceExtension" type="natDesc:AirTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficControlServiceExtension"/>
+	<complexType name="AirTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficManagementServiceExtension" type="natDesc:AirTrafficManagementServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficManagementServiceExtension"/>
+	<complexType name="AirTrafficManagementServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:AirTrafficManagementServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficManagementServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="FireFightingServiceExtension" type="natDesc:FireFightingServiceExtensionType" substitutionGroup="aixm:AbstractFireFightingServiceExtension"/>
+	<complexType name="FireFightingServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:FireFightingServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FireFightingServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="GroundTrafficControlServiceExtension" type="natDesc:GroundTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractGroundTrafficControlServiceExtension"/>
+	<complexType name="GroundTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:GroundTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="InformationServiceExtension" type="natDesc:InformationServiceExtensionType" substitutionGroup="aixm:AbstractInformationServiceExtension"/>
+	<complexType name="InformationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:InformationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InformationServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PassengerServiceExtension" type="natDesc:PassengerServiceExtensionType" substitutionGroup="aixm:AbstractPassengerServiceExtension"/>
+	<complexType name="PassengerServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:PassengerServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PilotControlledLightingExtension" type="natDesc:PilotControlledLightingExtensionType" substitutionGroup="aixm:AbstractPilotControlledLightingExtension"/>
+	<complexType name="PilotControlledLightingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:PilotControlledLightingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PilotControlledLightingExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadioCommunicationChannelExtension" type="natDesc:RadioCommunicationChannelExtensionType" substitutionGroup="aixm:AbstractRadioCommunicationChannelExtension"/>
+	<complexType name="RadioCommunicationChannelExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RadioCommunicationChannelExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioCommunicationChannelExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SearchRescueServiceExtension" type="natDesc:SearchRescueServiceExtensionType" substitutionGroup="aixm:AbstractSearchRescueServiceExtension"/>
+	<complexType name="SearchRescueServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SearchRescueServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SearchRescueServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadioFrequencyAreaExtension" type="natDesc:RadioFrequencyAreaExtensionType" substitutionGroup="aixm:AbstractRadioFrequencyAreaExtension"/>
+	<complexType name="RadioFrequencyAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RadioFrequencyAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioFrequencyAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SpecialDateExtension" type="natDesc:SpecialDateExtensionType" substitutionGroup="aixm:AbstractSpecialDateExtension"/>
+	<complexType name="SpecialDateExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SpecialDateExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialDateExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelColumnExtension" type="natDesc:StandardLevelColumnExtensionType" substitutionGroup="aixm:AbstractStandardLevelColumnExtension"/>
+	<complexType name="StandardLevelColumnExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandardLevelColumnExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelColumnExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelSectorExtension" type="natDesc:StandardLevelSectorExtensionType" substitutionGroup="aixm:AbstractStandardLevelSectorExtension"/>
+	<complexType name="StandardLevelSectorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandardLevelSectorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelSectorExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelTableExtension" type="natDesc:StandardLevelTableExtensionType" substitutionGroup="aixm:AbstractStandardLevelTableExtension"/>
+	<complexType name="StandardLevelTableExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:StandardLevelTableExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelTableExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="HoldingAssessmentExtension" type="natDesc:HoldingAssessmentExtensionType" substitutionGroup="aixm:AbstractHoldingAssessmentExtension"/>
+	<complexType name="HoldingAssessmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:HoldingAssessmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingAssessmentExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PrecisionApproachRadarExtension" type="natDesc:PrecisionApproachRadarExtensionType" substitutionGroup="aixm:AbstractPrecisionApproachRadarExtension"/>
+	<complexType name="PrecisionApproachRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:PrecisionApproachRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrecisionApproachRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="PrimarySurveillanceRadarExtension" type="natDesc:PrimarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractPrimarySurveillanceRadarExtension"/>
+	<complexType name="PrimarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:PrimarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrimarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RadarSystemExtension" type="natDesc:RadarSystemExtensionType" substitutionGroup="aixm:AbstractRadarSystemExtension"/>
+	<complexType name="RadarSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:RadarSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="SecondarySurveillanceRadarExtension" type="natDesc:SecondarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractSecondarySurveillanceRadarExtension"/>
+	<complexType name="SecondarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:SecondarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SecondarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="NaturalDescriptor" type="natDesc:NaturalDescriptorType">
+		<annotation>
+			<documentation>Natural descriptor object specifies natural descriptor value for specific time period.</documentation>
+		</annotation>
+	</element>
+	<complexType name="NaturalDescriptorType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="natDesc:NaturalDescriptorPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="natDesc:AbstractNaturalDescriptorExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NaturalDescriptorPropertyGroup">
+		<sequence>
+			<element name="value" type="aixm:Character2Type" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Natural descriptor value</documentation>
+				</annotation>
+			</element>
+			<element name="validTimeFrom" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Date and time from when the natural descriptor is valid.</documentation>
+				</annotation>
+			</element>
+			<element name="validTimeTo" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Date and time until when the natural descriptor is valid. When no value is present then the Natural descriptor value is considered unlimited validity.</documentation>
+				</annotation>
+			</element>
+			<element name="annotatedDescriptor" type="natDesc:PropertyValuePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="NaturalDescriptorPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="natDesc:NaturalDescriptor"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AbstractNaturalDescriptorExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="PropertyValue" type="natDesc:PropertyValueType">
+		<!--No annotation found for this element.-->
+	</element>
+	<complexType name="PropertyValueType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="natDesc:PropertyValuePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="natDesc:AbstractPropertyValueExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PropertyValuePropertyGroup">
+		<sequence>
+			<element name="property" type="aixm:Character2Type" nillable="true" minOccurs="0">
+				<!--No annotation found for this element.-->
+			</element>
+			<element name="value" type="aixm:Character2Type" nillable="true" minOccurs="0">
+				<!--No annotation found for this element.-->
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="PropertyValuePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="natDesc:PropertyValue"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AbstractPropertyValueExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<!-- The "EventExtension"  and "EventExtensionPropertyGroup" elements have been manually added to this XSD. The EAP to XSD generator tool ignores non-AIXM features.
+Please note that "event" namespace has been added too at the begining of this scheme-->
+	<element name="EventExtension" type="natDesc:EventExtensionType" substitutionGroup="event:AbstractEventExtension"/>
+	<complexType name="EventExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="natDesc:EventExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="EventExtensionPropertyGroup">
+		<sequence>
+			<element name="hasNaturalDescriptor" type="natDesc:NaturalDescriptorPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+</schema>

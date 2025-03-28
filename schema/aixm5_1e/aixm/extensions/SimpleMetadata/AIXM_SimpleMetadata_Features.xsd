@@ -1,0 +1,2136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - Event Schema-->
+<!--www.aixm.aero-->
+<!--Released:  May 2011-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2013, EUROCONTROL & FAA
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: SimpleMetadata: Features -->
+<schema xmlns:metadata="http://www.aixm.aero/schema/5.1/extensions/SimpleMetadata" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/SimpleMetadata" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1-a">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../AIXM_Features.xsd"/>
+	<include schemaLocation="./AIXM_SimpleMetadata_DataTypes.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<annotation>
+				<appinfo source="www.aixm.aero/schema/5.1/SimpleMetedata">AIXM_SimpleMetadata_Features.xsd</appinfo>
+	</annotation>
+	<annotation>
+		<documentation>Definition of classes that are specific to the Simple Metedata extension.</documentation>
+	</annotation>
+<!-- This is the abstract extension, which is in fact not used like that. Each AIXM Feature extension is instead defined specifically. See further down 
+	<element name="AnyAIXMFeatureExtension" type="metadata:AnyAIXMFeatureExtensionType" substitutionGroup="aixm:AbstractAnyAIXMFeatureExtension"/>
+	<complexType name="AnyAIXMFeatureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AnyAIXMFeatureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AnyAIXMFeatureExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+				<annotation>
+					<appinfo>
+						<gml:description>A value indicating the likelihood of the feature data to have lost its integrity in the aeronautical data processing chain, from data origination process to present data manipulation process.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group> -->
+	<!--
+#######################################################################
+This Application Schema below is auto-generated from the core schema AIXM_Features.xsd.
+#######################################################################-->
+	<element name="RunwayProtectAreaExtension" type="metadata:RunwayProtectAreaExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaExtension"/>
+	<complexType name="RunwayProtectAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayProtectAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionExtension" type="metadata:RunwayDirectionExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionExtension"/>
+	<complexType name="RunwayDirectionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayDirectionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayCentrelinePointExtension" type="metadata:RunwayCentrelinePointExtensionType" substitutionGroup="aixm:AbstractRunwayCentrelinePointExtension"/>
+	<complexType name="RunwayCentrelinePointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayCentrelinePointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayCentrelinePointExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayExtension" type="metadata:RunwayExtensionType" substitutionGroup="aixm:AbstractRunwayExtension"/>
+	<complexType name="RunwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ArrestingGearExtension" type="metadata:ArrestingGearExtensionType" substitutionGroup="aixm:AbstractArrestingGearExtension"/>
+	<complexType name="ArrestingGearExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ArrestingGearExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrestingGearExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayElementExtension" type="metadata:RunwayElementExtensionType" substitutionGroup="aixm:AbstractRunwayElementExtension"/>
+	<complexType name="RunwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="VisualGlideSlopeIndicatorExtension" type="metadata:VisualGlideSlopeIndicatorExtensionType" substitutionGroup="aixm:AbstractVisualGlideSlopeIndicatorExtension"/>
+	<complexType name="VisualGlideSlopeIndicatorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:VisualGlideSlopeIndicatorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VisualGlideSlopeIndicatorExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayVisualRangeExtension" type="metadata:RunwayVisualRangeExtensionType" substitutionGroup="aixm:AbstractRunwayVisualRangeExtension"/>
+	<complexType name="RunwayVisualRangeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayVisualRangeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayVisualRangeExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayBlastPadExtension" type="metadata:RunwayBlastPadExtensionType" substitutionGroup="aixm:AbstractRunwayBlastPadExtension"/>
+	<complexType name="RunwayBlastPadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayBlastPadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayBlastPadExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionExtension" type="metadata:TaxiHoldingPositionExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionExtension"/>
+	<complexType name="TaxiHoldingPositionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiHoldingPositionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayExtension" type="metadata:TaxiwayExtensionType" substitutionGroup="aixm:AbstractTaxiwayExtension"/>
+	<complexType name="TaxiwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayElementExtension" type="metadata:TaxiwayElementExtensionType" substitutionGroup="aixm:AbstractTaxiwayElementExtension"/>
+	<complexType name="TaxiwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineExtension" type="metadata:GuidanceLineExtensionType" substitutionGroup="aixm:AbstractGuidanceLineExtension"/>
+	<complexType name="GuidanceLineExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GuidanceLineExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApronExtension" type="metadata:ApronExtensionType" substitutionGroup="aixm:AbstractApronExtension"/>
+	<complexType name="ApronExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApronExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApronElementExtension" type="metadata:ApronElementExtensionType" substitutionGroup="aixm:AbstractApronElementExtension"/>
+	<complexType name="ApronElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApronElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronElementExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AircraftStandExtension" type="metadata:AircraftStandExtensionType" substitutionGroup="aixm:AbstractAircraftStandExtension"/>
+	<complexType name="AircraftStandExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AircraftStandExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftStandExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RoadExtension" type="metadata:RoadExtensionType" substitutionGroup="aixm:AbstractRoadExtension"/>
+	<complexType name="RoadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RoadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RoadExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaExtension" type="metadata:DeicingAreaExtensionType" substitutionGroup="aixm:AbstractDeicingAreaExtension"/>
+	<complexType name="DeicingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DeicingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="PassengerLoadingBridgeExtension" type="metadata:PassengerLoadingBridgeExtensionType" substitutionGroup="aixm:AbstractPassengerLoadingBridgeExtension"/>
+	<complexType name="PassengerLoadingBridgeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:PassengerLoadingBridgeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerLoadingBridgeExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffSafeAreaExtension" type="metadata:TouchDownLiftOffSafeAreaExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffSafeAreaExtension"/>
+	<complexType name="TouchDownLiftOffSafeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TouchDownLiftOffSafeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffSafeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffExtension" type="metadata:TouchDownLiftOffExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffExtension"/>
+	<complexType name="TouchDownLiftOffExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TouchDownLiftOffExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GroundLightSystemExtension" type="metadata:GroundLightSystemExtensionType" substitutionGroup="aixm:AbstractGroundLightSystemExtension"/>
+	<complexType name="GroundLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GroundLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApronLightSystemExtension" type="metadata:ApronLightSystemExtensionType" substitutionGroup="aixm:AbstractApronLightSystemExtension"/>
+	<complexType name="ApronLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApronLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayLightSystemExtension" type="metadata:TaxiwayLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiwayLightSystemExtension"/>
+	<complexType name="TaxiwayLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiwayLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionLightSystemExtension" type="metadata:RunwayDirectionLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayDirectionLightSystemExtension"/>
+	<complexType name="RunwayDirectionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayDirectionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffLightSystemExtension" type="metadata:TouchDownLiftOffLightSystemExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffLightSystemExtension"/>
+	<complexType name="TouchDownLiftOffLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TouchDownLiftOffLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineLightSystemExtension" type="metadata:GuidanceLineLightSystemExtensionType" substitutionGroup="aixm:AbstractGuidanceLineLightSystemExtension"/>
+	<complexType name="GuidanceLineLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GuidanceLineLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaLightSystemExtension" type="metadata:RunwayProtectAreaLightSystemExtensionType" substitutionGroup="aixm:AbstractRunwayProtectAreaLightSystemExtension"/>
+	<complexType name="RunwayProtectAreaLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayProtectAreaLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionLightSystemExtension" type="metadata:TaxiHoldingPositionLightSystemExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionLightSystemExtension"/>
+	<complexType name="TaxiHoldingPositionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiHoldingPositionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApproachLightingSystemExtension" type="metadata:ApproachLightingSystemExtensionType" substitutionGroup="aixm:AbstractApproachLightingSystemExtension"/>
+	<complexType name="ApproachLightingSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApproachLightingSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLightingSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="MarkingExtension" type="metadata:MarkingExtensionType" substitutionGroup="aixm:AbstractMarkingExtension"/>
+	<complexType name="MarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:MarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayMarkingExtension" type="metadata:TaxiwayMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiwayMarkingExtension"/>
+	<complexType name="TaxiwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApronMarkingExtension" type="metadata:ApronMarkingExtensionType" substitutionGroup="aixm:AbstractApronMarkingExtension"/>
+	<complexType name="ApronMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApronMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportProtectionAreaMarkingExtension" type="metadata:AirportProtectionAreaMarkingExtensionType" substitutionGroup="aixm:AbstractAirportProtectionAreaMarkingExtension"/>
+	<complexType name="AirportProtectionAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportProtectionAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportProtectionAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffMarkingExtension" type="metadata:TouchDownLiftOffMarkingExtensionType" substitutionGroup="aixm:AbstractTouchDownLiftOffMarkingExtension"/>
+	<complexType name="TouchDownLiftOffMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TouchDownLiftOffMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RunwayMarkingExtension" type="metadata:RunwayMarkingExtensionType" substitutionGroup="aixm:AbstractRunwayMarkingExtension"/>
+	<complexType name="RunwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RunwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineMarkingExtension" type="metadata:GuidanceLineMarkingExtensionType" substitutionGroup="aixm:AbstractGuidanceLineMarkingExtension"/>
+	<complexType name="GuidanceLineMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GuidanceLineMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaMarkingExtension" type="metadata:DeicingAreaMarkingExtensionType" substitutionGroup="aixm:AbstractDeicingAreaMarkingExtension"/>
+	<complexType name="DeicingAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DeicingAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionMarkingExtension" type="metadata:TaxiHoldingPositionMarkingExtensionType" substitutionGroup="aixm:AbstractTaxiHoldingPositionMarkingExtension"/>
+	<complexType name="TaxiHoldingPositionMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TaxiHoldingPositionMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandMarkingExtension" type="metadata:StandMarkingExtensionType" substitutionGroup="aixm:AbstractStandMarkingExtension"/>
+	<complexType name="StandMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandMarkingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="FloatingDockSiteExtension" type="metadata:FloatingDockSiteExtensionType" substitutionGroup="aixm:AbstractFloatingDockSiteExtension"/>
+	<complexType name="FloatingDockSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:FloatingDockSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FloatingDockSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="MarkingBuoyExtension" type="metadata:MarkingBuoyExtensionType" substitutionGroup="aixm:AbstractMarkingBuoyExtension"/>
+	<complexType name="MarkingBuoyExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:MarkingBuoyExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingBuoyExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneLandingAreaExtension" type="metadata:SeaplaneLandingAreaExtensionType" substitutionGroup="aixm:AbstractSeaplaneLandingAreaExtension"/>
+	<complexType name="SeaplaneLandingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SeaplaneLandingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneLandingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneRampSiteExtension" type="metadata:SeaplaneRampSiteExtensionType" substitutionGroup="aixm:AbstractSeaplaneRampSiteExtension"/>
+	<complexType name="SeaplaneRampSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SeaplaneRampSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneRampSiteExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="WorkAreaExtension" type="metadata:WorkAreaExtensionType" substitutionGroup="aixm:AbstractWorkAreaExtension"/>
+	<complexType name="WorkAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:WorkAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="WorkAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SurveyControlPointExtension" type="metadata:SurveyControlPointExtensionType" substitutionGroup="aixm:AbstractSurveyControlPointExtension"/>
+	<complexType name="SurveyControlPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SurveyControlPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveyControlPointExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NonMovementAreaExtension" type="metadata:NonMovementAreaExtensionType" substitutionGroup="aixm:AbstractNonMovementAreaExtension"/>
+	<complexType name="NonMovementAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NonMovementAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NonMovementAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportProtectionAreaExtension" type="metadata:AirportHeliportProtectionAreaExtensionType" substitutionGroup="aixm:AbstractAirportHeliportProtectionAreaExtension"/>
+	<complexType name="AirportHeliportProtectionAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportHeliportProtectionAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportProtectionAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportCollocationExtension" type="metadata:AirportHeliportCollocationExtensionType" substitutionGroup="aixm:AbstractAirportHeliportCollocationExtension"/>
+	<complexType name="AirportHeliportCollocationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportHeliportCollocationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportCollocationExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportExtension" type="metadata:AirportHeliportExtensionType" substitutionGroup="aixm:AbstractAirportHeliportExtension"/>
+	<complexType name="AirportHeliportExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportHeliportExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AltimeterSourceExtension" type="metadata:AltimeterSourceExtensionType" substitutionGroup="aixm:AbstractAltimeterSourceExtension"/>
+	<complexType name="AltimeterSourceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AltimeterSourceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AltimeterSourceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportHotSpotExtension" type="metadata:AirportHotSpotExtensionType" substitutionGroup="aixm:AbstractAirportHotSpotExtension"/>
+	<complexType name="AirportHotSpotExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportHotSpotExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHotSpotExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AuthorityForAirspaceExtension" type="metadata:AuthorityForAirspaceExtensionType" substitutionGroup="aixm:AbstractAuthorityForAirspaceExtension"/>
+	<complexType name="AuthorityForAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AuthorityForAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AuthorityForAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension" type="metadata:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GeoBorderExtension" type="metadata:GeoBorderExtensionType" substitutionGroup="aixm:AbstractGeoBorderExtension"/>
+	<complexType name="GeoBorderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GeoBorderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GeoBorderExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="PrecisionApproachRadarExtension" type="metadata:PrecisionApproachRadarExtensionType" substitutionGroup="aixm:AbstractPrecisionApproachRadarExtension"/>
+	<complexType name="PrecisionApproachRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:PrecisionApproachRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrecisionApproachRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="PrimarySurveillanceRadarExtension" type="metadata:PrimarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractPrimarySurveillanceRadarExtension"/>
+	<complexType name="PrimarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:PrimarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrimarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RadarEquipmentExtension" type="metadata:RadarEquipmentExtensionType" substitutionGroup="aixm:AbstractRadarEquipmentExtension"/>
+	<complexType name="RadarEquipmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RadarEquipmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarEquipmentExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RadarSystemExtension" type="metadata:RadarSystemExtensionType" substitutionGroup="aixm:AbstractRadarSystemExtension"/>
+	<complexType name="RadarSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RadarSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SecondarySurveillanceRadarExtension" type="metadata:SecondarySurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractSecondarySurveillanceRadarExtension"/>
+	<complexType name="SecondarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SecondarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SecondarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SurveillanceRadarExtension" type="metadata:SurveillanceRadarExtensionType" substitutionGroup="aixm:AbstractSurveillanceRadarExtension"/>
+	<complexType name="SurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="HoldingAssessmentExtension" type="metadata:HoldingAssessmentExtensionType" substitutionGroup="aixm:AbstractHoldingAssessmentExtension"/>
+	<complexType name="HoldingAssessmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:HoldingAssessmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingAssessmentExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelTableExtension" type="metadata:StandardLevelTableExtensionType" substitutionGroup="aixm:AbstractStandardLevelTableExtension"/>
+	<complexType name="StandardLevelTableExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandardLevelTableExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelTableExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelSectorExtension" type="metadata:StandardLevelSectorExtensionType" substitutionGroup="aixm:AbstractStandardLevelSectorExtension"/>
+	<complexType name="StandardLevelSectorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandardLevelSectorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelSectorExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelColumnExtension" type="metadata:StandardLevelColumnExtensionType" substitutionGroup="aixm:AbstractStandardLevelColumnExtension"/>
+	<complexType name="StandardLevelColumnExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandardLevelColumnExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelColumnExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RadioFrequencyAreaExtension" type="metadata:RadioFrequencyAreaExtensionType" substitutionGroup="aixm:AbstractRadioFrequencyAreaExtension"/>
+	<complexType name="RadioFrequencyAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RadioFrequencyAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioFrequencyAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SpecialDateExtension" type="metadata:SpecialDateExtensionType" substitutionGroup="aixm:AbstractSpecialDateExtension"/>
+	<complexType name="SpecialDateExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SpecialDateExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialDateExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ServiceExtension" type="metadata:ServiceExtensionType" substitutionGroup="aixm:AbstractServiceExtension"/>
+	<complexType name="ServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RadioCommunicationChannelExtension" type="metadata:RadioCommunicationChannelExtensionType" substitutionGroup="aixm:AbstractRadioCommunicationChannelExtension"/>
+	<complexType name="RadioCommunicationChannelExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RadioCommunicationChannelExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioCommunicationChannelExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="PilotControlledLightingExtension" type="metadata:PilotControlledLightingExtensionType" substitutionGroup="aixm:AbstractPilotControlledLightingExtension"/>
+	<complexType name="PilotControlledLightingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:PilotControlledLightingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PilotControlledLightingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="InformationServiceExtension" type="metadata:InformationServiceExtensionType" substitutionGroup="aixm:AbstractInformationServiceExtension"/>
+	<complexType name="InformationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:InformationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InformationServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TrafficSeparationServiceExtension" type="metadata:TrafficSeparationServiceExtensionType" substitutionGroup="aixm:AbstractTrafficSeparationServiceExtension"/>
+	<complexType name="TrafficSeparationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TrafficSeparationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TrafficSeparationServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GroundTrafficControlServiceExtension" type="metadata:GroundTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractGroundTrafficControlServiceExtension"/>
+	<complexType name="GroundTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GroundTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficControlServiceExtension" type="metadata:AirTrafficControlServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficControlServiceExtension"/>
+	<complexType name="AirTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficManagementServiceExtension" type="metadata:AirTrafficManagementServiceExtensionType" substitutionGroup="aixm:AbstractAirTrafficManagementServiceExtension"/>
+	<complexType name="AirTrafficManagementServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirTrafficManagementServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficManagementServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SearchRescueServiceExtension" type="metadata:SearchRescueServiceExtensionType" substitutionGroup="aixm:AbstractSearchRescueServiceExtension"/>
+	<complexType name="SearchRescueServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SearchRescueServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SearchRescueServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportGroundServiceExtension" type="metadata:AirportGroundServiceExtensionType" substitutionGroup="aixm:AbstractAirportGroundServiceExtension"/>
+	<complexType name="AirportGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="PassengerServiceExtension" type="metadata:PassengerServiceExtensionType" substitutionGroup="aixm:AbstractPassengerServiceExtension"/>
+	<complexType name="PassengerServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:PassengerServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AircraftGroundServiceExtension" type="metadata:AircraftGroundServiceExtensionType" substitutionGroup="aixm:AbstractAircraftGroundServiceExtension"/>
+	<complexType name="AircraftGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AircraftGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="FireFightingServiceExtension" type="metadata:FireFightingServiceExtensionType" substitutionGroup="aixm:AbstractFireFightingServiceExtension"/>
+	<complexType name="FireFightingServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:FireFightingServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FireFightingServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportClearanceServiceExtension" type="metadata:AirportClearanceServiceExtensionType" substitutionGroup="aixm:AbstractAirportClearanceServiceExtension"/>
+	<complexType name="AirportClearanceServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportClearanceServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportClearanceServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirportSuppliesServiceExtension" type="metadata:AirportSuppliesServiceExtensionType" substitutionGroup="aixm:AbstractAirportSuppliesServiceExtension"/>
+	<complexType name="AirportSuppliesServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirportSuppliesServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportSuppliesServiceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AngleIndicationExtension" type="metadata:AngleIndicationExtensionType" substitutionGroup="aixm:AbstractAngleIndicationExtension"/>
+	<complexType name="AngleIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AngleIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AngleIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DistanceIndicationExtension" type="metadata:DistanceIndicationExtensionType" substitutionGroup="aixm:AbstractDistanceIndicationExtension"/>
+	<complexType name="DistanceIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DistanceIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DistanceIndicationExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AzimuthExtension" type="metadata:AzimuthExtensionType" substitutionGroup="aixm:AbstractAzimuthExtension"/>
+	<complexType name="AzimuthExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AzimuthExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AzimuthExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="CheckpointINSExtension" type="metadata:CheckpointINSExtensionType" substitutionGroup="aixm:AbstractCheckpointINSExtension"/>
+	<complexType name="CheckpointINSExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:CheckpointINSExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointINSExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="CheckpointVORExtension" type="metadata:CheckpointVORExtensionType" substitutionGroup="aixm:AbstractCheckpointVORExtension"/>
+	<complexType name="CheckpointVORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:CheckpointVORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointVORExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DMEExtension" type="metadata:DMEExtensionType" substitutionGroup="aixm:AbstractDMEExtension"/>
+	<complexType name="DMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DMEExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ElevationExtension" type="metadata:ElevationExtensionType" substitutionGroup="aixm:AbstractElevationExtension"/>
+	<complexType name="ElevationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ElevationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevationExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="GlidepathExtension" type="metadata:GlidepathExtensionType" substitutionGroup="aixm:AbstractGlidepathExtension"/>
+	<complexType name="GlidepathExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:GlidepathExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GlidepathExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="LocalizerExtension" type="metadata:LocalizerExtensionType" substitutionGroup="aixm:AbstractLocalizerExtension"/>
+	<complexType name="LocalizerExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:LocalizerExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="LocalizerExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="MarkerBeaconExtension" type="metadata:MarkerBeaconExtensionType" substitutionGroup="aixm:AbstractMarkerBeaconExtension"/>
+	<complexType name="MarkerBeaconExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:MarkerBeaconExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkerBeaconExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NavaidExtension" type="metadata:NavaidExtensionType" substitutionGroup="aixm:AbstractNavaidExtension"/>
+	<complexType name="NavaidExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NavaidExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NavaidEquipmentExtension" type="metadata:NavaidEquipmentExtensionType" substitutionGroup="aixm:AbstractNavaidEquipmentExtension"/>
+	<complexType name="NavaidEquipmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NavaidEquipmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidEquipmentExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NavigationSystemCheckpointExtension" type="metadata:NavigationSystemCheckpointExtensionType" substitutionGroup="aixm:AbstractNavigationSystemCheckpointExtension"/>
+	<complexType name="NavigationSystemCheckpointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NavigationSystemCheckpointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationSystemCheckpointExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SDFExtension" type="metadata:SDFExtensionType" substitutionGroup="aixm:AbstractSDFExtension"/>
+	<complexType name="SDFExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SDFExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SDFExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NDBExtension" type="metadata:NDBExtensionType" substitutionGroup="aixm:AbstractNDBExtension"/>
+	<complexType name="NDBExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NDBExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NDBExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationStationExtension" type="metadata:SpecialNavigationStationExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationStationExtension"/>
+	<complexType name="SpecialNavigationStationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SpecialNavigationStationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationStationExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="VORExtension" type="metadata:VORExtensionType" substitutionGroup="aixm:AbstractVORExtension"/>
+	<complexType name="VORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:VORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VORExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TACANExtension" type="metadata:TACANExtensionType" substitutionGroup="aixm:AbstractTACANExtension"/>
+	<complexType name="TACANExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TACANExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TACANExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationSystemExtension" type="metadata:SpecialNavigationSystemExtensionType" substitutionGroup="aixm:AbstractSpecialNavigationSystemExtension"/>
+	<complexType name="SpecialNavigationSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SpecialNavigationSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationSystemExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DirectionFinderExtension" type="metadata:DirectionFinderExtensionType" substitutionGroup="aixm:AbstractDirectionFinderExtension"/>
+	<complexType name="DirectionFinderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DirectionFinderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DirectionFinderExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DesignatedPointExtension" type="metadata:DesignatedPointExtensionType" substitutionGroup="aixm:AbstractDesignatedPointExtension"/>
+	<complexType name="DesignatedPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DesignatedPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DesignatedPointExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SignificantPointInAirspaceExtension" type="metadata:SignificantPointInAirspaceExtensionType" substitutionGroup="aixm:AbstractSignificantPointInAirspaceExtension"/>
+	<complexType name="SignificantPointInAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SignificantPointInAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SignificantPointInAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AeronauticalGroundLightExtension" type="metadata:AeronauticalGroundLightExtensionType" substitutionGroup="aixm:AbstractAeronauticalGroundLightExtension"/>
+	<complexType name="AeronauticalGroundLightExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AeronauticalGroundLightExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AeronauticalGroundLightExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="OrganisationAuthorityExtension" type="metadata:OrganisationAuthorityExtensionType" substitutionGroup="aixm:AbstractOrganisationAuthorityExtension"/>
+	<complexType name="OrganisationAuthorityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:OrganisationAuthorityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="OrganisationAuthorityExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="UnitExtension" type="metadata:UnitExtensionType" substitutionGroup="aixm:AbstractUnitExtension"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ObstacleAreaExtension" type="metadata:ObstacleAreaExtensionType" substitutionGroup="aixm:AbstractObstacleAreaExtension"/>
+	<complexType name="ObstacleAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ObstacleAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ObstacleAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="VerticalStructureExtension" type="metadata:VerticalStructureExtensionType" substitutionGroup="aixm:AbstractVerticalStructureExtension"/>
+	<complexType name="VerticalStructureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:VerticalStructureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VerticalStructureExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="CirclingAreaExtension" type="metadata:CirclingAreaExtensionType" substitutionGroup="aixm:AbstractCirclingAreaExtension"/>
+	<complexType name="CirclingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:CirclingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CirclingAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="TerminalArrivalAreaExtension" type="metadata:TerminalArrivalAreaExtensionType" substitutionGroup="aixm:AbstractTerminalArrivalAreaExtension"/>
+	<complexType name="TerminalArrivalAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:TerminalArrivalAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TerminalArrivalAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="InstrumentApproachProcedureExtension" type="metadata:InstrumentApproachProcedureExtensionType" substitutionGroup="aixm:AbstractInstrumentApproachProcedureExtension"/>
+	<complexType name="InstrumentApproachProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:InstrumentApproachProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InstrumentApproachProcedureExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentDepartureExtension" type="metadata:StandardInstrumentDepartureExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension"/>
+	<complexType name="StandardInstrumentDepartureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandardInstrumentDepartureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentDepartureExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaExtension" type="metadata:NavigationAreaExtensionType" substitutionGroup="aixm:AbstractNavigationAreaExtension"/>
+	<complexType name="NavigationAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NavigationAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentArrivalExtension" type="metadata:StandardInstrumentArrivalExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension"/>
+	<complexType name="StandardInstrumentArrivalExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:StandardInstrumentArrivalExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentArrivalExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ProcedureExtension" type="metadata:ProcedureExtensionType" substitutionGroup="aixm:AbstractProcedureExtension"/>
+	<complexType name="ProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaRestrictionExtension" type="metadata:NavigationAreaRestrictionExtensionType" substitutionGroup="aixm:AbstractNavigationAreaRestrictionExtension"/>
+	<complexType name="NavigationAreaRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:NavigationAreaRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SegmentLegExtension" type="metadata:SegmentLegExtensionType" substitutionGroup="aixm:AbstractSegmentLegExtension"/>
+	<complexType name="SegmentLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SegmentLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SegmentLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ApproachLegExtension" type="metadata:ApproachLegExtensionType" substitutionGroup="aixm:AbstractApproachLegExtension"/>
+	<complexType name="ApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ArrivalFeederLegExtension" type="metadata:ArrivalFeederLegExtensionType" substitutionGroup="aixm:AbstractArrivalFeederLegExtension"/>
+	<complexType name="ArrivalFeederLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ArrivalFeederLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalFeederLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ArrivalLegExtension" type="metadata:ArrivalLegExtensionType" substitutionGroup="aixm:AbstractArrivalLegExtension"/>
+	<complexType name="ArrivalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ArrivalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="DepartureLegExtension" type="metadata:DepartureLegExtensionType" substitutionGroup="aixm:AbstractDepartureLegExtension"/>
+	<complexType name="DepartureLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:DepartureLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DepartureLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="FinalLegExtension" type="metadata:FinalLegExtensionType" substitutionGroup="aixm:AbstractFinalLegExtension"/>
+	<complexType name="FinalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:FinalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FinalLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="InitialLegExtension" type="metadata:InitialLegExtensionType" substitutionGroup="aixm:AbstractInitialLegExtension"/>
+	<complexType name="InitialLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:InitialLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InitialLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="IntermediateLegExtension" type="metadata:IntermediateLegExtensionType" substitutionGroup="aixm:AbstractIntermediateLegExtension"/>
+	<complexType name="IntermediateLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:IntermediateLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="IntermediateLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="MissedApproachLegExtension" type="metadata:MissedApproachLegExtensionType" substitutionGroup="aixm:AbstractMissedApproachLegExtension"/>
+	<complexType name="MissedApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:MissedApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MissedApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ProcedureDMEExtension" type="metadata:ProcedureDMEExtensionType" substitutionGroup="aixm:AbstractProcedureDMEExtension"/>
+	<complexType name="ProcedureDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ProcedureDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="SafeAltitudeAreaExtension" type="metadata:SafeAltitudeAreaExtensionType" substitutionGroup="aixm:AbstractSafeAltitudeAreaExtension"/>
+	<complexType name="SafeAltitudeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:SafeAltitudeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SafeAltitudeAreaExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="HoldingPatternExtension" type="metadata:HoldingPatternExtensionType" substitutionGroup="aixm:AbstractHoldingPatternExtension"/>
+	<complexType name="HoldingPatternExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:HoldingPatternExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingPatternExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="UnplannedHoldingExtension" type="metadata:UnplannedHoldingExtensionType" substitutionGroup="aixm:AbstractUnplannedHoldingExtension"/>
+	<complexType name="UnplannedHoldingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:UnplannedHoldingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnplannedHoldingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AirspaceBorderCrossingExtension" type="metadata:AirspaceBorderCrossingExtensionType" substitutionGroup="aixm:AbstractAirspaceBorderCrossingExtension"/>
+	<complexType name="AirspaceBorderCrossingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AirspaceBorderCrossingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceBorderCrossingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="FlightRestrictionExtension" type="metadata:FlightRestrictionExtensionType" substitutionGroup="aixm:AbstractFlightRestrictionExtension"/>
+	<complexType name="FlightRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:FlightRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RouteSegmentExtension" type="metadata:RouteSegmentExtensionType" substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RouteDMEExtension" type="metadata:RouteDMEExtensionType" substitutionGroup="aixm:AbstractRouteDMEExtension"/>
+	<complexType name="RouteDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RouteDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteDMEExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RouteExtension" type="metadata:RouteExtensionType" substitutionGroup="aixm:AbstractRouteExtension"/>
+	<complexType name="RouteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RouteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="ChangeOverPointExtension" type="metadata:ChangeOverPointExtensionType" substitutionGroup="aixm:AbstractChangeOverPointExtension"/>
+	<complexType name="ChangeOverPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:ChangeOverPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ChangeOverPointExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AerialRefuellingExtension" type="metadata:AerialRefuellingExtensionType" substitutionGroup="aixm:AbstractAerialRefuellingExtension"/>
+	<complexType name="AerialRefuellingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:AerialRefuellingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AerialRefuellingExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="RulesProceduresExtension" type="metadata:RulesProceduresExtensionType" substitutionGroup="aixm:AbstractRulesProceduresExtension"/>
+	<complexType name="RulesProceduresExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="metadata:RulesProceduresExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RulesProceduresExtensionPropertyGroup">
+		<sequence>
+			<element name="integrity" type="metadata:ValDataIntegrityType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+</schema>

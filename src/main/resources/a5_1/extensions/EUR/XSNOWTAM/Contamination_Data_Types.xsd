@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!-- Generated from Rational Rose 2006.0.0.060314 -->
+<!-- Script: AIXM-DataTypeGenerator.ebs -->
+<!-- Date:      03-25-2011  10:51:36 -->
+<!-- Model:     H:\Work\DataModels\AIXM\5.1.x\uml\working_version\AIXM-5-1-WorkingModel.mdl -->
+<!-- Component: Logical View::AIXM Application Schemas::EUR Digital SNOWTAM::Digital SNOWTAM Data Types -->
+<!-- Version:  -->
+<!-- XML-Schema level supported is specified by W3C -->
+<!-- 	http://www.w3.org/2001/XMLSchema/ -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:con="http://www.eurocontrol.int/contamination" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.eurocontrol.int/contamination">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../ISO_19136_Schemas/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<annotation>
+		<appinfo source="www.aixm.aero/schema/5.1">AIXM_DataTypes.xsd</appinfo>
+	</annotation>
+	<simpleType name="CodeContaminationStateBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="YELLOW">
+						<annotation>
+							<appinfo>
+								<gml:description>YELLOW</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="RED">
+						<annotation>
+							<appinfo>
+								<gml:description>RED</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="GREEN">
+						<annotation>
+							<appinfo>
+								<gml:description>GREEN</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="BLUE">
+						<annotation>
+							<appinfo>
+								<gml:description>BLUE</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="CLEAR">
+						<annotation>
+							<appinfo>
+								<gml:description>CLEAR</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeContaminationStateType">
+		<simpleContent>
+			<extension base="con:CodeContaminationStateBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

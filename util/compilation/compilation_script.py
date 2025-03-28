@@ -257,9 +257,6 @@ class CompilationScript :
             new_data.append(line)
         return new_data
     
-# compilationScript = CompilationScript(adapters_config, rename_config, "util/compilation/test_dir")
-# compilationScript.run()
-
 compilationScript = CompilationScript(adapters_config, rename_config, "src/main/java/com/aixm/delorean/core/schema/a5_1/aixm")
 compilationScript.run()
 

@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - eASM (Flexible Use of Airspace Managament) Schema-->
+<!--www.aixm.aero-->
+<!--Released:  February 2011-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2011, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: eASM: Features -->
+<schema xmlns:easm="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../AIXM_Features.xsd"/>
+	<include schemaLocation="./eASM_DataTypes.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.0/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<element name="AirspaceExtension" type="easm:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="easm:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="flexibleUse" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is not designated as either military or civil airspace but should be considered as one continuum and used flexibly on a day-to-day basis. Consequently, any necessary airspace segregation should be only of a temporary nature.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level1" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the strategic level. The act of defining and reviewing as required the national airspace policy taking into account national and international airspace requirements.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level2" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the pre-tactical level. The act operation of conducting operational management within the framework of pre-determined existing ATM structure and procedures defined in Level 1 and of reaching specific agreement between civil and military authorities involved. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level3" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the tactical level. The act on the day of operation of activating, de-activating or real-time reallocating of airspace allocated in Level 2 and of solving specific airspace problems and/or of individual OAT/GAT traffic situations in real-time between civil and military units and/or controllers, as appropriate. This co-ordination can take place either in active or passive mode with or without action by the controller. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="responsibleAMC" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Airspace Management Cell which has the operational responsibility for the allocation of the Airspace.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="UnitExtension" type="easm:UnitExtensionType" substitutionGroup="aixm:AbstractUnitExtension"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="easm:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element name="airspaceManagementCell" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates whether the Unit is an AMC, a joint civil/military unit responsible for the day-to-day management and temporary allocation of national or sub-regional airspace under the jurisdiction of one or more ECAC state(s).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AirspaceActivationExtension" type="easm:AirspaceActivationExtensionType" substitutionGroup="aixm:AbstractAirspaceActivationExtension"/>
+	<complexType name="AirspaceActivationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="easm:AirspaceActivationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceActivationExtensionPropertyGroup">
+		<sequence>
+			<element name="reservationPhase" type="easm:CodeAirspaceReservationPhaseType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>A refinement of the statusActivation attribute, indicating steps of the reservation phase, from the military end user point of view.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="requestor" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Unit that makes the request for the Airspace reservation. This may be different from the Unit (squadron) that will effectively use the airspace.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="militaryUse" type="easm:MilitaryActivityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>Details the type of military activity for which the Airspace is reserved.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The Flight Information Region where the airspace reservation is located.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="militaryUsage" type="easm:AirspaceReservationPropertyType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<complexType name="ConstrainingAirspaceActivityPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:ConstrainingAirspaceActivity"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="ConstrainingAirspaceActivity" type="easm:ConstrainingAirspaceActivityType">
+		<annotation>
+			<appinfo>
+				<gml:description>An association class that qualifies the impact of an airspace reservation over a route segment.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="ConstrainingAirspaceActivityType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:ConstrainingAirspaceActivityPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractConstrainingAirspaceActivityExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ConstrainingAirspaceActivityPropertyGroup">
+		<sequence>
+			<element name="effect" type="easm:CodeAirspaceReservationImpactType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The operational impact of the Airspace over the route segment.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theAirspace" type="aixm:AirspacePropertyType" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractConstrainingAirspaceActivityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="RouteAvailabilityExtension" type="easm:RouteAvailabilityExtensionType" substitutionGroup="aixm:AbstractRouteAvailabilityExtension"/>
+	<complexType name="RouteAvailabilityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="easm:RouteAvailabilityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteAvailabilityExtensionPropertyGroup">
+		<sequence>
+			<element name="conditionalRouteType" type="easm:CodeConditionalRouteType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates the category of the conditional route (CDR), according to the Flexible Use of Airspace rules.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The Flight Information Region where the route opening/closure is located.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="causeOfLimitation" type="easm:ConstrainingAirspaceActivityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="MissionPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="Mission" type="easm:MissionType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<appinfo>
+				<gml:description>One or more aircraft ordered to accomplish one particular task performing the mission as the individual flight(s) and/or formation(s).</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="MissionType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="easm:MissionTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="MissionTimeSlicePropertyType">
+		<sequence>
+			<element ref="easm:MissionTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="MissionTimeSlice" type="easm:MissionTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="MissionTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="easm:MissionPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractMissionExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MissionPropertyGroup">
+		<sequence>
+			<element name="identification" type="aixm:TextDesignatorType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>A code that designates the mission.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="name" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>A free text name by which the mission is known.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="formationCode" type="easm:CodeMissionFormationType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates the type of air-to-air engagement between the formations participating in the activity.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractMissionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="FlightFormationPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="FlightFormation" type="easm:FlightFormationType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<appinfo>
+				<gml:description>An ordered arrangement of one or more aircraft processing together under a commander and under a common flight plan.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="FlightFormationType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="easm:FlightFormationTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="FlightFormationTimeSlicePropertyType">
+		<sequence>
+			<element ref="easm:FlightFormationTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="FlightFormationTimeSlice" type="easm:FlightFormationTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="FlightFormationTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="easm:FlightFormationPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractFlightFormationExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightFormationPropertyGroup">
+		<sequence>
+			<element name="flightIdentification" type="aixm:TextDesignatorType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The flight identification is the identification (call-sign) of the formation. If there is more than one flight in the formation, it will identify the master (pilot) flight.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="numberOfAircraft" type="aixm:NoNumberType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The number of flights which participate to the formation.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="transitDuration" type="aixm:ValDurationType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Either estimated or average duration between the departure airport and the first entry in an airspace plus the duration between the last airspace and the landing airport.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="reason" type="easm:MissionPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The mission for which the Sortie is executed.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="flightFormationDeparture" type="easm:FlightFormationDeparturePropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airport of departure.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="flightFormationArrival" type="easm:FlightFormationArrivalPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airport of arrival.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="formationComponent" type="easm:FormationComponentPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>A group of aircraft of the same type that participate to the flight.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="user" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Unit that flies the Sortie</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="airspaceInUse" type="easm:AirspaceInUsePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractFlightFormationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="FlightFormationDeparturePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:FlightFormationDeparture"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="FlightFormationDeparture" type="easm:FlightFormationDepartureType">
+		<annotation>
+			<appinfo>
+				<gml:description>An association class that gives details about the departure airport in relation with a FlightFormation.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="FlightFormationDepartureType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:FlightFormationDeparturePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractFlightFormationDepartureExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightFormationDeparturePropertyGroup">
+		<sequence>
+			<element name="estimatedTime" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Planned date and time for the take-off of the flight formation.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="actualTime" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Real date and time for the take-off of the flight formation.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theAirportHeliport" type="aixm:AirportHeliportPropertyType" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airport of departure.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AbstractFlightFormationDepartureExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="FlightFormationArrivalPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:FlightFormationArrival"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="FlightFormationArrival" type="easm:FlightFormationArrivalType">
+		<annotation>
+			<appinfo>
+				<gml:description>An association class that gives details about the arrival airport in relation with a FlightFormation.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="FlightFormationArrivalType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:FlightFormationArrivalPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractFlightFormationArrivalExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightFormationArrivalPropertyGroup">
+		<sequence>
+			<element name="estimatedTime" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Planned time for the landing of the flight formation.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="actualTime" type="aixm:DateTimeType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Real time of the flight formation landing.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theAirportHeliport" type="aixm:AirportHeliportPropertyType" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airport of arrival.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AbstractFlightFormationArrivalExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="AirspaceInUsePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:AirspaceInUse"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AirspaceInUse" type="easm:AirspaceInUseType">
+		<annotation>
+			<appinfo>
+				<gml:description>Details about the association between the Flight Formation and the Airspace Usage.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="AirspaceInUseType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:AirspaceInUsePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractAirspaceInUseExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceInUsePropertyGroup">
+		<sequence>
+			<element name="estimatedEntryDateTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<element name="estimatedExitDateTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<element name="actualEntryDateTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<element name="actualExitDateTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<element name="flightLevel" type="aixm:ValFLType" nillable="true" minOccurs="0"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theAirspace" type="aixm:AirspacePropertyType" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractAirspaceInUseExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="AirspaceReservationPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:AirspaceReservation"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AirspaceReservation" type="easm:AirspaceReservationType">
+		<annotation>
+			<appinfo>
+				<gml:description>Details about the relation between the Mission and the corresponding Airspace Reservation.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="AirspaceReservationType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:AirspaceReservationPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractAirspaceReservationExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceReservationPropertyGroup">
+		<sequence>
+			<element name="cancellation" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>An indication that the airspace reservation has been cancelled.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="cancellationReason" type="easm:CodeReasonCancellationType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The reason for the cancellation of the airspace reservation.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theMission" type="easm:MissionPropertyType" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractAirspaceReservationExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="MilitaryFleetPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="MilitaryFleet" type="easm:MilitaryFleetType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<appinfo>
+				<gml:description>A set of airframes that belong to one Unit and are of the same type.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="MilitaryFleetType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="easm:MilitaryFleetTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="MilitaryFleetTimeSlicePropertyType">
+		<sequence>
+			<element ref="easm:MilitaryFleetTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="MilitaryFleetTimeSlice" type="easm:MilitaryFleetTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="MilitaryFleetTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="easm:MilitaryFleetPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractMilitaryFleetExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MilitaryFleetPropertyGroup">
+		<sequence>
+			<element name="aircraftType" type="aixm:CodeAircraftICAOType" nillable="true" minOccurs="0"/>
+			<element name="numberOfAircraft" type="aixm:NoNumberType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Number of aircraft with the same aircraft type in the fleet of one unit</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="cost" type="easm:ValCostType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The hourly cost of an aircraft (expressed in Euro).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="owner" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Unit that owns the fleet.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractMilitaryFleetExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="FormationComponentPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:FormationComponent"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="FormationComponent" type="easm:FormationComponentType">
+		<annotation>
+			<appinfo>
+				<gml:description>A group of aircraft of the same type that participate to the flight.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="FormationComponentType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:FormationComponentPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractFormationComponentExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FormationComponentPropertyGroup">
+		<sequence>
+			<element name="numberOfAircraft" type="aixm:NoNumberType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Number of aircraft with the same aircraft type in the formation or sortie</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theMilitaryFleet" type="easm:MilitaryFleetPropertyType" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>A group of aircraft of the same type that participate to the flight.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AbstractFormationComponentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="OptimumAirspacePropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="OptimumAirspace" type="easm:OptimumAirspaceType" substitutionGroup="aixm:AbstractAIXMFeature"/>
+	<complexType name="OptimumAirspaceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="easm:OptimumAirspaceTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="OptimumAirspaceTimeSlicePropertyType">
+		<sequence>
+			<element ref="easm:OptimumAirspaceTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="OptimumAirspaceTimeSlice" type="easm:OptimumAirspaceTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="OptimumAirspaceTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="easm:OptimumAirspacePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractOptimumAirspaceExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="OptimumAirspacePropertyGroup">
+		<sequence>
+			<element name="group" type="xsd:string" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>A fleet belongs to a group in order to classify the fleets with the activity.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="flightLevelRange" type="aixm:ValFLType" nillable="true" minOccurs="0"/>
+			<element name="dimensionWidthNM" type="xsd:double" nillable="true" minOccurs="0"/>
+			<element name="dimensionDepthNM" type="xsd:double" nillable="true" minOccurs="0"/>
+			<element name="activityType" type="aixm:CodeAirspaceActivityType" nillable="true" minOccurs="0"/>
+			<element name="targetFleet" type="easm:MilitaryFleetPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractOptimumAirspaceExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="MilitaryActivityPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="easm:MilitaryActivity"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="MilitaryActivity" type="easm:MilitaryActivityType">
+		<annotation>
+			<appinfo>
+				<gml:description>Details about the military activity that is related to the AirspaceLayerUsage.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="MilitaryActivityType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="easm:MilitaryActivityPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractMilitaryActivityExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MilitaryActivityPropertyGroup">
+		<sequence>
+			<element name="militaryActivity" type="easm:CodeMilitaryActivityType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>List of military activities (with a national specificity).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractMilitaryActivityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="NationalMilitaryActivitiesPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="NationalMilitaryActivities" type="easm:NationalMilitaryActivitiesType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<appinfo>
+				<gml:description>A feature that relates the Military Activity codes with each Country that uses them.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="NationalMilitaryActivitiesType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="easm:NationalMilitaryActivitiesTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="NationalMilitaryActivitiesTimeSlicePropertyType">
+		<sequence>
+			<element ref="easm:NationalMilitaryActivitiesTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="NationalMilitaryActivitiesTimeSlice" type="easm:NationalMilitaryActivitiesTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="NationalMilitaryActivitiesTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="easm:NationalMilitaryActivitiesPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="easm:AbstractNationalMilitaryActivitiesExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NationalMilitaryActivitiesPropertyGroup">
+		<sequence>
+			<element name="activity" type="easm:MilitaryActivityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>A type of MilitaryActivity code used by the Country.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="user" type="aixm:OrganisationAuthorityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>A Country that is using a specific list of codes for MilitaryActivity.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractNationalMilitaryActivitiesExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+</schema>

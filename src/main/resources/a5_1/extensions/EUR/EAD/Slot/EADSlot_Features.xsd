@@ -1,0 +1,2683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot"
+    version="5.1.a" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ead-audit="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit"
+    xmlns:ead-slot="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import
+        namespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit" schemaLocation="../Audit/EADAudit_Features.xsd"/>
+    <import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../../xlink/xlinks.xsd"/>
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_Features.xsd"/>
+    <include schemaLocation="./EADSlot_DataTypes.xsd"/>
+    <element name="AerialRefuellingExtension"
+        substitutionGroup="aixm:AbstractAerialRefuellingExtension" type="ead-slot:AerialRefuellingExtensionType"/>
+    <complexType name="AerialRefuellingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AerialRefuellingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AerialRefuellingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportHeliportExtension"
+        substitutionGroup="aixm:AbstractAirportHeliportExtension" type="ead-slot:AirportHeliportExtensionType"/>
+    <complexType name="AirportHeliportExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportHeliportExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportHeliportExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportHeliportCollocationExtension"
+        substitutionGroup="aixm:AbstractAirportHeliportCollocationExtension" type="ead-slot:AirportHeliportCollocationExtensionType"/>
+    <complexType name="AirportHeliportCollocationExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportHeliportCollocationExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportHeliportCollocationExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportHotSpotExtension"
+        substitutionGroup="aixm:AbstractAirportHotSpotExtension" type="ead-slot:AirportHotSpotExtensionType"/>
+    <complexType name="AirportHotSpotExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportHotSpotExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportHotSpotExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AltimeterSourceExtension"
+        substitutionGroup="aixm:AbstractAltimeterSourceExtension" type="ead-slot:AltimeterSourceExtensionType"/>
+    <complexType name="AltimeterSourceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AltimeterSourceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AltimeterSourceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="NonMovementAreaExtension"
+        substitutionGroup="aixm:AbstractNonMovementAreaExtension" type="ead-slot:NonMovementAreaExtensionType"/>
+    <complexType name="NonMovementAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:NonMovementAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NonMovementAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SurveyControlPointExtension"
+        substitutionGroup="aixm:AbstractSurveyControlPointExtension" type="ead-slot:SurveyControlPointExtensionType"/>
+    <complexType name="SurveyControlPointExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SurveyControlPointExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SurveyControlPointExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="WorkAreaExtension"
+        substitutionGroup="aixm:AbstractWorkAreaExtension" type="ead-slot:WorkAreaExtensionType"/>
+    <complexType name="WorkAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:WorkAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="WorkAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AircraftStandExtension"
+        substitutionGroup="aixm:AbstractAircraftStandExtension" type="ead-slot:AircraftStandExtensionType"/>
+    <complexType name="AircraftStandExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AircraftStandExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AircraftStandExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ApronExtension"
+        substitutionGroup="aixm:AbstractApronExtension" type="ead-slot:ApronExtensionType"/>
+    <complexType name="ApronExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ApronExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ApronExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ApronElementExtension"
+        substitutionGroup="aixm:AbstractApronElementExtension" type="ead-slot:ApronElementExtensionType"/>
+    <complexType name="ApronElementExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ApronElementExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ApronElementExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DeicingAreaExtension"
+        substitutionGroup="aixm:AbstractDeicingAreaExtension" type="ead-slot:DeicingAreaExtensionType"/>
+    <complexType name="DeicingAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DeicingAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DeicingAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="PassengerLoadingBridgeExtension"
+        substitutionGroup="aixm:AbstractPassengerLoadingBridgeExtension" type="ead-slot:PassengerLoadingBridgeExtensionType"/>
+    <complexType name="PassengerLoadingBridgeExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:PassengerLoadingBridgeExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PassengerLoadingBridgeExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RoadExtension"
+        substitutionGroup="aixm:AbstractRoadExtension" type="ead-slot:RoadExtensionType"/>
+    <complexType name="RoadExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RoadExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RoadExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TouchDownLiftOffExtension"
+        substitutionGroup="aixm:AbstractTouchDownLiftOffExtension" type="ead-slot:TouchDownLiftOffExtensionType"/>
+    <complexType name="TouchDownLiftOffExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TouchDownLiftOffExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TouchDownLiftOffExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TouchDownLiftOffSafeAreaExtension"
+        substitutionGroup="aixm:AbstractTouchDownLiftOffSafeAreaExtension" type="ead-slot:TouchDownLiftOffSafeAreaExtensionType"/>
+    <complexType name="TouchDownLiftOffSafeAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TouchDownLiftOffSafeAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TouchDownLiftOffSafeAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ApproachLightingSystemExtension"
+        substitutionGroup="aixm:AbstractApproachLightingSystemExtension" type="ead-slot:ApproachLightingSystemExtensionType"/>
+    <complexType name="ApproachLightingSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ApproachLightingSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ApproachLightingSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ApronLightSystemExtension"
+        substitutionGroup="aixm:AbstractApronLightSystemExtension" type="ead-slot:ApronLightSystemExtensionType"/>
+    <complexType name="ApronLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ApronLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ApronLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GuidanceLineLightSystemExtension"
+        substitutionGroup="aixm:AbstractGuidanceLineLightSystemExtension" type="ead-slot:GuidanceLineLightSystemExtensionType"/>
+    <complexType name="GuidanceLineLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GuidanceLineLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GuidanceLineLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayDirectionLightSystemExtension"
+        substitutionGroup="aixm:AbstractRunwayDirectionLightSystemExtension" type="ead-slot:RunwayDirectionLightSystemExtensionType"/>
+    <complexType name="RunwayDirectionLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayDirectionLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayDirectionLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayProtectAreaLightSystemExtension"
+        substitutionGroup="aixm:AbstractRunwayProtectAreaLightSystemExtension" type="ead-slot:RunwayProtectAreaLightSystemExtensionType"/>
+    <complexType name="RunwayProtectAreaLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayProtectAreaLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayProtectAreaLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiHoldingPositionLightSystemExtension"
+        substitutionGroup="aixm:AbstractTaxiHoldingPositionLightSystemExtension" type="ead-slot:TaxiHoldingPositionLightSystemExtensionType"/>
+    <complexType name="TaxiHoldingPositionLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiHoldingPositionLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiHoldingPositionLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiwayLightSystemExtension"
+        substitutionGroup="aixm:AbstractTaxiwayLightSystemExtension" type="ead-slot:TaxiwayLightSystemExtensionType"/>
+    <complexType name="TaxiwayLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiwayLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiwayLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TouchDownLiftOffLightSystemExtension"
+        substitutionGroup="aixm:AbstractTouchDownLiftOffLightSystemExtension" type="ead-slot:TouchDownLiftOffLightSystemExtensionType"/>
+    <complexType name="TouchDownLiftOffLightSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TouchDownLiftOffLightSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TouchDownLiftOffLightSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportProtectionAreaMarkingExtension"
+        substitutionGroup="aixm:AbstractAirportProtectionAreaMarkingExtension" type="ead-slot:AirportProtectionAreaMarkingExtensionType"/>
+    <complexType name="AirportProtectionAreaMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportProtectionAreaMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportProtectionAreaMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ApronMarkingExtension"
+        substitutionGroup="aixm:AbstractApronMarkingExtension" type="ead-slot:ApronMarkingExtensionType"/>
+    <complexType name="ApronMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ApronMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ApronMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DeicingAreaMarkingExtension"
+        substitutionGroup="aixm:AbstractDeicingAreaMarkingExtension" type="ead-slot:DeicingAreaMarkingExtensionType"/>
+    <complexType name="DeicingAreaMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DeicingAreaMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DeicingAreaMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GuidanceLineMarkingExtension"
+        substitutionGroup="aixm:AbstractGuidanceLineMarkingExtension" type="ead-slot:GuidanceLineMarkingExtensionType"/>
+    <complexType name="GuidanceLineMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GuidanceLineMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GuidanceLineMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayMarkingExtension"
+        substitutionGroup="aixm:AbstractRunwayMarkingExtension" type="ead-slot:RunwayMarkingExtensionType"/>
+    <complexType name="RunwayMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandMarkingExtension"
+        substitutionGroup="aixm:AbstractStandMarkingExtension" type="ead-slot:StandMarkingExtensionType"/>
+    <complexType name="StandMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiHoldingPositionMarkingExtension"
+        substitutionGroup="aixm:AbstractTaxiHoldingPositionMarkingExtension" type="ead-slot:TaxiHoldingPositionMarkingExtensionType"/>
+    <complexType name="TaxiHoldingPositionMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiHoldingPositionMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiHoldingPositionMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiwayMarkingExtension"
+        substitutionGroup="aixm:AbstractTaxiwayMarkingExtension" type="ead-slot:TaxiwayMarkingExtensionType"/>
+    <complexType name="TaxiwayMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiwayMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiwayMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TouchDownLiftOffMarkingExtension"
+        substitutionGroup="aixm:AbstractTouchDownLiftOffMarkingExtension" type="ead-slot:TouchDownLiftOffMarkingExtensionType"/>
+    <complexType name="TouchDownLiftOffMarkingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TouchDownLiftOffMarkingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TouchDownLiftOffMarkingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ArrestingGearExtension"
+        substitutionGroup="aixm:AbstractArrestingGearExtension" type="ead-slot:ArrestingGearExtensionType"/>
+    <complexType name="ArrestingGearExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ArrestingGearExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ArrestingGearExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayExtension"
+        substitutionGroup="aixm:AbstractRunwayExtension" type="ead-slot:RunwayExtensionType"/>
+    <complexType name="RunwayExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayBlastPadExtension"
+        substitutionGroup="aixm:AbstractRunwayBlastPadExtension" type="ead-slot:RunwayBlastPadExtensionType"/>
+    <complexType name="RunwayBlastPadExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayBlastPadExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayBlastPadExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayCentrelinePointExtension"
+        substitutionGroup="aixm:AbstractRunwayCentrelinePointExtension" type="ead-slot:RunwayCentrelinePointExtensionType"/>
+    <complexType name="RunwayCentrelinePointExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayCentrelinePointExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayCentrelinePointExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayDirectionExtension"
+        substitutionGroup="aixm:AbstractRunwayDirectionExtension" type="ead-slot:RunwayDirectionExtensionType"/>
+    <complexType name="RunwayDirectionExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayDirectionExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayDirectionExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayElementExtension"
+        substitutionGroup="aixm:AbstractRunwayElementExtension" type="ead-slot:RunwayElementExtensionType"/>
+    <complexType name="RunwayElementExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayElementExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayElementExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayProtectAreaExtension"
+        substitutionGroup="aixm:AbstractRunwayProtectAreaExtension" type="ead-slot:RunwayProtectAreaExtensionType"/>
+    <complexType name="RunwayProtectAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayProtectAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayProtectAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RunwayVisualRangeExtension"
+        substitutionGroup="aixm:AbstractRunwayVisualRangeExtension" type="ead-slot:RunwayVisualRangeExtensionType"/>
+    <complexType name="RunwayVisualRangeExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RunwayVisualRangeExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RunwayVisualRangeExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="VisualGlideSlopeIndicatorExtension"
+        substitutionGroup="aixm:AbstractVisualGlideSlopeIndicatorExtension" type="ead-slot:VisualGlideSlopeIndicatorExtensionType"/>
+    <complexType name="VisualGlideSlopeIndicatorExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:VisualGlideSlopeIndicatorExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="VisualGlideSlopeIndicatorExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="FloatingDockSiteExtension"
+        substitutionGroup="aixm:AbstractFloatingDockSiteExtension" type="ead-slot:FloatingDockSiteExtensionType"/>
+    <complexType name="FloatingDockSiteExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:FloatingDockSiteExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="FloatingDockSiteExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="MarkingBuoyExtension"
+        substitutionGroup="aixm:AbstractMarkingBuoyExtension" type="ead-slot:MarkingBuoyExtensionType"/>
+    <complexType name="MarkingBuoyExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:MarkingBuoyExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="MarkingBuoyExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SeaplaneLandingAreaExtension"
+        substitutionGroup="aixm:AbstractSeaplaneLandingAreaExtension" type="ead-slot:SeaplaneLandingAreaExtensionType"/>
+    <complexType name="SeaplaneLandingAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SeaplaneLandingAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SeaplaneLandingAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SeaplaneRampSiteExtension"
+        substitutionGroup="aixm:AbstractSeaplaneRampSiteExtension" type="ead-slot:SeaplaneRampSiteExtensionType"/>
+    <complexType name="SeaplaneRampSiteExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SeaplaneRampSiteExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SeaplaneRampSiteExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GuidanceLineExtension"
+        substitutionGroup="aixm:AbstractGuidanceLineExtension" type="ead-slot:GuidanceLineExtensionType"/>
+    <complexType name="GuidanceLineExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GuidanceLineExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GuidanceLineExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiHoldingPositionExtension"
+        substitutionGroup="aixm:AbstractTaxiHoldingPositionExtension" type="ead-slot:TaxiHoldingPositionExtensionType"/>
+    <complexType name="TaxiHoldingPositionExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiHoldingPositionExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiHoldingPositionExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiwayExtension"
+        substitutionGroup="aixm:AbstractTaxiwayExtension" type="ead-slot:TaxiwayExtensionType"/>
+    <complexType name="TaxiwayExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiwayExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiwayExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TaxiwayElementExtension"
+        substitutionGroup="aixm:AbstractTaxiwayElementExtension" type="ead-slot:TaxiwayElementExtensionType"/>
+    <complexType name="TaxiwayElementExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TaxiwayElementExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TaxiwayElementExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirspaceExtension"
+        substitutionGroup="aixm:AbstractAirspaceExtension" type="ead-slot:AirspaceExtensionType"/>
+    <complexType name="AirspaceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirspaceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirspaceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AuthorityForAirspaceExtension"
+        substitutionGroup="aixm:AbstractAuthorityForAirspaceExtension" type="ead-slot:AuthorityForAirspaceExtensionType"/>
+    <complexType name="AuthorityForAirspaceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AuthorityForAirspaceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AuthorityForAirspaceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GeoBorderExtension"
+        substitutionGroup="aixm:AbstractGeoBorderExtension" type="ead-slot:GeoBorderExtensionType"/>
+    <complexType name="GeoBorderExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GeoBorderExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GeoBorderExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="HoldingPatternExtension"
+        substitutionGroup="aixm:AbstractHoldingPatternExtension" type="ead-slot:HoldingPatternExtensionType"/>
+    <complexType name="HoldingPatternExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:HoldingPatternExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="HoldingPatternExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="UnplannedHoldingExtension"
+        substitutionGroup="aixm:AbstractUnplannedHoldingExtension" type="ead-slot:UnplannedHoldingExtensionType"/>
+    <complexType name="UnplannedHoldingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:UnplannedHoldingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="UnplannedHoldingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AzimuthExtension"
+        substitutionGroup="aixm:AbstractAzimuthExtension" type="ead-slot:AzimuthExtensionType"/>
+    <complexType name="AzimuthExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AzimuthExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AzimuthExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="CheckpointINSExtension"
+        substitutionGroup="aixm:AbstractCheckpointINSExtension" type="ead-slot:CheckpointINSExtensionType"/>
+    <complexType name="CheckpointINSExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:CheckpointINSExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="CheckpointINSExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="CheckpointVORExtension"
+        substitutionGroup="aixm:AbstractCheckpointVORExtension" type="ead-slot:CheckpointVORExtensionType"/>
+    <complexType name="CheckpointVORExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:CheckpointVORExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="CheckpointVORExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DirectionFinderExtension"
+        substitutionGroup="aixm:AbstractDirectionFinderExtension" type="ead-slot:DirectionFinderExtensionType"/>
+    <complexType name="DirectionFinderExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DirectionFinderExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DirectionFinderExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DMEExtension"
+        substitutionGroup="aixm:AbstractDMEExtension" type="ead-slot:DMEExtensionType"/>
+    <complexType name="DMEExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DMEExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DMEExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ElevationExtension"
+        substitutionGroup="aixm:AbstractElevationExtension" type="ead-slot:ElevationExtensionType"/>
+    <complexType name="ElevationExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ElevationExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ElevationExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GlidepathExtension"
+        substitutionGroup="aixm:AbstractGlidepathExtension" type="ead-slot:GlidepathExtensionType"/>
+    <complexType name="GlidepathExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GlidepathExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GlidepathExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="LocalizerExtension"
+        substitutionGroup="aixm:AbstractLocalizerExtension" type="ead-slot:LocalizerExtensionType"/>
+    <complexType name="LocalizerExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:LocalizerExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="LocalizerExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="MarkerBeaconExtension"
+        substitutionGroup="aixm:AbstractMarkerBeaconExtension" type="ead-slot:MarkerBeaconExtensionType"/>
+    <complexType name="MarkerBeaconExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:MarkerBeaconExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="MarkerBeaconExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="NavaidExtension"
+        substitutionGroup="aixm:AbstractNavaidExtension" type="ead-slot:NavaidExtensionType"/>
+    <complexType name="NavaidExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:NavaidExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NavaidExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="NDBExtension"
+        substitutionGroup="aixm:AbstractNDBExtension" type="ead-slot:NDBExtensionType"/>
+    <complexType name="NDBExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:NDBExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NDBExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SDFExtension"
+        substitutionGroup="aixm:AbstractSDFExtension" type="ead-slot:SDFExtensionType"/>
+    <complexType name="SDFExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SDFExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SDFExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SpecialNavigationStationExtension"
+        substitutionGroup="aixm:AbstractSpecialNavigationStationExtension" type="ead-slot:SpecialNavigationStationExtensionType"/>
+    <complexType name="SpecialNavigationStationExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SpecialNavigationStationExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SpecialNavigationStationExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SpecialNavigationSystemExtension"
+        substitutionGroup="aixm:AbstractSpecialNavigationSystemExtension" type="ead-slot:SpecialNavigationSystemExtensionType"/>
+    <complexType name="SpecialNavigationSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SpecialNavigationSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SpecialNavigationSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TACANExtension"
+        substitutionGroup="aixm:AbstractTACANExtension" type="ead-slot:TACANExtensionType"/>
+    <complexType name="TACANExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TACANExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TACANExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="VORExtension"
+        substitutionGroup="aixm:AbstractVORExtension" type="ead-slot:VORExtensionType"/>
+    <complexType name="VORExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:VORExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="VORExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AngleIndicationExtension"
+        substitutionGroup="aixm:AbstractAngleIndicationExtension" type="ead-slot:AngleIndicationExtensionType"/>
+    <complexType name="AngleIndicationExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AngleIndicationExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AngleIndicationExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DistanceIndicationExtension"
+        substitutionGroup="aixm:AbstractDistanceIndicationExtension" type="ead-slot:DistanceIndicationExtensionType"/>
+    <complexType name="DistanceIndicationExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DistanceIndicationExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DistanceIndicationExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DesignatedPointExtension"
+        substitutionGroup="aixm:AbstractDesignatedPointExtension" type="ead-slot:DesignatedPointExtensionType"/>
+    <complexType name="DesignatedPointExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DesignatedPointExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DesignatedPointExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SignificantPointInAirspaceExtension"
+        substitutionGroup="aixm:AbstractSignificantPointInAirspaceExtension" type="ead-slot:SignificantPointInAirspaceExtensionType"/>
+    <complexType name="SignificantPointInAirspaceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SignificantPointInAirspaceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SignificantPointInAirspaceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AeronauticalGroundLightExtension"
+        substitutionGroup="aixm:AbstractAeronauticalGroundLightExtension" type="ead-slot:AeronauticalGroundLightExtensionType"/>
+    <complexType name="AeronauticalGroundLightExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AeronauticalGroundLightExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AeronauticalGroundLightExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ObstacleAreaExtension"
+        substitutionGroup="aixm:AbstractObstacleAreaExtension" type="ead-slot:ObstacleAreaExtensionType"/>
+    <complexType name="ObstacleAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ObstacleAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ObstacleAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="VerticalStructureExtension"
+        substitutionGroup="aixm:AbstractVerticalStructureExtension" type="ead-slot:VerticalStructureExtensionType"/>
+    <complexType name="VerticalStructureExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:VerticalStructureExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="VerticalStructureExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="OrganisationAuthorityExtension"
+        substitutionGroup="aixm:AbstractOrganisationAuthorityExtension" type="ead-slot:OrganisationAuthorityExtensionType"/>
+    <complexType name="OrganisationAuthorityExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:OrganisationAuthorityExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="OrganisationAuthorityExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="UnitExtension"
+        substitutionGroup="aixm:AbstractUnitExtension" type="ead-slot:UnitExtensionType"/>
+    <complexType name="UnitExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:UnitExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="UnitExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="InstrumentApproachProcedureExtension"
+        substitutionGroup="aixm:AbstractInstrumentApproachProcedureExtension" type="ead-slot:InstrumentApproachProcedureExtensionType"/>
+    <complexType name="InstrumentApproachProcedureExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:InstrumentApproachProcedureExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="InstrumentApproachProcedureExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="TerminalArrivalAreaExtension"
+        substitutionGroup="aixm:AbstractTerminalArrivalAreaExtension" type="ead-slot:TerminalArrivalAreaExtensionType"/>
+    <complexType name="TerminalArrivalAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:TerminalArrivalAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="TerminalArrivalAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="CirclingAreaExtension"
+        substitutionGroup="aixm:AbstractCirclingAreaExtension" type="ead-slot:CirclingAreaExtensionType"/>
+    <complexType name="CirclingAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:CirclingAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="CirclingAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandardInstrumentArrivalExtension"
+        substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension" type="ead-slot:StandardInstrumentArrivalExtensionType"/>
+    <complexType name="StandardInstrumentArrivalExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandardInstrumentArrivalExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandardInstrumentArrivalExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="NavigationAreaExtension"
+        substitutionGroup="aixm:AbstractNavigationAreaExtension" type="ead-slot:NavigationAreaExtensionType"/>
+    <complexType name="NavigationAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:NavigationAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NavigationAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandardInstrumentDepartureExtension"
+        substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension" type="ead-slot:StandardInstrumentDepartureExtensionType"/>
+    <complexType name="StandardInstrumentDepartureExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandardInstrumentDepartureExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandardInstrumentDepartureExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SafeAltitudeAreaExtension"
+        substitutionGroup="aixm:AbstractSafeAltitudeAreaExtension" type="ead-slot:SafeAltitudeAreaExtensionType"/>
+    <complexType name="SafeAltitudeAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SafeAltitudeAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SafeAltitudeAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ArrivalFeederLegExtension"
+        substitutionGroup="aixm:AbstractArrivalFeederLegExtension" type="ead-slot:ArrivalFeederLegExtensionType"/>
+    <complexType name="ArrivalFeederLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ArrivalFeederLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ArrivalFeederLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ArrivalLegExtension"
+        substitutionGroup="aixm:AbstractArrivalLegExtension" type="ead-slot:ArrivalLegExtensionType"/>
+    <complexType name="ArrivalLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ArrivalLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ArrivalLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="DepartureLegExtension"
+        substitutionGroup="aixm:AbstractDepartureLegExtension" type="ead-slot:DepartureLegExtensionType"/>
+    <complexType name="DepartureLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:DepartureLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DepartureLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="FinalLegExtension"
+        substitutionGroup="aixm:AbstractFinalLegExtension" type="ead-slot:FinalLegExtensionType"/>
+    <complexType name="FinalLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:FinalLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="FinalLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="InitialLegExtension"
+        substitutionGroup="aixm:AbstractInitialLegExtension" type="ead-slot:InitialLegExtensionType"/>
+    <complexType name="InitialLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:InitialLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="InitialLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="IntermediateLegExtension"
+        substitutionGroup="aixm:AbstractIntermediateLegExtension" type="ead-slot:IntermediateLegExtensionType"/>
+    <complexType name="IntermediateLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:IntermediateLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="IntermediateLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="MissedApproachLegExtension"
+        substitutionGroup="aixm:AbstractMissedApproachLegExtension" type="ead-slot:MissedApproachLegExtensionType"/>
+    <complexType name="MissedApproachLegExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:MissedApproachLegExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="MissedApproachLegExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="NavigationAreaRestrictionExtension"
+        substitutionGroup="aixm:AbstractNavigationAreaRestrictionExtension" type="ead-slot:NavigationAreaRestrictionExtensionType"/>
+    <complexType name="NavigationAreaRestrictionExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:NavigationAreaRestrictionExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NavigationAreaRestrictionExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ProcedureDMEExtension"
+        substitutionGroup="aixm:AbstractProcedureDMEExtension" type="ead-slot:ProcedureDMEExtensionType"/>
+    <complexType name="ProcedureDMEExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ProcedureDMEExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ProcedureDMEExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="ChangeOverPointExtension"
+        substitutionGroup="aixm:AbstractChangeOverPointExtension" type="ead-slot:ChangeOverPointExtensionType"/>
+    <complexType name="ChangeOverPointExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:ChangeOverPointExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="ChangeOverPointExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RouteExtension"
+        substitutionGroup="aixm:AbstractRouteExtension" type="ead-slot:RouteExtensionType"/>
+    <complexType name="RouteExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RouteExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RouteDMEExtension"
+        substitutionGroup="aixm:AbstractRouteDMEExtension" type="ead-slot:RouteDMEExtensionType"/>
+    <complexType name="RouteDMEExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RouteDMEExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteDMEExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RouteSegmentExtension"
+        substitutionGroup="aixm:AbstractRouteSegmentExtension" type="ead-slot:RouteSegmentExtensionType"/>
+    <complexType name="RouteSegmentExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RouteSegmentExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteSegmentExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirspaceBorderCrossingExtension"
+        substitutionGroup="aixm:AbstractAirspaceBorderCrossingExtension" type="ead-slot:AirspaceBorderCrossingExtensionType"/>
+    <complexType name="AirspaceBorderCrossingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirspaceBorderCrossingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirspaceBorderCrossingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="FlightRestrictionExtension"
+        substitutionGroup="aixm:AbstractFlightRestrictionExtension" type="ead-slot:FlightRestrictionExtensionType"/>
+    <complexType name="FlightRestrictionExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:FlightRestrictionExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="FlightRestrictionExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RulesProceduresExtension"
+        substitutionGroup="aixm:AbstractRulesProceduresExtension" type="ead-slot:RulesProceduresExtensionType"/>
+    <complexType name="RulesProceduresExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RulesProceduresExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RulesProceduresExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AircraftGroundServiceExtension"
+        substitutionGroup="aixm:AbstractAircraftGroundServiceExtension" type="ead-slot:AircraftGroundServiceExtensionType"/>
+    <complexType name="AircraftGroundServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AircraftGroundServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AircraftGroundServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportClearanceServiceExtension"
+        substitutionGroup="aixm:AbstractAirportClearanceServiceExtension" type="ead-slot:AirportClearanceServiceExtensionType"/>
+    <complexType name="AirportClearanceServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportClearanceServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportClearanceServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirportSuppliesServiceExtension"
+        substitutionGroup="aixm:AbstractAirportSuppliesServiceExtension" type="ead-slot:AirportSuppliesServiceExtensionType"/>
+    <complexType name="AirportSuppliesServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirportSuppliesServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirportSuppliesServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirTrafficControlServiceExtension"
+        substitutionGroup="aixm:AbstractAirTrafficControlServiceExtension" type="ead-slot:AirTrafficControlServiceExtensionType"/>
+    <complexType name="AirTrafficControlServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirTrafficControlServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirTrafficControlServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="AirTrafficManagementServiceExtension"
+        substitutionGroup="aixm:AbstractAirTrafficManagementServiceExtension" type="ead-slot:AirTrafficManagementServiceExtensionType"/>
+    <complexType name="AirTrafficManagementServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:AirTrafficManagementServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirTrafficManagementServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="FireFightingServiceExtension"
+        substitutionGroup="aixm:AbstractFireFightingServiceExtension" type="ead-slot:FireFightingServiceExtensionType"/>
+    <complexType name="FireFightingServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:FireFightingServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="FireFightingServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="GroundTrafficControlServiceExtension"
+        substitutionGroup="aixm:AbstractGroundTrafficControlServiceExtension" type="ead-slot:GroundTrafficControlServiceExtensionType"/>
+    <complexType name="GroundTrafficControlServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:GroundTrafficControlServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="GroundTrafficControlServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="InformationServiceExtension"
+        substitutionGroup="aixm:AbstractInformationServiceExtension" type="ead-slot:InformationServiceExtensionType"/>
+    <complexType name="InformationServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:InformationServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="InformationServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="PassengerServiceExtension"
+        substitutionGroup="aixm:AbstractPassengerServiceExtension" type="ead-slot:PassengerServiceExtensionType"/>
+    <complexType name="PassengerServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:PassengerServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PassengerServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="PilotControlledLightingExtension"
+        substitutionGroup="aixm:AbstractPilotControlledLightingExtension" type="ead-slot:PilotControlledLightingExtensionType"/>
+    <complexType name="PilotControlledLightingExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:PilotControlledLightingExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PilotControlledLightingExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RadioCommunicationChannelExtension"
+        substitutionGroup="aixm:AbstractRadioCommunicationChannelExtension" type="ead-slot:RadioCommunicationChannelExtensionType"/>
+    <complexType name="RadioCommunicationChannelExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RadioCommunicationChannelExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RadioCommunicationChannelExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SearchRescueServiceExtension"
+        substitutionGroup="aixm:AbstractSearchRescueServiceExtension" type="ead-slot:SearchRescueServiceExtensionType"/>
+    <complexType name="SearchRescueServiceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SearchRescueServiceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SearchRescueServiceExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RadioFrequencyAreaExtension"
+        substitutionGroup="aixm:AbstractRadioFrequencyAreaExtension" type="ead-slot:RadioFrequencyAreaExtensionType"/>
+    <complexType name="RadioFrequencyAreaExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RadioFrequencyAreaExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RadioFrequencyAreaExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SpecialDateExtension"
+        substitutionGroup="aixm:AbstractSpecialDateExtension" type="ead-slot:SpecialDateExtensionType"/>
+    <complexType name="SpecialDateExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SpecialDateExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SpecialDateExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandardLevelColumnExtension"
+        substitutionGroup="aixm:AbstractStandardLevelColumnExtension" type="ead-slot:StandardLevelColumnExtensionType"/>
+    <complexType name="StandardLevelColumnExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandardLevelColumnExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandardLevelColumnExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandardLevelSectorExtension"
+        substitutionGroup="aixm:AbstractStandardLevelSectorExtension" type="ead-slot:StandardLevelSectorExtensionType"/>
+    <complexType name="StandardLevelSectorExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandardLevelSectorExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandardLevelSectorExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="StandardLevelTableExtension"
+        substitutionGroup="aixm:AbstractStandardLevelTableExtension" type="ead-slot:StandardLevelTableExtensionType"/>
+    <complexType name="StandardLevelTableExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:StandardLevelTableExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="StandardLevelTableExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="HoldingAssessmentExtension"
+        substitutionGroup="aixm:AbstractHoldingAssessmentExtension" type="ead-slot:HoldingAssessmentExtensionType"/>
+    <complexType name="HoldingAssessmentExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:HoldingAssessmentExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="HoldingAssessmentExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="PrecisionApproachRadarExtension"
+        substitutionGroup="aixm:AbstractPrecisionApproachRadarExtension" type="ead-slot:PrecisionApproachRadarExtensionType"/>
+    <complexType name="PrecisionApproachRadarExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:PrecisionApproachRadarExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PrecisionApproachRadarExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="PrimarySurveillanceRadarExtension"
+        substitutionGroup="aixm:AbstractPrimarySurveillanceRadarExtension" type="ead-slot:PrimarySurveillanceRadarExtensionType"/>
+    <complexType name="PrimarySurveillanceRadarExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:PrimarySurveillanceRadarExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PrimarySurveillanceRadarExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="RadarSystemExtension"
+        substitutionGroup="aixm:AbstractRadarSystemExtension" type="ead-slot:RadarSystemExtensionType"/>
+    <complexType name="RadarSystemExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:RadarSystemExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RadarSystemExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <element name="SecondarySurveillanceRadarExtension"
+        substitutionGroup="aixm:AbstractSecondarySurveillanceRadarExtension" type="ead-slot:SecondarySurveillanceRadarExtensionType"/>
+    <complexType name="SecondarySurveillanceRadarExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-slot:SecondarySurveillanceRadarExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="SecondarySurveillanceRadarExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0"
+                name="privateSlotAllocation" nillable="true" type="ead-slot:PrivateSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="auditInformation"
+                nillable="true" type="ead-audit:AuditPropertyType"/>
+        </sequence>
+    </group>
+    <complexType name="PrivateSlotPropertyType">
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+    <element name="PrivateSlot" substitutionGroup="ead-slot:AbstractSlot" type="ead-slot:PrivateSlotType">
+        <annotation>
+            <documentation>The Private Slot information necessary to create the SDO Private Slot through the EAD backwards mapping mechanism (SDD-SDO)</documentation>
+        </annotation>
+    </element>
+    <complexType name="PrivateSlotType">
+        <complexContent>
+            <extension base="ead-slot:AbstractSlotType">
+                <sequence>
+                    <element maxOccurs="unbounded" name="timeSlice" type="ead-slot:PrivateSlotTimeSlicePropertyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="PrivateSlotTimeSlicePropertyType">
+        <sequence>
+            <element ref="ead-slot:PrivateSlotTimeSlice"/>
+        </sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+    </complexType>
+    <element name="PrivateSlotTimeSlice"
+        substitutionGroup="gml:AbstractTimeSlice" type="ead-slot:PrivateSlotTimeSliceType"/>
+    <complexType name="PrivateSlotTimeSliceType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMTimeSliceType">
+                <sequence>
+                    <group ref="ead-slot:PrivateSlotPropertyGroup"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="extension">
+                        <complexType>
+                            <choice>
+                                <element ref="ead-slot:AbstractPrivateSlotExtension"/>
+                                <element ref="ead-slot:AbstractSlotExtension"/>
+                            </choice>
+                            <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PrivateSlotPropertyGroup">
+        <sequence>
+            <group minOccurs="0" ref="ead-slot:SlotPropertyGroup"/>
+            <element minOccurs="0" name="sourceType" nillable="true" type="ead-slot:CodeSlotSourceType">
+                <annotation>
+                    <documentation>source of the private slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="triggerNOTAM" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates that a Trigger NOTAM is associated with the slot data.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="targetAIPAmendment"
+                nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates that the slot data will be included in an AIP amendment.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="targetAIPSupplement"
+                nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates that the slot data will be included in an AIP Supplement.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="targetAIC" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates that the slot data will be included in an AIC.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="sourceDesignator"
+                nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <documentation>The designator of the source (e.g. ARR/DEP 01, A 03).</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="status" nillable="true" type="ead-slot:CodePrivateSlotStatusType">
+                <annotation>
+                    <documentation>The status indicator of this public slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="sourceYear" nillable="true" type="aixm:DateYearType">
+                <annotation>
+                    <documentation>The year of the source.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="effectiveDatePublication"
+                nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The effective date and time of the data, as mentioned on the source publication.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="designatorNOTAM"
+                nillable="true" type="aixm:TextDesignatorType">
+                <annotation>
+                    <documentation>The NOTAM designator.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="versionAIXM" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <documentation>The version of AIXM for which the private slot stores data.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="targetNOTAM" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates that the slot data will be included in an NOTAM.</documentation>
+                </annotation>
+            </element>
+            <element maxOccurs="1" minOccurs="0"
+                name="publicSlotAllocation" nillable="true" type="ead-slot:PublicSlotPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="organisation"
+                nillable="true" type="aixm:OrganisationAuthorityPropertyType"/>
+        </sequence>
+    </group>
+    <element abstract="true" name="AbstractPrivateSlotExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+    <complexType name="PublicSlotPropertyType">
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+    <element name="PublicSlot" substitutionGroup="ead-slot:AbstractSlot" type="ead-slot:PublicSlotType">
+        <annotation>
+            <documentation>The Public Slot information necessary to create the SDO Public Slot through the EAD backwards mapping mechanism (SDD-SDO)</documentation>
+        </annotation>
+    </element>
+    <complexType name="PublicSlotType">
+        <complexContent>
+            <extension base="ead-slot:AbstractSlotType">
+                <sequence>
+                    <element maxOccurs="unbounded" name="timeSlice" type="ead-slot:PublicSlotTimeSlicePropertyType"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="PublicSlotTimeSlicePropertyType">
+        <sequence>
+            <element ref="ead-slot:PublicSlotTimeSlice"/>
+        </sequence>
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+    </complexType>
+    <element name="PublicSlotTimeSlice"
+        substitutionGroup="gml:AbstractTimeSlice" type="ead-slot:PublicSlotTimeSliceType"/>
+    <complexType name="PublicSlotTimeSliceType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMTimeSliceType">
+                <sequence>
+                    <group ref="ead-slot:PublicSlotPropertyGroup"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="extension">
+                        <complexType>
+                            <choice>
+                                <element ref="ead-slot:AbstractPublicSlotExtension"/>
+                                <element ref="ead-slot:AbstractSlotExtension"/>
+                            </choice>
+                            <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PublicSlotPropertyGroup">
+        <sequence>
+            <group minOccurs="0" ref="ead-slot:SlotPropertyGroup"/>
+            <element minOccurs="0" name="effectiveDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The effective date and time of the public slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="indicatorAIRAC" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indication if the planned commit date of this public slot is in an AIRAC cycle date</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="publicationDate"
+                nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The planned publication date and time of this public slot</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="closingDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The closing date and time of the associated private slots.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="plannedCommitDate"
+                nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The planned commit date and time of this public slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="status" nillable="true" type="ead-slot:CodePublicSlotStatusType">
+                <annotation>
+                    <documentation>The status indicator of the public slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="committedDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The date and time when this public slot was committed</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="committedBy" nillable="true" type="ead-slot:TextUserNameType">
+                <annotation>
+                    <documentation>The committer of this public slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="system" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <documentation>System name that the public slot or subsystem replication was assigned to (e.g. EAD).</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="fastSlot" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates if this is a Fast Slot, i.e. Private slots closing date, Planned commit date, Publication date and Effective date may have the same value.</documentation>
+                </annotation>
+            </element>
+        </sequence>
+    </group>
+    <element abstract="true" name="AbstractPublicSlotExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+    <complexType name="SlotPropertyType">
+        <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+        <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    </complexType>
+    <element abstract="true" name="AbstractSlot"
+        substitutionGroup="aixm:AbstractAIXMFeature" type="ead-slot:AbstractSlotType">
+        <annotation>
+            <documentation>A generic container for EAD database changes.</documentation>
+        </annotation>
+    </element>
+    <complexType abstract="true" name="AbstractSlotType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMFeatureType"/>
+        </complexContent>
+    </complexType>
+    <group name="SlotPropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="name" nillable="true" type="ead-slot:TextSlotNameType">
+                <annotation>
+                    <documentation>The name of the slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="creationDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The creation date and time of the slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="createdBy" nillable="true" type="ead-slot:TextUserNameType">
+                <annotation>
+                    <documentation>The creator of the slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="creatorSystem" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <documentation>The system where the slot was created.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="lastUpdateDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The date and time when the slot was last updated.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="updatedBy" nillable="true" type="ead-slot:TextUserNameType">
+                <annotation>
+                    <documentation>The last updater of the slot.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="updaterSystem" nillable="true" type="aixm:TextNameType">
+                <annotation>
+                    <documentation>The system where the slot was last updated.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="checked" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>Indicates whether the slot has been checked or not (NO means that the public slot is force-committed).</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="checkDate" nillable="true" type="aixm:DateTimeType">
+                <annotation>
+                    <documentation>The date and time when the last check was performed on the slot.</documentation>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="annotation" nillable="true" type="aixm:NotePropertyType"/>
+        </sequence>
+    </group>
+    <element abstract="true" name="AbstractSlotExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+</schema>

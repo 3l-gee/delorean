@@ -30,7 +30,6 @@ class Debug:
 
 
 class Machinery:
-    
     def __init__(self, config_dict: dict, debug_dict: dict, schema_dict: dict, xsds_dict: List[dict]): 
         self.xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds_dict]
         self.config = Config(config_dict)

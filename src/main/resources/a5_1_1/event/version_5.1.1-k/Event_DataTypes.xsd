@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1.1 - Event Schema 2.0.k-->
+<!--www.aixm.aero-->
+<!--Released:  June 2024-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2024, EUROCONTROL & FAA
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: AIXM: Event Data Types -->
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1.1/event"
+    version="5.1.1.k" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1.1"
+    xmlns:event="http://www.aixm.aero/schema/5.1.1/event"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../AIXM_DataTypes.xsd"/>
+    <simpleType name="CodeRunwayConditionBaseType">
+        <!--No annotation found for this element.-->
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="1">
+                        <annotation>
+                            <documentation>Runway Condition Code 1</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="2">
+                        <annotation>
+                            <documentation>Runway Condition Code 2</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="3">
+                        <annotation>
+                            <documentation>Runway Condition Code 3</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="4">
+                        <annotation>
+                            <documentation>Runway Condition Code 4</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="5">
+                        <annotation>
+                            <documentation>Runway Condition Code 5</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="6">
+                        <annotation>
+                            <documentation>Runway Condition Code 6</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeRunwayConditionType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="event:CodeRunwayConditionBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeAISProductBaseType">
+        <annotation>
+            <documentation>A coded list of values that identify AIS Products, other thab the AIS messages (NOTAM, ASHTAN, SNOWTAM).</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="DATA_SET">
+                        <annotation>
+                            <documentation>it is an Amendment</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIP">
+                        <annotation>
+                            <documentation>It is an AIC</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIP_SUP">
+                        <annotation>
+                            <documentation>It is an AIP Supplement</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIP_AMDT">
+                        <annotation>
+                            <documentation>it is an Amendment</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CHART">
+                        <annotation>
+                            <documentation>it is an Amendment</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIC">
+                        <annotation>
+                            <documentation>It is an AIC</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeAISProductType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:CodeAISProductBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeNOTAMBaseType">
+        <annotation>
+            <documentation>A code that indicates if the NOTAM is new or a replacement/cancellation of a previous NOTAM</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="N">
+                        <annotation>
+                            <documentation>NOTAM New</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="R">
+                        <annotation>
+                            <documentation>NOTAM that replaces a previously issued NOTAM</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="C">
+                        <annotation>
+                            <documentation>NOTAM that cancels a previously issued NOTAM</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeNOTAMType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="event:CodeNOTAMBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeNOTAMPurposeBaseType">
+        <annotation>
+            <documentation>A code indicating the intended audience and the reason for which the NOTAM was issued.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="NB">
+                        <annotation>
+                            <documentation>For immediate notification and PIB entry</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="BO">
+                        <annotation>
+                            <documentation>For PIB entry, concerning flight operations.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="B">
+                        <annotation>
+                            <documentation>For PIB entry.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="NBO">
+                        <annotation>
+                            <documentation>For immediate notification and PIB entry, concerning flight operations.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="M">
+                        <annotation>
+                            <documentation>Miscellaneous - not subject for briefing, but available on request.</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeNOTAMPurposeType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:CodeNOTAMPurposeBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeNOTAMScopeBaseType">
+        <annotation>
+            <documentation>A code indicating the significance of the NOTAM for aerodrome or en-route operations</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="A">
+                        <annotation>
+                            <documentation>Of interest for aerodrome operations</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="E">
+                        <annotation>
+                            <documentation>Of interest for en-toute operations</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AE">
+                        <annotation>
+                            <documentation>Of interest for both en-route and aerodrome</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="W">
+                        <annotation>
+                            <documentation>Navigation warning</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AW">
+                        <annotation>
+                            <documentation>Navigation warning, of interest for aerodrome operations</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeNOTAMScopeType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:CodeNOTAMScopeBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeNOTAMSelectionBaseType">
+        <annotation>
+            <documentation>A 5-letter code starting with the letter Q that identifies the subject and the condition of the NOTAM. </documentation>
+        </annotation>
+        <restriction base="xsd:string"/>
+    </simpleType>
+    <complexType name="CodeNOTAMSelectionType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:CodeNOTAMSelectionBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeNOTAMTrafficBaseType">
+        <annotation>
+            <documentation>An code indicating the type of traffic based on flight rules concerned by a NOTAM</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="I">
+                        <annotation>
+                            <documentation>IFR traffic</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="V">
+                        <annotation>
+                            <documentation>VFR traffic</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="IV">
+                        <annotation>
+                            <documentation>Both IFR and VFR traffic</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeNOTAMTrafficType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:CodeNOTAMTrafficBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="DateTimeNOTAMBaseType">
+        <!--No annotation found for this element.-->
+        <restriction base="xsd:string"/>
+    </simpleType>
+    <complexType name="DateTimeNOTAMType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:DateTimeNOTAMBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="TextNOTAMShortBaseType">
+        <annotation>
+            <documentation>A piece of short text used for NOTAM fields such as location, schedule, etc.</documentation>
+        </annotation>
+        <restriction base="xsd:string"/>
+    </simpleType>
+    <complexType name="TextNOTAMShortType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type. </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="event:TextNOTAMShortBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+</schema>

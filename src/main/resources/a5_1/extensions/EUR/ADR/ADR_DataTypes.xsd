@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - ADR EXtension Schema-->
+<!--Released:  January 2011-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2011, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: adr: Data Types -->
+<schema xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:adr="http://www.aixm.aero/schema/5.1/extensions/ADR" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/ADR" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../AIXM_DataTypes.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../ISO_19136_Schemas/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<simpleType name="CodeConditionalRouteBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CDR_1"/>
+					<enumeration value="CDR_2"/>
+					<enumeration value="CDR_3"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<!-- Begining of new base types required for the TimeTable business -->
+	<simpleType name="CodeMathOperandBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="ADD"/>
+					<enumeration value="SUBTRACT"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeWeekDayBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="MON"/>
+					<enumeration value="TUE"/>
+					<enumeration value="WED"/>
+					<enumeration value="THU"/>
+					<enumeration value="FRI"/>
+					<enumeration value="SAT"/>
+					<enumeration value="SUN"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeSpecialDayBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="HOL"/>
+					<enumeration value="BEF_HOL"/>
+					<enumeration value="AFT_HOL"/>
+					<enumeration value="BUSY_FRI"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<!-- End of new base types required for the TimeTable business-->
+	<simpleType name="CodeAirspaceReservationImpactBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="WITHIN"/>
+					<enumeration value="NEARBY"/>
+					<enumeration value="OFFLOAD"/>
+					<enumeration value="NOT_AFFECTED"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeAirspaceReservationImpactType">
+		<simpleContent>
+			<extension base="adr:CodeAirspaceReservationImpactBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeConditionalRouteType">
+		<simpleContent>
+			<extension base="adr:CodeConditionalRouteBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- New Types for the TimeTable -->
+	<complexType name="CodeMathOperandType">
+		<simpleContent>
+			<extension base="adr:CodeMathOperandBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeSpecialDayType">
+		<simpleContent>
+			<extension base="adr:CodeSpecialDayBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeWeekDayType">
+		<simpleContent>
+			<extension base="adr:CodeWeekDayBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>
