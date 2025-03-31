@@ -22,8 +22,24 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	-->
 <!-- Component: AIXM: Features -->
 <schema xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+	<!--====================================================================-->
+	<!--Iso Imports -->
+	<!--====================================================================-->
 	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./ISO_19136_Schemas/gml.xsd"/>
 	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="./xlink/xlinks.xsd"/>
+	<!--====================================================================-->
+	<!--Event Imports -->
+	<!--====================================================================-->
+	<import namespace="http://www.aixm.aero/schema/5.1/event" schemaLocation="./event/Event_Features.xsd"/>
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/event" schemaLocation="./event/version_5.1-e/Event_Features.xsd"/> -->
+	<!--====================================================================-->
+	<!--Extension Imports -->
+	<!--====================================================================-->
+	<import namespace="http://www.aixm.aero/schema/5.1/amdb" schemaLocation="./extensions/AMDB/AMDB_Extension_Features.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1/extensions/ADR" schemaLocation="./extensions/EUR/ADR/ADR_Features.xsd"/>
+	<!--====================================================================-->
+	<!-- Includes -->
+	<!--====================================================================-->
 	<include schemaLocation="./AIXM_DataTypes.xsd"/>
 	<include schemaLocation="./AIXM_AbstractGML_ObjectTypes.xsd"/>
 	<annotation>
