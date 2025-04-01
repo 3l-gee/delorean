@@ -247,7 +247,7 @@
                                     </bindingIncludes>
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
-                            </execution> -->
+                            </execution>
                             <execution>
                                 <id>generate-aixm5_1e</id>
                                 <phase>generate-sources</phase>
@@ -265,7 +265,7 @@
                                     </bindingIncludes>
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
-                            </execution>
+                            </execution> -->
                             <!-- <execution>
                                 <id>generate-aixm5_1_1</id>
                                 <phase>generate-sources</phase>
@@ -302,6 +302,24 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution> -->
+                            <execution>
+                                <id>generate-aixmTest</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <schemaDirectory>${project.basedir}/schema/test/aixm/message</schemaDirectory>
+                                    <schemaIncludes>
+                                        <include>feature.xsd</include>
+                                    </schemaIncludes>
+                                    <bindingDirectory>${project.basedir}/schema/test/binding</bindingDirectory>
+                                    <bindingIncludes>
+                                        <include>*.xjb</include>
+                                    </bindingIncludes>
+                                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                                </configuration>
+                            </execution>                            
                         </executions>
                         <dependencies>
                             <dependency>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jaxb:bindings 
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" 
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:annox="urn:jaxb.jvnet.org:annox" 
+    version="3.0" 
+    jaxb:extensionBindingPrefixes="xjc annox">
+    <jaxb:bindings schemaLocation="../aixm/message/feature.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.test.aixm"/>
+        </jaxb:schemaBindings>
+        <jaxb:globalBindings 
+            fixedAttributeAsConstantProperty="true" 
+            typesafeEnumBase="xs:string" 
+            typesafeEnumMemberName="generateName" 
+            generateIsSetMethod="true">
+            <xjc:noValidator/>
+            <xjc:noValidatingUnmarshaller/>
+        </jaxb:globalBindings>
+        <jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='FeatureCollectionType']">
+                <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='e']">
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='f']">
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true)</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='g']">
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true)</annox:annotate>    
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='h']">
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true)</annox:annotate>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

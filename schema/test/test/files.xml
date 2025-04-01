@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FeatureCollection xmlns="http://www.test.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <!-- Feature with Full Values -->
+    <Feature>
+        <a uom="KM">100</a>
+        <b uom="KM">100</b>
+        <c uom="KM">100</c>
+        <d uom="KM">100</d>
+        <e uom="KM">100</e>
+        <f uom="KM">100</f>
+        <g uom="KM">100</g>
+        <h uom="KM">100</h>
+    </Feature>
+
+    <!-- Feature with Some Missing Attribute -->
+    <Feature>
+        <a>100</a>
+        <b>100</b>
+        <c>100</c>
+        <d>100</d>
+        <e>100</e>
+        <f>100</f>
+        <g>100</g>
+        <h>100</h>
+    </Feature>
+
+    <!-- Feature with Explicit Null Values (using xsi:nil) -->
+    <Feature>
+        <a xsi:nil="true"/>
+        <b xsi:nil="true"/>
+        <c xsi:nil="true"/>
+        <d xsi:nil="true"/>
+        <e xsi:nil="true"/>
+        <f xsi:nil="true"/>
+        <g xsi:nil="true"/>
+        <h xsi:nil="true"/>
+    </Feature>
+
+    <!-- Feature with NilReason Attribute -->
+    <Feature>
+        <a xsi:nil="true" nilReason="unknown"/>
+        <b xsi:nil="true" nilReason="unknown"/>
+        <c xsi:nil="true" nilReason="unknown"/>
+        <d xsi:nil="true" nilReason="unknown"/>
+        <e xsi:nil="true" nilReason="unknown"/>
+        <f xsi:nil="true" nilReason="unknown"/>
+        <g xsi:nil="true" nilReason="unknown"/>
+        <h xsi:nil="true" nilReason="unknown"/>
+    </Feature>
+
+</FeatureCollection>

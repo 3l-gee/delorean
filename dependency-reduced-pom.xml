@@ -53,35 +53,17 @@
             <version>4.0.8</version>
             <executions>
               <execution>
-                <id>generate-aixm5_1_1</id>
+                <id>generate-aixmTest</id>
                 <phase>generate-sources</phase>
                 <goals>
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
+                  <schemaDirectory>${project.basedir}/schema/test/aixm/message</schemaDirectory>
                   <schemaIncludes>
-                    <include>AIXM_BasicMessage.xsd</include>
+                    <include>feature.xsd</include>
                   </schemaIncludes>
-                  <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
-                  <bindingIncludes>
-                    <include>*.xjb</include>
-                  </bindingIncludes>
-                  <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-                </configuration>
-              </execution>
-              <execution>
-                <id>generate-aixm5_1</id>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>generate</goal>
-                </goals>
-                <configuration>
-                  <schemaDirectory>${project.basedir}/schema/aixm5_1/aixm/message</schemaDirectory>
-                  <schemaIncludes>
-                    <include>AIXM_BasicMessage.xsd</include>
-                  </schemaIncludes>
-                  <bindingDirectory>${project.basedir}/schema/aixm5_1/binding</bindingDirectory>
+                  <bindingDirectory>${project.basedir}/schema/test/binding</bindingDirectory>
                   <bindingIncludes>
                     <include>*.xjb</include>
                   </bindingIncludes>

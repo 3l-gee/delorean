@@ -2,9 +2,18 @@ package com.aixm.delorean.core.configuration;
 
 
 public enum StructureConfig {
+
+    TEST(
+        "test", 
+        "com.aixm.delorean.core.schema.test.aixm.FeatureCollectionType"
+    ),
     AIXM_5_1(
         "a5_1", 
         "com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType"
+    ),
+    AIXM_5_1_E(
+        "a5_1_e", 
+        "com.aixm.delorean.core.schema.a5_1e.aixm.message.AIXMBasicMessageType"
     ),
     AIXM_5_1_1(
         "a5_1_1", 

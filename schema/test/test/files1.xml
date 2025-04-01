@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aixm-message:AIXMBasicMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aixm-message="http://www.aixm.aero/schema/5.1/message" xmlns:gml="http://www.opengis.net/gml/3.2" gml:id="gmlID9940435" xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message https://pdubsaimadbss01.ansp.skyguide.ch:8443/cadas-aimdb/schemas/app-schema/aixm-message/5.1/AIXM_BasicMessage.xsd http://www.opengis.net/gml/3.2 https://pdubsaimadbss01.ansp.skyguide.ch:8443/cadas-aimdb/schemas/3rd-party/ogc/ISO_19136_Schemas/gml.xsd">
+    <aixm-message:hasMember>
+        <aixm:AirportHeliport xmlns:aixm="http://www.aixm.aero/schema/5.1" gml:id="gmlID10009105">
+            <gml:identifier codeSpace="urn:uuid:">80e9ec64-9d36-49f4-9bf8-3f33efc1fdf0</gml:identifier>
+            <aixm:timeSlice>
+                <aixm:AirportHeliportTimeSlice gml:id="gmlID10009106">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="gmlID10009109">
+                            <gml:beginPosition>2025-03-20T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:sequenceNumber>7</aixm:sequenceNumber>
+                    <aixm:correctionNumber>0</aixm:correctionNumber>
+                    <aixm:featureLifetime>
+                        <gml:TimePeriod gml:id="gmlID10009110">
+                            <gml:beginPosition>2016-03-31T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </aixm:featureLifetime>
+                    <aixm:designator>LSWB</aixm:designator>
+                    <aixm:name>BLUMENTAL</aixm:name>
+                    <aixm:locationIndicatorICAO>LSWB</aixm:locationIndicatorICAO>
+                    <aixm:designatorIATA xsi:nil="true" nilReason="inapplicable"/>
+                    <aixm:type>LS</aixm:type>
+                    <aixm:certifiedICAO xsi:nil="true" nilReason="unknown"/>
+                    <aixm:privateUse>NO</aixm:privateUse>
+                    <aixm:controlType>CIVIL</aixm:controlType>
+                    <aixm:fieldElevation uom="FT">6233.596</aixm:fieldElevation>
+                    <aixm:fieldElevationAccuracy xsi:nil="true" nilReason="unknown"/>
+                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                    <aixm:magneticVariation xsi:nil="true" nilReason="unknown"/>
+                    <aixm:magneticVariationAccuracy xsi:nil="true" nilReason="unknown"/>
+                    <aixm:dateMagneticVariation xsi:nil="true" nilReason="unknown"/>
+                    <aixm:magneticVariationChange xsi:nil="true" nilReason="unknown"/>
+                    <aixm:referenceTemperature xsi:nil="true" nilReason="unknown"/>
+                    <aixm:altimeterCheckLocation xsi:nil="true" nilReason="unknown"/>
+                    <aixm:secondaryPowerSupply xsi:nil="true" nilReason="unknown"/>
+                    <aixm:windDirectionIndicator xsi:nil="true" nilReason="unknown"/>
+                    <aixm:landingDirectionIndicator xsi:nil="true" nilReason="unknown"/>
+                    <aixm:transitionAltitude xsi:nil="true" nilReason="unknown"/>
+                    <aixm:transitionLevel xsi:nil="true" nilReason="unknown"/>
+                    <aixm:lowestTemperature xsi:nil="true" nilReason="unknown"/>
+                    <aixm:abandoned>NO</aixm:abandoned>
+                    <aixm:certificationDate xsi:nil="true" nilReason="unknown"/>
+                    <aixm:certificationExpirationDate xsi:nil="true" nilReason="unknown"/>
+                    <aixm:contaminant xsi:nil="true" nilReason="unknown"/>
+                    <aixm:servedCity xsi:nil="true" nilReason="unknown"/>
+                    <aixm:responsibleOrganisation>
+                        <aixm:AirportHeliportResponsibilityOrganisation gml:id="gmlID10009114">
+                            <aixm:timeInterval xsi:nil="true" nilReason="unknown"/>
+                            <aixm:specialDateAuthority xsi:nil="true" nilReason="unknown"/>
+                            <aixm:role xsi:nil="true" nilReason="unknown"/>
+                            <aixm:theOrganisationAuthority xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="urn:uuid:08e3beb7-d938-4ba5-98f1-be7095c79377"/>
+                        </aixm:AirportHeliportResponsibilityOrganisation>
+                    </aixm:responsibleOrganisation>
+                    <aixm:ARP>
+                        <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" srsDimension="2" gml:id="gmlID10009115">
+                            <gml:pos>7.8741666694 46.5630555556</gml:pos>
+                            <aixm:horizontalAccuracy xsi:nil="true" nilReason="unknown"/>
+                            <aixm:elevation uom="FT">6233.596</aixm:elevation>
+                            <aixm:geoidUndulation xsi:nil="true" nilReason="unknown"/>
+                            <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                            <aixm:verticalAccuracy xsi:nil="true" nilReason="unknown"/>
+                        </aixm:ElevatedPoint>
+                    </aixm:ARP>
+                    <aixm:aviationBoundary xsi:nil="true" nilReason="unknown"/>
+                    <aixm:altimeterSource xsi:nil="true" nilReason="unknown"/>
+                    <aixm:contact>
+                        <aixm:ContactInformation gml:id="gmlID10009117">
+                            <aixm:name>GEMEINDE LAUTERBRUNNEN</aixm:name>
+                            <aixm:title xsi:nil="true" nilReason="unknown"/>
+                            <aixm:address>
+                                <aixm:PostalAddress gml:id="gmlID10009118">
+                                    <aixm:timeInterval xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:specialDateAuthority xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:deliveryPoint xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:city>MUERREN</aixm:city>
+                                    <aixm:administrativeArea xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:postalCode>3825</aixm:postalCode>
+                                    <aixm:country>SWITZERLAND</aixm:country>
+                                </aixm:PostalAddress>
+                            </aixm:address>
+                            <aixm:networkNode xsi:nil="true" nilReason="unknown"/>
+                            <aixm:phoneFax>
+                                <aixm:TelephoneContact gml:id="gmlID10009120">
+                                    <aixm:timeInterval xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:specialDateAuthority xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:voice>+41793110148</aixm:voice>
+                                    <aixm:facsimile xsi:nil="true" nilReason="unknown"/>
+                                </aixm:TelephoneContact>
+                            </aixm:phoneFax>
+                        </aixm:ContactInformation>
+                    </aixm:contact>
+                    <aixm:availability>
+                        <aixm:AirportHeliportAvailability gml:id="gmlID10009122">
+                            <aixm:timeInterval xsi:nil="true" nilReason="unknown"/>
+                            <aixm:specialDateAuthority xsi:nil="true" nilReason="unknown"/>
+                            <aixm:operationalStatus xsi:nil="true" nilReason="unknown"/>
+                            <aixm:warning xsi:nil="true"/>
+                            <aixm:usage>
+                                <aixm:AirportHeliportUsage gml:id="gmlID10009123">
+                                    <aixm:type>PERMIT</aixm:type>
+                                    <aixm:priorPermission xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:contact xsi:nil="true" nilReason="unknown"/>
+                                    <aixm:selection>
+                                        <aixm:ConditionCombination gml:id="gmlID10009126">
+                                            <aixm:timeInterval xsi:nil="true" nilReason="unknown"/>
+                                            <aixm:specialDateAuthority xsi:nil="true" nilReason="unknown"/>
+                                            <aixm:logicalOperator xsi:nil="true" nilReason="inapplicable"/>
+                                            <aixm:weather xsi:nil="true" nilReason="unknown"/>
+                                            <aixm:aircraft xsi:nil="true" nilReason="unknown"/>
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="gmlID10009128">
+                                                    <aixm:type xsi:nil="true" nilReason="unknown"/>
+                                                    <aixm:rule>VFR</aixm:rule>
+                                                    <aixm:status xsi:nil="true" nilReason="unknown"/>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>NTL</aixm:origin>
+                                                    <aixm:purpose xsi:nil="true" nilReason="unknown"/>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                            <aixm:subCondition xsi:nil="true" nilReason="unknown"/>
+                                        </aixm:ConditionCombination>
+                                    </aixm:selection>
+                                    <aixm:operation xsi:nil="true" nilReason="unknown"/>
+                                </aixm:AirportHeliportUsage>
+                            </aixm:usage>
+                        </aixm:AirportHeliportAvailability>
+                    </aixm:availability>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="gmlID10009130">
+                            <aixm:purpose>OTHER:to_EAD</aixm:purpose>
+                            <aixm:translatedNote xsi:nil="true" nilReason="inapplicable"/>
+                        </aixm:Note>
+                    </aixm:annotation>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="gmlID10009131">
+                            <aixm:purpose>REMARK</aixm:purpose>
+                            <aixm:translatedNote>
+                                <aixm:LinguisticNote gml:id="gmlID10009132">
+                                    <aixm:note lang="en">winter aerodrome</aixm:note>
+                                </aixm:LinguisticNote>
+                            </aixm:translatedNote>
+                        </aixm:Note>
+                    </aixm:annotation>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="gmlID10009133">
+                            <aixm:purpose>REMARK</aixm:purpose>
+                            <aixm:translatedNote>
+                                <aixm:LinguisticNote gml:id="gmlID10009134">
+                                    <aixm:note lang="en">helicopter landing site</aixm:note>
+                                </aixm:LinguisticNote>
+                            </aixm:translatedNote>
+                        </aixm:Note>
+                    </aixm:annotation>
+                </aixm:AirportHeliportTimeSlice>
+            </aixm:timeSlice>
+        </aixm:AirportHeliport>
+    </aixm-message:hasMember>
+</aixm-message:AIXMBasicMessage>
