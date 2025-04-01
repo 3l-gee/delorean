@@ -24,6 +24,9 @@
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='e']">
+                <jaxb:property generateElementProperty="false"/>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true)</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.test.DistanceTypeAdapter.class)</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='FeatureType']//xs:element[@name='f']">
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(required = true)</annox:annotate>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:AIXMBasicMessage xmlns="http://www.test.com" xmlns:ns2="http://www.aixm.aero/schema/5.1/message">
+    <Feature>
+        <a uom="KM">100</a>
+        <b uom="KM">100</b>
+        <c uom="KM">100</c>
+        <d uom="KM">100</d>
+        <DistanceType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <f uom="KM">100</f>
+        <g uom="KM">100</g>
+        <h uom="KM">100</h>
+    </Feature>
+    <Feature>
+        <a>100</a>
+        <b>100</b>
+        <c>100</c>
+        <d>100</d>
+        <DistanceType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <f>100</f>
+        <g>100</g>
+        <h>100</h>
+    </Feature>
+    <Feature>
+        <a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <b/>
+        <c xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <d/>
+        <DistanceType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <f/>
+        <g xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <h/>
+    </Feature>
+    <Feature>
+        <a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+        <b nilReason="unknown"/>
+        <c xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <d nilReason="unknown"/>
+        <DistanceType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <f nilReason="unknown"/>
+        <g xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <h nilReason="unknown"/>
+    </Feature>
+</ns2:AIXMBasicMessage>
