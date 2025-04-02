@@ -9,10 +9,22 @@ package com.aixm.delorean.core.schema.test.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -26,6 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element ref="{http://www.test.com}Feature" maxOccurs="unbounded"/>
  *       </sequence>
  *     </restriction>
@@ -39,11 +52,51 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "FeatureCollectionType", propOrder = {
     "feature"
 })
-@XmlRootElement
+@XmlRootElement(name = "FeatureCollection", namespace = "http://www.test.com")
+@Entity
+@Table(name = "featurecollection")
 public class FeatureCollectionType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "feature_collection_sqnc")
+    @SequenceGenerator(name = "feature_collection_sqnc", sequenceName = "feature_collection_sqnc", allocationSize = 1)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
+    @XmlTransient
+    protected Long id;
     @XmlElement(name = "Feature", required = true)
+    @OneToMany(cascade = {
+        CascadeType.ALL
+    }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "featurecollection_id", referencedColumnName = "id")
     protected List<FeatureType> feature;
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
+    }
+
+    public boolean isSetId() {
+        return (this.id!= null);
+    }
 
     /**
      * Gets the value of the feature property.

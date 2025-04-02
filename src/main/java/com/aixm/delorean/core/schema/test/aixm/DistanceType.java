@@ -8,6 +8,7 @@
 package com.aixm.delorean.core.schema.test.aixm;
 
 import java.math.BigDecimal;
+import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -37,6 +38,7 @@ import jakarta.xml.bind.annotation.XmlValue;
 @XmlType(name = "DistanceType", propOrder = {
     "value"
 })
+@Embeddable
 public class DistanceType {
 
     @XmlValue

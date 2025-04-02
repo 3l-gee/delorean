@@ -7,12 +7,21 @@
 
 package com.aixm.delorean.core.schema.test.aixm;
 
-import com.aixm.delorean.core.adapter.test.DistanceTypeAdapter;
+import com.aixm.delorean.core.adapter.test.FeatureTypeDistanceTypeAAdapter;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlElementRefs;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -27,14 +36,8 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <element name="a" type="{http://www.test.com}DistanceType" minOccurs="0"/>
- *         <element name="b" type="{http://www.test.com}DistanceType" minOccurs="0"/>
- *         <element name="c" type="{http://www.test.com}DistanceType"/>
- *         <element name="d" type="{http://www.test.com}DistanceType"/>
- *         <element name="e" type="{http://www.test.com}DistanceType" minOccurs="0"/>
- *         <element name="f" type="{http://www.test.com}DistanceType" minOccurs="0"/>
- *         <element name="g" type="{http://www.test.com}DistanceType"/>
- *         <element name="h" type="{http://www.test.com}DistanceType"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -45,33 +48,52 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FeatureType", propOrder = {
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h"
+    "a"
 })
+@Entity
+@Table(name = "feature")
 public class FeatureType {
 
-    @XmlElementRef(name = "a", namespace = "http://www.test.com", type = JAXBElement.class, required = false)
-    protected JAXBElement<DistanceType> a;
-    protected DistanceType b;
-    @XmlElement(required = true, nillable = true)
-    protected DistanceType c;
-    @XmlElement(required = true)
-    protected DistanceType d;
-    @XmlElement(nillable = true, required = true)
-    @XmlJavaTypeAdapter(DistanceTypeAdapter.class)
-    protected DistanceType e;
-    @XmlElement(required = true)
-    protected DistanceType f;
-    @XmlElement(required = true, nillable = true)
-    protected DistanceType g;
-    @XmlElement(required = true)
-    protected DistanceType h;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "feature_sqnc")
+    @SequenceGenerator(name = "feature_sqnc", sequenceName = "feature_sqnc", allocationSize = 1)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
+    @XmlTransient
+    protected Long id;
+    @XmlElementRefs({
+        @XmlElementRef(name = "a", namespace = "http://www.test.com", type = JAXBElement.class, required = false)
+    })
+    // @XmlAnyElement(lax = true)
+    @XmlJavaTypeAdapter(FeatureTypeDistanceTypeAAdapter.class)
+    protected DistanceType a;
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
+    }
+
+    public boolean isSetId() {
+        return (this.id!= null);
+    }
 
     /**
      * Gets the value of the a property.
@@ -81,7 +103,7 @@ public class FeatureType {
      *     {@link JAXBElement }{@code <}{@link DistanceType }{@code >}
      *     
      */
-    public JAXBElement<DistanceType> getA() {
+    public DistanceType getA() {
         return a;
     }
 
@@ -93,208 +115,12 @@ public class FeatureType {
      *     {@link JAXBElement }{@code <}{@link DistanceType }{@code >}
      *     
      */
-    public void setA(JAXBElement<DistanceType> value) {
+    public void setA(DistanceType value) {
         this.a = value;
     }
 
     public boolean isSetA() {
         return (this.a!= null);
-    }
-
-    /**
-     * Gets the value of the b property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getB() {
-        return b;
-    }
-
-    /**
-     * Sets the value of the b property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setB(DistanceType value) {
-        this.b = value;
-    }
-
-    public boolean isSetB() {
-        return (this.b!= null);
-    }
-
-    /**
-     * Gets the value of the c property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getC() {
-        return c;
-    }
-
-    /**
-     * Sets the value of the c property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setC(DistanceType value) {
-        this.c = value;
-    }
-
-    public boolean isSetC() {
-        return (this.c!= null);
-    }
-
-    /**
-     * Gets the value of the d property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getD() {
-        return d;
-    }
-
-    /**
-     * Sets the value of the d property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setD(DistanceType value) {
-        this.d = value;
-    }
-
-    public boolean isSetD() {
-        return (this.d!= null);
-    }
-
-    /**
-     * Gets the value of the e property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getE() {
-        return e;
-    }
-
-    /**
-     * Sets the value of the e property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setE(DistanceType value) {
-        this.e = value;
-    }
-
-    public boolean isSetE() {
-        return (this.e!= null);
-    }
-
-    /**
-     * Gets the value of the f property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getF() {
-        return f;
-    }
-
-    /**
-     * Sets the value of the f property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setF(DistanceType value) {
-        this.f = value;
-    }
-
-    public boolean isSetF() {
-        return (this.f!= null);
-    }
-
-    /**
-     * Gets the value of the g property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getG() {
-        return g;
-    }
-
-    /**
-     * Sets the value of the g property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setG(DistanceType value) {
-        this.g = value;
-    }
-
-    public boolean isSetG() {
-        return (this.g!= null);
-    }
-
-    /**
-     * Gets the value of the h property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DistanceType }
-     *     
-     */
-    public DistanceType getH() {
-        return h;
-    }
-
-    /**
-     * Sets the value of the h property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DistanceType }
-     *     
-     */
-    public void setH(DistanceType value) {
-        this.h = value;
-    }
-
-    public boolean isSetH() {
-        return (this.h!= null);
     }
 
 }
