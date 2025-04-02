@@ -53,17 +53,17 @@
             <version>4.0.8</version>
             <executions>
               <execution>
-                <id>generate-aixmTest</id>
+                <id>generate-aixm5_1</id>
                 <phase>generate-sources</phase>
                 <goals>
                   <goal>generate</goal>
                 </goals>
                 <configuration>
-                  <schemaDirectory>${project.basedir}/schema/test/aixm/message</schemaDirectory>
+                  <schemaDirectory>${project.basedir}/schema/aixm5_1/aixm/message</schemaDirectory>
                   <schemaIncludes>
-                    <include>feature.xsd</include>
+                    <include>AIXM_BasicMessage.xsd</include>
                   </schemaIncludes>
-                  <bindingDirectory>${project.basedir}/schema/test/binding</bindingDirectory>
+                  <bindingDirectory>${project.basedir}/schema/aixm5_1/binding</bindingDirectory>
                   <bindingIncludes>
                     <include>*.xjb</include>
                   </bindingIncludes>

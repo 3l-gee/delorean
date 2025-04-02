@@ -230,7 +230,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution> -->
-                            <!-- <execution>
+                            <execution>
                                 <id>generate-aixm5_1</id>
                                 <phase>generate-sources</phase>
                                 <goals>
@@ -248,7 +248,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution>
-                            <execution>
+                            <!-- <execution>
                                 <id>generate-aixm5_1e</id>
                                 <phase>generate-sources</phase>
                                 <goals>
@@ -302,7 +302,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution> -->
-                            <execution>
+                            <!-- <execution>
                                 <id>generate-aixmTest</id>
                                 <phase>generate-sources</phase>
                                 <goals>
@@ -319,7 +319,7 @@
                                     </bindingIncludes>
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
-                            </execution>                            
+                            </execution>-->
                         </executions>
                         <dependencies>
                             <dependency>

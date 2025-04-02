@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns10:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.aixm.aero/schema/5.1" xmlns:ns4="http://www.aixm.aero/schema/5.1/amdb" xmlns:ns5="http://www.isotc211.org/2005/gco" xmlns:ns6="http://www.isotc211.org/2005/gmd" xmlns:ns7="http://www.isotc211.org/2005/gts" xmlns:ns8="http://www.aixm.aero/schema/5.1/event" xmlns:ns9="http://www.aixm.aero/schema/5.1/extensions/ADR" xmlns:ns10="http://www.aixm.aero/schema/5.1/message" ns1:id="gmlID9940435">
+    <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns10:hasMember ns2:type="simple">
+        <ns3:AirportHeliport ns1:id="gmlID10009105">
+            <ns1:identifier codeSpace="urn:uuid:">80e9ec64-9d36-49f4-9bf8-3f33efc1fdf0</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:timeSlice>
+                <ns3:AirportHeliportTimeSlice ns1:id="gmlID10009106">
+                    <ns1:validTime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="gmlID10009109">
+                            <ns1:beginPosition>2025-03-20T00:00:00.000Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns1:validTime>
+                    <ns3:interpretation>BASELINE</ns3:interpretation>
+                    <ns3:sequenceNumber>7</ns3:sequenceNumber>
+                    <ns3:correctionNumber>0</ns3:correctionNumber>
+                    <ns3:featureLifetime ns2:type="simple">
+                        <ns1:TimePeriod ns1:id="gmlID10009110">
+                            <ns1:beginPosition>2016-03-31T00:00:00.000Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"></ns1:endPosition>
+                        </ns1:TimePeriod>
+                    </ns3:featureLifetime>
+                    <ns3:designator>LSWB</ns3:designator>
+                    <ns3:name>BLUMENTAL</ns3:name>
+                    <ns3:locationIndicatorICAO>LSWB</ns3:locationIndicatorICAO>
+                    <ns3:designatorIATA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="inapplicable" xsi:nil="true"></ns3:designatorIATA>
+                    <ns3:type>LS</ns3:type>
+                    <ns3:certifiedICAO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:certifiedICAO>
+                    <ns3:privateUse>NO</ns3:privateUse>
+                    <ns3:controlType>CIVIL</ns3:controlType>
+                    <ns3:fieldElevation uom="FT">6233.596</ns3:fieldElevation>
+                    <ns3:fieldElevationAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:fieldElevationAccuracy>
+                    <ns3:verticalDatum>OTHER:LN02</ns3:verticalDatum>
+                    <ns3:magneticVariation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:magneticVariationAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:dateMagneticVariation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:dateMagneticVariation>
+                    <ns3:magneticVariationChange xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:referenceTemperature xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:altimeterCheckLocation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:altimeterCheckLocation>
+                    <ns3:secondaryPowerSupply xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:secondaryPowerSupply>
+                    <ns3:windDirectionIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:windDirectionIndicator>
+                    <ns3:landingDirectionIndicator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:landingDirectionIndicator>
+                    <ns3:transitionAltitude xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:transitionAltitude>
+                    <ns3:transitionLevel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true">0</ns3:transitionLevel>
+                    <ns3:lowestTemperature xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:abandoned>NO</ns3:abandoned>
+                    <ns3:certificationDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:certificationExpirationDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:contaminant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns3:servedCity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns3:responsibleOrganisation>
+                        <ns3:AirportHeliportResponsibilityOrganisation ns1:id="gmlID10009114">
+                            <ns3:timeInterval xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:specialDateAuthority xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:role xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:role>
+                            <ns3:theOrganisationAuthority ns2:type="simple" ns2:href="urn:uuid:08e3beb7-d938-4ba5-98f1-be7095c79377"/>
+                        </ns3:AirportHeliportResponsibilityOrganisation>
+                    </ns3:responsibleOrganisation>
+                    <ns3:ARP>
+                        <ns3:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" srsDimension="2" ns1:id="gmlID10009115">
+                            <ns1:pos>7.8741666694 46.5630555556</ns1:pos>
+                            <ns3:horizontalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                            <ns3:elevation uom="FT">6233.596</ns3:elevation>
+                            <ns3:geoidUndulation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                            <ns3:verticalDatum>OTHER:LN02</ns3:verticalDatum>
+                            <ns3:verticalAccuracy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                        </ns3:ElevatedPoint>
+                    </ns3:ARP>
+                    <ns3:aviationBoundary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+                    <ns3:altimeterSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <ns3:contact>
+                        <ns3:ContactInformation ns1:id="gmlID10009117">
+                            <ns3:name>GEMEINDE LAUTERBRUNNEN</ns3:name>
+                            <ns3:title xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:title>
+                            <ns3:address>
+<ns3:PostalAddress ns1:id="gmlID10009118">
+    <ns3:timeInterval xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns3:specialDateAuthority xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns3:deliveryPoint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:deliveryPoint>
+    <ns3:city>MUERREN</ns3:city>
+    <ns3:administrativeArea xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:administrativeArea>
+    <ns3:postalCode>3825</ns3:postalCode>
+    <ns3:country>SWITZERLAND</ns3:country>
+</ns3:PostalAddress>
+                            </ns3:address>
+                            <ns3:networkNode xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:phoneFax>
+<ns3:TelephoneContact ns1:id="gmlID10009120">
+    <ns3:timeInterval xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns3:specialDateAuthority xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns3:voice>+41793110148</ns3:voice>
+    <ns3:facsimile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:facsimile>
+</ns3:TelephoneContact>
+                            </ns3:phoneFax>
+                        </ns3:ContactInformation>
+                    </ns3:contact>
+                    <ns3:availability>
+                        <ns3:AirportHeliportAvailability ns1:id="gmlID10009122">
+                            <ns3:timeInterval xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:specialDateAuthority xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:operationalStatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:operationalStatus>
+                            <ns3:warning xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <ns3:usage>
+<ns3:AirportHeliportUsage ns1:id="gmlID10009123">
+    <ns3:type>PERMIT</ns3:type>
+    <ns3:priorPermission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"/>
+    <ns3:contact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns3:selection>
+        <ns3:ConditionCombination ns1:id="gmlID10009126">
+            <ns3:timeInterval xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:specialDateAuthority xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:logicalOperator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="inapplicable" xsi:nil="true"></ns3:logicalOperator>
+            <ns3:weather xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:aircraft xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns3:flight>
+                <ns3:FlightCharacteristic ns1:id="gmlID10009128">
+                    <ns3:type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:type>
+                    <ns3:rule>VFR</ns3:rule>
+                    <ns3:status xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:status>
+                    <ns3:military>CIVIL</ns3:military>
+                    <ns3:origin>NTL</ns3:origin>
+                    <ns3:purpose xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:purpose>
+                </ns3:FlightCharacteristic>
+            </ns3:flight>
+            <ns3:subCondition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        </ns3:ConditionCombination>
+    </ns3:selection>
+    <ns3:operation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nilReason="unknown" xsi:nil="true"></ns3:operation>
+</ns3:AirportHeliportUsage>
+                            </ns3:usage>
+                        </ns3:AirportHeliportAvailability>
+                    </ns3:availability>
+                    <ns3:annotation>
+                        <ns3:Note ns1:id="gmlID10009130">
+                            <ns3:purpose>OTHER:to_EAD</ns3:purpose>
+                            <ns3:translatedNote xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        </ns3:Note>
+                    </ns3:annotation>
+                    <ns3:annotation>
+                        <ns3:Note ns1:id="gmlID10009131">
+                            <ns3:purpose>REMARK</ns3:purpose>
+                            <ns3:translatedNote>
+<ns3:LinguisticNote ns1:id="gmlID10009132">
+    <ns3:note lang="en">winter aerodrome</ns3:note>
+</ns3:LinguisticNote>
+                            </ns3:translatedNote>
+                        </ns3:Note>
+                    </ns3:annotation>
+                    <ns3:annotation>
+                        <ns3:Note ns1:id="gmlID10009133">
+                            <ns3:purpose>REMARK</ns3:purpose>
+                            <ns3:translatedNote>
+<ns3:LinguisticNote ns1:id="gmlID10009134">
+    <ns3:note lang="en">helicopter landing site</ns3:note>
+</ns3:LinguisticNote>
+                            </ns3:translatedNote>
+                        </ns3:Note>
+                    </ns3:annotation>
+                </ns3:AirportHeliportTimeSlice>
+            </ns3:timeSlice>
+        </ns3:AirportHeliport>
+    </ns10:hasMember>
+</ns10:AIXMBasicMessage>

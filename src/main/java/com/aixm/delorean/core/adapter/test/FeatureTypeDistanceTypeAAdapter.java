@@ -14,14 +14,15 @@ public class FeatureTypeDistanceTypeAAdapter extends XmlAdapter<JAXBElement<Dist
     
     @Override
     public DistanceType unmarshal(JAXBElement<DistanceType> v) throws Exception {
+        System.out.println("unmarshal value:" + v.getValue() + " nil :" + v.isNil() + " nilreason:" + v.getValue().getNilReason());
         DistanceType value = v.getValue();
         return value;
     }
 
     @Override
     public JAXBElement<DistanceType> marshal(DistanceType v) throws Exception {
+
         QName qname = new QName("http://www.test.com", "a");
-        
         JAXBElement<DistanceType> jaxb = new JAXBElement<>(qname, DistanceType.class, v);
     
         if (v == null || v.getValue() == null || v.getNilReason() != null) {
