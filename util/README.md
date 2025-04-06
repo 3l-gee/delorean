@@ -119,4 +119,14 @@ xjb content
 
 This allows us to still treat the money field as a string in the xml, but use a special type internally.
 
+## XSD to codegen
+This step by step guide describes the process of using the ```util\manager.py``` tool.
+  
+
 1. Take XSD of your choice
+
+LEXIC
+| Word | Description |
+| --- | --- |
+|  | List all new or modified files |
+| git diff | Show file differences that haven't been staged |
