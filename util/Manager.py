@@ -1,6 +1,7 @@
 from machinery import Machinery
 from annotation import Tag, Strategy
 from view import View
+from debug import Debug
 
 # Snowflake : 
 # segmentpointpropertygroup_facilitymakeup (3)
@@ -9,13 +10,13 @@ from view import View
 # propertieswithschedulepropertygroup_specialdateauthority (28)
 # airspacelayerclasspropertygroup_associatedlevels 
 
-debug = {
+Debug({
     "mode" : False,
     "entity" : {
         "mode" : True,
         "list" : ["PointPropertyType"]
     },
-}
+})
 
 View({
     "Aerial Refuelling" : {
@@ -625,4 +626,4 @@ message = {
     "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery(config, debug, [data_types, feature, abstract, message])
+machinery = Machinery(config, [data_types, feature, abstract, message])

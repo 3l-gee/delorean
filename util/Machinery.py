@@ -12,6 +12,7 @@ from control import Control
 from validation import Validation
 from xsd import Xsd
 from view import View
+from debug import Debug
 
 
    # machinery.print_entity_class(machinery.entity_feature)
@@ -25,20 +26,13 @@ class Config:
         self.constraint_methode = "xjb"
         self.output_path = config["output_path"]
 
-class Debug:
-    def __init__(self, debug: dict):
-        self.mode = debug.get("mode", False)
-        self.entity = debug.get("entity", {})
-        self.feature = debug.get("feature", {})
-
 
 class Machinery:
-    def __init__(self, config_dict: dict, debug_dict: dict, xsds_dict: List[dict]): 
+    def __init__(self, config_dict: dict, xsds_dict: List[dict]): 
         self.xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds_dict]
         self.config = Config(config_dict)
-        self.debug = Debug(debug_dict) if debug_dict["mode"] else Debug({})
         self.xjb = self.init_xjb(self.xsds)
-        self.content = Content(self.xsds, self.config)
+        Content(self.xsds, self.config)
 
         # self.abstract_feature = {}
         # self.entity_feature = [] # todo make it a dict
@@ -61,42 +55,22 @@ class Machinery:
         
                                                     
     def generate_xjb(self):
-        for key, value in self.content.get_content() :
+        for key, value in Content.get_content() :
             self.xjb[key]["auto"]["default"].extend(
-                SimpleType.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"], self.config, self.debug))
+                SimpleType.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"], self.config))
             
         #     self.export_file("graph.txt", value["simple_type"]["graph"])
         #     self.export_file("transposition.txt", value["simple_type"]["transposition"])
         #     self.export_file("embed_feature.txt", self.config.embed)
             
-        for key, value in self.content.get_content() :
+        for key, value in Content.get_content() :
             self.xjb[key]["auto"]["default"].extend(
-                ComplexType.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract, self.config, self.debug))
+                ComplexType.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract, self.config))
                         
         # for key, value in self.content.items() :
         #     self.xjb[key]["auto"]["default"].extend(
         #         self.generate_groupe_types(value["group"]["type"], self.config.embed, self.config.abstract))
-    
-    
-    def generate_complex_types(self, type, embed, abstract):
-        res = []
-        for element in type :
-            if element is None :
-                print("element is None : ", element, type)
-                continue
-
-            if element.attrib["name"] in self.config.ignore:
-                continue
-
-            res.append(Jaxb.complex(element.attrib["name"]))
-            res.extend(self.class_writer(element, embed, abstract, View.get_schema(element.attrib.get("name"))))
-            res.append(Jaxb.end)
-
-            parent_xpath = Jaxb.complex_xpath(element.attrib.get("name"))
-            res.extend(self.field_writer(element, embed, parent_xpath))
-            
-        return res
-    
+        
     def generate_groupe_types(self, type, embed, abstract):
         res = []
         for element in type:
@@ -398,7 +372,7 @@ class Machinery:
                     node.append(Annox.class_add(Xml.type(element.attrib["name"])))
 
 
-        if self.debug.entity.get("mode") == True and element.attrib.get("name") not in self.debug.entity.get("name", []):
+        if Debug.entity.get("mode") == True and element.attrib.get("name") not in Debug.entity.get("name", []):
             node.append(Annox.class_add(Jpa.embeddable))
             return node
 

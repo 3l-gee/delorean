@@ -33,23 +33,25 @@ class View(metaclass=SingletonMeta):
                 self.feature_to_schema[item] = value["schema"]
 
     @classmethod
-    def get_schema(name_ori):
-        name = name_ori  # Start with the original name
-        for key, value in View.suffix.items():
-            name = name.replace(key, value)  # Apply each replacement
+    def get_schema(cls, name_ori):
+        instance = cls()  # Use the singleton instance
+        name = name_ori
+        for key, value in instance.suffix.items():
+            name = name.replace(key, value)
 
-        if name not in View.feature_to_schema:
+        if name not in instance.feature_to_schema:
             Control.log_action(
                 what="tried to get schema",
                 success=False,
-                why=str(name_ori + " / " + name + " not found"),
+                why=f"{name_ori} / {name} not found",
             )
-            return "public"        
-        
+            return "public"
+
         Control.log_action(
             what="",
             success=True,
-            why="self.feature_to_schema.get(name)",
+            why="schema found: " + name,
         )
-        View.list.add(str(View.feature_to_schema.get(name)+ "." + name))
-        return View.feature_to_schema.get(name)
+        instance.list.add(f"{instance.feature_to_schema[name]}.{name}")
+        return instance.feature_to_schema[name]
+

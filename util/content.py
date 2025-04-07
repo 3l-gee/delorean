@@ -6,18 +6,29 @@ from annotation import Property, Annox, Strategy, Jpa, Relation, Xpath,Tag, Jaxb
 from validation import Validation
 import xml.etree.ElementTree as ET
 
-class Content: 
+class SingletonMeta(type):
 
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            instance = super().__call__(*args, **kwargs)
+            cls._instances[cls] = instance
+        return cls._instances[cls]
+    
+class Content(metaclass=SingletonMeta): 
     def __init__(self, xsds: List[Xsd], config ): 
         self.content = {}
+        self.entity = []
+        self.embed = {}
         for xsd in xsds:
             simple_type_content = xsd.get_simple_type()
-            inherit_graph = self.build_inheritance_graph(simple_type_content)
-            attrib_graph = self.build_attribute_graph(xsd.get_complex_type())
-            transposition = self.build_transposition(simple_type_content, inherit_graph)
+            inherit_graph = Content._build_inheritance_graph(simple_type_content)
+            attrib_graph = Content._build_attribute_graph(xsd.get_complex_type())
+            transposition = Content._build_transposition(simple_type_content, inherit_graph)
             # TODO 
-            # if xsd.strategy == Strategy.data_type:
-            #     self.config.embed = {**self.config.embed, **self.extract_embed(xsd.root, transposition)}
+            if xsd.strategy == Strategy.data_type:
+                self.embed = {**config.embed, **Content._extract_embed(xsd.root, transposition)}
             # self.export_file("test_" + xsd.name.split("/")[-1] + ".json", {**config.embed, **self.extract_embed(xsd.root, transposition)})
 
             self.content[xsd.name] = {
@@ -44,10 +55,20 @@ class Content:
                     why=str(xsd.name),
                 )
             
-    def get_content(self):
-        return self.content.items()
+    @staticmethod
+    def get_content():
+        return Content().content.items()
+    
+    @staticmethod
+    def get_entity():
+        return Content().entity
+    
+    @classmethod
+    def append_entity(cls, entity):
+        cls().entity.append(entity)
 
-    def build_inheritance_graph(self, xml_type_list: list) -> dict:
+    @staticmethod
+    def _build_inheritance_graph(xml_type_list: list) -> dict:
         res = {}
         for element in xml_type_list:
             base = element.findall(Tag.extension) or element.findall(Tag.restriction) or []
@@ -64,7 +85,8 @@ class Content:
 
         return res
     
-    def build_attribute_graph(self, xml_type_list: list) -> dict:
+    @staticmethod
+    def _build_attribute_graph(xml_type_list: list) -> dict:
         res = {}
         for element in xml_type_list:
             attributes = element.findall(".//"+ Tag.attribute) or []
@@ -82,7 +104,8 @@ class Content:
 
         return res
 
-    def build_transposition(self, type: list,  graph):
+    @staticmethod
+    def _build_transposition(type: list,  graph):
         transposition = {}
         dict = {}
         for element in type:
@@ -99,7 +122,8 @@ class Content:
     
         return transposition
     
-    def graph_traversal(self,element, name, graph, dict=None):
+    @staticmethod
+    def _graph_traversal(element, name, graph, dict=None):
         if dict is None:
             dict = {}
 
@@ -108,17 +132,18 @@ class Content:
             deep_dict = {}
             for item in graph[name]:
                 deep_dict.update({item : Validation.generate_constraints(element)})
-                deep_dict.update(self.graph_traversal(element, item, graph))
+                deep_dict.update(Content.graph_traversal(element, item, graph))
                 
                 dict.update(deep_dict)
         return dict
     
-    def export_file(self, file_path, content):
+    @staticmethod
+    def _export_file(file_path, content):
         with open(file_path, 'w') as f:
             f.write(json.dumps(content, indent=4))
     
-
-    def extract_embed(self, root, transposition):
+    @staticmethod
+    def _extract_embed(root, transposition):
         res = {}
         complexType = root.findall(Tag.complex_type) or []
         for element in complexType:

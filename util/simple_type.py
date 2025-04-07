@@ -5,16 +5,16 @@ from annotation import Annox, Jpa, Tag, Jaxb, Xml
 
 class SimpleType: 
     @staticmethod
-    def generate_simple_types(type, graph, transposition, config, debug):
+    def generate_simple_types(type, graph, transposition, config):
         res = []
         for element in type:
-            result = SimpleType.runner(element, graph, transposition, config, debug)
+            result = SimpleType.runner(element, graph, transposition, config)
             if result:
                 res.extend(result)
         return res 
 
     @staticmethod
-    def runner(element, graph, transposition, config, debug) :
+    def runner(element, graph, transposition, config) :
         node = []
 
         if element is None :    
