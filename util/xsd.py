@@ -21,44 +21,20 @@ class Xsd:
     def get_elements(self):
         return self.elements
     
-    def get_elements_info(self):
-        for element in self.elements:
-            print(element.attrib)
-
     def get_groups(self):
         return self.groups
-    
-    def get_groups_info(self):
-        for group in self.groups:
-            print(group.attrib)
-    
+        
     def get_attributes(self):
         return self.attributes
 
-    def get_attributes_info(self):
-        for attribute in self.attributes:
-            print(attribute.attrib)
-
     def get_extension(self):
         return self.extension
-
-    def get_extension_info(self):
-        for extension in self.extension:
-            print(extension.attrib)
     
     def get_simple_type(self):
         return self.simple_type
-    
-    def get_simple_type_info(self):
-        for simple_type in self.simple_type:
-            print(simple_type.attrib)
-    
+        
     def get_complex_type(self):
         return self.complex_type
-
-    def get_complex_type_info(self):
-        for complex_type in self.complex_type:
-            print(complex_type.attrib)  
     
     def get_namespaces(self):
         namespaces = dict([

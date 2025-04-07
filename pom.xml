@@ -266,7 +266,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution> -->
-                            <!-- <execution>
+                            <execution>
                                 <id>generate-aixm5_1_1</id>
                                 <phase>generate-sources</phase>
                                 <goals>
@@ -283,7 +283,7 @@
                                     </bindingIncludes>
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
-                            </execution> -->
+                            </execution>
                             <!-- <execution>
                                 <id>generate-aixm5_2</id>
                                 <phase>generate-sources</phase>

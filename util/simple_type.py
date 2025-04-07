@@ -1,81 +1,80 @@
 from validation import Validation
 from control import Control
-from annotation import Annox, Jpa, Tag, Jaxb
+from annotation import Annox, Jpa, Tag, Jaxb, Xml
 
 
-class Simple_type_machinery: 
-
-    def __init__(self, config, debug, view):
-        self.config = config
-        self.debug = debug
-        self.view = view
-
+class SimpleType: 
     @staticmethod
-    def generate_simple_types(type, graph, transposition):
+    def generate_simple_types(type, graph, transposition, config, debug):
         res = []
         for element in type:
-            res.extend(Simple_type_machinery.runner(element, graph, transposition))
+            result = SimpleType.runner(element, graph, transposition, config, debug)
+            if result:
+                res.extend(result)
+        return res 
 
-
-    def runner(self, element, graph, transposition) :
+    @staticmethod
+    def runner(element, graph, transposition, config, debug) :
         node = []
-        if element is None :
+
+        if element is None :    
             Control.log_action(
                 what="element is None",
                 success=False,
                 why=str(element),
             )
-            return []
+            return node
         
-        if element.attrib["name"] in graph["attribute"].keys() or element.attrib["name"] in graph["inheritance"].keys() or element.attrib["name"] in self.config.ignore:
-            return []
-    
-        node.append(Jaxb.simple(element.attrib["name"]))
-        enum_values = element.findall(Tag.enumeration) or []
-        base = element.find(".//" + Tag.restriction).attrib
+        element_name = element.attrib["name"]
+        element_restriction = element.find(".//" + Tag.restriction).attrib
+        element_base = element_restriction.get("base")
         
-        if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
+        if element_name in graph["attribute"].keys() :
+            return node
+        
+        if element_name in graph["inheritance"].keys() :
+            return node
+        
+        if element_name in config.ignore:
+            return node
+            
+        if element.attrib.get("name") in config.transient or element.attrib.get("ref") in config.transient :
+            node.append(Jaxb.simple(element.attrib["name"]))
             node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)
-        
-        elif enum_values:
-            node.append(Jaxb.enum_start(element.attrib["name"]))
-            node.extend([Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
-            node.append(Jaxb.enum_end)
+            return node
+            
+        if element.attrib.get("type") in config.transient:
+            node.append(Jaxb.simple(element.attrib["name"]))
+            node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)
+            return node
+        
+        # else:
+            # constraints = {**transposition.get(element.attrib["name"], {}), **Validation.generate_constraints(element)}
+            # if self.config.constraint_methode == "xjb":
+            #     size = constraints.get("size")
+            #     pattern = constraints.get("pattern")
 
-        else:
-            constraints = {**transposition.get(element.attrib["name"], {}), **Validation.generate_constraints(element)}
-            if self.config.constraint_methode == "xjb":
-                size = constraints.get("size")
-                pattern = constraints.get("pattern")
+            #     if size is not None:
+            #         node.append(size)
+            #     if pattern is not None:
+            #         node.append(pattern)
 
-                if size is not None:
-                    node.append(size)
-                if pattern is not None:
-                    node.append(pattern)
+    
+        if element_base == "date":
+            node.append(Jaxb.simple(element.attrib["name"]))
+            node.append(Jaxb.java_type("java.sql.Timestamp"))
+            node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
+            node.append(Jaxb.end)
+            return node
+        
+        # TODO 
+        if element_base == "dateTime":
+            node.append(Jaxb.simple(element.attrib["name"]))
+            node.append(Annox.field_add(Jpa.transient))
+            node.append(Jaxb.end)
+            return node
 
-            if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
-                if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
-                    # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
-                    node.append(Jaxb.end)
-
-                elif base.get("base") == "date":
-                    node.append(Jaxb.java_type("java.sql.Timestamp"))
-                    # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
-                    node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
-                    node.append(Jaxb.end)
-                
-                elif base.get("base") == "dateTime":
-                    node.append(Annox.field_add(Jpa.transient))
-                    node.append(Jaxb.end)
-
-            elif base is not None and "aixm" in base.get("base",None) :
-                node = []
-                # node.append(Annox.field_add(Jpa.column("value", constraints.get("column_length"))))
-                # node.append(Jaxb.end)
-                
-            else:
-                print(element.attrib, base)
 
 

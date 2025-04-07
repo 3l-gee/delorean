@@ -4,6 +4,9 @@ from lxml import etree
 from typing import List
 import os
 import json
+from content import Content
+from simple_type import SimpleType
+from complex_type import ComplexType
 from annotation import Property, Annox, Strategy, Jpa, Relation, Xpath,Tag, Jaxb, Xml
 from control import Control
 from validation import Validation
@@ -30,19 +33,19 @@ class Debug:
 
 
 class Machinery:
-    def __init__(self, config_dict: dict, debug_dict: dict, schema_dict: dict, xsds_dict: List[dict]): 
+    def __init__(self, config_dict: dict, debug_dict: dict, xsds_dict: List[dict]): 
         self.xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds_dict]
         self.config = Config(config_dict)
         self.debug = Debug(debug_dict) if debug_dict["mode"] else Debug({})
-        self.view = View(schema_dict)
         self.xjb = self.init_xjb(self.xsds)
-        self.content = self.init_content(self.xsds)
-        self.abstract_feature = {}
-        self.entity_feature = [] # todo make it a dict
-        self.ignore_feature = {}
-        self.column_definition = {}
-        self.folder = {}
-        self.table_name = {}
+        self.content = Content(self.xsds, self.config)
+
+        # self.abstract_feature = {}
+        # self.entity_feature = [] # todo make it a dict
+        # self.ignore_feature = {}
+        # self.column_definition = {}
+        # self.folder = {}
+        # self.table_name = {}
 
         self.generate_xjb()
         self.export_xjb()
@@ -55,214 +58,25 @@ class Machinery:
     def export_file(self, file_path, content):
         with open(file_path, 'w') as f:
             f.write(json.dumps(content, indent=4))
-    
-    def init_content(self, xsds: List[Xsd]): 
-        res = {}
-        for xsd in xsds:
-            simple_type_content = xsd.get_simple_type()
-            inherit_graph = self.build_inheritance_graph(simple_type_content)
-            attrib_graph = self.build_attribute_graph(xsd.get_complex_type())
-            transposition = self.build_transposition(simple_type_content, inherit_graph)
-            if xsd.strategy == Strategy.data_type:
-                self.config.embed = {**self.config.embed, **self.extract_embed(xsd.root, transposition)}
-
-            res[xsd.name] = {
-                "strategy" : xsd.strategy,
-                "simple_type" : {
-                    "type" : simple_type_content,
-                    "graph" : {
-                        "inheritance" : inherit_graph,
-                        "attribute" : attrib_graph
-                        },
-                    "transposition" : transposition
-                    },
-                "complex_type" : {
-                    "type" : xsd.get_complex_type(),
-                    },
-                "group" : {
-                    "type" : xsd.get_groups(),
-                }
-            }
-
-        return res
-    
-    def extract_embed(self, root, transposition):
-        res = {}
-        complexType = root.findall(Tag.complex_type) or []
-        for element in complexType:
-            name = element.attrib["name"]
-            simple_content = element.find(Tag.simple_content)
-
-            if simple_content is None:
-                res[name] = {}
-                continue
-
-            base = simple_content.find(Tag.extension)
-            base_name = base.attrib["base"]
-            try : 
-                base_name = base_name.split(":")[-1]
-            except:
-                pass
-            res[name] = {"value" : transposition[base_name],}
-
-            attributes = base.findall(Tag.attribute) or []
-            for attribute in attributes:
-                type = attribute.attrib.get("type", attribute.attrib.get("ref"))
-                try : 
-                    type = type.split(":")[-1]
-                except:
-                    pass
-                res[name][attribute.attrib["name"]] = transposition.get(type, {})
-            
-        return res
-    
-    def build_inheritance_graph(self, type):
-        res = {}
-        for element in type:
-            base = element.findall(Tag.extension) or element.findall(Tag.restriction) or []
-            if base != []:
-                name = base[0].attrib["base"]
-                try : 
-                    name = name.split(":")[-1]
-                except:
-                    pass
-                if name not in res : 
-                    res[name] = [element.attrib["name"]]
-                else :
-                    res[name].append(element.attrib["name"])
-
-        return res
-    
-    def build_attribute_graph(self, type):
-        res = {}
-        for element in type:
-            attributes = element.findall(".//"+ Tag.attribute) or []
-            if attributes != []:
-                for attribute in attributes:
-                    name = attribute.attrib.get("type", attribute.attrib.get("ref"))
-                    try : 
-                        name = name.split(":")[-1]
-                    except:
-                        pass
-                    if name not in res : 
-                        res[name] = [element.attrib["name"]]
-                    else :
-                        res[name].append(element.attrib["name"])
-
-        return res
-
-    def build_transposition(self, type: list,  graph):
-        transposition = {}
-        dict = {}
-        for element in type:
-            name = element.attrib["name"]
-            constraints = Validation.generate_constraints(element)
-            transposition[name] = constraints
-
-        for element in type:
-            name = element.attrib["name"]
-            constraints = transposition[name]
-            if name in graph.keys():
-                for sub_name in graph[name]:
-                    transposition[sub_name] = {**transposition[sub_name], **transposition[name]}
-    
-        return transposition
-    
-    def graph_traversal(self,element, name, graph, dict=None):
-        if dict is None:
-            dict = {}
-
-        if name in graph.keys():
-           
-            deep_dict = {}
-            for item in graph[name]:
-                deep_dict.update({item : Validation.generate_constraints(element)})
-                deep_dict.update(self.graph_traversal(element, item, graph))
-                
-                dict.update(deep_dict)
-        return dict       
+        
                                                     
     def generate_xjb(self):
-        for key, value in self.content.items() :
+        for key, value in self.content.get_content() :
             self.xjb[key]["auto"]["default"].extend(
-                self.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"]))
+                SimpleType.generate_simple_types(value["simple_type"]["type"], value["simple_type"]["graph"], value["simple_type"]["transposition"], self.config, self.debug))
             
-            self.export_file("graph.txt", value["simple_type"]["graph"])
-            self.export_file("transposition.txt", value["simple_type"]["transposition"])
-            self.export_file("embed_feature.txt", self.config.embed)
+        #     self.export_file("graph.txt", value["simple_type"]["graph"])
+        #     self.export_file("transposition.txt", value["simple_type"]["transposition"])
+        #     self.export_file("embed_feature.txt", self.config.embed)
             
-        for key, value in self.content.items() :
+        for key, value in self.content.get_content() :
             self.xjb[key]["auto"]["default"].extend(
-                self.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract))
+                ComplexType.generate_complex_types(value["complex_type"]["type"], self.config.embed, self.config.abstract, self.config, self.debug))
                         
-        for key, value in self.content.items() :
-            self.xjb[key]["auto"]["default"].extend(
-                self.generate_groupe_types(value["group"]["type"], self.config.embed, self.config.abstract))
+        # for key, value in self.content.items() :
+        #     self.xjb[key]["auto"]["default"].extend(
+        #         self.generate_groupe_types(value["group"]["type"], self.config.embed, self.config.abstract))
     
-    def generate_simple_types(self, type, graph, transposition):
-        res = []
-        for element in type:
-            node = []
-            if element is None :
-                print("element is None : ", element, type)
-                continue
-
-            if element.attrib["name"] in graph["attribute"].keys() or element.attrib["name"] in graph["inheritance"].keys() or element.attrib["name"] in self.config.ignore:
-                continue
-
-            node.append(Jaxb.simple(element.attrib["name"]))
-            enum_values = element.findall(Tag.enumeration) or []
-            base = element.find(".//" + Tag.restriction).attrib
-            
-            if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
-                node.append(Annox.field_add(Jpa.transient))
-                node.append(Jaxb.end)
-            
-            elif enum_values:
-                node.append(Jaxb.enum_start(element.attrib["name"]))
-                node.extend([Jaxb.enum_member(enum.attrib["value"], enum.attrib["value"]) for enum in enum_values])
-                node.append(Jaxb.enum_end)
-                node.append(Jaxb.end)
-
-            else:
-                constraints = {**transposition.get(element.attrib["name"], {}), **Validation.generate_constraints(element)}
-                
-                # if self.config.constraint_methode == "xjb":
-                #     size = constraints.get("size")
-                #     pattern = constraints.get("pattern")
-
-                #     if size is not None:
-                #         node.append(size)
-                #     if pattern is not None:
-                #         node.append(pattern)
-
-                if base is not None and base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean", "date", "dateTime"]:
-                    if base.get("base") in ["token", "string", "integer", "unsignedInt", "decimal", "double", "float", "boolean"] :
-                        # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
-                        node.append(Jaxb.end)
-
-                    elif base.get("base") == "date":
-                        node.append(Jaxb.java_type("java.sql.Timestamp"))
-                        # node.append(Annox.field_add(Jpa.column(element.attrib["name"], constraints.get("column_length"))))
-                        node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
-                        node.append(Jaxb.end)
-                    
-                    elif base.get("base") == "dateTime":
-                        node.append(Annox.field_add(Jpa.transient))
-                        node.append(Jaxb.end)
-
-                elif base is not None and "aixm" in base.get("base",None) :
-                    node = []
-                    # node.append(Annox.field_add(Jpa.column("value", constraints.get("column_length"))))
-                    # node.append(Jaxb.end)
-                    
-                else:
-                    print(element.attrib, base)
-
-
-            res.extend(node)
-
-        return res
     
     def generate_complex_types(self, type, embed, abstract):
         res = []
@@ -274,10 +88,8 @@ class Machinery:
             if element.attrib["name"] in self.config.ignore:
                 continue
 
-            schema = self.view.get_schema(element.attrib.get("name"))
-
             res.append(Jaxb.complex(element.attrib["name"]))
-            res.extend(self.class_writer(element, embed, abstract, schema))
+            res.extend(self.class_writer(element, embed, abstract, View.get_schema(element.attrib.get("name"))))
             res.append(Jaxb.end)
 
             parent_xpath = Jaxb.complex_xpath(element.attrib.get("name"))

@@ -1,5 +1,6 @@
 from machinery import Machinery
 from annotation import Tag, Strategy
+from view import View
 
 # Snowflake : 
 # segmentpointpropertygroup_facilitymakeup (3)
@@ -16,7 +17,7 @@ debug = {
     },
 }
 
-schema = {
+View({
     "Aerial Refuelling" : {
         "schema" : "aerial_refuelling",
         "list" : [
@@ -365,8 +366,7 @@ schema = {
             "SurveillanceRadar",
         ],
     }
-}
-
+})
 config = {
     "ignore": [
         # TODO solve this   
@@ -495,7 +495,7 @@ message = {
 
 
 
-machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message])
+# machinery = Machinery(config, debug, [data_types, feature, abstract, message])
 
 config = {
     "ignore": [
@@ -625,4 +625,4 @@ message = {
     "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery(config, debug, schema, [data_types, feature, abstract, message])
+machinery = Machinery(config, debug, [data_types, feature, abstract, message])
