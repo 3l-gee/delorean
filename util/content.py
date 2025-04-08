@@ -29,6 +29,7 @@ class Content(metaclass=SingletonMeta):
         self.ignore: dict = {item: {} for item in config["ignore"]}
         self.transient: dict = {item: {} for item in config["transient"]}
         self.output_path = config["output_path"]
+        self.version = config["version"]
         for xsd in xsds:
             simple_type_content = xsd.get_simple_type()
             inherit_graph = Content._build_inheritance_graph(simple_type_content)
@@ -88,6 +89,10 @@ class Content(metaclass=SingletonMeta):
     @staticmethod
     def get_output_path():
         return Content().output_path
+    
+    @staticmethod
+    def get_version():
+        return Content().version
     
     @classmethod
     def append_entity(cls, new_entity):

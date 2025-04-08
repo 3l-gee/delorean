@@ -448,7 +448,8 @@ config = {
         "AbstractDirectFlightType",
         "AbstractPropertiesWithScheduleType",
     ],
-    "output_path": "schema/aixm5_1_1/binding/aixm.xjb"
+    "output_path": "schema/aixm5_1_1/binding/aixm.xjb",
+    "version" : "a5_1_1",
 }
 
 feature = {
@@ -484,8 +485,7 @@ message = {
 
 
 out = Machinery(config, [data_types, feature, abstract, message])
-Content.reset_instance()
-Control.reset_instance()
+
 config = {
     "ignore": [
         # TODO solve this  
@@ -558,6 +558,7 @@ config = {
         "ElevatedCurveType",
         "SurfaceType",
         "ElevatedSurfaceType",
+        "DateTimeType"
     ],
     "abstract": [
         "AbstractMarkingType",
@@ -579,7 +580,8 @@ config = {
         "AbstractDirectFlightType",
         "AbstractPropertiesWithScheduleType",
     ],
-    "output_path": "schema/aixm5_1/binding/aixm.xjb"
+    "output_path": "schema/aixm5_1/binding/aixm.xjb",
+    "version" : "a5_1",
 }
 
 

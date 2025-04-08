@@ -98,7 +98,7 @@ class FieldHandler:
         if str(parent.attrib.get("name","") + "." + attribute.attrib.get("name","")) in Content.get_ignore():
             return node
 
-        if attribute.attrib.get("name") in Content.get_transient().keys() or attribute.attrib.get("ref") in Content.get_transient().keys() or attribute.attrib.get("type") in Content.get_transient().keys():
+        if attribute.attrib.get("name") in Content.get_transient() or attribute.attrib.get("ref") in Content.get_transient() or attribute.attrib.get("type") in Content.get_transient():
             node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)
             return node
@@ -118,7 +118,7 @@ class FieldHandler:
 
         if str(parent.attrib.get("name","") + "." + element.attrib.get("name","")) in Content.get_ignore():
             return node
-    
+        
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Jaxb.element(element.attrib.get("ref"),parent=parent_xpath, xpath=Xpath.GLOBAL.value ,at="ref"))
             if element.attrib.get("name") in Content.get_transient() or element.attrib.get("ref") in Content.get_transient() or element.attrib.get("type") in Content.get_transient():
@@ -141,7 +141,7 @@ class FieldHandler:
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Jaxb.end)
                 return node
-
+            
             else :
                 if element.attrib.get("name") == "name":
                     node.append(Jaxb.property.name_element())
@@ -218,6 +218,14 @@ class FieldHandler:
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Annox.end)
                 return node
+            
+            annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
+            snowflake_text = annotation.text if annotation is not None and annotation.text else ""
+
+            if snowflake_text == "aixm:DateTimeType" :
+                node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
+                node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateTimeType.class", False)))
+                node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTimeTypeAdapter.class")))
             
             if element.attrib.get("name") == "name":
                 node.append(Jaxb.property.name_element())

@@ -19,6 +19,8 @@ from view import View
 
 class Machinery:
     def __init__(self, config_dict: dict, xsds_dict: List[dict]): 
+        Content.reset_instance()
+        Control.reset_instance()
         self.xsds = [Xsd(xsd["name"], xsd["path"], xsd["strategy"], xsd["manual"], xsd.get("package")) for xsd in xsds_dict]
         self.xjb = self.init_xjb(self.xsds)
         Content(self.xsds, config_dict)

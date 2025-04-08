@@ -63,19 +63,19 @@ class SimpleType:
             #         node.append(pattern)
 
     
-        if element_base == "date":
-            node.append(Jaxb.simple(element.attrib["name"]))
-            node.append(Jaxb.java_type("java.sql.Timestamp"))
-            node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
-            node.append(Jaxb.end)
-            return node
+        # if element_base == "date":
+        #     node.append(Jaxb.simple(element.attrib["name"]))
+        #     node.append(Jaxb.java_type("java.sql.Timestamp"))
+        #     node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class")))
+        #     node.append(Jaxb.end)
+        #     return node
         
-        # TODO 
-        if element_base == "dateTime":
-            node.append(Jaxb.simple(element.attrib["name"]))
-            node.append(Annox.field_add(Jpa.transient))
-            node.append(Jaxb.end)
-            return node
+        # # TODO 
+        # if element_base == "dateTime":
+        #     node.append(Jaxb.simple(element.attrib["name"]))
+        #     node.append(Annox.field_add(Jpa.transient))
+        #     node.append(Jaxb.end)
+        #     return node
 
 
 

@@ -56,41 +56,41 @@ class Validation:
             elif base == "time":
                 res["column_definition"] = "TIME"
 
-        if fractionDigits is not None:
-            pass
+        # if fractionDigits is not None:
+        #     pass
 
-        if length is not None:
-            pass
+        # if length is not None:
+        #     pass
 
-        if maxExclusive is not None:
-            pass
+        # if maxExclusive is not None:
+        #     pass
 
-        if minExclusive is not None:
-            pass
+        # if minExclusive is not None:
+        #     pass
     
-        if maxInclusive is not None:
-            pass
+        # if maxInclusive is not None:
+        #     pass
 
-        if minInclusive is not None:
+        # if minInclusive is not None:
             pass
 
         if length is not None:
             res["column_length"] = length.attrib["value"]
 
-        if maxLength is not None:
-            res["column_length"] = maxLength.attrib["value"]
+        # if maxLength is not None:
+        #     res["column_length"] = maxLength.attrib["value"]
 
-        if minLength is not None or maxLength is not None:
-            res["size"] = (Annox.field_add(Jpa.constraint.size(minLength.attrib["value"], maxLength.attrib["value"])))
+        # if minLength is not None or maxLength is not None:
+        #     res["size"] = (Annox.field_add(Jpa.constraint.size(minLength.attrib["value"], maxLength.attrib["value"])))
 
-        if pattern is not None:
-            res["pattern"] = (Annox.field_add(Jpa.constraint.pattern(pattern.attrib["value"], "this field must match")))
+        # if pattern is not None:
+        #     res["pattern"] = (Annox.field_add(Jpa.constraint.pattern(pattern.attrib["value"], "this field must match")))
 
-        if totalDigits is not None:
-            pass
+        # if totalDigits is not None:
+        #     pass
 
-        if whiteSpace is not None:
-            pass        
+        # if whiteSpace is not None:
+        #     pass        
             
         Control.log_action(
             what="",
@@ -103,6 +103,8 @@ class Validation:
     def generate_cardinality(parent, element, embed):
         res = []
         type = element.attrib.get("type", "").replace("aixm:", "")
+        annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
+        snowflake_text = annotation.text if annotation is not None and annotation.text else ""
         name = element.attrib.get("name","")
         ref = element.attrib.get("ref")
         nillable = element.attrib.get("nillable", "false").lower() == "true"
@@ -114,6 +116,10 @@ class Validation:
             maxOccurs = "unbounded"
         else:
             maxOccurs = int(maxOccurs)
+
+        # print(type in embed.keys())
+        if snowflake_text != "":
+            type = snowflake_text.replace("aixm:", "")
 
         # if element.attrib.get("name") in self.config.transient or element.attrib.get("ref") in self.config.transient or element.attrib.get("type") in self.config.transient:
         #     res.append(Annox.field_add(Jpa.transient))
