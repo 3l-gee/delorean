@@ -2,22 +2,22 @@ from validation import Validation
 from control import Control
 from annotation import Annox, Jpa, Tag, Jaxb, Xml
 from view import View
-from debug import Debug
 from content import Content
+from field_handler import FieldHandler
 
 
 class ComplexType: 
     @staticmethod
-    def generate_complex_types(type, embed, abstract, config):
+    def generate_complex_types(type):
         res = []
         for element in type:
-            result = ComplexType.runner(element, embed, abstract, config)
+            result = ComplexType.runner(element)
             if result:
                 res.extend(result)
         return res 
     
     @staticmethod
-    def runner(element, embed, abstract, config) :
+    def runner(element) :
         node = []
         if element is None :    
             Control.log_action(
@@ -27,34 +27,35 @@ class ComplexType:
             )
             return node
 
-        if element.attrib["name"] in config.ignore:
+        if element.attrib["name"] in Content.get_ignore():
             return node
 
         schema = View.get_schema(element.attrib.get("name"))
 
         node.append(Jaxb.complex(element.attrib["name"]))
-        node.extend(ComplexType.class_writer(element, embed, abstract, schema))
+        node.extend(ComplexType.class_writer(element, schema))
         node.append(Jaxb.end)
 
-        # parent_xpath = Jaxb.complex_xpath(element.attrib.get("name"))
-        # node.extend(self.field_writer(element, embed, parent_xpath))
+        parent_xpath = Jaxb.complex_xpath(element.attrib.get("name"))
+        node.extend(FieldHandler.field_writer(element, parent_xpath))
             
         return node
     
     @staticmethod
-    def class_writer(element, embed, asbtract, schema="public"):
+    def class_writer(element, schema="public"):
         node = []
         
         list_element_content = element.findall(".//"+ Tag.element) or []
-        ownership = False
-        association = False
+        # TODO : why do we need this ?
+        # ownership = False
+        # association = False
 
-        for attribute in element.findall(".//"+ Tag.attribute_group) or []:
-            if attribute.attrib.get("ref") == "gml:OwnershipAttributeGroup" : 
-                ownership = True
+        # for attribute in element.findall(".//"+ Tag.attribute_group) or []:
+        #     if attribute.attrib.get("ref") == "gml:OwnershipAttributeGroup" : 
+        #         ownership = True
 
-            if attribute.attrib.get("ref") == "gml:AssociationAttributeGroup" : 
-                association = True
+        #     if attribute.attrib.get("ref") == "gml:AssociationAttributeGroup" : 
+        #         association = True
 
         for element_content in list_element_content:
             if element_content.attrib.get("name") == "dbid" :
@@ -72,18 +73,20 @@ class ComplexType:
                 elif "PropertyType" in element.attrib.get("name"):
                     node.append(Annox.class_add(Xml.type(element.attrib["name"])))
 
-        # TODO
+        # TODO : why do we need this ?
         # if Debug.entity.get("mode") == True and element.attrib.get("name") not in Debug.entity.get("name", []):
         #     node.append(Annox.class_add(Jpa.embeddable))
         #     return node
 
-        if element.attrib.get("name") in asbtract :
+        # Abstract types are entity and have a inheritance strategy
+        if element.attrib.get("name") in Content.get_abstract().keys() :
             Content.append_entity(element.attrib["name"])
             node.append(Annox.class_add(Jpa.entity))
             node.append(Annox.class_add(Jpa.relation.inhertiance()))
             return node
 
-        if element.attrib.get("name") in embed.keys():
+        # Types that are embeddable 
+        if element.attrib.get("name") in Content.get_embed().keys():
             node.append(Annox.class_add(Jpa.embeddable))
             return node
         

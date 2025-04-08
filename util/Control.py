@@ -21,6 +21,11 @@ class SingletonMeta(type):
             instance = super().__call__(*args, **kwargs)
             cls._instances[cls] = instance
         return cls._instances[cls]
+    
+    def reset_instance(cls):
+        if cls in cls._instances:
+            del cls._instances[cls]
+
 
 class Control(metaclass=SingletonMeta):
     def __init__(self):
@@ -32,11 +37,10 @@ class Control(metaclass=SingletonMeta):
         instance = Control()
         action = Action(stack=caller, what=what, success=success, why=why)
         instance.action.append(action)
-        return action
-
+    
     @classmethod
     def print_actions(cls, only_un_successful: bool = False):
-        instance = Control()  # Singleton instance
+        instance = Control()
         for action in instance.action:
             if only_un_successful and not action.success:
                 print(f"Action logged by {action.who} at {action.when}: {action.what} / {action.why}")

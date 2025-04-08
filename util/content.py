@@ -16,20 +16,26 @@ class SingletonMeta(type):
             cls._instances[cls] = instance
         return cls._instances[cls]
     
+    def reset_instance(cls):
+        if cls in cls._instances:
+            del cls._instances[cls]
+    
 class Content(metaclass=SingletonMeta): 
     def __init__(self, xsds: List[Xsd], config ): 
-        self.content = {}
-        self.entity = []
-        self.embed = {}
+        self.content: dict = {}
+        self.entity: dict = {}
+        self.abstract: dict = {item: {} for item in config["abstract"]}
+        self.embed: dict = {item: {} for item in config["embed"]}
+        self.ignore: dict = {item: {} for item in config["ignore"]}
+        self.transient: dict = {item: {} for item in config["transient"]}
+        self.output_path = config["output_path"]
         for xsd in xsds:
             simple_type_content = xsd.get_simple_type()
             inherit_graph = Content._build_inheritance_graph(simple_type_content)
             attrib_graph = Content._build_attribute_graph(xsd.get_complex_type())
             transposition = Content._build_transposition(simple_type_content, inherit_graph)
-            # TODO 
             if xsd.strategy == Strategy.data_type:
-                self.embed = {**config.embed, **Content._extract_embed(xsd.root, transposition)}
-            # self.export_file("test_" + xsd.name.split("/")[-1] + ".json", {**config.embed, **self.extract_embed(xsd.root, transposition)})
+                self.embed = {**self.embed, **Content._extract_embed(xsd.root, transposition)}
 
             self.content[xsd.name] = {
                 "strategy" : xsd.strategy,
@@ -54,18 +60,38 @@ class Content(metaclass=SingletonMeta):
                     success=True,
                     why=str(xsd.name),
                 )
-            
+                
     @staticmethod
     def get_content():
-        return Content().content.items()
+        return Content().content
     
     @staticmethod
     def get_entity():
         return Content().entity
     
+    @staticmethod
+    def get_abstract():
+        return Content().abstract
+    
+    @staticmethod
+    def get_embed():
+        return Content().embed
+    
+    @staticmethod
+    def get_ignore():
+        return Content().ignore
+    
+    @staticmethod
+    def get_transient():
+        return Content().transient
+        
+    @staticmethod
+    def get_output_path():
+        return Content().output_path
+    
     @classmethod
-    def append_entity(cls, entity):
-        cls().entity.append(entity)
+    def append_entity(cls, new_entity):
+        cls().entity[new_entity] = {}
 
     @staticmethod
     def _build_inheritance_graph(xml_type_list: list) -> dict:

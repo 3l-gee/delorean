@@ -1,20 +1,21 @@
 from validation import Validation
 from control import Control
+from content import Content
 from annotation import Annox, Jpa, Tag, Jaxb, Xml
 
 
 class SimpleType: 
     @staticmethod
-    def generate_simple_types(type, graph, transposition, config):
+    def generate_simple_types(type, graph, transposition):
         res = []
         for element in type:
-            result = SimpleType.runner(element, graph, transposition, config)
+            result = SimpleType.runner(element, graph, transposition)
             if result:
                 res.extend(result)
         return res 
 
     @staticmethod
-    def runner(element, graph, transposition, config) :
+    def runner(element, graph, transposition) :
         node = []
 
         if element is None :    
@@ -35,16 +36,16 @@ class SimpleType:
         if element_name in graph["inheritance"].keys() :
             return node
         
-        if element_name in config.ignore:
+        if element_name in Content.get_ignore():
             return node
             
-        if element.attrib.get("name") in config.transient or element.attrib.get("ref") in config.transient :
+        if element.attrib.get("name") in Content.get_transient() or element.attrib.get("ref") in Content.get_transient() :
             node.append(Jaxb.simple(element.attrib["name"]))
             node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)
             return node
             
-        if element.attrib.get("type") in config.transient:
+        if element.attrib.get("type") in Content.get_transient():
             node.append(Jaxb.simple(element.attrib["name"]))
             node.append(Annox.field_add(Jpa.transient))
             node.append(Jaxb.end)

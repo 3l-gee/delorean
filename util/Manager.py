@@ -1,22 +1,10 @@
 from machinery import Machinery
 from annotation import Tag, Strategy
 from view import View
-from debug import Debug
+from content import Content
+from control import Control
 
-# Snowflake : 
-# segmentpointpropertygroup_facilitymakeup (3)
-# propertieswithschedulepropertygroup_timeinterval (28)
-# propertieswithschedulepropertygroup_annotation 
-# propertieswithschedulepropertygroup_specialdateauthority (28)
-# airspacelayerclasspropertygroup_associatedlevels 
 
-Debug({
-    "mode" : False,
-    "entity" : {
-        "mode" : True,
-        "list" : ["PointPropertyType"]
-    },
-})
 
 View({
     "Aerial Refuelling" : {
@@ -432,14 +420,14 @@ config = {
         "aixm:AbstractAIXMObjectBaseType",
         "aixm:AbstractAIXMObjectType",
     ],
-    "embed": {
-        "PointType" : {},
-        "ElevatedPointType" : {},
-        "CurveType" : {},
-        "ElevatedCurveType" : {},
-        "SurfaceType" : {},
-        "ElevatedSurfaceType" : {},
-    },
+    "embed": [
+        "PointType",
+        "ElevatedPointType",
+        "CurveType",
+        "ElevatedCurveType",
+        "SurfaceType",
+        "ElevatedSurfaceType",
+    ],
     "abstract": [
         "AbstractMarkingType",
         "AbstractAirportHeliportProtectionAreaType",
@@ -460,7 +448,6 @@ config = {
         "AbstractDirectFlightType",
         "AbstractPropertiesWithScheduleType",
     ],
-    "package": "com.aixm.delorean.core.schema.a5_1_1.aixm",
     "output_path": "schema/aixm5_1_1/binding/aixm.xjb"
 }
 
@@ -496,8 +483,9 @@ message = {
 
 
 
-# machinery = Machinery(config, debug, [data_types, feature, abstract, message])
-
+out = Machinery(config, [data_types, feature, abstract, message])
+Content.reset_instance()
+Control.reset_instance()
 config = {
     "ignore": [
         # TODO solve this  
@@ -563,14 +551,14 @@ config = {
         "aixm:AbstractAIXMObjectBaseType",
         "aixm:AbstractAIXMObjectType",
     ],
-    "embed": {
-        "PointType" : {},
-        "ElevatedPointType" : {},
-        "CurveType" : {},
-        "ElevatedCurveType" : {},
-        "SurfaceType" : {},
-        "ElevatedSurfaceType" : {},
-    },
+    "embed": [
+        "PointType",
+        "ElevatedPointType",
+        "CurveType",
+        "ElevatedCurveType",
+        "SurfaceType",
+        "ElevatedSurfaceType",
+    ],
     "abstract": [
         "AbstractMarkingType",
         "AbstractAirportHeliportProtectionAreaType",
@@ -591,7 +579,6 @@ config = {
         "AbstractDirectFlightType",
         "AbstractPropertiesWithScheduleType",
     ],
-    "package": "com.aixm.delorean.core.schema.a5_1.aixm",
     "output_path": "schema/aixm5_1/binding/aixm.xjb"
 }
 
@@ -626,4 +613,4 @@ message = {
     "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
-machinery = Machinery(config, [data_types, feature, abstract, message])
+out = Machinery(config, [data_types, feature, abstract, message])
