@@ -5,13 +5,6 @@
     <!-- part : default -->
     <!-- section : auto -->
     <!-- part : default -->
-    <jaxb:bindings node="//xs:simpleType[@name='DateBaseType']">
-      <jaxb:javaType name="java.sql.Timestamp"/>
-      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter.class)</annox:annotate>
-    </jaxb:bindings>
-    <jaxb:bindings node="//xs:simpleType[@name='DateTimeBaseType']">
-      <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CodeAircraftEngineNumberType']">
       <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
     </jaxb:bindings>
@@ -4039,6 +4032,22 @@
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaycontamination", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
@@ -4061,6 +4070,22 @@
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwaycontamination", schema = "airport_heliport")</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4104,6 +4129,22 @@
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaysectioncontamination", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
@@ -4126,6 +4167,22 @@
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touchdownliftoffcontamination", schema = "airport_heliport")</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4150,6 +4207,22 @@
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aproncontamination", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
@@ -4173,6 +4246,22 @@
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraftstandcontamination", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
@@ -4195,6 +4284,22 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliportcontamination", schema = "airport_heliport")</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='observationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='nextObservationTime']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -10781,7 +10886,7 @@
     <jaxb:bindings node="//xs:group[@name='RunwayDirectionPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RunwayDirectionPropertyGroup']//xs:element[@name='trueBearing']">
       <jaxb:property generateElementProperty="false"/>
@@ -10866,7 +10971,7 @@
     <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RunwayCentrelinePointPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
@@ -10896,7 +11001,7 @@
     <jaxb:bindings node="//xs:group[@name='RunwayPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RunwayPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -11271,7 +11376,7 @@
     <jaxb:bindings node="//xs:group[@name='TaxiwayPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='TaxiwayPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -11371,7 +11476,7 @@
     <jaxb:bindings node="//xs:group[@name='GuidanceLinePropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='GuidanceLinePropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -11426,7 +11531,7 @@
     <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='abandoned']">
       <jaxb:property generateElementProperty="false"/>
@@ -11526,7 +11631,7 @@
     <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AircraftStandPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -11576,7 +11681,7 @@
     <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RoadPropertyGroup']//xs:element[@name='status']">
       <jaxb:property generateElementProperty="false"/>
@@ -11696,7 +11801,7 @@
     <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='TouchDownLiftOffPropertyGroup']//xs:element[@name='length']">
       <jaxb:property generateElementProperty="false"/>
@@ -12038,11 +12143,6 @@
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="markedstand_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
-    <jaxb:bindings node="//xs:group[@name='SurfaceContaminationPropertyGroup']//xs:element[@name='observationTime']">
-      <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
-    </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SurfaceContaminationPropertyGroup']//xs:element[@name='depth']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
@@ -12077,11 +12177,6 @@
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "furthertotalclearance_value", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "furthertotalclearance_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
-    </jaxb:bindings>
-    <jaxb:bindings node="//xs:group[@name='SurfaceContaminationPropertyGroup']//xs:element[@name='nextObservationTime']">
-      <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SurfaceContaminationPropertyGroup']//xs:element[@name='proportion']">
       <jaxb:property generateElementProperty="false"/>
@@ -12310,7 +12405,7 @@
     <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SurveyControlPointPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
       <jaxb:property generateElementProperty="false"/>
@@ -12410,7 +12505,7 @@
     <jaxb:bindings node="//xs:group[@name='CityPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='CityPropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -12500,22 +12595,22 @@
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 6, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='locationIndicatorICAO']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "locationindicatoricao_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "locationindicatoricao_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "locationindicatoricao_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "locationindicatoricao_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='designatorIATA']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designatoriata_value", length = 3, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designatoriata_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designatoriata_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designatoriata_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -12705,12 +12800,12 @@
     <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHotSpotPropertyGroup']//xs:element[@name='area']">
       <jaxb:property generateElementProperty="false"/>
@@ -12810,17 +12905,17 @@
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 10, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='localType']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "localtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "localtype_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "localtype_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "localtype_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='designatorICAO']">
       <jaxb:property generateElementProperty="false"/>
@@ -12985,7 +13080,7 @@
     <jaxb:bindings node="//xs:group[@name='GeoBorderPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='GeoBorderPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -13150,12 +13245,12 @@
     <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='serialNumber']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "serialnumber_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "serialnumber_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "serialnumber_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "serialnumber_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='range']">
       <jaxb:property generateElementProperty="false"/>
@@ -13240,7 +13335,7 @@
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='model']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "model_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "model_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "model_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "model_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='generalTerrainMonitor']">
       <jaxb:property generateElementProperty="false"/>
@@ -13250,7 +13345,7 @@
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='broadcastIdentifier']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "broadcastidentifier_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "broadcastidentifier_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "broadcastidentifier_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "broadcastidentifier_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadarSystemPropertyGroup']//xs:element[@name='radarEquipment']">
       <jaxb:property generateElementProperty="false"/>
@@ -13340,7 +13435,7 @@
     <jaxb:bindings node="//xs:group[@name='SurveillanceRadarPropertyGroup']//xs:element[@name='automatedRadarTerminalSystem']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "automatedradarterminalsystem_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "automatedradarterminalsystem_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "automatedradarterminalsystem_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "automatedradarterminalsystem_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SurveillanceRadarPropertyGroup']//xs:element[@name='groundStation']">
       <jaxb:property generateElementProperty="false"/>
@@ -13400,7 +13495,7 @@
     <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='safetyRegulation']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "safetyregulation_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "safetyregulation_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "safetyregulation_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "safetyregulation_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ObstacleAssessmentAreaPropertyGroup']//xs:element[@name='aircraftCategory']">
       <jaxb:property generateElementProperty="false"/>
@@ -13530,7 +13625,7 @@
     <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='patternTemplate']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "patterntemplate_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "patterntemplate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "patterntemplate_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "patterntemplate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='HoldingAssessmentPropertyGroup']//xs:element[@name='turbulentAir']">
       <jaxb:property generateElementProperty="false"/>
@@ -13585,7 +13680,7 @@
     <jaxb:bindings node="//xs:group[@name='ObstaclePlacementPropertyGroup']//xs:element[@name='pointType']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "pointtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "pointtype_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "pointtype_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "pointtype_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ObstaclePlacementPropertyGroup']//xs:element[@name='obstaclePlacement']">
       <jaxb:property generateElementProperty="false"/>
@@ -13740,12 +13835,12 @@
     <jaxb:bindings node="//xs:group[@name='ContactInformationPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ContactInformationPropertyGroup']//xs:element[@name='title']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "title_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "title_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "title_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "title_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ContactInformationPropertyGroup']//xs:element[@name='address']">
       <jaxb:property generateElementProperty="false"/>
@@ -13775,42 +13870,42 @@
     <jaxb:bindings node="//xs:group[@name='OnlineContactPropertyGroup']//xs:element[@name='linkage']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "linkage_value", length = 500, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "linkage_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "linkage_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "linkage_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='OnlineContactPropertyGroup']//xs:element[@name='protocol']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "protocol_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "protocol_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "protocol_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "protocol_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='OnlineContactPropertyGroup']//xs:element[@name='eMail']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "email_value", length = 500, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "email_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "email_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "email_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PostalAddressPropertyGroup']//xs:element[@name='deliveryPoint']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "deliverypoint_value", length = 500, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "deliverypoint_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "deliverypoint_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "deliverypoint_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PostalAddressPropertyGroup']//xs:element[@name='city']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "city_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "city_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "city_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "city_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PostalAddressPropertyGroup']//xs:element[@name='administrativeArea']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "administrativearea_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "administrativearea_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "administrativearea_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "administrativearea_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PostalAddressPropertyGroup']//xs:element[@name='postalCode']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "postalcode_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "postalcode_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "postalcode_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "postalcode_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PostalAddressPropertyGroup']//xs:element[@name='country']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "country_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "country_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "country_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "country_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='TelephoneContactPropertyGroup']//xs:element[@name='voice']">
       <jaxb:property generateElementProperty="false"/>
@@ -13840,7 +13935,7 @@
     <jaxb:bindings node="//xs:group[@name='AircraftCharacteristicPropertyGroup']//xs:element[@name='typeAircraftICAO']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "typeaircrafticao_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "typeaircrafticao_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "typeaircrafticao_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "typeaircrafticao_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AircraftCharacteristicPropertyGroup']//xs:element[@name='aircraftLandingCategory']">
       <jaxb:property generateElementProperty="false"/>
@@ -14215,7 +14310,7 @@
     <jaxb:bindings node="//xs:group[@name='SpecialDatePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SpecialDatePropertyGroup']//xs:element[@name='annotation']">
       <jaxb:property generateElementProperty="false"/>
@@ -14275,7 +14370,7 @@
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
@@ -14340,7 +14435,7 @@
     <jaxb:bindings node="//xs:group[@name='RadioCommunicationChannelPropertyGroup']//xs:element[@name='logon']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "logon_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "logon_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "logon_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "logon_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RadioCommunicationChannelPropertyGroup']//xs:element[@name='emissionType']">
       <jaxb:property generateElementProperty="false"/>
@@ -14380,7 +14475,7 @@
     <jaxb:bindings node="//xs:group[@name='CallsignDetailPropertyGroup']//xs:element[@name='callSign']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "callsign_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "callsign_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "callsign_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "callsign_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='CallsignDetailPropertyGroup']//xs:element[@name='language']">
       <jaxb:property generateElementProperty="false"/>
@@ -14420,7 +14515,7 @@
     <jaxb:bindings node="//xs:group[@name='PilotControlledLightingPropertyGroup']//xs:element[@name='activationInstruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "activationinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "activationinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "activationinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "activationinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='PilotControlledLightingPropertyGroup']//xs:element[@name='controlledLightIntensity']">
       <jaxb:property generateElementProperty="false"/>
@@ -14620,7 +14715,7 @@
     <jaxb:bindings node="//xs:group[@name='AirportClearanceServicePropertyGroup']//xs:element[@name='snowPlan']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "snowplan_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "snowplan_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "snowplan_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "snowplan_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportSuppliesServicePropertyGroup']//xs:element[@name='fuelSupply']">
       <jaxb:property generateElementProperty="false"/>
@@ -15210,12 +15305,12 @@
     <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='flightChecked']">
       <jaxb:property generateElementProperty="false"/>
@@ -15305,12 +15400,12 @@
     <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='emissionClass']">
       <jaxb:property generateElementProperty="false"/>
@@ -15455,7 +15550,7 @@
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -15535,12 +15630,12 @@
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='responsibleOrganisation']">
       <jaxb:property generateElementProperty="false"/>
@@ -15585,7 +15680,7 @@
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 5, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -15595,7 +15690,7 @@
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='location']">
       <jaxb:property generateElementProperty="false"/>
@@ -15675,7 +15770,7 @@
     <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -15715,7 +15810,7 @@
     <jaxb:bindings node="//xs:group[@name='NotePropertyGroup']//xs:element[@name='propertyName']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "propertyname_value", length = 60, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "propertyname_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "propertyname_value", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "propertyname_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='NotePropertyGroup']//xs:element[@name='purpose']">
       <jaxb:property generateElementProperty="false"/>
@@ -15730,17 +15825,17 @@
     <jaxb:bindings node="//xs:group[@name='LinguisticNotePropertyGroup']//xs:element[@name='note']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "note_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "note_nilreason", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "lang", column = @jakarta.persistence.Column(name = "note_lang", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "note_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "note_nilreason", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "lang", column = @jakarta.persistence.Column(name = "note_lang", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='OrganisationAuthorityPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='OrganisationAuthorityPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 12, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='OrganisationAuthorityPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -15785,7 +15880,7 @@
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -15800,7 +15895,7 @@
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 12, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='military']">
       <jaxb:property generateElementProperty="false"/>
@@ -15915,7 +16010,7 @@
     <jaxb:bindings node="//xs:group[@name='VerticalStructurePartPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='VerticalStructurePartPropertyGroup']//xs:element[@name='horizontalProjection_location']">
       <jaxb:property generateElementProperty="false"/>
@@ -15980,7 +16075,7 @@
     <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -16557,7 +16652,7 @@
     <jaxb:bindings node="//xs:group[@name='InstrumentApproachProcedurePropertyGroup']//xs:element[@name='courseReversalInstruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "coursereversalinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "coursereversalinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "coursereversalinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "coursereversalinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='InstrumentApproachProcedurePropertyGroup']//xs:element[@name='additionalEquipment']">
       <jaxb:property generateElementProperty="false"/>
@@ -16592,12 +16687,12 @@
     <jaxb:bindings node="//xs:group[@name='MissedApproachGroupPropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='MissedApproachGroupPropertyGroup']//xs:element[@name='alternateClimbInstruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "alternateclimbinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "alternateclimbinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "alternateclimbinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "alternateclimbinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='MissedApproachGroupPropertyGroup']//xs:element[@name='alternateClimbAltitude']">
       <jaxb:property generateElementProperty="false"/>
@@ -16667,7 +16762,7 @@
     <jaxb:bindings node="//xs:group[@name='StandardInstrumentDeparturePropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 7, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='StandardInstrumentDeparturePropertyGroup']//xs:element[@name='contingencyRoute']">
       <jaxb:property generateElementProperty="false"/>
@@ -16827,7 +16922,7 @@
     <jaxb:bindings node="//xs:group[@name='StandardInstrumentArrivalPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 7, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='StandardInstrumentArrivalPropertyGroup']//xs:element[@name='arrival']">
       <jaxb:property generateElementProperty="false"/>
@@ -16842,12 +16937,12 @@
     <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='communicationFailureInstruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "communicationfailureinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "communicationfailureinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "communicationfailureinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "communicationfailureinstruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='designCriteria']">
       <jaxb:property generateElementProperty="false"/>
@@ -16867,7 +16962,7 @@
     <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='RNAV']">
       <jaxb:property generateElementProperty="false"/>
@@ -17107,7 +17202,7 @@
     <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='transitionId']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "transitionid_value", length = 5, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "transitionid_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "transitionid_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "transitionid_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -17117,7 +17212,7 @@
     <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ProcedureTransitionPropertyGroup']//xs:element[@name='vectorHeading']">
       <jaxb:property generateElementProperty="false"/>
@@ -17152,7 +17247,7 @@
     <jaxb:bindings node="//xs:group[@name='HoldingUsePropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='HoldingUsePropertyGroup']//xs:element[@name='instructedAltitude']">
       <jaxb:property generateElementProperty="false"/>
@@ -17522,7 +17617,7 @@
     <jaxb:bindings node="//xs:group[@name='HoldingPatternPropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='HoldingPatternPropertyGroup']//xs:element[@name='nonStandardHolding']">
       <jaxb:property generateElementProperty="false"/>
@@ -17747,7 +17842,7 @@
     <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='designator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -17757,7 +17852,7 @@
     <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='instruction']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='FlightRestrictionPropertyGroup']//xs:element[@name='flight']">
       <jaxb:property generateElementProperty="false"/>
@@ -18327,12 +18422,12 @@
     <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='locationDesignator']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "locationdesignator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "locationdesignator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "locationdesignator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "locationdesignator_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>
@@ -18427,7 +18522,7 @@
     <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='designatorSuffix']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designatorsuffix_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designatorsuffix_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "designatorsuffix_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "designatorsuffix_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='designatorDirection']">
       <jaxb:property generateElementProperty="false"/>
@@ -18437,7 +18532,7 @@
     <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='name']">
       <jaxb:property name="aixmName" generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "name_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='type']">
       <jaxb:property generateElementProperty="false"/>

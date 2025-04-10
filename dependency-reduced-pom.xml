@@ -70,6 +70,24 @@
                   <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                 </configuration>
               </execution>
+              <execution>
+                <id>generate-aixm5_1_1</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
+                  <schemaIncludes>
+                    <include>AIXM_BasicMessage.xsd</include>
+                  </schemaIncludes>
+                  <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
+                  <bindingIncludes>
+                    <include>*.xjb</include>
+                  </bindingIncludes>
+                  <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                </configuration>
+              </execution>
             </executions>
             <dependencies>
               <dependency>

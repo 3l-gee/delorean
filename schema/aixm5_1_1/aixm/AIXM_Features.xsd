@@ -3522,6 +3522,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:AircraftStandContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3555,6 +3566,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:AirportHeliportContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3588,6 +3610,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:ApronContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3657,6 +3690,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:RunwayContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3700,6 +3744,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:RunwaySectionContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3740,7 +3795,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<group name="SurfaceContaminationPropertyGroup">
 		<sequence>
-			<element name="observationTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<!-- XSD tweak to adatpt DateTimeType-->
+			<!-- <element name="observationTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/> -->
 			<element name="depth" type="aixm:ValDepthType" nillable="true" minOccurs="0"/>
 			<element name="frictionCoefficient" type="aixm:ValFrictionType" nillable="true" minOccurs="0"/>
 			<element name="frictionEstimation" type="aixm:CodeFrictionEstimateType" nillable="true" minOccurs="0"/>
@@ -3748,7 +3804,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<element name="obscuredLights" type="aixm:CodeYesNoType" nillable="true" minOccurs="0"/>
 			<element name="furtherClearanceTime" type="aixm:TimeType" nillable="true" minOccurs="0"/>
 			<element name="furtherTotalClearance" type="aixm:CodeYesNoType" nillable="true" minOccurs="0"/>
-			<element name="nextObservationTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/>
+			<!-- <element name="nextObservationTime" type="aixm:DateTimeType" nillable="true" minOccurs="0"/> -->
 			<element name="proportion" type="aixm:ValPercentType" nillable="true" minOccurs="0"/>
 			<element name="criticalRidge" type="aixm:RidgePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="layer" type="aixm:SurfaceContaminationLayerPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
@@ -3806,6 +3862,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:TaxiwayContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
@@ -3841,6 +3908,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractSurfaceContaminationType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateTimeType-->
+					<element name="observationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
+					<element name="nextObservationTime" type="xs:string" nillable="true" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateTimeType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:SurfaceContaminationPropertyGroup"/>
 					<group ref="aixm:TouchDownLiftOffContaminationPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">

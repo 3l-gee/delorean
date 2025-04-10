@@ -1,10 +1,13 @@
 package com.aixm.delorean.core.adapter.a5_1_1.date;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import com.aixm.delorean.core.adapter.type.date.AixmTimestamp;
 import com.aixm.delorean.core.schema.a5_1_1.aixm.DateTimeType;
 import java.sql.Timestamp;
+import java.util.GregorianCalendar;
 
 
 public class DateTimeTypeAdapter extends XmlAdapter<DateTimeType, AixmTimestamp> {
@@ -30,12 +33,18 @@ public class DateTimeTypeAdapter extends XmlAdapter<DateTimeType, AixmTimestamp>
 
         DateTimeType dateTimeType = new DateTimeType();
         if (v.getTimestamp() != null) {
-            XMLGregorianCalendar gregorianCalendar = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(v.getTimestamp().toString());
-            dateTimeType.setValue(gregorianCalendar);
+            GregorianCalendar cal = new GregorianCalendar(java.util.TimeZone.getTimeZone("UTC"));
+            cal.setTime(v.getTimestamp());
+
+            XMLGregorianCalendar xmlCal = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
+            xmlCal.setTimezone(0); // optional, ensures +00:00
+            dateTimeType.setValue(xmlCal);
         } else {
             dateTimeType.setValue(null);
         }
+
         dateTimeType.setNilReason(v.getNilReason());
         return dateTimeType;
     }
+
 }
