@@ -493,6 +493,10 @@ config = {
         "StandardLevelColumnPropertyGroup.unitOfMeasurement",
         "XHTMLType",
 
+        # Adapter
+        "DateType",
+        "DateTimeType",
+
         # Core
         "AIXMBasicMessageType",
         "AIXMBasicMessagePropertyGroup",
