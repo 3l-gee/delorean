@@ -77,40 +77,34 @@ public class TerminalArrivalAreaSectorType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flybycode_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flybycode_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flyByCode;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "procedureturnrequired_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "procedureturnrequired_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType procedureTurnRequired;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudedescription_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudedescription_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeUseType altitudeDescription;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "sectordefinition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -120,7 +114,6 @@ public class TerminalArrivalAreaSectorType
         @JoinColumn(name = "obstruction_pt_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

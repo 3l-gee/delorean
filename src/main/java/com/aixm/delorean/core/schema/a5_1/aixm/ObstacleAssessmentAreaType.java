@@ -83,28 +83,24 @@ public class ObstacleAssessmentAreaType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeObstacleAssessmentSurfaceType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "sectionnumber_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "sectionnumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType sectionNumber;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "slope_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slope_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType slope;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "assessedaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -112,7 +108,6 @@ public class ObstacleAssessmentAreaType
         @AttributeOverride(name = "nilReason", column = @Column(name = "assessedaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType assessedAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "slopeloweraltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -120,28 +115,24 @@ public class ObstacleAssessmentAreaType
         @AttributeOverride(name = "nilReason", column = @Column(name = "slopeloweraltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType slopeLowerAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "gradientlowhigh_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "gradientlowhigh_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType gradientLowHigh;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "surfacezone_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surfacezone_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeObstructionIdSurfaceZoneType surfaceZone;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "safetyregulation_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "safetyregulation_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "safetyregulation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType safetyRegulation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -151,7 +142,6 @@ public class ObstacleAssessmentAreaType
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -161,19 +151,16 @@ public class ObstacleAssessmentAreaType
         @JoinColumn(name = "obstruction_pt_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surface_id", referencedColumnName = "id")
     protected SurfacePropertyType surface;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "startingcurve_id", referencedColumnName = "id")
     protected CurvePropertyType startingCurve;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

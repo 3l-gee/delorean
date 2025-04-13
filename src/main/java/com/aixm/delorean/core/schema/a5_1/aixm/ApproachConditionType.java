@@ -80,34 +80,29 @@ public class ApproachConditionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "finalapproachpath_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "finalapproachpath_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMinimaFinalApproachPathType finalApproachPath;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "requirednavigationperformance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "requirednavigationperformance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRNPType requiredNavigationPerformance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "climbgradient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "climbgradient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType climbGradient;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "minimumset_id", referencedColumnName = "id")
     protected MinimaPropertyType minimumSet;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -117,7 +112,6 @@ public class ApproachConditionType
         @JoinColumn(name = "circlingrestriction_pt_id")
     })
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -127,7 +121,6 @@ public class ApproachConditionType
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -137,13 +130,11 @@ public class ApproachConditionType
         @JoinColumn(name = "landingtakeoffareacollection_pt_id")
     })
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "altimeter_id", referencedColumnName = "id")
     protected AltimeterSourcePropertyType altimeter;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -153,7 +144,6 @@ public class ApproachConditionType
         @JoinColumn(name = "obstacleassessmentarea_pt_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

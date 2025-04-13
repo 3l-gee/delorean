@@ -69,7 +69,6 @@ public class LandingTakeoffAreaCollectionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -79,7 +78,7 @@ public class LandingTakeoffAreaCollectionType
         @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> runway;
-    @XmlElement(name = "TLOF", nillable = true)
+    @XmlElement(name = "TLOF")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -89,7 +88,6 @@ public class LandingTakeoffAreaCollectionType
         @JoinColumn(name = "touchdownliftoff_pt_id")
     })
     protected List<TouchDownLiftOffPropertyType> tlof;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

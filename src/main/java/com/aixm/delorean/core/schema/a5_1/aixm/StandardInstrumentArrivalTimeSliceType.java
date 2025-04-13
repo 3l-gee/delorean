@@ -89,56 +89,50 @@ public class StandardInstrumentArrivalTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "communicationfailureinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType communicationFailureInstruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "designcriteria_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designcriteria_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDesignStandardType designCriteria;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "codingstandard_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "codingstandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureCodingStandardType codingStandard;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flightchecked_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flightchecked_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flightChecked;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(name = "RNAV", nillable = true)
+    @XmlElement(name = "RNAV")
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "rnav_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rnav_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType rnav;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -148,7 +142,6 @@ public class StandardInstrumentArrivalTimeSliceType
         @JoinColumn(name = "procedureavailability_pt_id")
     })
     protected List<ProcedureAvailabilityPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -158,7 +151,6 @@ public class StandardInstrumentArrivalTimeSliceType
         @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> airportHeliport;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -168,7 +160,6 @@ public class StandardInstrumentArrivalTimeSliceType
         @JoinColumn(name = "aircraftcharacteristic_pt_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -178,25 +169,24 @@ public class StandardInstrumentArrivalTimeSliceType
         @JoinColumn(name = "proceduretransition_pt_id")
     })
     protected List<ProcedureTransitionPropertyType> flightTransition;
-    @XmlElement(name = "guidanceFacility_navaid", nillable = true)
+    @XmlElement(name = "guidanceFacility_navaid")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "guidancefacility_navaid_id", referencedColumnName = "id")
     protected NavaidPropertyType guidanceFacilityNavaid;
-    @XmlElement(name = "guidanceFacility_specialNavigationSystem", nillable = true)
+    @XmlElement(name = "guidanceFacility_specialNavigationSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "guidancefacility_specialnavigationsystem_id", referencedColumnName = "id")
     protected SpecialNavigationSystemPropertyType guidanceFacilitySpecialNavigationSystem;
-    @XmlElement(name = "guidanceFacility_radar", nillable = true)
+    @XmlElement(name = "guidanceFacility_radar")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "guidancefacility_radar_id", referencedColumnName = "id")
     protected RadarSystemPropertyType guidanceFacilityRadar;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -206,20 +196,17 @@ public class StandardInstrumentArrivalTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "safealtitude_id", referencedColumnName = "id")
     protected SafeAltitudeAreaPropertyType safeAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 7, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextSIDSTARDesignatorType designator;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

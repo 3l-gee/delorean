@@ -36,6 +36,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     LineStringType.class,
     OrientableCurveType.class,
+    AbstractRingType.class,
     CompositeCurveType.class,
     CurveType.class
 })

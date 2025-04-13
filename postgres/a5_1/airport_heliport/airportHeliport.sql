@@ -244,67 +244,35 @@ airport_heliport.airportheliport_ts.valid_time_begin,
 airport_heliport.airportheliport_ts.valid_time_end,
 airport_heliport.airportheliport_ts.feature_lifetime_begin,
 airport_heliport.airportheliport_ts.feature_lifetime_end,
-airport_heliport.airportheliport_ts.designator_value,
-airport_heliport.airportheliport_ts.designator_nilreason,
-airport_heliport.airportheliport_ts.name_value,
-airport_heliport.airportheliport_ts.name_nilreason,
-airport_heliport.airportheliport_ts.locationindicatoricao_value,
-airport_heliport.airportheliport_ts.locationindicatoricao_nilreason,
-airport_heliport.airportheliport_ts.designatoriata_value,
-airport_heliport.airportheliport_ts.designatoriata_nilreason,
-airport_heliport.airportheliport_ts.type_value,
-airport_heliport.airportheliport_ts.type_nilreason,
-airport_heliport.airportheliport_ts.certifiedicao_value,
-airport_heliport.airportheliport_ts.certifiedicao_nilreason,
-airport_heliport.airportheliport_ts.privateuse_value,
-airport_heliport.airportheliport_ts.privateuse_nilreason,
-airport_heliport.airportheliport_ts.controltype_value,
-airport_heliport.airportheliport_ts.controltype_nilreason,
-airport_heliport.airportheliport_ts.verticaldatum_value,
-airport_heliport.airportheliport_ts.verticaldatum_nilreason,
-airport_heliport.airportheliport_ts.magneticvariation_value,
-airport_heliport.airportheliport_ts.magneticvariation_nilreason,
-airport_heliport.airportheliport_ts.magneticvariationaccuracy_value,
-airport_heliport.airportheliport_ts.magneticvariationaccuracy_nilreason,
-airport_heliport.airportheliport_ts.datemagneticvariation_value,
-airport_heliport.airportheliport_ts.datemagneticvariation_nilreason,
-airport_heliport.airportheliport_ts.magneticvariationchange_value,
-airport_heliport.airportheliport_ts.magneticvariationchange_nilreason,
-airport_heliport.airportheliport_ts.altimeterchecklocation_value,
-airport_heliport.airportheliport_ts.altimeterchecklocation_nilreason,
-airport_heliport.airportheliport_ts.secondarypowersupply_value,
-airport_heliport.airportheliport_ts.secondarypowersupply_nilreason,
-airport_heliport.airportheliport_ts.winddirectionindicator_value,
-airport_heliport.airportheliport_ts.winddirectionindicator_nilreason,
-airport_heliport.airportheliport_ts.landingdirectionindicator_value,
-airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason,
-airport_heliport.airportheliport_ts.abandoned_value,
-airport_heliport.airportheliport_ts.abandoned_nilreason,
-airport_heliport.airportheliport_ts.certificationdate_value,
-airport_heliport.airportheliport_ts.certificationdate_nilreason,
-airport_heliport.airportheliport_ts.certificationexpirationdate_value,
-airport_heliport.airportheliport_ts.certificationexpirationdate_nilreason,
-airport_heliport.airportheliport_ts.fieldelevation_value,
-airport_heliport.airportheliport_ts.fieldelevation_uom,
-airport_heliport.airportheliport_ts.fieldelevation_nilreason,
-airport_heliport.airportheliport_ts.fieldelevationaccuracy_value,
-airport_heliport.airportheliport_ts.fieldelevationaccuracy_uom,
-airport_heliport.airportheliport_ts.fieldelevationaccuracy_nilreason,
-airport_heliport.airportheliport_ts.referencetemperature_value,
-airport_heliport.airportheliport_ts.referencetemperature_uom,
-airport_heliport.airportheliport_ts.referencetemperature_nilreason,
-airport_heliport.airportheliport_ts.transitionaltitude_value,
-airport_heliport.airportheliport_ts.transitionaltitude_uom,
-airport_heliport.airportheliport_ts.transitionaltitude_nilreason,
-airport_heliport.airportheliport_ts.transitionlevel_value,
-airport_heliport.airportheliport_ts.transitionlevel_uom,
-airport_heliport.airportheliport_ts.transitionlevel_nilreason,
-airport_heliport.airportheliport_ts.lowesttemperature_value,
-airport_heliport.airportheliport_ts.lowesttemperature_uom,
-airport_heliport.airportheliport_ts.lowesttemperature_nilreason,
-COALESCE(jsonb_agg(airport_heliport.city_view.city), '[]'::jsonb) AS city,
-COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contactinformation,
+COALESCE(airport_heliport.airportheliport_ts.designator_value, '(' || airport_heliport.airportheliport_ts.designator_nilreason || ')') AS designator,
+COALESCE(airport_heliport.airportheliport_ts.name_value, '(' || airport_heliport.airportheliport_ts.name_nilreason || ')') AS name,
+COALESCE(airport_heliport.airportheliport_ts.locationindicatoricao_value, '(' || airport_heliport.airportheliport_ts.locationindicatoricao_nilreason || ')') AS locationIndicatorICAO,
+COALESCE(airport_heliport.airportheliport_ts.designatoriata_value, '(' || airport_heliport.airportheliport_ts.designatoriata_nilreason || ')') AS designatorIATA,
+COALESCE(airport_heliport.airportheliport_ts.type_value, '(' || airport_heliport.airportheliport_ts.type_nilreason || ')') AS type,
+COALESCE(airport_heliport.airportheliport_ts.certifiedicao_value, '(' || airport_heliport.airportheliport_ts.certifiedicao_nilreason || ')') AS certifiedICAO,
+COALESCE(airport_heliport.airportheliport_ts.privateuse_value, '(' || airport_heliport.airportheliport_ts.privateuse_nilreason || ')') AS privateUse,
+COALESCE(airport_heliport.airportheliport_ts.controltype_value, '(' || airport_heliport.airportheliport_ts.controltype_nilreason || ')') AS controlType,
+COALESCE(airport_heliport.airportheliport_ts.verticaldatum_value, '(' || airport_heliport.airportheliport_ts.verticaldatum_nilreason || ')') AS verticalDatum,
+COALESCE(airport_heliport.airportheliport_ts.magneticvariation_value, '(' || airport_heliport.airportheliport_ts.magneticvariation_nilreason || ')') AS magneticVariation,
+COALESCE(airport_heliport.airportheliport_ts.magneticvariationaccuracy_value, '(' || airport_heliport.airportheliport_ts.magneticvariationaccuracy_nilreason || ')') AS magneticVariationAccuracy,
+COALESCE(airport_heliport.airportheliport_ts.datemagneticvariation_value, '(' || airport_heliport.airportheliport_ts.datemagneticvariation_nilreason || ')') AS dateMagneticVariation,
+COALESCE(airport_heliport.airportheliport_ts.magneticvariationchange_value, '(' || airport_heliport.airportheliport_ts.magneticvariationchange_nilreason || ')') AS magneticVariationChange,
+COALESCE(airport_heliport.airportheliport_ts.altimeterchecklocation_value, '(' || airport_heliport.airportheliport_ts.altimeterchecklocation_nilreason || ')') AS altimeterCheckLocation,
+COALESCE(airport_heliport.airportheliport_ts.secondarypowersupply_value, '(' || airport_heliport.airportheliport_ts.secondarypowersupply_nilreason || ')') AS secondaryPowerSupply,
+COALESCE(airport_heliport.airportheliport_ts.winddirectionindicator_value, '(' || airport_heliport.airportheliport_ts.winddirectionindicator_nilreason || ')') AS windDirectionIndicator,
+COALESCE(airport_heliport.airportheliport_ts.landingdirectionindicator_value, '(' || airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason || ')') AS landingDirectionIndicator,
+COALESCE(airport_heliport.airportheliport_ts.abandoned_value, '(' || airport_heliport.airportheliport_ts.abandoned_nilreason || ')') AS abandoned,
+COALESCE(airport_heliport.airportheliport_ts.certificationdate_value, '(' || airport_heliport.airportheliport_ts.certificationdate_nilreason || ')') AS certificationDate,
+COALESCE(airport_heliport.airportheliport_ts.certificationexpirationdate_value, '(' || airport_heliport.airportheliport_ts.certificationexpirationdate_nilreason || ')') AS certificationExpirationDate,
+COALESCE(airport_heliport.airportheliport_ts.fieldelevation_value || ' ' || airport_heliport.airportheliport_ts.fieldelevation_uom, '(' || airport_heliport.airportheliport_ts.fieldelevation_nilreason || ')') AS fieldElevation,
+COALESCE(airport_heliport.airportheliport_ts.fieldelevationaccuracy_value || ' ' || airport_heliport.airportheliport_ts.fieldelevationaccuracy_uom, '(' || airport_heliport.airportheliport_ts.fieldelevationaccuracy_nilreason || ')') AS fieldElevationAccuracy,
+COALESCE(airport_heliport.airportheliport_ts.referencetemperature_value || ' ' || airport_heliport.airportheliport_ts.referencetemperature_uom, '(' || airport_heliport.airportheliport_ts.referencetemperature_nilreason || ')') AS referenceTemperature,
+COALESCE(airport_heliport.airportheliport_ts.transitionaltitude_value || ' ' || airport_heliport.airportheliport_ts.transitionaltitude_uom, '(' || airport_heliport.airportheliport_ts.transitionaltitude_nilreason || ')') AS transitionAltitude,
+COALESCE(airport_heliport.airportheliport_ts.transitionlevel_value || ' ' || airport_heliport.airportheliport_ts.transitionlevel_uom, '(' || airport_heliport.airportheliport_ts.transitionlevel_nilreason || ')') AS transitionLevel,
+COALESCE(airport_heliport.airportheliport_ts.lowesttemperature_value || ' ' || airport_heliport.airportheliport_ts.lowesttemperature_uom, '(' || airport_heliport.airportheliport_ts.lowesttemperature_nilreason || ')') AS lowestTemperature,
+-- COALESCE(jsonb_agg(airport_heliport.city_view.city), '[]'::jsonb) AS city,
+-- COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
+-- COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contactinformation,
 geometry.elevated_point_view.geom AS arp,
 geometry.elevated_surface_view.geom AS boundary
 FROM airport_heliport.airportheliport
@@ -318,22 +286,22 @@ LEFT JOIN geometry.elevated_point_view
     ON airport_heliport.airportheliport_ts.arp_id = geometry.elevated_point_view.id
 LEFT JOIN geometry.elevated_surface_view
     ON airport_heliport.airportheliport_ts.aviationboundary_id = geometry.elevated_surface_view.id
-LEFT JOIN public.airportheliport_ts_servedcity
-    ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_servedcity.airportheliport_ts_id
-LEFT JOIN airport_heliport.city_view
-    ON public.airportheliport_ts_servedcity.city_pt_id = airport_heliport.city_view.id
-LEFT JOIN public.airportheliport_ts_annotation
-    ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_annotation.airportheliport_ts_id
-LEFT JOIN notes.note_view
-    ON public.airportheliport_ts_annotation.note_pt_id = notes.note_view.id
-LEFT JOIN airportheliport_ts_contaminant
-    ON airport_heliport.airportheliport_ts.id = airportheliport_ts_contaminant.airportheliport_ts_id
-LEFT JOIN airport_heliport.airportheliportcontamination_view
-    ON airportheliport_ts_contaminant.airportheliportcontamination_pt_id = airport_heliport.airportheliportcontamination_view.id
-LEFT JOIN airportheliport_ts_contact
-	ON airport_heliport.airportheliport_ts.id = airportheliport_ts_contact.airportheliport_ts_id
-LEFT JOIN shared.contactinformation_view
-	ON airportheliport_ts_contact.contactinformation_pt_id = shared.contactinformation_view.id
+-- LEFT JOIN public.airportheliport_ts_servedcity
+--     ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_servedcity.airportheliport_ts_id
+-- LEFT JOIN airport_heliport.city_view
+--     ON public.airportheliport_ts_servedcity.city_pt_id = airport_heliport.city_view.id
+-- LEFT JOIN public.airportheliport_ts_annotation
+--     ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_annotation.airportheliport_ts_id
+-- LEFT JOIN notes.note_view
+--     ON public.airportheliport_ts_annotation.note_pt_id = notes.note_view.id
+-- LEFT JOIN airportheliport_ts_contaminant
+--     ON airport_heliport.airportheliport_ts.id = airportheliport_ts_contaminant.airportheliport_ts_id
+-- LEFT JOIN airport_heliport.airportheliportcontamination_view
+--     ON airportheliport_ts_contaminant.airportheliportcontamination_pt_id = airport_heliport.airportheliportcontamination_view.id
+-- LEFT JOIN airportheliport_ts_contact
+-- 	ON airport_heliport.airportheliport_ts.id = airportheliport_ts_contact.airportheliport_ts_id
+-- LEFT JOIN shared.contactinformation_view
+-- 	ON airportheliport_ts_contact.contactinformation_pt_id = shared.contactinformation_view.id
 -- LEFT JOIN airportheliport_ts_availability
 -- LEFT JOIN airportheliport_ts_altimetersource
 GROUP BY 

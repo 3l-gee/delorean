@@ -40,7 +40,7 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     TinType.class,
-    com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType.class
+    com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType.class
 })
 public class SurfaceType
     extends AbstractSurfaceType

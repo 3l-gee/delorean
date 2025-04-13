@@ -7,7 +7,7 @@
 
 package com.aixm.delorean.core.org.gml.v_3_2;
 
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMFeatureBaseType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureBaseType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;

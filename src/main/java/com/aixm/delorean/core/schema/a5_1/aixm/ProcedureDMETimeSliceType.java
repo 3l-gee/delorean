@@ -75,33 +75,29 @@ public class ProcedureDMETimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "criticaldme_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "criticaldme_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType criticalDME;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "satisfactory_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "satisfactory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType satisfactory;
-    @XmlElement(name = "DME", nillable = true)
+    @XmlElement(name = "DME")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "dme_id", referencedColumnName = "id")
     protected DMEPropertyType dme;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "segmentleg_id", referencedColumnName = "id")
     protected SegmentLegPropertyType segmentLeg;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

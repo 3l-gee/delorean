@@ -76,39 +76,36 @@ public class MarkingElementType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "colour_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeColourType colour;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "style_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "style_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMarkingStyleType style;
-    @XmlElement(name = "extent_surfaceExtent", nillable = true)
+    @XmlElement(name = "extent_surfaceExtent")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_surfaceextent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extentSurfaceExtent;
-    @XmlElement(name = "extent_curveExtent", nillable = true)
+    @XmlElement(name = "extent_curveExtent")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_curveextent_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType extentCurveExtent;
-    @XmlElement(name = "extent_location", nillable = true)
+    @XmlElement(name = "extent_location")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType extentLocation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

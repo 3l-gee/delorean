@@ -81,21 +81,18 @@ public class GuidanceLineTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType designator;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeGuidanceLineType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maxspeed_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -103,14 +100,12 @@ public class GuidanceLineTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "maxspeed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType maxSpeed;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "usagedirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "usagedirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionType usageDirection;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -120,7 +115,6 @@ public class GuidanceLineTimeSliceType
         @JoinColumn(name = "touchdownliftoff_pt_id")
     })
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -130,7 +124,6 @@ public class GuidanceLineTimeSliceType
         @JoinColumn(name = "runwaycentrelinepoint_pt_id")
     })
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -140,7 +133,6 @@ public class GuidanceLineTimeSliceType
         @JoinColumn(name = "apron_pt_id")
     })
     protected List<ApronPropertyType> connectedApron;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -150,13 +142,11 @@ public class GuidanceLineTimeSliceType
         @JoinColumn(name = "aircraftstand_pt_id")
     })
     protected List<AircraftStandPropertyType> connectedStand;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -166,7 +156,6 @@ public class GuidanceLineTimeSliceType
         @JoinColumn(name = "taxiway_pt_id")
     })
     protected List<TaxiwayPropertyType> connectedTaxiway;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

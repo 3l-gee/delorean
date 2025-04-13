@@ -83,70 +83,60 @@ public class SurfaceCharacteristicsType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "composition_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "composition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSurfaceCompositionType composition;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "preparation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "preparation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSurfacePreparationType preparation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "surfacecondition_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surfacecondition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSurfaceConditionType surfaceCondition;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "classpcn_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "classpcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValPCNType classPCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "pavementtypepcn_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pavementtypepcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePCNPavementType pavementTypePCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "pavementsubgradepcn_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pavementsubgradepcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePCNSubgradeType pavementSubgradePCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maxtyrepressurepcn_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maxtyrepressurepcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePCNTyrePressureType maxTyrePressurePCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "evaluationmethodpcn_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "evaluationmethodpcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePCNMethodType evaluationMethodPCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "classlcn_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "classlcn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValLCNType classLCN;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "weightsiwl_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -154,7 +144,6 @@ public class SurfaceCharacteristicsType
         @AttributeOverride(name = "nilReason", column = @Column(name = "weightsiwl_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValWeightType weightSIWL;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "tyrepressuresiwl_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -162,7 +151,6 @@ public class SurfaceCharacteristicsType
         @AttributeOverride(name = "nilReason", column = @Column(name = "tyrepressuresiwl_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValPressureType tyrePressureSIWL;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "weightauw_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -170,7 +158,6 @@ public class SurfaceCharacteristicsType
         @AttributeOverride(name = "nilReason", column = @Column(name = "weightauw_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValWeightType weightAUW;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

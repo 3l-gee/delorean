@@ -69,19 +69,16 @@ public class AirspaceBorderCrossingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "exitedairspace_id", referencedColumnName = "id")
     protected AirspacePropertyType exitedAirspace;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "enteredairspace_id", referencedColumnName = "id")
     protected AirspacePropertyType enteredAirspace;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

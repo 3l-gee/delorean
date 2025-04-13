@@ -72,7 +72,6 @@ public class StandardLevelType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticaldistance_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -80,7 +79,6 @@ public class StandardLevelType
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticaldistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType verticalDistance;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -75,28 +75,24 @@ public class NavaidComponentType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "collocationgroup_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "collocationgroup_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType collocationGroup;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "markerposition_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "markerposition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePositionInILSType markerPosition;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "providesnavigablelocation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "providesnavigablelocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType providesNavigableLocation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

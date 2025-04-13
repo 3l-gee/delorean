@@ -13,7 +13,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * gml:SignType is a convenience type with values “+” (plus) and “-“ (minus).
+ * gml:SignType is a convenience type with values "+" (plus) and "-" (minus).
  * 
  * <p>Java class for SignType</p>.
  * 

@@ -125,7 +125,7 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "patterntemplate_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType patternTemplate;

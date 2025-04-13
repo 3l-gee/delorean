@@ -41,7 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "coordinates"
 })
 @XmlSeeAlso({
-    com.aixm.delorean.core.schema.a5_1.aixm.PointType.class
+    com.aixm.delorean.core.schema.a5_1_1.aixm.PointType.class
 })
 public class PointType
     extends AbstractGeometricPrimitiveType

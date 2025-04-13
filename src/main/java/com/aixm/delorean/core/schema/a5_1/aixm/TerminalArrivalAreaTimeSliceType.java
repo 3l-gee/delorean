@@ -89,14 +89,12 @@ public class TerminalArrivalAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "arrivalareatype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "arrivalareatype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTAAType arrivalAreaType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "outerbufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -104,7 +102,6 @@ public class TerminalArrivalAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "outerbufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType outerBufferWidth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lateralbufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -112,85 +109,83 @@ public class TerminalArrivalAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lateralbufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lateralBufferWidth;
-    @XmlElement(name = "IF_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "IF_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType ifFixDesignatedPoint;
-    @XmlElement(name = "IF_navaidSystem", nillable = true)
+    @XmlElement(name = "IF_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType ifNavaidSystem;
-    @XmlElement(name = "IF_aimingPoint", nillable = true)
+    @XmlElement(name = "IF_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType ifAimingPoint;
-    @XmlElement(name = "IF_runwayPoint", nillable = true)
+    @XmlElement(name = "IF_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType ifRunwayPoint;
-    @XmlElement(name = "IF_airportReferencePoint", nillable = true)
+    @XmlElement(name = "IF_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType ifAirportReferencePoint;
-    @XmlElement(name = "IF_position", nillable = true)
+    @XmlElement(name = "IF_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "if_position_id", referencedColumnName = "id")
     protected PointPropertyType ifPosition;
-    @XmlElement(name = "IAF_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "IAF_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType iafFixDesignatedPoint;
-    @XmlElement(name = "IAF_navaidSystem", nillable = true)
+    @XmlElement(name = "IAF_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType iafNavaidSystem;
-    @XmlElement(name = "IAF_aimingPoint", nillable = true)
+    @XmlElement(name = "IAF_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType iafAimingPoint;
-    @XmlElement(name = "IAF_runwayPoint", nillable = true)
+    @XmlElement(name = "IAF_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType iafRunwayPoint;
-    @XmlElement(name = "IAF_airportReferencePoint", nillable = true)
+    @XmlElement(name = "IAF_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType iafAirportReferencePoint;
-    @XmlElement(name = "IAF_position", nillable = true)
+    @XmlElement(name = "IAF_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "iaf_position_id", referencedColumnName = "id")
     protected PointPropertyType iafPosition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "buffer_id", referencedColumnName = "id")
     protected SurfacePropertyType buffer;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -200,13 +195,11 @@ public class TerminalArrivalAreaTimeSliceType
         @JoinColumn(name = "terminalarrivalareasector_pt_id")
     })
     protected List<TerminalArrivalAreaSectorPropertyType> sector;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "approachrnav_id", referencedColumnName = "id")
     protected InstrumentApproachProcedurePropertyType approachRNAV;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

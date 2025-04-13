@@ -27,6 +27,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -39,6 +40,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractSurfaceContaminationType">
  *       <sequence>
+ *         <element name="observationTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="nextObservationTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <group ref="{http://www.aixm.aero/schema/5.1}SurfaceContaminationPropertyGroup"/>
  *         <group ref="{http://www.aixm.aero/schema/5.1}RunwayContaminationPropertyGroup"/>
  *         <element name="extension" maxOccurs="unbounded" minOccurs="0">
@@ -65,6 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RunwayContaminationType", propOrder = {
     "observationTime",
+    "nextObservationTime",
     "depth",
     "frictionCoefficient",
     "frictionEstimation",
@@ -72,7 +76,6 @@ import jakarta.xml.bind.annotation.XmlType;
     "obscuredLights",
     "furtherClearanceTime",
     "furtherTotalClearance",
-    "nextObservationTime",
     "proportion",
     "criticalRidge",
     "layer",
@@ -94,14 +97,30 @@ public class RunwayContaminationType
     extends AbstractSurfaceContaminationType
 {
 
-    @XmlElement(nillable = true)
+    /**
+     * aixm:DateTimeType
+     * 
+     */
+    @XmlElement(type = DateTimeType.class, name = "observationTime", required = false)
+    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))
     })
-    protected DateTimeType observationTime;
-    @XmlElement(nillable = true)
+    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp observationTime;
+    /**
+     * aixm:DateTimeType
+     * 
+     */
+    @XmlElement(type = DateTimeType.class, name = "nextObservationTime", required = false)
+    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
+    })
+    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp nextObservationTime;
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "depth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -109,63 +128,48 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDepthType depth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "frictioncoefficient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frictioncoefficient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValFrictionType frictionCoefficient;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "frictionestimation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frictionestimation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFrictionEstimateType frictionEstimation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "frictiondevice_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "frictiondevice_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFrictionDeviceType frictionDevice;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obscuredlights_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obscuredlights_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType obscuredLights;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "furtherclearancetime_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "furtherclearancetime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TimeType furtherClearanceTime;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "furthertotalclearance_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "furthertotalclearance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType furtherTotalClearance;
-    @XmlElement(nillable = true)
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
-    })
-    protected DateTimeType nextObservationTime;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "proportion_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "proportion_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValPercentType proportion;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -175,7 +179,6 @@ public class RunwayContaminationType
         @JoinColumn(name = "ridge_pt_id")
     })
     protected List<RidgePropertyType> criticalRidge;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -185,7 +188,6 @@ public class RunwayContaminationType
         @JoinColumn(name = "surfacecontaminationlayer_pt_id")
     })
     protected List<SurfaceContaminationLayerPropertyType> layer;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -195,7 +197,6 @@ public class RunwayContaminationType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "clearedlength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -203,7 +204,6 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "clearedlength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType clearedLength;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "clearedwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -211,14 +211,12 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "clearedwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType clearedWidth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "clearedside_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "clearedside_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType clearedSide;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "furtherclearancelength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -226,7 +224,6 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "furtherclearancelength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType furtherClearanceLength;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "furtherclearancewidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -234,14 +231,12 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "furtherclearancewidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType furtherClearanceWidth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obscuredlightsside_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obscuredlightsside_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType obscuredLightsSide;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "clearedlengthbegin_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -249,14 +244,12 @@ public class RunwayContaminationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "clearedlengthbegin_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType clearedLengthBegin;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "taxiwayavailable_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "taxiwayavailable_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType taxiwayAvailable;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "apronavailable_value", length = 255, nullable = true, unique = false)),
@@ -267,14 +260,14 @@ public class RunwayContaminationType
     protected List<RunwayContaminationType.Extension> extension;
 
     /**
-     * Gets the value of the observationTime property.
+     * aixm:DateTimeType
      * 
      * @return
      *     possible object is
-     *     {@link DateTimeType }
+     *     {@link String }
      *     
      */
-    public DateTimeType getObservationTime() {
+    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getObservationTime() {
         return observationTime;
     }
 
@@ -283,15 +276,45 @@ public class RunwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link DateTimeType }
+     *     {@link String }
      *     
+     * @see #getObservationTime()
      */
-    public void setObservationTime(DateTimeType value) {
+    public void setObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
         this.observationTime = value;
     }
 
     public boolean isSetObservationTime() {
         return (this.observationTime!= null);
+    }
+
+    /**
+     * aixm:DateTimeType
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getNextObservationTime() {
+        return nextObservationTime;
+    }
+
+    /**
+     * Sets the value of the nextObservationTime property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @see #getNextObservationTime()
+     */
+    public void setNextObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
+        this.nextObservationTime = value;
+    }
+
+    public boolean isSetNextObservationTime() {
+        return (this.nextObservationTime!= null);
     }
 
     /**
@@ -488,34 +511,6 @@ public class RunwayContaminationType
 
     public boolean isSetFurtherTotalClearance() {
         return (this.furtherTotalClearance!= null);
-    }
-
-    /**
-     * Gets the value of the nextObservationTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateTimeType }
-     *     
-     */
-    public DateTimeType getNextObservationTime() {
-        return nextObservationTime;
-    }
-
-    /**
-     * Sets the value of the nextObservationTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateTimeType }
-     *     
-     */
-    public void setNextObservationTime(DateTimeType value) {
-        this.nextObservationTime = value;
-    }
-
-    public boolean isSetNextObservationTime() {
-        return (this.nextObservationTime!= null);
     }
 
     /**

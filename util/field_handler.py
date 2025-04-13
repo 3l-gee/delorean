@@ -226,6 +226,11 @@ class FieldHandler:
                 node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
                 node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateTimeType.class", False)))
                 node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTimeTypeAdapter.class")))
+
+            if snowflake_text == "aixm:DateType" :
+                node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
+                node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateType.class", False)))
+                node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTypeAdapter.class")))
             
             if element.attrib.get("name") == "name":
                 node.append(Jaxb.property.name_element())

@@ -9,9 +9,9 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -82,6 +82,7 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractSolidType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link AbstractTimeComplexType }{@code >}
@@ -102,6 +103,7 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      * {@link JAXBElement }{@code <}{@link GridType }{@code >}
      * {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link MeasureOrNilReasonListType }{@code >}
      * {@link JAXBElement }{@code <}{@link MultiCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link MultiGeometryType }{@code >}
@@ -115,6 +117,8 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link Quantity }{@code >}
      * {@link JAXBElement }{@code <}{@link QuantityExtentType }{@code >}
      * {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      * {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
@@ -126,12 +130,12 @@ public class ValueArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link TimeTopologyComplexType }{@code >}
      * {@link JAXBElement }{@code <}{@link TinType }{@code >}
      * {@link JAXBElement }{@code <}{@link ValueArrayType }{@code >}
-     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
-     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}

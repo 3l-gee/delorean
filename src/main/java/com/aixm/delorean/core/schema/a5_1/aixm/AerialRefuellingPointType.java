@@ -87,35 +87,30 @@ public class AerialRefuellingPointType
     extends AbstractSegmentPointType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "reportingatc_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reportingatc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeATCReportingType reportingATC;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flyover_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flyover_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType flyOver;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "waypoint_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "waypoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType waypoint;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "radarguidance_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radarguidance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType radarGuidance;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -125,49 +120,47 @@ public class AerialRefuellingPointType
         @JoinColumn(name = "pointreference_pt_id")
     })
     protected List<PointReferencePropertyType> facilityMakeup;
-    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "pointChoice_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
-    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
+    @XmlElement(name = "pointChoice_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType pointChoiceNavaidSystem;
-    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
+    @XmlElement(name = "pointChoice_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
-    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
+    @XmlElement(name = "pointChoice_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
-    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
+    @XmlElement(name = "pointChoice_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
-    @XmlElement(name = "pointChoice_position", nillable = true)
+    @XmlElement(name = "pointChoice_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "aerialrefuellingpoint_position_id", referencedColumnName = "id")
     protected PointPropertyType pointChoicePosition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extendedservicevolume_id", referencedColumnName = "id")
     protected RadioFrequencyAreaPropertyType extendedServiceVolume;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -177,14 +170,12 @@ public class AerialRefuellingPointType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "sequence_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "sequence_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType sequence;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "usagetype_value", length = 255, nullable = true, unique = false)),

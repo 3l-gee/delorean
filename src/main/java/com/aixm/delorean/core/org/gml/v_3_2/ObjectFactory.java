@@ -4250,7 +4250,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractRing", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractObject")
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "AbstractRing", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractCurve")
     public JAXBElement<AbstractRingType> createAbstractRing(AbstractRingType value) {
         return new JAXBElement<>(_AbstractRing_QNAME, AbstractRingType.class, null, value);
     }
@@ -4822,7 +4822,7 @@ public class ObjectFactory {
      * @return
      *     the new instance of {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      */
-    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Shell", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractObject")
+    @XmlElementDecl(namespace = "http://www.opengis.net/gml/3.2", name = "Shell", substitutionHeadNamespace = "http://www.opengis.net/gml/3.2", substitutionHeadName = "AbstractSurface")
     public JAXBElement<ShellType> createShell(ShellType value) {
         return new JAXBElement<>(_Shell_QNAME, ShellType.class, null, value);
     }

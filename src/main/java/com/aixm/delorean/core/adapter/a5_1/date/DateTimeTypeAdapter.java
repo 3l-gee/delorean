@@ -31,20 +31,20 @@ public class DateTimeTypeAdapter extends XmlAdapter<DateTimeType, AixmTimestamp>
             return null;
         }
 
-        DateTimeType dateTimeType = new DateTimeType();
+        DateTimeType dateTime = new DateTimeType();
         if (v.getTimestamp() != null) {
             GregorianCalendar cal = new GregorianCalendar(java.util.TimeZone.getTimeZone("UTC"));
             cal.setTime(v.getTimestamp());
 
             XMLGregorianCalendar xmlCal = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
             xmlCal.setTimezone(0); // optional, ensures +00:00
-            dateTimeType.setValue(xmlCal);
+            dateTime.setValue(xmlCal);
         } else {
-            dateTimeType.setValue(null);
+            dateTime.setValue(null);
         }
 
-        dateTimeType.setNilReason(v.getNilReason());
-        return dateTimeType;
+        dateTime.setNilReason(v.getNilReason());
+        return dateTime;
     }
 
 }

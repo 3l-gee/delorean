@@ -9,7 +9,7 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMObjectBaseType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMObjectBaseType;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CollectionTable;
@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       <sequence>
  *         <group ref="{http://www.opengis.net/gml/3.2}StandardObjectProperties"/>
  *       </sequence>
- *       <attribute ref="{http://www.opengis.net/gml/3.2}id use="required""/>
+ *       <attribute ref="{http://www.opengis.net/gml/3.2}id"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -96,7 +96,7 @@ public abstract class AbstractGMLType {
         @AttributeOverride(name = "codeSpace", column = @Column(name = "name_code_space"))
     })
     protected List<CodeType> name;
-    @XmlAttribute(name = "id", namespace = "http://www.opengis.net/gml/3.2", required = true)
+    @XmlAttribute(name = "id", namespace = "http://www.opengis.net/gml/3.2")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")

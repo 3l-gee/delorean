@@ -87,21 +87,18 @@ public class RunwayTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designator;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "nominallength_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -109,7 +106,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "nominallength_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType nominalLength;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lengthaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -117,7 +113,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lengthaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lengthAccuracy;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "nominalwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -125,7 +120,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "nominalwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType nominalWidth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "widthaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -133,7 +127,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "widthaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthAccuracy;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "widthshoulder_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -141,7 +134,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "widthshoulder_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthShoulder;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lengthstrip_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -149,7 +141,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lengthstrip_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType lengthStrip;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "widthstrip_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -157,7 +148,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "widthstrip_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType widthStrip;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lengthoffset_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -165,7 +155,6 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lengthoffset_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType lengthOffset;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "widthoffset_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -173,26 +162,22 @@ public class RunwayTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "widthoffset_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType widthOffset;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "abandoned_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType abandoned;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "associatedairportheliport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -202,7 +187,6 @@ public class RunwayTimeSliceType
         @JoinColumn(name = "runwaycontamination_pt_id")
     })
     protected List<RunwayContaminationPropertyType> overallContaminant;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -212,7 +196,6 @@ public class RunwayTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

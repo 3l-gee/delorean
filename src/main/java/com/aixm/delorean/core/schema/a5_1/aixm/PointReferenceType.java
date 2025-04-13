@@ -78,14 +78,12 @@ public class PointReferenceType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "role_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "role_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeReferenceRoleType role;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "priorfixtolerance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -93,7 +91,6 @@ public class PointReferenceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "priorfixtolerance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType priorFixTolerance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "postfixtolerance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -101,13 +98,11 @@ public class PointReferenceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "postfixtolerance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceSignedType postFixTolerance;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "point_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType point;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -117,7 +112,6 @@ public class PointReferenceType
         @JoinColumn(name = "angleuse_pt_id")
     })
     protected List<AngleUsePropertyType> facilityAngle;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -127,13 +121,11 @@ public class PointReferenceType
         @JoinColumn(name = "distanceindication_pt_id")
     })
     protected List<DistanceIndicationPropertyType> facilityDistance;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "fixtolerancearea_id", referencedColumnName = "id")
     protected SurfacePropertyType fixToleranceArea;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

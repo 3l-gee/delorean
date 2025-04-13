@@ -4551,6 +4551,14 @@
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "workarea_ts", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSliceType']//xs:element[@name='plannedOperational']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "plannedOperational", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSliceType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
     </jaxb:bindings>
@@ -4807,6 +4815,22 @@
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliport_ts", schema = "airport_heliport")</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']//xs:element[@name='certificationDate']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "certificationDate", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']//xs:element[@name='certificationExpirationDate']">
+      <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "certificationExpirationDate", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
+      <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationexpirationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationexpirationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -12383,11 +12407,6 @@
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "type_value", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "type_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
-    <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='plannedOperational']">
-      <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
-    </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='WorkAreaPropertyGroup']//xs:element[@name='associatedAirportHeliport']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
@@ -12717,16 +12736,6 @@
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "abandoned_value", length = 255, nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "abandoned_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
-    </jaxb:bindings>
-    <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='certificationDate']">
-      <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
-    </jaxb:bindings>
-    <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='certificationExpirationDate']">
-      <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationexpirationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationexpirationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='contaminant']">
       <jaxb:property generateElementProperty="false"/>

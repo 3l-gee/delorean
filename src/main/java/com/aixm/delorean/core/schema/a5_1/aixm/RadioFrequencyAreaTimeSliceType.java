@@ -81,58 +81,54 @@ public class RadioFrequencyAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioFrequencyAreaType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "anglescallop_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "anglescallop_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType angleScallop;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "signaltype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "signaltype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioSignalType signalType;
-    @XmlElement(name = "equipment_navaidEquipment", nillable = true)
+    @XmlElement(name = "equipment_navaidEquipment")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_navaidequipment_id", referencedColumnName = "id")
     protected NavaidEquipmentPropertyType equipmentNavaidEquipment;
-    @XmlElement(name = "equipment_frequency", nillable = true)
+    @XmlElement(name = "equipment_frequency")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_frequency_id", referencedColumnName = "id")
     protected RadioCommunicationChannelPropertyType equipmentFrequency;
-    @XmlElement(name = "equipment_specialNavigationStation", nillable = true)
+    @XmlElement(name = "equipment_specialNavigationStation")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_specialnavigationstation_id", referencedColumnName = "id")
     protected SpecialNavigationStationPropertyType equipmentSpecialNavigationStation;
-    @XmlElement(name = "equipment_precisionApproachRadar", nillable = true)
+    @XmlElement(name = "equipment_precisionApproachRadar")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_precisionapproachradar_id", referencedColumnName = "id")
     protected PrecisionApproachRadarPropertyType equipmentPrecisionApproachRadar;
-    @XmlElement(name = "equipment_radar", nillable = true)
+    @XmlElement(name = "equipment_radar")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_radar_id", referencedColumnName = "id")
     protected SecondarySurveillanceRadarPropertyType equipmentRadar;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -142,7 +138,6 @@ public class RadioFrequencyAreaTimeSliceType
         @JoinColumn(name = "circlesector_pt_id")
     })
     protected List<CircleSectorPropertyType> sector;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -152,7 +147,6 @@ public class RadioFrequencyAreaTimeSliceType
         @JoinColumn(name = "surface_pt_id")
     })
     protected List<SurfacePropertyType> extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

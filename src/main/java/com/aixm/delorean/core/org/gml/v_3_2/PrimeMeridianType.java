@@ -41,14 +41,14 @@ public class PrimeMeridianType
 {
 
     /**
-     * gml:greenwichLongitude is the longitude of the prime meridian measured from the Greenwich meridian, positive eastward. If the value of the prime meridian “name” is "Greenwich" then the value of greenwichLongitude shall be 0 degrees.
+     * gml:greenwichLongitude is the longitude of the prime meridian measured from the Greenwich meridian, positive eastward. If the value of the prime meridian "name" is "Greenwich" then the value of greenwichLongitude shall be 0 degrees.
      * 
      */
     @XmlElement(required = true)
     protected AngleType greenwichLongitude;
 
     /**
-     * gml:greenwichLongitude is the longitude of the prime meridian measured from the Greenwich meridian, positive eastward. If the value of the prime meridian “name” is "Greenwich" then the value of greenwichLongitude shall be 0 degrees.
+     * gml:greenwichLongitude is the longitude of the prime meridian measured from the Greenwich meridian, positive eastward. If the value of the prime meridian "name" is "Greenwich" then the value of greenwichLongitude shall be 0 degrees.
      * 
      * @return
      *     possible object is

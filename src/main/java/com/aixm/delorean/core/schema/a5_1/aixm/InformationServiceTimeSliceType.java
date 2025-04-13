@@ -93,47 +93,42 @@ public class InformationServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flightoperations_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flightoperations_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightDestinationType flightOperations;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "rank_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFacilityRankingType rank;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "complianticao_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType compliantICAO;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "serviceprovider_id", referencedColumnName = "id")
     protected UnitPropertyType serviceProvider;
-    @XmlElement(name = "call-sign", nillable = true)
+    @XmlElement(name = "call-sign")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -143,7 +138,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "callsigndetail_pt_id")
     })
     protected List<CallsignDetailPropertyType> callSign;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -153,7 +147,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "radiocommunicationchannel_pt_id")
     })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -163,7 +156,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "contactinformation_pt_id")
     })
     protected List<ContactInformationPropertyType> groundCommunication;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -173,7 +165,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "serviceoperationalstatus_pt_id")
     })
     protected List<ServiceOperationalStatusPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -183,35 +174,30 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeServiceInformationType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "voice_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "voice_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType voice;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "datalink_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "datalink_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType dataLink;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "recorded_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "recorded_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType recorded;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -221,7 +207,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "vor_pt_id")
     })
     protected List<VORPropertyType> navaidBroadcast;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -231,7 +216,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "airspace_pt_id")
     })
     protected List<AirspacePropertyType> clientAirspace;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -241,7 +225,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> clientAirport;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -251,7 +234,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "routeportion_pt_id")
     })
     protected List<RoutePortionPropertyType> clientRoute;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -261,7 +243,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "procedure_pt_id")
     })
     protected List<ProcedurePropertyType> clientProcedure;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -271,7 +252,6 @@ public class InformationServiceTimeSliceType
         @JoinColumn(name = "holdingpattern_pt_id")
     })
     protected List<HoldingPatternPropertyType> clientHolding;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

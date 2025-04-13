@@ -83,14 +83,12 @@ public class ArrestingGearTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -98,7 +96,6 @@ public class ArrestingGearTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -106,28 +103,24 @@ public class ArrestingGearTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "engagedevice_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "engagedevice_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeArrestingGearEngageDeviceType engageDevice;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "absorbtype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "absorbtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeArrestingGearEnergyAbsorbType absorbType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "bidirectional_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectional_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType bidirectional;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "location_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -135,7 +128,6 @@ public class ArrestingGearTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "location_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType location;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -145,31 +137,29 @@ public class ArrestingGearTimeSliceType
         @JoinColumn(name = "runwaydirection_pt_id")
     })
     protected List<RunwayDirectionPropertyType> runwayDirection;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(name = "extent_curveExtent", nillable = true)
+    @XmlElement(name = "extent_curveExtent")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_curveextent_id", referencedColumnName = "id")
     protected ElevatedCurvePropertyType extentCurveExtent;
-    @XmlElement(name = "extent_surfaceExtent", nillable = true)
+    @XmlElement(name = "extent_surfaceExtent")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_surfaceextent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extentSurfaceExtent;
-    @XmlElement(name = "extent_pointExtent", nillable = true)
+    @XmlElement(name = "extent_pointExtent")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_pointextent_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType extentPointExtent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

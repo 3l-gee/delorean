@@ -22,12 +22,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -78,24 +76,20 @@ public class RulesProceduresTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "category_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "category_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRuleProcedureType category;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "title_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "title_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRuleProcedureTitleType title;
-    @XmlElementRef(name = "content", namespace = "http://www.aixm.aero/schema/5.1", type = JAXBElement.class, required = false)
     @Transient
-    protected JAXBElement<XHTMLType> content;
-    @XmlElement(nillable = true)
+    protected XHTMLType content;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -105,7 +99,6 @@ public class RulesProceduresTimeSliceType
         @JoinColumn(name = "airportheliport_pt_id")
     })
     protected List<AirportHeliportPropertyType> affectedLocation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -115,7 +108,6 @@ public class RulesProceduresTimeSliceType
         @JoinColumn(name = "airspace_pt_id")
     })
     protected List<AirspacePropertyType> affectedArea;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -189,10 +181,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
+     *     {@link XHTMLType }
      *     
      */
-    public JAXBElement<XHTMLType> getContent() {
+    public XHTMLType getContent() {
         return content;
     }
 
@@ -201,10 +193,10 @@ public class RulesProceduresTimeSliceType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
+     *     {@link XHTMLType }
      *     
      */
-    public void setContent(JAXBElement<XHTMLType> value) {
+    public void setContent(XHTMLType value) {
         this.content = value;
     }
 

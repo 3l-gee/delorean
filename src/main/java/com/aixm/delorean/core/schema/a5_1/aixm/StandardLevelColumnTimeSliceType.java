@@ -76,24 +76,20 @@ public class StandardLevelColumnTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "series_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "series_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLevelSeriesType series;
-    @XmlElement(nillable = true)
     @Column(name = "unitofmeasurement", nullable = true, unique = false)
     protected String unitOfMeasurement;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "separation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "separation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRVSMType separation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -103,13 +99,11 @@ public class StandardLevelColumnTimeSliceType
         @JoinColumn(name = "standardlevel_pt_id")
     })
     protected List<StandardLevelPropertyType> level;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "leveltable_id", referencedColumnName = "id")
     protected StandardLevelTablePropertyType levelTable;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

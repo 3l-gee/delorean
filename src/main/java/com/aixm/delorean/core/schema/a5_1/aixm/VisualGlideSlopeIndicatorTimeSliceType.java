@@ -84,28 +84,24 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "emergencylighting_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emergencylighting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType emergencyLighting;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "intensitylevel_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensitylevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLightIntensityType intensityLevel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "colour_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "colour_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeColourType colour;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -115,7 +111,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         @JoinColumn(name = "lightelement_pt_id")
     })
     protected List<LightElementPropertyType> element;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -125,7 +120,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         @JoinColumn(name = "groundlightingavailability_pt_id")
     })
     protected List<GroundLightingAvailabilityPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -135,42 +129,36 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVASISType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "position_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "position_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType position;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "numberbox_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "numberbox_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType numberBox;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "portable_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "portable_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType portable;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "slopeangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slopeangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType slopeAngle;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumeyeheightoverthreshold_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -178,7 +166,6 @@ public class VisualGlideSlopeIndicatorTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumeyeheightoverthreshold_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumEyeHeightOverThreshold;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

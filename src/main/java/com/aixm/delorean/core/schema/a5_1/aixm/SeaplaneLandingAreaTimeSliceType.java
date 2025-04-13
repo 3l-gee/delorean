@@ -71,7 +71,6 @@ public class SeaplaneLandingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -81,7 +80,6 @@ public class SeaplaneLandingAreaTimeSliceType
         @JoinColumn(name = "seaplanerampsite_pt_id")
     })
     protected List<SeaplaneRampSitePropertyType> rampSite;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -91,13 +89,11 @@ public class SeaplaneLandingAreaTimeSliceType
         @JoinColumn(name = "floatingdocksite_pt_id")
     })
     protected List<FloatingDockSitePropertyType> dockSite;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -107,7 +103,6 @@ public class SeaplaneLandingAreaTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

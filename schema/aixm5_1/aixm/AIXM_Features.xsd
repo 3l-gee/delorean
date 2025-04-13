@@ -3245,6 +3245,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMTimeSliceType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateType-->
+					<element name="plannedOperational" type="xs:string" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:WorkAreaPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
 						<complexType>
@@ -3261,7 +3267,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<group name="WorkAreaPropertyGroup">
 		<sequence>
 			<element name="type" type="aixm:CodeWorkAreaType" minOccurs="0"/>
-			<element name="plannedOperational" type="aixm:DateType" minOccurs="0"/>
+			<!-- XSD tweak to adatpt DateType-->
+			<!-- <element name="plannedOperational" type="aixm:DateType" minOccurs="0"/> -->
 			<element name="associatedAirportHeliport" type="aixm:AirportHeliportPropertyType" minOccurs="0"/>
 			<element name="extent" type="aixm:ElevatedSurfacePropertyType" minOccurs="0"/>
 			<element name="activation" type="aixm:WorkareaActivityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
@@ -3590,6 +3597,17 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMTimeSliceType">
 				<sequence>
+					<!-- XSD tweak to adatpt DateType-->
+					<element name="certificationDate" type="xs:string" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateType</documentation>
+						</annotation>
+					</element>
+					<element name="certificationExpirationDate" type="xs:string" minOccurs="0">
+						<annotation>
+							<documentation>aixm:DateType</documentation>
+						</annotation>
+					</element>
 					<group ref="aixm:AirportHeliportPropertyGroup"/>
 					<element name="extension" minOccurs="0" maxOccurs="unbounded">
 						<complexType>
@@ -3629,8 +3647,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<element name="transitionLevel" type="aixm:ValFLType" minOccurs="0"/>
 			<element name="lowestTemperature" type="aixm:ValTemperatureType" minOccurs="0"/>
 			<element name="abandoned" type="aixm:CodeYesNoType" minOccurs="0"/>
-			<element name="certificationDate" type="aixm:DateType" minOccurs="0"/>
-			<element name="certificationExpirationDate" type="aixm:DateType" minOccurs="0"/>
+			<!-- XSD tweak to adatpt DateType-->
+			<!-- <element name="certificationDate" type="aixm:DateType" minOccurs="0"/> -->
+			<!-- <element name="certificationExpirationDate" type="aixm:DateType" minOccurs="0"/> -->
 			<element name="contaminant" type="aixm:AirportHeliportContaminationPropertyType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="servedCity" type="aixm:CityPropertyType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="responsibleOrganisation" type="aixm:AirportHeliportResponsibilityOrganisationPropertyType" minOccurs="0"/>

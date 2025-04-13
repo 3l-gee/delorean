@@ -73,14 +73,12 @@ public class ProcedureTransitionLegType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "seqnumberarinc_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "seqnumberarinc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType seqNumberARINC;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

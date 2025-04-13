@@ -93,7 +93,7 @@ public class ObstaclePlacementType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pointtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "pointtype_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pointtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType pointType;

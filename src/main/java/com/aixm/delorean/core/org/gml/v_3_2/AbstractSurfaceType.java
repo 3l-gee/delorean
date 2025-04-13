@@ -36,6 +36,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     PolygonType.class,
     OrientableSurfaceType.class,
+    ShellType.class,
     CompositeSurfaceType.class,
     SurfaceType.class
 })

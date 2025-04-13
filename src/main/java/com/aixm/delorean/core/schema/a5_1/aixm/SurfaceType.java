@@ -21,7 +21,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -58,7 +57,6 @@ public class SurfaceType
     extends com.aixm.delorean.core.org.gml.v_3_2.SurfaceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "horizontalaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -66,7 +64,6 @@ public class SurfaceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "horizontalaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType horizontalAccuracy;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

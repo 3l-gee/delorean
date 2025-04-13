@@ -93,134 +93,131 @@ public class FlightConditionElementType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "index_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "index_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType index;
-    @XmlElement(name = "flightCondition_airportHeliportCondition", nillable = true)
+    @XmlElement(name = "flightCondition_airportHeliportCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_airportheliportcondition_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType flightConditionAirportHeliportCondition;
-    @XmlElement(name = "flightCondition_standardInstrumentDepartureCondition", nillable = true)
+    @XmlElement(name = "flightCondition_standardInstrumentDepartureCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_standardinstrumentdeparturecondition_id", referencedColumnName = "id")
     protected StandardInstrumentDeparturePropertyType flightConditionStandardInstrumentDepartureCondition;
-    @XmlElement(name = "flightCondition_routePortionCondition", nillable = true)
+    @XmlElement(name = "flightCondition_routePortionCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_routeportioncondition_id", referencedColumnName = "id")
     protected RoutePortionPropertyType flightConditionRoutePortionCondition;
-    @XmlElement(name = "flightCondition_organisationCondition", nillable = true)
+    @XmlElement(name = "flightCondition_organisationCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_organisationcondition_id", referencedColumnName = "id")
     protected OrganisationAuthorityPropertyType flightConditionOrganisationCondition;
-    @XmlElement(name = "significantPointCondition_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "significantPointCondition_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType significantPointConditionFixDesignatedPoint;
-    @XmlElement(name = "significantPointCondition_navaidSystem", nillable = true)
+    @XmlElement(name = "significantPointCondition_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType significantPointConditionNavaidSystem;
-    @XmlElement(name = "significantPointCondition_aimingPoint", nillable = true)
+    @XmlElement(name = "significantPointCondition_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType significantPointConditionAimingPoint;
-    @XmlElement(name = "significantPointCondition_runwayPoint", nillable = true)
+    @XmlElement(name = "significantPointCondition_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType significantPointConditionRunwayPoint;
-    @XmlElement(name = "significantPointCondition_airportReferencePoint", nillable = true)
+    @XmlElement(name = "significantPointCondition_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType significantPointConditionAirportReferencePoint;
-    @XmlElement(name = "significantPointCondition_position", nillable = true)
+    @XmlElement(name = "significantPointCondition_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "significantpointcondition_position_id", referencedColumnName = "id")
     protected PointPropertyType significantPointConditionPosition;
-    @XmlElement(name = "flightCondition_directFlightCondition", nillable = true)
+    @XmlElement(name = "flightCondition_directFlightCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_directflightcondition_id", referencedColumnName = "id")
     protected DirectFlightPropertyType flightConditionDirectFlightCondition;
-    @XmlElement(name = "flightCondition_aircraft", nillable = true)
+    @XmlElement(name = "flightCondition_aircraft")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_aircraft_id", referencedColumnName = "id")
     protected AircraftCharacteristicPropertyType flightConditionAircraft;
-    @XmlElement(name = "flightCondition_borderCrossingCondition", nillable = true)
+    @XmlElement(name = "flightCondition_borderCrossingCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_bordercrossingcondition_id", referencedColumnName = "id")
     protected AirspaceBorderCrossingPropertyType flightConditionBorderCrossingCondition;
-    @XmlElement(name = "flightCondition_airspaceCondition", nillable = true)
+    @XmlElement(name = "flightCondition_airspaceCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_airspacecondition_id", referencedColumnName = "id")
     protected AirspacePropertyType flightConditionAirspaceCondition;
-    @XmlElement(name = "flightCondition_flight", nillable = true)
+    @XmlElement(name = "flightCondition_flight")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_flight_id", referencedColumnName = "id")
     protected FlightCharacteristicPropertyType flightConditionFlight;
-    @XmlElement(name = "flightCondition_standardInstrumentArrivalCondition", nillable = true)
+    @XmlElement(name = "flightCondition_standardInstrumentArrivalCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_standardinstrumentarrivalcondition_id", referencedColumnName = "id")
     protected StandardInstrumentArrivalPropertyType flightConditionStandardInstrumentArrivalCondition;
-    @XmlElement(name = "flightCondition_operand", nillable = true)
+    @XmlElement(name = "flightCondition_operand")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_operand_id", referencedColumnName = "id")
     protected FlightConditionCombinationPropertyType flightConditionOperand;
-    @XmlElement(name = "flightCondition_weather", nillable = true)
+    @XmlElement(name = "flightCondition_weather")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_weather_id", referencedColumnName = "id")
     protected MeteorologyPropertyType flightConditionWeather;
-    @XmlElement(name = "flightCondition_aerialRefuellingCondition", nillable = true)
+    @XmlElement(name = "flightCondition_aerialRefuellingCondition")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "flightcondition_aerialrefuellingcondition_id", referencedColumnName = "id")
     protected AerialRefuellingPropertyType flightConditionAerialRefuellingCondition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "operationalcondition_id", referencedColumnName = "id")
     protected FlightConditionCircumstancePropertyType operationalCondition;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -230,7 +227,6 @@ public class FlightConditionElementType
         @JoinColumn(name = "flightrestrictionlevel_pt_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

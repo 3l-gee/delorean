@@ -75,14 +75,12 @@ public class ApproachDistanceTableType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "startingmeasurementpoint_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "startingmeasurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType startingMeasurementPoint;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "valuehat_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -90,14 +88,12 @@ public class ApproachDistanceTableType
         @AttributeOverride(name = "nilReason", column = @Column(name = "valuehat_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType valueHAT;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "endingmeasurementpoint_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "endingmeasurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType endingMeasurementPoint;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -105,7 +101,6 @@ public class ApproachDistanceTableType
         @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

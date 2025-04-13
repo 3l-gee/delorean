@@ -21,10 +21,10 @@ import jakarta.xml.bind.annotation.XmlType;
  * <pre>{@code
  * <complexType name="AbstractRingType">
  *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     <extension base="{http://www.opengis.net/gml/3.2}AbstractCurveType">
  *       <sequence>
  *       </sequence>
- *     </restriction>
+ *     </extension>
  *   </complexContent>
  * </complexType>
  * }</pre>
@@ -37,7 +37,9 @@ import jakarta.xml.bind.annotation.XmlType;
     LinearRingType.class,
     RingType.class
 })
-public abstract class AbstractRingType {
+public abstract class AbstractRingType
+    extends AbstractCurveType
+{
 
 
 }

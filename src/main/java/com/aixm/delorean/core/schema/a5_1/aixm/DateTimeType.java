@@ -8,7 +8,6 @@
 package com.aixm.delorean.core.schema.a5_1.aixm;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -46,7 +45,7 @@ public class DateTimeType {
     @Transient
     protected XMLGregorianCalendar value;
     @XmlAttribute(name = "nilReason")
-    @Column(name = "datetimetype_nilreason", length = 255, nullable = true, unique = false)
+    @Transient
     protected String nilReason;
 
     /**

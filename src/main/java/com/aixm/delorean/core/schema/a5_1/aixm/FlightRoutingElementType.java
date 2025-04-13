@@ -89,14 +89,12 @@ public class FlightRoutingElementType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "ordernumber_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "ordernumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoSequenceType orderNumber;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speed_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -104,21 +102,18 @@ public class FlightRoutingElementType
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speed;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSpeedReferenceType speedReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedcriteria_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedcriteria_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeComparisonType speedCriteria;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -128,85 +123,84 @@ public class FlightRoutingElementType
         @JoinColumn(name = "flightrestrictionlevel_pt_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
-    @XmlElement(name = "element_standardInstrumentArrivalElement", nillable = true)
+    @XmlElement(name = "element_standardInstrumentArrivalElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_standardinstrumentarrivalelement_id", referencedColumnName = "id")
     protected StandardInstrumentArrivalPropertyType elementStandardInstrumentArrivalElement;
-    @XmlElement(name = "element_airspaceElement", nillable = true)
+    @XmlElement(name = "element_airspaceElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_airspaceelement_id", referencedColumnName = "id")
     protected AirspacePropertyType elementAirspaceElement;
-    @XmlElement(name = "pointElement_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "pointElement_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType pointElementFixDesignatedPoint;
-    @XmlElement(name = "pointElement_navaidSystem", nillable = true)
+    @XmlElement(name = "pointElement_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType pointElementNavaidSystem;
-    @XmlElement(name = "pointElement_aimingPoint", nillable = true)
+    @XmlElement(name = "pointElement_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType pointElementAimingPoint;
-    @XmlElement(name = "pointElement_runwayPoint", nillable = true)
+    @XmlElement(name = "pointElement_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType pointElementRunwayPoint;
-    @XmlElement(name = "pointElement_airportReferencePoint", nillable = true)
+    @XmlElement(name = "pointElement_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType pointElementAirportReferencePoint;
-    @XmlElement(name = "pointElement_position", nillable = true)
+    @XmlElement(name = "pointElement_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "pointelement_position_id", referencedColumnName = "id")
     protected PointPropertyType pointElementPosition;
-    @XmlElement(name = "element_directFlightElement", nillable = true)
+    @XmlElement(name = "element_directFlightElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_directflightelement_id", referencedColumnName = "id")
     protected DirectFlightSegmentPropertyType elementDirectFlightElement;
-    @XmlElement(name = "element_standardInstrumentDepartureElement", nillable = true)
+    @XmlElement(name = "element_standardInstrumentDepartureElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_standardinstrumentdepartureelement_id", referencedColumnName = "id")
     protected StandardInstrumentDeparturePropertyType elementStandardInstrumentDepartureElement;
-    @XmlElement(name = "element_routePortionElement", nillable = true)
+    @XmlElement(name = "element_routePortionElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_routeportionelement_id", referencedColumnName = "id")
     protected RoutePortionPropertyType elementRoutePortionElement;
-    @XmlElement(name = "element_airportHeliportElement", nillable = true)
+    @XmlElement(name = "element_airportHeliportElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_airportheliportelement_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType elementAirportHeliportElement;
-    @XmlElement(name = "element_aerialRefuellingElement", nillable = true)
+    @XmlElement(name = "element_aerialRefuellingElement")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "element_aerialrefuellingelement_id", referencedColumnName = "id")
     protected AerialRefuellingPropertyType elementAerialRefuellingElement;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

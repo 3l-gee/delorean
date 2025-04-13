@@ -76,21 +76,18 @@ public class HoldingUseType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "holdinguse_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "holdinguse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHoldingUseType holdingUse;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "instructedaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -98,14 +95,12 @@ public class HoldingUseType
         @AttributeOverride(name = "nilReason", column = @Column(name = "instructedaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType instructedAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "instructionaltitudereference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instructionaltitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType instructionAltitudeReference;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -43,7 +43,7 @@ public class TopoCurvePropertyType {
 
     /**
      * gml:TopoCurve represents a homogeneous topological expression, a sequence of directed edges, which if realised are isomorphic to a geometric curve primitive. The intended use of gml:TopoCurve is to appear within a line feature to express the structural and geometric relationships of this feature to other features via the shared edge definitions.
-     * If provided, the aggregationType attribute shall have the value “sequence”.
+     * If provided, the aggregationType attribute shall have the value "sequence".
      * 
      */
     @XmlElement(name = "TopoCurve", required = true)
@@ -54,7 +54,7 @@ public class TopoCurvePropertyType {
 
     /**
      * gml:TopoCurve represents a homogeneous topological expression, a sequence of directed edges, which if realised are isomorphic to a geometric curve primitive. The intended use of gml:TopoCurve is to appear within a line feature to express the structural and geometric relationships of this feature to other features via the shared edge definitions.
-     * If provided, the aggregationType attribute shall have the value “sequence”.
+     * If provided, the aggregationType attribute shall have the value "sequence".
      * 
      * @return
      *     possible object is

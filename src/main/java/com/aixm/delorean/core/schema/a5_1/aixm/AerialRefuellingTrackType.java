@@ -70,13 +70,11 @@ public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected CurvePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -86,7 +84,6 @@ public class AerialRefuellingTrackType
         @JoinColumn(name = "aerialrefuellingpoint_pt_id")
     })
     protected List<AerialRefuellingPointPropertyType> point;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -96,7 +93,6 @@ public class AerialRefuellingTrackType
         @JoinColumn(name = "airspacelayer_pt_id")
     })
     protected List<AirspaceLayerPropertyType> verticalExtent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -27,6 +27,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -39,6 +40,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractSurfaceContaminationType">
  *       <sequence>
+ *         <element name="observationTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="nextObservationTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <group ref="{http://www.aixm.aero/schema/5.1.1}SurfaceContaminationPropertyGroup"/>
  *         <group ref="{http://www.aixm.aero/schema/5.1.1}TaxiwayContaminationPropertyGroup"/>
  *         <element name="extension" maxOccurs="unbounded" minOccurs="0">
@@ -65,6 +68,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TaxiwayContaminationType", propOrder = {
     "observationTime",
+    "nextObservationTime",
     "depth",
     "frictionCoefficient",
     "frictionEstimation",
@@ -72,7 +76,6 @@ import jakarta.xml.bind.annotation.XmlType;
     "obscuredLights",
     "furtherClearanceTime",
     "furtherTotalClearance",
-    "nextObservationTime",
     "proportion",
     "criticalRidge",
     "layer",
@@ -86,13 +89,30 @@ public class TaxiwayContaminationType
     extends AbstractSurfaceContaminationType
 {
 
-    @XmlElement(nillable = true)
+    /**
+     * aixm:DateTimeType
+     * 
+     */
+    @XmlElement(type = DateTimeType.class, nillable = true, name = "observationTime", required = false)
+    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1_1.date.DateTimeTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))
     })
-    protected DateTimeType observationTime;
+    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp observationTime;
+    /**
+     * aixm:DateTimeType
+     * 
+     */
+    @XmlElement(type = DateTimeType.class, nillable = true, name = "nextObservationTime", required = false)
+    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1_1.date.DateTimeTypeAdapter.class)
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
+    })
+    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp nextObservationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
@@ -146,13 +166,6 @@ public class TaxiwayContaminationType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
-    })
-    protected DateTimeType nextObservationTime;
-    @XmlElement(nillable = true)
-    @Embedded
-    @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "proportion_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "proportion_nilreason", length = 255, nullable = true, unique = false))
     })
@@ -199,14 +212,14 @@ public class TaxiwayContaminationType
     protected List<TaxiwayContaminationType.Extension> extension;
 
     /**
-     * Gets the value of the observationTime property.
+     * aixm:DateTimeType
      * 
      * @return
      *     possible object is
-     *     {@link DateTimeType }
+     *     {@link String }
      *     
      */
-    public DateTimeType getObservationTime() {
+    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getObservationTime() {
         return observationTime;
     }
 
@@ -215,15 +228,45 @@ public class TaxiwayContaminationType
      * 
      * @param value
      *     allowed object is
-     *     {@link DateTimeType }
+     *     {@link String }
      *     
+     * @see #getObservationTime()
      */
-    public void setObservationTime(DateTimeType value) {
+    public void setObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
         this.observationTime = value;
     }
 
     public boolean isSetObservationTime() {
         return (this.observationTime!= null);
+    }
+
+    /**
+     * aixm:DateTimeType
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getNextObservationTime() {
+        return nextObservationTime;
+    }
+
+    /**
+     * Sets the value of the nextObservationTime property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @see #getNextObservationTime()
+     */
+    public void setNextObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
+        this.nextObservationTime = value;
+    }
+
+    public boolean isSetNextObservationTime() {
+        return (this.nextObservationTime!= null);
     }
 
     /**
@@ -420,34 +463,6 @@ public class TaxiwayContaminationType
 
     public boolean isSetFurtherTotalClearance() {
         return (this.furtherTotalClearance!= null);
-    }
-
-    /**
-     * Gets the value of the nextObservationTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateTimeType }
-     *     
-     */
-    public DateTimeType getNextObservationTime() {
-        return nextObservationTime;
-    }
-
-    /**
-     * Sets the value of the nextObservationTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateTimeType }
-     *     
-     */
-    public void setNextObservationTime(DateTimeType value) {
-        this.nextObservationTime = value;
-    }
-
-    public boolean isSetNextObservationTime() {
-        return (this.nextObservationTime!= null);
     }
 
     /**

@@ -563,7 +563,8 @@ config = {
         "ElevatedCurveType",
         "SurfaceType",
         "ElevatedSurfaceType",
-        "DateTimeType"
+        "DateTimeType",
+        "DateType"
     ],
     "abstract": [
         "AbstractMarkingType",

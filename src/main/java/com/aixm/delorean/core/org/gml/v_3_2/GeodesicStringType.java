@@ -54,7 +54,7 @@ public class GeodesicStringType
     protected DirectPositionListType posList;
     /**
      * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
-     * pos elements are positions that are “owned” by the geometric primitive encapsulating this geometric position.
+     * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
      * pointProperty elements contain a point that may be referenced from other geometry elements or reference another point defined elsewhere (reuse of existing points).
      * 
      */
@@ -96,7 +96,7 @@ public class GeodesicStringType
 
     /**
      * GML supports two different ways to specify a geometric position: either by a direct position (a data type) or a point (a geometric object).
-     * pos elements are positions that are “owned” by the geometric primitive encapsulating this geometric position.
+     * pos elements are positions that are "owned" by the geometric primitive encapsulating this geometric position.
      * pointProperty elements contain a point that may be referenced from other geometry elements or reference another point defined elsewhere (reuse of existing points).
      * 
      * Gets the value of the geometricPositionGroup property.

@@ -74,14 +74,12 @@ public class ApproachAltitudeTableType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "measurementpoint_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "measurementpoint_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeProcedureDistanceType measurementPoint;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -89,14 +87,12 @@ public class ApproachAltitudeTableType
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType altitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudereference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType altitudeReference;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

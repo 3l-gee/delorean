@@ -9,7 +9,7 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -72,11 +72,14 @@ public class CurveArrayPropertyType {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link AbstractCurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      * {@link JAXBElement }{@code <}{@link OrientableCurveType }{@code >}
-     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      * </p>
      * 

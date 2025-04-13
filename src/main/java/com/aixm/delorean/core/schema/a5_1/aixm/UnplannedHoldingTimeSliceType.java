@@ -76,14 +76,12 @@ public class UnplannedHoldingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "unplannedholding_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "unplannedholding_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApprovalType unplannedHolding;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "authorizedaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -91,27 +89,23 @@ public class UnplannedHoldingTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "authorizedaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType authorizedAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudereference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType altitudeReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "controlledairspace_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "controlledairspace_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType controlledAirspace;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "holdingpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

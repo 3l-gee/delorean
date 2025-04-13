@@ -75,7 +75,6 @@ public class FlightRestrictionLevelType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlevel_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -83,14 +82,12 @@ public class FlightRestrictionLevelType
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLevel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlevelreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlevelreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLevelReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlevel_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -98,14 +95,12 @@ public class FlightRestrictionLevelType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLevel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlevelreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlevelreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLevelReference;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

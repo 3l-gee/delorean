@@ -73,14 +73,12 @@ public class RunwayDeclaredDistanceType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDeclaredDistanceType type;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -90,7 +88,6 @@ public class RunwayDeclaredDistanceType
         @JoinColumn(name = "runwaydeclareddistancevalue_pt_id")
     })
     protected List<RunwayDeclaredDistanceValuePropertyType> declaredValue;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -77,21 +77,18 @@ public class TouchDownLiftOffMarkingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "condition_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "condition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMarkingConditionType condition;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -101,7 +98,6 @@ public class TouchDownLiftOffMarkingTimeSliceType
         @JoinColumn(name = "markingelement_pt_id")
     })
     protected List<MarkingElementPropertyType> element;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -111,14 +107,12 @@ public class TouchDownLiftOffMarkingTimeSliceType
         @JoinColumn(name = "note_pt_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "markinglocation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "markinglocation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTLOFSectionType markingLocation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -76,14 +76,12 @@ public class MeteorologyType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flightconditions_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flightconditions_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeMeteoConditionsType flightConditions;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "visibility_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -91,14 +89,12 @@ public class MeteorologyType
         @AttributeOverride(name = "nilReason", column = @Column(name = "visibility_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType visibility;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "visibilityinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType visibilityInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrange_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -106,14 +102,12 @@ public class MeteorologyType
         @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrange_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType runwayVisualRange;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "runwayvisualrangeinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "runwayvisualrangeinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType runwayVisualRangeInterpretation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

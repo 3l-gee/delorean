@@ -70,7 +70,6 @@ public class FinalProfileType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -80,7 +79,6 @@ public class FinalProfileType
         @JoinColumn(name = "approachaltitudetable_pt_id")
     })
     protected List<ApproachAltitudeTablePropertyType> altitude;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -90,7 +88,6 @@ public class FinalProfileType
         @JoinColumn(name = "approachdistancetable_pt_id")
     })
     protected List<ApproachDistanceTablePropertyType> distance;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
@@ -100,7 +97,6 @@ public class FinalProfileType
         @JoinColumn(name = "approachtimingtable_pt_id")
     })
     protected List<ApproachTimingTablePropertyType> timing;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

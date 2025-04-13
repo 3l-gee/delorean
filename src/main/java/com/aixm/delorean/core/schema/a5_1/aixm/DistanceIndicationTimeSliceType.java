@@ -81,7 +81,6 @@ public class DistanceIndicationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -89,7 +88,6 @@ public class DistanceIndicationTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumreceptionaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -97,56 +95,53 @@ public class DistanceIndicationTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumreceptionaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumReceptionAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDistanceIndicationType type;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "fix_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType fix;
-    @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "pointChoice_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType pointChoiceFixDesignatedPoint;
-    @XmlElement(name = "pointChoice_navaidSystem", nillable = true)
+    @XmlElement(name = "pointChoice_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType pointChoiceNavaidSystem;
-    @XmlElement(name = "pointChoice_aimingPoint", nillable = true)
+    @XmlElement(name = "pointChoice_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType pointChoiceAimingPoint;
-    @XmlElement(name = "pointChoice_runwayPoint", nillable = true)
+    @XmlElement(name = "pointChoice_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType pointChoiceRunwayPoint;
-    @XmlElement(name = "pointChoice_airportReferencePoint", nillable = true)
+    @XmlElement(name = "pointChoice_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType pointChoiceAirportReferencePoint;
-    @XmlElement(name = "pointChoice_position", nillable = true)
+    @XmlElement(name = "pointChoice_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distanceindication_ts_position_id", referencedColumnName = "id")
     protected PointPropertyType pointChoicePosition;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
