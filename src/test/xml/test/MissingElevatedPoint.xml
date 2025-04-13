@@ -18,7 +18,7 @@
     </gml:boundedBy>
     <aixm:messageMetadata>
     </aixm:messageMetadata>
-	<aixm-message:hasMember>
+	<message:hasMember>
 		<aixm:AirportHeliport xmlns:aixm="http://www.aixm.aero/schema/5.1" gml:id="gmlID9956596">
 			<gml:identifier codeSpace="urn:uuid:">34da8ee8-080e-40d0-bf2a-f41cf7aa3c20</gml:identifier>
 			<aixm:timeSlice>
@@ -75,6 +75,14 @@
 						</aixm:AirportHeliportResponsibilityOrganisation>
 					</aixm:responsibleOrganisation>
 					<aixm:ARP>
+					    <!-- <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" srsDimension="2" gml:id="gmlID10066750">
+                            <gml:pos>8.5480045444 47.4581928694</gml:pos>
+                            <aixm:horizontalAccuracy xsi:nil="true" nilReason="unknown"/>
+                            <aixm:elevation uom="FT">1381.92</aixm:elevation>
+                            <aixm:geoidUndulation uom="FT">155.1</aixm:geoidUndulation>
+                            <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                            <aixm:verticalAccuracy xsi:nil="true" nilReason="unknown"/>
+                        </aixm:ElevatedPoint> -->
 						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" srsDimension="2" gml:id="gmlID9956604">
 							<gml:pos>8.304847222 47.092152778</gml:pos>
 							<aixm:horizontalAccuracy xsi:nil="true" nilReason="unknown"/>
@@ -132,5 +140,5 @@
 				</aixm:AirportHeliportTimeSlice>
 			</aixm:timeSlice>
 		</aixm:AirportHeliport>
-	</aixm-message:hasMember>
+	</message:hasMember>
 </message:AIXMBasicMessage>

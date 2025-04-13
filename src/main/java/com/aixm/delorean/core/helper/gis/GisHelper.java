@@ -24,113 +24,12 @@ import com.aixm.delorean.core.log.LogLevel;
 
 public class GisHelper {    
     
-    public static AixmElevatedGeometryType parseElevatedGeometry(AixmElevatedGeometryType target,
-        String id,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType horizontalElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType verticalElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType elevationElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType geoidElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType verticalDatumElement) {
-
-        if (id != null) {
-            target.setId(id);
-        }
-
-        // Handle Horizontal Accuracy
-        if (horizontalElement != null) {
-            target.setHorizontalAccuracy(horizontalElement.getValue());
-            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
-            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
-        }
-        
-        // Handle Vertical Accuracy
-        if (verticalElement != null) {
-            target.setVerticalAccuracy(verticalElement.getValue());
-            target.setVerticalAccuracy_uom(verticalElement.getUom());
-            target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
-        }
-        
-        // Handle Elevation
-        if (elevationElement != null) {
-            target.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
-            target.setElevation_uom(elevationElement.getUom());
-            target.setElevation_nilReason(elevationElement.getNilReason());
-        }
-        
-        // Handle Geoid Undulation
-        if (geoidElement != null) {
-            target.setGeoidUndulation(geoidElement.getValue());
-            target.setGeoidUndulation_uom(geoidElement.getUom());
-            target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
-        }
-        
-        // Handle Vertical Datum
-        if (verticalDatumElement != null) {
-            target.setVerticalDatum(verticalDatumElement.getValue());
-            target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
-        }
-
-        return target;  
-    }
-
-    public static AixmElevatedGeometryType parseElevatedGeometry(AixmElevatedGeometryType target,
-        String id,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType horizontalElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType verticalElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType elevationElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType geoidElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType verticalDatumElement) {
-
-        if (id != null) {
-            target.setId(id);
-        }
-
-        // Handle Horizontal Accuracy
-        if (horizontalElement != null) {
-            target.setHorizontalAccuracy(horizontalElement.getValue());
-            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
-            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
-        }
-        
-        // Handle Vertical Accuracy
-        if (verticalElement != null) {
-            target.setVerticalAccuracy(verticalElement.getValue());
-            target.setVerticalAccuracy_uom(verticalElement.getUom());
-            target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
-        }
-        
-        // Handle Elevation
-        if (elevationElement != null) {
-            target.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
-            target.setElevation_uom(elevationElement.getUom());
-            target.setElevation_nilReason(elevationElement.getNilReason());
-        }
-        
-        // Handle Geoid Undulation
-        if (geoidElement != null) {
-            target.setGeoidUndulation(geoidElement.getValue());
-            target.setGeoidUndulation_uom(geoidElement.getUom());
-            target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
-        }
-        
-        // Handle Vertical Datum
-        if (verticalDatumElement != null) {
-            target.setVerticalDatum(verticalDatumElement.getValue());
-            target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
-        }
-
-        return target;  
-    }
-
-
     public static <T extends AixmGeometryType> T aixmGeometryAttributesFactory(
         Class<T> target,
         String id,
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType horizontalElement) {
+
+        ConsoleLogger.log(LogLevel.DEBUG, "aixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
 
         T obj;
         if (target == AixmPointType.class) {
@@ -163,6 +62,8 @@ public class GisHelper {
         String id,
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType horizontalElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "aixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmPointType.class) {
             obj = target.cast(new AixmPointType());
@@ -198,6 +99,8 @@ public class GisHelper {
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType geoidElement,
         com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType verticalDatumElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "elevatedAixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmElevatedPointType.class) {
             obj = target.cast(new AixmElevatedPointType());
@@ -230,9 +133,7 @@ public class GisHelper {
         
         // Handle Elevation
         if (elevationElement != null) {
-            obj.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
+            obj.setElevation(elevationElement.getValue());
             obj.setElevation_uom(elevationElement.getUom());
             obj.setElevation_nilReason(elevationElement.getNilReason());
         }
@@ -261,6 +162,8 @@ public class GisHelper {
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType geoidElement,
         com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType verticalDatumElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "elevatedAixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmElevatedPointType.class) {
             obj = target.cast(new AixmElevatedPointType());
@@ -293,9 +196,7 @@ public class GisHelper {
         
         // Handle Elevation
         if (elevationElement != null) {
-            obj.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
+            obj.setElevation(elevationElement.getValue());
             obj.setElevation_uom(elevationElement.getUom());
             obj.setElevation_nilReason(elevationElement.getNilReason());
         }
@@ -452,7 +353,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedPointType.setElevation(valDistanceVertical);
@@ -506,7 +407,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedPointType.setElevation(valDistanceVertical);
@@ -696,7 +597,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedCurve.setElevation(valDistanceVertical);
@@ -759,7 +660,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedCurve.setElevation(valDistanceVertical);
