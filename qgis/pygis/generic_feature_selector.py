@@ -3,7 +3,7 @@ from qgis.utils import iface
 layer = QgsProject.instance().mapLayersByName('city_view')[0]
 
 # The expression to select the features
-expr = "\"name\" IN ('{}')".format('[%servedcity%]')
+expr = "\"id\" IN ('{}')".format('[%servedcityid%]')
 
 layer.setSubsetString(expr)
 iface.showAttributeTable(layer)

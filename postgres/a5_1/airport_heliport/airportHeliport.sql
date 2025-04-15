@@ -267,6 +267,7 @@ COALESCE(airport_heliport.airportheliport_ts.transitionaltitude_value || ' ' || 
 COALESCE(airport_heliport.airportheliport_ts.transitionlevel_value || ' ' || airport_heliport.airportheliport_ts.transitionlevel_uom, '(' || airport_heliport.airportheliport_ts.transitionlevel_nilreason || ')') AS transitionLevel,
 COALESCE(airport_heliport.airportheliport_ts.lowesttemperature_value || ' ' || airport_heliport.airportheliport_ts.lowesttemperature_uom, '(' || airport_heliport.airportheliport_ts.lowesttemperature_nilreason || ')') AS lowestTemperature,
 COALESCE(array_agg(airport_heliport.city_view.name), '{}'::text[]) AS servedCity,
+COALESCE(array_agg(airport_heliport.city_view.id::text), '{}'::text[]) AS servedCityId,
 -- COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
 -- COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contactinformation,
 geometry.elevated_point_view.geom AS arp,
