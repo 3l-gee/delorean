@@ -519,6 +519,8 @@ class Util:
     
         if name.upper() in SQL_RESERVED_KEY_WORD:
             name += "_"
+
+        name.replace("-", "_")
         return name
 
     @staticmethod
