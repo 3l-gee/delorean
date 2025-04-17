@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveDateTime="2025-04-17T15:10:27" saveUser="gerth" version="3.28.3-Firenze" projectname="" saveUserFull="Raphael Gerth">
+<qgis saveDateTime="2025-04-17T15:09:53" saveUser="gerth" version="3.28.3-Firenze" projectname="" saveUserFull="Raphael Gerth">
   <homePath path=""/>
   <title></title>
   <transaction mode="AutomaticGroups"/>
@@ -379,7 +379,7 @@
       <id>airportheliport_view_arp_5719014c_5f1d_4210_b9fd_e351d9a296b6</id>
       <datasource>dbname='skyguide' port=5432 sslmode=disable key='row' srid=4326 type=Point checkPrimaryKeyUnicity='1' table="airport_heliport"."airportheliport_view" (arp)</datasource>
       <keywordList>
-        <value></value>
+        <value/>
       </keywordList>
       <layername>airportheliport_view.arp</layername>
       <srs>
@@ -396,24 +396,24 @@
         </spatialrefsys>
       </srs>
       <resourceMetadata>
-        <identifier></identifier>
-        <parentidentifier></parentidentifier>
-        <language></language>
+        <identifier/>
+        <parentidentifier/>
+        <language/>
         <type>dataset</type>
-        <title></title>
-        <abstract></abstract>
+        <title/>
+        <abstract/>
         <contact>
-          <name></name>
-          <organization></organization>
-          <position></position>
-          <voice></voice>
-          <fax></fax>
-          <email></email>
-          <role></role>
+          <name/>
+          <organization/>
+          <position/>
+          <voice/>
+          <fax/>
+          <email/>
+          <role/>
         </contact>
         <links/>
-        <fees></fees>
-        <encoding></encoding>
+        <fees/>
+        <encoding/>
         <crs>
           <spatialrefsys nativeFormat="Wkt">
             <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
@@ -431,8 +431,8 @@
           <spatial maxx="0" minz="0" maxz="0" minx="0" miny="0" dimensions="2" crs="EPSG:4326" maxy="0"/>
           <temporal>
             <period>
-              <start></start>
-              <end></end>
+              <start/>
+              <end/>
             </period>
           </temporal>
         </extent>
@@ -453,13 +453,13 @@
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal accumulate="0" endField="valid_time_end" mode="2" endExpression="" startExpression="" durationUnit="min" enabled="0" durationField="" startField="valid_time_begin" fixedDuration="0" limitMode="0">
+      <temporal accumulate="0" endField="valid_time_end" mode="2" endExpression="" durationUnit="min" startExpression="" enabled="0" durationField="" fixedDuration="0" startField="valid_time_begin" limitMode="0">
         <fixedRange>
-          <start></start>
-          <end></end>
+          <start/>
+          <end/>
         </fixedRange>
       </temporal>
-      <elevation extrusion="0" clamping="Terrain" extrusionEnabled="0" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" binding="Centroid" respectLayerSymbol="1" zoffset="0" type="IndividualFeatures">
+      <elevation extrusion="0" clamping="Terrain" extrusionEnabled="0" zscale="1" showMarkerSymbolInSurfacePlots="0" symbology="Line" binding="Centroid" respectLayerSymbol="1" zoffset="0" type="IndividualFeatures">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -468,7 +468,7 @@
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="line" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="line" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -517,7 +517,7 @@
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="fill" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="fill" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -550,7 +550,7 @@
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="marker" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="marker" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -591,9 +591,9 @@
           </symbol>
         </profileMarkerSymbol>
       </elevation>
-      <renderer-v2 forceraster="0" referencescale="-1" enableorderby="0" symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" enableorderby="0" referencescale="-1" symbollevels="0" type="singleSymbol">
         <symbols>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="0" frame_rate="10" type="marker" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="0" frame_rate="10" type="marker" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -650,19 +650,18 @@
           <Option value="30" name="QFieldSync/tracking_time_requirement_interval_seconds" type="int"/>
           <Option value="0" name="QFieldSync/value_map_button_interface_threshold" type="int"/>
           <Option value="0" name="embeddedWidgets/count" type="int"/>
-          <Option name="variableNames" type="invalid"/>
-          <Option name="variableValues" type="invalid"/>
+          <Option name="variableNames"/>
+          <Option name="variableValues"/>
         </Option>
       </customproperties>
       <blendMode>0</blendMode>
       <featureBlendMode>0</featureBlendMode>
       <layerOpacity>1</layerOpacity>
       <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
-        <DiagramCategory sizeType="MM" scaleBasedVisibility="0" direction="0" backgroundColor="#ffffff" barWidth="5" enabled="0" spacingUnit="MM" lineSizeScale="3x:0,0,0,0,0,0" diagramOrientation="Up" backgroundAlpha="255" showAxis="1" penWidth="0" lineSizeType="MM" height="15" scaleDependency="Area" minScaleDenominator="0" width="15" spacingUnitScale="3x:0,0,0,0,0,0" minimumSize="0" penAlpha="255" opacity="1" rotationOffset="270" maxScaleDenominator="1e+08" spacing="5" labelPlacementMethod="XHeight" sizeScale="3x:0,0,0,0,0,0" penColor="#000000">
+        <DiagramCategory sizeType="MM" direction="0" scaleBasedVisibility="0" backgroundColor="#ffffff" barWidth="5" enabled="0" spacingUnit="MM" lineSizeScale="3x:0,0,0,0,0,0" diagramOrientation="Up" backgroundAlpha="255" showAxis="1" penWidth="0" lineSizeType="MM" height="15" scaleDependency="Area" minScaleDenominator="0" width="15" spacingUnitScale="3x:0,0,0,0,0,0" minimumSize="0" penAlpha="255" opacity="1" rotationOffset="270" maxScaleDenominator="1e+08" spacing="5" labelPlacementMethod="XHeight" sizeScale="3x:0,0,0,0,0,0" penColor="#000000">
           <fontProperties description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" style="" italic="0" bold="0" underline="0"/>
-          <attribute colorOpacity="1" color="#000000" label="" field=""/>
           <axisSymbol>
-            <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="line" is_animated="0">
+            <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="line" is_animated="0">
               <data_defined_properties>
                 <Option type="Map">
                   <Option value="" name="name" type="QString"/>
@@ -1094,46 +1093,46 @@
         <default applyOnUpdate="0" field="boundary" expression=""/>
       </defaults>
       <constraints>
-        <constraint notnull_strength="1" exp_strength="0" constraints="3" unique_strength="1" field="row"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="id"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="identifier"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="xml_id"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="interpretation"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="sequence_number"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="correction_number"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="valid_time_begin"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="valid_time_end"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="feature_lifetime_begin"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="feature_lifetime_end"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="designator"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="name"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="locationindicatoricao"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="designatoriata"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="type"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="certifiedicao"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="privateuse"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="controltype"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="verticaldatum"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="magneticvariation"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="magneticvariationaccuracy"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="datemagneticvariation"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="magneticvariationchange"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="altimeterchecklocation"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="secondarypowersupply"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="winddirectionindicator"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="landingdirectionindicator"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="abandoned"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="certificationdate"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="certificationexpirationdate"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="fieldelevation"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="fieldelevationaccuracy"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="referencetemperature"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="transitionaltitude"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="transitionlevel"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="lowesttemperature"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="servedcity"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="servedcityid"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="boundary"/>
+        <constraint notnull_strength="1" exp_strength="0" unique_strength="1" constraints="3" field="row"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="id"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="identifier"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="xml_id"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="interpretation"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="sequence_number"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="correction_number"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="valid_time_begin"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="valid_time_end"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="feature_lifetime_begin"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="feature_lifetime_end"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="designator"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="name"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="locationindicatoricao"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="designatoriata"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="type"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="certifiedicao"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="privateuse"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="controltype"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="verticaldatum"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="magneticvariation"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="magneticvariationaccuracy"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="datemagneticvariation"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="magneticvariationchange"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="altimeterchecklocation"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="secondarypowersupply"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="winddirectionindicator"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="landingdirectionindicator"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="abandoned"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="certificationdate"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="certificationexpirationdate"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="fieldelevation"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="fieldelevationaccuracy"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="referencetemperature"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="transitionaltitude"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="transitionlevel"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="lowesttemperature"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="servedcity"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="servedcityid"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="boundary"/>
       </constraints>
       <constraintExpressions>
         <constraint desc="" exp="" field="row"/>
@@ -1180,53 +1179,53 @@
       <expressionfields/>
       <attributeactions>
         <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
-        <actionsetting capture="0" notificationMessage="" name="open servedCity" action="from qgis.utils import iface&#xd;&#xa;layer = QgsProject.instance().mapLayersByName('city_view')[0]&#xd;&#xa;expr = &quot;\&quot;id\&quot; IN ('{}')&quot;.format('[%servedcityid%]')&#xd;&#xa;layer.setSubsetString(expr)&#xd;&#xa;iface.showAttributeTable(layer)" type="1" shortTitle="open servedCity" icon="" isEnabledOnlyWhenEditable="0" id="{4d4f87fd-04b3-46ba-ba9d-4c878d0ecb1e}">
+        <actionsetting capture="0" notificationMessage="" action="from qgis.utils import iface&#xd;&#xa;layer = QgsProject.instance().mapLayersByName('city_view')[0]&#xd;&#xa;expr = &quot;\&quot;id\&quot; IN ('{}')&quot;.format('[%servedcityid%]')&#xd;&#xa;layer.setSubsetString(expr)&#xd;&#xa;iface.showAttributeTable(layer)" name="open servedCity" type="1" isEnabledOnlyWhenEditable="0" shortTitle="open servedCity" icon="" id="{4d4f87fd-04b3-46ba-ba9d-4c878d0ecb1e}">
           <actionScope id="Field"/>
           <actionScope id="Form"/>
         </actionsetting>
       </attributeactions>
       <attributetableconfig sortExpression="" sortOrder="0" actionWidgetStyle="dropDown">
         <columns>
-          <column name="row" width="-1" type="field" hidden="0"/>
-          <column name="id" width="-1" type="field" hidden="0"/>
-          <column name="identifier" width="-1" type="field" hidden="0"/>
-          <column name="xml_id" width="-1" type="field" hidden="0"/>
-          <column name="interpretation" width="-1" type="field" hidden="0"/>
-          <column name="sequence_number" width="-1" type="field" hidden="0"/>
-          <column name="correction_number" width="-1" type="field" hidden="0"/>
-          <column name="valid_time_begin" width="-1" type="field" hidden="0"/>
-          <column name="valid_time_end" width="-1" type="field" hidden="0"/>
-          <column name="feature_lifetime_begin" width="-1" type="field" hidden="0"/>
-          <column name="feature_lifetime_end" width="-1" type="field" hidden="0"/>
-          <column name="designator" width="-1" type="field" hidden="0"/>
-          <column name="name" width="-1" type="field" hidden="0"/>
-          <column name="locationindicatoricao" width="-1" type="field" hidden="0"/>
-          <column name="designatoriata" width="-1" type="field" hidden="0"/>
-          <column name="type" width="-1" type="field" hidden="0"/>
-          <column name="certifiedicao" width="-1" type="field" hidden="0"/>
-          <column name="privateuse" width="-1" type="field" hidden="0"/>
-          <column name="controltype" width="-1" type="field" hidden="0"/>
-          <column name="verticaldatum" width="-1" type="field" hidden="0"/>
-          <column name="magneticvariation" width="-1" type="field" hidden="0"/>
-          <column name="magneticvariationaccuracy" width="-1" type="field" hidden="0"/>
-          <column name="datemagneticvariation" width="-1" type="field" hidden="0"/>
-          <column name="magneticvariationchange" width="-1" type="field" hidden="0"/>
-          <column name="altimeterchecklocation" width="-1" type="field" hidden="0"/>
-          <column name="secondarypowersupply" width="-1" type="field" hidden="0"/>
-          <column name="winddirectionindicator" width="-1" type="field" hidden="0"/>
-          <column name="landingdirectionindicator" width="-1" type="field" hidden="0"/>
-          <column name="abandoned" width="-1" type="field" hidden="0"/>
-          <column name="certificationdate" width="-1" type="field" hidden="0"/>
-          <column name="certificationexpirationdate" width="-1" type="field" hidden="0"/>
-          <column name="fieldelevation" width="-1" type="field" hidden="0"/>
-          <column name="fieldelevationaccuracy" width="-1" type="field" hidden="0"/>
-          <column name="referencetemperature" width="-1" type="field" hidden="0"/>
-          <column name="transitionaltitude" width="-1" type="field" hidden="0"/>
-          <column name="transitionlevel" width="-1" type="field" hidden="0"/>
-          <column name="lowesttemperature" width="-1" type="field" hidden="0"/>
-          <column name="servedcity" width="-1" type="field" hidden="0"/>
-          <column name="servedcityid" width="-1" type="field" hidden="0"/>
-          <column name="boundary" width="-1" type="field" hidden="0"/>
+          <column width="-1" name="row" type="field" hidden="0"/>
+          <column width="-1" name="id" type="field" hidden="0"/>
+          <column width="-1" name="identifier" type="field" hidden="0"/>
+          <column width="-1" name="xml_id" type="field" hidden="0"/>
+          <column width="-1" name="interpretation" type="field" hidden="0"/>
+          <column width="-1" name="sequence_number" type="field" hidden="0"/>
+          <column width="-1" name="correction_number" type="field" hidden="0"/>
+          <column width="-1" name="valid_time_begin" type="field" hidden="0"/>
+          <column width="-1" name="valid_time_end" type="field" hidden="0"/>
+          <column width="-1" name="feature_lifetime_begin" type="field" hidden="0"/>
+          <column width="-1" name="feature_lifetime_end" type="field" hidden="0"/>
+          <column width="-1" name="designator" type="field" hidden="0"/>
+          <column width="-1" name="name" type="field" hidden="0"/>
+          <column width="-1" name="locationindicatoricao" type="field" hidden="0"/>
+          <column width="-1" name="designatoriata" type="field" hidden="0"/>
+          <column width="-1" name="type" type="field" hidden="0"/>
+          <column width="-1" name="certifiedicao" type="field" hidden="0"/>
+          <column width="-1" name="privateuse" type="field" hidden="0"/>
+          <column width="-1" name="controltype" type="field" hidden="0"/>
+          <column width="-1" name="verticaldatum" type="field" hidden="0"/>
+          <column width="-1" name="magneticvariation" type="field" hidden="0"/>
+          <column width="-1" name="magneticvariationaccuracy" type="field" hidden="0"/>
+          <column width="-1" name="datemagneticvariation" type="field" hidden="0"/>
+          <column width="-1" name="magneticvariationchange" type="field" hidden="0"/>
+          <column width="-1" name="altimeterchecklocation" type="field" hidden="0"/>
+          <column width="-1" name="secondarypowersupply" type="field" hidden="0"/>
+          <column width="-1" name="winddirectionindicator" type="field" hidden="0"/>
+          <column width="-1" name="landingdirectionindicator" type="field" hidden="0"/>
+          <column width="-1" name="abandoned" type="field" hidden="0"/>
+          <column width="-1" name="certificationdate" type="field" hidden="0"/>
+          <column width="-1" name="certificationexpirationdate" type="field" hidden="0"/>
+          <column width="-1" name="fieldelevation" type="field" hidden="0"/>
+          <column width="-1" name="fieldelevationaccuracy" type="field" hidden="0"/>
+          <column width="-1" name="referencetemperature" type="field" hidden="0"/>
+          <column width="-1" name="transitionaltitude" type="field" hidden="0"/>
+          <column width="-1" name="transitionlevel" type="field" hidden="0"/>
+          <column width="-1" name="lowesttemperature" type="field" hidden="0"/>
+          <column width="-1" name="servedcity" type="field" hidden="0"/>
+          <column width="-1" name="servedcityid" type="field" hidden="0"/>
+          <column width="-1" name="boundary" type="field" hidden="0"/>
           <column width="-1" type="actions" hidden="1"/>
         </columns>
       </attributetableconfig>
@@ -1235,10 +1234,10 @@
         <fieldstyles/>
       </conditionalstyles>
       <storedexpressions/>
-      <editform tolerant="1"></editform>
+      <editform tolerant="1"/>
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
+      <editforminitfilepath/>
       <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
 """
 QGIS forms can have a Python function that is called when the form is
@@ -1387,48 +1386,48 @@ def my_form_open(dialog, layer, feature):
       <dataDefinedFieldProperties/>
       <widgets/>
       <previewExpression>"name"</previewExpression>
-      <mapTip></mapTip>
+      <mapTip/>
     </maplayer>
-    <maplayer refreshOnNotifyEnabled="0" autoRefreshTime="0" refreshOnNotifyMessage="" legendPlaceholderImage="" wkbType="NoGeometry" readOnly="0" geometry="No geometry" hasScaleBasedVisibilityFlag="0" styleCategories="AllStyleCategories" type="vector" maxScale="0" minScale="1e+08" autoRefreshEnabled="0">
+    <maplayer refreshOnNotifyEnabled="0" autoRefreshTime="0" refreshOnNotifyMessage="" legendPlaceholderImage="" wkbType="NoGeometry" readOnly="0" hasScaleBasedVisibilityFlag="0" geometry="No geometry" styleCategories="AllStyleCategories" type="vector" minScale="1e+08" maxScale="0" autoRefreshEnabled="0">
       <id>city_view_c428c7ff_246b_487b_aed2_57e929359aeb</id>
       <datasource>dbname='skyguide' port=5432 sslmode=disable key='id' checkPrimaryKeyUnicity='1' table="airport_heliport"."city_view" sql="id" IN ('39939')</datasource>
       <keywordList>
-        <value></value>
+        <value/>
       </keywordList>
       <layername>city_view</layername>
       <srs>
         <spatialrefsys nativeFormat="Wkt">
-          <wkt></wkt>
-          <proj4></proj4>
+          <wkt/>
+          <proj4/>
           <srsid>0</srsid>
           <srid>0</srid>
-          <authid></authid>
-          <description></description>
-          <projectionacronym></projectionacronym>
-          <ellipsoidacronym></ellipsoidacronym>
+          <authid/>
+          <description/>
+          <projectionacronym/>
+          <ellipsoidacronym/>
           <geographicflag>false</geographicflag>
         </spatialrefsys>
       </srs>
       <resourceMetadata>
-        <identifier></identifier>
-        <parentidentifier></parentidentifier>
-        <language></language>
+        <identifier/>
+        <parentidentifier/>
+        <language/>
         <type>dataset</type>
-        <title></title>
-        <abstract></abstract>
+        <title/>
+        <abstract/>
         <links/>
-        <fees></fees>
-        <encoding></encoding>
+        <fees/>
+        <encoding/>
         <crs>
           <spatialrefsys nativeFormat="Wkt">
-            <wkt></wkt>
-            <proj4></proj4>
+            <wkt/>
+            <proj4/>
             <srsid>0</srsid>
             <srid>0</srid>
-            <authid></authid>
-            <description></description>
-            <projectionacronym></projectionacronym>
-            <ellipsoidacronym></ellipsoidacronym>
+            <authid/>
+            <description/>
+            <projectionacronym/>
+            <ellipsoidacronym/>
             <geographicflag>false</geographicflag>
           </spatialrefsys>
         </crs>
@@ -1450,13 +1449,13 @@ def my_form_open(dialog, layer, feature):
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal accumulate="0" endField="" mode="0" endExpression="" startExpression="" durationUnit="min" enabled="0" durationField="" startField="" fixedDuration="0" limitMode="0">
+      <temporal accumulate="0" endField="" mode="0" endExpression="" durationUnit="min" startExpression="" enabled="0" durationField="" fixedDuration="0" startField="" limitMode="0">
         <fixedRange>
-          <start></start>
-          <end></end>
+          <start/>
+          <end/>
         </fixedRange>
       </temporal>
-      <elevation extrusion="0" clamping="Terrain" extrusionEnabled="0" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" binding="Centroid" respectLayerSymbol="1" zoffset="0" type="IndividualFeatures">
+      <elevation extrusion="0" clamping="Terrain" extrusionEnabled="0" zscale="1" showMarkerSymbolInSurfacePlots="0" symbology="Line" binding="Centroid" respectLayerSymbol="1" zoffset="0" type="IndividualFeatures">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -1465,7 +1464,7 @@ def my_form_open(dialog, layer, feature):
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="line" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="line" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1514,7 +1513,7 @@ def my_form_open(dialog, layer, feature):
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="fill" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="fill" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1547,7 +1546,7 @@ def my_form_open(dialog, layer, feature):
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" clip_to_extent="1" force_rhr="0" name="" frame_rate="10" type="marker" is_animated="0">
+          <symbol alpha="1" force_rhr="0" clip_to_extent="1" name="" frame_rate="10" type="marker" is_animated="0">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1657,10 +1656,10 @@ def my_form_open(dialog, layer, feature):
         <default applyOnUpdate="0" field="annotations" expression=""/>
       </defaults>
       <constraints>
-        <constraint notnull_strength="1" exp_strength="0" constraints="3" unique_strength="1" field="id"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="xml_id"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="name"/>
-        <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="annotations"/>
+        <constraint notnull_strength="1" exp_strength="0" unique_strength="1" constraints="3" field="id"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="xml_id"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="name"/>
+        <constraint notnull_strength="0" exp_strength="0" unique_strength="0" constraints="0" field="annotations"/>
       </constraints>
       <constraintExpressions>
         <constraint desc="" exp="" field="id"/>
@@ -1674,10 +1673,10 @@ def my_form_open(dialog, layer, feature):
       </attributeactions>
       <attributetableconfig sortExpression="" sortOrder="0" actionWidgetStyle="dropDown">
         <columns>
-          <column name="id" width="-1" type="field" hidden="0"/>
-          <column name="xml_id" width="-1" type="field" hidden="0"/>
-          <column name="name" width="-1" type="field" hidden="0"/>
-          <column name="annotations" width="-1" type="field" hidden="0"/>
+          <column width="-1" name="id" type="field" hidden="0"/>
+          <column width="-1" name="xml_id" type="field" hidden="0"/>
+          <column width="-1" name="name" type="field" hidden="0"/>
+          <column width="-1" name="annotations" type="field" hidden="0"/>
           <column width="-1" type="actions" hidden="1"/>
         </columns>
       </attributetableconfig>
@@ -1686,10 +1685,10 @@ def my_form_open(dialog, layer, feature):
         <fieldstyles/>
       </conditionalstyles>
       <storedexpressions/>
-      <editform tolerant="1"></editform>
+      <editform tolerant="1"/>
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
+      <editforminitfilepath/>
       <editforminitcode><![CDATA[]]></editforminitcode>
       <featformsuppress>0</featformsuppress>
       <editorlayout>generatedlayout</editorlayout>
@@ -1699,7 +1698,7 @@ def my_form_open(dialog, layer, feature):
       <dataDefinedFieldProperties/>
       <widgets/>
       <previewExpression>"name"</previewExpression>
-      <mapTip></mapTip>
+      <mapTip/>
     </maplayer>
   </projectlayers>
   <layerorder>

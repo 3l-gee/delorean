@@ -17590,7 +17590,7 @@
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='call-sign']">
       <jaxb:property generateElementProperty="false"/>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "service_pg_call-sign", joinColumns = @jakarta.persistence.JoinColumn(name = "service_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "callsigndetail_pt_id"))</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "service_pg_call_sign", joinColumns = @jakarta.persistence.JoinColumn(name = "service_pg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "callsigndetail_pt_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='radioCommunication']">
       <jaxb:property generateElementProperty="false"/>

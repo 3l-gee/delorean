@@ -530,7 +530,7 @@ class Util:
             return "_".join(names)
 
         else :
-            value = Util.short_name(name)
+            value = Util.replace_name(name)
 
             try: 
                 value = value.split(':')[-1]
@@ -549,7 +549,7 @@ class Util:
             names = [Util.snake_case_table(n, list) for n in name]
             return "_".join(names)
         else : 
-            value = Util.short_name(name)
+            value = Util.replace_name(name)
 
             try: 
                 value = value.split(':')[-1]
@@ -562,13 +562,14 @@ class Util:
                 result = Util.modify_forbiden_key_word(result)
             return result
 
-    def short_name(name):  
+    def replace_name(name):  
         replacements = {
             "TimeSlicePropertyType": "_Tsp",
             "PropertyGroup": "_Pg",
             "PropertyType": "_Pt",
             "TimeSliceType": "_Ts",
             "Type": "",
+            "-" : "_",
         }
         
         for key, value in replacements.items():
