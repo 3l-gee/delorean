@@ -268,6 +268,9 @@ COALESCE(airport_heliport.airportheliport_ts.transitionlevel_value || ' ' || air
 COALESCE(airport_heliport.airportheliport_ts.lowesttemperature_value || ' ' || airport_heliport.airportheliport_ts.lowesttemperature_uom, '(' || airport_heliport.airportheliport_ts.lowesttemperature_nilreason || ')') AS lowestTemperature,
 COALESCE(array_agg(airport_heliport.city_view.name), '{}'::text[]) AS servedCity,
 COALESCE(array_agg(airport_heliport.city_view.id::text), '{}'::text[]) AS servedCityId,
+COALESCE(array_agg(notes.note_view.propertyName), '{}'::text[]) AS propertyName,
+COALESCE(array_agg(notes.note_view.purpose), '{}'::text[]) AS purpose,
+COALESCE(array_agg(notes.note_view.id::text), '{}'::text[]) AS noteId,
 -- COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
 -- COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contactinformation,
 geometry.elevated_point_view.geom AS arp,
@@ -287,10 +290,10 @@ LEFT JOIN public.airportheliport_ts_servedcity
     ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_servedcity.airportheliport_ts_id
 LEFT JOIN airport_heliport.city_view
     ON public.airportheliport_ts_servedcity.city_pt_id = airport_heliport.city_view.id
--- LEFT JOIN public.airportheliport_ts_annotation
---     ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_annotation.airportheliport_ts_id
--- LEFT JOIN notes.note_view
---     ON public.airportheliport_ts_annotation.note_pt_id = notes.note_view.id
+LEFT JOIN public.airportheliport_ts_annotation
+    ON airport_heliport.airportheliport_ts.id = public.airportheliport_ts_annotation.airportheliport_ts_id
+LEFT JOIN notes.note_view
+    ON public.airportheliport_ts_annotation.note_pt_id = notes.note_view.id
 -- LEFT JOIN airportheliport_ts_contaminant
 --     ON airport_heliport.airportheliport_ts.id = airportheliport_ts_contaminant.airportheliport_ts_id
 -- LEFT JOIN airport_heliport.airportheliportcontamination_view

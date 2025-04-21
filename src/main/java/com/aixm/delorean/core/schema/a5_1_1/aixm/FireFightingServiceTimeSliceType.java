@@ -130,7 +130,7 @@ public class FireFightingServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservice_ts_call-sign", joinColumns = {
+    @JoinTable(name = "firefightingservice_ts_call_sign", joinColumns = {
         @JoinColumn(name = "firefightingservice_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetail_pt_id")

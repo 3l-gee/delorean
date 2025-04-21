@@ -130,7 +130,7 @@ public class AirTrafficManagementServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficmanagementservice_ts_call-sign", joinColumns = {
+    @JoinTable(name = "airtrafficmanagementservice_ts_call_sign", joinColumns = {
         @JoinColumn(name = "airtrafficmanagementservice_ts_id")
     }, inverseJoinColumns = {
         @JoinColumn(name = "callsigndetail_pt_id")

@@ -2,7 +2,7 @@
 CREATE ROLE role_edit;
 
 -- Grant CONNECT on database
-GRANT CONNECT ON DATABASE your_database TO role_edit;
+GRANT CONNECT ON DATABASE skyguide TO role_edit;
 
 -- Grant USAGE on schema
 GRANT USAGE ON SCHEMA aerial_refuelling TO role_edit;
@@ -818,7 +818,7 @@ GRANT UPDATE ON public.aircraftgroundservice_timeslice TO role_edit;
 GRANT UPDATE ON public.aircraftgroundservice_ts_airportheliport TO role_edit;
 GRANT UPDATE ON public.aircraftgroundservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.aircraftgroundservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.aircraftgroundservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.aircraftgroundservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.aircraftgroundservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.aircraftgroundservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.aircraftstand_timeslice TO role_edit;
@@ -830,7 +830,7 @@ GRANT UPDATE ON public.aircraftstandcontamination_layer TO role_edit;
 GRANT UPDATE ON public.airportclearanceservice_timeslice TO role_edit;
 GRANT UPDATE ON public.airportclearanceservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.airportclearanceservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.airportclearanceservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.airportclearanceservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.airportclearanceservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.airportclearanceservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.airportheliport_timeslice TO role_edit;
@@ -865,7 +865,7 @@ GRANT UPDATE ON public.airportsuppliesservice_timeslice TO role_edit;
 GRANT UPDATE ON public.airportsuppliesservice_ts_airportheliport TO role_edit;
 GRANT UPDATE ON public.airportsuppliesservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.airportsuppliesservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.airportsuppliesservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.airportsuppliesservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.airportsuppliesservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.airspace_timeslice TO role_edit;
 GRANT UPDATE ON public.airspace_ts_activation TO role_edit;
@@ -895,7 +895,7 @@ GRANT UPDATE ON public.airtrafficcontrolairtrafficcontrolservice_ts_clientroute 
 GRANT UPDATE ON public.airtrafficcontrolservice_timeslice TO role_edit;
 GRANT UPDATE ON public.airtrafficcontrolservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.airtrafficcontrolservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.airtrafficcontrolservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.airtrafficcontrolservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.airtrafficcontrolservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.airtrafficcontrolservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.airtrafficmanagementairtrafficmanagementservice_ts_clientaerial TO role_edit;
@@ -904,7 +904,7 @@ GRANT UPDATE ON public.airtrafficmanagementairtrafficmanagementservice_ts_client
 GRANT UPDATE ON public.airtrafficmanagementservice_timeslice TO role_edit;
 GRANT UPDATE ON public.airtrafficmanagementservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.airtrafficmanagementservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.airtrafficmanagementservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.airtrafficmanagementservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.airtrafficmanagementservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.airtrafficmanagementservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.altimetersource_timeslice TO role_edit;
@@ -1048,7 +1048,7 @@ GRANT UPDATE ON public.finalprofile_timing TO role_edit;
 GRANT UPDATE ON public.firefightingservice_timeslice TO role_edit;
 GRANT UPDATE ON public.firefightingservice_ts_airportheliport TO role_edit;
 GRANT UPDATE ON public.firefightingservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.firefightingservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.firefightingservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.firefightingservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.flightcharacteristic_annotation TO role_edit;
 GRANT UPDATE ON public.flightconditioncircumstance_annotation TO role_edit;
@@ -1081,7 +1081,7 @@ GRANT UPDATE ON public.groundlightingavailability_timeinterval TO role_edit;
 GRANT UPDATE ON public.groundtrafficcontrolservice_timeslice TO role_edit;
 GRANT UPDATE ON public.groundtrafficcontrolservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.groundtrafficcontrolservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.groundtrafficcontrolservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.groundtrafficcontrolservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.groundtrafficcontrolservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.groundtrafficcontrolservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.guidanceline_timeslice TO role_edit;
@@ -1112,7 +1112,7 @@ GRANT UPDATE ON public.informationinformationservice_ts_clientroute TO role_edit
 GRANT UPDATE ON public.informationinformationservice_ts_navaidbroadcast TO role_edit;
 GRANT UPDATE ON public.informationservice_timeslice TO role_edit;
 GRANT UPDATE ON public.informationservice_ts_annotation TO role_edit;
-GRANT UPDATE ON public.informationservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.informationservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.informationservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.informationservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.initialleg_timeslice TO role_edit;
@@ -1218,7 +1218,7 @@ GRANT UPDATE ON public.passengerservice_timeslice TO role_edit;
 GRANT UPDATE ON public.passengerservice_ts_airportheliport TO role_edit;
 GRANT UPDATE ON public.passengerservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.passengerservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.passengerservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.passengerservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.passengerservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.passengerservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.pilotcontrolledlighting_timeslice TO role_edit;
@@ -1340,7 +1340,7 @@ GRANT UPDATE ON public.searchrescuesearchrescueservice_ts_clientairspace TO role
 GRANT UPDATE ON public.searchrescueservice_timeslice TO role_edit;
 GRANT UPDATE ON public.searchrescueservice_ts_annotation TO role_edit;
 GRANT UPDATE ON public.searchrescueservice_ts_availability TO role_edit;
-GRANT UPDATE ON public.searchrescueservice_ts_call-sign TO role_edit;
+GRANT UPDATE ON public.searchrescueservice_ts_call_sign TO role_edit;
 GRANT UPDATE ON public.searchrescueservice_ts_groundcommunication TO role_edit;
 GRANT UPDATE ON public.searchrescueservice_ts_radiocommunication TO role_edit;
 GRANT UPDATE ON public.secondarysurveillanceradar_timeslice TO role_edit;
