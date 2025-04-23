@@ -17,18 +17,13 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -50,7 +45,6 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element ref="{http://www.aixm.aero/schema/5.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element name="featureLifetime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -218,12 +212,6 @@ public abstract class AbstractAIXMTimeSliceType
         @AttributeOverride(name = "endPosition", column = @Column(name = "feature_lifetime_end"))
     })
     protected AixmTimeSliceType featureLifetime;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_time_slice_seq")
-    @SequenceGenerator(name = "aixm_time_slice_seq", sequenceName = "aixm_time_slice_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected long dbid;
 
     /**
      * Gets the value of the interpretation property.
@@ -363,26 +351,6 @@ public abstract class AbstractAIXMTimeSliceType
 
     public boolean isSetFeatureLifetime() {
         return (this.featureLifetime!= null);
-    }
-
-    /**
-     * Gets the value of the dbid property.
-     * 
-     */
-    public long getDbid() {
-        return dbid;
-    }
-
-    /**
-     * Sets the value of the dbid property.
-     * 
-     */
-    public void setDbid(long value) {
-        this.dbid = value;
-    }
-
-    public boolean isSetDbid() {
-        return true;
     }
 
 }

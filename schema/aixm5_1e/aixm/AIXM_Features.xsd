@@ -31,16 +31,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<!--Event Imports -->
 	<!--====================================================================-->
 	<!-- <import namespace="http://www.aixm.aero/schema/5.1/event" schemaLocation="./event/Event_Features.xsd"/> -->
-	<import namespace="http://www.aixm.aero/schema/5.1/event" schemaLocation="./event/version_5.1-e/Event_Features.xsd"/>
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/event" schemaLocation="./event/version_5.1-e/Event_Features.xsd"/> -->
 	<!--====================================================================-->
 	<!--Extension Imports -->
 	<!--====================================================================-->
-	<import namespace="http://www.aixm.aero/schema/5.1/amdb" schemaLocation="./extensions/AMDB/AMDB_Extension_Features.xsd"/>
-	<import namespace="http://www.aixm.aero/schema/5.1/extensions/ADR" schemaLocation="./extensions/EUR/ADR/ADR_Features.xsd"/>
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/amdb" schemaLocation="./extensions/AMDB/AMDB_Extension_Features.xsd"/> -->
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/extensions/ADR" schemaLocation="./extensions/EUR/ADR/ADR_Features.xsd"/> -->
 	<!-- <import namespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR" schemaLocation="./extensions/EUR/EAD/ADR/EADADR_Features.xsd"/> -->
-	<import namespace="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" schemaLocation="./extensions/EUR/eASM/eASM_Features.xsd"/>
-	<import namespace="http://www.eurocontrol.int/contamination" schemaLocation="./extensions/EUR/XSNOWTAM/Contamination_Features.xsd"/>
-	<import namespace="http://www.aixm.aero/schema/5.1/extensions/FAA/FNSE" schemaLocation="./extensions/FAA/FNSE/FNSE_Features.xsd"/>
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" schemaLocation="./extensions/EUR/eASM/eASM_Features.xsd"/> -->
+	<!-- <import namespace="http://www.eurocontrol.int/contamination" schemaLocation="./extensions/EUR/XSNOWTAM/Contamination_Features.xsd"/> -->
+	<!-- <import namespace="http://www.aixm.aero/schema/5.1/extensions/FAA/FNSE" schemaLocation="./extensions/FAA/FNSE/FNSE_Features.xsd"/> -->
 	<!--====================================================================-->
 	<!-- Includes -->
 	<!--====================================================================-->

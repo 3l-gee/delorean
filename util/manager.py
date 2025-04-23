@@ -7,6 +7,12 @@ from control import Control
 
 
 View({
+    "Event" : {
+        "schema" : "event",
+        "list" : [
+
+        ],
+    },
     "Aerial Refuelling" : {
         "schema" : "aerial_refuelling",
         "list" : [
@@ -622,3 +628,4 @@ message = {
 }
 
 out = Machinery(config, [data_types, feature, abstract, message])
+

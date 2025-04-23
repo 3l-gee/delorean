@@ -63,8 +63,8 @@ public class PrecisionApproachRadarTimeSlicePropertyType {
     @JoinColumn(name = "precisionapproachradartimeslice_id", referencedColumnName = "id")
     protected PrecisionApproachRadarTimeSliceType precisionApproachRadarTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "precisionapproachradar_tsp_seq")
-    @SequenceGenerator(name = "precisionapproachradar_tsp_seq", sequenceName = "precisionapproachradar_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

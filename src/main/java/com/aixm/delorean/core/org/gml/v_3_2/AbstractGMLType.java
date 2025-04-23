@@ -17,8 +17,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -26,6 +31,7 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlID;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -41,6 +47,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
+ *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         <group ref="{http://www.opengis.net/gml/3.2}StandardObjectProperties"/>
  *       </sequence>
  *       <attribute ref="{http://www.opengis.net/gml/3.2}id"/>
@@ -74,6 +81,12 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @MappedSuperclass
 public abstract class AbstractGMLType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
+    @XmlTransient
+    protected Long dbid;
     @Transient
     protected List<MetaDataPropertyType> metaDataProperty;
     @Transient
@@ -102,6 +115,42 @@ public abstract class AbstractGMLType {
     @XmlSchemaType(name = "ID")
     @Column(name = "xml_id")
     protected String xmlId;
+
+    @PostLoad
+    public void setXmlId() {
+        if (this.dbid != null) {
+            this.xmlId = "gmlID" + this.dbid.toString();
+        }
+    }
+
+
+    /**
+     * Gets the value of the dbid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getDbid() {
+        return dbid;
+    }
+
+    /**
+     * Sets the value of the dbid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDbid(Long value) {
+        this.dbid = value;
+    }
+
+    public boolean isSetDbid() {
+        return (this.dbid!= null);
+    }
 
     /**
      * Gets the value of the metaDataProperty property.
@@ -279,17 +328,6 @@ public abstract class AbstractGMLType {
         return xmlId;
     }
 
-    /**
-     * Sets the value of the xmlId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setXmlId(String value) {
-        this.xmlId = value;
-    }
 
     public boolean isSetXmlId() {
         return (this.xmlId!= null);

@@ -63,8 +63,8 @@ public class ElevationTimeSlicePropertyType {
     @JoinColumn(name = "elevationtimeslice_id", referencedColumnName = "id")
     protected ElevationTimeSliceType elevationTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "elevation_tsp_seq")
-    @SequenceGenerator(name = "elevation_tsp_seq", sequenceName = "elevation_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

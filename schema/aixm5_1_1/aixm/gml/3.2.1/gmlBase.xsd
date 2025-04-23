@@ -30,6 +30,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
         </element>
         <complexType name="AbstractGMLType" abstract="true">
                 <sequence>
+                        <element name="dbid" type="long" minOccurs="0"/>
                         <group ref="gml:StandardObjectProperties"/>
                 </sequence>
                 <attribute ref="gml:id"/>

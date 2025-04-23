@@ -249,7 +249,7 @@ public class GisHelper {
         }
 
         //setting id
-        pointType.setXmlId(value.getId());
+        // pointType.setXmlId(value.getId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -275,7 +275,7 @@ public class GisHelper {
         }
 
         //setting id
-        pointType.setXmlId(value.getId());
+        // pointType.setXmlId(value.getId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -336,7 +336,7 @@ public class GisHelper {
         }
 
         // setting id
-        elevatedPointType.setXmlId(value.getId());
+        // elevatedPointType.setXmlId(value.getId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -390,7 +390,7 @@ public class GisHelper {
         }
 
         // setting id
-        elevatedPointType.setXmlId(value.getId());
+        // elevatedPointType.setXmlId(value.getId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -469,7 +469,7 @@ public class GisHelper {
         }
 
         //setting id
-        curveType.setXmlId(value.getId());
+        // curveType.setXmlId(value.getId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -505,7 +505,7 @@ public class GisHelper {
         }
 
         //setting id
-        curveType.setXmlId(value.getId());
+        // curveType.setXmlId(value.getId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -571,7 +571,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedCurve.setXmlId(value.getId());
+        // elevatedCurve.setXmlId(value.getId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -634,7 +634,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedCurve.setXmlId(value.getId());
+        // elevatedCurve.setXmlId(value.getId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -724,7 +724,7 @@ public class GisHelper {
         }
 
         //setting id
-        surfaceType.setXmlId(value.getId());
+        // surfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -774,7 +774,7 @@ public class GisHelper {
         }
         
         //setting id
-        surfaceType.setXmlId(value.getId());
+        // surfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -856,7 +856,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedSurfaceType.setXmlId(value.getId());
+        // elevatedSurfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -906,7 +906,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedSurfaceType.setXmlId(value.getId());
+        // elevatedSurfaceType.setXmlId(value.getId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 

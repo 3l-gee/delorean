@@ -190,13 +190,13 @@ rename_config = {
             "routeavailability_pg"
             ]
     },
-    "sequence" : {
-        "method" : f'(?<=@Table\(name = ")([^"]+)(?=", schema =)',
-        "words" : [
-            "place_holder_generator_name"
-        ],
-        "prefix" : "_seq"
-    }
+    # "sequence" : {
+    #     "method" : f'(?<=@Table\(name = ")([^"]+)(?=", schema =)',
+    #     "words" : [
+    #         "place_holder_generator_name"
+    #     ],
+    #     "prefix" : "_seq"
+    # }
 }
 
 

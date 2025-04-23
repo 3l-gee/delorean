@@ -135,8 +135,8 @@ class FieldHandler:
             
             if element.attrib.get("name") == "dbid":
                 node.append(Annox.field_add(Jpa.id))
-                node.append(Annox.field_add(Jpa.generated_value("place_holder_generator_name")))
-                node.append(Annox.field_add(Jpa.sequence_generator("place_holder_generator_name")))
+                node.append(Annox.field_add(Jpa.generated_value("delorean_seq_gen")))
+                node.append(Annox.field_add(Jpa.sequence_generator("delorean_seq_gen")))
                 node.append(Annox.field_add(Jpa.column("id", nullable=False, unique=True)))
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Jaxb.end)
@@ -212,8 +212,8 @@ class FieldHandler:
             
             if element.attrib.get("name") == "dbid":
                 node.append(Annox.field_add(Jpa.id))
-                node.append(Annox.field_add(Jpa.generated_value("place_holder_generator_name")))
-                node.append(Annox.field_add(Jpa.sequence_generator("place_holder_generator_name")))
+                node.append(Annox.field_add(Jpa.generated_value("delorean_seq_gen")))
+                node.append(Annox.field_add(Jpa.sequence_generator("delorean_seq_gen")))
                 node.append(Annox.field_add(Jpa.column("id", nullable=False, unique=True)))
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Annox.end)

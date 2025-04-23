@@ -7,18 +7,12 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -34,7 +28,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1.1}AbstractAIXMObjectBaseType">
  *       <sequence>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -133,31 +126,5 @@ public abstract class AbstractAIXMObjectType
     extends AbstractAIXMObjectBaseType
 {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_object_seq")
-    @SequenceGenerator(name = "aixm_object_seq", sequenceName = "aixm_object_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected long dbid;
-
-    /**
-     * Gets the value of the dbid property.
-     * 
-     */
-    public long getDbid() {
-        return dbid;
-    }
-
-    /**
-     * Sets the value of the dbid property.
-     * 
-     */
-    public void setDbid(long value) {
-        this.dbid = value;
-    }
-
-    public boolean isSetDbid() {
-        return true;
-    }
 
 }

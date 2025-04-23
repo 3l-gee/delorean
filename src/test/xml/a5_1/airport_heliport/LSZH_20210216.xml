@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message:AIXMBasicMessage 
+	xmlns:message="http://www.aixm.aero/schema/5.1/message" 
+	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:gss="http://www.isotc211.org/2005/gss" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1" 
+	xmlns:gsr="http://www.isotc211.org/2005/gsr" 
+	xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message 
+	http://www.aixm.aero/schema/5.1/message/AIXM_BasicMessage.xsd" 
+	gml:id="1">
+	<gml:boundedBy>
+    </gml:boundedBy>
+    <aixm:messageMetadata>
+    </aixm:messageMetadata>
+	<message:hasMember>
+        <aixm:AirportHeliport xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="aix14851">
+            <gml:identifier codeSpace="urn:uuid:">9c94043d-98ae-410c-a80f-ad27a4be8bde</gml:identifier>
+            <aixm:timeSlice>
+                <aixm:AirportHeliportTimeSlice gml:id="aix14852">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="aix14853">
+                            <gml:beginPosition>2020-12-31T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:sequenceNumber>14</aixm:sequenceNumber>
+                    <aixm:correctionNumber>0</aixm:correctionNumber>
+                    <aixm:featureLifetime>
+                        <gml:TimePeriod gml:id="aix14854">
+                            <gml:beginPosition>2012-10-18T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </aixm:featureLifetime>
+                    <aixm:designator>LSZH</aixm:designator>
+                    <aixm:name>ZURICH</aixm:name>
+                    <aixm:locationIndicatorICAO>LSZH</aixm:locationIndicatorICAO>
+                    <aixm:designatorIATA>ZRH</aixm:designatorIATA>
+                    <aixm:type>AH</aixm:type>
+                    <aixm:privateUse>NO</aixm:privateUse>
+                    <aixm:controlType>CIVIL</aixm:controlType>
+                    <aixm:fieldElevation uom="FT">1416.622</aixm:fieldElevation>
+                    <aixm:magneticVariation>2.163</aixm:magneticVariation>
+                    <aixm:dateMagneticVariation>2015</aixm:dateMagneticVariation>
+                    <aixm:magneticVariationChange>0.172</aixm:magneticVariationChange>
+                    <aixm:referenceTemperature uom="C">24.0</aixm:referenceTemperature>
+                    <aixm:altimeterCheckLocation>YES</aixm:altimeterCheckLocation>
+                    <aixm:windDirectionIndicator>YES</aixm:windDirectionIndicator>
+                    <aixm:landingDirectionIndicator>NO</aixm:landingDirectionIndicator>
+                    <aixm:transitionAltitude uom="FT">7000</aixm:transitionAltitude>
+                    <aixm:certificationDate>2017-09-15Z</aixm:certificationDate>
+                    <aixm:certificationExpirationDate xsi:nil="true" nilReason="inapplicable"/>
+                    <aixm:servedCity>
+                        <aixm:City gml:id="aix14855">
+                            <aixm:name>ZURICH</aixm:name>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14856">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14857">
+                                            <aixm:note lang="en">9 KM N</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                        </aixm:City>
+                    </aixm:servedCity>
+                    <aixm:responsibleOrganisation>
+                        <aixm:AirportHeliportResponsibilityOrganisation gml:id="aix14858">
+                            <aixm:theOrganisationAuthority xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="urn:uuid:08e3beb7-d938-4ba5-98f1-be7095c79377"/>
+                        </aixm:AirportHeliportResponsibilityOrganisation>
+                    </aixm:responsibleOrganisation>
+                    <aixm:ARP>
+                        <aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="aix14859">
+                            <gml:pos>47.4581928694 8.5480045444</gml:pos>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14860">
+                                    <aixm:propertyName>pos</aixm:propertyName>
+                                    <aixm:purpose>DESCRIPTION</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14861">
+                                            <aixm:note lang="eng">Intersection RWY 16/34 and 10/28</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:elevation uom="FT">1381.92</aixm:elevation>
+                            <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                        </aixm:ElevatedPoint>
+                    </aixm:ARP>
+                    <aixm:contact>
+                        <aixm:ContactInformation gml:id="aix14862">
+                            <aixm:name>FLUGHAFEN ZUERICH AG</aixm:name>
+                            <aixm:address>
+                                <aixm:PostalAddress gml:id="aix14863">
+                                    <aixm:deliveryPoint>Postfach</aixm:deliveryPoint>
+                                    <aixm:city>ZURICH-AIRPORT</aixm:city>
+                                    <aixm:postalCode>8058</aixm:postalCode>
+                                    <aixm:country>SWITZERLAND</aixm:country>
+                                </aixm:PostalAddress>
+                            </aixm:address>
+                            <aixm:networkNode>
+                                <aixm:OnlineContact gml:id="aix14864">
+                                    <aixm:network>AFTN</aixm:network>
+                                    <aixm:linkage>LSZHYDYX</aixm:linkage>
+                                </aixm:OnlineContact>
+                            </aixm:networkNode>
+                            <aixm:networkNode>
+                                <aixm:OnlineContact gml:id="aix14865">
+                                    <aixm:network>INTERNET</aixm:network>
+                                    <aixm:eMail>airportauthority@zurich-airport.com</aixm:eMail>
+                                </aixm:OnlineContact>
+                            </aixm:networkNode>
+                            <aixm:networkNode>
+                                <aixm:OnlineContact gml:id="aix14866">
+                                    <aixm:annotation>
+                                        <aixm:Note gml:id="aix14867">
+                                            <aixm:purpose>REMARK</aixm:purpose>
+                                            <aixm:translatedNote>
+                                                <aixm:LinguisticNote gml:id="aix14868">
+                                                    <aixm:note lang="eng">GASC</aixm:note>
+                                                </aixm:LinguisticNote>
+                                            </aixm:translatedNote>
+                                        </aixm:Note>
+                                    </aixm:annotation>
+                                    <aixm:network>INTERNET</aixm:network>
+                                    <aixm:eMail>gasc@zurich-airport.com</aixm:eMail>
+                                </aixm:OnlineContact>
+                            </aixm:networkNode>
+                            <aixm:networkNode>
+                                <aixm:OnlineContact gml:id="aix14869">
+                                    <aixm:network>INTERNET</aixm:network>
+                                    <aixm:linkage>http://www.zurich-airport.com</aixm:linkage>
+                                </aixm:OnlineContact>
+                            </aixm:networkNode>
+                            <aixm:phoneFax>
+                                <aixm:TelephoneContact gml:id="aix14870">
+                                    <aixm:voice>+41438162111</aixm:voice>
+                                    <aixm:facsimile>+41438164757</aixm:facsimile>
+                                </aixm:TelephoneContact>
+                            </aixm:phoneFax>
+                            <aixm:phoneFax>
+                                <aixm:TelephoneContact gml:id="aix14871">
+                                    <aixm:annotation>
+                                        <aixm:Note gml:id="aix14872">
+                                            <aixm:purpose>REMARK</aixm:purpose>
+                                            <aixm:translatedNote>
+                                                <aixm:LinguisticNote gml:id="aix14873">
+                                                    <aixm:note lang="eng">GASC</aixm:note>
+                                                </aixm:LinguisticNote>
+                                            </aixm:translatedNote>
+                                        </aixm:Note>
+                                    </aixm:annotation>
+                                    <aixm:voice>+41438162117</aixm:voice>
+                                    <aixm:facsimile>+41438167379</aixm:facsimile>
+                                </aixm:TelephoneContact>
+                            </aixm:phoneFax>
+                        </aixm:ContactInformation>
+                    </aixm:contact>
+                    <aixm:availability>
+                        <aixm:AirportHeliportAvailability gml:id="aix14874">
+                            <aixm:timeInterval>
+                                <aixm:Timesheet gml:id="aix14875">
+                                    <aixm:timeReference>UTC</aixm:timeReference>
+                                    <aixm:startDate>01-01</aixm:startDate>
+                                    <aixm:endDate>31-12</aixm:endDate>
+                                    <aixm:day>ANY</aixm:day>
+                                    <aixm:startTime>05:00</aixm:startTime>
+                                    <aixm:endTime>22:00</aixm:endTime>
+                                    <aixm:daylightSavingAdjust>YES</aixm:daylightSavingAdjust>
+                                    <aixm:excluded>NO</aixm:excluded>
+                                </aixm:Timesheet>
+                            </aixm:timeInterval>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14876">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14877">
+                                            <aixm:note>DEPs and LDGs of delayed ACFT are allowed until 22:30 (21:30) without further permission.</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:operationalStatus>NORMAL</aixm:operationalStatus>
+                            <aixm:usage>
+                                <aixm:AirportHeliportUsage gml:id="aix14878">
+                                    <aixm:type>PERMIT</aixm:type>
+                                    <aixm:selection>
+                                        <aixm:ConditionCombination gml:id="aix14879">
+                                            <aixm:logicalOperator>OR</aixm:logicalOperator>
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="aix14880">
+                                                    <aixm:rule>IFR</aixm:rule>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>ALL</aixm:origin>
+                                                    <aixm:purpose>SCHEDULED</aixm:purpose>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="aix14881">
+                                                    <aixm:rule>IFR</aixm:rule>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>ALL</aixm:origin>
+                                                    <aixm:purpose>NON_SCHEDULED</aixm:purpose>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                        </aixm:ConditionCombination>
+                                    </aixm:selection>
+                                </aixm:AirportHeliportUsage>
+                            </aixm:usage>
+                        </aixm:AirportHeliportAvailability>
+                    </aixm:availability>
+                    <aixm:availability>
+                        <aixm:AirportHeliportAvailability gml:id="aix14882">
+                            <aixm:timeInterval>
+                                <aixm:Timesheet gml:id="aix14883">
+                                    <aixm:timeReference>UTC</aixm:timeReference>
+                                    <aixm:startDate>01-01</aixm:startDate>
+                                    <aixm:endDate>31-12</aixm:endDate>
+                                    <aixm:day>ANY</aixm:day>
+                                    <aixm:startTime>05:00</aixm:startTime>
+                                    <aixm:endTime>21:00</aixm:endTime>
+                                    <aixm:daylightSavingAdjust>YES</aixm:daylightSavingAdjust>
+                                    <aixm:excluded>NO</aixm:excluded>
+                                </aixm:Timesheet>
+                            </aixm:timeInterval>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14884">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14885">
+                                            <aixm:note>Charter Flights</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14886">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14887">
+                                            <aixm:note lang="en">DEPs of delayed ACFT are allowed until 21:30 (20:30) without further permission.</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:operationalStatus>NORMAL</aixm:operationalStatus>
+                            <aixm:usage>
+                                <aixm:AirportHeliportUsage gml:id="aix14888">
+                                    <aixm:type>PERMIT</aixm:type>
+                                    <aixm:selection>
+                                        <aixm:ConditionCombination gml:id="aix14889">
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="aix14890">
+                                                    <aixm:rule>IFR</aixm:rule>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>ALL</aixm:origin>
+                                                    <aixm:purpose>SCHEDULED</aixm:purpose>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                        </aixm:ConditionCombination>
+                                    </aixm:selection>
+                                    <aixm:operation>TAKEOFF</aixm:operation>
+                                </aixm:AirportHeliportUsage>
+                            </aixm:usage>
+                        </aixm:AirportHeliportAvailability>
+                    </aixm:availability>
+                    <aixm:availability>
+                        <aixm:AirportHeliportAvailability gml:id="aix14891">
+                            <aixm:timeInterval>
+                                <aixm:Timesheet gml:id="aix14892">
+                                    <aixm:timeReference>UTC</aixm:timeReference>
+                                    <aixm:startDate>01-01</aixm:startDate>
+                                    <aixm:endDate>31-12</aixm:endDate>
+                                    <aixm:day>ANY</aixm:day>
+                                    <aixm:startTime>05:00</aixm:startTime>
+                                    <aixm:endTime>22:00</aixm:endTime>
+                                    <aixm:daylightSavingAdjust>YES</aixm:daylightSavingAdjust>
+                                    <aixm:excluded>NO</aixm:excluded>
+                                </aixm:Timesheet>
+                            </aixm:timeInterval>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14893">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14894">
+                                            <aixm:note lang="en">Charter Flights</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14895">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14896">
+                                            <aixm:note lang="en">LDGs of delayed ACFT are allowed until 22:30 (21:30) without further permission.</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:operationalStatus>NORMAL</aixm:operationalStatus>
+                            <aixm:usage>
+                                <aixm:AirportHeliportUsage gml:id="aix14897">
+                                    <aixm:type>PERMIT</aixm:type>
+                                    <aixm:selection>
+                                        <aixm:ConditionCombination gml:id="aix14898">
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="aix14899">
+                                                    <aixm:rule>IFR</aixm:rule>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>ALL</aixm:origin>
+                                                    <aixm:purpose>SCHEDULED</aixm:purpose>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                        </aixm:ConditionCombination>
+                                    </aixm:selection>
+                                    <aixm:operation>LANDING</aixm:operation>
+                                </aixm:AirportHeliportUsage>
+                            </aixm:usage>
+                        </aixm:AirportHeliportAvailability>
+                    </aixm:availability>
+                    <aixm:availability>
+                        <aixm:AirportHeliportAvailability gml:id="aix14900">
+                            <aixm:timeInterval>
+                                <aixm:Timesheet gml:id="aix14901">
+                                    <aixm:timeReference>UTC</aixm:timeReference>
+                                    <aixm:startDate>01-01</aixm:startDate>
+                                    <aixm:endDate>31-12</aixm:endDate>
+                                    <aixm:day>ANY</aixm:day>
+                                    <aixm:startTime>05:00</aixm:startTime>
+                                    <aixm:endTime>21:00</aixm:endTime>
+                                    <aixm:daylightSavingAdjust>YES</aixm:daylightSavingAdjust>
+                                    <aixm:excluded>NO</aixm:excluded>
+                                </aixm:Timesheet>
+                            </aixm:timeInterval>
+                            <aixm:annotation>
+                                <aixm:Note gml:id="aix14902">
+                                    <aixm:purpose>REMARK</aixm:purpose>
+                                    <aixm:translatedNote>
+                                        <aixm:LinguisticNote gml:id="aix14903">
+                                            <aixm:note lang="en">A pilot-in-command may only expect a clearance for APCH if he is over or ABM (if radar vectored) reporting points GIPOL or AMIKI at 20:30 (19:30) at the latest.</aixm:note>
+                                        </aixm:LinguisticNote>
+                                    </aixm:translatedNote>
+                                </aixm:Note>
+                            </aixm:annotation>
+                            <aixm:operationalStatus>NORMAL</aixm:operationalStatus>
+                            <aixm:usage>
+                                <aixm:AirportHeliportUsage gml:id="aix14904">
+                                    <aixm:type>PERMIT</aixm:type>
+                                    <aixm:selection>
+                                        <aixm:ConditionCombination gml:id="aix14905">
+                                            <aixm:flight>
+                                                <aixm:FlightCharacteristic gml:id="aix14906">
+                                                    <aixm:rule>IFR</aixm:rule>
+                                                    <aixm:military>CIVIL</aixm:military>
+                                                    <aixm:origin>ALL</aixm:origin>
+                                                    <aixm:purpose>PRIVATE</aixm:purpose>
+                                                </aixm:FlightCharacteristic>
+                                            </aixm:flight>
+                                        </aixm:ConditionCombination>
+                                    </aixm:selection>
+                                </aixm:AirportHeliportUsage>
+                            </aixm:usage>
+                        </aixm:AirportHeliportAvailability>
+                    </aixm:availability>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="aix14907">
+                            <aixm:propertyName>altimeterCheckLocation</aixm:propertyName>
+                            <aixm:purpose>DESCRIPTION</aixm:purpose>
+                            <aixm:translatedNote>
+                                <aixm:LinguisticNote gml:id="aix14908">
+                                    <aixm:note lang="eng">Beginning RWY 10: 1391 ft
+Beginning RWY 14: 1402 ft
+Beginning RWY 16: 1390 ft
+Beginning RWY 28: 1416 ft
+Beginning RWY 32: 1402 ft
+Beginning RWY 34: 1385 ft
+Parking sector A, B: 1396 ft
+Parking sector C, D, E, G, T: 1390 ft
+Parking sector F: 1407 ft
+Parking sector H, I: 1400 ft
+Parking sector W: 1385 ft
+</aixm:note>
+                                </aixm:LinguisticNote>
+                            </aixm:translatedNote>
+                        </aixm:Note>
+                    </aixm:annotation>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="aix14909">
+                            <aixm:purpose>OTHER:to_EAD</aixm:purpose>
+                        </aixm:Note>
+                    </aixm:annotation>
+                    <aixm:annotation>
+                        <aixm:Note gml:id="aix14910">
+                            <aixm:propertyName>certificationDate</aixm:propertyName>
+                            <aixm:purpose>REMARK</aixm:purpose>
+                            <aixm:translatedNote>
+                                <aixm:LinguisticNote gml:id="aix14911">
+                                    <aixm:note lang="en">Date of initial Certification
+2006-JUN-06
+EASA</aixm:note>
+                                </aixm:LinguisticNote>
+                            </aixm:translatedNote>
+                        </aixm:Note>
+                    </aixm:annotation>
+                </aixm:AirportHeliportTimeSlice>
+            </aixm:timeSlice>
+        </aixm:AirportHeliport>
+	</message:hasMember>
+</message:AIXMBasicMessage>

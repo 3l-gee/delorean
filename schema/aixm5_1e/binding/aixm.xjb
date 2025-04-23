@@ -95,45 +95,45 @@
 	</jaxb:bindings>
 	<	jaxb:bindings schemaLocation="../aixm/event/Event_DataTypes.xsd" node="/xs:schema">
 	</jaxb:bindings> -->
-    <jaxb:bindings schemaLocation="../aixm/event/version_5.1-e/Event_Features.xsd" node="/xs:schema">
+    <!-- <jaxb:bindings schemaLocation="../aixm/event/version_5.1-e/Event_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.event"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
     <jaxb:bindings schemaLocation="../aixm/event/version_5.1-e/Event_DataTypes.xsd" node="/xs:schema">
-  	</jaxb:bindings>
+  	</jaxb:bindings> -->
     <!-- Extension -->
-    <jaxb:bindings schemaLocation="../aixm/extensions/AMDB/AMDB_Extension_Features.xsd" node="/xs:schema">
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/AMDB/AMDB_Extension_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.amdb"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
-    <jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_Features.xsd" node="/xs:schema">
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.adr"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
-	<jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_DataTypes.xsd" node="/xs:schema">
-  	</jaxb:bindings>
-    <jaxb:bindings schemaLocation="../aixm/extensions/EUR/eASM/eASM_Features.xsd" node="/xs:schema">
+    </jaxb:bindings> -->
+	<!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/eASM/eASM_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.easm"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
-    <jaxb:bindings schemaLocation="./aixm/extensions/EUR/eASM/eASM_DataTypes.xsd" node="/xs:schema">
-  	</jaxb:bindings>
-    <jaxb:bindings schemaLocation="../aixm/extensions/EUR/XSNOWTAM/Contamination_Features.xsd" node="/xs:schema">
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/EUR/eASM/eASM_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/XSNOWTAM/Contamination_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.xsnow"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
-    <jaxb:bindings schemaLocation="./aixm/extensions/EUR/XSNOWTAM/Contamination_Data_Types.xsd" node="/xs:schema">
-  	</jaxb:bindings>
-    <jaxb:bindings schemaLocation="../aixm/extensions/FAA/FNSE/FNSE_Features.xsd" node="/xs:schema">
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/EUR/XSNOWTAM/Contamination_Data_Types.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/FAA/FNSE/FNSE_Features.xsd" node="/xs:schema">
         <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.fnse"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
-    <jaxb:bindings schemaLocation="./aixm/extensions/FAA/FNSE/FNSE_DataTypes.xsd" node="/xs:schema">
-  	</jaxb:bindings>
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/FAA/FNSE/FNSE_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
 </jaxb:bindings>

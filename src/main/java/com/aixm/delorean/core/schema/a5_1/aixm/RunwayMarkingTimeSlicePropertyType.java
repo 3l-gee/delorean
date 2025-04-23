@@ -63,8 +63,8 @@ public class RunwayMarkingTimeSlicePropertyType {
     @JoinColumn(name = "runwaymarkingtimeslice_id", referencedColumnName = "id")
     protected RunwayMarkingTimeSliceType runwayMarkingTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "runwaymarking_tsp_seq")
-    @SequenceGenerator(name = "runwaymarking_tsp_seq", sequenceName = "runwaymarking_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

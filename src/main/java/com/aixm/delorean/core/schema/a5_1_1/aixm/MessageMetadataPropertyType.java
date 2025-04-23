@@ -58,9 +58,9 @@ public class MessageMetadataPropertyType
     @Transient
     protected MDMetadataType mdMetadata;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_metadata_property_seq")
-    @SequenceGenerator(name = "message_metadata_property_seq", sequenceName = "message_metadata_property_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false, unique = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;
 

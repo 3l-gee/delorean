@@ -13,8 +13,7 @@
 	<jaxb:bindings schemaLocation="../aixm/ISO_19136_Schemas/gml.xsd" node="/xs:schema">
 		<jaxb:schemaBindings>
 			<!-- <jaxb:package name="net.opengis.gml.v_3_2"/> -->
-			<!-- <jaxb:package name="com.aixm.delorean.core.org.gml.v_3_2"/> -->
-			<jaxb:package name="com.aixm.delorean.test.org.gml.v_3_2"/>
+			<jaxb:package name="com.aixm.delorean.core.org.gml.v_3_2"/>
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 

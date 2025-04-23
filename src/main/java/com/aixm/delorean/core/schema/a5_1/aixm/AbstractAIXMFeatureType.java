@@ -7,19 +7,13 @@
 
 package com.aixm.delorean.core.schema.a5_1.aixm;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -36,7 +30,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractAIXMFeatureBaseType">
  *       <sequence>
  *         <element name="featureMetadata" type="{http://www.aixm.aero/schema/5.1}FeatureMetadataPropertyType" minOccurs="0"/>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -137,12 +130,6 @@ public abstract class AbstractAIXMFeatureType
 
     @Transient
     protected FeatureMetadataPropertyType featureMetadata;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_feature_seq")
-    @SequenceGenerator(name = "aixm_feature_seq", sequenceName = "aixm_feature_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected long dbid;
 
     /**
      * Gets the value of the featureMetadata property.
@@ -170,26 +157,6 @@ public abstract class AbstractAIXMFeatureType
 
     public boolean isSetFeatureMetadata() {
         return (this.featureMetadata!= null);
-    }
-
-    /**
-     * Gets the value of the dbid property.
-     * 
-     */
-    public long getDbid() {
-        return dbid;
-    }
-
-    /**
-     * Sets the value of the dbid property.
-     * 
-     */
-    public void setDbid(long value) {
-        this.dbid = value;
-    }
-
-    public boolean isSetDbid() {
-        return true;
     }
 
 }
