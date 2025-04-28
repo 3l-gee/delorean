@@ -11,6 +11,7 @@ import com.aixm.delorean.core.adapter.a5_1.gis.ElevatedSurfaceTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedSurfaceType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -52,6 +53,13 @@ public class ElevatedSurfacePropertyType
     @XmlJavaTypeAdapter(ElevatedSurfaceTypeAdapter.class)
     @Embedded
     protected AixmElevatedSurfaceType elevatedSurface;
+
+    @PostLoad
+    public void setGmlFeatureXmlId() {
+        if (this.dbid != null  && this.elevatedSurface != null) {
+            this.elevatedSurface.setXmlId("gmlID" + this.dbid.toString());
+        }
+    }
 
     /**
      * Gets the value of the elevatedSurface property.

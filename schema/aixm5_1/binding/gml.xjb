@@ -22,7 +22,7 @@
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
-			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
 			<jaxb:property name="xmlId"/>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:element[@name='dbid']">

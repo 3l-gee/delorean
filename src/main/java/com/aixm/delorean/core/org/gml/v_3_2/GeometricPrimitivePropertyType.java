@@ -40,8 +40,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}AbstractGeometricPrimitive"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -61,9 +61,6 @@ public class GeometricPrimitivePropertyType {
      */
     @XmlElementRef(name = "AbstractGeometricPrimitive", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractGeometricPrimitiveType> abstractGeometricPrimitive;
-    @XmlAttribute(name = "owns")
-    @Transient
-    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
     protected List<String> nilReason;
@@ -91,6 +88,9 @@ public class GeometricPrimitivePropertyType {
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
     @Transient
     protected ActuateType actuate;
+    @XmlAttribute(name = "owns")
+    @Transient
+    protected java.lang.Boolean owns;
 
     /**
      * The AbstractGeometricPrimitive element is the abstract head of the substitution group for all (pre- and user-defined) geometric primitives.
@@ -173,42 +173,6 @@ public class GeometricPrimitivePropertyType {
 
     public boolean isSetAbstractGeometricPrimitive() {
         return (this.abstractGeometricPrimitive!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
     /**
@@ -445,6 +409,42 @@ public class GeometricPrimitivePropertyType {
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
 }

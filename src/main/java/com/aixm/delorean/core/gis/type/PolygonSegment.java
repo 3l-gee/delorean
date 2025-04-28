@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Index;
 
@@ -29,7 +30,7 @@ public class PolygonSegment {
     @Column(name = "id", nullable = false)
     protected long dbid;
 
-    @Column(name = "curve_xml_id")
+    @Transient
     protected String id;
 
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")

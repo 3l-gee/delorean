@@ -113,7 +113,7 @@ public abstract class AbstractGMLType {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Column(name = "xml_id")
+    @Transient
     protected String xmlId;
 
     @PostLoad
@@ -328,6 +328,17 @@ public abstract class AbstractGMLType {
         return xmlId;
     }
 
+    /**
+     * Sets the value of the xmlId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setXmlId(String value) {
+        this.xmlId = value;
+    }
 
     public boolean isSetXmlId() {
         return (this.xmlId!= null);

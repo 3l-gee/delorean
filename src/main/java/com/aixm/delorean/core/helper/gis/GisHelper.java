@@ -43,10 +43,6 @@ public class GisHelper {
             throw new RuntimeException();
         }
             
-        if (id != null) {
-            obj.setId(id);
-        }
-
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
             obj.setHorizontalAccuracy(horizontalElement.getValue());
@@ -76,10 +72,6 @@ public class GisHelper {
             throw new RuntimeException();
         }
             
-        if (id != null) {
-            obj.setId(id);
-        }
-
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
             obj.setHorizontalAccuracy(horizontalElement.getValue());
@@ -111,10 +103,6 @@ public class GisHelper {
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
             throw new RuntimeException();
-        }
-
-        if (id != null) {
-            obj.setId(id);
         }
 
         // Handle Horizontal Accuracy
@@ -174,10 +162,6 @@ public class GisHelper {
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
             throw new RuntimeException();
-        }
-
-        if (id != null) {
-            obj.setId(id);
         }
 
         // Handle Horizontal Accuracy
@@ -249,7 +233,7 @@ public class GisHelper {
         }
 
         //setting id
-        // pointType.setXmlId(value.getId());
+        pointType.setXmlId(value.getXmlId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -275,7 +259,7 @@ public class GisHelper {
         }
 
         //setting id
-        // pointType.setXmlId(value.getId());
+        pointType.setXmlId(value.getXmlId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -336,7 +320,7 @@ public class GisHelper {
         }
 
         // setting id
-        // elevatedPointType.setXmlId(value.getId());
+        elevatedPointType.setXmlId(value.getXmlId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -390,7 +374,7 @@ public class GisHelper {
         }
 
         // setting id
-        // elevatedPointType.setXmlId(value.getId());
+        elevatedPointType.setXmlId(value.getXmlId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -469,7 +453,7 @@ public class GisHelper {
         }
 
         //setting id
-        // curveType.setXmlId(value.getId());
+        curveType.setXmlId(value.getXmlId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -505,7 +489,7 @@ public class GisHelper {
         }
 
         //setting id
-        // curveType.setXmlId(value.getId());
+        curveType.setXmlId(value.getXmlId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -571,7 +555,7 @@ public class GisHelper {
         }
 
         //setting id
-        // elevatedCurve.setXmlId(value.getId());
+        elevatedCurve.setXmlId(value.getXmlId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -634,7 +618,7 @@ public class GisHelper {
         }
 
         //setting id
-        // elevatedCurve.setXmlId(value.getId());
+        elevatedCurve.setXmlId(value.getXmlId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -723,8 +707,8 @@ public class GisHelper {
             return surfaceType;
         }
 
-        //setting id
-        // surfaceType.setXmlId(value.getId());
+        // setting id
+        surfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -774,7 +758,7 @@ public class GisHelper {
         }
         
         //setting id
-        // surfaceType.setXmlId(value.getId());
+        surfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -792,7 +776,7 @@ public class GisHelper {
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
-        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
+        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, exterior);
         AbstractRingPropertyType abstractExteriorRing = new AbstractRingPropertyType();
         abstractExteriorRing.setAbstractRing(jaxbExterior);
         polygonPatch.setExterior(abstractExteriorRing);
@@ -800,16 +784,16 @@ public class GisHelper {
         //interior
         List<RingType> interior = SurfaceGmlHelper.printInteriorRing(value.getInteriorlinestring());
         for (RingType ring : interior) {
-            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, ring);
+            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, ring);
             AbstractRingPropertyType abstractInteriorRing = new AbstractRingPropertyType();
             abstractInteriorRing.setAbstractRing(jaxbInterior);
             polygonPatch.getInterior().add(abstractInteriorRing);
         }
         
-        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
+        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
         SurfacePatchArrayPropertyType surfacePatchArrayProperty = new SurfacePatchArrayPropertyType();
         surfacePatchArrayProperty.getAbstractSurfacePatch().add(jaxbPolygonPatch);
-        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
+        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
         surfaceType.setPatches(jaxbSurfacePatchArrayProperty);
 
         ConsoleLogger.log(LogLevel.DEBUG, "SurfaceType : " + surfaceType.toString(), new Exception().getStackTrace()[0]);
@@ -856,7 +840,7 @@ public class GisHelper {
         }
 
         //setting id
-        // elevatedSurfaceType.setXmlId(value.getId());
+        elevatedSurfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -906,7 +890,7 @@ public class GisHelper {
         }
 
         //setting id
-        // elevatedSurfaceType.setXmlId(value.getId());
+        elevatedSurfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -924,7 +908,7 @@ public class GisHelper {
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
-        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
+        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, exterior);
         AbstractRingPropertyType abstractExteriorRing = new AbstractRingPropertyType();
         abstractExteriorRing.setAbstractRing(jaxbExterior);
         polygonPatch.setExterior(abstractExteriorRing);
@@ -932,16 +916,16 @@ public class GisHelper {
         //interior
         List<RingType> interior = SurfaceGmlHelper.printInteriorRing(value.getInteriorlinestring());
         for (RingType ring : interior) {
-            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, ring);
+            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, ring);
             AbstractRingPropertyType abstractInteriorRing = new AbstractRingPropertyType();
             abstractInteriorRing.setAbstractRing(jaxbInterior);
             polygonPatch.getInterior().add(abstractInteriorRing);
         }
         
-        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
+        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
         SurfacePatchArrayPropertyType surfacePatchArrayProperty = new SurfacePatchArrayPropertyType();
         surfacePatchArrayProperty.getAbstractSurfacePatch().add(jaxbPolygonPatch);
-        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
+        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
         elevatedSurfaceType.setPatches(jaxbSurfacePatchArrayProperty);
         
         ConsoleLogger.log(LogLevel.DEBUG, "ElevatedSurfaceType : " + elevatedSurfaceType.toString(), new Exception().getStackTrace()[0]);
