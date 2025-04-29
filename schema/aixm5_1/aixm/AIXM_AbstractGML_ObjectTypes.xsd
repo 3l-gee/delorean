@@ -69,8 +69,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
-					<!-- Adding dbid as a new field -->
-                	<!-- <element name="dbid" type="xs:long"/> -->
+					<!-- New status element  -->
+                	<element name="approvalStatus" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -100,8 +100,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<complexContent>
 			<extension base="aixm:AbstractAIXMObjectBaseType">
 				<sequence>
-					<!-- Adding dbid as a new field -->
-                	<!-- <element name="dbid" type="xs:long"/> -->
+					<!-- New status element  -->
+                	<element name="approvalStatus" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -118,6 +118,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<!-- Adding dbid as a new field -->
 			<element name="dbid" type="xs:long" minOccurs="0"/>
+			<!-- New status element  -->
+			<element name="approvalStatus" type="xs:string" minOccurs="0"/>
 		</sequence>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
 	</complexType>
@@ -157,8 +159,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
 					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
-					<!-- Adding dbid as a new field -->
-                	<!-- <element name="dbid" type="xs:long"/> -->
+					<!-- New status element  -->
+                	<element name="approvalStatus" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>

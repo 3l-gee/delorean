@@ -26,44 +26,38 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings> -->
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageType']">
                 <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMMessageType']">
                 <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureBaseType']">
                 <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractAIXMFeatureType", propOrder = {"featureMetadata"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureMetadata']">
                 <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
             </jaxb:bindings>
-            <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='dbid']">
-                <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_feature_seq")</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "aixm_feature_seq", sequenceName = "aixm_feature_seq", allocationSize = 1)</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='approvalStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "approval_status")</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
-            </jaxb:bindings> -->
-
+            </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectBaseType']">
                 <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractAIXMObjectType",propOrder = {})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']//xs:element[@name='approvalStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "approval_status")</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>
             <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']//xs:element[@name='dbid']">
                 <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
@@ -72,29 +66,25 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings> -->
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMPropertyType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractAIXMPropertyType",propOrder = {})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMPropertyType']//xs:element[@name='dbid']">
-                <!-- <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_property_seq")</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "aixm_property_seq", sequenceName = "aixm_property_seq", allocationSize = 1)</annox:annotate>
-                <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
-                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate> -->
                 <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>
-
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMPropertyType']//xs:element[@name='approvalStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "approval_status")</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+            </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceBaseType']">
                 <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractAIXMTimeSliceType", propOrder = {"interpretation", "sequenceNumber", "correctionNumber", "timeSliceMetadata", "featureLifetime", })</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -121,7 +111,10 @@
                 <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "beginPosition", column = @jakarta.persistence.Column(name = "feature_lifetime_begin")), @jakarta.persistence.AttributeOverride(name = "endPosition", column = @jakarta.persistence.Column(name = "feature_lifetime_end"))})</annox:annotate>
                 <jaxb:property name="featureLifetime"/>
             </jaxb:bindings>
-
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='approvalStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "approval_status")</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+            </jaxb:bindings>
             <!-- <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='dbid']">
                 <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_time_slice_seq")</annox:annotate>
@@ -129,11 +122,9 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings> -->
-
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureMetadata']">
                 <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="//xs:element[@name='interpretation']//xs:simpleType">
                 <jaxb:typesafeEnumClass name="InterpretationType">
                     <jaxb:typesafeEnumMember name="BASELINE" value="BASELINE"/>
@@ -142,7 +133,6 @@
                     <jaxb:typesafeEnumMember name="PERMDELTA" value="PERMDELTA"/>
                 </jaxb:typesafeEnumClass>
             </jaxb:bindings>
-
             <jaxb:bindings node="//xs:complexType[@name='MessageMetadataPropertyType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "MessageMetadataPropertyType", propOrder = {"mdMetadata"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -163,7 +153,6 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="//xs:complexType[@name='FeatureMetadataPropertyType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "FeatureMetadataPropertyType", propOrder = {"mdMetadata"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -184,7 +173,6 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>
-
             <jaxb:bindings node="//xs:complexType[@name='FeatureTimeSliceMetadataPropertyType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "FeatureTimeSliceMetadataPropertyType", propOrder = {"mdMetadata"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
@@ -205,7 +193,6 @@
                 <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
                 <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
             </jaxb:bindings>
-
         </jaxb:bindings>
 	</jaxb:bindings>
 </jaxb:bindings>

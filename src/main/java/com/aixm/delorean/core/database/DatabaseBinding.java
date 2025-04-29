@@ -172,6 +172,8 @@ public class DatabaseBinding<T> {
         }
 
         Session session = this.sessionFactory.openSession();
+        //TODO : first try at conditional exports
+        session.enableFilter("approved").setParameter("status", "APPROVED");
         Transaction transaction = null;
         Object object = null;
 
