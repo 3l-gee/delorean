@@ -19,6 +19,7 @@
 
 	<jaxb:bindings schemaLocation="../aixm/gml/3.2.1/gmlBase.xsd" node="/xs:schema">
 	    <jaxb:bindings node="//xs:complexType[@name='AbstractGMLType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractGMLType", propOrder = {"metaDataProperty", "description", "descriptionReference", "identifier", "name"})</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
