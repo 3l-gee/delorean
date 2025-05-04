@@ -22,7 +22,7 @@ public enum DatabaseConfig {
         "a5_1",                                 // version
         5,                                      // Connection pool min size
         20,                                     // Connection pool max size
-        false,                                  // Hibernate show_sql
+        true,                                  // Hibernate show_sql
         "a5_1/postgres/init/schema.sql",
         new Class<?>[]{
             // gis

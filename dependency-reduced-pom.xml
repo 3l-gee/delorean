@@ -110,6 +110,11 @@
                 <artifactId>hyperjaxb3-ejb-plugin</artifactId>
                 <version>4.0.8</version>
               </dependency>
+              <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>6.6.13.Final</version>
+              </dependency>
             </dependencies>
             <configuration>
               <extension>true</extension>

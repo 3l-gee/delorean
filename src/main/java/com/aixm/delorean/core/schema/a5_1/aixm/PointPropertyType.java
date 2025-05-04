@@ -11,7 +11,6 @@ import com.aixm.delorean.core.adapter.a5_1.gis.PointTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmPointType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,13 +52,6 @@ public class PointPropertyType
     @XmlJavaTypeAdapter(PointTypeAdapter.class)
     @Embedded
     protected AixmPointType point;
-
-    @PostLoad
-    public void setGmlFeatureXmlId() {
-        if (this.dbid != null && this.point != null) {
-            this.point.setXmlId("gmlID" + this.dbid.toString());
-        }
-    }
 
     /**
      * Gets the value of the point property.

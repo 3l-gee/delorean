@@ -43,9 +43,8 @@ public class Main {
 
         if (mainInstance.testOption) {
             mainInstance.testRun();
-        } else {
-            mainInstance.run();
-        }
+        }             
+        mainInstance.run();
     }
 
     private void run() {
@@ -85,50 +84,50 @@ public class Main {
 
     private void testRun() {
         Scanner scanner = new Scanner(System.in);
-        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1", scanner,  "", "");
+        ConsoleLogger.log(LogLevel.INFO, "new a5_1");
+        executeNewCommand("a5_1", scanner,  "", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
+        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1", "");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner, "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner, "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLSurface.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLSurface.xml");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
         
-        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
+        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - load");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db - load");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1", scanner, "", "");
+        // ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
+        // executeNewCommand("a5_1_1", scanner, "", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
+        // ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
+        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - export 1");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
+        // ConsoleLogger.log(LogLevel.INFO, "db - export 1");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/retrive.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/retrive.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 
@@ -320,8 +319,10 @@ public class Main {
                 String username = scanner.nextLine();
 
                 // Ask for password (hidden input)
-                char[] passwordChars = console.readPassword("Enter password : ");
-                String password = new String(passwordChars);
+                // char[] passwordChars = console.readPassword("Enter password : ");
+                System.out.print("Enter password : ");
+                String password = scanner.nextLine();
+                // String password = new String(passwordChars);
 
                 // Ask for hbm2ddl
                 System.out.print("Enter hbm2ddl, [create, update, validate, none] : ");
@@ -368,6 +369,7 @@ public class Main {
                 case "export":
                     this.containerWarehouse.getContainer(argument).export(option);
                     break;
+
                 default:
                     break;
             }

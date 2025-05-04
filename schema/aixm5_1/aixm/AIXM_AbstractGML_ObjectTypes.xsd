@@ -69,8 +69,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
-					<!-- New status element  -->
-                	<element name="approvalStatus" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -80,7 +78,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<documentation>Substitution head for AIXM features.</documentation>
 		</annotation>
 	</element>
-	<complexType name="AbstractAIXMObjectBaseType" abstract="true">
+	<complexType name="AbstractAIXMObjectType" abstract="true">
 		<annotation>
 			<documentation>Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.</documentation>
 		</annotation>
@@ -91,19 +89,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
 			</restriction>
-		</complexContent>
-	</complexType>
-	<complexType name="AbstractAIXMObjectType" abstract="true">
-		<annotation>
-			<documentation>Adds the FeatureMetadata, which is common to all AIXM features</documentation>
-		</annotation>
-		<complexContent>
-			<extension base="aixm:AbstractAIXMObjectBaseType">
-				<sequence>
-					<!-- New status element  -->
-                	<element name="approvalStatus" type="xs:string"/>
-				</sequence>
-			</extension>
 		</complexContent>
 	</complexType>
 	<element name="AbstractAIXMObject" type="aixm:AbstractAIXMObjectType" abstract="true" substitutionGroup="gml:AbstractGML">
@@ -118,8 +103,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<sequence>
 			<!-- Adding dbid as a new field -->
 			<element name="dbid" type="xs:long" minOccurs="0"/>
-			<!-- New status element  -->
-			<element name="approvalStatus" type="xs:string" minOccurs="0"/>
 		</sequence>
 		<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
 	</complexType>
@@ -159,8 +142,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
 					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
-					<!-- New status element  -->
-                	<element name="approvalStatus" type="xs:string"/>
 				</sequence>
 			</extension>
 		</complexContent>

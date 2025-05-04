@@ -1,11 +1,16 @@
 package com.aixm.delorean.core.database;
 
+import org.hibernate.FlushMode;
 import org.hibernate.Session;
+import org.hibernate.Filter;
+import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
+
+import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
 
 import org.hibernate.Transaction;
 
@@ -172,14 +177,21 @@ public class DatabaseBinding<T> {
         }
 
         Session session = this.sessionFactory.openSession();
-        //TODO : first try at conditional exports
-        session.enableFilter("approved").setParameter("status", "APPROVED");
+        session.setHibernateFlushMode(FlushMode.MANUAL);
+
+        // Enable the filter
+        session.enableFilter("filterByStatus").setParameter("status", "APPROVED");
+
         Transaction transaction = null;
         Object object = null;
 
         try {
+            // Start a transaction
             transaction = session.beginTransaction();
-            object = session.get(structure, id);
+
+            // Retrieve the object using byId
+            object = session.byId(AIXMBasicMessageType.class).load(id);
+    
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

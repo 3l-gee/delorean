@@ -16,9 +16,12 @@
                 <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
+                <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
+                <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByStatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
+                <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {"abstractAIXMFeature"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Table(name = "basic_message_member")</annox:annotate>
@@ -39,6 +42,12 @@
                     <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
                     <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
                     <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+                </jaxb:bindings>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
+                <jaxb:bindings node="//xs:element[@name='status']">
+                    <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
                     <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
                 </jaxb:bindings>
             </jaxb:bindings>

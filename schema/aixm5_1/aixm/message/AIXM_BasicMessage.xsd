@@ -43,6 +43,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</sequence>
 			</extension>
 		</complexContent>
+
 	</complexType>
 	<element name="AIXMBasicMessage" type="message:AIXMBasicMessageType" substitutionGroup="gml:AbstractFeature"/>
 	<complexType name="BasicMessageMemberAIXMPropertyType">
@@ -56,6 +57,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					</choice>
 					<!-- Adding dbID as a new field inside the sequence -->
 					<element name="dbid" type="xs:long"/>
+					<!-- New status element  -->
+                	<element name="status" type="xs:string" minOccurs="0"/>
 				</sequence>
 				<attributeGroup ref="gml:AssociationAttributeGroup"/>
 			</extension>

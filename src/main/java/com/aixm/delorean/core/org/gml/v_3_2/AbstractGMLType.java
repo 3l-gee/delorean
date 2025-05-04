@@ -22,7 +22,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PostLoad;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -115,14 +114,6 @@ public abstract class AbstractGMLType {
     @XmlSchemaType(name = "ID")
     @Transient
     protected String xmlId;
-
-    @PostLoad
-    public void setXmlId() {
-        if (this.dbid != null) {
-            this.xmlId = "gmlID" + this.dbid.toString();
-        }
-    }
-
 
     /**
      * Gets the value of the dbid property.

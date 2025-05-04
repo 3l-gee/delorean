@@ -20,6 +20,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterJoinTable;
 
 
 /**
@@ -53,9 +55,11 @@ public class AIXMBasicMessageType
 {
 
     @XmlElement(required = true)
+    @Filter(name = "filterByStatus", condition = "status = :status")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @FilterJoinTable(name = "filterByStatus", condition = "status = :status")
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**
