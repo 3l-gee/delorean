@@ -13,6 +13,9 @@ import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMMessageType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -21,7 +24,10 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.FilterJoinTable;
+import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.SqlFragmentAlias;
 
 
 /**
@@ -48,6 +54,9 @@ import org.hibernate.annotations.FilterJoinTable;
     "hasMember"
 })
 @XmlRootElement
+@FilterDef(name = "filterByStatus", parameters = {
+    @ParamDef(name = "status", type = String.class)
+})
 @Entity
 @Table(name = "aixm_basic_message")
 public class AIXMBasicMessageType
@@ -55,11 +64,15 @@ public class AIXMBasicMessageType
 {
 
     @XmlElement(required = true)
-    @Filter(name = "filterByStatus", condition = "status = :status")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, orphanRemoval = true, fetch = FetchType.EAGER)
-    @FilterJoinTable(name = "filterByStatus", condition = "status = :status")
+    @Filter(
+        name = "filterByStatus", 
+        condition = "{bmm}.status = :status",
+        aliases = {
+            @SqlFragmentAlias( alias = "bmm", table= "basic_message_member")
+	})
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**

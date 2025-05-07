@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.SqlFragmentAlias;
 
 
 /**
@@ -65,10 +66,12 @@ import org.hibernate.annotations.ParamDef;
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
     "abstractAIXMFeature"
 })
-@FilterDef(name = "filterByStatus", parameters = {
-    @ParamDef(name = "status", type = String.class)
-})
-@Filter(name = "filterByStatus", condition = "status = :status")
+@Filter(
+    name = "filterByStatus", 
+    condition = "{bmm}.status = :status",
+    aliases = {
+		@SqlFragmentAlias( alias = "bmm", table= "basic_message_member")
+	})
 @Entity
 @Table(name = "basic_message_member")
 public class BasicMessageMemberAIXMPropertyType

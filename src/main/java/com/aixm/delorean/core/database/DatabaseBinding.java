@@ -180,7 +180,9 @@ public class DatabaseBinding<T> {
         session.setHibernateFlushMode(FlushMode.MANUAL);
 
         // Enable the filter
-        session.enableFilter("filterByStatus").setParameter("status", "APPROVED");
+        Filter filter = session.enableFilter("filterByStatus");
+        filter.setParameter("status", "APPROVED");
+        filter.validate();
 
         Transaction transaction = null;
         Object object = null;
@@ -190,7 +192,9 @@ public class DatabaseBinding<T> {
             transaction = session.beginTransaction();
 
             // Retrieve the object using byId
-            object = session.byId(AIXMBasicMessageType.class).load(id);
+            // object = session.find(AIXMBasicMessageType.class, id);
+            object = session.createQuery("select abmt from AIXMBasicMessageType abmt", AIXMBasicMessageType.class).getResultList();
+            // object = session.byId(AIXMBasicMessageType.class).load(id);
     
             transaction.commit();
         } catch (Exception e) {
