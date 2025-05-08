@@ -68,10 +68,8 @@ import org.hibernate.annotations.SqlFragmentAlias;
 })
 @Filter(
     name = "filterByStatus", 
-    condition = "{bmm}.status = :status",
-    aliases = {
-		@SqlFragmentAlias( alias = "bmm", table= "basic_message_member")
-	})
+    condition = "status = :status"
+)
 @Entity
 @Table(name = "basic_message_member")
 public class BasicMessageMemberAIXMPropertyType

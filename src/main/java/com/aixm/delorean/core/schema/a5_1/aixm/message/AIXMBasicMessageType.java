@@ -23,6 +23,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
+
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.FilterJoinTable;
@@ -69,10 +71,8 @@ public class AIXMBasicMessageType
     }, orphanRemoval = true, fetch = FetchType.EAGER)
     @Filter(
         name = "filterByStatus", 
-        condition = "{bmm}.status = :status",
-        aliases = {
-            @SqlFragmentAlias( alias = "bmm", table= "basic_message_member")
-	})
+        condition = "status = :status"
+    )
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**

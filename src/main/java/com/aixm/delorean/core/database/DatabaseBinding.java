@@ -11,7 +11,7 @@ import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 
 import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
-
+import com.aixm.delorean.core.schema.a5_1.aixm.message.BasicMessageMemberAIXMPropertyType;
 import org.hibernate.Transaction;
 
 import java.sql.Connection;
@@ -177,7 +177,6 @@ public class DatabaseBinding<T> {
         }
 
         Session session = this.sessionFactory.openSession();
-        session.setHibernateFlushMode(FlushMode.MANUAL);
 
         // Enable the filter
         Filter filter = session.enableFilter("filterByStatus");
@@ -193,7 +192,8 @@ public class DatabaseBinding<T> {
 
             // Retrieve the object using byId
             // object = session.find(AIXMBasicMessageType.class, id);
-            object = session.createQuery("select abmt from AIXMBasicMessageType abmt", AIXMBasicMessageType.class).getResultList();
+            object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
+            // object = session.createQuery("select abmt from BasicMessageMemberAIXMPropertyType abmt", BasicMessageMemberAIXMPropertyType.class).getResultList();
             // object = session.byId(AIXMBasicMessageType.class).load(id);
     
             transaction.commit();
