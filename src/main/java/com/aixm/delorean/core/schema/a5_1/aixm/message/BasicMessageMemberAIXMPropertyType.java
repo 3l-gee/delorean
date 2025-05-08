@@ -26,16 +26,12 @@ import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
-import org.hibernate.annotations.SqlFragmentAlias;
 
 
 /**
@@ -52,7 +48,7 @@ import org.hibernate.annotations.SqlFragmentAlias;
  *           <element name="abstractAIXMFeature" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         </choice>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         <element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </extension>
@@ -66,10 +62,7 @@ import org.hibernate.annotations.SqlFragmentAlias;
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
     "abstractAIXMFeature"
 })
-@Filter(
-    name = "filterByStatus", 
-    condition = "status = :status"
-)
+@Filter(name = "filterByStatus", condition = "status = :status")
 @Entity
 @Table(name = "basic_message_member")
 public class BasicMessageMemberAIXMPropertyType
@@ -90,27 +83,27 @@ public class BasicMessageMemberAIXMPropertyType
     protected long dbid;
     @Column(name = "status")
     @XmlTransient
-    protected java.lang.String status;
+    protected String status;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
-    protected List<java.lang.String> nilReason;
+    protected List<String> nilReason;
     @XmlAttribute(name = "remoteSchema", namespace = "http://www.opengis.net/gml/3.2")
     @XmlSchemaType(name = "anyURI")
     @Transient
-    protected java.lang.String remoteSchema;
+    protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    public static final java.lang.String TYPE = "simple";
+    public static final String TYPE = "simple";
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlSchemaType(name = "anyURI")
-    protected java.lang.String href;
+    protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
     @XmlSchemaType(name = "anyURI")
-    protected java.lang.String role;
+    protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
     @XmlSchemaType(name = "anyURI")
-    protected java.lang.String arcrole;
+    protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected java.lang.String title;
+    protected String title;
     /**
      * The 'show' attribute is used to communicate the desired presentation 
      *         of the ending resource on traversal from the starting resource; it's 
@@ -127,7 +120,7 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      */
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
-    protected java.lang.String show;
+    protected String show;
     /**
      * The 'actuate' attribute is used to communicate the desired timing 
      *         of traversal from the starting resource to the ending resource; 
@@ -143,14 +136,14 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      */
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
-    protected java.lang.String actuate;
+    protected String actuate;
 
     /**
      * Gets the value of the abstractAIXMFeature property.
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
     public AbstractAIXMFeatureType getAbstractAIXMFeature() {
@@ -162,7 +155,7 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
     public void setAbstractAIXMFeature(AbstractAIXMFeatureType value) {
@@ -198,10 +191,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -210,10 +203,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setStatus(java.lang.String value) {
+    public void setStatus(String value) {
         this.status = value;
     }
 
@@ -239,14 +232,14 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link java.lang.String }
+     * {@link String }
      * </p>
      * 
      * 
      * @return
      *     The value of the nilReason property.
      */
-    public List<java.lang.String> getNilReason() {
+    public List<String> getNilReason() {
         if (nilReason == null) {
             nilReason = new ArrayList<>();
         }
@@ -266,10 +259,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getRemoteSchema() {
+    public String getRemoteSchema() {
         return remoteSchema;
     }
 
@@ -278,10 +271,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setRemoteSchema(java.lang.String value) {
+    public void setRemoteSchema(String value) {
         this.remoteSchema = value;
     }
 
@@ -294,10 +287,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getHref() {
+    public String getHref() {
         return href;
     }
 
@@ -306,10 +299,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setHref(java.lang.String value) {
+    public void setHref(String value) {
         this.href = value;
     }
 
@@ -322,10 +315,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -334,10 +327,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setRole(java.lang.String value) {
+    public void setRole(String value) {
         this.role = value;
     }
 
@@ -350,10 +343,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getArcrole() {
+    public String getArcrole() {
         return arcrole;
     }
 
@@ -362,10 +355,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setArcrole(java.lang.String value) {
+    public void setArcrole(String value) {
         this.arcrole = value;
     }
 
@@ -378,10 +371,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getTitle() {
+    public String getTitle() {
         return title;
     }
 
@@ -390,10 +383,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public void setTitle(java.lang.String value) {
+    public void setTitle(String value) {
         this.title = value;
     }
 
@@ -417,10 +410,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getShow() {
+    public String getShow() {
         return show;
     }
 
@@ -429,11 +422,11 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      * @see #getShow()
      */
-    public void setShow(java.lang.String value) {
+    public void setShow(String value) {
         this.show = value;
     }
 
@@ -456,10 +449,10 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @return
      *     possible object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      */
-    public java.lang.String getActuate() {
+    public String getActuate() {
         return actuate;
     }
 
@@ -468,11 +461,11 @@ public class BasicMessageMemberAIXMPropertyType
      * 
      * @param value
      *     allowed object is
-     *     {@link java.lang.String }
+     *     {@link String }
      *     
      * @see #getActuate()
      */
-    public void setActuate(java.lang.String value) {
+    public void setActuate(String value) {
         this.actuate = value;
     }
 

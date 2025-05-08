@@ -18917,14 +18917,14 @@
       <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
+      <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByStatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterBySatus", condition = "status = :status")</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.ManyToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
-      <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterBySatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
-      <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterBySatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {"abstractAIXMFeature"})</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "basic_message_member")</annox:annotate>

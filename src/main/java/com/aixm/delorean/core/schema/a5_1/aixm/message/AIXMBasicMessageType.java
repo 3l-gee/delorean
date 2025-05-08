@@ -13,23 +13,16 @@ import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMMessageType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-
-import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.FilterJoinTable;
 import org.hibernate.annotations.ParamDef;
-import org.hibernate.annotations.SqlFragmentAlias;
 
 
 /**
@@ -56,23 +49,20 @@ import org.hibernate.annotations.SqlFragmentAlias;
     "hasMember"
 })
 @XmlRootElement
+@Entity
+@Table(name = "aixm_basic_message")
 @FilterDef(name = "filterByStatus", parameters = {
     @ParamDef(name = "status", type = String.class)
 })
-@Entity
-@Table(name = "aixm_basic_message")
 public class AIXMBasicMessageType
     extends AbstractAIXMMessageType
 {
 
     @XmlElement(required = true)
-    @OneToMany(cascade = {
+    @Filter(name = "filterByStatus", condition = "status = :status")
+    @ManyToMany(cascade = {
         CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Filter(
-        name = "filterByStatus", 
-        condition = "status = :status"
-    )
+    }, fetch = FetchType.EAGER)
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**
