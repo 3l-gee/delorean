@@ -1883,6 +1883,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayprotectarea_ts", schema = "airport_heliport")</annox:annotate>
@@ -1935,6 +1940,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaydirection_ts", schema = "airport_heliport")</annox:annotate>
@@ -1981,6 +1991,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointTimeSliceType']">
@@ -2031,6 +2046,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_ts", schema = "airport_heliport")</annox:annotate>
@@ -2077,6 +2097,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ArrestingGearTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrestingGearTimeSliceType']">
@@ -2127,6 +2152,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayElementTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayElementTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayelement_ts", schema = "airport_heliport")</annox:annotate>
@@ -2173,6 +2203,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorTimeSliceType']">
@@ -2227,6 +2262,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayvisualrange_ts", schema = "airport_heliport")</annox:annotate>
@@ -2273,6 +2313,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadTimeSliceType']">
@@ -2430,6 +2475,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiholdingposition_ts", schema = "airport_heliport")</annox:annotate>
@@ -2476,6 +2526,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayTimeSliceType']">
@@ -2526,6 +2581,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwayelement_ts", schema = "airport_heliport")</annox:annotate>
@@ -2572,6 +2632,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GuidanceLineTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineTimeSliceType']">
@@ -2622,6 +2687,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_ts", schema = "airport_heliport")</annox:annotate>
@@ -2668,6 +2738,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronElementTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronElementTimeSliceType']">
@@ -2718,6 +2793,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AircraftStandTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraftstand_ts", schema = "airport_heliport")</annox:annotate>
@@ -2764,6 +2844,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RoadTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RoadTimeSliceType']">
@@ -2860,6 +2945,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicingarea_ts", schema = "airport_heliport")</annox:annotate>
@@ -2908,6 +2998,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passengerloadingbridge_ts", schema = "airport_heliport")</annox:annotate>
@@ -2954,6 +3049,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSliceType']">
@@ -3006,6 +3106,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffTimeSliceType']">
@@ -3072,6 +3177,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apronlightsystem_ts", schema = "airport_heliport")</annox:annotate>
@@ -3122,6 +3232,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemTimeSliceType']">
@@ -3176,6 +3291,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaydirectionlightsystem_ts", schema = "airport_heliport")</annox:annotate>
@@ -3226,6 +3346,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemTimeSliceType']">
@@ -3280,6 +3405,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidancelinelightsystem_ts", schema = "airport_heliport")</annox:annotate>
@@ -3332,6 +3462,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayprotectarealightsystem_ts", schema = "airport_heliport")</annox:annotate>
@@ -3382,6 +3517,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemTimeSliceType']">
@@ -3478,6 +3618,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "approachlightingsystem_ts", schema = "airport_heliport")</annox:annotate>
@@ -3565,6 +3710,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwaymarking_ts", schema = "airport_heliport")</annox:annotate>
@@ -3615,6 +3765,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ApronMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronMarkingTimeSliceType']">
@@ -3669,6 +3824,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportprotectionareamarking_ts", schema = "airport_heliport")</annox:annotate>
@@ -3719,6 +3879,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingTimeSliceType']">
@@ -3773,6 +3938,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaymarking_ts", schema = "airport_heliport")</annox:annotate>
@@ -3823,6 +3993,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSliceType']">
@@ -3877,6 +4052,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicingareamarking_ts", schema = "airport_heliport")</annox:annotate>
@@ -3929,6 +4109,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiholdingpositionmarking_ts", schema = "airport_heliport")</annox:annotate>
@@ -3979,6 +4164,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSliceType']">
@@ -4043,16 +4233,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4082,16 +4272,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4140,16 +4330,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwaySectionContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4179,16 +4369,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4218,16 +4408,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4257,16 +4447,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4296,16 +4486,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "observationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="observationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='nextObservationTime']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "nextObservationTime", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateTimeType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nextobservationtime_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportContaminationType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4353,6 +4543,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSliceType']">
@@ -4403,6 +4598,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "markingbuoy_ts", schema = "airport_heliport")</annox:annotate>
@@ -4449,6 +4649,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaTimeSliceType']">
@@ -4499,6 +4704,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "seaplanerampsite_ts", schema = "airport_heliport")</annox:annotate>
@@ -4547,6 +4757,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "workarea_ts", schema = "airport_heliport")</annox:annotate>
@@ -4556,8 +4771,8 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "plannedOperational", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="plannedoperational_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSliceType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4601,6 +4816,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointTimeSliceType']">
@@ -4668,6 +4888,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSliceType']">
@@ -4764,6 +4989,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliportcollocation_ts", schema = "airport_heliport")</annox:annotate>
@@ -4812,6 +5042,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliport_ts", schema = "airport_heliport")</annox:annotate>
@@ -4821,16 +5056,16 @@
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "certificationDate", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="certificationdate_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']//xs:element[@name='certificationExpirationDate']">
       <jaxb:javaType name="com.aixm.delorean.core.adapter.type.date.AixmTimestamp"/>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElement(name = "certificationExpirationDate", required = false, type = com.aixm.delorean.core.schema.a5_1.aixm.DateType.class)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)</annox:annotate>
       <jaxb:property generateElementProperty="false"/>
-      <annox:annotate target="field">@jakarta.persistence.Embedded</annox:annotate>
-      <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "certificationexpirationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)), @jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "certificationexpirationdate_nilreason", length = 255, nullable = true, unique = false))})</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="certificationexpirationdate_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSliceType']//xs:element[@name='extension']">
       <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
@@ -4874,6 +5109,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceTimeSliceType']">
@@ -4945,6 +5185,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotTimeSliceType']">
@@ -5110,6 +5355,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "authorityforairspace_ts", schema = "airspace")</annox:annotate>
@@ -5156,6 +5406,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirspaceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceTimeSliceType']">
@@ -5290,6 +5545,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GeoBorderTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GeoBorderTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "geoborder_ts", schema = "airspace")</annox:annotate>
@@ -5396,6 +5656,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "precisionapproachradar_ts", schema = "surveillance")</annox:annotate>
@@ -5446,6 +5711,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarTimeSliceType']">
@@ -5539,6 +5809,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RadarSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadarSystemTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radarsystem_ts", schema = "surveillance")</annox:annotate>
@@ -5604,6 +5879,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarTimeSliceType']">
@@ -5754,6 +6034,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holdingassessment_ts", schema = "shared")</annox:annotate>
@@ -5821,6 +6106,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardleveltable_ts", schema = "shared")</annox:annotate>
@@ -5869,6 +6159,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardlevelsector_ts", schema = "shared")</annox:annotate>
@@ -5915,6 +6210,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnTimeSliceType']">
@@ -5982,6 +6282,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaTimeSliceType']">
@@ -6268,6 +6573,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SpecialDateTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialDateTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "specialdate_ts", schema = "shared")</annox:annotate>
@@ -6351,6 +6661,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radiocommunicationchannel_ts", schema = "service")</annox:annotate>
@@ -6418,6 +6733,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "pilotcontrolledlighting_ts", schema = "service")</annox:annotate>
@@ -6464,6 +6784,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='InformationServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InformationServiceTimeSliceType']">
@@ -6534,6 +6859,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "groundtrafficcontrolservice_ts", schema = "service")</annox:annotate>
@@ -6588,6 +6918,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceTimeSliceType']">
@@ -6646,6 +6981,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airtrafficmanagementservice_ts", schema = "service")</annox:annotate>
@@ -6696,6 +7036,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceTimeSliceType']">
@@ -6766,6 +7111,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='PassengerServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passengerservice_ts", schema = "service")</annox:annotate>
@@ -6820,6 +7170,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceTimeSliceType']">
@@ -6878,6 +7233,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "firefightingservice_ts", schema = "service")</annox:annotate>
@@ -6934,6 +7294,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportclearanceservice_ts", schema = "service")</annox:annotate>
@@ -6988,6 +7353,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceTimeSliceType']">
@@ -7244,6 +7614,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AngleIndicationTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AngleIndicationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "angleindication_ts", schema = "navaids_points")</annox:annotate>
@@ -7290,6 +7665,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationTimeSliceType']">
@@ -7397,6 +7777,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AzimuthTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AzimuthTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "azimuth_ts", schema = "navaids_points")</annox:annotate>
@@ -7449,6 +7834,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='CheckpointINSTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointINSTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "checkpointins_ts", schema = "navaids_points")</annox:annotate>
@@ -7499,6 +7889,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSliceType']">
@@ -7572,6 +7967,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DMETimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "dme_ts", schema = "navaids_points")</annox:annotate>
@@ -7622,6 +8022,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ElevationTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ElevationTimeSliceType']">
@@ -7676,6 +8081,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='GlidepathTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GlidepathTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "glidepath_ts", schema = "navaids_points")</annox:annotate>
@@ -7726,6 +8136,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='LocalizerTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='LocalizerTimeSliceType']">
@@ -7780,6 +8195,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "markerbeacon_ts", schema = "navaids_points")</annox:annotate>
@@ -7830,6 +8250,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='NavaidTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavaidTimeSliceType']">
@@ -7931,6 +8356,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SDFTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SDFTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "sdf_ts", schema = "navaids_points")</annox:annotate>
@@ -7981,6 +8411,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='NDBTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NDBTimeSliceType']">
@@ -8035,6 +8470,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "specialnavigationstation_ts", schema = "navaids_points")</annox:annotate>
@@ -8081,6 +8521,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='VORTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VORTimeSliceType']">
@@ -8135,6 +8580,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TACANTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TACANTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "tacan_ts", schema = "navaids_points")</annox:annotate>
@@ -8185,6 +8635,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemTimeSliceType']">
@@ -8304,6 +8759,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DirectionFinderTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DirectionFinderTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "directionfinder_ts", schema = "navaids_points")</annox:annotate>
@@ -8356,6 +8816,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DesignatedPointTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DesignatedPointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "designatedpoint_ts", schema = "navaids_points")</annox:annotate>
@@ -8404,6 +8869,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "significantpointinairspace_ts", schema = "navaids_points")</annox:annotate>
@@ -8450,6 +8920,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightTimeSliceType']">
@@ -8538,6 +9013,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "organisationauthority_ts", schema = "organisation")</annox:annotate>
@@ -8603,6 +9083,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='UnitTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnitTimeSliceType']">
@@ -8718,6 +9203,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "obstaclearea_ts", schema = "obstacles")</annox:annotate>
@@ -8764,6 +9254,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='VerticalStructureTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VerticalStructureTimeSliceType']">
@@ -8858,6 +9353,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSliceType']">
@@ -8982,6 +9482,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaTimeSliceType']">
@@ -9127,6 +9632,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "instrumentapproachprocedure_ts", schema = "procedure")</annox:annotate>
@@ -9217,6 +9727,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardinstrumentdeparture_ts", schema = "procedure")</annox:annotate>
@@ -9267,6 +9782,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='NavigationAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaTimeSliceType']">
@@ -9374,6 +9894,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardinstrumentarrival_ts", schema = "procedure")</annox:annotate>
@@ -9463,6 +9988,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionTimeSliceType']">
@@ -9583,6 +10113,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrivalfeederleg_ts", schema = "procedure")</annox:annotate>
@@ -9639,6 +10174,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ArrivalLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrivalleg_ts", schema = "procedure")</annox:annotate>
@@ -9691,6 +10231,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='DepartureLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DepartureLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "departureleg_ts", schema = "procedure")</annox:annotate>
@@ -9741,6 +10286,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='FinalLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FinalLegTimeSliceType']">
@@ -9799,6 +10349,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='InitialLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InitialLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "initialleg_ts", schema = "procedure")</annox:annotate>
@@ -9855,6 +10410,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='IntermediateLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='IntermediateLegTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "intermediateleg_ts", schema = "procedure")</annox:annotate>
@@ -9909,6 +10469,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegTimeSliceType']">
@@ -10005,6 +10570,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ProcedureDMETimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ProcedureDMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "proceduredme_ts", schema = "procedure")</annox:annotate>
@@ -10051,6 +10621,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaTimeSliceType']">
@@ -10120,6 +10695,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='HoldingPatternTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingPatternTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holdingpattern_ts", schema = "holding")</annox:annotate>
@@ -10166,6 +10746,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingTimeSliceType']">
@@ -10252,6 +10837,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSliceType']">
@@ -10420,6 +11010,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "flightrestriction_ts", schema = "routes")</annox:annotate>
@@ -10525,6 +11120,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RouteSegmentTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteSegmentTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "routesegment_ts", schema = "routes")</annox:annotate>
@@ -10615,6 +11215,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RouteDMETimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteDMETimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "routedme_ts", schema = "routes")</annox:annotate>
@@ -10661,6 +11266,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RouteTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteTimeSliceType']">
@@ -10711,6 +11321,11 @@
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointTimeSliceType']">
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "changeoverpoint_ts", schema = "routes")</annox:annotate>
@@ -10757,6 +11372,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTimeSliceType']">
@@ -10885,6 +11505,11 @@
       <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+      <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='RulesProceduresTimeSlicePropertyType']//xs:element[@name='status']">
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.Column(name = "status", length = 255, nullable = true, unique = false)</annox:annotate>
       <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RulesProceduresTimeSliceType']">
@@ -18922,6 +19547,7 @@
     <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
       <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.ManyToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+      <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aixm_basic_message_basic_message_member", joinColumns = @jakarta.persistence.JoinColumn(name = "aixm_basic_message_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "basic_message_member_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
       <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>

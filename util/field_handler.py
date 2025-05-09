@@ -142,6 +142,21 @@ class FieldHandler:
                 node.append(Jaxb.end)
                 return node
             
+            annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
+            snowflake_text = annotation.text if annotation is not None and annotation.text else ""
+            
+            if snowflake_text == "snowflake:Status" :
+                node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
+                node.append(Annox.field_add(Jpa.column("status", nullable=True, unique=False)))
+                node.append(Annox.field_add(Xml.transient))
+                node.append(Jaxb.end)
+                return node
+
+            if snowflake_text == "snowflake:FilterStatus" :
+                node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
+                node.append(Jaxb.end)
+                return node
+            
             else :
                 if element.attrib.get("name") == "name":
                     node.append(Jaxb.property.name_element())
@@ -222,16 +237,16 @@ class FieldHandler:
             annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
             snowflake_text = annotation.text if annotation is not None and annotation.text else ""
 
-            if snowflake_text == "aixm:DateTimeType" :
+            if snowflake_text == "snowflake:DateTimeType" :
                 node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
                 node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateTimeType.class", False)))
                 node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTimeTypeAdapter.class")))
 
-            if snowflake_text == "aixm:DateType" :
+            if snowflake_text == "snowflake:DateType" :
                 node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
                 node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateType.class", False)))
                 node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTypeAdapter.class")))
-            
+                        
             if element.attrib.get("name") == "name":
                 node.append(Jaxb.property.name_element())
             else :

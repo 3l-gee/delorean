@@ -907,6 +907,10 @@ class Jpa:
     @staticmethod
     def attribute_main_override(value):
         return f'@jakarta.persistence.AttributeOverrides({{{", ".join([str(v) for v in value])}}})'
+    
+    @staticmethod
+    def filter_annotation(name, condition):
+        return f'@org.hibernate.annotations.Filter(name = "{name}", condition = "{condition}")'
 
 class AixmEncoding : 
     FIELD = ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]
