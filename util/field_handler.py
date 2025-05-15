@@ -254,6 +254,9 @@ class FieldHandler:
         else : 
             print(element.attrib)
 
+        if element.attrib.get("name") == "timeSlice":
+            node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
+
         node.extend(Validation.generate_cardinality(parent, element, Content.get_embed()))
         node.append(Jaxb.end)
 

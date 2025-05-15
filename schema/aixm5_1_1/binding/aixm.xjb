@@ -1884,6 +1884,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aerialrefuelling_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "aerialrefuelling_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "aerialrefuelling_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2012,6 +2013,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportheliport_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airportheliport_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliport_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2083,6 +2085,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportheliportcollocation_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportcollocation_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportheliportcollocation_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2193,6 +2196,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airporthotspot_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airporthotspot_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airporthotspot_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2241,6 +2245,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "altimetersource_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "altimetersource_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "altimetersource_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2354,6 +2359,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "nonmovementarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "nonmovementarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "nonmovementarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2421,6 +2427,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "surveycontrolpoint_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "surveycontrolpoint_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "surveycontrolpoint_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2480,6 +2487,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "workarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "workarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "workarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2551,6 +2559,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aircraftstand_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "aircraftstand_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "aircraftstand_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2599,6 +2608,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apron_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "apron_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apron_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2693,6 +2703,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronElementType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apronelement_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "apronelement_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apronelement_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2741,6 +2752,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "deicingarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "deicingarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "deicingarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2789,6 +2801,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "passengerloadingbridge_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "passengerloadingbridge_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "passengerloadingbridge_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2837,6 +2850,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RoadType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "road_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "road_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "road_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2885,6 +2899,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "touchdownliftoff_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoff_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoff_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2933,6 +2948,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "touchdownliftoffsafearea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoffsafearea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoffsafearea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -2985,6 +3001,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "approachlightingsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "approachlightingsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "approachlightingsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3037,6 +3054,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apronlightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "apronlightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apronlightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3128,6 +3146,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "guidancelinelightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "guidancelinelightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "guidancelinelightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3199,6 +3218,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwaydirectionlightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwaydirectionlightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwaydirectionlightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3251,6 +3271,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwayprotectarealightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwayprotectarealightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwayprotectarealightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3303,6 +3324,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiholdingpositionlightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingpositionlightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingpositionlightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3355,6 +3377,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiwaylightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiwaylightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiwaylightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3407,6 +3430,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "touchdownliftofflightsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftofflightsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftofflightsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3459,6 +3483,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportprotectionareamarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airportprotectionareamarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportprotectionareamarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3511,6 +3536,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "apronmarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "apronmarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "apronmarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3563,6 +3589,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "deicingareamarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "deicingareamarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "deicingareamarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3615,6 +3642,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "guidancelinemarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "guidancelinemarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "guidancelinemarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3702,6 +3730,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwaymarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwaymarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwaymarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3754,6 +3783,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standmarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standmarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standmarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3806,6 +3836,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiholdingpositionmarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingpositionmarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingpositionmarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3858,6 +3889,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiwaymarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiwaymarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiwaymarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3910,6 +3942,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "touchdownliftoffmarking_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoffmarking_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "touchdownliftoffmarking_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -3962,6 +3995,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrestingGearType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "arrestinggear_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "arrestinggear_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "arrestinggear_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4075,6 +4109,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runway_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runway_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runway_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4123,6 +4158,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwayblastpad_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwayblastpad_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwayblastpad_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4171,6 +4207,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwaycentrelinepoint_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwaycentrelinepoint_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwaycentrelinepoint_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4261,6 +4298,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwaydirection_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwaydirection_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwaydirection_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4309,6 +4347,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayElementType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwayelement_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwayelement_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwayelement_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4357,6 +4396,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwayprotectarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwayprotectarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwayprotectarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4409,6 +4449,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "runwayvisualrange_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "runwayvisualrange_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "runwayvisualrange_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4457,6 +4498,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "visualglideslopeindicator_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "visualglideslopeindicator_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "visualglideslopeindicator_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4509,6 +4551,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "floatingdocksite_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "floatingdocksite_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "floatingdocksite_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4557,6 +4600,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "markingbuoy_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "markingbuoy_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "markingbuoy_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4605,6 +4649,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "seaplanelandingarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "seaplanelandingarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "seaplanelandingarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4653,6 +4698,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "seaplanerampsite_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "seaplanerampsite_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "seaplanerampsite_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -4981,6 +5027,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "guidanceline_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "guidanceline_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "guidanceline_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5029,6 +5076,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiholdingposition_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingposition_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiholdingposition_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5077,6 +5125,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiway_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiway_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiway_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5125,6 +5174,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "taxiwayelement_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "taxiwayelement_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "taxiwayelement_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5173,6 +5223,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspace_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airspace_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airspace_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5324,6 +5375,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "authorityforairspace_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "authorityforairspace_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "authorityforairspace_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5372,6 +5424,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GeoBorderType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "geoborder_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "geoborder_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "geoborder_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5459,6 +5512,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingPatternType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "holdingpattern_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "holdingpattern_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "holdingpattern_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5545,6 +5599,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "unplannedholding_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "unplannedholding_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "unplannedholding_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5650,6 +5705,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AzimuthType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "azimuth_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "azimuth_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "azimuth_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5702,6 +5758,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointINSType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "checkpointins_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "checkpointins_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "checkpointins_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5754,6 +5811,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointVORType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "checkpointvor_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "checkpointvor_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "checkpointvor_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5806,6 +5864,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DirectionFinderType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "directionfinder_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "directionfinder_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "directionfinder_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5858,6 +5917,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DMEType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "dme_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "dme_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "dme_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5910,6 +5970,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ElevationType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "elevation_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "elevation_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "elevation_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -5962,6 +6023,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GlidepathType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "glidepath_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "glidepath_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "glidepath_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6014,6 +6076,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='LocalizerType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "localizer_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "localizer_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "localizer_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6066,6 +6129,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "markerbeacon_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "markerbeacon_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "markerbeacon_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6118,6 +6182,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavaidType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "navaid_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "navaid_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "navaid_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6263,6 +6328,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NDBType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "ndb_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "ndb_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "ndb_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6315,6 +6381,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SDFType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "sdf_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "sdf_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "sdf_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6367,6 +6434,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "specialnavigationstation_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "specialnavigationstation_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "specialnavigationstation_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6438,6 +6506,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "specialnavigationsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "specialnavigationsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "specialnavigationsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6486,6 +6555,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TACANType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "tacan_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "tacan_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "tacan_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6538,6 +6608,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VORType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "vor_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "vor_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "vor_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6590,6 +6661,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AngleIndicationType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "angleindication_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "angleindication_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "angleindication_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6657,6 +6729,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "distanceindication_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "distanceindication_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "distanceindication_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6781,6 +6854,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DesignatedPointType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "designatedpoint_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "designatedpoint_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "designatedpoint_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6829,6 +6903,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "significantpointinairspace_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "significantpointinairspace_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "significantpointinairspace_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6877,6 +6952,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aeronauticalgroundlight_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "aeronauticalgroundlight_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "aeronauticalgroundlight_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -6963,6 +7039,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "obstaclearea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "obstaclearea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "obstaclearea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7011,6 +7088,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VerticalStructureType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "verticalstructure_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "verticalstructure_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "verticalstructure_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7105,6 +7183,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "organisationauthority_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "organisationauthority_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "organisationauthority_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7172,6 +7251,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnitType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "unit_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "unit_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "unit_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7357,6 +7437,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "instrumentapproachprocedure_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "instrumentapproachprocedure_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "instrumentapproachprocedure_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7428,6 +7509,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "terminalarrivalarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "terminalarrivalarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "terminalarrivalarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7514,6 +7596,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CirclingAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "circlingarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "circlingarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "circlingarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7642,6 +7725,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardinstrumentarrival_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standardinstrumentarrival_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardinstrumentarrival_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7713,6 +7797,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "navigationarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "navigationarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "navigationarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7799,6 +7884,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardinstrumentdeparture_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standardinstrumentdeparture_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardinstrumentdeparture_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7851,6 +7937,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "safealtitudearea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "safealtitudearea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "safealtitudearea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7934,6 +8021,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "arrivalfeederleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "arrivalfeederleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "arrivalfeederleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -7990,6 +8078,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "arrivalleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "arrivalleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "arrivalleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8042,6 +8131,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DepartureLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "departureleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "departureleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "departureleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8094,6 +8184,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FinalLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "finalleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "finalleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "finalleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8169,6 +8260,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InitialLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "initialleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "initialleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "initialleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8225,6 +8317,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='IntermediateLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "intermediateleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "intermediateleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "intermediateleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8300,6 +8393,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "missedapproachleg_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "missedapproachleg_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "missedapproachleg_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8356,6 +8450,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "navigationarearestriction_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "navigationarearestriction_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "navigationarearestriction_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8420,6 +8515,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ProcedureDMEType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "proceduredme_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "proceduredme_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "proceduredme_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8545,6 +8641,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "changeoverpoint_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "changeoverpoint_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "changeoverpoint_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8593,6 +8690,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "route_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "route_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "route_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8664,6 +8762,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteDMEType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "routedme_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "routedme_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "routedme_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8731,6 +8830,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteSegmentType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "routesegment_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "routesegment_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "routesegment_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8779,6 +8879,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airspacebordercrossing_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airspacebordercrossing_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airspacebordercrossing_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -8945,6 +9046,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "flightrestriction_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "flightrestriction_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "flightrestriction_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9050,6 +9152,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RulesProceduresType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "rulesprocedures_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "rulesprocedures_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "rulesprocedures_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9098,6 +9201,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aircraftgroundservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "aircraftgroundservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "aircraftgroundservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9154,6 +9258,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportclearanceservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airportclearanceservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportclearanceservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9226,6 +9331,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airportsuppliesservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airportsuppliesservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airportsuppliesservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9282,6 +9388,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airtrafficcontrolservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airtrafficcontrolservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airtrafficcontrolservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9338,6 +9445,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "airtrafficmanagementservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "airtrafficmanagementservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "airtrafficmanagementservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9409,6 +9517,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "firefightingservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "firefightingservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "firefightingservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9484,6 +9593,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "groundtrafficcontrolservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "groundtrafficcontrolservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "groundtrafficcontrolservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9540,6 +9650,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InformationServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "informationservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "informationservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "informationservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9649,6 +9760,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "passengerservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "passengerservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "passengerservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9705,6 +9817,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "pilotcontrolledlighting_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "pilotcontrolledlighting_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "pilotcontrolledlighting_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9753,6 +9866,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "radiocommunicationchannel_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "radiocommunicationchannel_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "radiocommunicationchannel_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -9824,6 +9938,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "searchrescueservice_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "searchrescueservice_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "searchrescueservice_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10156,6 +10271,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "radiofrequencyarea_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "radiofrequencyarea_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "radiofrequencyarea_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10215,6 +10331,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialDateType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "specialdate_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "specialdate_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "specialdate_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10301,6 +10418,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardlevelcolumn_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelcolumn_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelcolumn_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10349,6 +10467,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardlevelsector_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelsector_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardlevelsector_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10397,6 +10516,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "standardleveltable_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "standardleveltable_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "standardleveltable_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10464,6 +10584,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "holdingassessment_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "holdingassessment_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "holdingassessment_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10569,6 +10690,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "precisionapproachradar_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "precisionapproachradar_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "precisionapproachradar_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10621,6 +10743,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "primarysurveillanceradar_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "primarysurveillanceradar_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "primarysurveillanceradar_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10712,6 +10835,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadarSystemType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "radarsystem_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "radarsystem_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "radarsystem_tsp_id"))</annox:annotate>
     </jaxb:bindings>
@@ -10779,6 +10903,7 @@
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarType']//xs:element[@name='timeSlice']">
       <jaxb:property generateElementProperty="false"/>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "secondarysurveillanceradar_timeslice", joinColumns = @jakarta.persistence.JoinColumn(name = "secondarysurveillanceradar_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "secondarysurveillanceradar_tsp_id"))</annox:annotate>
     </jaxb:bindings>
