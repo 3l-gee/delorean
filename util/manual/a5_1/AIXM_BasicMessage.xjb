@@ -15,6 +15,7 @@
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
                 <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByStatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
+                <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByValidTime", parameters = @org.hibernate.annotations.ParamDef(name = "valid", type = java.time.Instant.class))</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
                 <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>

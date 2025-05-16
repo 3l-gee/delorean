@@ -118,7 +118,7 @@ class FieldHandler:
 
         if str(parent.attrib.get("name","") + "." + element.attrib.get("name","")) in Content.get_ignore():
             return node
-        
+            
         if element.attrib.get("ref") is not None and element.attrib.get("name") is None :
             node.append(Jaxb.element(element.attrib.get("ref"),parent=parent_xpath, xpath=Xpath.GLOBAL.value ,at="ref"))
             if element.attrib.get("name") in Content.get_transient() or element.attrib.get("ref") in Content.get_transient() or element.attrib.get("type") in Content.get_transient():
@@ -141,30 +141,23 @@ class FieldHandler:
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Jaxb.end)
                 return node
-            
-            annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
-            snowflake_text = annotation.text if annotation is not None and annotation.text else ""
-            
-            if snowflake_text == "snowflake:Status" :
-                node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
-                node.append(Annox.field_add(Jpa.column("status", nullable=True, unique=False)))
-                node.append(Annox.field_add(Xml.transient))
-                node.append(Jaxb.end)
-                return node
-
-            if snowflake_text == "snowflake:FilterStatus" :
-                node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
-                node.append(Jaxb.end)
-                return node
-            
+                                            
+            if element.attrib.get("name") == "name":
+                node.append(Jaxb.property.name_element())
             else :
-                if element.attrib.get("name") == "name":
-                    node.append(Jaxb.property.name_element())
-                else :
-                    node.append(Jaxb.property.element)
+                node.append(Jaxb.property.element)
 
         else :
             print(element.attrib)
+
+        annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
+        snowflake_text = annotation.text if annotation is not None and annotation.text else ""
+            
+        if snowflake_text == "snowflake:FilterStatus" :
+            annotation = []
+            annotation.append(Jpa.filter_sub_annotation("filterByStatus", "feature_status = :status"))
+            annotation.append(Jpa.filter_sub_annotation("filterByValidTime", "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)"))
+            node.append(Annox.field_add(Jpa.filter_main_annotation(annotation)))
 
         node.extend(Validation.generate_cardinality(parent, element, Content.get_embed()))
         node.append(Jaxb.end)
@@ -233,20 +226,7 @@ class FieldHandler:
                 node.append(Annox.field_add(Xml.transient))
                 node.append(Annox.end)
                 return node
-            
-            annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
-            snowflake_text = annotation.text if annotation is not None and annotation.text else ""
-
-            if snowflake_text == "snowflake:DateTimeType" :
-                node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
-                node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateTimeType.class", False)))
-                node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTimeTypeAdapter.class")))
-
-            if snowflake_text == "snowflake:DateType" :
-                node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
-                node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateType.class", False)))
-                node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTypeAdapter.class")))
-                        
+                                    
             if element.attrib.get("name") == "name":
                 node.append(Jaxb.property.name_element())
             else :
@@ -254,8 +234,32 @@ class FieldHandler:
         else : 
             print(element.attrib)
 
-        if element.attrib.get("name") == "timeSlice":
-            node.append(Annox.field_add(Jpa.filter_annotation("filterByStatus", "status = :status")))
+        annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
+        snowflake_text = annotation.text if annotation is not None and annotation.text else ""
+
+        if snowflake_text == "snowflake:DateTimeType" :
+            node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
+            node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateTimeType.class", False)))
+            node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTimeTypeAdapter.class")))
+            node.append(Annox.field_add(Jpa.embedded))
+            node.append(Annox.field_add(Jpa.attribute_main_override([
+                str('@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "' + element.attrib.get("name") + '_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false))'),
+                str('@jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "' + element.attrib.get("name") + '_nilreason", length = 255, nullable = true, unique = false))')
+                ])))
+            node.append(Jaxb.end)
+            return node
+
+        if snowflake_text == "snowflake:DateType" :
+            node.append(Jaxb.java_type("com.aixm.delorean.core.adapter.type.date.AixmTimestamp"))
+            node.append(Annox.field_add(Xml.element(element.attrib.get("name"), "com.aixm.delorean.core.schema." + Content.get_version() + ".aixm.DateType.class", False)))
+            node.append(Annox.field_add(Xml.adapter("com.aixm.delorean.core.adapter." + Content.get_version() + ".date.DateTypeAdapter.class")))
+            node.append(Annox.field_add(Jpa.embedded))
+            node.append(Annox.field_add(Jpa.attribute_main_override([
+                str('@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "' + element.attrib.get("name") + '_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false))'),
+                str('@jakarta.persistence.AttributeOverride(name = "nilReason", column = @jakarta.persistence.Column(name = "' + element.attrib.get("name") + '_nilreason", length = 255, nullable = true, unique = false))')
+                ])))
+            node.append(Jaxb.end)
+            return node
 
         node.extend(Validation.generate_cardinality(parent, element, Content.get_embed()))
         node.append(Jaxb.end)

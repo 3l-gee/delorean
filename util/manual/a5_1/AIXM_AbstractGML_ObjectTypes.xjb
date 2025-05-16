@@ -82,6 +82,10 @@
                 <annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "beginPosition", column = @jakarta.persistence.Column(name = "feature_lifetime_begin")), @jakarta.persistence.AttributeOverride(name = "endPosition", column = @jakarta.persistence.Column(name = "feature_lifetime_end"))})</annox:annotate>
                 <jaxb:property name="featureLifetime"/>
             </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMTimeSliceType']//xs:element[@name='featureStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "feature_status")</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+            </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureMetadata']">
                 <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
             </jaxb:bindings>

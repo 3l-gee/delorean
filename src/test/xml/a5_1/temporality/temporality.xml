@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This test data's goal is to tets the import / export function of feature with multiple timeslices and correction slices
+-->
+<message:AIXMBasicMessage 
+	xmlns:message="http://www.aixm.aero/schema/5.1/message" 
+	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:gss="http://www.isotc211.org/2005/gss" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gsr="http://www.isotc211.org/2005/gsr" 
+	xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message 
+	http://www.aixm.aero/schema/5.1.1/message/AIXM_BasicMessage.xsd" 
+	gml:id="1">
+	<gml:boundedBy>
+    </gml:boundedBy>
+    <aixm:messageMetadata>
+    </aixm:messageMetadata>
+	<message:hasMember>
+        <aixm:VerticalStructure xmlns:aixm="http://www.aixm.aero/schema/5.1" gml:id="gmlIDXXX">
+            <gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000001</gml:identifier>
+            <aixm:timeSlice>
+                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition>2001-01-01T00:00:00.000Z<gml:endPosition/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
+                    <aixm:correctionNumber>0</aixm:correctionNumber>
+                    <aixm:featureLifetime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </aixm:featureLifetime>
+                    <aixm:name>OBST</aixm:name>
+                    <aixm:type>POLE</aixm:type>
+                    <aixm:lighted>NO</aixm:lighted>
+                    <aixm:group>NO</aixm:group>
+                    <aixm:part>
+                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
+                            <aixm:verticalExtent uom="M">10</aixm:verticalExtent>
+                            <aixm:mobile>NO</aixm:mobile>
+                            <aixm:horizontalProjection_location>
+                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
+                                    <gml:pos>9.482000 47.028000</gml:pos>
+                                    <aixm:elevation uom="M">489.0</aixm:elevation>
+                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                                </aixm:ElevatedPoint>
+                            </aixm:horizontalProjection_location>
+                        </aixm:VerticalStructurePart>
+                    </aixm:part>
+                </aixm:VerticalStructureTimeSlice>
+                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
+                    <aixm:correctionNumber>0</aixm:correctionNumber>
+                    <aixm:featureLifetime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </aixm:featureLifetime>
+                    <aixm:name>OBST</aixm:name>
+                    <aixm:type>POLE</aixm:type>
+                    <aixm:lighted>NO</aixm:lighted>
+                    <aixm:group>NO</aixm:group>
+                    <aixm:part>
+                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
+                            <aixm:verticalExtent uom="M">20</aixm:verticalExtent>
+                            <aixm:mobile>NO</aixm:mobile>
+                            <aixm:horizontalProjection_location>
+                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
+                                    <gml:pos>9.482000 47.028000</gml:pos>
+                                    <aixm:elevation uom="M">489.0</aixm:elevation>
+                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                                </aixm:ElevatedPoint>
+                            </aixm:horizontalProjection_location>
+                        </aixm:VerticalStructurePart>
+                    </aixm:part>
+                </aixm:VerticalStructureTimeSlice>
+                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
+                    <gml:validTime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </gml:validTime>
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
+                    <aixm:correctionNumber>1</aixm:correctionNumber>
+                    <aixm:featureLifetime>
+                        <gml:TimePeriod gml:id="gmlIDXXX">
+                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
+                            <gml:endPosition indeterminatePosition="unknown"/>
+                        </gml:TimePeriod>
+                    </aixm:featureLifetime>
+                    <aixm:name>OBST</aixm:name>
+                    <aixm:type>POLE</aixm:type>
+                    <aixm:lighted>NO</aixm:lighted>
+                    <aixm:group>NO</aixm:group>
+                    <aixm:part>
+                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
+                            <aixm:verticalExtent uom="M">30</aixm:verticalExtent>
+                            <aixm:mobile>NO</aixm:mobile>
+                            <aixm:horizontalProjection_location>
+                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
+                                    <gml:pos>9.482000 47.028000</gml:pos>
+                                    <aixm:elevation uom="M">489.0</aixm:elevation>
+                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
+                                </aixm:ElevatedPoint>
+                            </aixm:horizontalProjection_location>
+                        </aixm:VerticalStructurePart>
+                    </aixm:part>
+                </aixm:VerticalStructureTimeSlice>
+            </aixm:timeSlice>
+        </aixm:VerticalStructure>
+	</message:hasMember>
+</message:AIXMBasicMessage>

@@ -909,8 +909,12 @@ class Jpa:
         return f'@jakarta.persistence.AttributeOverrides({{{", ".join([str(v) for v in value])}}})'
     
     @staticmethod
-    def filter_annotation(name, condition):
+    def filter_sub_annotation(name, condition):
         return f'@org.hibernate.annotations.Filter(name = "{name}", condition = "{condition}")'
+    
+    @staticmethod
+    def filter_main_annotation(value):
+        return f'@org.hibernate.annotations.Filters({{{", ".join([str(v) for v in value])}}})'
 
 class AixmEncoding : 
     FIELD = ["Code", "Val", "Date", "Time", "NoNumber", "NoSequence", "Text"]

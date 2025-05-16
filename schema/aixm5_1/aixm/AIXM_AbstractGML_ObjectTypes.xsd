@@ -142,6 +142,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
 					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
 					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
+					<!-- status field for filtering  -->
+					<element name="featureStatus" type="xs:string" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>
