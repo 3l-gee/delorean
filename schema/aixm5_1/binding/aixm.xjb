@@ -1873,7 +1873,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayprotectarea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayProtectAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwayprotectareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -1926,7 +1926,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaydirection_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayDirectionTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwaydirectiontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -1975,7 +1975,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaycentrelinepoint_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayCentrelinePointTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayCentrelinePointTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwaycentrelinepointtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2024,7 +2024,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runway_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwaytimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2073,7 +2073,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrestinggear_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrestingGearTimeSlicePropertyType']//xs:element[@ref='aixm:ArrestingGearTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="arrestinggeartimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2122,7 +2122,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayelement_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayElementTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayElementTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwayelementtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2171,7 +2171,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "visualglideslopeindicator_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VisualGlideSlopeIndicatorTimeSlicePropertyType']//xs:element[@ref='aixm:VisualGlideSlopeIndicatorTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="visualglideslopeindicatortimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2224,7 +2224,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayvisualrange_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayVisualRangeTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayVisualRangeTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwayvisualrangetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2273,7 +2273,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayblastpad_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayBlastPadTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayBlastPadTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwayblastpadtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2429,7 +2429,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiholdingposition_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiHoldingPositionTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiholdingpositiontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2478,7 +2478,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiway_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiwayTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiwaytimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2527,7 +2527,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwayelement_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayElementTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiwayElementTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiwayelementtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2576,7 +2576,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidanceline_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineTimeSlicePropertyType']//xs:element[@ref='aixm:GuidanceLineTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="guidancelinetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2625,7 +2625,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apron_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronTimeSlicePropertyType']//xs:element[@ref='aixm:ApronTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="aprontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2674,7 +2674,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apronelement_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronElementTimeSlicePropertyType']//xs:element[@ref='aixm:ApronElementTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="apronelementtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2723,7 +2723,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraftstand_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftStandTimeSlicePropertyType']//xs:element[@ref='aixm:AircraftStandTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="aircraftstandtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2772,7 +2772,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "road_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RoadTimeSlicePropertyType']//xs:element[@ref='aixm:RoadTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="roadtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2867,7 +2867,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicingarea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaTimeSlicePropertyType']//xs:element[@ref='aixm:DeicingAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="deicingareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2916,7 +2916,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passengerloadingbridge_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerLoadingBridgeTimeSlicePropertyType']//xs:element[@ref='aixm:PassengerLoadingBridgeTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="passengerloadingbridgetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -2965,7 +2965,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touchdownliftoffsafearea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffSafeAreaTimeSlicePropertyType']//xs:element[@ref='aixm:TouchDownLiftOffSafeAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="touchdownliftoffsafeareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3018,7 +3018,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touchdownliftoff_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffTimeSlicePropertyType']//xs:element[@ref='aixm:TouchDownLiftOffTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="touchdownliftofftimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3083,7 +3083,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apronlightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:ApronLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="apronlightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3136,7 +3136,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwaylightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiwayLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiwaylightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3189,7 +3189,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaydirectionlightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayDirectionLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayDirectionLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwaydirectionlightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3242,7 +3242,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touchdownliftofflightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:TouchDownLiftOffLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="touchdownliftofflightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3295,7 +3295,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidancelinelightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:GuidanceLineLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="guidancelinelightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3348,7 +3348,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwayprotectarealightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayProtectAreaLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayProtectAreaLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwayprotectarealightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3401,7 +3401,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiholdingpositionlightsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionLightSystemTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiHoldingPositionLightSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiholdingpositionlightsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3496,7 +3496,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "approachlightingsystem_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApproachLightingSystemTimeSlicePropertyType']//xs:element[@ref='aixm:ApproachLightingSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="approachlightingsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3584,7 +3584,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiwaymarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiwayMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiwayMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiwaymarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3637,7 +3637,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "apronmarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ApronMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:ApronMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="apronmarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3690,7 +3690,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportprotectionareamarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportProtectionAreaMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:AirportProtectionAreaMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airportprotectionareamarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3743,7 +3743,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "touchdownliftoffmarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TouchDownLiftOffMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:TouchDownLiftOffMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="touchdownliftoffmarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3796,7 +3796,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "runwaymarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RunwayMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:RunwayMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="runwaymarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3849,7 +3849,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "guidancelinemarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GuidanceLineMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:GuidanceLineMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="guidancelinemarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3902,7 +3902,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "deicingareamarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DeicingAreaMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:DeicingAreaMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="deicingareamarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -3955,7 +3955,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "taxiholdingpositionmarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TaxiHoldingPositionMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:TaxiHoldingPositionMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="taxiholdingpositionmarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4008,7 +4008,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standmarking_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandMarkingTimeSlicePropertyType']//xs:element[@ref='aixm:StandMarkingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standmarkingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4383,7 +4383,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "floatingdocksite_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FloatingDockSiteTimeSlicePropertyType']//xs:element[@ref='aixm:FloatingDockSiteTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="floatingdocksitetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4432,7 +4432,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "markingbuoy_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkingBuoyTimeSlicePropertyType']//xs:element[@ref='aixm:MarkingBuoyTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="markingbuoytimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4481,7 +4481,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "seaplanelandingarea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneLandingAreaTimeSlicePropertyType']//xs:element[@ref='aixm:SeaplaneLandingAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="seaplanelandingareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4530,7 +4530,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "seaplanerampsite_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SeaplaneRampSiteTimeSlicePropertyType']//xs:element[@ref='aixm:SeaplaneRampSiteTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="seaplanerampsitetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4579,7 +4579,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "workarea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='WorkAreaTimeSlicePropertyType']//xs:element[@ref='aixm:WorkAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="workareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4636,7 +4636,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "surveycontrolpoint_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SurveyControlPointTimeSlicePropertyType']//xs:element[@ref='aixm:SurveyControlPointTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="surveycontrolpointtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4704,7 +4704,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "nonmovementarea_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NonMovementAreaTimeSlicePropertyType']//xs:element[@ref='aixm:NonMovementAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="nonmovementareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4799,7 +4799,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliportcollocation_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportCollocationTimeSlicePropertyType']//xs:element[@ref='aixm:AirportHeliportCollocationTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airportheliportcollocationtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4848,7 +4848,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportheliport_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHeliportTimeSlicePropertyType']//xs:element[@ref='aixm:AirportHeliportTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airportheliporttimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4913,7 +4913,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "altimetersource_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AltimeterSourceTimeSlicePropertyType']//xs:element[@ref='aixm:AltimeterSourceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="altimetersourcetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -4985,7 +4985,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airporthotspot_tsp", schema = "airport_heliport")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportHotSpotTimeSlicePropertyType']//xs:element[@ref='aixm:AirportHotSpotTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airporthotspottimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5149,7 +5149,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "authorityforairspace_tsp", schema = "airspace")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AuthorityForAirspaceTimeSlicePropertyType']//xs:element[@ref='aixm:AuthorityForAirspaceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="authorityforairspacetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5198,7 +5198,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airspace_tsp", schema = "airspace")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceTimeSlicePropertyType']//xs:element[@ref='aixm:AirspaceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airspacetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5331,7 +5331,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "geoborder_tsp", schema = "airspace")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GeoBorderTimeSlicePropertyType']//xs:element[@ref='aixm:GeoBorderTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="geobordertimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5438,7 +5438,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "precisionapproachradar_tsp", schema = "surveillance")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrecisionApproachRadarTimeSlicePropertyType']//xs:element[@ref='aixm:PrecisionApproachRadarTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="precisionapproachradartimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5491,7 +5491,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "primarysurveillanceradar_tsp", schema = "surveillance")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PrimarySurveillanceRadarTimeSlicePropertyType']//xs:element[@ref='aixm:PrimarySurveillanceRadarTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="primarysurveillanceradartimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5583,7 +5583,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radarsystem_tsp", schema = "surveillance")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadarSystemTimeSlicePropertyType']//xs:element[@ref='aixm:RadarSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="radarsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5651,7 +5651,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "secondarysurveillanceradar_tsp", schema = "surveillance")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SecondarySurveillanceRadarTimeSlicePropertyType']//xs:element[@ref='aixm:SecondarySurveillanceRadarTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="secondarysurveillanceradartimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5800,7 +5800,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holdingassessment_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingAssessmentTimeSlicePropertyType']//xs:element[@ref='aixm:HoldingAssessmentTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="holdingassessmenttimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5868,7 +5868,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardleveltable_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelTableTimeSlicePropertyType']//xs:element[@ref='aixm:StandardLevelTableTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standardleveltabletimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5917,7 +5917,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardlevelsector_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelSectorTimeSlicePropertyType']//xs:element[@ref='aixm:StandardLevelSectorTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standardlevelsectortimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -5966,7 +5966,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardlevelcolumn_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardLevelColumnTimeSlicePropertyType']//xs:element[@ref='aixm:StandardLevelColumnTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standardlevelcolumntimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6034,7 +6034,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radiofrequencyarea_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioFrequencyAreaTimeSlicePropertyType']//xs:element[@ref='aixm:RadioFrequencyAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="radiofrequencyareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6319,7 +6319,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "specialdate_tsp", schema = "shared")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialDateTimeSlicePropertyType']//xs:element[@ref='aixm:SpecialDateTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="specialdatetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6403,7 +6403,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "radiocommunicationchannel_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RadioCommunicationChannelTimeSlicePropertyType']//xs:element[@ref='aixm:RadioCommunicationChannelTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="radiocommunicationchanneltimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6471,7 +6471,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "pilotcontrolledlighting_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PilotControlledLightingTimeSlicePropertyType']//xs:element[@ref='aixm:PilotControlledLightingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="pilotcontrolledlightingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6520,7 +6520,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "informationservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InformationServiceTimeSlicePropertyType']//xs:element[@ref='aixm:InformationServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="informationservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6589,7 +6589,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "groundtrafficcontrolservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GroundTrafficControlServiceTimeSlicePropertyType']//xs:element[@ref='aixm:GroundTrafficControlServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="groundtrafficcontrolservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6646,7 +6646,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airtrafficcontrolservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficControlServiceTimeSlicePropertyType']//xs:element[@ref='aixm:AirTrafficControlServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airtrafficcontrolservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6703,7 +6703,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airtrafficmanagementservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirTrafficManagementServiceTimeSlicePropertyType']//xs:element[@ref='aixm:AirTrafficManagementServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airtrafficmanagementservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6756,7 +6756,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "searchrescueservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SearchRescueServiceTimeSlicePropertyType']//xs:element[@ref='aixm:SearchRescueServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="searchrescueservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6825,7 +6825,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "passengerservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='PassengerServiceTimeSlicePropertyType']//xs:element[@ref='aixm:PassengerServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="passengerservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6882,7 +6882,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aircraftgroundservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AircraftGroundServiceTimeSlicePropertyType']//xs:element[@ref='aixm:AircraftGroundServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="aircraftgroundservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6939,7 +6939,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "firefightingservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FireFightingServiceTimeSlicePropertyType']//xs:element[@ref='aixm:FireFightingServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="firefightingservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -6996,7 +6996,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportclearanceservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportClearanceServiceTimeSlicePropertyType']//xs:element[@ref='aixm:AirportClearanceServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airportclearanceservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7053,7 +7053,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airportsuppliesservice_tsp", schema = "service")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirportSuppliesServiceTimeSlicePropertyType']//xs:element[@ref='aixm:AirportSuppliesServiceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airportsuppliesservicetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7308,7 +7308,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "angleindication_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AngleIndicationTimeSlicePropertyType']//xs:element[@ref='aixm:AngleIndicationTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="angleindicationtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7357,7 +7357,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "distanceindication_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DistanceIndicationTimeSlicePropertyType']//xs:element[@ref='aixm:DistanceIndicationTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="distanceindicationtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7463,7 +7463,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "azimuth_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AzimuthTimeSlicePropertyType']//xs:element[@ref='aixm:AzimuthTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="azimuthtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7516,7 +7516,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "checkpointins_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointINSTimeSlicePropertyType']//xs:element[@ref='aixm:CheckpointINSTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="checkpointinstimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7569,7 +7569,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "checkpointvor_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CheckpointVORTimeSlicePropertyType']//xs:element[@ref='aixm:CheckpointVORTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="checkpointvortimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7641,7 +7641,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "dme_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DMETimeSlicePropertyType']//xs:element[@ref='aixm:DMETimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="dmetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7694,7 +7694,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "elevation_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ElevationTimeSlicePropertyType']//xs:element[@ref='aixm:ElevationTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="elevationtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7747,7 +7747,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "glidepath_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='GlidepathTimeSlicePropertyType']//xs:element[@ref='aixm:GlidepathTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="glidepathtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7800,7 +7800,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "localizer_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='LocalizerTimeSlicePropertyType']//xs:element[@ref='aixm:LocalizerTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="localizertimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7853,7 +7853,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "markerbeacon_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MarkerBeaconTimeSlicePropertyType']//xs:element[@ref='aixm:MarkerBeaconTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="markerbeacontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -7906,7 +7906,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navaid_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavaidTimeSlicePropertyType']//xs:element[@ref='aixm:NavaidTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="navaidtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8006,7 +8006,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "sdf_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SDFTimeSlicePropertyType']//xs:element[@ref='aixm:SDFTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="sdftimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8059,7 +8059,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "ndb_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NDBTimeSlicePropertyType']//xs:element[@ref='aixm:NDBTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="ndbtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8112,7 +8112,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "specialnavigationstation_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationStationTimeSlicePropertyType']//xs:element[@ref='aixm:SpecialNavigationStationTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="specialnavigationstationtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8161,7 +8161,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "vor_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VORTimeSlicePropertyType']//xs:element[@ref='aixm:VORTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="vortimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8214,7 +8214,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "tacan_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TACANTimeSlicePropertyType']//xs:element[@ref='aixm:TACANTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="tacantimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8267,7 +8267,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "specialnavigationsystem_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SpecialNavigationSystemTimeSlicePropertyType']//xs:element[@ref='aixm:SpecialNavigationSystemTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="specialnavigationsystemtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8385,7 +8385,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "directionfinder_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DirectionFinderTimeSlicePropertyType']//xs:element[@ref='aixm:DirectionFinderTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="directionfindertimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8438,7 +8438,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "designatedpoint_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DesignatedPointTimeSlicePropertyType']//xs:element[@ref='aixm:DesignatedPointTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="designatedpointtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8487,7 +8487,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "significantpointinairspace_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SignificantPointInAirspaceTimeSlicePropertyType']//xs:element[@ref='aixm:SignificantPointInAirspaceTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="significantpointinairspacetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8536,7 +8536,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aeronauticalgroundlight_tsp", schema = "navaids_points")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AeronauticalGroundLightTimeSlicePropertyType']//xs:element[@ref='aixm:AeronauticalGroundLightTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="aeronauticalgroundlighttimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8623,7 +8623,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "organisationauthority_tsp", schema = "organisation")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='OrganisationAuthorityTimeSlicePropertyType']//xs:element[@ref='aixm:OrganisationAuthorityTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="organisationauthoritytimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8691,7 +8691,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "unit_tsp", schema = "organisation")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnitTimeSlicePropertyType']//xs:element[@ref='aixm:UnitTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="unittimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8805,7 +8805,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "obstaclearea_tsp", schema = "obstacles")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ObstacleAreaTimeSlicePropertyType']//xs:element[@ref='aixm:ObstacleAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="obstacleareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8854,7 +8854,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "verticalstructure_tsp", schema = "obstacles")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='VerticalStructureTimeSlicePropertyType']//xs:element[@ref='aixm:VerticalStructureTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="verticalstructuretimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -8949,7 +8949,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "circlingarea_tsp", schema = "public")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='CirclingAreaTimeSlicePropertyType']//xs:element[@ref='aixm:CirclingAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="circlingareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9074,7 +9074,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "terminalarrivalarea_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='TerminalArrivalAreaTimeSlicePropertyType']//xs:element[@ref='aixm:TerminalArrivalAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="terminalarrivalareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9218,7 +9218,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "instrumentapproachprocedure_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InstrumentApproachProcedureTimeSlicePropertyType']//xs:element[@ref='aixm:InstrumentApproachProcedureTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="instrumentapproachproceduretimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9309,7 +9309,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardinstrumentdeparture_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentDepartureTimeSlicePropertyType']//xs:element[@ref='aixm:StandardInstrumentDepartureTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standardinstrumentdeparturetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9362,7 +9362,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navigationarea_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaTimeSlicePropertyType']//xs:element[@ref='aixm:NavigationAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="navigationareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9468,7 +9468,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "standardinstrumentarrival_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='StandardInstrumentArrivalTimeSlicePropertyType']//xs:element[@ref='aixm:StandardInstrumentArrivalTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="standardinstrumentarrivaltimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9560,7 +9560,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "navigationarearestriction_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='NavigationAreaRestrictionTimeSlicePropertyType']//xs:element[@ref='aixm:NavigationAreaRestrictionTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="navigationarearestrictiontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9679,7 +9679,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrivalfeederleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalFeederLegTimeSlicePropertyType']//xs:element[@ref='aixm:ArrivalFeederLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="arrivalfeederlegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9736,7 +9736,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "arrivalleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ArrivalLegTimeSlicePropertyType']//xs:element[@ref='aixm:ArrivalLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="arrivallegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9789,7 +9789,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "departureleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='DepartureLegTimeSlicePropertyType']//xs:element[@ref='aixm:DepartureLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="departurelegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9842,7 +9842,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "finalleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FinalLegTimeSlicePropertyType']//xs:element[@ref='aixm:FinalLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="finallegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9899,7 +9899,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "initialleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='InitialLegTimeSlicePropertyType']//xs:element[@ref='aixm:InitialLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="initiallegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -9956,7 +9956,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "intermediateleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='IntermediateLegTimeSlicePropertyType']//xs:element[@ref='aixm:IntermediateLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="intermediatelegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10013,7 +10013,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "missedapproachleg_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='MissedApproachLegTimeSlicePropertyType']//xs:element[@ref='aixm:MissedApproachLegTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="missedapproachlegtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10108,7 +10108,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "proceduredme_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ProcedureDMETimeSlicePropertyType']//xs:element[@ref='aixm:ProcedureDMETimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="proceduredmetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10157,7 +10157,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "safealtitudearea_tsp", schema = "procedure")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='SafeAltitudeAreaTimeSlicePropertyType']//xs:element[@ref='aixm:SafeAltitudeAreaTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="safealtitudeareatimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10225,7 +10225,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "holdingpattern_tsp", schema = "holding")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='HoldingPatternTimeSlicePropertyType']//xs:element[@ref='aixm:HoldingPatternTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="holdingpatterntimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10274,7 +10274,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "unplannedholding_tsp", schema = "holding")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='UnplannedHoldingTimeSlicePropertyType']//xs:element[@ref='aixm:UnplannedHoldingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="unplannedholdingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10361,7 +10361,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "airspacebordercrossing_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AirspaceBorderCrossingTimeSlicePropertyType']//xs:element[@ref='aixm:AirspaceBorderCrossingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="airspacebordercrossingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10528,7 +10528,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "flightrestriction_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='FlightRestrictionTimeSlicePropertyType']//xs:element[@ref='aixm:FlightRestrictionTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="flightrestrictiontimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10634,7 +10634,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "routesegment_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteSegmentTimeSlicePropertyType']//xs:element[@ref='aixm:RouteSegmentTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="routesegmenttimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10725,7 +10725,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "routedme_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteDMETimeSlicePropertyType']//xs:element[@ref='aixm:RouteDMETimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="routedmetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10774,7 +10774,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "route_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RouteTimeSlicePropertyType']//xs:element[@ref='aixm:RouteTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="routetimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10823,7 +10823,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "changeoverpoint_tsp", schema = "routes")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='ChangeOverPointTimeSlicePropertyType']//xs:element[@ref='aixm:ChangeOverPointTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="changeoverpointtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -10872,7 +10872,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aerialrefuelling_tsp", schema = "aerial_refuelling")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='AerialRefuellingTimeSlicePropertyType']//xs:element[@ref='aixm:AerialRefuellingTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="aerialrefuellingtimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -11001,7 +11001,7 @@
       <annox:annotate target="class">@jakarta.persistence.Table(name = "rulesprocedures_tsp", schema = "rules_procedures")</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='RulesProceduresTimeSlicePropertyType']//xs:element[@ref='aixm:RulesProceduresTimeSlice']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterByValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filters({@org.hibernate.annotations.Filter(name = "filterStatusTimeSlice", condition = "feature_status = :status"), @org.hibernate.annotations.Filter(name = "filterValidTime", condition = "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)")})</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinColumn(name="rulesprocedurestimeslice_id", referencedColumnName="id")</annox:annotate>
     </jaxb:bindings>
@@ -19046,16 +19046,14 @@
       <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
-      <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByStatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
-      <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByValidTime", parameters = @org.hibernate.annotations.ParamDef(name = "valid", type = java.time.Instant.class))</annox:annotate>
+      <annox:annotate target="class">@org.hibernate.annotations.FilterDefs({@org.hibernate.annotations.FilterDef(name = "filterValidTime", parameters = {@org.hibernate.annotations.ParamDef(name = "valid", type = Instant.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusMessage", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusFeature", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusTimeSlice", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)})})</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
-      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+      <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterStatusFeature", condition = "feature_status = :status")</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.ManyToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
       <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aixm_basic_message_basic_message_member", joinColumns = @jakarta.persistence.JoinColumn(name = "aixm_basic_message_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "basic_message_member_id"))</annox:annotate>
     </jaxb:bindings>
     <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
-      <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
       <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {"abstractAIXMFeature"})</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
       <annox:annotate target="class">@jakarta.persistence.Table(name = "basic_message_member")</annox:annotate>
@@ -19080,8 +19078,8 @@
       </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
-      <jaxb:bindings node="//xs:element[@name='status']">
-        <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
+      <jaxb:bindings node="//xs:element[@name='featureStatus']">
+        <annox:annotate target="field">@jakarta.persistence.Column(name = "feature_status")</annox:annotate>
         <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
       </jaxb:bindings>
     </jaxb:bindings>

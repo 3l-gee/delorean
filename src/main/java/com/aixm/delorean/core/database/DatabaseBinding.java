@@ -12,11 +12,14 @@ import com.aixm.delorean.core.log.LogLevel;
 
 import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1.aixm.message.BasicMessageMemberAIXMPropertyType;
+import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointType;
 import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.time.Instant;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -178,24 +181,38 @@ public class DatabaseBinding<T> {
 
         Session session = this.sessionFactory.openSession();
 
-        // Enable the filter
-        Filter filter = session.enableFilter("filterByStatus");
-        filter.setParameter("status", "APPROVED");
-        filter.validate();
+        // Enable status filter feature
+        Filter featureFilter = session.enableFilter("filterStatusFeature");
+        featureFilter.setParameter("status", "APPROVED");
+        featureFilter.validate();
+
+        // Enable status filter timeslice
+        Filter timesliceFilter = session.enableFilter("filterStatusTimeSlice");
+        timesliceFilter.setParameter("status", "APPROVED");
+        timesliceFilter.validate();
+
+        // Enable valid time filter
+        Filter validFilter = session.enableFilter("filterValidTime");
+        validFilter.setParameter("valid", Instant.parse("2025-05-01T00:00:00.000Z"));
+        validFilter.validate();
 
         Transaction transaction = null;
-        Object object = null;
+        AIXMBasicMessageType object = null;
 
         try {
             // Start a transaction
             transaction = session.beginTransaction();
 
             // Retrieve the object using byId
-            // object = session.find(AIXMBasicMessageType.class, id);
-            object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
-            // object = session.createQuery("select abmt from BasicMessageMemberAIXMPropertyType abmt", BasicMessageMemberAIXMPropertyType.class).getResultList();
-            // object = session.byId(AIXMBasicMessageType.class).load(id);
-    
+            // object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
+            List<DesignatedPointType> designatedPoints = session.createQuery("select dpt from DesignatedPointType dpt", DesignatedPointType.class).getResultList();
+            object = new AIXMBasicMessageType();
+            for (DesignatedPointType dpt : designatedPoints) {
+                BasicMessageMemberAIXMPropertyType member = new BasicMessageMemberAIXMPropertyType();
+                member.setAbstractAIXMFeature(dpt); 
+                object.getHasMember().add(member);
+            }
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

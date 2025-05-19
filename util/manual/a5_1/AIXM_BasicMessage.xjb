@@ -14,16 +14,14 @@
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
-                <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByStatus", parameters = @org.hibernate.annotations.ParamDef(name = "status", type = String.class))</annox:annotate>
-                <annox:annotate target="class">@org.hibernate.annotations.FilterDef(name = "filterByValidTime", parameters = @org.hibernate.annotations.ParamDef(name = "valid", type = java.time.Instant.class))</annox:annotate>
+                <annox:annotate target="class">@org.hibernate.annotations.FilterDefs({@org.hibernate.annotations.FilterDef(name = "filterValidTime", parameters = {@org.hibernate.annotations.ParamDef(name = "valid", type = Instant.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusMessage", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusFeature", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)}),@org.hibernate.annotations.FilterDef(name = "filterStatusTimeSlice", parameters = {@org.hibernate.annotations.ParamDef(name = "status", type = String.class)})})</annox:annotate>                
             </jaxb:bindings>
             <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
-                <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
+                <annox:annotate target="field">@org.hibernate.annotations.Filter(name = "filterStatusFeature", condition = "feature_status = :status")</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.ManyToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
                 <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "aixm_basic_message_basic_message_member", joinColumns = @jakarta.persistence.JoinColumn(name = "aixm_basic_message_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "basic_message_member_id"))</annox:annotate>
             </jaxb:bindings>
             <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
-                <annox:annotate target="class">@org.hibernate.annotations.Filter(name = "filterByStatus", condition = "status = :status")</annox:annotate>
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {"abstractAIXMFeature"})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Table(name = "basic_message_member")</annox:annotate>
@@ -48,8 +46,8 @@
                 </jaxb:bindings>
             </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
-                <jaxb:bindings node="//xs:element[@name='status']">
-                    <annox:annotate target="field">@jakarta.persistence.Column(name = "status")</annox:annotate>
+                <jaxb:bindings node="//xs:element[@name='featureStatus']">
+                    <annox:annotate target="field">@jakarta.persistence.Column(name = "feature_status")</annox:annotate>
                     <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
                 </jaxb:bindings>
             </jaxb:bindings>

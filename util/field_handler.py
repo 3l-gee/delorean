@@ -155,8 +155,8 @@ class FieldHandler:
             
         if snowflake_text == "snowflake:FilterStatus" :
             annotation = []
-            annotation.append(Jpa.filter_sub_annotation("filterByStatus", "feature_status = :status"))
-            annotation.append(Jpa.filter_sub_annotation("filterByValidTime", "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)"))
+            annotation.append(Jpa.filter_sub_annotation("filterStatusTimeSlice", "feature_status = :status"))
+            annotation.append(Jpa.filter_sub_annotation("filterValidTime", "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)"))
             node.append(Annox.field_add(Jpa.filter_main_annotation(annotation)))
 
         node.extend(Validation.generate_cardinality(parent, element, Content.get_embed()))
