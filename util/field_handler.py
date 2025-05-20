@@ -153,12 +153,6 @@ class FieldHandler:
         annotation = element.find("{http://www.w3.org/2001/XMLSchema}annotation/{http://www.w3.org/2001/XMLSchema}documentation")
         snowflake_text = annotation.text if annotation is not None and annotation.text else ""
             
-        if snowflake_text == "snowflake:FilterStatus" :
-            annotation = []
-            annotation.append(Jpa.filter_sub_annotation("filterStatusTimeSlice", "feature_status = :status"))
-            annotation.append(Jpa.filter_sub_annotation("filterValidTime", "(:valid &lt;= valid_time_end OR valid_time_end IS NULL)"))
-            node.append(Annox.field_add(Jpa.filter_main_annotation(annotation)))
-
         node.extend(Validation.generate_cardinality(parent, element, Content.get_embed()))
         node.append(Jaxb.end)
 

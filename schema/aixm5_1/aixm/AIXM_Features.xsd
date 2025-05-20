@@ -61,11 +61,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayProtectAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayProtectAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayProtectAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -119,11 +115,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayDirectionTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayDirectionTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayDirectionTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -188,11 +180,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayCentrelinePointTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayCentrelinePointTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayCentrelinePointTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -248,11 +236,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -318,11 +302,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ArrestingGearTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ArrestingGearTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ArrestingGearTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -386,11 +366,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayElementTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayElementTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayElementTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -448,11 +424,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="VisualGlideSlopeIndicatorTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:VisualGlideSlopeIndicatorTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:VisualGlideSlopeIndicatorTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -510,11 +482,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayVisualRangeTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayVisualRangeTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayVisualRangeTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -567,11 +535,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayBlastPadTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayBlastPadTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayBlastPadTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -805,11 +769,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiHoldingPositionTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiHoldingPositionTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiHoldingPositionTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -864,11 +824,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiwayTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiwayTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiwayTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -928,11 +884,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiwayElementTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiwayElementTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiwayElementTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -990,11 +942,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GuidanceLineTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GuidanceLineTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GuidanceLineTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1054,11 +1002,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ApronTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ApronTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ApronTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1114,11 +1058,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ApronElementTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ApronElementTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ApronElementTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1180,11 +1120,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AircraftStandTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AircraftStandTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AircraftStandTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1243,11 +1179,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RoadTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RoadTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RoadTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1375,11 +1307,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DeicingAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DeicingAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DeicingAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1435,11 +1363,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="PassengerLoadingBridgeTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:PassengerLoadingBridgeTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:PassengerLoadingBridgeTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1492,11 +1416,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TouchDownLiftOffSafeAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TouchDownLiftOffSafeAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TouchDownLiftOffSafeAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1548,11 +1468,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TouchDownLiftOffTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TouchDownLiftOffTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TouchDownLiftOffTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1640,11 +1556,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ApronLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ApronLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ApronLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1697,11 +1609,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiwayLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiwayLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiwayLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1754,11 +1662,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayDirectionLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayDirectionLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayDirectionLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1811,11 +1715,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TouchDownLiftOffLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TouchDownLiftOffLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TouchDownLiftOffLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1868,11 +1768,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GuidanceLineLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GuidanceLineLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GuidanceLineLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1924,11 +1820,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayProtectAreaLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayProtectAreaLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayProtectAreaLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -1981,11 +1873,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiHoldingPositionLightSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiHoldingPositionLightSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiHoldingPositionLightSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2109,11 +1997,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ApproachLightingSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ApproachLightingSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ApproachLightingSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2233,11 +2117,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiwayMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiwayMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiwayMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2291,11 +2171,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ApronMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ApronMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ApronMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2348,11 +2224,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportProtectionAreaMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportProtectionAreaMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportProtectionAreaMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2405,11 +2277,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TouchDownLiftOffMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TouchDownLiftOffMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TouchDownLiftOffMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2462,11 +2330,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RunwayMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RunwayMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RunwayMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2519,11 +2383,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GuidanceLineMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GuidanceLineMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GuidanceLineMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2575,11 +2435,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DeicingAreaMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DeicingAreaMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DeicingAreaMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2631,11 +2487,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TaxiHoldingPositionMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TaxiHoldingPositionMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TaxiHoldingPositionMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -2687,11 +2539,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandMarkingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandMarkingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandMarkingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3174,11 +3022,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="FloatingDockSiteTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:FloatingDockSiteTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:FloatingDockSiteTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3229,11 +3073,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="MarkingBuoyTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:MarkingBuoyTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:MarkingBuoyTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3288,11 +3128,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SeaplaneLandingAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SeaplaneLandingAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SeaplaneLandingAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3346,11 +3182,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SeaplaneRampSiteTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SeaplaneRampSiteTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SeaplaneRampSiteTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3402,11 +3234,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="WorkAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:WorkAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:WorkAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3468,11 +3296,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SurveyControlPointTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SurveyControlPointTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SurveyControlPointTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3570,11 +3394,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="NonMovementAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:NonMovementAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:NonMovementAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3713,11 +3533,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportHeliportCollocationTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportHeliportCollocationTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportHeliportCollocationTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3770,11 +3586,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportHeliportTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportHeliportTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportHeliportTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3870,11 +3682,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AltimeterSourceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AltimeterSourceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AltimeterSourceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -3963,11 +3771,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportHotSpotTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportHotSpotTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportHotSpotTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4202,11 +4006,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AuthorityForAirspaceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AuthorityForAirspaceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AuthorityForAirspaceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4259,11 +4059,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirspaceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirspaceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirspaceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4480,11 +4276,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GeoBorderTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GeoBorderTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GeoBorderTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4767,11 +4559,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="PrecisionApproachRadarTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:PrecisionApproachRadarTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:PrecisionApproachRadarTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4826,11 +4614,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="PrimarySurveillanceRadarTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:PrimarySurveillanceRadarTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:PrimarySurveillanceRadarTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -4954,11 +4738,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RadarSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RadarSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RadarSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5052,11 +4832,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SecondarySurveillanceRadarTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SecondarySurveillanceRadarTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SecondarySurveillanceRadarTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5297,11 +5073,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="HoldingAssessmentTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:HoldingAssessmentTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:HoldingAssessmentTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5401,11 +5173,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandardLevelTableTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandardLevelTableTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandardLevelTableTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5457,11 +5225,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandardLevelSectorTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandardLevelSectorTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandardLevelSectorTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5517,11 +5281,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandardLevelColumnTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandardLevelColumnTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandardLevelColumnTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -5610,11 +5370,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RadioFrequencyAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RadioFrequencyAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RadioFrequencyAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6150,11 +5906,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SpecialDateTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SpecialDateTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SpecialDateTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6277,11 +6029,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RadioCommunicationChannelTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RadioCommunicationChannelTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RadioCommunicationChannelTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6378,11 +6126,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="PilotControlledLightingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:PilotControlledLightingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:PilotControlledLightingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6440,11 +6184,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="InformationServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:InformationServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:InformationServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6529,11 +6269,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GroundTrafficControlServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GroundTrafficControlServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GroundTrafficControlServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6587,11 +6323,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirTrafficControlServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirTrafficControlServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirTrafficControlServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6651,11 +6383,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirTrafficManagementServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirTrafficManagementServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirTrafficManagementServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6710,11 +6438,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SearchRescueServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SearchRescueServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SearchRescueServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6789,11 +6513,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="PassengerServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:PassengerServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:PassengerServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6846,11 +6566,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AircraftGroundServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AircraftGroundServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AircraftGroundServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6903,11 +6619,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="FireFightingServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:FireFightingServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:FireFightingServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -6961,11 +6673,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportClearanceServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportClearanceServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportClearanceServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7018,11 +6726,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirportSuppliesServiceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirportSuppliesServiceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirportSuppliesServiceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7437,11 +7141,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AngleIndicationTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AngleIndicationTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AngleIndicationTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7506,11 +7206,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DistanceIndicationTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DistanceIndicationTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DistanceIndicationTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7677,11 +7373,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AzimuthTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AzimuthTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AzimuthTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7741,11 +7433,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="CheckpointINSTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:CheckpointINSTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:CheckpointINSTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7796,11 +7484,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="CheckpointVORTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:CheckpointVORTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:CheckpointVORTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7887,11 +7571,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DMETimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DMETimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DMETimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -7946,11 +7626,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ElevationTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ElevationTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ElevationTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8005,11 +7681,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="GlidepathTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:GlidepathTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:GlidepathTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8065,11 +7737,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="LocalizerTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:LocalizerTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:LocalizerTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8129,11 +7797,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="MarkerBeaconTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:MarkerBeaconTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:MarkerBeaconTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8188,11 +7852,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="NavaidTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:NavaidTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:NavaidTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8355,11 +8015,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SDFTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SDFTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SDFTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8413,11 +8069,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="NDBTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:NDBTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:NDBTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8471,11 +8123,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SpecialNavigationStationTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SpecialNavigationStationTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SpecialNavigationStationTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8533,11 +8181,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="VORTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:VORTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:VORTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8592,11 +8236,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TACANTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TACANTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TACANTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8649,11 +8289,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SpecialNavigationSystemTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SpecialNavigationSystemTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SpecialNavigationSystemTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8813,11 +8449,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DirectionFinderTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DirectionFinderTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DirectionFinderTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8870,11 +8502,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DesignatedPointTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DesignatedPointTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DesignatedPointTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8931,11 +8559,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SignificantPointInAirspaceTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SignificantPointInAirspaceTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SignificantPointInAirspaceTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -8996,11 +8620,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AeronauticalGroundLightTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AeronauticalGroundLightTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AeronauticalGroundLightTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9125,11 +8745,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="OrganisationAuthorityTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:OrganisationAuthorityTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:OrganisationAuthorityTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9220,11 +8836,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="UnitTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:UnitTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:UnitTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9406,11 +9018,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ObstacleAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ObstacleAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ObstacleAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9469,11 +9077,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="VerticalStructureTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:VerticalStructureTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:VerticalStructureTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9614,11 +9218,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="CirclingAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:CirclingAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:CirclingAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -9832,11 +9432,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="TerminalArrivalAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:TerminalArrivalAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:TerminalArrivalAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10099,11 +9695,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="InstrumentApproachProcedureTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:InstrumentApproachProcedureTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:InstrumentApproachProcedureTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10245,11 +9837,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandardInstrumentDepartureTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandardInstrumentDepartureTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandardInstrumentDepartureTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10303,11 +9891,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="NavigationAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:NavigationAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:NavigationAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10483,11 +10067,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="StandardInstrumentArrivalTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:StandardInstrumentArrivalTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:StandardInstrumentArrivalTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10612,11 +10192,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="NavigationAreaRestrictionTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:NavigationAreaRestrictionTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:NavigationAreaRestrictionTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10820,11 +10396,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ArrivalFeederLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ArrivalFeederLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ArrivalFeederLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10877,11 +10449,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ArrivalLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ArrivalLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ArrivalLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10934,11 +10502,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="DepartureLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:DepartureLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:DepartureLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -10993,11 +10557,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="FinalLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:FinalLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:FinalLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11069,11 +10629,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="InitialLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:InitialLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:InitialLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11126,11 +10682,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="IntermediateLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:IntermediateLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:IntermediateLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11183,11 +10735,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="MissedApproachLegTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:MissedApproachLegTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:MissedApproachLegTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11314,11 +10862,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ProcedureDMETimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ProcedureDMETimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ProcedureDMETimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11372,11 +10916,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="SafeAltitudeAreaTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:SafeAltitudeAreaTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:SafeAltitudeAreaTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11474,11 +11014,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="HoldingPatternTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:HoldingPatternTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:HoldingPatternTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11547,11 +11083,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="UnplannedHoldingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:UnplannedHoldingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:UnplannedHoldingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11674,11 +11206,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AirspaceBorderCrossingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AirspaceBorderCrossingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AirspaceBorderCrossingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -11946,11 +11474,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="FlightRestrictionTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:FlightRestrictionTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:FlightRestrictionTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12155,11 +11679,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RouteSegmentTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RouteSegmentTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RouteSegmentTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12335,11 +11855,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RouteDMETimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RouteDMETimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RouteDMETimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12393,11 +11909,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RouteTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RouteTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RouteTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12459,11 +11971,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="ChangeOverPointTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:ChangeOverPointTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:ChangeOverPointTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12523,11 +12031,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="AerialRefuellingTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:AerialRefuellingTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:AerialRefuellingTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>
@@ -12749,11 +12253,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</complexType>
 	<complexType name="RulesProceduresTimeSlicePropertyType">
 		<sequence>
-			<element ref="aixm:RulesProceduresTimeSlice">
-				<annotation>
-					<documentation>snowflake:FilterStatus</documentation>
-				</annotation>
-			</element>
+			<element ref="aixm:RulesProceduresTimeSlice"/>
 			<!-- dbid field for persistence  -->
 			<element name="dbid" type="xs:long"/>
 		</sequence>

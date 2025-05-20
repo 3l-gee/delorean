@@ -69,6 +69,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMFeatureBaseType">
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
+					<!-- status field for filtering  -->
+                	<element name="featureStatus" type="xs:string" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>

@@ -36,6 +36,10 @@
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureMetadata']">
                 <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
             </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='AbstractAIXMFeatureType']//xs:element[@name='featureStatus']">
+                <annox:annotate target="field">@jakarta.persistence.Column(name = "feature_status")</annox:annotate>
+                <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+            </jaxb:bindings>
             <jaxb:bindings node="xs:complexType[@name='AbstractAIXMObjectType']">
                 <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractAIXMObjectType",propOrder = {})</annox:annotate>
                 <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>

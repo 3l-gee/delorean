@@ -183,19 +183,19 @@ public class DatabaseBinding<T> {
         Session session = this.sessionFactory.openSession();
 
         // Enable status filter feature
-        Filter featureFilter = session.enableFilter("filterStatusFeature");
-        featureFilter.setParameter("status", "APPROVED");
-        featureFilter.validate();
+        // Filter featureFilter = session.enableFilter("filterStatusFeature");
+        // featureFilter.setParameter("status", "APPROVED");
+        // featureFilter.validate();
 
         // Enable status filter timeslice
-        Filter timesliceFilter = session.enableFilter("filterStatusTimeSlice");
-        timesliceFilter.setParameter("status", "APPROVED");
-        timesliceFilter.validate();
+        // Filter timesliceFilter = session.enableFilter("filterStatusTimeSlice");
+        // timesliceFilter.setParameter("status", "APPROVED");
+        // timesliceFilter.validate();
 
         // Enable valid time filter
-        Filter validFilter = session.enableFilter("filterValidTime");
-        validFilter.setParameter("valid", Instant.parse("2025-05-01T00:00:00.000Z"));
-        validFilter.validate();
+        // Filter validFilter = session.enableFilter("filterValidTime");
+        // validFilter.setParameter("valid", Instant.parse("2025-05-01T00:00:00.000Z"));
+        // validFilter.validate();
 
         Transaction transaction = null;
         AIXMBasicMessageType object = null;
@@ -209,14 +209,25 @@ public class DatabaseBinding<T> {
             FROM DesignatedPointType dpt
             JOIN dpt.timeSlice tsp
             JOIN tsp.designatedPointTimeSlice ts
-            WHERE ts.featureStatus = 'APPROVED'
-                AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
-                    """;
+            WHERE dpt.featureStatus = 'APPROVED'
+            AND ts.featureStatus = 'APPROVED'
+            AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
+            AND NOT EXISTS (
+                SELECT 1
+                FROM DesignatedPointType dpt2
+                JOIN dpt2.timeSlice tsp2
+                JOIN tsp2.designatedPointTimeSlice ts2
+                WHERE dpt2.id = dpt.id  
+                AND ts2.sequenceNumber = ts.sequenceNumber
+                AND ts2.featureStatus = 'APPROVED'
+                AND ts2.correctionNumber > ts.correctionNumber
+            )
+            """;
 
             // Retrieve the object using byId
             // object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
             // List<DesignatedPointType> designatedPoints = session.createQuery("select dpt from DesignatedPointType dpt", DesignatedPointType.class).getResultList();
-           List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class).setParameter("validDateTime", Instant.parse("2025-05-01T00:00:00.000Z")).getResultList();
+           List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class).setParameter("validDateTime", Instant.parse("2005-01-01T00:00:00.000Z")).getResultList();
             object = new AIXMBasicMessageType();
             for (DesignatedPointType dpt : designatedPoints) {
                 BasicMessageMemberAIXMPropertyType member = new BasicMessageMemberAIXMPropertyType();

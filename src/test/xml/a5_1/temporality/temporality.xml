@@ -22,112 +22,188 @@ This test data's goal is to tets the import / export function of feature with mu
     <aixm:messageMetadata>
     </aixm:messageMetadata>
 	<message:hasMember>
-        <aixm:VerticalStructure xmlns:aixm="http://www.aixm.aero/schema/5.1" gml:id="gmlIDXXX">
-            <gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000001</gml:identifier>
-            <aixm:timeSlice>
-                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
-                    <gml:validTime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition>2001-01-01T00:00:00.000Z<gml:endPosition/>
-                        </gml:TimePeriod>
-                    </gml:validTime>
-                    <aixm:interpretation>BASELINE</aixm:interpretation>
-                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
-                    <aixm:correctionNumber>0</aixm:correctionNumber>
-                    <aixm:featureLifetime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition indeterminatePosition="unknown"/>
-                        </gml:TimePeriod>
-                    </aixm:featureLifetime>
-                    <aixm:name>OBST</aixm:name>
-                    <aixm:type>POLE</aixm:type>
-                    <aixm:lighted>NO</aixm:lighted>
-                    <aixm:group>NO</aixm:group>
-                    <aixm:part>
-                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
-                            <aixm:verticalExtent uom="M">10</aixm:verticalExtent>
-                            <aixm:mobile>NO</aixm:mobile>
-                            <aixm:horizontalProjection_location>
-                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
-                                    <gml:pos>9.482000 47.028000</gml:pos>
-                                    <aixm:elevation uom="M">489.0</aixm:elevation>
-                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
-                                </aixm:ElevatedPoint>
-                            </aixm:horizontalProjection_location>
-                        </aixm:VerticalStructurePart>
-                    </aixm:part>
-                </aixm:VerticalStructureTimeSlice>
-                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
-                    <gml:validTime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition indeterminatePosition="unknown"/>
-                        </gml:TimePeriod>
-                    </gml:validTime>
-                    <aixm:interpretation>BASELINE</aixm:interpretation>
-                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
-                    <aixm:correctionNumber>0</aixm:correctionNumber>
-                    <aixm:featureLifetime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition indeterminatePosition="unknown"/>
-                        </gml:TimePeriod>
-                    </aixm:featureLifetime>
-                    <aixm:name>OBST</aixm:name>
-                    <aixm:type>POLE</aixm:type>
-                    <aixm:lighted>NO</aixm:lighted>
-                    <aixm:group>NO</aixm:group>
-                    <aixm:part>
-                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
-                            <aixm:verticalExtent uom="M">20</aixm:verticalExtent>
-                            <aixm:mobile>NO</aixm:mobile>
-                            <aixm:horizontalProjection_location>
-                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
-                                    <gml:pos>9.482000 47.028000</gml:pos>
-                                    <aixm:elevation uom="M">489.0</aixm:elevation>
-                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
-                                </aixm:ElevatedPoint>
-                            </aixm:horizontalProjection_location>
-                        </aixm:VerticalStructurePart>
-                    </aixm:part>
-                </aixm:VerticalStructureTimeSlice>
-                <aixm:VerticalStructureTimeSlice gml:id="gmlIDXXX">
-                    <gml:validTime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition indeterminatePosition="unknown"/>
-                        </gml:TimePeriod>
-                    </gml:validTime>
-                    <aixm:interpretation>BASELINE</aixm:interpretation>
-                    <aixm:sequenceNumber>1</aixm:sequenceNumber>
-                    <aixm:correctionNumber>1</aixm:correctionNumber>
-                    <aixm:featureLifetime>
-                        <gml:TimePeriod gml:id="gmlIDXXX">
-                            <gml:beginPosition>1950-01-01T00:00:00.000Z</gml:beginPosition>
-                            <gml:endPosition indeterminatePosition="unknown"/>
-                        </gml:TimePeriod>
-                    </aixm:featureLifetime>
-                    <aixm:name>OBST</aixm:name>
-                    <aixm:type>POLE</aixm:type>
-                    <aixm:lighted>NO</aixm:lighted>
-                    <aixm:group>NO</aixm:group>
-                    <aixm:part>
-                        <aixm:VerticalStructurePart gml:id="gmlIDXXX">
-                            <aixm:verticalExtent uom="M">30</aixm:verticalExtent>
-                            <aixm:mobile>NO</aixm:mobile>
-                            <aixm:horizontalProjection_location>
-                                <aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="gmlIDXXX">
-                                    <gml:pos>9.482000 47.028000</gml:pos>
-                                    <aixm:elevation uom="M">489.0</aixm:elevation>
-                                    <aixm:verticalDatum>OTHER:LN02</aixm:verticalDatum>
-                                </aixm:ElevatedPoint>
-                            </aixm:horizontalProjection_location>
-                        </aixm:VerticalStructurePart>
-                    </aixm:part>
-                </aixm:VerticalStructureTimeSlice>
+        <aixm:DesignatedPoint xmlns:aixm="http://www.aixm.aero/schema/5.1" gml:id="gmlID9945099">
+			<gml:identifier codeSpace="urn:uuid:">1a645e59-037b-49e1-82d8-02610e69b88d</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition>2010-01-01T00:00:00.000Z</gml:endPosition>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE10</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
             </aixm:timeSlice>
-        </aixm:VerticalStructure>
+            <aixm:timeSlice>
+                <aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2010-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition>2012-01-01T00:00:00.000Z</gml:endPosition>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>2</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE20</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
+            </aixm:timeSlice>
+            <aixm:timeSlice>
+                <aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2012-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition>2020-01-01T00:00:00.000Z</gml:endPosition>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>3</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE30</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
+            </aixm:timeSlice>
+            <aixm:timeSlice>
+                <aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2012-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition>2020-01-01T00:00:00.000Z</gml:endPosition>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>3</aixm:sequenceNumber>
+					<aixm:correctionNumber>1</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE31</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
+			</aixm:timeSlice>
+            <aixm:timeSlice>
+                <aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2020-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>4</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE40</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
+			</aixm:timeSlice>
+            <aixm:timeSlice>
+                <aixm:DesignatedPointTimeSlice gml:id="gmlID9945100">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gmlID9945101">
+							<gml:beginPosition>2020-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>4</aixm:sequenceNumber>
+					<aixm:correctionNumber>1</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gmlID9945102">
+							<gml:beginPosition>2001-01-01T00:00:00.000Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:designator>STEVE41</aixm:designator>
+					<aixm:type>ICAO</aixm:type>
+					<aixm:name>ROCCA</aixm:name>
+					<aixm:location>
+						<aixm:Point srsName="urn:ogc:def:crs:EPSG::4326" gml:id="gmlID9945103">
+							<gml:pos>45.74527861 6.6455725</gml:pos>
+						</aixm:Point>
+					</aixm:location>
+					<aixm:aimingPoint xsi:nil="true"/>
+					<aixm:airportHeliport xsi:nil="true"/>
+					<aixm:runwayPoint xsi:nil="true"/>
+				</aixm:DesignatedPointTimeSlice>
+			</aixm:timeSlice>
+		</aixm:DesignatedPoint>
 	</message:hasMember>
 </message:AIXMBasicMessage>
