@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
@@ -203,9 +204,19 @@ public class DatabaseBinding<T> {
             // Start a transaction
             transaction = session.beginTransaction();
 
+            String hql = """
+            SELECT DISTINCT dpt
+            FROM DesignatedPointType dpt
+            JOIN dpt.timeSlice tsp
+            JOIN tsp.designatedPointTimeSlice ts
+            WHERE ts.featureStatus = 'APPROVED'
+                AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
+                    """;
+
             // Retrieve the object using byId
             // object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
-            List<DesignatedPointType> designatedPoints = session.createQuery("select dpt from DesignatedPointType dpt", DesignatedPointType.class).getResultList();
+            // List<DesignatedPointType> designatedPoints = session.createQuery("select dpt from DesignatedPointType dpt", DesignatedPointType.class).getResultList();
+           List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class).setParameter("validDateTime", Instant.parse("2025-05-01T00:00:00.000Z")).getResultList();
             object = new AIXMBasicMessageType();
             for (DesignatedPointType dpt : designatedPoints) {
                 BasicMessageMemberAIXMPropertyType member = new BasicMessageMemberAIXMPropertyType();
