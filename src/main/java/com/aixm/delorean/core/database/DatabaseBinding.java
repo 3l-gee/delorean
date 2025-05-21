@@ -181,57 +181,59 @@ public class DatabaseBinding<T> {
         }
 
         Session session = this.sessionFactory.openSession();
-
-        // Enable status filter feature
-        // Filter featureFilter = session.enableFilter("filterStatusFeature");
-        // featureFilter.setParameter("status", "APPROVED");
-        // featureFilter.validate();
-
-        // Enable status filter timeslice
-        // Filter timesliceFilter = session.enableFilter("filterStatusTimeSlice");
-        // timesliceFilter.setParameter("status", "APPROVED");
-        // timesliceFilter.validate();
-
-        // Enable valid time filter
-        // Filter validFilter = session.enableFilter("filterValidTime");
-        // validFilter.setParameter("valid", Instant.parse("2025-05-01T00:00:00.000Z"));
-        // validFilter.validate();
-
         Transaction transaction = null;
         AIXMBasicMessageType object = null;
 
         try {
-            // Start a transaction
             transaction = session.beginTransaction();
 
+            // 1. Execute SQL to get the latest IDs per sequence_number
+            String sql = """
+            SELECT DISTINCT ON (sequence_number)
+            navaids_points.designatedpoint_tsp.designatedpointtimeslice_id
+            FROM navaids_points.designatedpoint
+            LEFT JOIN designatedpoint_timeslice
+            ON navaids_points.designatedpoint.id = designatedpoint_timeslice.designatedpoint_id
+            LEFT JOIN navaids_points.designatedpoint_tsp
+            ON designatedpoint_timeslice.designatedpoint_tsp_id = navaids_points.designatedpoint_tsp.id
+            LEFT JOIN navaids_points.designatedpoint_ts
+            ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
+            WHERE
+                navaids_points.designatedpoint.feature_status = 'APPROVED'
+                AND 
+                navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
+            ORDER BY sequence_number, correction_number DESC;
+            """;
+
+            List<Integer> validIds = session.createNativeQuery(sql, Integer.class).getResultList();
+
+            if (validIds.isEmpty()) {
+                ConsoleLogger.log(LogLevel.INFO, "No valid DesignatedPointTimeSlice IDs found");
+                return null;
+            }
+
+            // 2. Run the HQL using the result from SQL
             String hql = """
-            SELECT DISTINCT dpt
+            SELECT dpt
             FROM DesignatedPointType dpt
             JOIN dpt.timeSlice tsp
             JOIN tsp.designatedPointTimeSlice ts
-            WHERE dpt.featureStatus = 'APPROVED'
-            AND ts.featureStatus = 'APPROVED'
-            AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
-            AND NOT EXISTS (
-                SELECT 1
-                FROM DesignatedPointType dpt2
-                JOIN dpt2.timeSlice tsp2
-                JOIN tsp2.designatedPointTimeSlice ts2
-                WHERE dpt2.id = dpt.id  
-                AND ts2.sequenceNumber = ts.sequenceNumber
-                AND ts2.featureStatus = 'APPROVED'
-                AND ts2.correctionNumber > ts.correctionNumber
-            )
+            WHERE ts.dbid IN :validIds
             """;
 
-            // Retrieve the object using byId
-            // object = session.createQuery("select abmt from AIXMBasicMessageType abmt where abmt.id = :id", AIXMBasicMessageType.class).setParameter("id", id).getSingleResult();
-            // List<DesignatedPointType> designatedPoints = session.createQuery("select dpt from DesignatedPointType dpt", DesignatedPointType.class).getResultList();
-           List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class).setParameter("validDateTime", Instant.parse("2005-01-01T00:00:00.000Z")).getResultList();
+            // WHERE (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
+            // AND ts.id IN :validIds
+
+            List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class)
+                .setParameterList("validIds", validIds)
+                .getResultList();
+                                // .setParameter("validDateTime", Instant.parse("2005-01-01T00:00:00.000Z"))
+
+            // 3. Build the export message
             object = new AIXMBasicMessageType();
             for (DesignatedPointType dpt : designatedPoints) {
                 BasicMessageMemberAIXMPropertyType member = new BasicMessageMemberAIXMPropertyType();
-                member.setAbstractAIXMFeature(dpt); 
+                member.setAbstractAIXMFeature(dpt);
                 object.getHasMember().add(member);
             }
 
@@ -244,9 +246,11 @@ public class DatabaseBinding<T> {
         } finally {
             session.close();
         }
-        ConsoleLogger.log(LogLevel.INFO, "Sucessfully exported");
+
+        ConsoleLogger.log(LogLevel.INFO, "Successfully exported");
         return object;
     }
+
 
     private boolean isMappedClass(Object object){ 
         if (this.databaseConfig.getMappedClasses().contains(object.getClass())){
