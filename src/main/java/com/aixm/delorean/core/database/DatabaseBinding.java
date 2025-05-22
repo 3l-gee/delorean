@@ -190,7 +190,7 @@ public class DatabaseBinding<T> {
             // 1. Execute SQL to get the latest IDs per sequence_number
             String sql = """
             SELECT DISTINCT ON (sequence_number)
-            navaids_points.designatedpoint_tsp.designatedpointtimeslice_id
+            navaids_points.designatedpoint_tsp.id
             FROM navaids_points.designatedpoint
             LEFT JOIN designatedpoint_timeslice
             ON navaids_points.designatedpoint.id = designatedpoint_timeslice.designatedpoint_id
@@ -216,18 +216,18 @@ public class DatabaseBinding<T> {
             String hql = """
             SELECT dpt
             FROM DesignatedPointType dpt
-            JOIN dpt.timeSlice tsp
-            JOIN tsp.designatedPointTimeSlice ts
-            WHERE ts.dbid IN :validIds
+            JOIN FETCH dpt.timeSlice tsp
+            JOIN FETCH  tsp.designatedPointTimeSlice ts
+            WHERE tsp.dbid IN :validIds
+                AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
+            ORDER BY ts.sequenceNumber, ts.correctionNumber DESC
             """;
-
-            // WHERE (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
-            // AND ts.id IN :validIds
 
             List<DesignatedPointType> designatedPoints = session.createQuery(hql, DesignatedPointType.class)
                 .setParameterList("validIds", validIds)
+                .setParameter("validDateTime", Instant.parse("2011-01-01T00:00:00.000Z"))
                 .getResultList();
-                                // .setParameter("validDateTime", Instant.parse("2005-01-01T00:00:00.000Z"))
+
 
             // 3. Build the export message
             object = new AIXMBasicMessageType();
