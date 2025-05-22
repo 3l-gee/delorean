@@ -2,39 +2,19 @@ CREATE MATERIALIZED VIEW geometry.point_view AS
 SELECT
     id, 
 	point as geom,
-	jsonb_build_object(
-		'xml_id', xml_id,
-		'horizontalaccuracy', horizontalaccuracy,
-		'horizontalaccuracy_uom', horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', horizontalaccuracy_nilreason,
-		'nilreason', nilreason
-	) AS point
+	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM point_pt;
 
 CREATE MATERIALIZED VIEW geometry.elevated_point_view AS
 SELECT 
     id, 
     point as geom,
-	jsonb_build_object(
-		'xml_id', xml_id,
-		'elevation', elevation,
-		'elevation_uom', elevation_uom,
-		'eleveation_nilreason', eleveation_nilreason,
-		'geoidundulation', geoidundulation,
-		'geoidundulation_uom', geoidundulation_uom,
-		'geoidundulation_nilreason', geoidundulation_nilreason,
-		'horizontalaccuracy', horizontalaccuracy,
-		'horizontalaccuracy_uom', horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', horizontalaccuracy_nilreason,
-		'verticalaccuracy', verticalaccuracy,
-		'verticalaccuracy_uom', verticalaccuracy_uom,
-		'verticalaccuracy_nilreason', verticalaccuracy_nilreason,
-		'verticaldatum', verticaldatum,
-		'verticaldatum_nilreason', verticaldatum_nilreason,
-		'nilreason', nilreason
-	) AS point
+	COALESCE(elevation || ' ' || elevation_uom, '(' || eleveation_nilreason || ')') AS elevation,
+	COALESCE(geoidundulation || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS geoidUndulation,
+	COALESCE(verticaldatum || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS verticalDatum,
+	COALESCE(CAST(verticalaccuracy AS varchar), '(' || verticaldatum_nilreason || ')') AS verticalAccuracy,
+	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM elevated_point_pt;
-
 
 CREATE MATERIALIZED VIEW geometry.curve_view AS
 WITH 
@@ -100,7 +80,6 @@ segment_union AS (
 merged_segments AS (
     SELECT 
         public.curve_pt.id,
-		 public.curve_pt.xml_id,
         ST_LineMerge(ST_Collect(segment_union.geom)) AS merged_geom,
 		horizontalaccuracy,
 		horizontalaccuracy_uom,
@@ -117,13 +96,7 @@ merged_segments AS (
 SELECT 
     merged_segments.id, 
 	merged_geom as geom,
-	jsonb_build_object(
-		'xml_id', merged_segments.xml_id,
-		'horizontalaccuracy', merged_segments.horizontalaccuracy,
-		'horizontalaccuracy_uom', merged_segments.horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', merged_segments.horizontalaccuracy_nilreason,
-		'nilreason', merged_segments.nilreason
-	) AS curve
+	COALESCE(merged_segments.horizontalaccuracy || ' ' || merged_segments.horizontalaccuracy_uom, '(' || merged_segments.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM merged_segments;
 
 
@@ -191,7 +164,6 @@ segment_union AS (
 merged_segments AS (
     SELECT 
         public.elevated_curve_pt.id,
-		public.elevated_curve_pt.xml_id,
         ST_LineMerge(ST_Collect(segment_union.geom)) AS merged_geom,
 		elevation,
 		elevation_uom,
@@ -219,24 +191,11 @@ merged_segments AS (
 SELECT 
     merged_segments.id,
 	merged_geom as geom,
-	jsonb_build_object(
-		'xml_id', merged_segments.xml_id,
-		'elevation', merged_segments.elevation,
-		'elevation_uom', merged_segments.elevation_uom,
-		'eleveation_nilreason', merged_segments.eleveation_nilreason,
-		'geoidundulation', merged_segments.geoidundulation,
-		'geoidundulation_uom', merged_segments.geoidundulation_uom,
-		'geoidundulation_nilreason', merged_segments.geoidundulation_nilreason,
-		'horizontalaccuracy', merged_segments.horizontalaccuracy,
-		'horizontalaccuracy_uom', merged_segments.horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', merged_segments.horizontalaccuracy_nilreason,
-		'verticalaccuracy', merged_segments.verticalaccuracy,
-		'verticalaccuracy_uom', merged_segments.verticalaccuracy_uom,
-		'verticalaccuracy_nilreason', merged_segments.verticalaccuracy_nilreason,
-		'verticaldatum', merged_segments.verticaldatum,
-		'verticaldatum_nilreason', merged_segments.verticaldatum_nilreason,
-		'nilreason', merged_segments.nilreason
-	) AS curve
+	COALESCE(merged_segments.elevation || ' ' || merged_segments.elevation_uom, '(' || merged_segments.eleveation_nilreason || ')') AS elevation,
+	COALESCE(merged_segments.geoidundulation || ' ' || merged_segments.geoidundulation_uom, '(' || merged_segments.geoidundulation_nilreason || ')') AS geoidUndulation,
+	COALESCE(merged_segments.verticaldatum || ' ' || merged_segments.geoidundulation_uom, '(' || merged_segments.geoidundulation_nilreason || ')') AS verticalDatum,
+	COALESCE(CAST(merged_segments.verticalaccuracy AS varchar), '(' || merged_segments.verticaldatum_nilreason || ')') AS verticalAccuracy,
+	COALESCE(merged_segments.horizontalaccuracy || ' ' || merged_segments.horizontalaccuracy_uom, '(' || merged_segments.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM merged_segments;
 
 CREATE MATERIALIZED VIEW partial_surface_view AS
@@ -1509,14 +1468,7 @@ SELECT
             WHERE inner_shells.id = outer_shells.id
         )
     ) AS geom,
-	jsonb_build_object(
-		'xml_id', outer_shells.xml_id,
-		'curve_xml_id', outer_shells.curve_xml_id,
-		'horizontalaccuracy', outer_shells.horizontalaccuracy,
-		'horizontalaccuracy_uom', outer_shells.horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', outer_shells.horizontalaccuracy_nilreason,
-		'nilreason', outer_shells.nilreason
-	) AS surface
+	COALESCE(outer_shells.horizontalaccuracy || ' ' ||outer_shells. horizontalaccuracy_uom, '(' || outer_shells.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM 
 outer_shells;
 
@@ -3241,24 +3193,10 @@ SELECT
             WHERE inner_shells.id = outer_shells.id
         )
     ) AS geom,
-	jsonb_build_object(
-		'xml_id', outer_shells.xml_id,
-		'curve_xml_id', outer_shells.curve_xml_id,
-		'elevation', outer_shells.elevation,
-		'elevation_uom', outer_shells.elevation_uom,
-		'eleveation_nilreason', outer_shells.eleveation_nilreason,
-		'geoidundulation', outer_shells.geoidundulation,
-		'geoidundulation_uom', outer_shells.geoidundulation_uom,
-		'geoidundulation_nilreason', outer_shells.geoidundulation_nilreason,
-		'horizontalaccuracy', outer_shells.horizontalaccuracy,
-		'horizontalaccuracy_uom', outer_shells.horizontalaccuracy_uom,
-		'horizontalaccuracy_nilreason', outer_shells.horizontalaccuracy_nilreason,
-		'verticalaccuracy', outer_shells.verticalaccuracy,
-		'verticalaccuracy_uom', outer_shells.verticalaccuracy_uom,
-		'verticalaccuracy_nilreason', outer_shells.verticalaccuracy_nilreason,
-		'verticaldatum', outer_shells.verticaldatum,
-		'verticaldatum_nilreason', outer_shells.verticaldatum_nilreason,
-		'nilreason', outer_shells.nilreason
-	) AS surface
+	COALESCE(outer_shells.elevation || ' ' || outer_shells.elevation_uom, '(' || outer_shells.eleveation_nilreason || ')') AS elevation,
+	COALESCE(outer_shells.geoidundulation || ' ' || outer_shells.geoidundulation_uom, '(' || outer_shells.geoidundulation_nilreason || ')') AS geoidUndulation,
+	COALESCE(outer_shells.verticaldatum || ' ' || outer_shells.outer_shells.geoidundulation_uom, '(' || outer_shells.geoidundulation_nilreason || ')') AS verticalDatum,
+	COALESCE(CAST(outer_shells.verticalaccuracy AS varchar), '(' || outer_shells.verticaldatum_nilreason || ')') AS verticalAccuracy,
+	COALESCE(outer_shells.horizontalaccuracy || ' ' || outer_shells.horizontalaccuracy_uom, '(' || outer_shells.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM 
 outer_shells;

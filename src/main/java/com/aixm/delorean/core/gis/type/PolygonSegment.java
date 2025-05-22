@@ -25,8 +25,8 @@ import jakarta.persistence.Index;
 public class PolygonSegment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "polygon_segment_seq")
-    @SequenceGenerator(name = "polygon_segment_seq", sequenceName = "polygon_segment_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", nullable = false)
     protected long dbid;
 

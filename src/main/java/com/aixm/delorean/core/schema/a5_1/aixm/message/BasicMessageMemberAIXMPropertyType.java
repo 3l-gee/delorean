@@ -20,6 +20,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
@@ -77,8 +78,9 @@ public class BasicMessageMemberAIXMPropertyType
     @XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1", type = JAXBElement.class, required = false)
     protected AbstractAIXMFeatureType abstractAIXMFeature;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
+    @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
     @Column(name = "status")

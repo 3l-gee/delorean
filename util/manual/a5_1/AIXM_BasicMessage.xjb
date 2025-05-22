@@ -38,8 +38,9 @@
             <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
                 <jaxb:bindings node="//xs:element[@name='dbid']">
                     <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
-                    <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)</annox:annotate>
-                    <annox:annotate target="field">@jakarta.persistence.Column(name = "id", nullable = false)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
                     <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
                 </jaxb:bindings>
             </jaxb:bindings>
