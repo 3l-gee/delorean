@@ -137,19 +137,19 @@ public class NavaidTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_touchdownliftoff", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffPropertyType> touchDownLiftOff;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_navaidequipment", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidcomponent_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidComponentPropertyType> navaidEquipment;
     @OneToOne(cascade = {
@@ -160,37 +160,37 @@ public class NavaidTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_runwaydirection", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirection_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_servedairport", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> servedAirport;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_availability", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidOperationalStatusPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_ts_annotation", joinColumns = {
-        @JoinColumn(name = "navaid_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

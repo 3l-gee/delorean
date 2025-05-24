@@ -79,10 +79,10 @@ public class NavigationAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasector_significantobstacle", joinColumns = {
-        @JoinColumn(name = "navigationareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstruction_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
     @OneToOne(cascade = {
@@ -93,19 +93,19 @@ public class NavigationAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasector_sectorcriteria", joinColumns = {
-        @JoinColumn(name = "navigationareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "sectordesign_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SectorDesignPropertyType> sectorCriteria;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationareasector_annotation", joinColumns = {
-        @JoinColumn(name = "navigationareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

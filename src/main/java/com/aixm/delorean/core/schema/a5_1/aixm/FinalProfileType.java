@@ -73,37 +73,37 @@ public class FinalProfileType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_altitude", joinColumns = {
-        @JoinColumn(name = "finalprofile_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachaltitudetable_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachAltitudeTablePropertyType> altitude;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_distance", joinColumns = {
-        @JoinColumn(name = "finalprofile_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachdistancetable_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachDistanceTablePropertyType> distance;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_timing", joinColumns = {
-        @JoinColumn(name = "finalprofile_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachtimingtable_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachTimingTablePropertyType> timing;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalprofile_annotation", joinColumns = {
-        @JoinColumn(name = "finalprofile_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

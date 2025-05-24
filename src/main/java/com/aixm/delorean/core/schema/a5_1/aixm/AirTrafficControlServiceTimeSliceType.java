@@ -133,46 +133,46 @@ public class AirTrafficControlServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_call_sign", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "callsigndetail_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CallsignDetailPropertyType> callSign;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_radiocommunication", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_groundcommunication", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> groundCommunication;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_availability", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServiceOperationalStatusPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded
@@ -202,55 +202,55 @@ public class AirTrafficControlServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientairport", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> clientAirport;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientairspace", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> clientAirspace;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientroute", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeportion_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RoutePortionPropertyType> clientRoute;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientprocedure", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedure_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedurePropertyType> clientProcedure;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientholding", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "holdingpattern_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<HoldingPatternPropertyType> clientHolding;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientaerialrefuelling", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingPropertyType> clientAerialRefuelling;
     @OneToOne(cascade = {

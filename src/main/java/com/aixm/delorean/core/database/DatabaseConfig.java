@@ -12,6 +12,7 @@ public enum DatabaseConfig {
         20,
         false,
         "test/postgres/init/schema.sql",
+        "test/postgres/init/schema.sql",
         new Class<?>[]{
             com.aixm.delorean.core.schema.test.aixm.FeatureCollectionType.class,
             com.aixm.delorean.core.schema.test.aixm.FeatureType.class,  
@@ -22,8 +23,9 @@ public enum DatabaseConfig {
         "a5_1",                                 // version
         5,                                      // Connection pool min size
         20,                                     // Connection pool max size
-        true,                                  // Hibernate show_sql
-        "a5_1/postgres/init/schema.sql",
+        false,                                  // Hibernate show_sql
+        "a5_1/postgres/schema.sql",
+        "a5_1/postgres/post_init.sql",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -811,7 +813,8 @@ public enum DatabaseConfig {
         5,                      // Connection pool min size
         20,                     // Connection pool max size
         false,                  // Hibernate show_sql
-        "a5_1_1/postgres/init/schema.sql",
+        "a5_1_1/postgres/schema.sql",
+        "a5_1_1/postgres/post_init.sql",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -1607,16 +1610,18 @@ public enum DatabaseConfig {
     private final boolean showSql;
     private final Class<?>[] mappingClasses;
     private final Configuration configuration;
-    private final String sqlInitFilePath;
+    private final String sqlPreInitFilePath;
+    private final String sqlPostInitFilePath;
 
-    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlInitFilePath, Class<?>[] mappingClasses) {
+    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses) {
         this.version = version;
         this.connectionPoolMinSize = connectionPoolMinSize;
         this.connectionPoolMaxSize = connectionPoolMaxSize;
         this.showSql = showSql;
         this.mappingClasses = mappingClasses;
         this.configuration = getHibernateConfiguration();
-        this.sqlInitFilePath = sqlInitFilePath;
+        this.sqlPreInitFilePath = sqlPreInitFilePath;
+        this.sqlPostInitFilePath = sqlPostInitFilePath;
     }
 
     public String getVersion() {
@@ -1668,7 +1673,11 @@ public enum DatabaseConfig {
         throw new IllegalArgumentException("Unsupported schema version: " + version);
     }
 
-    public String getSqlInitFilePath() {
-        return sqlInitFilePath;
+    public String getSqlPreInitFilePath() {
+        return sqlPreInitFilePath;
     }
+
+    public String getSqlPostInitFilePath() {
+        return sqlPostInitFilePath;
+    }   
 }

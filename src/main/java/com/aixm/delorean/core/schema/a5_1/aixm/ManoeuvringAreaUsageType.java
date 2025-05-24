@@ -94,10 +94,10 @@ public class ManoeuvringAreaUsageType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareausage_contact", joinColumns = {
-        @JoinColumn(name = "manoeuvringareausage_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @OneToOne(cascade = {
@@ -108,10 +108,10 @@ public class ManoeuvringAreaUsageType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareausage_annotation", joinColumns = {
-        @JoinColumn(name = "manoeuvringareausage_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded

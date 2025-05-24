@@ -72,29 +72,29 @@ public class LandingTakeoffAreaCollectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_runway", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirection_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDirectionPropertyType> runway;
     @XmlElement(name = "TLOF")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_tlof", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffPropertyType> tlof;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "landingtakeoffareacollection_annotation", joinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

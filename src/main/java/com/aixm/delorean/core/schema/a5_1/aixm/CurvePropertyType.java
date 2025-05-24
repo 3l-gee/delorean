@@ -61,7 +61,6 @@ public class CurvePropertyType
         }
     }
 
-
     /**
      * Gets the value of the curve property.
      * 

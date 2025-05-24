@@ -55,10 +55,10 @@ public class RunwayBlastPadType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayblastpad_timeslice", joinColumns = {
-        @JoinColumn(name = "runwayblastpad_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwayblastpad_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayBlastPadTimeSlicePropertyType> timeSlice;
 

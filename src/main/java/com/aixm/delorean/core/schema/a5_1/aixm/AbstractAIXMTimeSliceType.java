@@ -24,6 +24,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -45,6 +46,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element ref="{http://www.aixm.aero/schema/5.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element name="featureLifetime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="featureStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -212,6 +214,9 @@ public abstract class AbstractAIXMTimeSliceType
         @AttributeOverride(name = "endPosition", column = @Column(name = "feature_lifetime_end"))
     })
     protected AixmTimeSliceType featureLifetime;
+    @Column(name = "feature_status")
+    @XmlTransient
+    protected String featureStatus;
 
     /**
      * Gets the value of the interpretation property.
@@ -351,6 +356,34 @@ public abstract class AbstractAIXMTimeSliceType
 
     public boolean isSetFeatureLifetime() {
         return (this.featureLifetime!= null);
+    }
+
+    /**
+     * Gets the value of the featureStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFeatureStatus() {
+        return featureStatus;
+    }
+
+    /**
+     * Sets the value of the featureStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFeatureStatus(String value) {
+        this.featureStatus = value;
+    }
+
+    public boolean isSetFeatureStatus() {
+        return (this.featureStatus!= null);
     }
 
 }

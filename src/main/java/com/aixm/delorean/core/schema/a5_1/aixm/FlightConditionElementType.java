@@ -221,19 +221,19 @@ public class FlightConditionElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditionelement_flightlevel", joinColumns = {
-        @JoinColumn(name = "flightconditionelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestrictionlevel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightconditionelement_annotation", joinColumns = {
-        @JoinColumn(name = "flightconditionelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

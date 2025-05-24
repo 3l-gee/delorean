@@ -175,8 +175,9 @@ public class Main {
                -={ Delorean Shell Commands }=-
     help                                                             : Display this help message
     new         [a5_1, a5_1_1]                                       : Create a new container with the specified argument       
-    xml_config  <container id, - >      [a5_1, a5_1_1]               : Set the XML configuration for the specified container
-    db_config   <container id, - >      [a5_1, a5_1_1]               : Set the database configuration for the specified container
+    xml_config  <container id, - >      [a5_1, a5_1_1]               : Configures the xml schema to use for the specified container
+    db_config   <container id, - >      [a5_1, a5_1_1]               : Configures the db connection for the specified container
+    qgis_config <container id, - >      [a5_1, a5_1_1]               : Configures the qgis project for the specified container
     xml         <container id, - >      load             <path>      : load the xml data from the specified path
     xml         <container id, - >      export           <path>      : export the xml data to the specified path
     db          <container id, - >      startup                      : start the database
@@ -201,6 +202,10 @@ public class Main {
 
             case "db_config":
             executeDbConfigurationCommand(argument, scanner, parameter, option);
+            break;
+
+            case "qgis_config" :
+            executeQgisConfigurationCommand(argument, scanner, parameter, option);
             break;
 
             case "db" :
@@ -319,6 +324,7 @@ public class Main {
                 String username = scanner.nextLine();
 
                 // Ask for password (hidden input)
+                // TODO dev phase only  
                 // char[] passwordChars = console.readPassword("Enter password : ");
                 System.out.print("Enter password : ");
                 String password = scanner.nextLine();
@@ -338,7 +344,30 @@ public class Main {
                 ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             }
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeQgisConfigurationCommand(String argument, Scanner sacnner, String parameter, String option) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            switch (parameter.toLowerCase()) {
+                case "init":
+                    break;
+
+                default:
+                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
+                    break;
+            }    
+        } else {
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -371,10 +400,11 @@ public class Main {
                     break;
 
                 default:
+                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
                     break;
             }
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -386,7 +416,7 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).setValidationRule();
         } else {
-            System.err.println("Container " + argument + " does not exist");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -398,7 +428,7 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).show();
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 }

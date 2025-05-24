@@ -126,28 +126,28 @@ public class ObstructionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_adjustment", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altitudeadjustment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltitudeAdjustmentPropertyType> adjustment;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_obstacleplacement", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleplacement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstaclePlacementPropertyType> obstaclePlacement;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_annotation", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

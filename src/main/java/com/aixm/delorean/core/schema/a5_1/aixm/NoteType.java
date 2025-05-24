@@ -88,10 +88,10 @@ public class NoteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "note_translatednote", joinColumns = {
-        @JoinColumn(name = "note_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "linguisticnote_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LinguisticNotePropertyType> translatedNote;
     @Transient

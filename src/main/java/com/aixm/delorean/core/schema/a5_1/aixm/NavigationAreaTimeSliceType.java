@@ -110,10 +110,10 @@ public class NavigationAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_ts_sector", joinColumns = {
-        @JoinColumn(name = "navigationarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navigationareasector_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavigationAreaSectorPropertyType> sector;
     @XmlElement(name = "centrePoint_fixDesignatedPoint")
@@ -155,10 +155,10 @@ public class NavigationAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "navigationarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

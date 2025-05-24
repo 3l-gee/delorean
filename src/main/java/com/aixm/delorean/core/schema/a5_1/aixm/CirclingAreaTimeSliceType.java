@@ -85,10 +85,10 @@ public class CirclingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingarea_ts_condition", joinColumns = {
-        @JoinColumn(name = "circlingarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachcondition_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachConditionPropertyType> condition;
     @OneToOne(cascade = {
@@ -99,19 +99,19 @@ public class CirclingAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingarea_ts_designsurface", joinColumns = {
-        @JoinColumn(name = "circlingarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "circlingarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

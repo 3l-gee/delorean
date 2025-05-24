@@ -97,19 +97,19 @@ public class MissedApproachGroupType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_altimeter", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersource_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltimeterSourcePropertyType> altimeter;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_annotation", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -143,37 +143,37 @@ public class DirectionFinderTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_ts_authority", joinColumns = {
-        @JoinColumn(name = "directionfinder_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "authorityfornavaidequipment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AuthorityForNavaidEquipmentPropertyType> authority;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_ts_monitoring", joinColumns = {
-        @JoinColumn(name = "directionfinder_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipmentmonitoring_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidEquipmentMonitoringPropertyType> monitoring;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_ts_availability", joinColumns = {
-        @JoinColumn(name = "directionfinder_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidOperationalStatusPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_ts_annotation", joinColumns = {
-        @JoinColumn(name = "directionfinder_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded
@@ -185,10 +185,10 @@ public class DirectionFinderTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_ts_informationprovision", joinColumns = {
-        @JoinColumn(name = "directionfinder_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "informationservice_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<InformationServicePropertyType> informationProvision;
     @Transient

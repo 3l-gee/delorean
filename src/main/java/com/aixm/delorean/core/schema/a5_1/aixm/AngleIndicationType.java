@@ -55,10 +55,10 @@ public class AngleIndicationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "angleindication_timeslice", joinColumns = {
-        @JoinColumn(name = "angleindication_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "angleindication_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AngleIndicationTimeSlicePropertyType> timeSlice;
 

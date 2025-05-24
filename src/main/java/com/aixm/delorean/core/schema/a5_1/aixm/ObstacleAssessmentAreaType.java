@@ -136,19 +136,19 @@ public class ObstacleAssessmentAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_significantobstacle", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstruction_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
     @OneToOne(cascade = {
@@ -164,10 +164,10 @@ public class ObstacleAssessmentAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleassessmentarea_annotation", joinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -109,27 +109,27 @@ public class AirportHeliportTimeSliceType
 {
 
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      */
     @XmlElement(type = DateType.class, name = "certificationDate", required = false)
     @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "certificationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "certificationdate_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "certificationDate_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "certificationDate_nilreason", length = 255, nullable = true, unique = false))
     })
     protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp certificationDate;
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      */
     @XmlElement(type = DateType.class, name = "certificationExpirationDate", required = false)
     @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "certificationexpirationdate_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "certificationexpirationdate_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "certificationExpirationDate_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "certificationExpirationDate_nilreason", length = 255, nullable = true, unique = false))
     })
     protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp certificationExpirationDate;
     @Embedded
@@ -286,19 +286,19 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_contaminant", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportcontamination_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_servedcity", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "city_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CityPropertyType> servedCity;
     @OneToOne(cascade = {
@@ -320,44 +320,44 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_altimetersource", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersource_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltimeterSourcePropertyType> altimeterSource;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_contact", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_availability", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<AirportHeliportTimeSliceType.Extension> extension;
 
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      * @return
      *     possible object is
@@ -386,7 +386,7 @@ public class AirportHeliportTimeSliceType
     }
 
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      * @return
      *     possible object is

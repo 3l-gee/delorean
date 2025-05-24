@@ -106,19 +106,19 @@ public class PointReferenceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_facilityangle", joinColumns = {
-        @JoinColumn(name = "pointreference_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "angleuse_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AngleUsePropertyType> facilityAngle;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_facilitydistance", joinColumns = {
-        @JoinColumn(name = "pointreference_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "distanceindication_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<DistanceIndicationPropertyType> facilityDistance;
     @OneToOne(cascade = {
@@ -129,10 +129,10 @@ public class PointReferenceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pointreference_annotation", joinColumns = {
-        @JoinColumn(name = "pointreference_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

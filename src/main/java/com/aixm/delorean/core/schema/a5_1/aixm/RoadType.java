@@ -55,10 +55,10 @@ public class RoadType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "road_timeslice", joinColumns = {
-        @JoinColumn(name = "road_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "road_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RoadTimeSlicePropertyType> timeSlice;
 

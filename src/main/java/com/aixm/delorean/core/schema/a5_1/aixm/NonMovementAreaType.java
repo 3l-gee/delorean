@@ -55,10 +55,10 @@ public class NonMovementAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "nonmovementarea_timeslice", joinColumns = {
-        @JoinColumn(name = "nonmovementarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "nonmovementarea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NonMovementAreaTimeSlicePropertyType> timeSlice;
 

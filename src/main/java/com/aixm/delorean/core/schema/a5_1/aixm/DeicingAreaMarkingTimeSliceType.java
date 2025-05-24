@@ -91,19 +91,19 @@ public class DeicingAreaMarkingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "deicingareamarking_ts_element", joinColumns = {
-        @JoinColumn(name = "deicingareamarking_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "markingelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MarkingElementPropertyType> element;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "deicingareamarking_ts_annotation", joinColumns = {
-        @JoinColumn(name = "deicingareamarking_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

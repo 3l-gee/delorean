@@ -61,7 +61,6 @@ public class ElevatedCurvePropertyType
         }
     }
 
-
     /**
      * Gets the value of the elevatedCurve property.
      * 

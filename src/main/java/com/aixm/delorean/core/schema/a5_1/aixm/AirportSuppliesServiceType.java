@@ -55,10 +55,10 @@ public class AirportSuppliesServiceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_timeslice", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportSuppliesServiceTimeSlicePropertyType> timeSlice;
 

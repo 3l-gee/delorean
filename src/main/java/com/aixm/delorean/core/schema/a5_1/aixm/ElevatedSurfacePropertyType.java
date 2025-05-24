@@ -61,7 +61,6 @@ public class ElevatedSurfacePropertyType
         }
     }
 
-
     /**
      * Gets the value of the elevatedSurface property.
      * 

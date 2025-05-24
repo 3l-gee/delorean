@@ -109,37 +109,37 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedtouchdownliftoff", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedrunwaycentrelinepoint", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedapron", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apron_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApronPropertyType> connectedApron;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedstand", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstand_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftStandPropertyType> connectedStand;
     @OneToOne(cascade = {
@@ -150,19 +150,19 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedtaxiway", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "taxiway_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_annotation", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

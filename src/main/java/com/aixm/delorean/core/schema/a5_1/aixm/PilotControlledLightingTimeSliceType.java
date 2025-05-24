@@ -120,28 +120,28 @@ public class PilotControlledLightingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_controlledlightintensity", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightactivation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightActivationPropertyType> controlledLightIntensity;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_activatedgroundlighting", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightsystem_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_annotation", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -55,10 +55,10 @@ public class RadioCommunicationChannelType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannel_timeslice", joinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationChannelTimeSlicePropertyType> timeSlice;
 

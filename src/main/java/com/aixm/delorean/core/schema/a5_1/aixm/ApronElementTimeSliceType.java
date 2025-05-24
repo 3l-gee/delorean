@@ -145,28 +145,28 @@ public class ApronElementTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelement_ts_supplyservice", joinColumns = {
-        @JoinColumn(name = "apronelement_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportSuppliesServicePropertyType> supplyService;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelement_ts_annotation", joinColumns = {
-        @JoinColumn(name = "apronelement_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronelement_ts_availability", joinColumns = {
-        @JoinColumn(name = "apronelement_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronareaavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient

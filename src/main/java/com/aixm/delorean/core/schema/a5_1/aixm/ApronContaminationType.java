@@ -89,27 +89,27 @@ public class ApronContaminationType
 {
 
     /**
-     * aixm:DateTimeType
+     * snowflake:DateTimeType
      * 
      */
     @XmlElement(type = DateTimeType.class, name = "observationTime", required = false)
     @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "observationTime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "observationTime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp observationTime;
     /**
-     * aixm:DateTimeType
+     * snowflake:DateTimeType
      * 
      */
     @XmlElement(type = DateTimeType.class, name = "nextObservationTime", required = false)
     @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.date.DateTimeTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "nextObservationTime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "nextObservationTime_nilreason", length = 255, nullable = true, unique = false))
     })
     protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp nextObservationTime;
     @Embedded
@@ -164,35 +164,35 @@ public class ApronContaminationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aproncontamination_criticalridge", joinColumns = {
-        @JoinColumn(name = "aproncontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "ridge_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RidgePropertyType> criticalRidge;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aproncontamination_layer", joinColumns = {
-        @JoinColumn(name = "aproncontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayer_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aproncontamination_annotation", joinColumns = {
-        @JoinColumn(name = "aproncontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<ApronContaminationType.Extension> extension;
 
     /**
-     * aixm:DateTimeType
+     * snowflake:DateTimeType
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class ApronContaminationType
     }
 
     /**
-     * aixm:DateTimeType
+     * snowflake:DateTimeType
      * 
      * @return
      *     possible object is

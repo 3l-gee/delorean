@@ -149,28 +149,28 @@ public class AerialRefuellingAnchorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayer_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceLayerPropertyType> verticalExtent;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingpoint_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingPointPropertyType> point;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellinganchor_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

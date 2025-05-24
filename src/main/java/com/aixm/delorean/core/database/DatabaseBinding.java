@@ -26,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
 public class DatabaseBinding<T> {
@@ -50,6 +51,13 @@ public class DatabaseBinding<T> {
 
     public void setPassword(String password){
         this.configuration.setProperty("hibernate.connection.password", password);
+    }
+
+    private Connection getConnection() throws SQLException {
+        String url = configuration.getProperty("hibernate.connection.url");
+        String username = configuration.getProperty("hibernate.connection.username");
+        String password = configuration.getProperty("hibernate.connection.password");
+        return DriverManager.getConnection(url, username, password);
     }
 
     private enum hbm2ddlEnum {
@@ -92,56 +100,65 @@ public class DatabaseBinding<T> {
             }
         }
     }
-    
-
+  
     public void startup() {
-        try{
-            this.executeSchemaSetupScript();
-            this.sessionFactory = configuration.buildSessionFactory();
-            ConsoleLogger.log(LogLevel.INFO, "Sucessfully generated mappings");
-        } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
+        try {
+            String hbm2ddl = this.configuration.getProperty("hibernate.hbm2ddl.auto");
+            switch (hbm2ddl) {
+                case "create":
+                case "create-only":
+                case "create-drop":
+                    this.executeSQLScript(this.databaseConfig.getSqlPreInitFilePath());
+                    this.sessionFactory = configuration.buildSessionFactory();
+                    this.executeSQLScript(this.databaseConfig.getSqlPostInitFilePath());
+                    break;
+
+                case "none":
+                case "drop":
+                case "validate":
+                case "update":
+                    this.sessionFactory = configuration.buildSessionFactory();
+                    break;
+
+                default:
+                    throw new IllegalArgumentException("Unknown hbm2ddl.auto value: " + hbm2ddl);
+            }
+            ConsoleLogger.log(LogLevel.INFO, "Successfully initialized Hibernate session factory");
+        } catch (Exception e) {
+            ConsoleLogger.log(LogLevel.ERROR, "Failed during startup", e);
+            throw new RuntimeException("Startup failed", e);
         }
     }
 
-    private void executeSchemaSetupScript() {
-        String url = this.configuration.getProperty("hibernate.connection.url");
-        String username = this.configuration.getProperty("hibernate.connection.username");
-        String password = this.configuration.getProperty("hibernate.connection.password");
-        String sqlInitFilePath = this.databaseConfig.getSqlInitFilePath();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(sqlInitFilePath)) {
-            if (inputStream == null) {
-                throw new IOException("SQL schema file not found: " + sqlInitFilePath);
-            }
 
-            // Read file content
-            String sql = new BufferedReader(new InputStreamReader(inputStream))
-                    .lines()
-                    .collect(Collectors.joining("\n"));
+    private String readSQLFromClasspath(String path) throws IOException {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(path)) {
+            if (is == null) throw new IOException("SQL script not found: " + path);
+            return new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
+                    .lines().collect(Collectors.joining("\n"));
+        }
+    }
 
-            try (Connection connection = DriverManager.getConnection(url, username, password);
-                Statement statement = connection.createStatement()) {
-
-                // Split and execute SQL statements
-                for (String query : sql.split(";")) {
-                    if (!query.trim().isEmpty()) {
-                        statement.execute(query.trim());
+    private void executeSQLScript(String sqlScriptPath) {
+        try {
+            String sql = readSQLFromClasspath(sqlScriptPath);
+            try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
+                if (sql.contains("DO $$")) {
+                    stmt.execute(sql);  // Handle PostgreSQL DO block as one statement
+                } else {
+                    for (String query : sql.split(";")) {
+                        if (!query.trim().isEmpty()) {
+                            stmt.execute(query.trim());
+                        }
                     }
                 }
-
-                ConsoleLogger.log(LogLevel.INFO, "Sucessfully generated schema and extensions");
+                ConsoleLogger.log(LogLevel.INFO, "Successfully executed script: " + sqlScriptPath);
             }
-
-        } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Failed to read SQL file: " + e.getMessage(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("Could not read SQL schema file", e);
-        } catch (SQLException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Database setup failed: " + e.getMessage(), new Exception().getStackTrace()[0]);
-            throw new RuntimeException("Database setup failed", e);
+        } catch (IOException | SQLException e) {
+            ConsoleLogger.log(LogLevel.ERROR, "Error executing script: " + sqlScriptPath, e);
+            throw new RuntimeException(e);
         }
     }
-
 
     public void shutdown(){
         this.sessionFactory.close();

@@ -55,10 +55,10 @@ public class AirportHotSpotType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airporthotspot_timeslice", joinColumns = {
-        @JoinColumn(name = "airporthotspot_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airporthotspot_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHotSpotTimeSlicePropertyType> timeSlice;
 

@@ -55,10 +55,10 @@ public class RulesProceduresType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_timeslice", joinColumns = {
-        @JoinColumn(name = "rulesprocedures_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "rulesprocedures_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RulesProceduresTimeSlicePropertyType> timeSlice;
 

@@ -7,6 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1.aixm;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -14,6 +15,7 @@ import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -30,6 +32,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractAIXMFeatureBaseType">
  *       <sequence>
  *         <element name="featureMetadata" type="{http://www.aixm.aero/schema/5.1}FeatureMetadataPropertyType" minOccurs="0"/>
+ *         <element name="featureStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -130,6 +133,9 @@ public abstract class AbstractAIXMFeatureType
 
     @Transient
     protected FeatureMetadataPropertyType featureMetadata;
+    @Column(name = "feature_status")
+    @XmlTransient
+    protected String featureStatus;
 
     /**
      * Gets the value of the featureMetadata property.
@@ -157,6 +163,34 @@ public abstract class AbstractAIXMFeatureType
 
     public boolean isSetFeatureMetadata() {
         return (this.featureMetadata!= null);
+    }
+
+    /**
+     * Gets the value of the featureStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFeatureStatus() {
+        return featureStatus;
+    }
+
+    /**
+     * Sets the value of the featureStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFeatureStatus(String value) {
+        this.featureStatus = value;
+    }
+
+    public boolean isSetFeatureStatus() {
+        return (this.featureStatus!= null);
     }
 
 }

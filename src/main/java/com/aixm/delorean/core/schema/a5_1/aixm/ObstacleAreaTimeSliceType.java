@@ -116,19 +116,19 @@ public class ObstacleAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_ts_obstacle", joinColumns = {
-        @JoinColumn(name = "obstaclearea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructure_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructurePropertyType> obstacle;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "obstaclearea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

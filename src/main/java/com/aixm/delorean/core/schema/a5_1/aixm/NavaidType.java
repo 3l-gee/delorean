@@ -55,10 +55,10 @@ public class NavaidType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navaid_timeslice", joinColumns = {
-        @JoinColumn(name = "navaid_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaid_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidTimeSlicePropertyType> timeSlice;
 

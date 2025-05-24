@@ -55,10 +55,10 @@ public class ApproachLightingSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachlightingsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "approachlightingsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachlightingsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachLightingSystemTimeSlicePropertyType> timeSlice;
 

@@ -106,28 +106,28 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_circlingrestriction", joinColumns = {
-        @JoinColumn(name = "approachcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "circlingrestriction_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CirclingRestrictionPropertyType> circlingRestriction;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "approachcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_landingarea", joinColumns = {
-        @JoinColumn(name = "approachcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "landingtakeoffareacollection_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LandingTakeoffAreaCollectionPropertyType> landingArea;
     @OneToOne(cascade = {
@@ -138,19 +138,19 @@ public class ApproachConditionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_designsurface", joinColumns = {
-        @JoinColumn(name = "approachcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "approachcondition_annotation", joinColumns = {
-        @JoinColumn(name = "approachcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
