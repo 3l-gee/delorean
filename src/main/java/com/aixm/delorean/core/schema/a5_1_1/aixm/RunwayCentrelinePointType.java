@@ -55,10 +55,10 @@ public class RunwayCentrelinePointType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_timeslice", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayCentrelinePointTimeSlicePropertyType> timeSlice;
 

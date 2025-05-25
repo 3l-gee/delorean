@@ -100,28 +100,28 @@ public class TaxiHoldingPositionLightSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingpositionlightsystem_ts_element", joinColumns = {
-        @JoinColumn(name = "taxiholdingpositionlightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightElementPropertyType> element;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingpositionlightsystem_ts_availability", joinColumns = {
-        @JoinColumn(name = "taxiholdingpositionlightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightingavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingpositionlightsystem_ts_annotation", joinColumns = {
-        @JoinColumn(name = "taxiholdingpositionlightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded

@@ -32,7 +32,6 @@ import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.hibernate.annotations.Filter;
 
 
 /**
@@ -49,7 +48,6 @@ import org.hibernate.annotations.Filter;
  *           <element name="abstractAIXMFeature" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         </choice>
  *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         <element name="status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </extension>
@@ -63,7 +61,6 @@ import org.hibernate.annotations.Filter;
 @XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {
     "abstractAIXMFeature"
 })
-@Filter(name = "filterByStatus", condition = "status = :status")
 @Entity
 @Table(name = "basic_message_member")
 public class BasicMessageMemberAIXMPropertyType
@@ -83,9 +80,6 @@ public class BasicMessageMemberAIXMPropertyType
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;
-    @Column(name = "status")
-    @XmlTransient
-    protected String status;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
     protected List<String> nilReason;
@@ -186,34 +180,6 @@ public class BasicMessageMemberAIXMPropertyType
 
     public boolean isSetDbid() {
         return true;
-    }
-
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
-
-    public boolean isSetStatus() {
-        return (this.status!= null);
     }
 
     /**

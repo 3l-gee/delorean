@@ -11,7 +11,6 @@ import com.aixm.delorean.core.adapter.a5_1.gis.SurfaceTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmSurfaceType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,14 +52,6 @@ public class SurfacePropertyType
     @XmlJavaTypeAdapter(SurfaceTypeAdapter.class)
     @Embedded
     protected AixmSurfaceType surface;
-
-    @PostLoad
-    public void setGmlFeatureXmlId() {
-        if (this.dbid != null && this.surface != null) {
-            this.surface.setXmlId("gmlID" + this.dbid.toString());
-        }
-    }
-
 
     /**
      * Gets the value of the surface property.

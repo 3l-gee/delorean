@@ -55,10 +55,10 @@ public class CheckpointVORType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "checkpointvor_timeslice", joinColumns = {
-        @JoinColumn(name = "checkpointvor_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "checkpointvor_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CheckpointVORTimeSlicePropertyType> timeSlice;
 

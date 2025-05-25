@@ -55,10 +55,10 @@ public class ObstacleAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_timeslice", joinColumns = {
-        @JoinColumn(name = "obstaclearea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstaclearea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAreaTimeSlicePropertyType> timeSlice;
 

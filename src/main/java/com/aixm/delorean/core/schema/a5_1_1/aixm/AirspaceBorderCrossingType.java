@@ -55,10 +55,10 @@ public class AirspaceBorderCrossingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacebordercrossing_timeslice", joinColumns = {
-        @JoinColumn(name = "airspacebordercrossing_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacebordercrossing_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceBorderCrossingTimeSlicePropertyType> timeSlice;
 

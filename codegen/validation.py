@@ -136,8 +136,9 @@ class Validation:
                 return res 
 
             res.append(Annox.field_add(Jpa.relation.one_to_many()))
-            res.append(Annox.field_add(Relation.join_table(
-                parent.attrib["name"], element.attrib["name"], parent.attrib["name"], element.attrib["type"])))
+            # res.append(Annox.field_add(Relation.join_table(
+            #     parent.attrib["name"], element.attrib["name"], parent.attrib["name"], element.attrib["type"])))
+            res.append(Annox.field_add(Relation.join_table("master", "join", "source", "target")))
             join_column_name = element.attrib.get("name") if element.attrib.get("name") else element.attrib.get("ref")
             return res
 

@@ -178,20 +178,20 @@ public class MinimaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "minima_adjustmentinop", joinColumns = {
-        @JoinColumn(name = "minima_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "equipmentunavailableadjustment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<EquipmentUnavailableAdjustmentPropertyType> adjustmentINOP;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "minima_annotation", joinColumns = {
-        @JoinColumn(name = "minima_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

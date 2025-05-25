@@ -132,100 +132,100 @@ public class AirportSuppliesServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_call_sign", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "callsigndetail_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CallsignDetailPropertyType> callSign;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_radiocommunication", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_groundcommunication", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> groundCommunication;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_availability", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServiceOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesservice_ts_airportheliport", joinColumns = {
-        @JoinColumn(name = "airportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesairportsuppliesservice_ts_fuelsupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesairportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "fuel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FuelPropertyType> fuelSupply;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesairportsuppliesservice_ts_oilsupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesairportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "oil_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OilPropertyType> oilSupply;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesairportsuppliesservice_ts_nitrogensupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesairportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "nitrogen_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NitrogenPropertyType> nitrogenSupply;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportsuppliesairportsuppliesservice_ts_oxygensupply", joinColumns = {
-        @JoinColumn(name = "airportsuppliesairportsuppliesservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "oxygen_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OxygenPropertyType> oxygenSupply;
     @Transient

@@ -95,20 +95,20 @@ public class TouchDownLiftOffMarkingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffmarking_ts_element", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarking_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "markingelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MarkingElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffmarking_ts_annotation", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarking_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)

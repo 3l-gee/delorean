@@ -55,10 +55,10 @@ public class StandardInstrumentDepartureType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_timeslice", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<StandardInstrumentDepartureTimeSlicePropertyType> timeSlice;
 

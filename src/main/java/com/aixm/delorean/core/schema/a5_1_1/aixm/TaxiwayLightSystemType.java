@@ -55,10 +55,10 @@ public class TaxiwayLightSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwaylightsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "taxiwaylightsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "taxiwaylightsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TaxiwayLightSystemTimeSlicePropertyType> timeSlice;
 

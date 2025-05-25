@@ -422,14 +422,14 @@ class ViewGenerationScript:
 
     def save_to_json_file(self):
         """Save extracted data to a JSON file."""
-        output_path = os.path.join('util/postgres/views.json')
+        output_path = os.path.join('sqlgen/views.json')
         with open(output_path, 'w', encoding='utf-8') as file:
             json.dump(self.views, file, indent=4)
         print(f"Saved view definitions to {output_path}")
 
     def save_to_txt_file(self):
         """Save SQL commands to a text file."""
-        output_path = os.path.join('util/postgres/views.sql')
+        output_path = os.path.join('sqlgen/views.sql')
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(self.sql)
         print(f"Saved SQL commands to {output_path}")

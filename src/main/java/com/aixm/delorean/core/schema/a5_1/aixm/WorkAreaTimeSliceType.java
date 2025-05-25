@@ -81,15 +81,15 @@ public class WorkAreaTimeSliceType
 {
 
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      */
     @XmlElement(type = DateType.class, name = "plannedOperational", required = false)
     @XmlJavaTypeAdapter(DateTypeAdapter.class)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))
+        @AttributeOverride(name = "value", column = @Column(name = "plannedOperational_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedOperational_nilreason", length = 255, nullable = true, unique = false))
     })
     protected AixmTimestamp plannedOperational;
     @Embedded
@@ -111,26 +111,26 @@ public class WorkAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_ts_activation", joinColumns = {
-        @JoinColumn(name = "workarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "workareaactivity_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<WorkareaActivityPropertyType> activation;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "workarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<WorkAreaTimeSliceType.Extension> extension;
 
     /**
-     * aixm:DateType
+     * snowflake:DateType
      * 
      * @return
      *     possible object is

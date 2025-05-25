@@ -55,10 +55,10 @@ public class SpecialDateType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialdate_timeslice", joinColumns = {
-        @JoinColumn(name = "specialdate_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialdate_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SpecialDateTimeSlicePropertyType> timeSlice;
 

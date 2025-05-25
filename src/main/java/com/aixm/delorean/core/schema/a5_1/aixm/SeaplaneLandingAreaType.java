@@ -55,10 +55,10 @@ public class SeaplaneLandingAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanelandingarea_timeslice", joinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "seaplanelandingarea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SeaplaneLandingAreaTimeSlicePropertyType> timeSlice;
 

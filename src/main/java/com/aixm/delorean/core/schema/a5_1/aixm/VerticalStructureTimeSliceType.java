@@ -163,91 +163,91 @@ public class VerticalStructureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_part", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructurepart_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructurePartPropertyType> part;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedpassengerservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "passengerservice_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PassengerServicePropertyType> hostedPassengerService;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_supportedgroundlight", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightsystem_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostednavaidequipment", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedspecialnavstation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialnavigationstation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedunit", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "unit_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<UnitPropertyType> hostedUnit;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedorganisation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_supportedservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "service_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServicePropertyType> supportedService;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_annotation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_lightingavailability", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructurelightingstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
     @Transient

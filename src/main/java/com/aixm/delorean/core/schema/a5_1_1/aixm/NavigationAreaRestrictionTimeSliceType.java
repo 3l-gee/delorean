@@ -86,10 +86,10 @@ public class NavigationAreaRestrictionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestriction_ts_procedure", joinColumns = {
-        @JoinColumn(name = "navigationarearestriction_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedure_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedurePropertyType> procedure;
     @XmlElement(nillable = true)
@@ -108,10 +108,10 @@ public class NavigationAreaRestrictionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestriction_ts_annotation", joinColumns = {
-        @JoinColumn(name = "navigationarearestriction_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

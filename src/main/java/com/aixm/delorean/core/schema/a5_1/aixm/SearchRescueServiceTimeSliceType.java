@@ -124,46 +124,46 @@ public class SearchRescueServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservice_ts_call_sign", joinColumns = {
-        @JoinColumn(name = "searchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "callsigndetail_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CallsignDetailPropertyType> callSign;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservice_ts_radiocommunication", joinColumns = {
-        @JoinColumn(name = "searchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservice_ts_groundcommunication", joinColumns = {
-        @JoinColumn(name = "searchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> groundCommunication;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservice_ts_availability", joinColumns = {
-        @JoinColumn(name = "searchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServiceOperationalStatusPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescueservice_ts_annotation", joinColumns = {
-        @JoinColumn(name = "searchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded
@@ -175,19 +175,19 @@ public class SearchRescueServiceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescuesearchrescueservice_ts_clientairspace", joinColumns = {
-        @JoinColumn(name = "searchrescuesearchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> clientAirspace;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "searchrescuesearchrescueservice_ts_clientroute", joinColumns = {
-        @JoinColumn(name = "searchrescuesearchrescueservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeportion_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RoutePortionPropertyType> clientRoute;
     @Transient

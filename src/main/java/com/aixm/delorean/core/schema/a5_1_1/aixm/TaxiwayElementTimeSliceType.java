@@ -131,20 +131,20 @@ public class TaxiwayElementTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwayelement_ts_annotation", joinColumns = {
-        @JoinColumn(name = "taxiwayelement_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwayelement_ts_availability", joinColumns = {
-        @JoinColumn(name = "taxiwayelement_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ManoeuvringAreaAvailabilityPropertyType> availability;
     @Transient

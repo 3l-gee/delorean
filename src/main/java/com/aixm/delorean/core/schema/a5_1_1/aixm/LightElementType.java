@@ -116,20 +116,20 @@ public class LightElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelement_annotation", joinColumns = {
-        @JoinColumn(name = "lightelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "lightelement_availability", joinColumns = {
-        @JoinColumn(name = "lightelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelementstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightElementStatusPropertyType> availability;
     @Transient

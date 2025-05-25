@@ -123,10 +123,10 @@ public class RoadTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "road_ts_accessiblestand", joinColumns = {
-        @JoinColumn(name = "road_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstand_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftStandPropertyType> accessibleStand;
     @XmlElement(nillable = true)
@@ -139,10 +139,10 @@ public class RoadTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "road_ts_annotation", joinColumns = {
-        @JoinColumn(name = "road_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

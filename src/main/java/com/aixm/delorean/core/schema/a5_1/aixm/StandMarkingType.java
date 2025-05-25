@@ -55,10 +55,10 @@ public class StandMarkingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standmarking_timeslice", joinColumns = {
-        @JoinColumn(name = "standmarking_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standmarking_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<StandMarkingTimeSlicePropertyType> timeSlice;
 

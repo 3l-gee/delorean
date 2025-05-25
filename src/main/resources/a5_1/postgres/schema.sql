@@ -18,6 +18,3 @@ CREATE SCHEMA IF NOT EXISTS rules_procedures;
 CREATE SCHEMA IF NOT EXISTS service;
 CREATE SCHEMA IF NOT EXISTS shared;
 CREATE SCHEMA IF NOT EXISTS surveillance;
-
--- Required schema for QGIS project
-CREATE SCHEMA IF NOT EXISTS qgis;

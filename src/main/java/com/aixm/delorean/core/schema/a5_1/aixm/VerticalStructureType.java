@@ -55,10 +55,10 @@ public class VerticalStructureType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_timeslice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructure_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructureTimeSlicePropertyType> timeSlice;
 

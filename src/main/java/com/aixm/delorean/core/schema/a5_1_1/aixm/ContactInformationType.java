@@ -94,40 +94,40 @@ public class ContactInformationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_address", joinColumns = {
-        @JoinColumn(name = "contactinformation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "postaladdress_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PostalAddressPropertyType> address;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_networknode", joinColumns = {
-        @JoinColumn(name = "contactinformation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "onlinecontact_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OnlineContactPropertyType> networkNode;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_phonefax", joinColumns = {
-        @JoinColumn(name = "contactinformation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "telephonecontact_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TelephoneContactPropertyType> phoneFax;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "contactinformation_annotation", joinColumns = {
-        @JoinColumn(name = "contactinformation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

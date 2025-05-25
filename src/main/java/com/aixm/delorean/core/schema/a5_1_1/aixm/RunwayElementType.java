@@ -55,10 +55,10 @@ public class RunwayElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayelement_timeslice", joinColumns = {
-        @JoinColumn(name = "runwayelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwayelement_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayElementTimeSlicePropertyType> timeSlice;
 

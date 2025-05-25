@@ -136,10 +136,10 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_ts_class", joinColumns = {
-        @JoinColumn(name = "airspace_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayerclass_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceLayerClassPropertyType> clazz;
     @XmlElement(nillable = true)
@@ -152,30 +152,30 @@ public class AirspaceTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_ts_geometrycomponent", joinColumns = {
-        @JoinColumn(name = "airspace_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacegeometrycomponent_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceGeometryComponentPropertyType> geometryComponent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_ts_activation", joinColumns = {
-        @JoinColumn(name = "airspace_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspaceactivation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceActivationPropertyType> activation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airspace_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

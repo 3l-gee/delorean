@@ -464,21 +464,21 @@ feature = {
     "path" : "schema/aixm5_1_1/aixm/AIXM_Features.xsd",
     "strategy" : Strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm",
-    "manual" : "util/manual/a5_1_1/AIXM_Features.xjb"
+    "manual" : "codegen/manual/a5_1_1/AIXM_Features.xjb"
 }
 
 data_types = {
     "name" : "../aixm/AIXM_DataTypes",
     "path" : "schema/aixm5_1_1/aixm/AIXM_DataTypes.xsd",
     "strategy" : Strategy.data_type,
-    "manual" : "util/manual/a5_1_1/AIXM_DataTypes.xjb"
+    "manual" : "codegen/manual/a5_1_1/AIXM_DataTypes.xjb"
 }
 
 abstract = {
     "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
     "path" : "schema/aixm5_1_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
     "strategy" : Strategy.abstract,
-    "manual" : "util/manual/a5_1_1/AIXM_AbstractGML_ObjectTypes.xjb"
+    "manual" : "codegen/manual/a5_1_1/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
@@ -486,7 +486,7 @@ message = {
     "path" : "schema/aixm5_1_1/aixm/message/AIXM_BasicMessage.xsd",
     "strategy" : Strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message",
-    "manual" : "util/manual/a5_1_1/AIXM_BasicMessage.xjb"
+    "manual" : "codegen/manual/a5_1_1/AIXM_BasicMessage.xjb"
 }
 
 
@@ -602,21 +602,21 @@ feature = {
     "path" : "schema/aixm5_1/aixm/AIXM_Features.xsd",
     "strategy" : Strategy.feature,
     "package" : "com.aixm.delorean.core.schema.a5_1.aixm",
-    "manual" : "util/manual/a5_1/AIXM_Features.xjb"
+    "manual" : "codegen/manual/a5_1/AIXM_Features.xjb"
 }
 
 data_types = {
     "name" : "../aixm/AIXM_DataTypes",
     "path" : "schema/aixm5_1/aixm/AIXM_DataTypes.xsd",
     "strategy" : Strategy.data_type,
-    "manual" : "util/manual/a5_1/AIXM_DataTypes.xjb"
+    "manual" : "codegen/manual/a5_1/AIXM_DataTypes.xjb"
 }
 
 abstract = {
     "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
     "path" : "schema/aixm5_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
     "strategy" : Strategy.abstract,
-    "manual" : "util/manual/a5_1/AIXM_AbstractGML_ObjectTypes.xjb"
+    "manual" : "codegen/manual/a5_1/AIXM_AbstractGML_ObjectTypes.xjb"
 }
 
 message = {
@@ -624,7 +624,7 @@ message = {
     "path" : "schema/aixm5_1/aixm/message/AIXM_BasicMessage.xsd",
     "strategy" : Strategy.other,
     "package" : "com.aixm.delorean.core.schema.a5_1.aixm.message",
-    "manual" : "util/manual/a5_1/AIXM_BasicMessage.xjb"
+    "manual" : "codegen/manual/a5_1/AIXM_BasicMessage.xjb"
 }
 
 out = Machinery(config, [data_types, feature, abstract, message])

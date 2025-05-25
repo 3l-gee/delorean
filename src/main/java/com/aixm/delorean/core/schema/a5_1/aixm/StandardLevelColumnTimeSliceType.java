@@ -93,10 +93,10 @@ public class StandardLevelColumnTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelcolumn_ts_level", joinColumns = {
-        @JoinColumn(name = "standardlevelcolumn_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardlevel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<StandardLevelPropertyType> level;
     @OneToOne(cascade = {
@@ -107,10 +107,10 @@ public class StandardLevelColumnTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelcolumn_ts_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelcolumn_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

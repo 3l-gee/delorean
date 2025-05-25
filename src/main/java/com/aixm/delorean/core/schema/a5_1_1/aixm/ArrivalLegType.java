@@ -55,10 +55,10 @@ public class ArrivalLegType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrivalleg_timeslice", joinColumns = {
-        @JoinColumn(name = "arrivalleg_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "arrivalleg_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ArrivalLegTimeSlicePropertyType> timeSlice;
 

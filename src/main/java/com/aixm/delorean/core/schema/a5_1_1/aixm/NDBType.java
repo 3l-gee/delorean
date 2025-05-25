@@ -55,10 +55,10 @@ public class NDBType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ndb_timeslice", joinColumns = {
-        @JoinColumn(name = "ndb_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "ndb_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NDBTimeSlicePropertyType> timeSlice;
 

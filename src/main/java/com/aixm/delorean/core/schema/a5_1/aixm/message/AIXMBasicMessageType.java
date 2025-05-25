@@ -13,6 +13,8 @@ import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMMessageType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -20,9 +22,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
 
 
 /**
@@ -51,18 +50,19 @@ import org.hibernate.annotations.ParamDef;
 @XmlRootElement
 @Entity
 @Table(name = "aixm_basic_message")
-@FilterDef(name = "filterByStatus", parameters = {
-    @ParamDef(name = "status", type = String.class)
-})
 public class AIXMBasicMessageType
     extends AbstractAIXMMessageType
 {
 
     @XmlElement(required = true)
-    @Filter(name = "filterByStatus", condition = "status = :status")
     @ManyToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aixm_basic_message_basic_message_member", joinColumns = {
+        @JoinColumn(name = "aixm_basic_message_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "basic_message_member_id")
+    })
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**

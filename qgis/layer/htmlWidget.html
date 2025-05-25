@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Note List Viewer</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #323232;
+  color: #e0e0e0;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 1.8em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.note {
+  background-color: #1e1e1e;
+  border: 2px solid #3a9aed;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(58, 154, 237, 0.2);
+}
+
+.note-header {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.note-header h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #4fc3f7;
+}
+
+.note p {
+  margin: 8px 0;
+  color: #d0d0d0;
+}
+
+.translated {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #4fc3f7;
+}
+
+.translated-note {
+  margin-bottom: 6px;
+  color: #bbbbbb;
+}
+
+.translated-note span {
+  font-weight: bold;
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <h1>Annotation</h1>
+  <div id="notes-container">Loading...</div>
+
+<script>
+  try {
+    let raw = expression.evaluate("to_json(note)");
+    let notes = JSON.parse(raw);
+
+    // Ensure it's an array and filter out falsy/null entries
+    if (!Array.isArray(notes)) {
+      notes = [notes];
+    }
+    notes = notes.filter(n => n !== null && typeof n === 'object');
+
+    const container = document.getElementById('notes-container');
+    container.innerHTML = '';
+
+    if (notes.length === 0) {
+      container.textContent = '';
+    } else {
+      notes.forEach(note => {
+        const div = document.createElement('div');
+        div.className = 'note';
+
+        div.innerHTML = `
+        <div class="note-header">
+            <p><strong>Purpose:</strong>${note.purpose}</h2>
+            <p><strong>Property Name:</strong> ${note.propertyName}</p>
+        </div>
+          <div class="translated">
+            <p><strong>Translated Notes:</strong></p>
+            ${
+              Array.isArray(note.notes) && note.notes.length > 0
+                ? note.notes.map(n =>
+                    `<div class="translated-note">
+                      <span>[${n.lang}]</span> ${n.note}
+                    </div>`).join('')
+                : '<em>None</em>'
+            }
+          </div>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+  } catch (e) {
+    document.getElementById('notes-container').textContent = "Error: " + e;
+  }
+</script>
+
+</body>
+</html>

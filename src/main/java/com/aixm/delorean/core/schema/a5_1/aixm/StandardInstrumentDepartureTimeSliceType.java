@@ -137,37 +137,37 @@ public class StandardInstrumentDepartureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_ts_availability", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedureavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedureAvailabilityPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_ts_airportheliport", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_ts_aircraftcharacteristic", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_ts_flighttransition", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "proceduretransition_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElement(name = "guidanceFacility_navaid")
@@ -191,10 +191,10 @@ public class StandardInstrumentDepartureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardinstrumentdeparture_ts_annotation", joinColumns = {
-        @JoinColumn(name = "standardinstrumentdeparture_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @OneToOne(cascade = {

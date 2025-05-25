@@ -105,28 +105,28 @@ public class VisualGlideSlopeIndicatorTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicator_ts_element", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicator_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightElementPropertyType> element;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicator_ts_availability", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicator_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightingavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "visualglideslopeindicator_ts_annotation", joinColumns = {
-        @JoinColumn(name = "visualglideslopeindicator_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Embedded

@@ -55,10 +55,10 @@ public class CheckpointINSType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "checkpointins_timeslice", joinColumns = {
-        @JoinColumn(name = "checkpointins_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "checkpointins_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CheckpointINSTimeSlicePropertyType> timeSlice;
 

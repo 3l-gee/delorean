@@ -55,10 +55,10 @@ public class RadarSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "radarsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radarsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadarSystemTimeSlicePropertyType> timeSlice;
 

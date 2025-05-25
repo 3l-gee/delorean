@@ -55,10 +55,10 @@ public class SpecialNavigationSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "specialnavigationsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialnavigationsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SpecialNavigationSystemTimeSlicePropertyType> timeSlice;
 

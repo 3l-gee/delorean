@@ -55,10 +55,10 @@ public class AirportHeliportCollocationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportcollocation_timeslice", joinColumns = {
-        @JoinColumn(name = "airportheliportcollocation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportcollocation_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportCollocationTimeSlicePropertyType> timeSlice;
 

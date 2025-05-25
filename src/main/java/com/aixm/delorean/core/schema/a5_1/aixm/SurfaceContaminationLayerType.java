@@ -89,19 +89,19 @@ public class SurfaceContaminationLayerType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontaminationlayer_extent", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayer_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "elevatedsurface_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ElevatedSurfacePropertyType> extent;
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surfacecontaminationlayer_annotation", joinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayer_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

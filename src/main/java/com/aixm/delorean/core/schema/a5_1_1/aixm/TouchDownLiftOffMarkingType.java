@@ -55,10 +55,10 @@ public class TouchDownLiftOffMarkingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffmarking_timeslice", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarking_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffmarking_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffMarkingTimeSlicePropertyType> timeSlice;
 

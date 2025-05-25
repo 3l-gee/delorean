@@ -139,10 +139,10 @@ public class ArrestingGearTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggear_ts_runwaydirection", joinColumns = {
-        @JoinColumn(name = "arrestinggear_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirection_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDirectionPropertyType> runwayDirection;
     @XmlElement(nillable = true)
@@ -173,10 +173,10 @@ public class ArrestingGearTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggear_ts_annotation", joinColumns = {
-        @JoinColumn(name = "arrestinggear_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -196,30 +196,30 @@ public class RunwayTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_ts_overallcontaminant", joinColumns = {
-        @JoinColumn(name = "runway_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycontamination_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayContaminationPropertyType> overallContaminant;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_ts_annotation", joinColumns = {
-        @JoinColumn(name = "runway_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runway_ts_areacontaminant", joinColumns = {
-        @JoinColumn(name = "runway_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaysectioncontamination_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwaySectionContaminationPropertyType> areaContaminant;
     @Transient

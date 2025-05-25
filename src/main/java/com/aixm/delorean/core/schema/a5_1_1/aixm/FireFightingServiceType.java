@@ -55,10 +55,10 @@ public class FireFightingServiceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "firefightingservice_timeslice", joinColumns = {
-        @JoinColumn(name = "firefightingservice_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "firefightingservice_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FireFightingServiceTimeSlicePropertyType> timeSlice;
 

@@ -90,10 +90,10 @@ public class SafeAltitudeAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_significantobstacle", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstruction_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
     @OneToOne(cascade = {
@@ -104,10 +104,10 @@ public class SafeAltitudeAreaSectorType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_annotation", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

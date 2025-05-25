@@ -55,10 +55,10 @@ public class PassengerServiceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "passengerservice_timeslice", joinColumns = {
-        @JoinColumn(name = "passengerservice_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "passengerservice_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PassengerServiceTimeSlicePropertyType> timeSlice;
 

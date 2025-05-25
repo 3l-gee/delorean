@@ -159,30 +159,30 @@ public class RadioCommunicationChannelTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannel_ts_location", joinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "elevatedpoint_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ElevatedPointPropertyType> location;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannel_ts_availability", joinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationOperationalStatusPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiocommunicationchannel_ts_annotation", joinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

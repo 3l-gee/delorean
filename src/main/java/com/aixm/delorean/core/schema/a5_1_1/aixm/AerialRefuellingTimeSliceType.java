@@ -193,40 +193,40 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_availability", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_protectingairspace", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> protectingAirspace;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_track", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingTrackPropertyType> track;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_anchor", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingAnchorPropertyType> anchor;
     @XmlElement(nillable = true)
@@ -239,20 +239,20 @@ public class AerialRefuellingTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_managingorganisation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "authorityforaerialrefuelling_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

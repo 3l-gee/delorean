@@ -55,10 +55,10 @@ public class SafeAltitudeAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudearea_timeslice", joinColumns = {
-        @JoinColumn(name = "safealtitudearea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "safealtitudearea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SafeAltitudeAreaTimeSlicePropertyType> timeSlice;
 

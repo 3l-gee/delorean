@@ -55,10 +55,10 @@ public class UnplannedHoldingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "unplannedholding_timeslice", joinColumns = {
-        @JoinColumn(name = "unplannedholding_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "unplannedholding_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<UnplannedHoldingTimeSlicePropertyType> timeSlice;
 

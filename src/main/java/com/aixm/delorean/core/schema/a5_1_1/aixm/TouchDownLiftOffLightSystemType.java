@@ -55,10 +55,10 @@ public class TouchDownLiftOffLightSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftofflightsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "touchdownliftofflightsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftofflightsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffLightSystemTimeSlicePropertyType> timeSlice;
 

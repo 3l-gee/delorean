@@ -55,10 +55,10 @@ public class SurveyControlPointType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "surveycontrolpoint_timeslice", joinColumns = {
-        @JoinColumn(name = "surveycontrolpoint_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surveycontrolpoint_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SurveyControlPointTimeSlicePropertyType> timeSlice;
 

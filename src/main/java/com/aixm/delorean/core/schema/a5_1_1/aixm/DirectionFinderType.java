@@ -55,10 +55,10 @@ public class DirectionFinderType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directionfinder_timeslice", joinColumns = {
-        @JoinColumn(name = "directionfinder_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "directionfinder_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<DirectionFinderTimeSlicePropertyType> timeSlice;
 

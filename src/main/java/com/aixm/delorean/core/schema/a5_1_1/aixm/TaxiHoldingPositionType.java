@@ -55,10 +55,10 @@ public class TaxiHoldingPositionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_timeslice", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "taxiholdingposition_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TaxiHoldingPositionTimeSlicePropertyType> timeSlice;
 

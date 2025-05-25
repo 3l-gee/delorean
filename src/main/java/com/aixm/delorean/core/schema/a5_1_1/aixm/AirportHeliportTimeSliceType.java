@@ -297,20 +297,20 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_contaminant", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportcontamination_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportContaminationPropertyType> contaminant;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_servedcity", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "city_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CityPropertyType> servedCity;
     @XmlElement(nillable = true)
@@ -335,40 +335,40 @@ public class AirportHeliportTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_altimetersource", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersource_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltimeterSourcePropertyType> altimeterSource;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_contact", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_availability", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliportavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliport_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliport_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

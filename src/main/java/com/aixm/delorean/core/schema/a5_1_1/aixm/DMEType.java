@@ -55,10 +55,10 @@ public class DMEType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "dme_timeslice", joinColumns = {
-        @JoinColumn(name = "dme_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "dme_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<DMETimeSlicePropertyType> timeSlice;
 

@@ -107,30 +107,30 @@ public class RunwayCentrelinePointTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_ts_associateddeclareddistance", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydeclareddistance_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDeclaredDistancePropertyType> associatedDeclaredDistance;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_ts_navaidequipment", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipmentdistance_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidEquipmentDistancePropertyType> navaidEquipment;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaycentrelinepoint_ts_annotation", joinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

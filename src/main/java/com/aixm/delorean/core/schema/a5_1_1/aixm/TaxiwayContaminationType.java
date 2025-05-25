@@ -27,7 +27,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -93,26 +92,24 @@ public class TaxiwayContaminationType
      * aixm:DateTimeType
      * 
      */
-    @XmlElement(type = DateTimeType.class, nillable = true, name = "observationTime", required = false)
-    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1_1.date.DateTimeTypeAdapter.class)
+    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "observationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "observationtime_nilreason", length = 255, nullable = true, unique = false))
     })
-    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp observationTime;
+    protected String observationTime;
     /**
      * aixm:DateTimeType
      * 
      */
-    @XmlElement(type = DateTimeType.class, nillable = true, name = "nextObservationTime", required = false)
-    @XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1_1.date.DateTimeTypeAdapter.class)
+    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "nextobservationtime_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "nextobservationtime_nilreason", length = 255, nullable = true, unique = false))
     })
-    protected com.aixm.delorean.core.adapter.type.date.AixmTimestamp nextObservationTime;
+    protected String nextObservationTime;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
@@ -174,30 +171,30 @@ public class TaxiwayContaminationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwaycontamination_criticalridge", joinColumns = {
-        @JoinColumn(name = "taxiwaycontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "ridge_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RidgePropertyType> criticalRidge;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwaycontamination_layer", joinColumns = {
-        @JoinColumn(name = "taxiwaycontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surfacecontaminationlayer_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SurfaceContaminationLayerPropertyType> layer;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiwaycontamination_annotation", joinColumns = {
-        @JoinColumn(name = "taxiwaycontamination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
@@ -219,7 +216,7 @@ public class TaxiwayContaminationType
      *     {@link String }
      *     
      */
-    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getObservationTime() {
+    public String getObservationTime() {
         return observationTime;
     }
 
@@ -232,7 +229,7 @@ public class TaxiwayContaminationType
      *     
      * @see #getObservationTime()
      */
-    public void setObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
+    public void setObservationTime(String value) {
         this.observationTime = value;
     }
 
@@ -248,7 +245,7 @@ public class TaxiwayContaminationType
      *     {@link String }
      *     
      */
-    public com.aixm.delorean.core.adapter.type.date.AixmTimestamp getNextObservationTime() {
+    public String getNextObservationTime() {
         return nextObservationTime;
     }
 
@@ -261,7 +258,7 @@ public class TaxiwayContaminationType
      *     
      * @see #getNextObservationTime()
      */
-    public void setNextObservationTime(com.aixm.delorean.core.adapter.type.date.AixmTimestamp value) {
+    public void setNextObservationTime(String value) {
         this.nextObservationTime = value;
     }
 
