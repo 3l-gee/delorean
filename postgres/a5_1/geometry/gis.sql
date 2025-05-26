@@ -12,7 +12,7 @@ SELECT
 	COALESCE(elevation || ' ' || elevation_uom, '(' || eleveation_nilreason || ')') AS elevation,
 	COALESCE(geoidundulation || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS geoidUndulation,
 	COALESCE(verticaldatum || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS verticalDatum,
-	COALESCE(CAST(verticalaccuracy AS varchar), '(' || verticaldatum_nilreason || ')') AS verticalAccuracy,
+	COALESCE(verticalaccuracy || ' ' || horizontalaccuracy_uom, '(' || verticaldatum_nilreason || ')') AS verticalAccuracy,
 	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM elevated_point_pt;
 

@@ -2,7 +2,9 @@ CREATE OR REPLACE VIEW navaids_points.designatedpoint_publisher_view AS
 SELECT DISTINCT ON (identifier, sequence_number)
 -- Generic
 (row_number() OVER ())::integer AS row,
+navaids_points.designatedpoint.id,
 navaids_points.designatedpoint.identifier,
+navaids_points.designatedpoint_ts.interpretation,
 navaids_points.designatedpoint_ts.sequence_number,
 navaids_points.designatedpoint_ts.correction_number,
 navaids_points.designatedpoint_ts.valid_time_begin,
@@ -44,7 +46,9 @@ WHERE
 	AND 
 	navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
 GROUP BY
+    navaids_points.designatedpoint.id,
 	navaids_points.designatedpoint.identifier,
+    navaids_points.designatedpoint_ts.interpretation,
 	navaids_points.designatedpoint_ts.sequence_number,
 	navaids_points.designatedpoint_ts.correction_number,
 	navaids_points.designatedpoint_ts.valid_time_begin,
@@ -100,23 +104,23 @@ point_pt.horizontalaccuracy_uom,
 point_pt.horizontalaccuracy_nilreason,
 point_pt.nilreason,
 
--- Notes
-translated_notes.notes_array AS note_json
-
 -- Touchedownliftoff
-airport_heliport.touchdownliftoff_pt.title,
-airport_heliport.touchdownliftoff_pt.href,
-airport_heliport.touchdownliftoff_pt.nilreason,
+airport_heliport.touchdownliftoff_pt.title AS touchdownliftoff_title,
+airport_heliport.touchdownliftoff_pt.href AS touchdownliftoff_href,
+airport_heliport.touchdownliftoff_pt.nilreason AS touchdownliftoff_nilreason,
 
 -- AirportHeliport
-airport_heliport.airportheliport_pt.title,
-airport_heliport.airportheliport_pt.href,
-airport_heliport.airportheliport_pt.nilreason,
+airport_heliport.airportheliport_pt.title AS airportheliport_title,
+airport_heliport.airportheliport_pt.href AS airportheliport_href,
+airport_heliport.airportheliport_pt.nilreason AS airportheliport_nilreason,
 
 -- RunwayCenterline
-airport_heliport.runwaycentrelinepoint_pt.title,
-airport_heliport.runwaycentrelinepoint_pt.href,
-airport_heliport.runwaycentrelinepoint_pt.nilreason,
+airport_heliport.runwaycentrelinepoint_pt.title AS runwaycentrelinepoint_title ,
+airport_heliport.runwaycentrelinepoint_pt.href AS runwaycentrelinepoint_href,
+airport_heliport.runwaycentrelinepoint_pt.nilreason AS runwaycentrelinepoint_nilreason,
+
+-- Notes
+translated_notes.notes_array AS note_json,
 
 NULL AS action
 	

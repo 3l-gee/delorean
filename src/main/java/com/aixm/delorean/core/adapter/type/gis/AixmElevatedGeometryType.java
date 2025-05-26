@@ -14,7 +14,7 @@ abstract public class AixmElevatedGeometryType extends AixmGeometryType {
     @Column(name = "elevation_uom")
     protected String elevation_uom;
 
-    @Column(name = "eleveation_nilReason")
+    @Column(name = "elevation_nilReason")
     protected String elevation_nilReason;
 
     @Column(name = "geoidUndulation")
