@@ -3,6 +3,8 @@ SELECT DISTINCT ON (identifier, sequence_number)
 -- Generic
 (row_number() OVER ())::integer AS row,
 navaids_points.designatedpoint.id,
+navaids_points.designatedpoint_ts.id as ts_id,
+navaids_points.designatedpoint_tsp.id as tsp_id,
 navaids_points.designatedpoint.identifier,
 navaids_points.designatedpoint_ts.interpretation,
 navaids_points.designatedpoint_ts.sequence_number,
@@ -47,7 +49,9 @@ WHERE
 	navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
 GROUP BY
     navaids_points.designatedpoint.id,
-	navaids_points.designatedpoint.identifier,
+    navaids_points.designatedpoint_ts.id,
+    navaids_points.designatedpoint_tsp.id,	
+    navaids_points.designatedpoint.identifier,
     navaids_points.designatedpoint_ts.interpretation,
 	navaids_points.designatedpoint_ts.sequence_number,
 	navaids_points.designatedpoint_ts.correction_number,
@@ -80,7 +84,10 @@ CREATE OR REPLACE VIEW navaids_points.designatedpoint_editor_view AS
 SELECT DISTINCT ON (identifier, sequence_number)
 (row_number() OVER ())::integer AS row,
 navaids_points.designatedpoint.id,
+navaids_points.designatedpoint_ts.id as ts_id,
+navaids_points.designatedpoint_tsp.id as tsp_id,
 navaids_points.designatedpoint.identifier,
+navaids_points.designatedpoint_ts.interpretation,
 navaids_points.designatedpoint_ts.sequence_number,
 navaids_points.designatedpoint_ts.correction_number,
 navaids_points.designatedpoint_ts.valid_time_begin,
@@ -177,15 +184,71 @@ DECLARE
     new_note_id INTEGER;
 BEGIN
 
+    UPDATE navaids_points.designatedpoint_ts
+    SET valid_time_end = NEW.valid_time_begin
+    WHERE id = NEW.ts_id;
+
+    IF NEW.action = 'CHANGE TEMP' THEN
+
+        INSERT INTO navaids_points.designatedpoint_ts (
+            id, 
+            interpretation,
+            sequence_number, 
+            correction_number,
+            valid_time_begin, 
+            valid_time_end,
+            feature_lifetime_begin, 
+            feature_lifetime_end,
+            identifier, 
+            identifier_code_space,
+            designator_value, 
+            designator_nilreason,
+            type_value, 
+            type_nilreason,
+            name_value,
+            name_nilreason,
+            location_id, 
+            aimingpoint_id,
+            airportheliport_id,
+            runwaypoint_id,
+            feature_status
+        ) VALUES (
+            new_ts_id, 
+            'BASELINE',
+            NEW.sequence_number + 1,
+            NEW.correction_number,
+            NEW.valid_time_begin, 
+            NEW.valid_time_end,
+            NEW.feature_lifetime_begin, 
+            NEW.feature_lifetime_end,
+            NULL, 
+            NULL, 
+            NEW.designator_value, 
+            NEW.designator_nilreason, 
+            NEW.type_value, 
+            NEW.type_nilreason,
+            NEW.name_value,
+            NEW.name_nilreason,
+            NULL, 
+            NULL, 
+            NULL, 
+            NULL, 
+            'PENDING'
+        );
+
+    ELSIF NEW.action = 'CORRECT' THEN
+
     INSERT INTO navaids_points.designatedpoint_ts (
         id, 
+        interpretation,
         sequence_number, 
         correction_number,
         valid_time_begin, 
         valid_time_end,
         feature_lifetime_begin, 
         feature_lifetime_end,
-		interpretation,
+        identifier, 
+        identifier_code_space,
         designator_value, 
         designator_nilreason,
         type_value, 
@@ -199,13 +262,15 @@ BEGIN
         feature_status
     ) VALUES (
         new_ts_id, 
-        NEW.sequence_number + 1,
-        NEW.correction_number,
+        'BASELINE',
+        NEW.sequence_number,
+        NEW.correction_number + 1,
         NEW.valid_time_begin, 
         NEW.valid_time_end,
         NEW.feature_lifetime_begin, 
         NEW.feature_lifetime_end,
-		'BASELINE',
+        NULL, 
+        NULL, 
         NEW.designator_value, 
         NEW.designator_nilreason, 
         NEW.type_value, 
@@ -218,6 +283,19 @@ BEGIN
         NULL, 
         'PENDING'
     );
+
+    ELSIF NEW.action = 'ABANDON' THEN
+
+    ELSIF NEW.action = 'COMMISSION' THEN
+
+    ELSIF NEW.action = 'DECOMMISSION' THEN
+
+    ELSIF NEW.action = 'CHANGE PERM' THEN
+
+    ELSE
+        RAISE NOTICE 'Unknown action: %', NEW.action;
+        RETURN NULL;
+    END IF;
 	
 	INSERT INTO navaids_points.designatedpoint_tsp (
         id,
@@ -227,9 +305,9 @@ BEGIN
         new_ts_id
     );
 
-    INSERT INTO designatedpoint_timeslice (
-        designatedpoint_id,
-        designatedpoint_tsp_id
+    INSERT INTO master_join (
+        source_id,
+        target_id
     ) VALUES (
 		NEW.id,
         new_tsp_id

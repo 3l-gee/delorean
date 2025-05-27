@@ -35,4 +35,3 @@ feature = next(layer.getFeatures(f'"identifier" = \'{uuid}\''), None)
 if feature:
     print(feature)
     iface.openFeatureForm(layer, feature, False)
-    
