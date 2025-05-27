@@ -65,5 +65,8 @@ __pycache__/
 # Python virtual environments
 .venv/
 
+# Qgis temporary project files
+*.qgs~
+
 
 util/__pycache__/Annotation.cpython-311.pyc
