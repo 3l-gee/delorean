@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.34.8-Prizren" projectname="" saveUserFull="Raphael Gerth" saveUser="rapha" saveDateTime="2025-05-26T22:59:10">
+<qgis version="3.34.8-Prizren" projectname="" saveUserFull="Raphael Gerth" saveUser="rapha" saveDateTime="2025-05-26T23:17:09">
   <homePath path=""/>
   <title></title>
   <transaction mode="Disabled"/>
@@ -59,10 +59,10 @@
   <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>meters</units>
     <extent>
-      <xmin>879986.78853964467998594</xmin>
-      <ymin>5682367.73000563960522413</ymin>
-      <xmax>890181.65971355664078146</xmax>
-      <ymax>6070981.00093587394803762</ymax>
+      <xmin>1012084.58023924939334393</xmin>
+      <ymin>5637823.12582787033170462</ymin>
+      <xmax>1022279.4514131611213088</xmax>
+      <ymax>6026436.39675810094922781</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -1356,7 +1356,7 @@
       <attributeactions>
         <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
       </attributeactions>
-      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="&quot;valid_time_end&quot;" sortOrder="1">
         <columns>
           <column name="row" hidden="0" width="-1" type="field"/>
           <column name="id" hidden="0" width="-1" type="field"/>
@@ -2624,7 +2624,7 @@ h1 {&#xd;
         <policy field="type" policy="Duplicate"/>
         <policy field="name" policy="Duplicate"/>
         <policy field="airportheliport" policy="Duplicate"/>
-        <policy field="airportheliport_href" policy="Duplicate"/>
+        <policy field="airportheliport_href" policy="DefaultValue"/>
         <policy field="aimingpoint" policy="Duplicate"/>
         <policy field="touchdownliftoff_href" policy="Duplicate"/>
         <policy field="runwaypoint" policy="Duplicate"/>
@@ -2717,7 +2717,7 @@ h1 {&#xd;
           <actionScope id="Canvas"/>
         </actionsetting>
       </attributeactions>
-      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="&quot;valid_time_end&quot;" sortOrder="0">
         <columns>
           <column name="row" hidden="0" width="-1" type="field"/>
           <column name="identifier" hidden="0" width="-1" type="field"/>
@@ -3005,6 +3005,11 @@ h1 {&#xd;
               <labelFont bold="0" underline="0" description="Segoe UI,8.25,-1,5,50,0,0,0,0,0" style="" italic="0" strikethrough="0"/>
             </labelStyle>
           </attributeEditorField>
+          <attributeEditorField name="airportheliport_href" verticalStretch="0" horizontalStretch="0" showLabel="1" index="12">
+            <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+              <labelFont bold="0" underline="0" description="Segoe UI,8,-1,5,50,0,0,0,0,0" style="" italic="0" strikethrough="0"/>
+            </labelStyle>
+          </attributeEditorField>
           <attributeEditorAction name="{0f52155a-6bcb-4642-a5c2-2a23a928efcc}" verticalStretch="0" horizontalStretch="0" ActionUUID="{0f52155a-6bcb-4642-a5c2-2a23a928efcc}" showLabel="1">
             <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
               <labelFont bold="0" underline="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" style="" italic="0" strikethrough="0"/>
@@ -3260,7 +3265,7 @@ h1 {&#xd;
   <Sensors/>
   <ProjectViewSettings rotation="0" UseProjectScales="0">
     <Scales/>
-    <DefaultViewExtent xmin="246483.56250903173349798" ymin="5682367.73000563960522413" ymax="6070981.00093587394803762" xmax="1523684.88574416958726943">
+    <DefaultViewExtent xmin="378581.3542086425004527" ymin="5637823.12582787033170462" ymax="6026436.39675810094922781" xmax="1655782.67744376789778471">
       <spatialrefsys nativeFormat="Wkt">
         <wkt>PROJCRS["WGS 84 / Pseudo-Mercator",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["Popular Visualisation Pseudo-Mercator",METHOD["Popular Visualisation Pseudo Mercator",ID["EPSG",1024]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["False easting",0,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["easting (X)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["northing (Y)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Web mapping and visualisation."],AREA["World between 85.06°S and 85.06°N."],BBOX[-85.06,-180,85.06,180]],ID["EPSG",3857]]</wkt>
         <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs</proj4>
