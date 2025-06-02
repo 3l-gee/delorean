@@ -9,10 +9,12 @@ import org.hibernate.cfg.Configuration;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
-
+import com.aixm.delorean.core.org.gml.v_3_2.ArcStringType;
 import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1.aixm.message.BasicMessageMemberAIXMPropertyType;
 import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointType;
+import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSlicePropertyType;
+import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSliceType;
 import org.hibernate.Transaction;
 
 import java.sql.Connection;
@@ -28,6 +30,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
+import java.util.Set;
 
 public class DatabaseBinding<T> {
     private SessionFactory sessionFactory;
@@ -178,7 +181,75 @@ public class DatabaseBinding<T> {
 
         try {
             transaction = session.beginTransaction();
-            session.persist(object);
+
+            // 1. Convert to AixmBasicMesage to separet message and memeber
+            AIXMBasicMessageType message = (AIXMBasicMessageType) object;
+            List<BasicMessageMemberAIXMPropertyType> basicMessageMembers = message.getHasMember();
+            message.unsetHasMember();
+
+            // 2. Persite memeberless message
+            session.persist(message); 
+
+            // 3. Get current identifier, sequence_number, correction number
+            String sqlFeatureTimeslice = """
+            SELECT DISTINCT ON (identifier, sequence_number, correction_number)
+            navaids_points.designatedpoint.identifier,
+            navaids_points.designatedpoint_ts.sequence_number,
+            navaids_points.designatedpoint_ts.correction_number
+            FROM navaids_points.designatedpoint
+            LEFT JOIN master_join
+            ON navaids_points.designatedpoint.id = master_join.source_id
+            LEFT JOIN navaids_points.designatedpoint_tsp
+            ON master_join.target_id = navaids_points.designatedpoint_tsp.id
+            LEFT JOIN navaids_points.designatedpoint_ts
+            ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
+            WHERE
+                navaids_points.designatedpoint.feature_status = 'APPROVED'
+                AND 
+                navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
+            ORDER BY identifier, sequence_number, correction_number DESC;
+            """;
+
+            List<FeatureTimeslice> featureTimeslices = session.createNativeQuery(sqlFeatureTimeslice, FeatureTimeslice.class).getResultList();
+
+            // 3. Timeslice handeling of the members
+            for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers) {
+                if (bmm.getAbstractAIXMFeature() instanceof DesignatedPointType dpt) {
+                    String identifier = dpt.getIdentifier().getValue();
+
+                    // Find the existing latest timeslice for this identifier
+                    FeatureTimeslice existing = featureTimeslices.stream()
+                        .filter(f -> f.getIdentifier().equals(identifier))
+                        .findFirst()
+                        .orElse(null);
+
+                    for (DesignatedPointTimeSlicePropertyType tsp : dpt.getTimeSlice()) {
+                        DesignatedPointTimeSliceType ts = tsp.getDesignatedPointTimeSlice();
+
+                        if (ts == null) continue;
+
+                        int incomingSeq = ts.getSequenceNumber().intValue();
+                        int incomingCorr = ts.getCorrectionNumber().intValue();
+
+                        if (existing == null) {
+                            // 4.a New feature not in current dataset
+                            session.persist(bmm);
+
+                        } else if (incomingSeq > existing.getSequenceNumber()) {
+                            // 4.b Existing feature with new timeslice
+                            session.persist(tsp);
+
+                        } else if (incomingSeq == existing.getSequenceNumber() && incomingCorr > existing.getCorrectionNumber()) {
+                            // 4.c Existing feature with new correction timeslice
+                            session.persist(tsp);
+                        }
+                    }
+                }
+            }
+
+            //TODO : link BasicMessageMemberAIXMPropertyType back to AIXMBasicMessageType, but how do i know to wich one ?
+
+            // session.persist(object);
             transaction.commit();
             ConsoleLogger.log(LogLevel.INFO, "Sucessfully loaded");
         } catch (Exception e) {
@@ -206,13 +277,13 @@ public class DatabaseBinding<T> {
 
             // 1. Execute SQL to get the latest IDs per sequence_number
             String sql = """
-            SELECT DISTINCT ON (sequence_number)
+            SELECT DISTINCT ON (identifier, sequence_number)
             navaids_points.designatedpoint_tsp.id
             FROM navaids_points.designatedpoint
-            LEFT JOIN designatedpoint_timeslice
-            ON navaids_points.designatedpoint.id = designatedpoint_timeslice.designatedpoint_id
+            LEFT JOIN master_join
+            ON navaids_points.designatedpoint.id = master_join.source_id
             LEFT JOIN navaids_points.designatedpoint_tsp
-            ON designatedpoint_timeslice.designatedpoint_tsp_id = navaids_points.designatedpoint_tsp.id
+            ON master_join.target_id = navaids_points.designatedpoint_tsp.id
             LEFT JOIN navaids_points.designatedpoint_ts
             ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
             WHERE
@@ -235,8 +306,10 @@ public class DatabaseBinding<T> {
             FROM DesignatedPointType dpt
             JOIN FETCH dpt.timeSlice tsp
             JOIN FETCH  tsp.designatedPointTimeSlice ts
-            WHERE tsp.dbid IN :validIds
-                AND (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
+            WHERE 
+                tsp.dbid IN :validIds
+                AND 
+                (:validDateTime <= ts.validTime.endPosition OR ts.validTime.endPosition IS NULL)
             ORDER BY ts.sequenceNumber, ts.correctionNumber DESC
             """;
 
