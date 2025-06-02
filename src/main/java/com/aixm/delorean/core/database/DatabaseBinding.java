@@ -17,6 +17,8 @@ import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSlicePropertyT
 import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSliceType;
 import org.hibernate.Transaction;
 
+import jakarta.persistence.Tuple;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -193,9 +195,12 @@ public class DatabaseBinding<T> {
             // 3. Get current identifier, sequence_number, correction number
             String sqlFeatureTimeslice = """
             SELECT DISTINCT ON (identifier, sequence_number, correction_number)
-            navaids_points.designatedpoint.identifier,
-            navaids_points.designatedpoint_ts.sequence_number,
-            navaids_points.designatedpoint_ts.correction_number
+            navaids_points.designatedpoint.id AS feature_id,
+            navaids_points.designatedpoint.identifier AS identifier,
+            navaids_points.designatedpoint_ts.sequence_number AS sequence_number,
+            navaids_points.designatedpoint_ts.correction_number AS correction_number,
+            navaids_points.designatedpoint_tsp.id As time_slice_property_id,
+            navaids_points.designatedpoint_ts.id AS time_slice_id
             FROM navaids_points.designatedpoint
             LEFT JOIN master_join
             ON navaids_points.designatedpoint.id = master_join.source_id
@@ -210,7 +215,16 @@ public class DatabaseBinding<T> {
             ORDER BY identifier, sequence_number, correction_number DESC;
             """;
 
-            List<FeatureTimeslice> featureTimeslices = session.createNativeQuery(sqlFeatureTimeslice, FeatureTimeslice.class).getResultList();
+            List<Tuple> tuples = session.createNativeQuery(sqlFeatureTimeslice, Tuple.class).getResultList();
+
+            List<FeatureTimeslice> featureTimeslices = tuples.stream()
+                .map(t -> new FeatureTimeslice(
+                    t.get("featureId", Long.class),
+                    t.get("identifier", String.class),
+                    t.get("sequence_number", Long.class),
+                    t.get("correction_number", Long.class)
+                ))
+                .toList();
 
             // 3. Timeslice handeling of the members
             for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers) {
@@ -238,10 +252,33 @@ public class DatabaseBinding<T> {
                         } else if (incomingSeq > existing.getSequenceNumber()) {
                             // 4.b Existing feature with new timeslice
                             session.persist(tsp);
+                            session.flush();
+
+                            long tspId = tsp.getDbid();
+
+                            session.createNativeMutationQuery("""
+                                INSERT INTO master_join (source_id, target_id)
+                                VALUES (:featureId, :tspId)
+                            """)
+                            .setParameter("featureId", existing.getFeatureId())
+                            .setParameter("tspId", tspId)
+                            .executeUpdate();
+
 
                         } else if (incomingSeq == existing.getSequenceNumber() && incomingCorr > existing.getCorrectionNumber()) {
                             // 4.c Existing feature with new correction timeslice
                             session.persist(tsp);
+                            session.flush();
+
+                            long tspId = tsp.getDbid();
+
+                            session.createNativeMutationQuery("""
+                                INSERT INTO master_join (source_id, target_id)
+                                VALUES (:featureId, :tspId)
+                            """)
+                            .setParameter("featureId", existing.getFeatureId())
+                            .setParameter("tspId", tspId)
+                            .executeUpdate();
                         }
                     }
                 }
