@@ -8,11 +8,13 @@ public class FeatureTimeslice {
     private Long timeSlicePropertyId;
     private Long timeSliceId;
 
-    public FeatureTimeslice(Long featureId, String identifier, Long sequenceNumber, Long correctionNumber) {
+    public FeatureTimeslice(Long featureId, String identifier, Long sequenceNumber, Long correctionNumber, Long timeSlicePropertyId, Long timeSliceId) {
         this.featureId = featureId;
         this.identifier = identifier;
         this.sequenceNumber = sequenceNumber;
         this.correctionNumber = correctionNumber;
+        this.timeSlicePropertyId = timeSlicePropertyId;
+        this.timeSliceId = timeSliceId;
     }
 
     public Long getFeatureId(){

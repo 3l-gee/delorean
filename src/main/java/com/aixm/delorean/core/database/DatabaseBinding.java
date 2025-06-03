@@ -24,6 +24,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
@@ -167,6 +168,63 @@ public class DatabaseBinding<T> {
 
     public void shutdown(){
         this.sessionFactory.close();
+        ConsoleLogger.log(LogLevel.INFO, "Successfully close connection");
+    }
+
+    private List<FeatureTimeslice> getTopTimeslice(List<String> nameList){
+
+        for (String name : nameList) {
+            String sql = """
+            SELECT DISTINCT ON (identifier)
+            navaids_points.designatedpoint.id AS feature_id,
+            navaids_points.designatedpoint.identifier AS identifier,
+            navaids_points.designatedpoint_ts.sequence_number AS sequence_number,
+            navaids_points.designatedpoint_ts.correction_number AS correction_number,
+            navaids_points.designatedpoint_tsp.id As time_slice_property_id,
+            navaids_points.designatedpoint_ts.id AS time_slice_id
+            FROM navaids_points.designatedpoint
+            LEFT JOIN master_join
+            ON navaids_points.designatedpoint.id = master_join.source_id
+            LEFT JOIN navaids_points.designatedpoint_tsp
+            ON master_join.target_id = navaids_points.designatedpoint_tsp.id
+            LEFT JOIN navaids_points.designatedpoint_ts
+            ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
+            WHERE
+                navaids_points.designatedpoint.feature_status = 'APPROVED'
+                AND 
+                navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
+            ORDER BY identifier, sequence_number DESC, correction_number DESC;
+            """;
+        }
+    }
+
+    private String generateTopFeatureTimesliceSql(String name) {
+        String featureTsTable = featureTable + "_ts";
+        String featureTspTable = featureTable + "_tsp";
+        String featureType = featureTable.replaceFirst("^.*\\.", ""); // get table name without schema prefix
+
+    return String.format("""
+        SELECT DISTINCT ON (%1$s.identifier)
+            %1$s.id AS feature_id,
+            %1$s.identifier AS identifier,
+            ts.sequence_number,
+            ts.correction_number,
+            tsp.id AS time_slice_property_id,
+            ts.id AS time_slice_id
+        FROM %2$s %1$s
+        LEFT JOIN master_join mj ON %1$s.id = mj.source_id
+        LEFT JOIN %3$s tsp ON mj.target_id = tsp.id
+        LEFT JOIN %4$s ts ON tsp.%5$stimeslice_id = ts.id
+        WHERE %1$s.feature_status = 'APPROVED'
+          AND ts.feature_status = 'APPROVED'
+        ORDER BY %1$s.identifier, ts.sequence_number DESC, ts.correction_number DESC
+    """,
+        featureType,                      // %1$s - alias: dp, rw, etc.
+        featureTable,                     // %2$s - full table (e.g., navaids_points.designatedpoint)
+        schema + "." + featureType + "_tsp", // %3$s - tsp table
+        schema + "." + featureType + "_ts",  // %4$s - ts table
+        featureType                       // %5$s - e.g. designatedpointtimeslice_id
+    );
     }
 
     public void load(Object object){
@@ -194,7 +252,7 @@ public class DatabaseBinding<T> {
 
             // 3. Get current identifier, sequence_number, correction number
             String sqlFeatureTimeslice = """
-            SELECT DISTINCT ON (identifier, sequence_number, correction_number)
+            SELECT DISTINCT ON (identifier)
             navaids_points.designatedpoint.id AS feature_id,
             navaids_points.designatedpoint.identifier AS identifier,
             navaids_points.designatedpoint_ts.sequence_number AS sequence_number,
@@ -212,17 +270,19 @@ public class DatabaseBinding<T> {
                 navaids_points.designatedpoint.feature_status = 'APPROVED'
                 AND 
                 navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
-            ORDER BY identifier, sequence_number, correction_number DESC;
+            ORDER BY identifier, sequence_number DESC, correction_number DESC;
             """;
 
             List<Tuple> tuples = session.createNativeQuery(sqlFeatureTimeslice, Tuple.class).getResultList();
 
             List<FeatureTimeslice> featureTimeslices = tuples.stream()
                 .map(t -> new FeatureTimeslice(
-                    t.get("featureId", Long.class),
+                    t.get("feature_id", Long.class),
                     t.get("identifier", String.class),
                     t.get("sequence_number", Long.class),
-                    t.get("correction_number", Long.class)
+                    t.get("correction_number", Long.class),
+                    t.get("time_slice_property_id", Long.class),
+                    t.get("time_slice_id", Long.class)
                 ))
                 .toList();
 
@@ -250,7 +310,12 @@ public class DatabaseBinding<T> {
                             session.persist(bmm);
 
                         } else if (incomingSeq > existing.getSequenceNumber()) {
+
                             // 4.b Existing feature with new timeslice
+                            if (incomingSeq != existing.getSequenceNumber() + 1) {
+                                ConsoleLogger.log(LogLevel.WARN, "Missing Timeslice for feature [" + dpt.getClass().getSimpleName() + "] : " + existing.getIdentifier() + " between sequence numbers: " + existing.getSequenceNumber() + " and " + incomingSeq);
+                            }
+
                             session.persist(tsp);
                             session.flush();
 
@@ -262,6 +327,17 @@ public class DatabaseBinding<T> {
                             """)
                             .setParameter("featureId", existing.getFeatureId())
                             .setParameter("tspId", tspId)
+                            .executeUpdate();
+
+                            Instant newBeginPosition = tsp.getDesignatedPointTimeSlice().getValidTime().getBeginPosition();
+
+                            session.createNativeMutationQuery("""
+                                UPDATE navaids_points.designatedpoint_ts
+                                SET valid_time_end = :new_begin_position
+                                WHERE id = :time_slice_id
+                            """)
+                            .setParameter("new_begin_position", newBeginPosition)
+                            .setParameter("time_slice_id", existing.getTimeSliceId())
                             .executeUpdate();
 
 

@@ -70,7 +70,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
 					<!-- status field for filtering  -->
-                	<element name="featureStatus" type="xs:string" minOccurs="0"/>
+                	<element name="featureStatus" type="xs:string" minOccurs="0" default="APPROVED"/>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -145,7 +145,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
 					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
 					<!-- status field for filtering  -->
-					<element name="featureStatus" type="xs:string" minOccurs="0"/>
+					<element name="featureStatus" type="xs:string" minOccurs="0" default="APPROVED"/>
 				</sequence>
 			</extension>
 		</complexContent>

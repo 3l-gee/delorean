@@ -216,7 +216,7 @@ public abstract class AbstractAIXMTimeSliceType
     protected AixmTimeSliceType featureLifetime;
     @Column(name = "feature_status")
     @XmlTransient
-    protected String featureStatus;
+    protected String featureStatus = "APPROVED";
 
     /**
      * Gets the value of the interpretation property.

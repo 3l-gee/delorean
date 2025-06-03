@@ -17,7 +17,8 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.test.aixm.FeatureCollectionType.class,
             com.aixm.delorean.core.schema.test.aixm.FeatureType.class,  
             com.aixm.delorean.core.schema.test.aixm.DistanceType.class,
-        }
+        },
+        new Class<?>[]{}
     ),
     A5_1(
         "a5_1",                                 // version
@@ -36,10 +37,12 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurvePropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.SurfacePropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfacePropertyType.class,
+
             // message
             com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.message.BasicMessageMemberAIXMPropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.MessageMetadataPropertyType.class,
+
             // abstract
             com.aixm.delorean.core.schema.a5_1.aixm.AbstractAirportGroundServiceType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.AbstractAirportHeliportProtectionAreaType.class,       
@@ -60,6 +63,8 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1.aixm.AbstractSurveillanceRadarType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.AbstractTrafficSeparationServiceType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.AbstractUsageConditionType.class,
+
+            // feature
             com.aixm.delorean.core.schema.a5_1.aixm.AerialRefuellingAnchorPropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.AerialRefuellingAnchorType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.AerialRefuellingPointPropertyType.class,
@@ -806,7 +811,8 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1.aixm.WorkAreaType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.WorkareaActivityPropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.WorkareaActivityType.class,
-        }
+        },
+        new Class<?>[]{}
     ),    
     AIXM_5_1_1(
         "a5_1_1",               // version
@@ -825,10 +831,12 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurvePropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.SurfacePropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfacePropertyType.class,
+
             // message
             com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.message.BasicMessageMemberAIXMPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.MessageMetadataPropertyType.class,
+
             // abstract feature
             com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureBaseType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType.class,
@@ -853,6 +861,7 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractSurveillanceRadarType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractTrafficSeparationServiceType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractUsageConditionType.class,
+
             // features
             com.aixm.delorean.core.schema.a5_1_1.aixm.AerialRefuellingAnchorPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.AerialRefuellingAnchorType.class,
@@ -1600,7 +1609,8 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.WorkareaActivityPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.WorkareaActivityType.class,
-        } // Mapping classes
+        }, // Mapping classes
+        new Class<?>[]{}
     );
     
 
@@ -1612,8 +1622,9 @@ public enum DatabaseConfig {
     private final Configuration configuration;
     private final String sqlPreInitFilePath;
     private final String sqlPostInitFilePath;
+    private final Class<?>[] feature;
 
-    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses) {
+    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses, Class<?>[] feature) {
         this.version = version;
         this.connectionPoolMinSize = connectionPoolMinSize;
         this.connectionPoolMaxSize = connectionPoolMaxSize;
@@ -1622,6 +1633,7 @@ public enum DatabaseConfig {
         this.configuration = getHibernateConfiguration();
         this.sqlPreInitFilePath = sqlPreInitFilePath;
         this.sqlPostInitFilePath = sqlPostInitFilePath;
+        this.feature = feature;
     }
 
     public String getVersion() {

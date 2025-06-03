@@ -135,7 +135,7 @@ public abstract class AbstractAIXMFeatureType
     protected FeatureMetadataPropertyType featureMetadata;
     @Column(name = "feature_status")
     @XmlTransient
-    protected String featureStatus;
+    protected String featureStatus = "APPROVED";
 
     /**
      * Gets the value of the featureMetadata property.
