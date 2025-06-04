@@ -12,6 +12,7 @@ import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.org.gml.v_3_2.ArcStringType;
 import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
 import com.aixm.delorean.core.schema.a5_1.aixm.message.BasicMessageMemberAIXMPropertyType;
+import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMFeatureType;
 import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointType;
 import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSlicePropertyType;
 import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointTimeSliceType;
@@ -25,6 +26,7 @@ import java.sql.Statement;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
@@ -171,60 +173,71 @@ public class DatabaseBinding<T> {
         ConsoleLogger.log(LogLevel.INFO, "Successfully close connection");
     }
 
-    private List<FeatureTimeslice> getTopTimeslice(List<String> nameList){
+    private List<FeatureTimeslice> getTopTimeslice(Session session, List<String> nameList){
+
+        List<FeatureTimeslice> featureTimeslices = new ArrayList<>();
 
         for (String name : nameList) {
-            String sql = """
-            SELECT DISTINCT ON (identifier)
-            navaids_points.designatedpoint.id AS feature_id,
-            navaids_points.designatedpoint.identifier AS identifier,
-            navaids_points.designatedpoint_ts.sequence_number AS sequence_number,
-            navaids_points.designatedpoint_ts.correction_number AS correction_number,
-            navaids_points.designatedpoint_tsp.id As time_slice_property_id,
-            navaids_points.designatedpoint_ts.id AS time_slice_id
-            FROM navaids_points.designatedpoint
-            LEFT JOIN master_join
-            ON navaids_points.designatedpoint.id = master_join.source_id
-            LEFT JOIN navaids_points.designatedpoint_tsp
-            ON master_join.target_id = navaids_points.designatedpoint_tsp.id
-            LEFT JOIN navaids_points.designatedpoint_ts
-            ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
-            WHERE
-                navaids_points.designatedpoint.feature_status = 'APPROVED'
-                AND 
-                navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
-            ORDER BY identifier, sequence_number DESC, correction_number DESC;
-            """;
+
+            String sql = this.generateTopFeatureTimesliceSql(name);
+
+            List<Tuple> tuples = session.createNativeQuery(sql, Tuple.class).getResultList();
+
+            featureTimeslices.addAll(tuples.stream()
+                .map(t -> new FeatureTimeslice(
+                    t.get("feature_id", Long.class),
+                    t.get("identifier", String.class),
+                    t.get("sequence_number", Long.class),
+                    t.get("correction_number", Long.class),
+                    t.get("time_slice_property_id", Long.class),
+                    t.get("time_slice_id", Long.class)
+                ))
+                .toList());
         }
+
+        return featureTimeslices;
     }
 
     private String generateTopFeatureTimesliceSql(String name) {
-        String featureTsTable = featureTable + "_ts";
-        String featureTspTable = featureTable + "_tsp";
-        String featureType = featureTable.replaceFirst("^.*\\.", ""); // get table name without schema prefix
+        String feature = name;
+        String timeSliceProperty = name + "_tsp";
+        String timeSlice = name + "_ts";
+        String featureType = name.replaceFirst("^.*\\.", "") + "timeslice_id";
 
-    return String.format("""
-        SELECT DISTINCT ON (%1$s.identifier)
+        return String.format("""
+            SELECT DISTINCT ON (%1$s.identifier)
             %1$s.id AS feature_id,
             %1$s.identifier AS identifier,
-            ts.sequence_number,
-            ts.correction_number,
-            tsp.id AS time_slice_property_id,
-            ts.id AS time_slice_id
-        FROM %2$s %1$s
-        LEFT JOIN master_join mj ON %1$s.id = mj.source_id
-        LEFT JOIN %3$s tsp ON mj.target_id = tsp.id
-        LEFT JOIN %4$s ts ON tsp.%5$stimeslice_id = ts.id
-        WHERE %1$s.feature_status = 'APPROVED'
-          AND ts.feature_status = 'APPROVED'
-        ORDER BY %1$s.identifier, ts.sequence_number DESC, ts.correction_number DESC
-    """,
-        featureType,                      // %1$s - alias: dp, rw, etc.
-        featureTable,                     // %2$s - full table (e.g., navaids_points.designatedpoint)
-        schema + "." + featureType + "_tsp", // %3$s - tsp table
-        schema + "." + featureType + "_ts",  // %4$s - ts table
-        featureType                       // %5$s - e.g. designatedpointtimeslice_id
-    );
+            %3$s.sequence_number AS sequence_number,
+            %3$s.correction_number AS correction_number,
+            %2$s.id As time_slice_property_id,
+            %3$s.id AS time_slice_id
+            FROM %1$s
+            LEFT JOIN master_join
+            ON %1$s.id = master_join.source_id
+            LEFT JOIN %2$s
+            ON master_join.target_id = %2$s.id
+            LEFT JOIN %3$s
+            ON %2$s.%4$s = %3$s.id
+            WHERE
+                %1$s.feature_status = 'APPROVED'
+                AND 
+                %3$s.feature_status = 'APPROVED'
+            ORDER BY identifier, sequence_number DESC, correction_number DESC;
+        """,
+            feature,                // %1$s - alias: dp, rw, etc.
+            timeSliceProperty,      // %2$s - full table (e.g., navaids_points.designatedpoint)
+            timeSlice,              // %3$s - tsp table
+            featureType             // %4$s - ts table
+        );
+    }
+
+    private <T extends AbstractAIXMFeatureType> T castToConcreteFeature(AbstractAIXMFeatureType abstractFeature, Class<T> clazz) {
+        return clazz.cast(abstractFeature);
+    }
+
+    private void mergeTimeSlice(<T extends AbstractAIXMFeatureType> concreteFeature) {
+
     }
 
     public void load(Object object){
@@ -250,54 +263,35 @@ public class DatabaseBinding<T> {
             // 2. Persite memeberless message
             session.persist(message); 
 
-            // 3. Get current identifier, sequence_number, correction number
-            String sqlFeatureTimeslice = """
-            SELECT DISTINCT ON (identifier)
-            navaids_points.designatedpoint.id AS feature_id,
-            navaids_points.designatedpoint.identifier AS identifier,
-            navaids_points.designatedpoint_ts.sequence_number AS sequence_number,
-            navaids_points.designatedpoint_ts.correction_number AS correction_number,
-            navaids_points.designatedpoint_tsp.id As time_slice_property_id,
-            navaids_points.designatedpoint_ts.id AS time_slice_id
-            FROM navaids_points.designatedpoint
-            LEFT JOIN master_join
-            ON navaids_points.designatedpoint.id = master_join.source_id
-            LEFT JOIN navaids_points.designatedpoint_tsp
-            ON master_join.target_id = navaids_points.designatedpoint_tsp.id
-            LEFT JOIN navaids_points.designatedpoint_ts
-            ON navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
-            WHERE
-                navaids_points.designatedpoint.feature_status = 'APPROVED'
-                AND 
-                navaids_points.designatedpoint_ts.feature_status = 'APPROVED'
-            ORDER BY identifier, sequence_number DESC, correction_number DESC;
-            """;
+            List<FeatureTimeslice> featureTimeslices = this.getTopTimeslice(session, this.databaseConfig.getFeatureSqlList());
 
-            List<Tuple> tuples = session.createNativeQuery(sqlFeatureTimeslice, Tuple.class).getResultList();
 
-            List<FeatureTimeslice> featureTimeslices = tuples.stream()
-                .map(t -> new FeatureTimeslice(
-                    t.get("feature_id", Long.class),
-                    t.get("identifier", String.class),
-                    t.get("sequence_number", Long.class),
-                    t.get("correction_number", Long.class),
-                    t.get("time_slice_property_id", Long.class),
-                    t.get("time_slice_id", Long.class)
-                ))
-                .toList();
 
             // 3. Timeslice handeling of the members
             for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers) {
-                if (bmm.getAbstractAIXMFeature() instanceof DesignatedPointType dpt) {
-                    String identifier = dpt.getIdentifier().getValue();
+                if (bmm.getAbstractAIXMFeature() instanceof AbstractAIXMFeatureType abstractFeature) {
 
+                    String identifier = abstractFeature.getIdentifier().getValue();
+                    FeatureTimeslice existing = featureTimeslices.stream()
+                        .filter(f -> f.getIdentifier().equals(identifier))
+                        .findFirst()
+                        .orElse(null);
+
+
+
+                    // TODO, that some bullshit trick right there, tbh fixed with a clean solution
+                    @SuppressWarnings("unchecked")
+                    Class<T> clazz = (Class<T>) abstractFeature.getClass();
+                    T concreteFeature = this.castToConcreteFeature(abstractFeature, clazz);
+                    String identifier = abstractFeature.getIdentifier().getValue();
+                
                     // Find the existing latest timeslice for this identifier
                     FeatureTimeslice existing = featureTimeslices.stream()
                         .filter(f -> f.getIdentifier().equals(identifier))
                         .findFirst()
                         .orElse(null);
 
-                    for (DesignatedPointTimeSlicePropertyType tsp : dpt.getTimeSlice()) {
+                    for (DesignatedPointTimeSlicePropertyType tsp : aaf.getTimeSlice()) {
                         DesignatedPointTimeSliceType ts = tsp.getDesignatedPointTimeSlice();
 
                         if (ts == null) continue;

@@ -39,6 +39,18 @@ parsing_config = {
 }
 
 attributes_config = {
+    "feature_parents" : [
+        "AbstractAIXMFeatureType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractMarkingType",
+        "AbstractRadarEquipmentType",
+        "AbstractServiceType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+    ],
     "parents_attributes" : {
         "AbstractAIXMPropertyType" : [
             "id"
@@ -242,9 +254,12 @@ class ViewGenerationScript:
         self.attributes = attributes_config
         self.directory = directory
         self.files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith(".java")]
-        self.views = {"table_name": {}, "feature" : {}}
+        self.views = {"top_timeslice_selection" : [], "table_name": {}, "feature" : {}}
         self.type_table = {}
         self.sql = ""
+
+        self.extract_attributes()
+        self.create_views()
 
         self.suffix_replacements = {
             "TimeSlicePropertyType": "",
@@ -342,6 +357,10 @@ class ViewGenerationScript:
             "table": full_table_name
         }
         parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
+        
+        if parent_name[0] in self.attributes["feature_parents"] :
+            self.views["top_timeslice_selection"].append(full_table_name)
+
 
         columns = self.extract_columns(schema, table_name, content)
         parent_columns = self.extract_parent_columns(schema, table_name, parent_name)
@@ -353,8 +372,8 @@ class ViewGenerationScript:
 
     def clean_feature_name(self, class_name):
         """Remove suffixes from feature names for consistency."""
-        for suffix, replacement in self.suffix_replacements.items():
-            class_name = class_name.replace(suffix, replacement)
+        # for suffix, replacement in self.suffix_replacements.items():
+        #     class_name = class_name.replace(suffix, replacement)
         return class_name
 
     def extract_columns(self, schema, table, content):
@@ -404,7 +423,7 @@ class ViewGenerationScript:
                 "second_join" : f"{col[0]}.{col[2]} = {col[3]}.id"
             })
         return res
-
+    
     def update_views(self, feature_name, class_name, parent_name, columns, parent_columns, embedded_columns, one_to_one, one_to_many):
         """Update the `views` dictionary with extracted information."""
         if feature_name not in self.views["feature"]:
@@ -440,5 +459,3 @@ class ViewGenerationScript:
 # compilationScript = ViewGenerationScript(parsing_config, attributes_config, "util/postgres/test_dir")
 
 compilationScript = ViewGenerationScript(parsing_config, attributes_config, "src/main/java/com/aixm/delorean/core/schema/a5_1_1/aixm")
-compilationScript.extract_attributes()
-compilationScript.create_views()

@@ -18,7 +18,7 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.test.aixm.FeatureType.class,  
             com.aixm.delorean.core.schema.test.aixm.DistanceType.class,
         },
-        new Class<?>[]{}
+        Arrays.asList()
     ),
     A5_1(
         "a5_1",                                 // version
@@ -812,7 +812,119 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1.aixm.WorkareaActivityPropertyType.class,
             com.aixm.delorean.core.schema.a5_1.aixm.WorkareaActivityType.class,
         },
-        new Class<?>[]{}
+        Arrays.asList(
+        "aerial_refuelling.aerialrefuelling",
+            "navaids_points.aeronauticalgroundlight",
+            "airport_heliport.aircraftstand",
+            "airport_heliport.airportheliportcollocation",
+            "airport_heliport.airportheliport",
+            "airport_heliport.airporthotspot",
+            "airport_heliport.airportprotectionareamarking",
+            "routes.airspacebordercrossing",
+            "airspace.airspace",
+            "service.airtrafficmanagementservice",
+            "airport_heliport.altimetersource",
+            "navaids_points.angleindication",
+            "airport_heliport.approachlightingsystem",
+            "airport_heliport.apronelement",
+            "airport_heliport.apronlightsystem",
+            "airport_heliport.apronmarking",
+            "airport_heliport.apron",
+            "airport_heliport.arrestinggear",
+            "procedure.arrivalleg",
+            "airspace.authorityforairspace",
+            "navaids_points.azimuth",
+            "routes.changeoverpoint",
+            "navaids_points.checkpointins",
+            "navaids_points.checkpointvor",
+            "public.circlingarea",
+            "airport_heliport.deicingareamarking",
+            "airport_heliport.deicingarea",
+            "procedure.departureleg",
+            "navaids_points.designatedpoint",
+            "navaids_points.directionfinder",
+            "navaids_points.distanceindication",
+            "navaids_points.dme",
+            "navaids_points.elevation",
+            "routes.flightrestriction",
+            "airport_heliport.floatingdocksite",
+            "airspace.geoborder",
+            "navaids_points.glidepath",
+            "airport_heliport.guidancelinelightsystem",
+            "airport_heliport.guidancelinemarking",
+            "airport_heliport.guidanceline",
+            "shared.holdingassessment",
+            "holding.holdingpattern",
+            "service.informationservice",
+            "procedure.instrumentapproachprocedure",
+            "navaids_points.localizer",
+            "navaids_points.markerbeacon",
+            "airport_heliport.markingbuoy",
+            "navaids_points.navaid",
+            "procedure.navigationarearestriction",
+            "procedure.navigationarea",
+            "navaids_points.ndb",
+            "airport_heliport.nonmovementarea",
+            "obstacles.obstaclearea",
+            "organisation.organisationauthority",
+            "airport_heliport.passengerloadingbridge",
+            "service.pilotcontrolledlighting",
+            "surveillance.precisionapproachradar",
+            "procedure.proceduredme",
+            "surveillance.radarsystem",
+            "service.radiocommunicationchannel",
+            "shared.radiofrequencyarea",
+            "airport_heliport.road",
+            "routes.routedme",
+            "routes.routesegment",
+            "routes.route",
+            "rules_procedures.rulesprocedures",
+            "airport_heliport.runwayblastpad",
+            "airport_heliport.runwaycentrelinepoint",
+            "airport_heliport.runwaydirectionlightsystem",
+            "airport_heliport.runwaydirection",
+            "airport_heliport.runwayelement",
+            "airport_heliport.runwaymarking",
+            "airport_heliport.runwayprotectarealightsystem",
+            "airport_heliport.runwayprotectarea",
+            "airport_heliport.runway",
+            "airport_heliport.runwayvisualrange",
+            "procedure.safealtitudearea",
+            "navaids_points.sdf",
+            "airport_heliport.seaplanelandingarea",
+            "airport_heliport.seaplanerampsite",
+            "service.searchrescueservice",
+            "navaids_points.significantpointinairspace",
+            "shared.specialdate",
+            "navaids_points.specialnavigationstation",
+            "navaids_points.specialnavigationsystem",
+            "procedure.standardinstrumentarrival",
+            "procedure.standardinstrumentdeparture",
+            "shared.standardlevelcolumn",
+            "shared.standardlevelsector",
+            "shared.standardleveltable",
+            "airport_heliport.standmarking",
+            "airport_heliport.surveycontrolpoint",
+            "navaids_points.tacan",
+            "airport_heliport.taxiholdingpositionlightsystem",
+            "airport_heliport.taxiholdingpositionmarking",
+            "airport_heliport.taxiholdingposition",
+            "airport_heliport.taxiwayelement",
+            "airport_heliport.taxiwaylightsystem",
+            "airport_heliport.taxiwaymarking",
+            "airport_heliport.taxiway",
+            "procedure.terminalarrivalarea",
+            "airport_heliport.touchdownliftofflightsystem",
+            "airport_heliport.touchdownliftoffmarking",
+            "airport_heliport.touchdownliftoffsafearea",
+            "airport_heliport.touchdownliftoff",
+            "organisation.unit",
+            "holding.unplannedholding",
+            "obstacles.verticalstructure",
+            "airport_heliport.visualglideslopeindicator",
+            "navaids_points.vor",
+            "airport_heliport.workarea"
+        )
     ),    
     AIXM_5_1_1(
         "a5_1_1",               // version
@@ -1610,7 +1722,8 @@ public enum DatabaseConfig {
             com.aixm.delorean.core.schema.a5_1_1.aixm.WorkareaActivityPropertyType.class,
             com.aixm.delorean.core.schema.a5_1_1.aixm.WorkareaActivityType.class,
         }, // Mapping classes
-        new Class<?>[]{}
+        Arrays.asList(
+        )
     );
     
 
@@ -1622,9 +1735,9 @@ public enum DatabaseConfig {
     private final Configuration configuration;
     private final String sqlPreInitFilePath;
     private final String sqlPostInitFilePath;
-    private final Class<?>[] feature;
+    private final List<String> feature;
 
-    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses, Class<?>[] feature) {
+    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses, List<String> feature) {
         this.version = version;
         this.connectionPoolMinSize = connectionPoolMinSize;
         this.connectionPoolMaxSize = connectionPoolMaxSize;
@@ -1691,5 +1804,9 @@ public enum DatabaseConfig {
 
     public String getSqlPostInitFilePath() {
         return sqlPostInitFilePath;
-    }   
+    }
+    
+    public List<String> getFeatureSqlList() {
+        return feature;
+    }
 }
