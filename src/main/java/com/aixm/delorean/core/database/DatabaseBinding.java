@@ -191,7 +191,8 @@ public class DatabaseBinding<T> {
                     t.get("sequence_number", Long.class),
                     t.get("correction_number", Long.class),
                     t.get("time_slice_property_id", Long.class),
-                    t.get("time_slice_id", Long.class)
+                    t.get("time_slice_id", Long.class),
+                    name
                 ))
                 .toList());
         }
@@ -259,18 +260,31 @@ public class DatabaseBinding<T> {
             session.persist(message); 
 
             // 3. extract current top timeslice from db (top = last)
-            List<MutationFeatureTimeslice> featureTimeslices = this.getTopTimeslice(session, this.databaseConfig.getFeatureSqlList());
+            List<MutationFeatureTimeslice> mutationFeatureTimeslices = this.getTopTimeslice(session, this.databaseConfig.getFeatureSqlList());
 
+            // 4. merge timeslice
             for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers){
                 AbstractAIXMFeatureType abstractFeature = bmm.getAbstractAIXMFeature();
                 String identifier = abstractFeature.getIdentifier().getValue();
-                MutationFeatureTimeslice existing = featureTimeslices.stream()
+                MutationFeatureTimeslice existing = mutationFeatureTimeslices.stream()
                     .filter(f -> f.getIdentifier().equals(identifier))
                     .findFirst()
                     .orElse(null);
                 DatabaseFunctionHelper.A5_1HandelTimeSlice(bmm, existing, session);
             }
 
+            // 5.flush to generate id
+            session.flush();
+
+            for (MutationFeatureTimeslice mft : mutationFeatureTimeslices){
+                if (mft != null) {
+                    mft.appplyMutation(session);
+                }
+
+            }
+
+            transaction.commit();
+            ConsoleLogger.log(LogLevel.INFO, "Sucessfully loaded");
 
             // for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers) {
             //     AbstractAIXMFeatureType abstractFeature = bmm.getAbstractAIXMFeature();
@@ -347,28 +361,24 @@ public class DatabaseBinding<T> {
 
                 //         } else if (incomingSeq == existing.getSequenceNumber() && incomingCorr > existing.getCorrectionNumber()) {
                 //             // 4.c Existing feature with new correction timeslice
-                //             session.persist(tsp);
-                //             session.flush();
+                            // session.persist(tsp);
+                            // session.flush();
 
-                //             long tspId = tsp.getDbid();
+                            // long tspId = tsp.getDbid();
 
-                //             session.createNativeMutationQuery("""
-                //                 INSERT INTO master_join (source_id, target_id)
-                //                 VALUES (:featureId, :tspId)
-                //             """)
-                //             .setParameter("featureId", existing.getFeatureId())
-                //             .setParameter("tspId", tspId)
-                //             .executeUpdate();
+                            // session.createNativeMutationQuery("""
+                            //     INSERT INTO master_join (source_id, target_id)
+                            //     VALUES (:featureId, :tspId)
+                            // """)
+                            // .setParameter("featureId", existing.getFeatureId())
+                            // .setParameter("tspId", tspId)
+                            // .executeUpdate();
                 //         }
                 //     }
                 // }
             // }
 
             //TODO : link BasicMessageMemberAIXMPropertyType back to AIXMBasicMessageType, but how do i know to wich one ?
-
-            // session.persist(object);
-            transaction.commit();
-            ConsoleLogger.log(LogLevel.INFO, "Sucessfully loaded");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
