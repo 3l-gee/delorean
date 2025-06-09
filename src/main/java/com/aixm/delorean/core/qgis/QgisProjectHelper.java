@@ -1,5 +1,5 @@
 package com.aixm.delorean.core.qgis;
 
-public class QgisProjectConfig {
+public class QgisProjectHelper {
     
 }

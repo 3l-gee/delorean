@@ -3,7 +3,6 @@ package com.aixm.delorean.core.database;
 import java.util.Map;
 
 import org.hibernate.Session;
-import org.javatuples.Quintet;
 
 import java.time.Instant;
 import java.util.List;
@@ -815,7 +814,7 @@ public class DatabaseFunctionHelper {
             session.persist(tsp);
             existing.setAction(TimeSliceAction.CHANGE);
             existing.setTimeSliceProperty(tsp);
-            existing.setTimeSliceProperty(tsp);
+            existing.setNewTimeSliceStart(ts.getValidTime().getBeginPosition());
             return existing;
         
         // 4. correction changes are merged on the existing feature

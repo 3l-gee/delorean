@@ -5,61 +5,61 @@
   <title>Note List Viewer</title>
   <style>
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #323232;
   color: #e0e0e0;
-  margin: 15px;
+  margin: 12px;
 }
 
-h1 {
-  font-size: 1.35em;
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-.note {
-  background-color: #1e1e1e;
-  border: 2px solid #3a9aed;
-  padding: 12px;
-  margin-bottom: 15px;
+.annotation-block {
+  border: 1px solid #bbbbbb;;
   box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);
+  padding: 8px;
+  margin-bottom: 16px;
 }
 
-.note-header {
-  background-color: #2a2a2a;
-  padding: 6px;
-  border-radius: 2px;
-  margin-bottom: 6px;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.note-header h2,
-.note-header p {
-  margin: 0 0 4px 0;
-  font-size: 1em;
-  color: #4fc3f7;
+td.title {
+  white-space: nowrap;
+  padding: 2px 10px 2px 0;
+  color: #cccccc;
+  font-size: 0.8em;
+  vertical-align: top;
+  width: 160px;
 }
 
-.note p {
-  margin: 4px 0;
-  color: #d0d0d0;
-  font-size: 0.9em;
+.value {
+  color: #bbbbbb;
+  background-color: #1e1e1e;
+  font-size: 0.8em;
+  vertical-align: top;
+  padding: 3px;
+  margin: 3px;
 }
 
 .translated {
-  margin-top: 8px;
-  padding-left: 8px;
-  border-left: 3px solid #4fc3f7;
+    margin-top: 8px;
 }
 
-.translated-note {
-  margin-bottom: 4px;
-  color: #bbbbbb;
-  font-size: 0.85em;
-}
-
-.translated-note span {
+.translated span {
   font-weight: bold;
-  color: #ffffff;
+  color: #87cefa;
+}
+
+.translated-text {
+  color: #dddddd;
+  font-size: 0.8em;
+  background-color: #1e1e1e;
+  border-left: 4px solid #3a9aed; 
+  padding: 3px;
+  margin: 3px;
+  padding-left: 6px;
+  margin-bottom: 6px;
+
 }
   </style>
 </head>
@@ -88,20 +88,27 @@ h1 {
         div.className = 'note';
 
         div.innerHTML = `
-          <div class="note-header">
-            <p><strong>Purpose:</strong> ${note.purpose}</p>
-            <p><strong>Property Name:</strong> ${note.propertyName}</p>
-          </div>
-          <div class="translated">
-            <p><strong>Translated Notes:</strong></p>
-            ${
-              Array.isArray(note.notes) && note.notes.length > 0
-                ? note.notes.map(n =>
-                    `<div class="translated-note">
-                      <span>[${n.lang}]</span> ${n.note}
-                    </div>`).join('')
-                : '<em>None</em>'
-            }
+          <div class="annotation-block">
+            <table>
+              <tr>
+                <td class="title">Purpose</td>
+                <td><div class="value">${note.purpose}</div></td>
+              </tr>
+              <tr>
+                <td class="title">Property Name</td>
+                <td><div class="value">${note.propertyName}</div></td>
+              </tr>
+            </table>
+            <div class="translated">
+              ${
+                Array.isArray(note.notes) && note.notes.length > 0
+                  ? note.notes.map(n =>
+                      `<div class="translated-text">
+                        <span>[${n.lang}]</span><br> ${n.note.replace(/\n/g, '<br>')}
+                      </div>`).join('')
+                  : ''
+              }
+            </div>
           </div>
         `;
 

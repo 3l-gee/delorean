@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.database;
 
 import org.hibernate.Session;
+import org.hibernate.StatelessSession;
 
 import com.aixm.delorean.core.database.DatabaseFunctionHelper.TimeSliceAction;
 
@@ -99,6 +100,23 @@ public class MutationFeatureTimeslice {
         this.newTimeSliceStart = newTSstart;
     }
 
+    public void appplyMutationStateless(StatelessSession session){
+        switch (this.action) {
+            case TimeSliceAction.NEW:
+            case TimeSliceAction.NOTHING:
+                break;
+
+            case TimeSliceAction.CHANGE:
+                this.appendNewTSP(session, this.extractDbid(this.timeSliceProperty));
+                this.cutOldTSP(session);
+                break;
+
+            case TimeSliceAction.CORRECTION:
+                this.appendNewTSP(session, this.extractDbid(this.timeSliceProperty));
+                break;
+        }
+    }
+
     public void appplyMutation(Session session){
         switch (this.action) {
             case TimeSliceAction.NEW:
@@ -127,16 +145,41 @@ public class MutationFeatureTimeslice {
             .executeUpdate();
     }
 
-    private void cutOldTSP(Session session){
+    private void appendNewTSP(StatelessSession session, Long newTSPid){
         session.createNativeMutationQuery("""
-            UPDATE :schema_time_slice_name
+            INSERT INTO master_join (source_id, target_id)
+            VALUES (:featureId, :tspId)
+        """)
+        .setParameter("featureId", this.featureId)
+        .setParameter("tspId", newTSPid)
+        .executeUpdate();
+    }
+
+    private void cutOldTSP(Session session) {
+        String sql = """
+            UPDATE %s
             SET valid_time_end = :new_begin_position
             WHERE id = :time_slice_id
-        """)
+            """.formatted(this.timeSliceSchemaName + "_ts");
+
+        session.createNativeMutationQuery(sql)
             .setParameter("new_begin_position", this.newTimeSliceStart)
             .setParameter("time_slice_id", this.oldTimeSliceId)
-            .setParameter("schema_time_slice_name", this.timeSliceSchemaName)
             .executeUpdate();
     }
+
+    private void cutOldTSP(StatelessSession session) {
+        String sql = """
+            UPDATE %s
+            SET valid_time_end = :new_begin_position
+            WHERE id = :time_slice_id
+            """.formatted(this.timeSliceSchemaName + "_ts");
+
+        session.createNativeMutationQuery(sql)
+            .setParameter("new_begin_position", this.newTimeSliceStart)
+            .setParameter("time_slice_id", this.oldTimeSliceId)
+            .executeUpdate();
+    }
+
 
 }

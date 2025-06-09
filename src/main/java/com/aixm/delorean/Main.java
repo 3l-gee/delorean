@@ -9,6 +9,8 @@ import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
+import com.aixm.delorean.core.qgis.QgisProjectBinding;
+import com.aixm.delorean.core.qgis.QgisConfig;
 
 import java.io.Console;
 import java.util.Scanner;
@@ -358,14 +360,16 @@ public class Main {
         }
 
         if (this.containerWarehouse.getIds().contains(argument)) {
-            switch (parameter.toLowerCase()) {
-                case "init":
-                    break;
-
-                default:
-                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
-                    break;
-            }    
+            QgisConfig qgisConfig = QgisConfig.fromString(parameter);
+            try{
+                QgisProjectBinding editBinding = new QgisProjectBinding(qgisConfig.getEditConfig());
+                QgisProjectBinding publisheBinding = new QgisProjectBinding(qgisConfig.getPublishConfig());
+                this.containerWarehouse.getContainer(argument).setEditProject(editBinding);
+                this.containerWarehouse.getContainer(argument).setEditProject(publisheBinding);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid argument: " + e.getMessage());
+            }
+            
         } else {
             ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }

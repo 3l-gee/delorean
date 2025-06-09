@@ -1727,7 +1727,7 @@ public enum DatabaseConfig {
     );
     
 
-    private final String version;
+    private final String name;
     private final int connectionPoolMinSize;
     private final int connectionPoolMaxSize;
     private final boolean showSql;
@@ -1738,7 +1738,7 @@ public enum DatabaseConfig {
     private final List<String> feature;
 
     DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses, List<String> feature) {
-        this.version = version;
+        this.name = version;
         this.connectionPoolMinSize = connectionPoolMinSize;
         this.connectionPoolMaxSize = connectionPoolMaxSize;
         this.showSql = showSql;
@@ -1749,8 +1749,8 @@ public enum DatabaseConfig {
         this.feature = feature;
     }
 
-    public String getVersion() {
-        return version;
+    public String getName() {
+        return name;
     }
 
     public Configuration getConfiguration() {
@@ -1774,9 +1774,15 @@ public enum DatabaseConfig {
 
         // Set Hibernate settings
         configuration.setProperty("hibernate.show_sql", String.valueOf(this.showSql));
-        configuration.setProperty("hibernate.format_sql", "true");  // Formats the SQL for readability
-        configuration.setProperty("hibernate.generate_statistics", "true");  // Enables detailed statistics
-        configuration.setProperty("hibernate.use_sql_comments", "true");  // Adds comments to the generated SQL for context
+        configuration.setProperty("hibernate.format_sql", true);  // Formats the SQL for readability
+        configuration.setProperty("hibernate.generate_statistics", true);  // Enables detailed statistics
+        configuration.setProperty("hibernate.use_sql_comments", true);  // Adds comments to the generated SQL for context
+
+        // Set Hibernate batching
+        configuration.setProperty("hibernate.jdbc.batch_size", 50);
+        configuration.setProperty("hibernate.order_inserts", true);
+        configuration.setProperty("hibernate.order_updates", true);
+        configuration.setProperty("hibernate.jdbc.batch_versioned_data", true);
 
         //Set PostgreSQL dialect
         configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
@@ -1791,7 +1797,7 @@ public enum DatabaseConfig {
 
     public static DatabaseConfig fromString(String version) {
         for (DatabaseConfig Schema : DatabaseConfig.values()) {
-            if (Schema.getVersion().equals(version)) {
+            if (Schema.getName().equals(version)) {
                 return Schema;
             }
         }

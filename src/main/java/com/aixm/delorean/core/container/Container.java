@@ -2,6 +2,7 @@ package com.aixm.delorean.core.container;
 
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.database.DatabaseBinding;
+import com.aixm.delorean.core.qgis.QgisProjectBinding;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -17,6 +18,8 @@ public class Container<T> {
     private T record;
     public XMLBinding xmlBinding;
     public DatabaseBinding databaseBinding;
+    private QgisProjectBinding publisherPRJ;
+    private QgisProjectBinding editorPRJ;
     
 
     public Container(Class<T> structure) {
@@ -37,6 +40,14 @@ public class Container<T> {
 
     public void setDbBiding(DatabaseBinding databaseBinding) {
         this.databaseBinding = databaseBinding;
+    }
+
+    public void setPublisherProject(QgisProjectBinding binding) {
+        this.publisherPRJ = binding;
+    }
+
+    public void setEditProject(QgisProjectBinding binding) {
+        this.editorPRJ = binding;
     }
 
     public void setValidationRule() {

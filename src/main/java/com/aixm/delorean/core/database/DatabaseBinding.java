@@ -5,8 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.Filter;
 import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
 import org.hibernate.cfg.Configuration;
-import org.javatuples.Quintet;
 
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -249,8 +249,6 @@ public class DatabaseBinding<T> {
         try {
             transaction = session.beginTransaction();
 
-            List<Quintet<Long, Long, Long, String, Instant>> mutationList;
-
             // 1. Convert to AixmBasicMesage to separet message and memeber
             AIXMBasicMessageType message = (AIXMBasicMessageType) object;
             List<BasicMessageMemberAIXMPropertyType> basicMessageMembers = message.getHasMember();
@@ -273,110 +271,31 @@ public class DatabaseBinding<T> {
                 DatabaseFunctionHelper.A5_1HandelTimeSlice(bmm, existing, session);
             }
 
-            // 5.flush to generate id
+            // 5. flush and close original session after persisting message
             session.flush();
 
-            for (MutationFeatureTimeslice mft : mutationFeatureTimeslices){
-                if (mft != null) {
-                    mft.appplyMutation(session);
+            // 6. Use StatelessSession for manual batch operations
+            StatelessSession statelessSession = this.sessionFactory.openStatelessSession();
+            Transaction statelessTx = statelessSession.beginTransaction();
+
+            try {
+                for (MutationFeatureTimeslice mft : mutationFeatureTimeslices){
+                    if (mft != null) {
+                        mft.appplyMutationStateless(statelessSession); // << implement this
+                    }
                 }
 
+                statelessTx.commit();
+                ConsoleLogger.log(LogLevel.INFO, "Successfully loaded");
+            } catch (Exception e) {
+                statelessTx.rollback();
+                e.printStackTrace();
+            } finally {
+                statelessSession.close();
             }
 
             transaction.commit();
             ConsoleLogger.log(LogLevel.INFO, "Sucessfully loaded");
-
-            // for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers) {
-            //     AbstractAIXMFeatureType abstractFeature = bmm.getAbstractAIXMFeature();
-            //     String identifier = abstractFeature.getIdentifier().getValue();
-            //     FeatureTimeslice existing = featureTimeslices.stream()
-            //         .filter(f -> f.getIdentifier().equals(identifier))
-            //         .findFirst()
-            //         .orElse(null);
-            //     DatabaseFunctionHelper.A5_1HandelTimeSlice(bmm, existing, session)
-
-                //     String identifier = abstractFeature.getIdentifier().getValue();
-                //     FeatureTimeslice existing = featureTimeslices.stream()
-                //         .filter(f -> f.getIdentifier().equals(identifier))
-                //         .findFirst()
-                //         .orElse(null);
-
-
-
-                //     // TODO, that some bullshit trick right there, tbh fixed with a clean solution
-                //     @SuppressWarnings("unchecked")
-                //     Class<T> clazz = (Class<T>) abstractFeature.getClass();
-                //     T concreteFeature = this.castToConcreteFeature(abstractFeature, clazz);
-                //     String identifier = abstractFeature.getIdentifier().getValue();
-                
-                //     // Find the existing latest timeslice for this identifier
-                //     FeatureTimeslice existing = featureTimeslices.stream()
-                //         .filter(f -> f.getIdentifier().equals(identifier))
-                //         .findFirst()
-                //         .orElse(null);
-
-                //     for (DesignatedPointTimeSlicePropertyType tsp : aaf.getTimeSlice()) {
-                //         DesignatedPointTimeSliceType ts = tsp.getDesignatedPointTimeSlice();
-
-                //         if (ts == null) continue;
-
-                //         int incomingSeq = ts.getSequenceNumber().intValue();
-                //         int incomingCorr = ts.getCorrectionNumber().intValue();
-
-                //         if (existing == null) {
-                //             // 4.a New feature not in current dataset
-                //             session.persist(bmm);
-
-                //         } else if (incomingSeq > existing.getSequenceNumber()) {
-
-                //             // 4.b Existing feature with new timeslice
-                //             if (incomingSeq != existing.getSequenceNumber() + 1) {
-                //                 ConsoleLogger.log(LogLevel.WARN, "Missing Timeslice for feature [" + dpt.getClass().getSimpleName() + "] : " + existing.getIdentifier() + " between sequence numbers: " + existing.getSequenceNumber() + " and " + incomingSeq);
-                //             }
-
-                //             session.persist(tsp);
-                //             session.flush();
-
-                //             long tspId = tsp.getDbid();
-
-                //             session.createNativeMutationQuery("""
-                //                 INSERT INTO master_join (source_id, target_id)
-                //                 VALUES (:featureId, :tspId)
-                //             """)
-                //             .setParameter("featureId", existing.getFeatureId())
-                //             .setParameter("tspId", tspId)
-                //             .executeUpdate();
-
-                //             Instant newBeginPosition = tsp.getDesignatedPointTimeSlice().getValidTime().getBeginPosition();
-
-                //             session.createNativeMutationQuery("""
-                //                 UPDATE navaids_points.designatedpoint_ts
-                //                 SET valid_time_end = :new_begin_position
-                //                 WHERE id = :time_slice_id
-                //             """)
-                //             .setParameter("new_begin_position", newBeginPosition)
-                //             .setParameter("time_slice_id", existing.getTimeSliceId())
-                //             .executeUpdate();
-
-
-                //         } else if (incomingSeq == existing.getSequenceNumber() && incomingCorr > existing.getCorrectionNumber()) {
-                //             // 4.c Existing feature with new correction timeslice
-                            // session.persist(tsp);
-                            // session.flush();
-
-                            // long tspId = tsp.getDbid();
-
-                            // session.createNativeMutationQuery("""
-                            //     INSERT INTO master_join (source_id, target_id)
-                            //     VALUES (:featureId, :tspId)
-                            // """)
-                            // .setParameter("featureId", existing.getFeatureId())
-                            // .setParameter("tspId", tspId)
-                            // .executeUpdate();
-                //         }
-                //     }
-                // }
-            // }
 
             //TODO : link BasicMessageMemberAIXMPropertyType back to AIXMBasicMessageType, but how do i know to wich one ?
         } catch (Exception e) {
