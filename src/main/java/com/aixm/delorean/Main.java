@@ -206,12 +206,16 @@ public class Main {
             executeDbConfigurationCommand(argument, scanner, parameter, option);
             break;
 
+            case "db" :
+            executeDbActionCommand(argument, scanner, parameter, option);
+            break;
+
             case "qgis_config" :
             executeQgisConfigurationCommand(argument, scanner, parameter, option);
             break;
 
-            case "db" :
-            executeDbActionCommand(argument, scanner, parameter, option);
+            case "qgis" :
+            executeQgisActionCommand(argument, scanner, parameter, option);
             break;
 
             case "list":
@@ -340,10 +344,9 @@ public class Main {
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setHbm2ddl(hbm2ddl);
+                ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid argument: " + e.getMessage());
-            } finally {
-                ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             }
         } else {
             ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
@@ -365,11 +368,35 @@ public class Main {
                 QgisProjectBinding editBinding = new QgisProjectBinding(qgisConfig.getEditConfig());
                 QgisProjectBinding publisheBinding = new QgisProjectBinding(qgisConfig.getPublishConfig());
                 this.containerWarehouse.getContainer(argument).setEditProject(editBinding);
-                this.containerWarehouse.getContainer(argument).setEditProject(publisheBinding);
+                this.containerWarehouse.getContainer(argument).setPublisherProject(publisheBinding);
+                ConsoleLogger.log(LogLevel.INFO, "Qgis project configuration set");
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid argument: " + e.getMessage());
             }
-            
+        } else {
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeQgisActionCommand(String argument, Scanner sacnner, String parameter, String option) {
+        if (argument == null) {
+
+        } 
+
+        if (parameter == null) {
+
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            switch (parameter.toLowerCase()) {
+                case "init":
+                    this.containerWarehouse.getContainer(argument).getPublisherProject().init();
+                    break;
+
+                default:
+                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
+                    break;
+            }
         } else {
             ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }

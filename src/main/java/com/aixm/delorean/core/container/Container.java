@@ -38,16 +38,32 @@ public class Container<T> {
         this.xmlBinding = xmlBinding;
     }
 
+    public XMLBinding getXmlBinding() {
+        return this.xmlBinding;
+    }
+
     public void setDbBiding(DatabaseBinding databaseBinding) {
         this.databaseBinding = databaseBinding;
+    }
+
+    public DatabaseBinding getDbBiding() {
+        return this.databaseBinding;
     }
 
     public void setPublisherProject(QgisProjectBinding binding) {
         this.publisherPRJ = binding;
     }
 
+    public QgisProjectBinding getPublisherProject() {
+        return this.publisherPRJ;
+    }
+
     public void setEditProject(QgisProjectBinding binding) {
         this.editorPRJ = binding;
+    }
+
+    public QgisProjectBinding getEditProject() {
+        return this.editorPRJ;
     }
 
     public void setValidationRule() {

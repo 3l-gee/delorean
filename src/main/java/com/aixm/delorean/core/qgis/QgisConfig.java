@@ -9,7 +9,7 @@ public enum QgisConfig {
     A5_1(
         "a5_1",
         new ProjectConfig(
-            "qgis/publisher.qgs.ftl",
+            "publisher.qgs.ftl",
             "delorean aixm 5.1 - publisher",
             List.of(new LayerConfig(
                 "OpenStreetMap"

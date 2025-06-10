@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class QgisProjectBinding {
     private Configuration cfg;
     private Template template;
     private Map<String, Object> input;
+    private byte[] projectZip;
 
     public QgisProjectBinding(ProjectConfig prjConfig){
         this.projectConfig = prjConfig;
@@ -38,6 +40,14 @@ public class QgisProjectBinding {
         this.cfg.setDefaultEncoding("UTF-8");
         this.cfg.setLocale(Locale.US);
         this.cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        this.cfg.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "qgis");
+        this.input = new HashMap<String, Object>();
+    }
+
+    public void init() {
+        this.loadTemplate();
+        this.putInput(this.projectConfig);
+        System.out.println(this.processTemplate());
     }
 
     public void loadTemplate() {
@@ -54,17 +64,21 @@ public class QgisProjectBinding {
         }
     }
 
+    public void putInput(ProjectConfig config){
+        this.input.put("ProjectConfig", config);
+    };
+
     public byte[] processTemplate() {
         // 1. Process template into a string
-        Writer consoleWriter = new OutputStreamWriter(System.out);
+        StringWriter stringWriter = new StringWriter();
         try {
-            this.template.process(this.input, consoleWriter);
+            this.template.process(this.input, stringWriter);
         } catch (TemplateException e) {
             ConsoleLogger.log(LogLevel.ERROR, "Runtime exception while processing template: " + this.projectConfig.getPath() + " with values from: " + this.input.getClass(), e);
         } catch (IOException e) {
             ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template: " + this.projectConfig.getPath() + " with values from: " + this.input.getClass(), e);
         }
-        String rendered = consoleWriter.toString();
+        String rendered = stringWriter.toString();
 
         // 2. Write the string to a zip archive in memory
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
