@@ -32,7 +32,7 @@ public class QgisProjectBinding {
     private Configuration cfg;
     private Template template;
     private Map<String, Object> input;
-    private byte[] projectZip;
+    private String projectZip;
 
     public QgisProjectBinding(ProjectConfig prjConfig){
         this.projectConfig = prjConfig;
@@ -47,7 +47,7 @@ public class QgisProjectBinding {
     public void init() {
         this.loadTemplate();
         this.putInput(this.projectConfig);
-        System.out.println(this.processTemplate());
+        this.projectZip = this.processTemplate();
     }
 
     public void loadTemplate() {
@@ -68,7 +68,16 @@ public class QgisProjectBinding {
         this.input.put("ProjectConfig", config);
     };
 
-    public byte[] processTemplate() {
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+
+    public String processTemplate() {
         // 1. Process template into a string
         StringWriter stringWriter = new StringWriter();
         try {
@@ -103,7 +112,7 @@ public class QgisProjectBinding {
         }
         
         // // 3. Return zipped byte array
-        return byteOut.toByteArray();
+        return this.bytesToHex(byteOut.toByteArray());
     }
 }
     

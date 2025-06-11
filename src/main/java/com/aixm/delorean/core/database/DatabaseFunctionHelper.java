@@ -27,7 +27,8 @@ public class DatabaseFunctionHelper {
             MutationFeatureTimeslice existing, 
             Session session) {
         AbstractAIXMFeatureType abstractFeature = basicMessageMember.getAbstractAIXMFeature(); 
-
+            
+        //TODO : disgusting aixm garbage
         if (abstractFeature instanceof RunwayDirectionType feature) {
             for (RunwayDirectionTimeSlicePropertyType tsp : feature.getTimeSlice()) {
                 RunwayDirectionTimeSliceType ts = tsp.getRunwayDirectionTimeSlice();
