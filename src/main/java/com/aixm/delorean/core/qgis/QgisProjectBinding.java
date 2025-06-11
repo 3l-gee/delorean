@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.qgis;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Console;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -68,7 +69,7 @@ public class QgisProjectBinding {
         this.input.put("ProjectConfig", config);
     };
 
-    public static String bytesToHex(byte[] bytes) {
+    public String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
             sb.append(String.format("%02x", b));
@@ -88,11 +89,11 @@ public class QgisProjectBinding {
             ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template: " + this.projectConfig.getPath() + " with values from: " + this.input.getClass(), e);
         }
         String rendered = stringWriter.toString();
-
+        System.out.println("prj: " + rendered);
         // 2. Write the string to a zip archive in memory
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         ZipOutputStream zipOut = new ZipOutputStream(byteOut);
-        ZipEntry entry = new ZipEntry("output.txt");
+        ZipEntry entry = new ZipEntry("delorean.qgs");
         try {
             zipOut.putNextEntry(entry);
         } catch (IOException e) {
@@ -102,17 +103,26 @@ public class QgisProjectBinding {
         try {
             zipOut.write(rendered.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while zipping: ", e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while writing zipped data: ", e);
         }
 
         try {
             zipOut.closeEntry();
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while zipping: ", e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while closing entry: ", e);
         }
-        
+
+        try {
+            zipOut.close(); 
+        } catch (IOException e) {
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while closing zip: ", e);
+        }
+
+        byte[] zippedBytes = byteOut.toByteArray();
+
+        System.out.println("\\x" + bytesToHex(zippedBytes));
         // // 3. Return zipped byte array
-        return this.bytesToHex(byteOut.toByteArray());
+        return this.bytesToHex(zippedBytes);
     }
 }
     
