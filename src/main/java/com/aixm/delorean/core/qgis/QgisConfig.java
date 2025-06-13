@@ -10,12 +10,14 @@ public enum QgisConfig {
         "a5_1",
         new ProjectConfig(
             "publisher.qgs.ftl",
+            "qgis/8753078a_styles.db",
             "delorean aixm 5.1 - publisher",
             List.of(new LayerConfig(
                 "OpenStreetMap"
                 ))
         ),
         new ProjectConfig(
+            null,
             null,
             null,
             List.of(new LayerConfig(

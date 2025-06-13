@@ -3,12 +3,16 @@ package com.aixm.delorean.core.qgis;
 import java.io.ByteArrayOutputStream;
 import java.io.Console;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -53,15 +57,15 @@ public class QgisProjectBinding {
 
     public void loadTemplate() {
         try {
-            this.template = cfg.getTemplate(this.projectConfig.getPath());
+            this.template = cfg.getTemplate(this.projectConfig.getTemplatePath());
         } catch (TemplateNotFoundException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Template not found: " + this.projectConfig.getPath(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "Template not found: " + this.projectConfig.getTemplatePath(), e);
         } catch (MalformedTemplateNameException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Malformed template name: " + this.projectConfig.getPath(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "Malformed template name: " + this.projectConfig.getTemplatePath(), e);
         } catch (ParseException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Failed to parse template: " + this.projectConfig.getPath(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "Failed to parse template: " + this.projectConfig.getTemplatePath(), e);
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while loading template: " + this.projectConfig.getPath(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while loading template: " + this.projectConfig.getTemplatePath(), e);
         }
     }
 
@@ -77,6 +81,31 @@ public class QgisProjectBinding {
         return sb.toString();
     }
 
+    public static byte[] hexToBytes(String hex) {
+        int len = hex.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+                                + Character.digit(hex.charAt(i+1), 16));
+        }
+        return data;
+    }
+
+    public byte[] readBinaryResource(String resourcePath) throws IOException {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(resourcePath)) {
+            if (is == null) {
+                throw new FileNotFoundException("Resource not found: " + resourcePath);
+            }
+            return is.readAllBytes();
+        }
+    }
+
+    public void zipObject(ZipOutputStream zipOut, String name, byte[] content) throws IOException {
+        ZipEntry entry = new ZipEntry(name);
+        zipOut.putNextEntry(entry);
+        zipOut.write(content);
+        zipOut.closeEntry();
+    }
 
     public String processTemplate() {
         // 1. Process template into a string
@@ -84,43 +113,51 @@ public class QgisProjectBinding {
         try {
             this.template.process(this.input, stringWriter);
         } catch (TemplateException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "Runtime exception while processing template: " + this.projectConfig.getPath() + " with values from: " + this.input.getClass(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "Runtime exception while processing template: " + this.projectConfig.getTemplatePath() + " with values from: " + this.input.getClass(), e);
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template: " + this.projectConfig.getPath() + " with values from: " + this.input.getClass(), e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template: " + this.projectConfig.getTemplatePath() + " with values from: " + this.input.getClass(), e);
         }
-        String rendered = stringWriter.toString();
-        System.out.println("prj: " + rendered);
-        // 2. Write the string to a zip archive in memory
+
+        byte[] qgsBytes = stringWriter.toString().getBytes(StandardCharsets.UTF_8);
+
+        // Prepare output zip
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         ZipOutputStream zipOut = new ZipOutputStream(byteOut);
-        ZipEntry entry = new ZipEntry("delorean.qgs");
+
+        // Add .qgs
         try {
-            zipOut.putNextEntry(entry);
+            zipObject(zipOut, "delorean.qgs", qgsBytes);
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while zipping: ", e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template delorean.qgs", e);
         }
 
+        // Add .db  
         try {
-            zipOut.write(rendered.getBytes(StandardCharsets.UTF_8));
+            byte[] dbBytes = readBinaryResource(this.projectConfig.getSqlitePath());
+            zipObject(zipOut, "8753078a_styles.db", dbBytes);
         } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while writing zipped data: ", e);
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while processing template 8753078a_styles.db", e);
         }
 
-        try {
-            zipOut.closeEntry();
-        } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while closing entry: ", e);
-        }
 
         try {
-            zipOut.close(); 
+            zipOut.close();
         } catch (IOException e) {
             ConsoleLogger.log(LogLevel.ERROR, "I/O error while closing zip: ", e);
         }
 
         byte[] zippedBytes = byteOut.toByteArray();
 
-        System.out.println("\\x" + bytesToHex(zippedBytes));
+        try {
+            // Save zipped version
+            Files.write(Paths.get("delorean.qgz"), zippedBytes);
+            
+        } catch (IOException e) {
+            ConsoleLogger.log(LogLevel.ERROR, "I/O error while saving output files", e);
+        }
+
+        System.out.println(this.bytesToHex(zippedBytes));
+
         // // 3. Return zipped byte array
         return this.bytesToHex(zippedBytes);
     }

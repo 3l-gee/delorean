@@ -3,18 +3,24 @@ package com.aixm.delorean.core.qgis;
 import java.util.List;
 
 public class ProjectConfig {
-    private String path;
+    private String templatePath;
+    private String sqlitePath;
     private String title;
     private List<LayerConfig> layers;
 
-    public ProjectConfig(String path, String title, List<LayerConfig> layers) {
-        this.path = path; 
+    public ProjectConfig(String templatePath,String sqlitePath, String title, List<LayerConfig> layers) {
+        this.templatePath = templatePath; 
+        this.sqlitePath = sqlitePath; 
         this.title = title;
         this.layers = layers;
     }
 
-    public String getPath() {
-        return this.path;
+    public String getTemplatePath() {
+        return this.templatePath;
+    }
+
+    public String getSqlitePath() {
+        return this.sqlitePath;
     }
 
     public String getTitle() {
