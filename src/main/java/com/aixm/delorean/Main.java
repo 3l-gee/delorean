@@ -103,6 +103,12 @@ public class Main {
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
+
+        ConsoleLogger.log(LogLevel.INFO, "qgig_config - a5_1");
+        executeQgisConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
+
+        ConsoleLogger.log(LogLevel.INFO, "qgig_config - init");
+        executeQgisActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"init", "");
         
         ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1");
         executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
@@ -367,7 +373,7 @@ public class Main {
             try{
                 QgisProjectBinding editBinding = new QgisProjectBinding(qgisConfig.getEditConfig());
                 QgisProjectBinding publisheBinding = new QgisProjectBinding(qgisConfig.getPublishConfig());
-                this.containerWarehouse.getContainer(argument).setEditProject(editBinding);
+                this.containerWarehouse.getContainer(argument).setEditorProject(editBinding);
                 this.containerWarehouse.getContainer(argument).setPublisherProject(publisheBinding);
                 ConsoleLogger.log(LogLevel.INFO, "Qgis project configuration set");
             } catch (IllegalArgumentException e) {
@@ -380,16 +386,20 @@ public class Main {
 
     private void executeQgisActionCommand(String argument, Scanner sacnner, String parameter, String option) {
         if (argument == null) {
-
-        } 
+            throw new IllegalArgumentException("Argument is null");
+        }
 
         if (parameter == null) {
-
+            throw new IllegalArgumentException("parameter is null");
         }
 
         if (this.containerWarehouse.getIds().contains(argument)) {
             switch (parameter.toLowerCase()) {
                 case "init":
+                    this.containerWarehouse.getContainer(argument).getPublisherProject().init();
+                    break;
+
+                case "load":
                     this.containerWarehouse.getContainer(argument).getPublisherProject().init();
                     break;
 

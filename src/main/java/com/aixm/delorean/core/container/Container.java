@@ -7,6 +7,8 @@ import com.aixm.delorean.core.qgis.QgisProjectBinding;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import org.hibernate.Session;
+
 public class Container<T> {
     // the structure of the container 
     /* 
@@ -58,11 +60,11 @@ public class Container<T> {
         return this.publisherPRJ;
     }
 
-    public void setEditProject(QgisProjectBinding binding) {
+    public void setEditorProject(QgisProjectBinding binding) {
         this.editorPRJ = binding;
     }
 
-    public QgisProjectBinding getEditProject() {
+    public QgisProjectBinding getEditorProject() {
         return this.editorPRJ;
     }
 
@@ -88,7 +90,7 @@ public class Container<T> {
     }
 
     public void show() {
-        recursiveShow(this.record.getClass(), this.record);
+        recursiveShow(this.record.getClass(), this.record); 
     }
 
     public void load() {
@@ -96,6 +98,14 @@ public class Container<T> {
             throw new RuntimeException("DatabaseBinding is not set");
         }
         this.databaseBinding.load(this.record);
+        if (this.getEditorProject() != null) {
+        }
+
+        if (this.getPublisherProject() != null) {
+            Session session = this.databaseBinding.getSession();
+            String userName = this.databaseBinding.getUserName();
+            this.publisherPRJ.loadProject(session, userName);
+        }
     }
 
     public void export(Object id) {

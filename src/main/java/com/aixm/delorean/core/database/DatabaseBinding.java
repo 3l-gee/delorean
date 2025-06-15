@@ -58,6 +58,10 @@ public class DatabaseBinding<T> {
         this.configuration.setProperty("hibernate.connection.username", username);
     }
 
+    public String getUserName(){
+        return this.configuration.getProperty("hibernate.connection.username");
+    }
+
     public void setPassword(String password){
         this.configuration.setProperty("hibernate.connection.password", password);
     }
@@ -67,6 +71,10 @@ public class DatabaseBinding<T> {
         String username = configuration.getProperty("hibernate.connection.username");
         String password = configuration.getProperty("hibernate.connection.password");
         return DriverManager.getConnection(url, username, password);
+    }
+
+    public Session getSession() {
+        return this.sessionFactory.openSession();
     }
 
     private enum hbm2ddlEnum {
@@ -239,7 +247,7 @@ public class DatabaseBinding<T> {
             throw new IllegalArgumentException("sessionfactory is not init");
         }
 
-        Session session = this.sessionFactory.openSession();
+        Session session = this.getSession();
         Transaction transaction = null;
 
         if (object == null || !isMappedClass(object) ){

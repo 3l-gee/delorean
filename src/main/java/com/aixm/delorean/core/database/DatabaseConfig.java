@@ -24,7 +24,7 @@ public enum DatabaseConfig {
         "a5_1",                                 // version
         5,                                      // Connection pool min size
         20,                                     // Connection pool max size
-        true,                                  // Hibernate show_sql
+        false,                                  // Hibernate show_sql
         "a5_1/postgres/schema.sql",
         "a5_1/postgres/post_init.sql",
         new Class<?>[]{

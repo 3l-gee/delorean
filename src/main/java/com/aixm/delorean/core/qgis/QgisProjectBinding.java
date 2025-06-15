@@ -19,6 +19,12 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -37,7 +43,7 @@ public class QgisProjectBinding {
     private Configuration cfg;
     private Template template;
     private Map<String, Object> input;
-    private String projectZip;
+    private byte[] projectZip;
 
     public QgisProjectBinding(ProjectConfig prjConfig){
         this.projectConfig = prjConfig;
@@ -49,15 +55,55 @@ public class QgisProjectBinding {
         this.input = new HashMap<String, Object>();
     }
 
+    public byte[] getProject() {
+          return this.projectZip;
+    }
+
+
     public void init() {
         this.loadTemplate();
         this.putInput(this.projectConfig);
         this.projectZip = this.processTemplate();
     }
 
+    public void loadProject(Session session, String user){
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+            String formattedNow = now.format(formatter);
+
+            String metadata = "{\n" +
+                "  \"last_modified_time\": \"" + formattedNow + "\",\n" +
+                "  \"last_modified_user\": \"" + user + "\"\n" +
+                "}";
+
+            session.createNativeMutationQuery("""
+                INSERT INTO qgis.qgis_projects
+                VALUES (:name, CAST(:metadata AS jsonb), :content)
+            """)
+            .setParameter("name", this.projectConfig.getTitle())
+            .setParameter("metadata", metadata)
+            .setParameter("content", this.projectZip)
+            .executeUpdate();
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     public void loadTemplate() {
         try {
-            this.template = cfg.getTemplate(this.projectConfig.getTemplatePath());
+            this.template = this.cfg.getTemplate(this.projectConfig.getTemplatePath());
         } catch (TemplateNotFoundException e) {
             ConsoleLogger.log(LogLevel.ERROR, "Template not found: " + this.projectConfig.getTemplatePath(), e);
         } catch (MalformedTemplateNameException e) {
@@ -69,7 +115,7 @@ public class QgisProjectBinding {
         }
     }
 
-    public void putInput(ProjectConfig config){
+    private void putInput(ProjectConfig config){
         this.input.put("ProjectConfig", config);
     };
 
@@ -81,17 +127,17 @@ public class QgisProjectBinding {
         return sb.toString();
     }
 
-    public static byte[] hexToBytes(String hex) {
-        int len = hex.length();
-        byte[] data = new byte[len / 2];
-        for (int i = 0; i < len; i += 2) {
-            data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
-                                + Character.digit(hex.charAt(i+1), 16));
-        }
-        return data;
-    }
+    // public static byte[] hexToBytes(String hex) {
+    //     int len = hex.length();
+    //     byte[] data = new byte[len / 2];
+    //     for (int i = 0; i < len; i += 2) {
+    //         data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
+    //                             + Character.digit(hex.charAt(i+1), 16));
+    //     }
+    //     return data;
+    // }
 
-    public byte[] readBinaryResource(String resourcePath) throws IOException {
+    private byte[] readBinaryResource(String resourcePath) throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(resourcePath)) {
             if (is == null) {
                 throw new FileNotFoundException("Resource not found: " + resourcePath);
@@ -100,14 +146,14 @@ public class QgisProjectBinding {
         }
     }
 
-    public void zipObject(ZipOutputStream zipOut, String name, byte[] content) throws IOException {
+    private void zipObject(ZipOutputStream zipOut, String name, byte[] content) throws IOException {
         ZipEntry entry = new ZipEntry(name);
         zipOut.putNextEntry(entry);
         zipOut.write(content);
         zipOut.closeEntry();
     }
 
-    public String processTemplate() {
+    private byte[] processTemplate() {
         // 1. Process template into a string
         StringWriter stringWriter = new StringWriter();
         try {
@@ -145,21 +191,8 @@ public class QgisProjectBinding {
         } catch (IOException e) {
             ConsoleLogger.log(LogLevel.ERROR, "I/O error while closing zip: ", e);
         }
-
-        byte[] zippedBytes = byteOut.toByteArray();
-
-        try {
-            // Save zipped version
-            Files.write(Paths.get("delorean.qgz"), zippedBytes);
-            
-        } catch (IOException e) {
-            ConsoleLogger.log(LogLevel.ERROR, "I/O error while saving output files", e);
-        }
-
-        System.out.println(this.bytesToHex(zippedBytes));
-
-        // // 3. Return zipped byte array
-        return this.bytesToHex(zippedBytes);
+        
+        return byteOut.toByteArray();
     }
 }
     

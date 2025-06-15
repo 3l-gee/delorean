@@ -5,6 +5,7 @@
       saveUser="marty"
       saveUserFull="Marty McFly">
 	<homePath path=""/>
+	<!-- qgis project title definition -->
 	<title>${ProjectConfig.title}</title>
 	<transaction mode="Disabled"/>
 	<projectFlags set=""/>
