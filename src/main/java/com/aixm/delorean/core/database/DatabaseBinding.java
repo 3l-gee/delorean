@@ -49,9 +49,13 @@ public class DatabaseBinding<T> {
         this.configuration = configuration;
         this.sessionFactory = null;
     }
-
+    
     public void setUrl(String url){
         this.configuration.setProperty("hibernate.connection.url", url);
+    }
+
+    public String getUrl(){
+        return this.configuration.getProperty("hibernate.connection.url");
     }
 
     public void setUsername(String username){
