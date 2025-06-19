@@ -1035,8 +1035,8 @@
                 },
                 {
                     "source": "aerial_refuelling.aerialrefuellingpoint",
-                    "alias": "PointPropertyType",
-                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "aerial_refuelling.aerialrefuellingpoint",
@@ -1045,13 +1045,13 @@
                 },
                 {
                     "source": "aerial_refuelling.aerialrefuellingpoint",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "aerial_refuelling.aerialrefuellingpoint",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "aerial_refuelling.aerialrefuellingpoint",
@@ -1101,8 +1101,7 @@
             },
             "columns": [
                 "aerial_refuelling.aerialrefuelling_pt.id",
-                "aerial_refuelling.aerialrefuelling_pt.nilReason",
-                "aerial_refuelling.aerialrefuelling_pt.href"
+                "aerial_refuelling.aerialrefuelling_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -1366,8 +1365,7 @@
             },
             "columns": [
                 "navaids_points.aeronauticalgroundlight_pt.id",
-                "navaids_points.aeronauticalgroundlight_pt.nilReason",
-                "navaids_points.aeronauticalgroundlight_pt.href"
+                "navaids_points.aeronauticalgroundlight_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -1612,8 +1610,7 @@
             },
             "columns": [
                 "service.aircraftgroundservice_pt.id",
-                "service.aircraftgroundservice_pt.nilReason",
-                "service.aircraftgroundservice_pt.href"
+                "service.aircraftgroundservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -1818,10 +1815,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.aircraftstandcontamination.observationtime_value",
-                "airport_heliport.aircraftstandcontamination.observationtime_nilreason",
-                "airport_heliport.aircraftstandcontamination.nextobservationtime_value",
-                "airport_heliport.aircraftstandcontamination.nextobservationtime_nilreason",
+                "airport_heliport.aircraftstandcontamination.observationTime_value",
+                "airport_heliport.aircraftstandcontamination.observationTime_nilreason",
+                "airport_heliport.aircraftstandcontamination.nextObservationTime_value",
+                "airport_heliport.aircraftstandcontamination.nextObservationTime_nilreason",
                 "airport_heliport.aircraftstandcontamination.frictioncoefficient_value",
                 "airport_heliport.aircraftstandcontamination.frictioncoefficient_nilreason",
                 "airport_heliport.aircraftstandcontamination.frictionestimation_value",
@@ -1895,8 +1892,7 @@
             },
             "columns": [
                 "airport_heliport.aircraftstand_pt.id",
-                "airport_heliport.aircraftstand_pt.nilReason",
-                "airport_heliport.aircraftstand_pt.href"
+                "airport_heliport.aircraftstand_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2052,8 +2048,7 @@
             },
             "columns": [
                 "service.airportclearanceservice_pt.id",
-                "service.airportclearanceservice_pt.nilReason",
-                "service.airportclearanceservice_pt.href"
+                "service.airportclearanceservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2234,8 +2229,7 @@
             },
             "columns": [
                 "service.airportgroundservice_pt.id",
-                "service.airportgroundservice_pt.nilReason",
-                "service.airportgroundservice_pt.href"
+                "service.airportgroundservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2346,8 +2340,7 @@
             },
             "columns": [
                 "airport_heliport.airportheliportcollocation_pt.id",
-                "airport_heliport.airportheliportcollocation_pt.nilReason",
-                "airport_heliport.airportheliportcollocation_pt.href"
+                "airport_heliport.airportheliportcollocation_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2499,10 +2492,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.airportheliportcontamination.observationtime_value",
-                "airport_heliport.airportheliportcontamination.observationtime_nilreason",
-                "airport_heliport.airportheliportcontamination.nextobservationtime_value",
-                "airport_heliport.airportheliportcontamination.nextobservationtime_nilreason",
+                "airport_heliport.airportheliportcontamination.observationTime_value",
+                "airport_heliport.airportheliportcontamination.observationTime_nilreason",
+                "airport_heliport.airportheliportcontamination.nextObservationTime_value",
+                "airport_heliport.airportheliportcontamination.nextObservationTime_nilreason",
                 "airport_heliport.airportheliportcontamination.frictioncoefficient_value",
                 "airport_heliport.airportheliportcontamination.frictioncoefficient_nilreason",
                 "airport_heliport.airportheliportcontamination.frictionestimation_value",
@@ -2576,8 +2569,7 @@
             },
             "columns": [
                 "airport_heliport.airportheliport_pt.id",
-                "airport_heliport.airportheliport_pt.nilReason",
-                "airport_heliport.airportheliport_pt.href"
+                "airport_heliport.airportheliport_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2597,8 +2589,7 @@
             },
             "columns": [
                 "airport_heliport.airportheliportprotectionarea_pt.id",
-                "airport_heliport.airportheliportprotectionarea_pt.nilReason",
-                "airport_heliport.airportheliportprotectionarea_pt.href"
+                "airport_heliport.airportheliportprotectionarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -2729,6 +2720,10 @@
                 ]
             },
             "columns": [
+                "airport_heliport.airportheliport_ts.certificationDate_value",
+                "airport_heliport.airportheliport_ts.certificationDate_nilreason",
+                "airport_heliport.airportheliport_ts.certificationExpirationDate_value",
+                "airport_heliport.airportheliport_ts.certificationExpirationDate_nilreason",
                 "airport_heliport.airportheliport_ts.designator_value",
                 "airport_heliport.airportheliport_ts.designator_nilreason",
                 "airport_heliport.airportheliport_ts.name_value",
@@ -2765,10 +2760,6 @@
                 "airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason",
                 "airport_heliport.airportheliport_ts.abandoned_value",
                 "airport_heliport.airportheliport_ts.abandoned_nilreason",
-                "airport_heliport.airportheliport_ts.certificationdate_value",
-                "airport_heliport.airportheliport_ts.certificationdate_nilreason",
-                "airport_heliport.airportheliport_ts.certificationexpirationdate_value",
-                "airport_heliport.airportheliport_ts.certificationexpirationdate_nilreason",
                 "airport_heliport.airportheliport_ts.fieldelevation_value",
                 "airport_heliport.airportheliport_ts.fieldelevation_uom",
                 "airport_heliport.airportheliport_ts.fieldelevation_nilreason",
@@ -2994,8 +2985,7 @@
             },
             "columns": [
                 "airport_heliport.airporthotspot_pt.id",
-                "airport_heliport.airporthotspot_pt.nilReason",
-                "airport_heliport.airporthotspot_pt.href"
+                "airport_heliport.airporthotspot_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -3125,8 +3115,7 @@
             },
             "columns": [
                 "airport_heliport.airportprotectionareamarking_pt.id",
-                "airport_heliport.airportprotectionareamarking_pt.nilReason",
-                "airport_heliport.airportprotectionareamarking_pt.href"
+                "airport_heliport.airportprotectionareamarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -3265,8 +3254,7 @@
             },
             "columns": [
                 "service.airportsuppliesservice_pt.id",
-                "service.airportsuppliesservice_pt.nilReason",
-                "service.airportsuppliesservice_pt.href"
+                "service.airportsuppliesservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -3578,8 +3566,7 @@
             },
             "columns": [
                 "routes.airspacebordercrossing_pt.id",
-                "routes.airspacebordercrossing_pt.nilReason",
-                "routes.airspacebordercrossing_pt.href"
+                "routes.airspacebordercrossing_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -3942,8 +3929,7 @@
             },
             "columns": [
                 "airspace.airspace_pt.id",
-                "airspace.airspace_pt.nilReason",
-                "airspace.airspace_pt.href"
+                "airspace.airspace_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -4267,8 +4253,7 @@
             },
             "columns": [
                 "service.airtrafficcontrolservice_pt.id",
-                "service.airtrafficcontrolservice_pt.nilReason",
-                "service.airtrafficcontrolservice_pt.href"
+                "service.airtrafficcontrolservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -4495,8 +4480,7 @@
             },
             "columns": [
                 "service.airtrafficmanagementservice_pt.id",
-                "service.airtrafficmanagementservice_pt.nilReason",
-                "service.airtrafficmanagementservice_pt.href"
+                "service.airtrafficmanagementservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -4686,8 +4670,7 @@
             },
             "columns": [
                 "airport_heliport.altimetersource_pt.id",
-                "airport_heliport.altimetersource_pt.nilReason",
-                "airport_heliport.altimetersource_pt.href"
+                "airport_heliport.altimetersource_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -4966,8 +4949,7 @@
             },
             "columns": [
                 "navaids_points.angleindication_pt.id",
-                "navaids_points.angleindication_pt.nilReason",
-                "navaids_points.angleindication_pt.href"
+                "navaids_points.angleindication_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -5052,8 +5034,8 @@
                 },
                 {
                     "source": "navaids_points.angleindication_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "navaids_points.angleindication_ts",
@@ -5062,13 +5044,13 @@
                 },
                 {
                     "source": "navaids_points.angleindication_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "navaids_points.angleindication_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "navaids_points.angleindication_ts.angleindication_ts_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "navaids_points.angleindication_ts",
@@ -5443,8 +5425,7 @@
             },
             "columns": [
                 "procedure.approachleg_pt.id",
-                "procedure.approachleg_pt.nilReason",
-                "procedure.approachleg_pt.href"
+                "procedure.approachleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -5464,8 +5445,7 @@
             },
             "columns": [
                 "airport_heliport.approachlightingsystem_pt.id",
-                "airport_heliport.approachlightingsystem_pt.nilReason",
-                "airport_heliport.approachlightingsystem_pt.href"
+                "airport_heliport.approachlightingsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -5891,10 +5871,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.aproncontamination.observationtime_value",
-                "airport_heliport.aproncontamination.observationtime_nilreason",
-                "airport_heliport.aproncontamination.nextobservationtime_value",
-                "airport_heliport.aproncontamination.nextobservationtime_nilreason",
+                "airport_heliport.aproncontamination.observationTime_value",
+                "airport_heliport.aproncontamination.observationTime_nilreason",
+                "airport_heliport.aproncontamination.nextObservationTime_value",
+                "airport_heliport.aproncontamination.nextObservationTime_nilreason",
                 "airport_heliport.aproncontamination.frictioncoefficient_value",
                 "airport_heliport.aproncontamination.frictioncoefficient_nilreason",
                 "airport_heliport.aproncontamination.frictionestimation_value",
@@ -5968,8 +5948,7 @@
             },
             "columns": [
                 "airport_heliport.apronelement_pt.id",
-                "airport_heliport.apronelement_pt.nilReason",
-                "airport_heliport.apronelement_pt.href"
+                "airport_heliport.apronelement_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6130,8 +6109,7 @@
             },
             "columns": [
                 "airport_heliport.apronlightsystem_pt.id",
-                "airport_heliport.apronlightsystem_pt.nilReason",
-                "airport_heliport.apronlightsystem_pt.href"
+                "airport_heliport.apronlightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6279,8 +6257,7 @@
             },
             "columns": [
                 "airport_heliport.apronmarking_pt.id",
-                "airport_heliport.apronmarking_pt.nilReason",
-                "airport_heliport.apronmarking_pt.href"
+                "airport_heliport.apronmarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6419,8 +6396,7 @@
             },
             "columns": [
                 "airport_heliport.apron_pt.id",
-                "airport_heliport.apron_pt.nilReason",
-                "airport_heliport.apron_pt.href"
+                "airport_heliport.apron_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6564,8 +6540,7 @@
             },
             "columns": [
                 "airport_heliport.arrestinggear_pt.id",
-                "airport_heliport.arrestinggear_pt.nilReason",
-                "airport_heliport.arrestinggear_pt.href"
+                "airport_heliport.arrestinggear_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6644,13 +6619,13 @@
                 },
                 {
                     "source": "airport_heliport.arrestinggear_ts",
-                    "alias": "ElevatedSurfacePropertyType",
-                    "join_condition": "airport_heliport.arrestinggear_ts.extent_surfaceextent_id = ElevatedSurfacePropertyType.id"
+                    "alias": "ElevatedCurvePropertyType",
+                    "join_condition": "airport_heliport.arrestinggear_ts.extent_curveextent_id = ElevatedCurvePropertyType.id"
                 },
                 {
                     "source": "airport_heliport.arrestinggear_ts",
-                    "alias": "ElevatedCurvePropertyType",
-                    "join_condition": "airport_heliport.arrestinggear_ts.extent_curveextent_id = ElevatedCurvePropertyType.id"
+                    "alias": "ElevatedSurfacePropertyType",
+                    "join_condition": "airport_heliport.arrestinggear_ts.extent_surfaceextent_id = ElevatedSurfacePropertyType.id"
                 },
                 {
                     "source": "airport_heliport.arrestinggear_ts",
@@ -6725,8 +6700,7 @@
             },
             "columns": [
                 "procedure.arrivalfeederleg_pt.id",
-                "procedure.arrivalfeederleg_pt.nilReason",
-                "procedure.arrivalfeederleg_pt.href"
+                "procedure.arrivalfeederleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -6958,8 +6932,7 @@
             },
             "columns": [
                 "procedure.arrivalleg_pt.id",
-                "procedure.arrivalleg_pt.nilReason",
-                "procedure.arrivalleg_pt.href"
+                "procedure.arrivalleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -7254,8 +7227,7 @@
             },
             "columns": [
                 "airspace.authorityforairspace_pt.id",
-                "airspace.authorityforairspace_pt.nilReason",
-                "airspace.authorityforairspace_pt.href"
+                "airspace.authorityforairspace_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -7587,8 +7559,7 @@
             },
             "columns": [
                 "navaids_points.azimuth_pt.id",
-                "navaids_points.azimuth_pt.nilReason",
-                "navaids_points.azimuth_pt.href"
+                "navaids_points.azimuth_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -7834,8 +7805,7 @@
             },
             "columns": [
                 "routes.changeoverpoint_pt.id",
-                "routes.changeoverpoint_pt.nilReason",
-                "routes.changeoverpoint_pt.href"
+                "routes.changeoverpoint_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -7905,8 +7875,8 @@
                 },
                 {
                     "source": "routes.changeoverpoint_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.changeoverpoint_ts.location_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.changeoverpoint_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.changeoverpoint_ts",
@@ -7915,13 +7885,13 @@
                 },
                 {
                     "source": "routes.changeoverpoint_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.changeoverpoint_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.changeoverpoint_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.changeoverpoint_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.changeoverpoint_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.changeoverpoint_ts.location_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.changeoverpoint_ts",
@@ -7989,8 +7959,7 @@
             },
             "columns": [
                 "navaids_points.checkpointins_pt.id",
-                "navaids_points.checkpointins_pt.nilReason",
-                "navaids_points.checkpointins_pt.href"
+                "navaids_points.checkpointins_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -8140,8 +8109,7 @@
             },
             "columns": [
                 "navaids_points.checkpointvor_pt.id",
-                "navaids_points.checkpointvor_pt.nilReason",
-                "navaids_points.checkpointvor_pt.href"
+                "navaids_points.checkpointvor_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -8383,8 +8351,7 @@
             },
             "columns": [
                 "public.circlingarea_pt.id",
-                "public.circlingarea_pt.nilReason",
-                "public.circlingarea_pt.href"
+                "public.circlingarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -8878,8 +8845,7 @@
             },
             "columns": [
                 "airport_heliport.deicingareamarking_pt.id",
-                "airport_heliport.deicingareamarking_pt.nilReason",
-                "airport_heliport.deicingareamarking_pt.href"
+                "airport_heliport.deicingareamarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -9016,8 +8982,7 @@
             },
             "columns": [
                 "airport_heliport.deicingarea_pt.id",
-                "airport_heliport.deicingarea_pt.nilReason",
-                "airport_heliport.deicingarea_pt.href"
+                "airport_heliport.deicingarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -9244,8 +9209,7 @@
             },
             "columns": [
                 "procedure.departureleg_pt.id",
-                "procedure.departureleg_pt.nilReason",
-                "procedure.departureleg_pt.href"
+                "procedure.departureleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -9482,8 +9446,7 @@
             },
             "columns": [
                 "navaids_points.designatedpoint_pt.id",
-                "navaids_points.designatedpoint_pt.nilReason",
-                "navaids_points.designatedpoint_pt.href"
+                "navaids_points.designatedpoint_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -9758,8 +9721,8 @@
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.directflightsegment.end_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.directflightsegment.end_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
@@ -9768,13 +9731,13 @@
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.directflightsegment.end_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.directflightsegment.end_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.directflightsegment.end_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.directflightsegment.end_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
@@ -9788,8 +9751,8 @@
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.directflightsegment.start_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.directflightsegment.start_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
@@ -9798,13 +9761,13 @@
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.directflightsegment.start_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.directflightsegment.start_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.directflightsegment.start_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.directflightsegment.start_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.directflightsegment",
@@ -9842,8 +9805,7 @@
             },
             "columns": [
                 "navaids_points.directionfinder_pt.id",
-                "navaids_points.directionfinder_pt.nilReason",
-                "navaids_points.directionfinder_pt.href"
+                "navaids_points.directionfinder_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -10015,8 +9977,7 @@
             },
             "columns": [
                 "navaids_points.distanceindication_pt.id",
-                "navaids_points.distanceindication_pt.nilReason",
-                "navaids_points.distanceindication_pt.href"
+                "navaids_points.distanceindication_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -10096,8 +10057,8 @@
                 },
                 {
                     "source": "navaids_points.distanceindication_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "navaids_points.distanceindication_ts",
@@ -10106,13 +10067,13 @@
                 },
                 {
                     "source": "navaids_points.distanceindication_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "navaids_points.distanceindication_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "navaids_points.distanceindication_ts.distanceindication_ts_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "navaids_points.distanceindication_ts",
@@ -10175,8 +10136,7 @@
             },
             "columns": [
                 "navaids_points.dme_pt.id",
-                "navaids_points.dme_pt.nilReason",
-                "navaids_points.dme_pt.href"
+                "navaids_points.dme_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -10368,8 +10328,7 @@
             },
             "columns": [
                 "navaids_points.elevation_pt.id",
-                "navaids_points.elevation_pt.nilReason",
-                "navaids_points.elevation_pt.href"
+                "navaids_points.elevation_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -10599,8 +10558,8 @@
                 },
                 {
                     "source": "navaids_points.enroutesegmentpoint",
-                    "alias": "PointPropertyType",
-                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "navaids_points.enroutesegmentpoint",
@@ -10609,13 +10568,13 @@
                 },
                 {
                     "source": "navaids_points.enroutesegmentpoint",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "navaids_points.enroutesegmentpoint",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "navaids_points.enroutesegmentpoint.enroutesegmentpoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "navaids_points.enroutesegmentpoint",
@@ -10833,6 +10792,9 @@
                 ]
             },
             "columns": [
+                "public.fasdatablock.routeindicator",
+                "public.fasdatablock.referencepathidentifier",
+                "public.fasdatablock.codeicao",
                 "public.fasdatablock.horizontalalarmlimit_value",
                 "public.fasdatablock.horizontalalarmlimit_nilreason",
                 "public.fasdatablock.verticalalarmlimit_value",
@@ -10845,14 +10807,8 @@
                 "public.fasdatablock.serviceprovidersbas_nilreason",
                 "public.fasdatablock.approachperformancedesignator_value",
                 "public.fasdatablock.approachperformancedesignator_nilreason",
-                "public.fasdatablock.routeindicator_value",
-                "public.fasdatablock.routeindicator_nilreason",
                 "public.fasdatablock.referencepathdataselector_value",
                 "public.fasdatablock.referencepathdataselector_nilreason",
-                "public.fasdatablock.referencepathidentifier_value",
-                "public.fasdatablock.referencepathidentifier_nilreason",
-                "public.fasdatablock.codeicao_value",
-                "public.fasdatablock.codeicao_nilreason",
                 "public.fasdatablock.thresholdcoursewidth_value",
                 "public.fasdatablock.thresholdcoursewidth_uom",
                 "public.fasdatablock.thresholdcoursewidth_nilreason",
@@ -10934,8 +10890,7 @@
             },
             "columns": [
                 "procedure.finalleg_pt.id",
-                "procedure.finalleg_pt.nilReason",
-                "procedure.finalleg_pt.href"
+                "procedure.finalleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -11113,8 +11068,8 @@
                 },
                 {
                     "source": "procedure.finalleg_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "procedure.finalleg_ts",
@@ -11123,13 +11078,13 @@
                 },
                 {
                     "source": "procedure.finalleg_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "procedure.finalleg_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "procedure.finalleg_ts.finalpathalignmentpoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "procedure.finalleg_ts",
@@ -11315,8 +11270,7 @@
             },
             "columns": [
                 "service.firefightingservice_pt.id",
-                "service.firefightingservice_pt.nilReason",
-                "service.firefightingservice_pt.href"
+                "service.firefightingservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -11760,38 +11714,8 @@
             "one_to_one": [
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "MeteorologyPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_weather_id = MeteorologyPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "AircraftCharacteristicPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_aircraft_id = AircraftCharacteristicPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "FlightCharacteristicPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_flight_id = FlightCharacteristicPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "DirectFlightPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_directflightcondition_id = DirectFlightPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "AirspaceBorderCrossingPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_bordercrossingcondition_id = AirspaceBorderCrossingPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "FlightConditionCombinationPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_operand_id = FlightConditionCombinationPropertyType.id"
-                },
-                {
-                    "source": "routes.flightconditionelement",
-                    "alias": "RoutePortionPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_routeportioncondition_id = RoutePortionPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_airportheliportcondition_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
@@ -11800,8 +11724,8 @@
                 },
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "StandardInstrumentArrivalPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_standardinstrumentarrivalcondition_id = StandardInstrumentArrivalPropertyType.id"
+                    "alias": "RoutePortionPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_routeportioncondition_id = RoutePortionPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
@@ -11820,8 +11744,8 @@
                 },
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.flightconditionelement.significantpointcondition_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.flightconditionelement.significantpointcondition_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
@@ -11830,13 +11754,28 @@
                 },
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.flightconditionelement.significantpointcondition_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.flightconditionelement.significantpointcondition_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.flightconditionelement.significantpointcondition_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.flightconditionelement.significantpointcondition_position_id = PointPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "DirectFlightPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_directflightcondition_id = DirectFlightPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "AircraftCharacteristicPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_aircraft_id = AircraftCharacteristicPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "AirspaceBorderCrossingPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_bordercrossingcondition_id = AirspaceBorderCrossingPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
@@ -11845,8 +11784,23 @@
                 },
                 {
                     "source": "routes.flightconditionelement",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.flightconditionelement.flightcondition_airportheliportcondition_id = AirportHeliportPropertyType.id"
+                    "alias": "FlightCharacteristicPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_flight_id = FlightCharacteristicPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "StandardInstrumentArrivalPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_standardinstrumentarrivalcondition_id = StandardInstrumentArrivalPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "FlightConditionCombinationPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_operand_id = FlightConditionCombinationPropertyType.id"
+                },
+                {
+                    "source": "routes.flightconditionelement",
+                    "alias": "MeteorologyPropertyType",
+                    "join_condition": "routes.flightconditionelement.flightcondition_weather_id = MeteorologyPropertyType.id"
                 },
                 {
                     "source": "routes.flightconditionelement",
@@ -11967,8 +11921,7 @@
             },
             "columns": [
                 "routes.flightrestriction_pt.id",
-                "routes.flightrestriction_pt.nilReason",
-                "routes.flightrestriction_pt.href"
+                "routes.flightrestriction_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -12220,23 +12173,13 @@
             "one_to_one": [
                 {
                     "source": "routes.flightroutingelement",
-                    "alias": "DirectFlightSegmentPropertyType",
-                    "join_condition": "routes.flightroutingelement.element_directflightelement_id = DirectFlightSegmentPropertyType.id"
-                },
-                {
-                    "source": "routes.flightroutingelement",
-                    "alias": "RoutePortionPropertyType",
-                    "join_condition": "routes.flightroutingelement.element_routeportionelement_id = RoutePortionPropertyType.id"
-                },
-                {
-                    "source": "routes.flightroutingelement",
-                    "alias": "StandardInstrumentDeparturePropertyType",
-                    "join_condition": "routes.flightroutingelement.element_standardinstrumentdepartureelement_id = StandardInstrumentDeparturePropertyType.id"
-                },
-                {
-                    "source": "routes.flightroutingelement",
                     "alias": "StandardInstrumentArrivalPropertyType",
                     "join_condition": "routes.flightroutingelement.element_standardinstrumentarrivalelement_id = StandardInstrumentArrivalPropertyType.id"
+                },
+                {
+                    "source": "routes.flightroutingelement",
+                    "alias": "AirspacePropertyType",
+                    "join_condition": "routes.flightroutingelement.element_airspaceelement_id = AirspacePropertyType.id"
                 },
                 {
                     "source": "routes.flightroutingelement",
@@ -12250,8 +12193,8 @@
                 },
                 {
                     "source": "routes.flightroutingelement",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.flightroutingelement.pointelement_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.flightroutingelement.pointelement_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.flightroutingelement",
@@ -12260,18 +12203,28 @@
                 },
                 {
                     "source": "routes.flightroutingelement",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.flightroutingelement.pointelement_aimingpoint_id = TouchDownLiftOffPropertyType.id"
-                },
-                {
-                    "source": "routes.flightroutingelement",
                     "alias": "AirportHeliportPropertyType",
                     "join_condition": "routes.flightroutingelement.pointelement_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.flightroutingelement",
-                    "alias": "AirspacePropertyType",
-                    "join_condition": "routes.flightroutingelement.element_airspaceelement_id = AirspacePropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.flightroutingelement.pointelement_position_id = PointPropertyType.id"
+                },
+                {
+                    "source": "routes.flightroutingelement",
+                    "alias": "DirectFlightSegmentPropertyType",
+                    "join_condition": "routes.flightroutingelement.element_directflightelement_id = DirectFlightSegmentPropertyType.id"
+                },
+                {
+                    "source": "routes.flightroutingelement",
+                    "alias": "StandardInstrumentDeparturePropertyType",
+                    "join_condition": "routes.flightroutingelement.element_standardinstrumentdepartureelement_id = StandardInstrumentDeparturePropertyType.id"
+                },
+                {
+                    "source": "routes.flightroutingelement",
+                    "alias": "RoutePortionPropertyType",
+                    "join_condition": "routes.flightroutingelement.element_routeportionelement_id = RoutePortionPropertyType.id"
                 },
                 {
                     "source": "routes.flightroutingelement",
@@ -12321,8 +12274,7 @@
             },
             "columns": [
                 "airport_heliport.floatingdocksite_pt.id",
-                "airport_heliport.floatingdocksite_pt.nilReason",
-                "airport_heliport.floatingdocksite_pt.href"
+                "airport_heliport.floatingdocksite_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -12506,8 +12458,7 @@
             },
             "columns": [
                 "airspace.geoborder_pt.id",
-                "airspace.geoborder_pt.nilReason",
-                "airspace.geoborder_pt.href"
+                "airspace.geoborder_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -12632,8 +12583,7 @@
             },
             "columns": [
                 "navaids_points.glidepath_pt.id",
-                "navaids_points.glidepath_pt.nilReason",
-                "navaids_points.glidepath_pt.href"
+                "navaids_points.glidepath_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -12891,8 +12841,7 @@
             },
             "columns": [
                 "airport_heliport.groundlightsystem_pt.id",
-                "airport_heliport.groundlightsystem_pt.nilReason",
-                "airport_heliport.groundlightsystem_pt.href"
+                "airport_heliport.groundlightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -12912,8 +12861,7 @@
             },
             "columns": [
                 "service.groundtrafficcontrolservice_pt.id",
-                "service.groundtrafficcontrolservice_pt.nilReason",
-                "service.groundtrafficcontrolservice_pt.href"
+                "service.groundtrafficcontrolservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13098,8 +13046,7 @@
             },
             "columns": [
                 "airport_heliport.guidancelinelightsystem_pt.id",
-                "airport_heliport.guidancelinelightsystem_pt.nilReason",
-                "airport_heliport.guidancelinelightsystem_pt.href"
+                "airport_heliport.guidancelinelightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13245,8 +13192,7 @@
             },
             "columns": [
                 "airport_heliport.guidancelinemarking_pt.id",
-                "airport_heliport.guidancelinemarking_pt.nilReason",
-                "airport_heliport.guidancelinemarking_pt.href"
+                "airport_heliport.guidancelinemarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13383,8 +13329,7 @@
             },
             "columns": [
                 "airport_heliport.guidanceline_pt.id",
-                "airport_heliport.guidanceline_pt.nilReason",
-                "airport_heliport.guidanceline_pt.href"
+                "airport_heliport.guidanceline_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13549,8 +13494,7 @@
             },
             "columns": [
                 "shared.holdingassessment_pt.id",
-                "shared.holdingassessment_pt.nilReason",
-                "shared.holdingassessment_pt.href"
+                "shared.holdingassessment_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13839,8 +13783,7 @@
             },
             "columns": [
                 "holding.holdingpattern_pt.id",
-                "holding.holdingpattern_pt.nilReason",
-                "holding.holdingpattern_pt.href"
+                "holding.holdingpattern_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -13924,8 +13867,8 @@
             "one_to_one": [
                 {
                     "source": "holding.holdingpattern_ts",
-                    "alias": "SegmentPointPropertyType",
-                    "join_condition": "holding.holdingpattern_ts.outboundlegspan_endpoint_id = SegmentPointPropertyType.id"
+                    "alias": "HoldingPatternDurationPropertyType",
+                    "join_condition": "holding.holdingpattern_ts.outboundlegspan_endtime_id = HoldingPatternDurationPropertyType.id"
                 },
                 {
                     "source": "holding.holdingpattern_ts",
@@ -13934,8 +13877,8 @@
                 },
                 {
                     "source": "holding.holdingpattern_ts",
-                    "alias": "HoldingPatternDurationPropertyType",
-                    "join_condition": "holding.holdingpattern_ts.outboundlegspan_endtime_id = HoldingPatternDurationPropertyType.id"
+                    "alias": "SegmentPointPropertyType",
+                    "join_condition": "holding.holdingpattern_ts.outboundlegspan_endpoint_id = SegmentPointPropertyType.id"
                 },
                 {
                     "source": "holding.holdingpattern_ts",
@@ -14083,8 +14026,7 @@
             },
             "columns": [
                 "service.informationservice_pt.id",
-                "service.informationservice_pt.nilReason",
-                "service.informationservice_pt.href"
+                "service.informationservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -14308,8 +14250,7 @@
             },
             "columns": [
                 "procedure.initialleg_pt.id",
-                "procedure.initialleg_pt.nilReason",
-                "procedure.initialleg_pt.href"
+                "procedure.initialleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -14541,8 +14482,7 @@
             },
             "columns": [
                 "procedure.instrumentapproachprocedure_pt.id",
-                "procedure.instrumentapproachprocedure_pt.nilReason",
-                "procedure.instrumentapproachprocedure_pt.href"
+                "procedure.instrumentapproachprocedure_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -14631,6 +14571,11 @@
             "one_to_one": [
                 {
                     "source": "procedure.instrumentapproachprocedure_ts",
+                    "alias": "NavaidPropertyType",
+                    "join_condition": "procedure.instrumentapproachprocedure_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
+                },
+                {
+                    "source": "procedure.instrumentapproachprocedure_ts",
                     "alias": "SpecialNavigationSystemPropertyType",
                     "join_condition": "procedure.instrumentapproachprocedure_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id"
                 },
@@ -14638,11 +14583,6 @@
                     "source": "procedure.instrumentapproachprocedure_ts",
                     "alias": "RadarSystemPropertyType",
                     "join_condition": "procedure.instrumentapproachprocedure_ts.guidancefacility_radar_id = RadarSystemPropertyType.id"
-                },
-                {
-                    "source": "procedure.instrumentapproachprocedure_ts",
-                    "alias": "NavaidPropertyType",
-                    "join_condition": "procedure.instrumentapproachprocedure_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
                 },
                 {
                     "source": "procedure.instrumentapproachprocedure_ts",
@@ -14760,8 +14700,7 @@
             },
             "columns": [
                 "procedure.intermediateleg_pt.id",
-                "procedure.intermediateleg_pt.nilReason",
-                "procedure.intermediateleg_pt.href"
+                "procedure.intermediateleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -15355,8 +15294,7 @@
             },
             "columns": [
                 "navaids_points.localizer_pt.id",
-                "navaids_points.localizer_pt.nilReason",
-                "navaids_points.localizer_pt.href"
+                "navaids_points.localizer_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -15714,8 +15652,7 @@
             },
             "columns": [
                 "navaids_points.markerbeacon_pt.id",
-                "navaids_points.markerbeacon_pt.nilReason",
-                "navaids_points.markerbeacon_pt.href"
+                "navaids_points.markerbeacon_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -15887,8 +15824,7 @@
             },
             "columns": [
                 "airport_heliport.markingbuoy_pt.id",
-                "airport_heliport.markingbuoy_pt.nilReason",
-                "airport_heliport.markingbuoy_pt.href"
+                "airport_heliport.markingbuoy_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -15932,8 +15868,7 @@
                 ]
             },
             "columns": [
-                "airport_heliport.markingbuoy_ts.designator_value",
-                "airport_heliport.markingbuoy_ts.designator_nilreason",
+                "airport_heliport.markingbuoy_ts.designator",
                 "airport_heliport.markingbuoy_ts.type_value",
                 "airport_heliport.markingbuoy_ts.type_nilreason",
                 "airport_heliport.markingbuoy_ts.colour_value",
@@ -16056,13 +15991,13 @@
             "one_to_one": [
                 {
                     "source": "airport_heliport.markingelement",
-                    "alias": "ElevatedCurvePropertyType",
-                    "join_condition": "airport_heliport.markingelement.extent_curveextent_id = ElevatedCurvePropertyType.id"
+                    "alias": "ElevatedSurfacePropertyType",
+                    "join_condition": "airport_heliport.markingelement.extent_surfaceextent_id = ElevatedSurfacePropertyType.id"
                 },
                 {
                     "source": "airport_heliport.markingelement",
-                    "alias": "ElevatedSurfacePropertyType",
-                    "join_condition": "airport_heliport.markingelement.extent_surfaceextent_id = ElevatedSurfacePropertyType.id"
+                    "alias": "ElevatedCurvePropertyType",
+                    "join_condition": "airport_heliport.markingelement.extent_curveextent_id = ElevatedCurvePropertyType.id"
                 },
                 {
                     "source": "airport_heliport.markingelement",
@@ -16100,8 +16035,7 @@
             },
             "columns": [
                 "airport_heliport.marking_pt.id",
-                "airport_heliport.marking_pt.nilReason",
-                "airport_heliport.marking_pt.href"
+                "airport_heliport.marking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -16386,8 +16320,7 @@
             },
             "columns": [
                 "procedure.missedapproachleg_pt.id",
-                "procedure.missedapproachleg_pt.nilReason",
-                "procedure.missedapproachleg_pt.href"
+                "procedure.missedapproachleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -16859,8 +16792,7 @@
             },
             "columns": [
                 "navaids_points.navaidequipment_pt.id",
-                "navaids_points.navaidequipment_pt.nilReason",
-                "navaids_points.navaidequipment_pt.href"
+                "navaids_points.navaidequipment_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -16964,8 +16896,7 @@
             },
             "columns": [
                 "navaids_points.navaid_pt.id",
-                "navaids_points.navaid_pt.nilReason",
-                "navaids_points.navaid_pt.href"
+                "navaids_points.navaid_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17137,8 +17068,7 @@
             },
             "columns": [
                 "procedure.navigationarea_pt.id",
-                "procedure.navigationarea_pt.nilReason",
-                "procedure.navigationarea_pt.href"
+                "procedure.navigationarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17158,8 +17088,7 @@
             },
             "columns": [
                 "procedure.navigationarearestriction_pt.id",
-                "procedure.navigationarearestriction_pt.nilReason",
-                "procedure.navigationarearestriction_pt.href"
+                "procedure.navigationarearestriction_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17439,8 +17368,8 @@
                 },
                 {
                     "source": "procedure.navigationarea_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "procedure.navigationarea_ts.centrepoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "procedure.navigationarea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "procedure.navigationarea_ts",
@@ -17449,13 +17378,13 @@
                 },
                 {
                     "source": "procedure.navigationarea_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "procedure.navigationarea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "procedure.navigationarea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "procedure.navigationarea_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "procedure.navigationarea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "procedure.navigationarea_ts.centrepoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "procedure.navigationarea_ts",
@@ -17525,8 +17454,7 @@
             },
             "columns": [
                 "navaids_points.navigationsystemcheckpoint_pt.id",
-                "navaids_points.navigationsystemcheckpoint_pt.nilReason",
-                "navaids_points.navigationsystemcheckpoint_pt.href"
+                "navaids_points.navigationsystemcheckpoint_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17546,8 +17474,7 @@
             },
             "columns": [
                 "navaids_points.ndb_pt.id",
-                "navaids_points.ndb_pt.nilReason",
-                "navaids_points.ndb_pt.href"
+                "navaids_points.ndb_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17780,8 +17707,7 @@
             },
             "columns": [
                 "airport_heliport.nonmovementarea_pt.id",
-                "airport_heliport.nonmovementarea_pt.nilReason",
-                "airport_heliport.nonmovementarea_pt.href"
+                "airport_heliport.nonmovementarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -17972,8 +17898,7 @@
             },
             "columns": [
                 "obstacles.obstaclearea_pt.id",
-                "obstacles.obstaclearea_pt.nilReason",
-                "obstacles.obstaclearea_pt.href"
+                "obstacles.obstaclearea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -18034,8 +17959,8 @@
             "one_to_one": [
                 {
                     "source": "obstacles.obstaclearea_ts",
-                    "alias": "OrganisationAuthorityPropertyType",
-                    "join_condition": "obstacles.obstaclearea_ts.reference_ownerorganisation_id = OrganisationAuthorityPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "obstacles.obstaclearea_ts.reference_ownerairport_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "obstacles.obstaclearea_ts",
@@ -18044,8 +17969,8 @@
                 },
                 {
                     "source": "obstacles.obstaclearea_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "obstacles.obstaclearea_ts.reference_ownerairport_id = AirportHeliportPropertyType.id"
+                    "alias": "OrganisationAuthorityPropertyType",
+                    "join_condition": "obstacles.obstaclearea_ts.reference_ownerorganisation_id = OrganisationAuthorityPropertyType.id"
                 },
                 {
                     "source": "obstacles.obstaclearea_ts",
@@ -18606,8 +18531,7 @@
             },
             "columns": [
                 "organisation.organisationauthority_pt.id",
-                "organisation.organisationauthority_pt.nilReason",
-                "organisation.organisationauthority_pt.href"
+                "organisation.organisationauthority_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -18808,8 +18732,7 @@
             },
             "columns": [
                 "airport_heliport.passengerloadingbridge_pt.id",
-                "airport_heliport.passengerloadingbridge_pt.nilReason",
-                "airport_heliport.passengerloadingbridge_pt.href"
+                "airport_heliport.passengerloadingbridge_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -18939,8 +18862,7 @@
             },
             "columns": [
                 "service.passengerservice_pt.id",
-                "service.passengerservice_pt.nilReason",
-                "service.passengerservice_pt.href"
+                "service.passengerservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -19121,8 +19043,7 @@
             },
             "columns": [
                 "service.pilotcontrolledlighting_pt.id",
-                "service.pilotcontrolledlighting_pt.nilReason",
-                "service.pilotcontrolledlighting_pt.href"
+                "service.pilotcontrolledlighting_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -19449,8 +19370,7 @@
             },
             "columns": [
                 "surveillance.precisionapproachradar_pt.id",
-                "surveillance.precisionapproachradar_pt.nilReason",
-                "surveillance.precisionapproachradar_pt.href"
+                "surveillance.precisionapproachradar_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -19626,8 +19546,7 @@
             },
             "columns": [
                 "surveillance.primarysurveillanceradar_pt.id",
-                "surveillance.primarysurveillanceradar_pt.nilReason",
-                "surveillance.primarysurveillanceradar_pt.href"
+                "surveillance.primarysurveillanceradar_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -19900,8 +19819,7 @@
             },
             "columns": [
                 "procedure.proceduredme_pt.id",
-                "procedure.proceduredme_pt.nilReason",
-                "procedure.proceduredme_pt.href"
+                "procedure.proceduredme_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20031,8 +19949,7 @@
             },
             "columns": [
                 "procedure.procedure_pt.id",
-                "procedure.procedure_pt.nilReason",
-                "procedure.procedure_pt.href"
+                "procedure.procedure_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20296,8 +20213,7 @@
             },
             "columns": [
                 "surveillance.radarequipment_pt.id",
-                "surveillance.radarequipment_pt.nilReason",
-                "surveillance.radarequipment_pt.href"
+                "surveillance.radarequipment_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20317,8 +20233,7 @@
             },
             "columns": [
                 "surveillance.radarsystem_pt.id",
-                "surveillance.radarsystem_pt.nilReason",
-                "surveillance.radarsystem_pt.href"
+                "surveillance.radarsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20473,8 +20388,7 @@
             },
             "columns": [
                 "service.radiocommunicationchannel_pt.id",
-                "service.radiocommunicationchannel_pt.nilReason",
-                "service.radiocommunicationchannel_pt.href"
+                "service.radiocommunicationchannel_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20708,8 +20622,7 @@
             },
             "columns": [
                 "shared.radiofrequencyarea_pt.id",
-                "shared.radiofrequencyarea_pt.nilReason",
-                "shared.radiofrequencyarea_pt.href"
+                "shared.radiofrequencyarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -20772,13 +20685,8 @@
             "one_to_one": [
                 {
                     "source": "shared.radiofrequencyarea_ts",
-                    "alias": "SecondarySurveillanceRadarPropertyType",
-                    "join_condition": "shared.radiofrequencyarea_ts.equipment_radar_id = SecondarySurveillanceRadarPropertyType.id"
-                },
-                {
-                    "source": "shared.radiofrequencyarea_ts",
-                    "alias": "PrecisionApproachRadarPropertyType",
-                    "join_condition": "shared.radiofrequencyarea_ts.equipment_precisionapproachradar_id = PrecisionApproachRadarPropertyType.id"
+                    "alias": "NavaidEquipmentPropertyType",
+                    "join_condition": "shared.radiofrequencyarea_ts.equipment_navaidequipment_id = NavaidEquipmentPropertyType.id"
                 },
                 {
                     "source": "shared.radiofrequencyarea_ts",
@@ -20792,8 +20700,13 @@
                 },
                 {
                     "source": "shared.radiofrequencyarea_ts",
-                    "alias": "NavaidEquipmentPropertyType",
-                    "join_condition": "shared.radiofrequencyarea_ts.equipment_navaidequipment_id = NavaidEquipmentPropertyType.id"
+                    "alias": "PrecisionApproachRadarPropertyType",
+                    "join_condition": "shared.radiofrequencyarea_ts.equipment_precisionapproachradar_id = PrecisionApproachRadarPropertyType.id"
+                },
+                {
+                    "source": "shared.radiofrequencyarea_ts",
+                    "alias": "SecondarySurveillanceRadarPropertyType",
+                    "join_condition": "shared.radiofrequencyarea_ts.equipment_radar_id = SecondarySurveillanceRadarPropertyType.id"
                 },
                 {
                     "source": "shared.radiofrequencyarea_ts",
@@ -21007,8 +20920,7 @@
             },
             "columns": [
                 "airport_heliport.road_pt.id",
-                "airport_heliport.road_pt.nilReason",
-                "airport_heliport.road_pt.href"
+                "airport_heliport.road_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -21247,8 +21159,7 @@
             },
             "columns": [
                 "routes.routedme_pt.id",
-                "routes.routedme_pt.nilReason",
-                "routes.routedme_pt.href"
+                "routes.routedme_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -21420,8 +21331,8 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.routeportion.start_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.routeportion.start_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21430,13 +21341,13 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.routeportion.start_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.routeportion.start_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.routeportion.start_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.routeportion.start_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21450,8 +21361,8 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.routeportion.intermediatepoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.routeportion.intermediatepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21460,13 +21371,13 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.routeportion.intermediatepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.routeportion.intermediatepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.routeportion.intermediatepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.routeportion.intermediatepoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21485,8 +21396,8 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "PointPropertyType",
-                    "join_condition": "routes.routeportion.end_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "routes.routeportion.end_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21495,13 +21406,13 @@
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "routes.routeportion.end_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "routes.routeportion.end_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "routes.routeportion.end_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "routes.routeportion.end_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "routes.routeportion",
@@ -21534,8 +21445,7 @@
             },
             "columns": [
                 "routes.route_pt.id",
-                "routes.route_pt.nilReason",
-                "routes.route_pt.href"
+                "routes.route_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -21555,8 +21465,7 @@
             },
             "columns": [
                 "routes.routesegment_pt.id",
-                "routes.routesegment_pt.nilReason",
-                "routes.routesegment_pt.href"
+                "routes.routesegment_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -21884,8 +21793,7 @@
             },
             "columns": [
                 "rules_procedures.rulesprocedures_pt.id",
-                "rules_procedures.rulesprocedures_pt.nilReason",
-                "rules_procedures.rulesprocedures_pt.href"
+                "rules_procedures.rulesprocedures_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -22019,8 +21927,7 @@
             },
             "columns": [
                 "airport_heliport.runwayblastpad_pt.id",
-                "airport_heliport.runwayblastpad_pt.nilReason",
-                "airport_heliport.runwayblastpad_pt.href"
+                "airport_heliport.runwayblastpad_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -22156,8 +22063,7 @@
             },
             "columns": [
                 "airport_heliport.runwaycentrelinepoint_pt.id",
-                "airport_heliport.runwaycentrelinepoint_pt.nilReason",
-                "airport_heliport.runwaycentrelinepoint_pt.href"
+                "airport_heliport.runwaycentrelinepoint_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -22325,10 +22231,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.runwaycontamination.observationtime_value",
-                "airport_heliport.runwaycontamination.observationtime_nilreason",
-                "airport_heliport.runwaycontamination.nextobservationtime_value",
-                "airport_heliport.runwaycontamination.nextobservationtime_nilreason",
+                "airport_heliport.runwaycontamination.observationTime_value",
+                "airport_heliport.runwaycontamination.observationTime_nilreason",
+                "airport_heliport.runwaycontamination.nextObservationTime_value",
+                "airport_heliport.runwaycontamination.nextObservationTime_nilreason",
                 "airport_heliport.runwaycontamination.frictioncoefficient_value",
                 "airport_heliport.runwaycontamination.frictioncoefficient_nilreason",
                 "airport_heliport.runwaycontamination.frictionestimation_value",
@@ -22581,8 +22487,7 @@
             },
             "columns": [
                 "airport_heliport.runwaydirectionlightsystem_pt.id",
-                "airport_heliport.runwaydirectionlightsystem_pt.nilReason",
-                "airport_heliport.runwaydirectionlightsystem_pt.href"
+                "airport_heliport.runwaydirectionlightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -22730,8 +22635,7 @@
             },
             "columns": [
                 "airport_heliport.runwaydirection_pt.id",
-                "airport_heliport.runwaydirection_pt.nilReason",
-                "airport_heliport.runwaydirection_pt.href"
+                "airport_heliport.runwaydirection_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -22890,8 +22794,7 @@
             },
             "columns": [
                 "airport_heliport.runwayelement_pt.id",
-                "airport_heliport.runwayelement_pt.nilReason",
-                "airport_heliport.runwayelement_pt.href"
+                "airport_heliport.runwayelement_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23041,8 +22944,7 @@
             },
             "columns": [
                 "airport_heliport.runwaymarking_pt.id",
-                "airport_heliport.runwaymarking_pt.nilReason",
-                "airport_heliport.runwaymarking_pt.href"
+                "airport_heliport.runwaymarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23181,8 +23083,7 @@
             },
             "columns": [
                 "airport_heliport.runway_pt.id",
-                "airport_heliport.runway_pt.nilReason",
-                "airport_heliport.runway_pt.href"
+                "airport_heliport.runway_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23202,8 +23103,7 @@
             },
             "columns": [
                 "airport_heliport.runwayprotectarealightsystem_pt.id",
-                "airport_heliport.runwayprotectarealightsystem_pt.nilReason",
-                "airport_heliport.runwayprotectarealightsystem_pt.href"
+                "airport_heliport.runwayprotectarealightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23351,8 +23251,7 @@
             },
             "columns": [
                 "airport_heliport.runwayprotectarea_pt.id",
-                "airport_heliport.runwayprotectarea_pt.nilReason",
-                "airport_heliport.runwayprotectarea_pt.href"
+                "airport_heliport.runwayprotectarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23526,10 +23425,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.runwaysectioncontamination.observationtime_value",
-                "airport_heliport.runwaysectioncontamination.observationtime_nilreason",
-                "airport_heliport.runwaysectioncontamination.nextobservationtime_value",
-                "airport_heliport.runwaysectioncontamination.nextobservationtime_nilreason",
+                "airport_heliport.runwaysectioncontamination.observationTime_value",
+                "airport_heliport.runwaysectioncontamination.observationTime_nilreason",
+                "airport_heliport.runwaysectioncontamination.nextObservationTime_value",
+                "airport_heliport.runwaysectioncontamination.nextObservationTime_nilreason",
                 "airport_heliport.runwaysectioncontamination.frictioncoefficient_value",
                 "airport_heliport.runwaysectioncontamination.frictioncoefficient_nilreason",
                 "airport_heliport.runwaysectioncontamination.frictionestimation_value",
@@ -23758,8 +23657,7 @@
             },
             "columns": [
                 "airport_heliport.runwayvisualrange_pt.id",
-                "airport_heliport.runwayvisualrange_pt.nilReason",
-                "airport_heliport.runwayvisualrange_pt.href"
+                "airport_heliport.runwayvisualrange_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -23889,8 +23787,7 @@
             },
             "columns": [
                 "procedure.safealtitudearea_pt.id",
-                "procedure.safealtitudearea_pt.nilReason",
-                "procedure.safealtitudearea_pt.href"
+                "procedure.safealtitudearea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -24040,8 +23937,8 @@
                 },
                 {
                     "source": "procedure.safealtitudearea_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "procedure.safealtitudearea_ts",
@@ -24050,13 +23947,13 @@
                 },
                 {
                     "source": "procedure.safealtitudearea_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "procedure.safealtitudearea_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "procedure.safealtitudearea_ts.centrepoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "procedure.safealtitudearea_ts",
@@ -24133,8 +24030,7 @@
             },
             "columns": [
                 "navaids_points.sdf_pt.id",
-                "navaids_points.sdf_pt.nilReason",
-                "navaids_points.sdf_pt.href"
+                "navaids_points.sdf_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -24304,8 +24200,7 @@
             },
             "columns": [
                 "airport_heliport.seaplanelandingarea_pt.id",
-                "airport_heliport.seaplanelandingarea_pt.nilReason",
-                "airport_heliport.seaplanelandingarea_pt.href"
+                "airport_heliport.seaplanelandingarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -24447,8 +24342,7 @@
             },
             "columns": [
                 "airport_heliport.seaplanerampsite_pt.id",
-                "airport_heliport.seaplanerampsite_pt.nilReason",
-                "airport_heliport.seaplanerampsite_pt.href"
+                "airport_heliport.seaplanerampsite_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -24574,8 +24468,7 @@
             },
             "columns": [
                 "service.searchrescueservice_pt.id",
-                "service.searchrescueservice_pt.nilReason",
-                "service.searchrescueservice_pt.href"
+                "service.searchrescueservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -24758,8 +24651,7 @@
             },
             "columns": [
                 "surveillance.secondarysurveillanceradar_pt.id",
-                "surveillance.secondarysurveillanceradar_pt.nilReason",
-                "surveillance.secondarysurveillanceradar_pt.href"
+                "surveillance.secondarysurveillanceradar_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25024,8 +24916,7 @@
             },
             "columns": [
                 "procedure.segmentleg_pt.id",
-                "procedure.segmentleg_pt.nilReason",
-                "procedure.segmentleg_pt.href"
+                "procedure.segmentleg_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25149,8 +25040,7 @@
             },
             "columns": [
                 "service.service_pt.id",
-                "service.service_pt.nilReason",
-                "service.service_pt.href"
+                "service.service_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25170,8 +25060,7 @@
             },
             "columns": [
                 "navaids_points.significantpointinairspace_pt.id",
-                "navaids_points.significantpointinairspace_pt.nilReason",
-                "navaids_points.significantpointinairspace_pt.href"
+                "navaids_points.significantpointinairspace_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25247,8 +25136,8 @@
                 },
                 {
                     "source": "navaids_points.significantpointinairspace_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "navaids_points.significantpointinairspace_ts.location_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "navaids_points.significantpointinairspace_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "navaids_points.significantpointinairspace_ts",
@@ -25257,13 +25146,13 @@
                 },
                 {
                     "source": "navaids_points.significantpointinairspace_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "navaids_points.significantpointinairspace_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "navaids_points.significantpointinairspace_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "navaids_points.significantpointinairspace_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "navaids_points.significantpointinairspace_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "navaids_points.significantpointinairspace_ts.location_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "navaids_points.significantpointinairspace_ts",
@@ -25326,8 +25215,7 @@
             },
             "columns": [
                 "shared.specialdate_pt.id",
-                "shared.specialdate_pt.nilReason",
-                "shared.specialdate_pt.href"
+                "shared.specialdate_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25456,8 +25344,7 @@
             },
             "columns": [
                 "navaids_points.specialnavigationstation_pt.id",
-                "navaids_points.specialnavigationstation_pt.nilReason",
-                "navaids_points.specialnavigationstation_pt.href"
+                "navaids_points.specialnavigationstation_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25686,8 +25573,7 @@
             },
             "columns": [
                 "navaids_points.specialnavigationsystem_pt.id",
-                "navaids_points.specialnavigationsystem_pt.nilReason",
-                "navaids_points.specialnavigationsystem_pt.href"
+                "navaids_points.specialnavigationsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25814,8 +25700,7 @@
             },
             "columns": [
                 "procedure.standardinstrumentarrival_pt.id",
-                "procedure.standardinstrumentarrival_pt.nilReason",
-                "procedure.standardinstrumentarrival_pt.href"
+                "procedure.standardinstrumentarrival_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -25888,6 +25773,11 @@
             "one_to_one": [
                 {
                     "source": "procedure.standardinstrumentarrival_ts",
+                    "alias": "NavaidPropertyType",
+                    "join_condition": "procedure.standardinstrumentarrival_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
+                },
+                {
+                    "source": "procedure.standardinstrumentarrival_ts",
                     "alias": "SpecialNavigationSystemPropertyType",
                     "join_condition": "procedure.standardinstrumentarrival_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id"
                 },
@@ -25895,11 +25785,6 @@
                     "source": "procedure.standardinstrumentarrival_ts",
                     "alias": "RadarSystemPropertyType",
                     "join_condition": "procedure.standardinstrumentarrival_ts.guidancefacility_radar_id = RadarSystemPropertyType.id"
-                },
-                {
-                    "source": "procedure.standardinstrumentarrival_ts",
-                    "alias": "NavaidPropertyType",
-                    "join_condition": "procedure.standardinstrumentarrival_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
                 },
                 {
                     "source": "procedure.standardinstrumentarrival_ts",
@@ -26005,8 +25890,7 @@
             },
             "columns": [
                 "procedure.standardinstrumentdeparture_pt.id",
-                "procedure.standardinstrumentdeparture_pt.nilReason",
-                "procedure.standardinstrumentdeparture_pt.href"
+                "procedure.standardinstrumentdeparture_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -26081,6 +25965,11 @@
             "one_to_one": [
                 {
                     "source": "procedure.standardinstrumentdeparture_ts",
+                    "alias": "NavaidPropertyType",
+                    "join_condition": "procedure.standardinstrumentdeparture_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
+                },
+                {
+                    "source": "procedure.standardinstrumentdeparture_ts",
                     "alias": "SpecialNavigationSystemPropertyType",
                     "join_condition": "procedure.standardinstrumentdeparture_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id"
                 },
@@ -26088,11 +25977,6 @@
                     "source": "procedure.standardinstrumentdeparture_ts",
                     "alias": "RadarSystemPropertyType",
                     "join_condition": "procedure.standardinstrumentdeparture_ts.guidancefacility_radar_id = RadarSystemPropertyType.id"
-                },
-                {
-                    "source": "procedure.standardinstrumentdeparture_ts",
-                    "alias": "NavaidPropertyType",
-                    "join_condition": "procedure.standardinstrumentdeparture_ts.guidancefacility_navaid_id = NavaidPropertyType.id"
                 },
                 {
                     "source": "procedure.standardinstrumentdeparture_ts",
@@ -26198,8 +26082,7 @@
             },
             "columns": [
                 "shared.standardlevelcolumn_pt.id",
-                "shared.standardlevelcolumn_pt.nilReason",
-                "shared.standardlevelcolumn_pt.href"
+                "shared.standardlevelcolumn_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -26243,10 +26126,9 @@
                 ]
             },
             "columns": [
+                "shared.standardlevelcolumn_ts.unitofmeasurement",
                 "shared.standardlevelcolumn_ts.series_value",
                 "shared.standardlevelcolumn_ts.series_nilreason",
-                "shared.standardlevelcolumn_ts.unitofmeasurement_value",
-                "shared.standardlevelcolumn_ts.unitofmeasurement_nilreason",
                 "shared.standardlevelcolumn_ts.separation_value",
                 "shared.standardlevelcolumn_ts.separation_nilreason",
                 "shared.standardlevelcolumn_ts.id",
@@ -26358,8 +26240,7 @@
             },
             "columns": [
                 "shared.standardlevelsector_pt.id",
-                "shared.standardlevelsector_pt.nilReason",
-                "shared.standardlevelsector_pt.href"
+                "shared.standardlevelsector_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -26495,8 +26376,7 @@
             },
             "columns": [
                 "shared.standardleveltable_pt.id",
-                "shared.standardleveltable_pt.nilReason",
-                "shared.standardleveltable_pt.href"
+                "shared.standardleveltable_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -26655,8 +26535,7 @@
             },
             "columns": [
                 "airport_heliport.standmarking_pt.id",
-                "airport_heliport.standmarking_pt.nilReason",
-                "airport_heliport.standmarking_pt.href"
+                "airport_heliport.standmarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27043,8 +26922,7 @@
             },
             "columns": [
                 "surveillance.surveillanceradar_pt.id",
-                "surveillance.surveillanceradar_pt.nilReason",
-                "surveillance.surveillanceradar_pt.href"
+                "surveillance.surveillanceradar_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27064,8 +26942,7 @@
             },
             "columns": [
                 "airport_heliport.surveycontrolpoint_pt.id",
-                "airport_heliport.surveycontrolpoint_pt.nilReason",
-                "airport_heliport.surveycontrolpoint_pt.href"
+                "airport_heliport.surveycontrolpoint_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27193,8 +27070,7 @@
             },
             "columns": [
                 "navaids_points.tacan_pt.id",
-                "navaids_points.tacan_pt.nilReason",
-                "navaids_points.tacan_pt.href"
+                "navaids_points.tacan_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27361,8 +27237,7 @@
             },
             "columns": [
                 "airport_heliport.taxiholdingpositionlightsystem_pt.id",
-                "airport_heliport.taxiholdingpositionlightsystem_pt.nilReason",
-                "airport_heliport.taxiholdingpositionlightsystem_pt.href"
+                "airport_heliport.taxiholdingpositionlightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27510,8 +27385,7 @@
             },
             "columns": [
                 "airport_heliport.taxiholdingpositionmarking_pt.id",
-                "airport_heliport.taxiholdingpositionmarking_pt.nilReason",
-                "airport_heliport.taxiholdingpositionmarking_pt.href"
+                "airport_heliport.taxiholdingpositionmarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27648,8 +27522,7 @@
             },
             "columns": [
                 "airport_heliport.taxiholdingposition_pt.id",
-                "airport_heliport.taxiholdingposition_pt.nilReason",
-                "airport_heliport.taxiholdingposition_pt.href"
+                "airport_heliport.taxiholdingposition_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -27810,10 +27683,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.taxiwaycontamination.observationtime_value",
-                "airport_heliport.taxiwaycontamination.observationtime_nilreason",
-                "airport_heliport.taxiwaycontamination.nextobservationtime_value",
-                "airport_heliport.taxiwaycontamination.nextobservationtime_nilreason",
+                "airport_heliport.taxiwaycontamination.observationTime_value",
+                "airport_heliport.taxiwaycontamination.observationTime_nilreason",
+                "airport_heliport.taxiwaycontamination.nextObservationTime_value",
+                "airport_heliport.taxiwaycontamination.nextObservationTime_nilreason",
                 "airport_heliport.taxiwaycontamination.frictioncoefficient_value",
                 "airport_heliport.taxiwaycontamination.frictioncoefficient_nilreason",
                 "airport_heliport.taxiwaycontamination.frictionestimation_value",
@@ -27890,8 +27763,7 @@
             },
             "columns": [
                 "airport_heliport.taxiwayelement_pt.id",
-                "airport_heliport.taxiwayelement_pt.nilReason",
-                "airport_heliport.taxiwayelement_pt.href"
+                "airport_heliport.taxiwayelement_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -28039,8 +27911,7 @@
             },
             "columns": [
                 "airport_heliport.taxiwaylightsystem_pt.id",
-                "airport_heliport.taxiwaylightsystem_pt.nilReason",
-                "airport_heliport.taxiwaylightsystem_pt.href"
+                "airport_heliport.taxiwaylightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -28188,8 +28059,7 @@
             },
             "columns": [
                 "airport_heliport.taxiwaymarking_pt.id",
-                "airport_heliport.taxiwaymarking_pt.nilReason",
-                "airport_heliport.taxiwaymarking_pt.href"
+                "airport_heliport.taxiwaymarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -28333,8 +28203,7 @@
             },
             "columns": [
                 "airport_heliport.taxiway_pt.id",
-                "airport_heliport.taxiway_pt.nilReason",
-                "airport_heliport.taxiway_pt.href"
+                "airport_heliport.taxiway_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -28573,8 +28442,7 @@
             },
             "columns": [
                 "procedure.terminalarrivalarea_pt.id",
-                "procedure.terminalarrivalarea_pt.nilReason",
-                "procedure.terminalarrivalarea_pt.href"
+                "procedure.terminalarrivalarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -28733,8 +28601,8 @@
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.if_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.if_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
@@ -28743,13 +28611,13 @@
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.if_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.if_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.if_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.if_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
@@ -28763,8 +28631,8 @@
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "PointPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
@@ -28773,13 +28641,13 @@
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "procedure.terminalarrivalarea_ts.iaf_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "procedure.terminalarrivalarea_ts",
@@ -28918,8 +28786,8 @@
                 },
                 {
                     "source": "navaids_points.terminalsegmentpoint",
-                    "alias": "PointPropertyType",
-                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_position_id = PointPropertyType.id"
+                    "alias": "TouchDownLiftOffPropertyType",
+                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
                 },
                 {
                     "source": "navaids_points.terminalsegmentpoint",
@@ -28928,13 +28796,13 @@
                 },
                 {
                     "source": "navaids_points.terminalsegmentpoint",
-                    "alias": "TouchDownLiftOffPropertyType",
-                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id"
+                    "alias": "AirportHeliportPropertyType",
+                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
                 },
                 {
                     "source": "navaids_points.terminalsegmentpoint",
-                    "alias": "AirportHeliportPropertyType",
-                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id"
+                    "alias": "PointPropertyType",
+                    "join_condition": "navaids_points.terminalsegmentpoint.terminalsegmentpoint_position_id = PointPropertyType.id"
                 },
                 {
                     "source": "navaids_points.terminalsegmentpoint",
@@ -29101,10 +28969,10 @@
                 ]
             },
             "columns": [
-                "airport_heliport.touchdownliftoffcontamination.observationtime_value",
-                "airport_heliport.touchdownliftoffcontamination.observationtime_nilreason",
-                "airport_heliport.touchdownliftoffcontamination.nextobservationtime_value",
-                "airport_heliport.touchdownliftoffcontamination.nextobservationtime_nilreason",
+                "airport_heliport.touchdownliftoffcontamination.observationTime_value",
+                "airport_heliport.touchdownliftoffcontamination.observationTime_nilreason",
+                "airport_heliport.touchdownliftoffcontamination.nextObservationTime_value",
+                "airport_heliport.touchdownliftoffcontamination.nextObservationTime_nilreason",
                 "airport_heliport.touchdownliftoffcontamination.frictioncoefficient_value",
                 "airport_heliport.touchdownliftoffcontamination.frictioncoefficient_nilreason",
                 "airport_heliport.touchdownliftoffcontamination.frictionestimation_value",
@@ -29178,8 +29046,7 @@
             },
             "columns": [
                 "airport_heliport.touchdownliftofflightsystem_pt.id",
-                "airport_heliport.touchdownliftofflightsystem_pt.nilReason",
-                "airport_heliport.touchdownliftofflightsystem_pt.href"
+                "airport_heliport.touchdownliftofflightsystem_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -29327,8 +29194,7 @@
             },
             "columns": [
                 "airport_heliport.touchdownliftoffmarking_pt.id",
-                "airport_heliport.touchdownliftoffmarking_pt.nilReason",
-                "airport_heliport.touchdownliftoffmarking_pt.href"
+                "airport_heliport.touchdownliftoffmarking_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -29467,8 +29333,7 @@
             },
             "columns": [
                 "airport_heliport.touchdownliftoff_pt.id",
-                "airport_heliport.touchdownliftoff_pt.nilReason",
-                "airport_heliport.touchdownliftoff_pt.href"
+                "airport_heliport.touchdownliftoff_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -29488,8 +29353,7 @@
             },
             "columns": [
                 "airport_heliport.touchdownliftoffsafearea_pt.id",
-                "airport_heliport.touchdownliftoffsafearea_pt.nilReason",
-                "airport_heliport.touchdownliftoffsafearea_pt.href"
+                "airport_heliport.touchdownliftoffsafearea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -29784,8 +29648,7 @@
             },
             "columns": [
                 "service.trafficseparationservice_pt.id",
-                "service.trafficseparationservice_pt.nilReason",
-                "service.trafficseparationservice_pt.href"
+                "service.trafficseparationservice_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -29955,8 +29818,7 @@
             },
             "columns": [
                 "organisation.unit_pt.id",
-                "organisation.unit_pt.nilReason",
-                "organisation.unit_pt.href"
+                "organisation.unit_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -30118,8 +29980,7 @@
             },
             "columns": [
                 "holding.unplannedholding_pt.id",
-                "holding.unplannedholding_pt.nilReason",
-                "holding.unplannedholding_pt.href"
+                "holding.unplannedholding_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -30409,8 +30270,8 @@
             "one_to_one": [
                 {
                     "source": "obstacles.verticalstructurepart",
-                    "alias": "ElevatedSurfacePropertyType",
-                    "join_condition": "obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = ElevatedSurfacePropertyType.id"
+                    "alias": "ElevatedPointPropertyType",
+                    "join_condition": "obstacles.verticalstructurepart.horizontalprojection_location_id = ElevatedPointPropertyType.id"
                 },
                 {
                     "source": "obstacles.verticalstructurepart",
@@ -30419,8 +30280,8 @@
                 },
                 {
                     "source": "obstacles.verticalstructurepart",
-                    "alias": "ElevatedPointPropertyType",
-                    "join_condition": "obstacles.verticalstructurepart.horizontalprojection_location_id = ElevatedPointPropertyType.id"
+                    "alias": "ElevatedSurfacePropertyType",
+                    "join_condition": "obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = ElevatedSurfacePropertyType.id"
                 },
                 {
                     "source": "obstacles.verticalstructurepart",
@@ -30479,8 +30340,7 @@
             },
             "columns": [
                 "obstacles.verticalstructure_pt.id",
-                "obstacles.verticalstructure_pt.nilReason",
-                "obstacles.verticalstructure_pt.href"
+                "obstacles.verticalstructure_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -30687,8 +30547,7 @@
             },
             "columns": [
                 "airport_heliport.visualglideslopeindicator_pt.id",
-                "airport_heliport.visualglideslopeindicator_pt.nilReason",
-                "airport_heliport.visualglideslopeindicator_pt.href"
+                "airport_heliport.visualglideslopeindicator_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -30847,8 +30706,7 @@
             },
             "columns": [
                 "navaids_points.vor_pt.id",
-                "navaids_points.vor_pt.nilReason",
-                "navaids_points.vor_pt.href"
+                "navaids_points.vor_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -31102,8 +30960,7 @@
             },
             "columns": [
                 "airport_heliport.workarea_pt.id",
-                "airport_heliport.workarea_pt.nilReason",
-                "airport_heliport.workarea_pt.href"
+                "airport_heliport.workarea_pt.nilReason"
             ],
             "one_to_one": [],
             "one_to_many": [],
@@ -31147,10 +31004,10 @@
                 ]
             },
             "columns": [
+                "airport_heliport.workarea_ts.plannedOperational_value",
+                "airport_heliport.workarea_ts.plannedOperational_nilreason",
                 "airport_heliport.workarea_ts.type_value",
                 "airport_heliport.workarea_ts.type_nilreason",
-                "airport_heliport.workarea_ts.plannedoperational_value",
-                "airport_heliport.workarea_ts.plannedoperational_nilreason",
                 "airport_heliport.workarea_ts.id",
                 "airport_heliport.workarea_ts.xml_id",
                 "airport_heliport.workarea_ts.interpretation",

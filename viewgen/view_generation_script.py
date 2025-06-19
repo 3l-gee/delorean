@@ -249,7 +249,8 @@ attributes_config = {
 
 
 class ViewGenerationScript:
-    def __init__(self, parsing_config, attributes_config, directory):
+    def __init__(self, name, parsing_config, attributes_config, directory):
+        self.name = name
         self.parsing = parsing_config
         self.attributes = attributes_config
         self.directory = directory
@@ -441,14 +442,14 @@ class ViewGenerationScript:
 
     def save_to_json_file(self):
         """Save extracted data to a JSON file."""
-        output_path = os.path.join('sqlgen/views.json')
+        output_path = os.path.join(str('sqlgen/' + self.name + '_view.json'))
         with open(output_path, 'w', encoding='utf-8') as file:
             json.dump(self.views, file, indent=4)
         print(f"Saved view definitions to {output_path}")
 
     def save_to_txt_file(self):
         """Save SQL commands to a text file."""
-        output_path = os.path.join('sqlgen/views.sql')
+        output_path = os.path.join(str('sqlgen/' + self.name + '_view.sql'))
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(self.sql)
         print(f"Saved SQL commands to {output_path}")
@@ -458,4 +459,4 @@ class ViewGenerationScript:
 # Run the script
 # compilationScript = ViewGenerationScript(parsing_config, attributes_config, "util/postgres/test_dir")
 
-compilationScript = ViewGenerationScript(parsing_config, attributes_config, "src/main/java/com/aixm/delorean/core/schema/a5_1_1/aixm")
+compilationScript = ViewGenerationScript("a5_1", parsing_config, attributes_config, "src/main/java/com/aixm/delorean/core/schema/a5_1/aixm")

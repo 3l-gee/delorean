@@ -112,18 +112,18 @@ ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_fixdesignatedpo
 -- NavaidPropertyType
 LEFT JOIN aerial_refuelling.aerialrefuellingpoint
 ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN aerial_refuelling.aerialrefuellingpoint
-ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN aerial_refuelling.aerialrefuellingpoint
-ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN aerial_refuelling.aerialrefuellingpoint
 ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN aerial_refuelling.aerialrefuellingpoint
+ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN aerial_refuelling.aerialrefuellingpoint
 ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN aerial_refuelling.aerialrefuellingpoint
+ON aerial_refuelling.aerialrefuellingpoint.aerialrefuellingpoint_position_id = PointPropertyType.id
 -- RadioFrequencyAreaPropertyType
 LEFT JOIN aerial_refuelling.aerialrefuellingpoint
 ON aerial_refuelling.aerialrefuellingpoint.extendedservicevolume_id = RadioFrequencyAreaPropertyType.id
@@ -151,8 +151,7 @@ CREATE OR REPLACE VIEW aerialrefuellingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', aerial_refuelling.aerialrefuelling_pt.id,
-       'nilReason', aerial_refuelling.aerialrefuelling_pt.nilReason,
-       'href', aerial_refuelling.aerialrefuelling_pt.href
+       'nilReason', aerial_refuelling.aerialrefuelling_pt.nilReason
     ) AS aerialrefuellingpropertytype
 FROM
 
@@ -329,8 +328,7 @@ CREATE OR REPLACE VIEW aeronauticalgroundlightpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.aeronauticalgroundlight_pt.id,
-       'nilReason', navaids_points.aeronauticalgroundlight_pt.nilReason,
-       'href', navaids_points.aeronauticalgroundlight_pt.href
+       'nilReason', navaids_points.aeronauticalgroundlight_pt.nilReason
     ) AS aeronauticalgroundlightpropertytype
 FROM
 
@@ -500,8 +498,7 @@ CREATE OR REPLACE VIEW aircraftgroundservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.aircraftgroundservice_pt.id,
-       'nilReason', service.aircraftgroundservice_pt.nilReason,
-       'href', service.aircraftgroundservice_pt.href
+       'nilReason', service.aircraftgroundservice_pt.nilReason
     ) AS aircraftgroundservicepropertytype
 FROM
 
@@ -633,10 +630,10 @@ AircraftStandContaminationType
 CREATE OR REPLACE VIEW aircraftstandcontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.aircraftstandcontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.aircraftstandcontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.aircraftstandcontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.aircraftstandcontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.aircraftstandcontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.aircraftstandcontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.aircraftstandcontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.aircraftstandcontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.aircraftstandcontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.aircraftstandcontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.aircraftstandcontamination.frictionestimation_value,
@@ -690,8 +687,7 @@ CREATE OR REPLACE VIEW aircraftstandpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.aircraftstand_pt.id,
-       'nilReason', airport_heliport.aircraftstand_pt.nilReason,
-       'href', airport_heliport.aircraftstand_pt.href
+       'nilReason', airport_heliport.aircraftstand_pt.nilReason
     ) AS aircraftstandpropertytype
 FROM
 
@@ -791,8 +787,7 @@ CREATE OR REPLACE VIEW airportclearanceservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.airportclearanceservice_pt.id,
-       'nilReason', service.airportclearanceservice_pt.nilReason,
-       'href', service.airportclearanceservice_pt.href
+       'nilReason', service.airportclearanceservice_pt.nilReason
     ) AS airportclearanceservicepropertytype
 FROM
 
@@ -911,8 +906,7 @@ CREATE OR REPLACE VIEW airportgroundservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.airportgroundservice_pt.id,
-       'nilReason', service.airportgroundservice_pt.nilReason,
-       'href', service.airportgroundservice_pt.href
+       'nilReason', service.airportgroundservice_pt.nilReason
     ) AS airportgroundservicepropertytype
 FROM
 
@@ -982,8 +976,7 @@ CREATE OR REPLACE VIEW airportheliportcollocationpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.airportheliportcollocation_pt.id,
-       'nilReason', airport_heliport.airportheliportcollocation_pt.nilReason,
-       'href', airport_heliport.airportheliportcollocation_pt.href
+       'nilReason', airport_heliport.airportheliportcollocation_pt.nilReason
     ) AS airportheliportcollocationpropertytype
 FROM
 
@@ -1076,10 +1069,10 @@ AirportHeliportContaminationType
 CREATE OR REPLACE VIEW airportheliportcontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.airportheliportcontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.airportheliportcontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.airportheliportcontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.airportheliportcontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.airportheliportcontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.airportheliportcontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.airportheliportcontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.airportheliportcontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.airportheliportcontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.airportheliportcontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.airportheliportcontamination.frictionestimation_value,
@@ -1133,8 +1126,7 @@ CREATE OR REPLACE VIEW airportheliportpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.airportheliport_pt.id,
-       'nilReason', airport_heliport.airportheliport_pt.nilReason,
-       'href', airport_heliport.airportheliport_pt.href
+       'nilReason', airport_heliport.airportheliport_pt.nilReason
     ) AS airportheliportpropertytype
 FROM
 
@@ -1146,8 +1138,7 @@ CREATE OR REPLACE VIEW airportheliportprotectionareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.airportheliportprotectionarea_pt.id,
-       'nilReason', airport_heliport.airportheliportprotectionarea_pt.nilReason,
-       'href', airport_heliport.airportheliportprotectionarea_pt.href
+       'nilReason', airport_heliport.airportheliportprotectionarea_pt.nilReason
     ) AS airportheliportprotectionareapropertytype
 FROM
 
@@ -1226,6 +1217,10 @@ AirportHeliportTimeSliceType
 CREATE OR REPLACE VIEW airportheliporttimeslicetype_view AS
 SELECT
     jsonb_build_object(
+       'certificationDate_value', airport_heliport.airportheliport_ts.certificationDate_value,
+       'certificationDate_nilreason', airport_heliport.airportheliport_ts.certificationDate_nilreason,
+       'certificationExpirationDate_value', airport_heliport.airportheliport_ts.certificationExpirationDate_value,
+       'certificationExpirationDate_nilreason', airport_heliport.airportheliport_ts.certificationExpirationDate_nilreason,
        'designator_value', airport_heliport.airportheliport_ts.designator_value,
        'designator_nilreason', airport_heliport.airportheliport_ts.designator_nilreason,
        'name_value', airport_heliport.airportheliport_ts.name_value,
@@ -1262,10 +1257,6 @@ SELECT
        'landingdirectionindicator_nilreason', airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason,
        'abandoned_value', airport_heliport.airportheliport_ts.abandoned_value,
        'abandoned_nilreason', airport_heliport.airportheliport_ts.abandoned_nilreason,
-       'certificationdate_value', airport_heliport.airportheliport_ts.certificationdate_value,
-       'certificationdate_nilreason', airport_heliport.airportheliport_ts.certificationdate_nilreason,
-       'certificationexpirationdate_value', airport_heliport.airportheliport_ts.certificationexpirationdate_value,
-       'certificationexpirationdate_nilreason', airport_heliport.airportheliport_ts.certificationexpirationdate_nilreason,
        'fieldelevation_value', airport_heliport.airportheliport_ts.fieldelevation_value,
        'fieldelevation_uom', airport_heliport.airportheliport_ts.fieldelevation_uom,
        'fieldelevation_nilreason', airport_heliport.airportheliport_ts.fieldelevation_nilreason,
@@ -1419,8 +1410,7 @@ CREATE OR REPLACE VIEW airporthotspotpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.airporthotspot_pt.id,
-       'nilReason', airport_heliport.airporthotspot_pt.nilReason,
-       'href', airport_heliport.airporthotspot_pt.href
+       'nilReason', airport_heliport.airporthotspot_pt.nilReason
     ) AS airporthotspotpropertytype
 FROM
 
@@ -1502,8 +1492,7 @@ CREATE OR REPLACE VIEW airportprotectionareamarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.airportprotectionareamarking_pt.id,
-       'nilReason', airport_heliport.airportprotectionareamarking_pt.nilReason,
-       'href', airport_heliport.airportprotectionareamarking_pt.href
+       'nilReason', airport_heliport.airportprotectionareamarking_pt.nilReason
     ) AS airportprotectionareamarkingpropertytype
 FROM
 
@@ -1592,8 +1581,7 @@ CREATE OR REPLACE VIEW airportsuppliesservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.airportsuppliesservice_pt.id,
-       'nilReason', service.airportsuppliesservice_pt.nilReason,
-       'href', service.airportsuppliesservice_pt.href
+       'nilReason', service.airportsuppliesservice_pt.nilReason
     ) AS airportsuppliesservicepropertytype
 FROM
 
@@ -1798,8 +1786,7 @@ CREATE OR REPLACE VIEW airspacebordercrossingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.airspacebordercrossing_pt.id,
-       'nilReason', routes.airspacebordercrossing_pt.nilReason,
-       'href', routes.airspacebordercrossing_pt.href
+       'nilReason', routes.airspacebordercrossing_pt.nilReason
     ) AS airspacebordercrossingpropertytype
 FROM
 
@@ -2027,8 +2014,7 @@ CREATE OR REPLACE VIEW airspacepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airspace.airspace_pt.id,
-       'nilReason', airspace.airspace_pt.nilReason,
-       'href', airspace.airspace_pt.href
+       'nilReason', airspace.airspace_pt.nilReason
     ) AS airspacepropertytype
 FROM
 
@@ -2242,8 +2228,7 @@ CREATE OR REPLACE VIEW airtrafficcontrolservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.airtrafficcontrolservice_pt.id,
-       'nilReason', service.airtrafficcontrolservice_pt.nilReason,
-       'href', service.airtrafficcontrolservice_pt.href
+       'nilReason', service.airtrafficcontrolservice_pt.nilReason
     ) AS airtrafficcontrolservicepropertytype
 FROM
 
@@ -2396,8 +2381,7 @@ CREATE OR REPLACE VIEW airtrafficmanagementservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.airtrafficmanagementservice_pt.id,
-       'nilReason', service.airtrafficmanagementservice_pt.nilReason,
-       'href', service.airtrafficmanagementservice_pt.href
+       'nilReason', service.airtrafficmanagementservice_pt.nilReason
     ) AS airtrafficmanagementservicepropertytype
 FROM
 
@@ -2523,8 +2507,7 @@ CREATE OR REPLACE VIEW altimetersourcepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.altimetersource_pt.id,
-       'nilReason', airport_heliport.altimetersource_pt.nilReason,
-       'href', airport_heliport.altimetersource_pt.href
+       'nilReason', airport_heliport.altimetersource_pt.nilReason
     ) AS altimetersourcepropertytype
 FROM
 
@@ -2701,8 +2684,7 @@ CREATE OR REPLACE VIEW angleindicationpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.angleindication_pt.id,
-       'nilReason', navaids_points.angleindication_pt.nilReason,
-       'href', navaids_points.angleindication_pt.href
+       'nilReason', navaids_points.angleindication_pt.nilReason
     ) AS angleindicationpropertytype
 FROM
 
@@ -2761,18 +2743,18 @@ ON navaids_points.angleindication_ts.angleindication_ts_fixdesignatedpoint_id = 
 -- NavaidPropertyType
 LEFT JOIN navaids_points.angleindication_ts
 ON navaids_points.angleindication_ts.angleindication_ts_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN navaids_points.angleindication_ts
-ON navaids_points.angleindication_ts.angleindication_ts_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN navaids_points.angleindication_ts
-ON navaids_points.angleindication_ts.angleindication_ts_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN navaids_points.angleindication_ts
 ON navaids_points.angleindication_ts.angleindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN navaids_points.angleindication_ts
+ON navaids_points.angleindication_ts.angleindication_ts_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN navaids_points.angleindication_ts
 ON navaids_points.angleindication_ts.angleindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN navaids_points.angleindication_ts
+ON navaids_points.angleindication_ts.angleindication_ts_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN navaids_points.angleindication_ts
 ON navaids_points.angleindication_ts.abstractangleindicationextension_id = AbstractExtensionType.id
@@ -3006,8 +2988,7 @@ CREATE OR REPLACE VIEW approachlegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.approachleg_pt.id,
-       'nilReason', procedure.approachleg_pt.nilReason,
-       'href', procedure.approachleg_pt.href
+       'nilReason', procedure.approachleg_pt.nilReason
     ) AS approachlegpropertytype
 FROM
 
@@ -3019,8 +3000,7 @@ CREATE OR REPLACE VIEW approachlightingsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.approachlightingsystem_pt.id,
-       'nilReason', airport_heliport.approachlightingsystem_pt.nilReason,
-       'href', airport_heliport.approachlightingsystem_pt.href
+       'nilReason', airport_heliport.approachlightingsystem_pt.nilReason
     ) AS approachlightingsystempropertytype
 FROM
 
@@ -3294,10 +3274,10 @@ ApronContaminationType
 CREATE OR REPLACE VIEW aproncontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.aproncontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.aproncontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.aproncontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.aproncontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.aproncontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.aproncontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.aproncontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.aproncontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.aproncontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.aproncontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.aproncontamination.frictionestimation_value,
@@ -3351,8 +3331,7 @@ CREATE OR REPLACE VIEW apronelementpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.apronelement_pt.id,
-       'nilReason', airport_heliport.apronelement_pt.nilReason,
-       'href', airport_heliport.apronelement_pt.href
+       'nilReason', airport_heliport.apronelement_pt.nilReason
     ) AS apronelementpropertytype
 FROM
 
@@ -3459,8 +3438,7 @@ CREATE OR REPLACE VIEW apronlightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.apronlightsystem_pt.id,
-       'nilReason', airport_heliport.apronlightsystem_pt.nilReason,
-       'href', airport_heliport.apronlightsystem_pt.href
+       'nilReason', airport_heliport.apronlightsystem_pt.nilReason
     ) AS apronlightsystempropertytype
 FROM
 
@@ -3556,8 +3534,7 @@ CREATE OR REPLACE VIEW apronmarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.apronmarking_pt.id,
-       'nilReason', airport_heliport.apronmarking_pt.nilReason,
-       'href', airport_heliport.apronmarking_pt.href
+       'nilReason', airport_heliport.apronmarking_pt.nilReason
     ) AS apronmarkingpropertytype
 FROM
 
@@ -3646,8 +3623,7 @@ CREATE OR REPLACE VIEW apronpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.apron_pt.id,
-       'nilReason', airport_heliport.apron_pt.nilReason,
-       'href', airport_heliport.apron_pt.href
+       'nilReason', airport_heliport.apron_pt.nilReason
     ) AS apronpropertytype
 FROM
 
@@ -3739,8 +3715,7 @@ CREATE OR REPLACE VIEW arrestinggearpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.arrestinggear_pt.id,
-       'nilReason', airport_heliport.arrestinggear_pt.nilReason,
-       'href', airport_heliport.arrestinggear_pt.href
+       'nilReason', airport_heliport.arrestinggear_pt.nilReason
     ) AS arrestinggearpropertytype
 FROM
 
@@ -3797,12 +3772,12 @@ FROM
 -- SurfaceCharacteristicsPropertyType
 LEFT JOIN airport_heliport.arrestinggear_ts
 ON airport_heliport.arrestinggear_ts.surfaceproperties_id = SurfaceCharacteristicsPropertyType.id
--- ElevatedSurfacePropertyType
-LEFT JOIN airport_heliport.arrestinggear_ts
-ON airport_heliport.arrestinggear_ts.extent_surfaceextent_id = ElevatedSurfacePropertyType.id
 -- ElevatedCurvePropertyType
 LEFT JOIN airport_heliport.arrestinggear_ts
 ON airport_heliport.arrestinggear_ts.extent_curveextent_id = ElevatedCurvePropertyType.id
+-- ElevatedSurfacePropertyType
+LEFT JOIN airport_heliport.arrestinggear_ts
+ON airport_heliport.arrestinggear_ts.extent_surfaceextent_id = ElevatedSurfacePropertyType.id
 -- ElevatedPointPropertyType
 LEFT JOIN airport_heliport.arrestinggear_ts
 ON airport_heliport.arrestinggear_ts.extent_pointextent_id = ElevatedPointPropertyType.id
@@ -3846,8 +3821,7 @@ CREATE OR REPLACE VIEW arrivalfeederlegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.arrivalfeederleg_pt.id,
-       'nilReason', procedure.arrivalfeederleg_pt.nilReason,
-       'href', procedure.arrivalfeederleg_pt.href
+       'nilReason', procedure.arrivalfeederleg_pt.nilReason
     ) AS arrivalfeederlegpropertytype
 FROM
 
@@ -4011,8 +3985,7 @@ CREATE OR REPLACE VIEW arrivallegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.arrivalleg_pt.id,
-       'nilReason', procedure.arrivalleg_pt.nilReason,
-       'href', procedure.arrivalleg_pt.href
+       'nilReason', procedure.arrivalleg_pt.nilReason
     ) AS arrivallegpropertytype
 FROM
 
@@ -4214,8 +4187,7 @@ CREATE OR REPLACE VIEW authorityforairspacepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airspace.authorityforairspace_pt.id,
-       'nilReason', airspace.authorityforairspace_pt.nilReason,
-       'href', airspace.authorityforairspace_pt.href
+       'nilReason', airspace.authorityforairspace_pt.nilReason
     ) AS authorityforairspacepropertytype
 FROM
 
@@ -4418,8 +4390,7 @@ CREATE OR REPLACE VIEW azimuthpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.azimuth_pt.id,
-       'nilReason', navaids_points.azimuth_pt.nilReason,
-       'href', navaids_points.azimuth_pt.href
+       'nilReason', navaids_points.azimuth_pt.nilReason
     ) AS azimuthpropertytype
 FROM
 
@@ -4586,8 +4557,7 @@ CREATE OR REPLACE VIEW changeoverpointpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.changeoverpoint_pt.id,
-       'nilReason', routes.changeoverpoint_pt.nilReason,
-       'href', routes.changeoverpoint_pt.href
+       'nilReason', routes.changeoverpoint_pt.nilReason
     ) AS changeoverpointpropertytype
 FROM
 
@@ -4633,18 +4603,18 @@ ON routes.changeoverpoint_ts.location_fixdesignatedpoint_id = DesignatedPointPro
 -- NavaidPropertyType
 LEFT JOIN routes.changeoverpoint_ts
 ON routes.changeoverpoint_ts.location_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.changeoverpoint_ts
-ON routes.changeoverpoint_ts.location_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.changeoverpoint_ts
-ON routes.changeoverpoint_ts.location_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.changeoverpoint_ts
 ON routes.changeoverpoint_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.changeoverpoint_ts
+ON routes.changeoverpoint_ts.location_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.changeoverpoint_ts
 ON routes.changeoverpoint_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.changeoverpoint_ts
+ON routes.changeoverpoint_ts.location_position_id = PointPropertyType.id
 -- RoutePortionPropertyType
 LEFT JOIN routes.changeoverpoint_ts
 ON routes.changeoverpoint_ts.applicablerouteportion_id = RoutePortionPropertyType.id
@@ -4683,8 +4653,7 @@ CREATE OR REPLACE VIEW checkpointinspropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.checkpointins_pt.id,
-       'nilReason', navaids_points.checkpointins_pt.nilReason,
-       'href', navaids_points.checkpointins_pt.href
+       'nilReason', navaids_points.checkpointins_pt.nilReason
     ) AS checkpointinspropertytype
 FROM
 
@@ -4784,8 +4753,7 @@ CREATE OR REPLACE VIEW checkpointvorpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.checkpointvor_pt.id,
-       'nilReason', navaids_points.checkpointvor_pt.nilReason,
-       'href', navaids_points.checkpointvor_pt.href
+       'nilReason', navaids_points.checkpointvor_pt.nilReason
     ) AS checkpointvorpropertytype
 FROM
 
@@ -4950,8 +4918,7 @@ CREATE OR REPLACE VIEW circlingareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', public.circlingarea_pt.id,
-       'nilReason', public.circlingarea_pt.nilReason,
-       'href', public.circlingarea_pt.href
+       'nilReason', public.circlingarea_pt.nilReason
     ) AS circlingareapropertytype
 FROM
 
@@ -5261,8 +5228,7 @@ CREATE OR REPLACE VIEW deicingareamarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.deicingareamarking_pt.id,
-       'nilReason', airport_heliport.deicingareamarking_pt.nilReason,
-       'href', airport_heliport.deicingareamarking_pt.href
+       'nilReason', airport_heliport.deicingareamarking_pt.nilReason
     ) AS deicingareamarkingpropertytype
 FROM
 
@@ -5349,8 +5315,7 @@ CREATE OR REPLACE VIEW deicingareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.deicingarea_pt.id,
-       'nilReason', airport_heliport.deicingarea_pt.nilReason,
-       'href', airport_heliport.deicingarea_pt.href
+       'nilReason', airport_heliport.deicingarea_pt.nilReason
     ) AS deicingareapropertytype
 FROM
 
@@ -5494,8 +5459,7 @@ CREATE OR REPLACE VIEW departurelegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.departureleg_pt.id,
-       'nilReason', procedure.departureleg_pt.nilReason,
-       'href', procedure.departureleg_pt.href
+       'nilReason', procedure.departureleg_pt.nilReason
     ) AS departurelegpropertytype
 FROM
 
@@ -5664,8 +5628,7 @@ CREATE OR REPLACE VIEW designatedpointpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.designatedpoint_pt.id,
-       'nilReason', navaids_points.designatedpoint_pt.nilReason,
-       'href', navaids_points.designatedpoint_pt.href
+       'nilReason', navaids_points.designatedpoint_pt.nilReason
     ) AS designatedpointpropertytype
 FROM
 
@@ -5834,36 +5797,36 @@ ON routes.directflightsegment.end_fixdesignatedpoint_id = DesignatedPointPropert
 -- NavaidPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.end_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.directflightsegment
-ON routes.directflightsegment.end_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.directflightsegment
-ON routes.directflightsegment.end_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.end_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.directflightsegment
+ON routes.directflightsegment.end_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.end_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.directflightsegment
+ON routes.directflightsegment.end_position_id = PointPropertyType.id
 -- DesignatedPointPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.start_fixdesignatedpoint_id = DesignatedPointPropertyType.id
 -- NavaidPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.start_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.directflightsegment
-ON routes.directflightsegment.start_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.directflightsegment
-ON routes.directflightsegment.start_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.start_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.directflightsegment
+ON routes.directflightsegment.start_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.start_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.directflightsegment
+ON routes.directflightsegment.start_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN routes.directflightsegment
 ON routes.directflightsegment.abstractdirectflightextension_id = AbstractExtensionType.id
@@ -5883,8 +5846,7 @@ CREATE OR REPLACE VIEW directionfinderpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.directionfinder_pt.id,
-       'nilReason', navaids_points.directionfinder_pt.nilReason,
-       'href', navaids_points.directionfinder_pt.href
+       'nilReason', navaids_points.directionfinder_pt.nilReason
     ) AS directionfinderpropertytype
 FROM
 
@@ -6000,8 +5962,7 @@ CREATE OR REPLACE VIEW distanceindicationpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.distanceindication_pt.id,
-       'nilReason', navaids_points.distanceindication_pt.nilReason,
-       'href', navaids_points.distanceindication_pt.href
+       'nilReason', navaids_points.distanceindication_pt.nilReason
     ) AS distanceindicationpropertytype
 FROM
 
@@ -6055,18 +6016,18 @@ ON navaids_points.distanceindication_ts.distanceindication_ts_fixdesignatedpoint
 -- NavaidPropertyType
 LEFT JOIN navaids_points.distanceindication_ts
 ON navaids_points.distanceindication_ts.distanceindication_ts_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN navaids_points.distanceindication_ts
-ON navaids_points.distanceindication_ts.distanceindication_ts_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN navaids_points.distanceindication_ts
-ON navaids_points.distanceindication_ts.distanceindication_ts_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN navaids_points.distanceindication_ts
 ON navaids_points.distanceindication_ts.distanceindication_ts_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN navaids_points.distanceindication_ts
+ON navaids_points.distanceindication_ts.distanceindication_ts_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN navaids_points.distanceindication_ts
 ON navaids_points.distanceindication_ts.distanceindication_ts_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN navaids_points.distanceindication_ts
+ON navaids_points.distanceindication_ts.distanceindication_ts_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN navaids_points.distanceindication_ts
 ON navaids_points.distanceindication_ts.abstractdistanceindicationextension_id = AbstractExtensionType.id
@@ -6102,8 +6063,7 @@ CREATE OR REPLACE VIEW dmepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.dme_pt.id,
-       'nilReason', navaids_points.dme_pt.nilReason,
-       'href', navaids_points.dme_pt.href
+       'nilReason', navaids_points.dme_pt.nilReason
     ) AS dmepropertytype
 FROM
 
@@ -6233,8 +6193,7 @@ CREATE OR REPLACE VIEW elevationpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.elevation_pt.id,
-       'nilReason', navaids_points.elevation_pt.nilReason,
-       'href', navaids_points.elevation_pt.href
+       'nilReason', navaids_points.elevation_pt.nilReason
     ) AS elevationpropertytype
 FROM
 
@@ -6394,18 +6353,18 @@ ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_fixdesignatedpoint_id 
 -- NavaidPropertyType
 LEFT JOIN navaids_points.enroutesegmentpoint
 ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN navaids_points.enroutesegmentpoint
-ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN navaids_points.enroutesegmentpoint
-ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN navaids_points.enroutesegmentpoint
 ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN navaids_points.enroutesegmentpoint
+ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN navaids_points.enroutesegmentpoint
 ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN navaids_points.enroutesegmentpoint
+ON navaids_points.enroutesegmentpoint.enroutesegmentpoint_position_id = PointPropertyType.id
 -- RadioFrequencyAreaPropertyType
 LEFT JOIN navaids_points.enroutesegmentpoint
 ON navaids_points.enroutesegmentpoint.extendedservicevolume_id = RadioFrequencyAreaPropertyType.id
@@ -6538,6 +6497,9 @@ FASDataBlockType
 CREATE OR REPLACE VIEW fasdatablocktype_view AS
 SELECT
     jsonb_build_object(
+       'routeindicator', public.fasdatablock.routeindicator,
+       'referencepathidentifier', public.fasdatablock.referencepathidentifier,
+       'codeicao', public.fasdatablock.codeicao,
        'horizontalalarmlimit_value', public.fasdatablock.horizontalalarmlimit_value,
        'horizontalalarmlimit_nilreason', public.fasdatablock.horizontalalarmlimit_nilreason,
        'verticalalarmlimit_value', public.fasdatablock.verticalalarmlimit_value,
@@ -6550,14 +6512,8 @@ SELECT
        'serviceprovidersbas_nilreason', public.fasdatablock.serviceprovidersbas_nilreason,
        'approachperformancedesignator_value', public.fasdatablock.approachperformancedesignator_value,
        'approachperformancedesignator_nilreason', public.fasdatablock.approachperformancedesignator_nilreason,
-       'routeindicator_value', public.fasdatablock.routeindicator_value,
-       'routeindicator_nilreason', public.fasdatablock.routeindicator_nilreason,
        'referencepathdataselector_value', public.fasdatablock.referencepathdataselector_value,
        'referencepathdataselector_nilreason', public.fasdatablock.referencepathdataselector_nilreason,
-       'referencepathidentifier_value', public.fasdatablock.referencepathidentifier_value,
-       'referencepathidentifier_nilreason', public.fasdatablock.referencepathidentifier_nilreason,
-       'codeicao_value', public.fasdatablock.codeicao_value,
-       'codeicao_nilreason', public.fasdatablock.codeicao_nilreason,
        'thresholdcoursewidth_value', public.fasdatablock.thresholdcoursewidth_value,
        'thresholdcoursewidth_uom', public.fasdatablock.thresholdcoursewidth_uom,
        'thresholdcoursewidth_nilreason', public.fasdatablock.thresholdcoursewidth_nilreason,
@@ -6609,8 +6565,7 @@ CREATE OR REPLACE VIEW finallegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.finalleg_pt.id,
-       'nilReason', procedure.finalleg_pt.nilReason,
-       'href', procedure.finalleg_pt.href
+       'nilReason', procedure.finalleg_pt.nilReason
     ) AS finallegpropertytype
 FROM
 
@@ -6748,18 +6703,18 @@ ON procedure.finalleg_ts.finalpathalignmentpoint_fixdesignatedpoint_id = Designa
 -- NavaidPropertyType
 LEFT JOIN procedure.finalleg_ts
 ON procedure.finalleg_ts.finalpathalignmentpoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN procedure.finalleg_ts
-ON procedure.finalleg_ts.finalpathalignmentpoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN procedure.finalleg_ts
-ON procedure.finalleg_ts.finalpathalignmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN procedure.finalleg_ts
 ON procedure.finalleg_ts.finalpathalignmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN procedure.finalleg_ts
+ON procedure.finalleg_ts.finalpathalignmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN procedure.finalleg_ts
 ON procedure.finalleg_ts.finalpathalignmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN procedure.finalleg_ts
+ON procedure.finalleg_ts.finalpathalignmentpoint_position_id = PointPropertyType.id
 -- TerminalSegmentPointPropertyType
 LEFT JOIN procedure.finalleg_ts
 ON procedure.finalleg_ts.visualdescentpoint_id = TerminalSegmentPointPropertyType.id
@@ -6873,8 +6828,7 @@ CREATE OR REPLACE VIEW firefightingservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.firefightingservice_pt.id,
-       'nilReason', service.firefightingservice_pt.nilReason,
-       'href', service.firefightingservice_pt.href
+       'nilReason', service.firefightingservice_pt.nilReason
     ) AS firefightingservicepropertytype
 FROM
 
@@ -7161,33 +7115,15 @@ SELECT
     ) AS flightconditionelementtype
 FROM
 
--- MeteorologyPropertyType
+-- AirportHeliportPropertyType
 LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_weather_id = MeteorologyPropertyType.id
--- AircraftCharacteristicPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_aircraft_id = AircraftCharacteristicPropertyType.id
--- FlightCharacteristicPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_flight_id = FlightCharacteristicPropertyType.id
--- DirectFlightPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_directflightcondition_id = DirectFlightPropertyType.id
--- AirspaceBorderCrossingPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_bordercrossingcondition_id = AirspaceBorderCrossingPropertyType.id
--- FlightConditionCombinationPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_operand_id = FlightConditionCombinationPropertyType.id
--- RoutePortionPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_routeportioncondition_id = RoutePortionPropertyType.id
+ON routes.flightconditionelement.flightcondition_airportheliportcondition_id = AirportHeliportPropertyType.id
 -- StandardInstrumentDeparturePropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.flightcondition_standardinstrumentdeparturecondition_id = StandardInstrumentDeparturePropertyType.id
--- StandardInstrumentArrivalPropertyType
+-- RoutePortionPropertyType
 LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_standardinstrumentarrivalcondition_id = StandardInstrumentArrivalPropertyType.id
+ON routes.flightconditionelement.flightcondition_routeportioncondition_id = RoutePortionPropertyType.id
 -- OrganisationAuthorityPropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.flightcondition_organisationcondition_id = OrganisationAuthorityPropertyType.id
@@ -7197,24 +7133,42 @@ ON routes.flightconditionelement.significantpointcondition_fixdesignatedpoint_id
 -- NavaidPropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.significantpointcondition_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.significantpointcondition_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.significantpointcondition_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.significantpointcondition_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.significantpointcondition_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.significantpointcondition_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.significantpointcondition_position_id = PointPropertyType.id
+-- DirectFlightPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_directflightcondition_id = DirectFlightPropertyType.id
+-- AircraftCharacteristicPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_aircraft_id = AircraftCharacteristicPropertyType.id
+-- AirspaceBorderCrossingPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_bordercrossingcondition_id = AirspaceBorderCrossingPropertyType.id
 -- AirspacePropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.flightcondition_airspacecondition_id = AirspacePropertyType.id
--- AirportHeliportPropertyType
+-- FlightCharacteristicPropertyType
 LEFT JOIN routes.flightconditionelement
-ON routes.flightconditionelement.flightcondition_airportheliportcondition_id = AirportHeliportPropertyType.id
+ON routes.flightconditionelement.flightcondition_flight_id = FlightCharacteristicPropertyType.id
+-- StandardInstrumentArrivalPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_standardinstrumentarrivalcondition_id = StandardInstrumentArrivalPropertyType.id
+-- FlightConditionCombinationPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_operand_id = FlightConditionCombinationPropertyType.id
+-- MeteorologyPropertyType
+LEFT JOIN routes.flightconditionelement
+ON routes.flightconditionelement.flightcondition_weather_id = MeteorologyPropertyType.id
 -- AerialRefuellingPropertyType
 LEFT JOIN routes.flightconditionelement
 ON routes.flightconditionelement.flightcondition_aerialrefuellingcondition_id = AerialRefuellingPropertyType.id
@@ -7288,8 +7242,7 @@ CREATE OR REPLACE VIEW flightrestrictionpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.flightrestriction_pt.id,
-       'nilReason', routes.flightrestriction_pt.nilReason,
-       'href', routes.flightrestriction_pt.href
+       'nilReason', routes.flightrestriction_pt.nilReason
     ) AS flightrestrictionpropertytype
 FROM
 
@@ -7452,39 +7405,39 @@ SELECT
     ) AS flightroutingelementtype
 FROM
 
--- DirectFlightSegmentPropertyType
-LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.element_directflightelement_id = DirectFlightSegmentPropertyType.id
--- RoutePortionPropertyType
-LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.element_routeportionelement_id = RoutePortionPropertyType.id
--- StandardInstrumentDeparturePropertyType
-LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.element_standardinstrumentdepartureelement_id = StandardInstrumentDeparturePropertyType.id
 -- StandardInstrumentArrivalPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.element_standardinstrumentarrivalelement_id = StandardInstrumentArrivalPropertyType.id
+-- AirspacePropertyType
+LEFT JOIN routes.flightroutingelement
+ON routes.flightroutingelement.element_airspaceelement_id = AirspacePropertyType.id
 -- DesignatedPointPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.pointelement_fixdesignatedpoint_id = DesignatedPointPropertyType.id
 -- NavaidPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.pointelement_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.pointelement_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.pointelement_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.pointelement_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.flightroutingelement
+ON routes.flightroutingelement.pointelement_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.pointelement_airportreferencepoint_id = AirportHeliportPropertyType.id
--- AirspacePropertyType
+-- PointPropertyType
 LEFT JOIN routes.flightroutingelement
-ON routes.flightroutingelement.element_airspaceelement_id = AirspacePropertyType.id
+ON routes.flightroutingelement.pointelement_position_id = PointPropertyType.id
+-- DirectFlightSegmentPropertyType
+LEFT JOIN routes.flightroutingelement
+ON routes.flightroutingelement.element_directflightelement_id = DirectFlightSegmentPropertyType.id
+-- StandardInstrumentDeparturePropertyType
+LEFT JOIN routes.flightroutingelement
+ON routes.flightroutingelement.element_standardinstrumentdepartureelement_id = StandardInstrumentDeparturePropertyType.id
+-- RoutePortionPropertyType
+LEFT JOIN routes.flightroutingelement
+ON routes.flightroutingelement.element_routeportionelement_id = RoutePortionPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.flightroutingelement
 ON routes.flightroutingelement.element_airportheliportelement_id = AirportHeliportPropertyType.id
@@ -7512,8 +7465,7 @@ CREATE OR REPLACE VIEW floatingdocksitepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.floatingdocksite_pt.id,
-       'nilReason', airport_heliport.floatingdocksite_pt.nilReason,
-       'href', airport_heliport.floatingdocksite_pt.href
+       'nilReason', airport_heliport.floatingdocksite_pt.nilReason
     ) AS floatingdocksitepropertytype
 FROM
 
@@ -7626,8 +7578,7 @@ CREATE OR REPLACE VIEW geoborderpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airspace.geoborder_pt.id,
-       'nilReason', airspace.geoborder_pt.nilReason,
-       'href', airspace.geoborder_pt.href
+       'nilReason', airspace.geoborder_pt.nilReason
     ) AS geoborderpropertytype
 FROM
 
@@ -7706,8 +7657,7 @@ CREATE OR REPLACE VIEW glidepathpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.glidepath_pt.id,
-       'nilReason', navaids_points.glidepath_pt.nilReason,
-       'href', navaids_points.glidepath_pt.href
+       'nilReason', navaids_points.glidepath_pt.nilReason
     ) AS glidepathpropertytype
 FROM
 
@@ -7880,8 +7830,7 @@ CREATE OR REPLACE VIEW groundlightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.groundlightsystem_pt.id,
-       'nilReason', airport_heliport.groundlightsystem_pt.nilReason,
-       'href', airport_heliport.groundlightsystem_pt.href
+       'nilReason', airport_heliport.groundlightsystem_pt.nilReason
     ) AS groundlightsystempropertytype
 FROM
 
@@ -7893,8 +7842,7 @@ CREATE OR REPLACE VIEW groundtrafficcontrolservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.groundtrafficcontrolservice_pt.id,
-       'nilReason', service.groundtrafficcontrolservice_pt.nilReason,
-       'href', service.groundtrafficcontrolservice_pt.href
+       'nilReason', service.groundtrafficcontrolservice_pt.nilReason
     ) AS groundtrafficcontrolservicepropertytype
 FROM
 
@@ -8017,8 +7965,7 @@ CREATE OR REPLACE VIEW guidancelinelightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.guidancelinelightsystem_pt.id,
-       'nilReason', airport_heliport.guidancelinelightsystem_pt.nilReason,
-       'href', airport_heliport.guidancelinelightsystem_pt.href
+       'nilReason', airport_heliport.guidancelinelightsystem_pt.nilReason
     ) AS guidancelinelightsystempropertytype
 FROM
 
@@ -8112,8 +8059,7 @@ CREATE OR REPLACE VIEW guidancelinemarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.guidancelinemarking_pt.id,
-       'nilReason', airport_heliport.guidancelinemarking_pt.nilReason,
-       'href', airport_heliport.guidancelinemarking_pt.href
+       'nilReason', airport_heliport.guidancelinemarking_pt.nilReason
     ) AS guidancelinemarkingpropertytype
 FROM
 
@@ -8200,8 +8146,7 @@ CREATE OR REPLACE VIEW guidancelinepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.guidanceline_pt.id,
-       'nilReason', airport_heliport.guidanceline_pt.nilReason,
-       'href', airport_heliport.guidanceline_pt.href
+       'nilReason', airport_heliport.guidanceline_pt.nilReason
     ) AS guidancelinepropertytype
 FROM
 
@@ -8310,8 +8255,7 @@ CREATE OR REPLACE VIEW holdingassessmentpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.holdingassessment_pt.id,
-       'nilReason', shared.holdingassessment_pt.nilReason,
-       'href', shared.holdingassessment_pt.href
+       'nilReason', shared.holdingassessment_pt.nilReason
     ) AS holdingassessmentpropertytype
 FROM
 
@@ -8498,8 +8442,7 @@ CREATE OR REPLACE VIEW holdingpatternpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', holding.holdingpattern_pt.id,
-       'nilReason', holding.holdingpattern_pt.nilReason,
-       'href', holding.holdingpattern_pt.href
+       'nilReason', holding.holdingpattern_pt.nilReason
     ) AS holdingpatternpropertytype
 FROM
 
@@ -8563,15 +8506,15 @@ SELECT
     ) AS holdingpatterntimeslicetype
 FROM
 
--- SegmentPointPropertyType
-LEFT JOIN holding.holdingpattern_ts
-ON holding.holdingpattern_ts.outboundlegspan_endpoint_id = SegmentPointPropertyType.id
--- HoldingPatternDistancePropertyType
-LEFT JOIN holding.holdingpattern_ts
-ON holding.holdingpattern_ts.outboundlegspan_enddistance_id = HoldingPatternDistancePropertyType.id
 -- HoldingPatternDurationPropertyType
 LEFT JOIN holding.holdingpattern_ts
 ON holding.holdingpattern_ts.outboundlegspan_endtime_id = HoldingPatternDurationPropertyType.id
+-- HoldingPatternDistancePropertyType
+LEFT JOIN holding.holdingpattern_ts
+ON holding.holdingpattern_ts.outboundlegspan_enddistance_id = HoldingPatternDistancePropertyType.id
+-- SegmentPointPropertyType
+LEFT JOIN holding.holdingpattern_ts
+ON holding.holdingpattern_ts.outboundlegspan_endpoint_id = SegmentPointPropertyType.id
 -- SegmentPointPropertyType
 LEFT JOIN holding.holdingpattern_ts
 ON holding.holdingpattern_ts.holdingpoint_id = SegmentPointPropertyType.id
@@ -8661,8 +8604,7 @@ CREATE OR REPLACE VIEW informationservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.informationservice_pt.id,
-       'nilReason', service.informationservice_pt.nilReason,
-       'href', service.informationservice_pt.href
+       'nilReason', service.informationservice_pt.nilReason
     ) AS informationservicepropertytype
 FROM
 
@@ -8814,8 +8756,7 @@ CREATE OR REPLACE VIEW initiallegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.initialleg_pt.id,
-       'nilReason', procedure.initialleg_pt.nilReason,
-       'href', procedure.initialleg_pt.href
+       'nilReason', procedure.initialleg_pt.nilReason
     ) AS initiallegpropertytype
 FROM
 
@@ -8979,8 +8920,7 @@ CREATE OR REPLACE VIEW instrumentapproachprocedurepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.instrumentapproachprocedure_pt.id,
-       'nilReason', procedure.instrumentapproachprocedure_pt.nilReason,
-       'href', procedure.instrumentapproachprocedure_pt.href
+       'nilReason', procedure.instrumentapproachprocedure_pt.nilReason
     ) AS instrumentapproachprocedurepropertytype
 FROM
 
@@ -9049,15 +8989,15 @@ SELECT
     ) AS instrumentapproachproceduretimeslicetype
 FROM
 
+-- NavaidPropertyType
+LEFT JOIN procedure.instrumentapproachprocedure_ts
+ON procedure.instrumentapproachprocedure_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SpecialNavigationSystemPropertyType
 LEFT JOIN procedure.instrumentapproachprocedure_ts
 ON procedure.instrumentapproachprocedure_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id
 -- RadarSystemPropertyType
 LEFT JOIN procedure.instrumentapproachprocedure_ts
 ON procedure.instrumentapproachprocedure_ts.guidancefacility_radar_id = RadarSystemPropertyType.id
--- NavaidPropertyType
-LEFT JOIN procedure.instrumentapproachprocedure_ts
-ON procedure.instrumentapproachprocedure_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SafeAltitudeAreaPropertyType
 LEFT JOIN procedure.instrumentapproachprocedure_ts
 ON procedure.instrumentapproachprocedure_ts.safealtitude_id = SafeAltitudeAreaPropertyType.id
@@ -9130,8 +9070,7 @@ CREATE OR REPLACE VIEW intermediatelegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.intermediateleg_pt.id,
-       'nilReason', procedure.intermediateleg_pt.nilReason,
-       'href', procedure.intermediateleg_pt.href
+       'nilReason', procedure.intermediateleg_pt.nilReason
     ) AS intermediatelegpropertytype
 FROM
 
@@ -9521,8 +9460,7 @@ CREATE OR REPLACE VIEW localizerpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.localizer_pt.id,
-       'nilReason', navaids_points.localizer_pt.nilReason,
-       'href', navaids_points.localizer_pt.href
+       'nilReason', navaids_points.localizer_pt.nilReason
     ) AS localizerpropertytype
 FROM
 
@@ -9762,8 +9700,7 @@ CREATE OR REPLACE VIEW markerbeaconpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.markerbeacon_pt.id,
-       'nilReason', navaids_points.markerbeacon_pt.nilReason,
-       'href', navaids_points.markerbeacon_pt.href
+       'nilReason', navaids_points.markerbeacon_pt.nilReason
     ) AS markerbeaconpropertytype
 FROM
 
@@ -9881,8 +9818,7 @@ CREATE OR REPLACE VIEW markingbuoypropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.markingbuoy_pt.id,
-       'nilReason', airport_heliport.markingbuoy_pt.nilReason,
-       'href', airport_heliport.markingbuoy_pt.href
+       'nilReason', airport_heliport.markingbuoy_pt.nilReason
     ) AS markingbuoypropertytype
 FROM
 
@@ -9907,8 +9843,7 @@ MarkingBuoyTimeSliceType
 CREATE OR REPLACE VIEW markingbuoytimeslicetype_view AS
 SELECT
     jsonb_build_object(
-       'designator_value', airport_heliport.markingbuoy_ts.designator_value,
-       'designator_nilreason', airport_heliport.markingbuoy_ts.designator_nilreason,
+       'designator', airport_heliport.markingbuoy_ts.designator,
        'type_value', airport_heliport.markingbuoy_ts.type_value,
        'type_nilreason', airport_heliport.markingbuoy_ts.type_nilreason,
        'colour_value', airport_heliport.markingbuoy_ts.colour_value,
@@ -9990,12 +9925,12 @@ SELECT
     ) AS markingelementtype
 FROM
 
--- ElevatedCurvePropertyType
-LEFT JOIN airport_heliport.markingelement
-ON airport_heliport.markingelement.extent_curveextent_id = ElevatedCurvePropertyType.id
 -- ElevatedSurfacePropertyType
 LEFT JOIN airport_heliport.markingelement
 ON airport_heliport.markingelement.extent_surfaceextent_id = ElevatedSurfacePropertyType.id
+-- ElevatedCurvePropertyType
+LEFT JOIN airport_heliport.markingelement
+ON airport_heliport.markingelement.extent_curveextent_id = ElevatedCurvePropertyType.id
 -- ElevatedPointPropertyType
 LEFT JOIN airport_heliport.markingelement
 ON airport_heliport.markingelement.extent_location_id = ElevatedPointPropertyType.id
@@ -10015,8 +9950,7 @@ CREATE OR REPLACE VIEW markingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.marking_pt.id,
-       'nilReason', airport_heliport.marking_pt.nilReason,
-       'href', airport_heliport.marking_pt.href
+       'nilReason', airport_heliport.marking_pt.nilReason
     ) AS markingpropertytype
 FROM
 
@@ -10206,8 +10140,7 @@ CREATE OR REPLACE VIEW missedapproachlegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.missedapproachleg_pt.id,
-       'nilReason', procedure.missedapproachleg_pt.nilReason,
-       'href', procedure.missedapproachleg_pt.href
+       'nilReason', procedure.missedapproachleg_pt.nilReason
     ) AS missedapproachlegpropertytype
 FROM
 
@@ -10524,8 +10457,7 @@ CREATE OR REPLACE VIEW navaidequipmentpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.navaidequipment_pt.id,
-       'nilReason', navaids_points.navaidequipment_pt.nilReason,
-       'href', navaids_points.navaidequipment_pt.href
+       'nilReason', navaids_points.navaidequipment_pt.nilReason
     ) AS navaidequipmentpropertytype
 FROM
 
@@ -10590,8 +10522,7 @@ CREATE OR REPLACE VIEW navaidpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.navaid_pt.id,
-       'nilReason', navaids_points.navaid_pt.nilReason,
-       'href', navaids_points.navaid_pt.href
+       'nilReason', navaids_points.navaid_pt.nilReason
     ) AS navaidpropertytype
 FROM
 
@@ -10707,8 +10638,7 @@ CREATE OR REPLACE VIEW navigationareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.navigationarea_pt.id,
-       'nilReason', procedure.navigationarea_pt.nilReason,
-       'href', procedure.navigationarea_pt.href
+       'nilReason', procedure.navigationarea_pt.nilReason
     ) AS navigationareapropertytype
 FROM
 
@@ -10720,8 +10650,7 @@ CREATE OR REPLACE VIEW navigationarearestrictionpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.navigationarearestriction_pt.id,
-       'nilReason', procedure.navigationarearestriction_pt.nilReason,
-       'href', procedure.navigationarearestriction_pt.href
+       'nilReason', procedure.navigationarearestriction_pt.nilReason
     ) AS navigationarearestrictionpropertytype
 FROM
 
@@ -10900,18 +10829,18 @@ ON procedure.navigationarea_ts.centrepoint_fixdesignatedpoint_id = DesignatedPoi
 -- NavaidPropertyType
 LEFT JOIN procedure.navigationarea_ts
 ON procedure.navigationarea_ts.centrepoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN procedure.navigationarea_ts
-ON procedure.navigationarea_ts.centrepoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN procedure.navigationarea_ts
-ON procedure.navigationarea_ts.centrepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN procedure.navigationarea_ts
 ON procedure.navigationarea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN procedure.navigationarea_ts
+ON procedure.navigationarea_ts.centrepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN procedure.navigationarea_ts
 ON procedure.navigationarea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN procedure.navigationarea_ts
+ON procedure.navigationarea_ts.centrepoint_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN procedure.navigationarea_ts
 ON procedure.navigationarea_ts.abstractnavigationareaextension_id = AbstractExtensionType.id
@@ -10952,8 +10881,7 @@ CREATE OR REPLACE VIEW navigationsystemcheckpointpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.navigationsystemcheckpoint_pt.id,
-       'nilReason', navaids_points.navigationsystemcheckpoint_pt.nilReason,
-       'href', navaids_points.navigationsystemcheckpoint_pt.href
+       'nilReason', navaids_points.navigationsystemcheckpoint_pt.nilReason
     ) AS navigationsystemcheckpointpropertytype
 FROM
 
@@ -10965,8 +10893,7 @@ CREATE OR REPLACE VIEW ndbpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.ndb_pt.id,
-       'nilReason', navaids_points.ndb_pt.nilReason,
-       'href', navaids_points.ndb_pt.href
+       'nilReason', navaids_points.ndb_pt.nilReason
     ) AS ndbpropertytype
 FROM
 
@@ -11120,8 +11047,7 @@ CREATE OR REPLACE VIEW nonmovementareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.nonmovementarea_pt.id,
-       'nilReason', airport_heliport.nonmovementarea_pt.nilReason,
-       'href', airport_heliport.nonmovementarea_pt.href
+       'nilReason', airport_heliport.nonmovementarea_pt.nilReason
     ) AS nonmovementareapropertytype
 FROM
 
@@ -11239,8 +11165,7 @@ CREATE OR REPLACE VIEW obstacleareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', obstacles.obstaclearea_pt.id,
-       'nilReason', obstacles.obstaclearea_pt.nilReason,
-       'href', obstacles.obstaclearea_pt.href
+       'nilReason', obstacles.obstaclearea_pt.nilReason
     ) AS obstacleareapropertytype
 FROM
 
@@ -11281,15 +11206,15 @@ SELECT
     ) AS obstacleareatimeslicetype
 FROM
 
--- OrganisationAuthorityPropertyType
-LEFT JOIN obstacles.obstaclearea_ts
-ON obstacles.obstaclearea_ts.reference_ownerorganisation_id = OrganisationAuthorityPropertyType.id
--- RunwayDirectionPropertyType
-LEFT JOIN obstacles.obstaclearea_ts
-ON obstacles.obstaclearea_ts.reference_ownerrunway_id = RunwayDirectionPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN obstacles.obstaclearea_ts
 ON obstacles.obstaclearea_ts.reference_ownerairport_id = AirportHeliportPropertyType.id
+-- RunwayDirectionPropertyType
+LEFT JOIN obstacles.obstaclearea_ts
+ON obstacles.obstaclearea_ts.reference_ownerrunway_id = RunwayDirectionPropertyType.id
+-- OrganisationAuthorityPropertyType
+LEFT JOIN obstacles.obstaclearea_ts
+ON obstacles.obstaclearea_ts.reference_ownerorganisation_id = OrganisationAuthorityPropertyType.id
 -- SurfacePropertyType
 LEFT JOIN obstacles.obstaclearea_ts
 ON obstacles.obstaclearea_ts.surfaceextent_id = SurfacePropertyType.id
@@ -11647,8 +11572,7 @@ CREATE OR REPLACE VIEW organisationauthoritypropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', organisation.organisationauthority_pt.id,
-       'nilReason', organisation.organisationauthority_pt.nilReason,
-       'href', organisation.organisationauthority_pt.href
+       'nilReason', organisation.organisationauthority_pt.nilReason
     ) AS organisationauthoritypropertytype
 FROM
 
@@ -11776,8 +11700,7 @@ CREATE OR REPLACE VIEW passengerloadingbridgepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.passengerloadingbridge_pt.id,
-       'nilReason', airport_heliport.passengerloadingbridge_pt.nilReason,
-       'href', airport_heliport.passengerloadingbridge_pt.href
+       'nilReason', airport_heliport.passengerloadingbridge_pt.nilReason
     ) AS passengerloadingbridgepropertytype
 FROM
 
@@ -11859,8 +11782,7 @@ CREATE OR REPLACE VIEW passengerservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.passengerservice_pt.id,
-       'nilReason', service.passengerservice_pt.nilReason,
-       'href', service.passengerservice_pt.href
+       'nilReason', service.passengerservice_pt.nilReason
     ) AS passengerservicepropertytype
 FROM
 
@@ -11979,8 +11901,7 @@ CREATE OR REPLACE VIEW pilotcontrolledlightingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.pilotcontrolledlighting_pt.id,
-       'nilReason', service.pilotcontrolledlighting_pt.nilReason,
-       'href', service.pilotcontrolledlighting_pt.href
+       'nilReason', service.pilotcontrolledlighting_pt.nilReason
     ) AS pilotcontrolledlightingpropertytype
 FROM
 
@@ -12195,8 +12116,7 @@ CREATE OR REPLACE VIEW precisionapproachradarpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.precisionapproachradar_pt.id,
-       'nilReason', surveillance.precisionapproachradar_pt.nilReason,
-       'href', surveillance.precisionapproachradar_pt.href
+       'nilReason', surveillance.precisionapproachradar_pt.nilReason
     ) AS precisionapproachradarpropertytype
 FROM
 
@@ -12320,8 +12240,7 @@ CREATE OR REPLACE VIEW primarysurveillanceradarpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.primarysurveillanceradar_pt.id,
-       'nilReason', surveillance.primarysurveillanceradar_pt.nilReason,
-       'href', surveillance.primarysurveillanceradar_pt.href
+       'nilReason', surveillance.primarysurveillanceradar_pt.nilReason
     ) AS primarysurveillanceradarpropertytype
 FROM
 
@@ -12509,8 +12428,7 @@ CREATE OR REPLACE VIEW proceduredmepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.proceduredme_pt.id,
-       'nilReason', procedure.proceduredme_pt.nilReason,
-       'href', procedure.proceduredme_pt.href
+       'nilReason', procedure.proceduredme_pt.nilReason
     ) AS proceduredmepropertytype
 FROM
 
@@ -12592,8 +12510,7 @@ CREATE OR REPLACE VIEW procedurepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.procedure_pt.id,
-       'nilReason', procedure.procedure_pt.nilReason,
-       'href', procedure.procedure_pt.href
+       'nilReason', procedure.procedure_pt.nilReason
     ) AS procedurepropertytype
 FROM
 
@@ -12753,8 +12670,7 @@ CREATE OR REPLACE VIEW radarequipmentpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.radarequipment_pt.id,
-       'nilReason', surveillance.radarequipment_pt.nilReason,
-       'href', surveillance.radarequipment_pt.href
+       'nilReason', surveillance.radarequipment_pt.nilReason
     ) AS radarequipmentpropertytype
 FROM
 
@@ -12766,8 +12682,7 @@ CREATE OR REPLACE VIEW radarsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.radarsystem_pt.id,
-       'nilReason', surveillance.radarsystem_pt.nilReason,
-       'href', surveillance.radarsystem_pt.href
+       'nilReason', surveillance.radarsystem_pt.nilReason
     ) AS radarsystempropertytype
 FROM
 
@@ -12868,8 +12783,7 @@ CREATE OR REPLACE VIEW radiocommunicationchannelpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.radiocommunicationchannel_pt.id,
-       'nilReason', service.radiocommunicationchannel_pt.nilReason,
-       'href', service.radiocommunicationchannel_pt.href
+       'nilReason', service.radiocommunicationchannel_pt.nilReason
     ) AS radiocommunicationchannelpropertytype
 FROM
 
@@ -13024,8 +12938,7 @@ CREATE OR REPLACE VIEW radiofrequencyareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.radiofrequencyarea_pt.id,
-       'nilReason', shared.radiofrequencyarea_pt.nilReason,
-       'href', shared.radiofrequencyarea_pt.href
+       'nilReason', shared.radiofrequencyarea_pt.nilReason
     ) AS radiofrequencyareapropertytype
 FROM
 
@@ -13068,21 +12981,21 @@ SELECT
     ) AS radiofrequencyareatimeslicetype
 FROM
 
--- SecondarySurveillanceRadarPropertyType
+-- NavaidEquipmentPropertyType
 LEFT JOIN shared.radiofrequencyarea_ts
-ON shared.radiofrequencyarea_ts.equipment_radar_id = SecondarySurveillanceRadarPropertyType.id
--- PrecisionApproachRadarPropertyType
-LEFT JOIN shared.radiofrequencyarea_ts
-ON shared.radiofrequencyarea_ts.equipment_precisionapproachradar_id = PrecisionApproachRadarPropertyType.id
+ON shared.radiofrequencyarea_ts.equipment_navaidequipment_id = NavaidEquipmentPropertyType.id
 -- RadioCommunicationChannelPropertyType
 LEFT JOIN shared.radiofrequencyarea_ts
 ON shared.radiofrequencyarea_ts.equipment_frequency_id = RadioCommunicationChannelPropertyType.id
 -- SpecialNavigationStationPropertyType
 LEFT JOIN shared.radiofrequencyarea_ts
 ON shared.radiofrequencyarea_ts.equipment_specialnavigationstation_id = SpecialNavigationStationPropertyType.id
--- NavaidEquipmentPropertyType
+-- PrecisionApproachRadarPropertyType
 LEFT JOIN shared.radiofrequencyarea_ts
-ON shared.radiofrequencyarea_ts.equipment_navaidequipment_id = NavaidEquipmentPropertyType.id
+ON shared.radiofrequencyarea_ts.equipment_precisionapproachradar_id = PrecisionApproachRadarPropertyType.id
+-- SecondarySurveillanceRadarPropertyType
+LEFT JOIN shared.radiofrequencyarea_ts
+ON shared.radiofrequencyarea_ts.equipment_radar_id = SecondarySurveillanceRadarPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN shared.radiofrequencyarea_ts
 ON shared.radiofrequencyarea_ts.abstractradiofrequencyareaextension_id = AbstractExtensionType.id
@@ -13213,8 +13126,7 @@ CREATE OR REPLACE VIEW roadpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.road_pt.id,
-       'nilReason', airport_heliport.road_pt.nilReason,
-       'href', airport_heliport.road_pt.href
+       'nilReason', airport_heliport.road_pt.nilReason
     ) AS roadpropertytype
 FROM
 
@@ -13368,8 +13280,7 @@ CREATE OR REPLACE VIEW routedmepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.routedme_pt.id,
-       'nilReason', routes.routedme_pt.nilReason,
-       'href', routes.routedme_pt.href
+       'nilReason', routes.routedme_pt.nilReason
     ) AS routedmepropertytype
 FROM
 
@@ -13477,36 +13388,36 @@ ON routes.routeportion.start_fixdesignatedpoint_id = DesignatedPointPropertyType
 -- NavaidPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.start_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.start_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.start_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.start_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.start_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.start_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.start_position_id = PointPropertyType.id
 -- DesignatedPointPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.intermediatepoint_fixdesignatedpoint_id = DesignatedPointPropertyType.id
 -- NavaidPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.intermediatepoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.intermediatepoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.intermediatepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.intermediatepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.intermediatepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.intermediatepoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.intermediatepoint_position_id = PointPropertyType.id
 -- RoutePropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.referencedroute_id = RoutePropertyType.id
@@ -13516,18 +13427,18 @@ ON routes.routeportion.end_fixdesignatedpoint_id = DesignatedPointPropertyType.i
 -- NavaidPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.end_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.end_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN routes.routeportion
-ON routes.routeportion.end_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.end_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.end_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.end_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN routes.routeportion
+ON routes.routeportion.end_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN routes.routeportion
 ON routes.routeportion.abstractrouteportionextension_id = AbstractExtensionType.id
@@ -13544,8 +13455,7 @@ CREATE OR REPLACE VIEW routepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.route_pt.id,
-       'nilReason', routes.route_pt.nilReason,
-       'href', routes.route_pt.href
+       'nilReason', routes.route_pt.nilReason
     ) AS routepropertytype
 FROM
 
@@ -13557,8 +13467,7 @@ CREATE OR REPLACE VIEW routesegmentpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', routes.routesegment_pt.id,
-       'nilReason', routes.routesegment_pt.nilReason,
-       'href', routes.routesegment_pt.href
+       'nilReason', routes.routesegment_pt.nilReason
     ) AS routesegmentpropertytype
 FROM
 
@@ -13792,8 +13701,7 @@ CREATE OR REPLACE VIEW rulesprocedurespropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', rules_procedures.rulesprocedures_pt.id,
-       'nilReason', rules_procedures.rulesprocedures_pt.nilReason,
-       'href', rules_procedures.rulesprocedures_pt.href
+       'nilReason', rules_procedures.rulesprocedures_pt.nilReason
     ) AS rulesprocedurespropertytype
 FROM
 
@@ -13879,8 +13787,7 @@ CREATE OR REPLACE VIEW runwayblastpadpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwayblastpad_pt.id,
-       'nilReason', airport_heliport.runwayblastpad_pt.nilReason,
-       'href', airport_heliport.runwayblastpad_pt.href
+       'nilReason', airport_heliport.runwayblastpad_pt.nilReason
     ) AS runwayblastpadpropertytype
 FROM
 
@@ -13966,8 +13873,7 @@ CREATE OR REPLACE VIEW runwaycentrelinepointpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwaycentrelinepoint_pt.id,
-       'nilReason', airport_heliport.runwaycentrelinepoint_pt.nilReason,
-       'href', airport_heliport.runwaycentrelinepoint_pt.href
+       'nilReason', airport_heliport.runwaycentrelinepoint_pt.nilReason
     ) AS runwaycentrelinepointpropertytype
 FROM
 
@@ -14072,10 +13978,10 @@ RunwayContaminationType
 CREATE OR REPLACE VIEW runwaycontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.runwaycontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.runwaycontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.runwaycontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.runwaycontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.runwaycontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.runwaycontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.runwaycontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.runwaycontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.runwaycontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.runwaycontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.runwaycontamination.frictionestimation_value,
@@ -14250,8 +14156,7 @@ CREATE OR REPLACE VIEW runwaydirectionlightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwaydirectionlightsystem_pt.id,
-       'nilReason', airport_heliport.runwaydirectionlightsystem_pt.nilReason,
-       'href', airport_heliport.runwaydirectionlightsystem_pt.href
+       'nilReason', airport_heliport.runwaydirectionlightsystem_pt.nilReason
     ) AS runwaydirectionlightsystempropertytype
 FROM
 
@@ -14347,8 +14252,7 @@ CREATE OR REPLACE VIEW runwaydirectionpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwaydirection_pt.id,
-       'nilReason', airport_heliport.runwaydirection_pt.nilReason,
-       'href', airport_heliport.runwaydirection_pt.href
+       'nilReason', airport_heliport.runwaydirection_pt.nilReason
     ) AS runwaydirectionpropertytype
 FROM
 
@@ -14457,8 +14361,7 @@ CREATE OR REPLACE VIEW runwayelementpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwayelement_pt.id,
-       'nilReason', airport_heliport.runwayelement_pt.nilReason,
-       'href', airport_heliport.runwayelement_pt.href
+       'nilReason', airport_heliport.runwayelement_pt.nilReason
     ) AS runwayelementpropertytype
 FROM
 
@@ -14556,8 +14459,7 @@ CREATE OR REPLACE VIEW runwaymarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwaymarking_pt.id,
-       'nilReason', airport_heliport.runwaymarking_pt.nilReason,
-       'href', airport_heliport.runwaymarking_pt.href
+       'nilReason', airport_heliport.runwaymarking_pt.nilReason
     ) AS runwaymarkingpropertytype
 FROM
 
@@ -14646,8 +14548,7 @@ CREATE OR REPLACE VIEW runwaypropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runway_pt.id,
-       'nilReason', airport_heliport.runway_pt.nilReason,
-       'href', airport_heliport.runway_pt.href
+       'nilReason', airport_heliport.runway_pt.nilReason
     ) AS runwaypropertytype
 FROM
 
@@ -14659,8 +14560,7 @@ CREATE OR REPLACE VIEW runwayprotectarealightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwayprotectarealightsystem_pt.id,
-       'nilReason', airport_heliport.runwayprotectarealightsystem_pt.nilReason,
-       'href', airport_heliport.runwayprotectarealightsystem_pt.href
+       'nilReason', airport_heliport.runwayprotectarealightsystem_pt.nilReason
     ) AS runwayprotectarealightsystempropertytype
 FROM
 
@@ -14756,8 +14656,7 @@ CREATE OR REPLACE VIEW runwayprotectareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwayprotectarea_pt.id,
-       'nilReason', airport_heliport.runwayprotectarea_pt.nilReason,
-       'href', airport_heliport.runwayprotectarea_pt.href
+       'nilReason', airport_heliport.runwayprotectarea_pt.nilReason
     ) AS runwayprotectareapropertytype
 FROM
 
@@ -14868,10 +14767,10 @@ RunwaySectionContaminationType
 CREATE OR REPLACE VIEW runwaysectioncontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.runwaysectioncontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.runwaysectioncontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.runwaysectioncontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.runwaysectioncontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.runwaysectioncontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.runwaysectioncontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.runwaysectioncontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.runwaysectioncontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.runwaysectioncontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.runwaysectioncontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.runwaysectioncontamination.frictionestimation_value,
@@ -15036,8 +14935,7 @@ CREATE OR REPLACE VIEW runwayvisualrangepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.runwayvisualrange_pt.id,
-       'nilReason', airport_heliport.runwayvisualrange_pt.nilReason,
-       'href', airport_heliport.runwayvisualrange_pt.href
+       'nilReason', airport_heliport.runwayvisualrange_pt.nilReason
     ) AS runwayvisualrangepropertytype
 FROM
 
@@ -15119,8 +15017,7 @@ CREATE OR REPLACE VIEW safealtitudeareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.safealtitudearea_pt.id,
-       'nilReason', procedure.safealtitudearea_pt.nilReason,
-       'href', procedure.safealtitudearea_pt.href
+       'nilReason', procedure.safealtitudearea_pt.nilReason
     ) AS safealtitudeareapropertytype
 FROM
 
@@ -15215,18 +15112,18 @@ ON procedure.safealtitudearea_ts.centrepoint_fixdesignatedpoint_id = DesignatedP
 -- NavaidPropertyType
 LEFT JOIN procedure.safealtitudearea_ts
 ON procedure.safealtitudearea_ts.centrepoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN procedure.safealtitudearea_ts
-ON procedure.safealtitudearea_ts.centrepoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN procedure.safealtitudearea_ts
-ON procedure.safealtitudearea_ts.centrepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN procedure.safealtitudearea_ts
 ON procedure.safealtitudearea_ts.centrepoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN procedure.safealtitudearea_ts
+ON procedure.safealtitudearea_ts.centrepoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN procedure.safealtitudearea_ts
 ON procedure.safealtitudearea_ts.centrepoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN procedure.safealtitudearea_ts
+ON procedure.safealtitudearea_ts.centrepoint_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN procedure.safealtitudearea_ts
 ON procedure.safealtitudearea_ts.abstractsafealtitudeareaextension_id = AbstractExtensionType.id
@@ -15272,8 +15169,7 @@ CREATE OR REPLACE VIEW sdfpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.sdf_pt.id,
-       'nilReason', navaids_points.sdf_pt.nilReason,
-       'href', navaids_points.sdf_pt.href
+       'nilReason', navaids_points.sdf_pt.nilReason
     ) AS sdfpropertytype
 FROM
 
@@ -15389,8 +15285,7 @@ CREATE OR REPLACE VIEW seaplanelandingareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.seaplanelandingarea_pt.id,
-       'nilReason', airport_heliport.seaplanelandingarea_pt.nilReason,
-       'href', airport_heliport.seaplanelandingarea_pt.href
+       'nilReason', airport_heliport.seaplanelandingarea_pt.nilReason
     ) AS seaplanelandingareapropertytype
 FROM
 
@@ -15480,8 +15375,7 @@ CREATE OR REPLACE VIEW seaplanerampsitepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.seaplanerampsite_pt.id,
-       'nilReason', airport_heliport.seaplanerampsite_pt.nilReason,
-       'href', airport_heliport.seaplanerampsite_pt.href
+       'nilReason', airport_heliport.seaplanerampsite_pt.nilReason
     ) AS seaplanerampsitepropertytype
 FROM
 
@@ -15559,8 +15453,7 @@ CREATE OR REPLACE VIEW searchrescueservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.searchrescueservice_pt.id,
-       'nilReason', service.searchrescueservice_pt.nilReason,
-       'href', service.searchrescueservice_pt.href
+       'nilReason', service.searchrescueservice_pt.nilReason
     ) AS searchrescueservicepropertytype
 FROM
 
@@ -15681,8 +15574,7 @@ CREATE OR REPLACE VIEW secondarysurveillanceradarpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.secondarysurveillanceradar_pt.id,
-       'nilReason', surveillance.secondarysurveillanceradar_pt.nilReason,
-       'href', surveillance.secondarysurveillanceradar_pt.href
+       'nilReason', surveillance.secondarysurveillanceradar_pt.nilReason
     ) AS secondarysurveillanceradarpropertytype
 FROM
 
@@ -15868,8 +15760,7 @@ CREATE OR REPLACE VIEW segmentlegpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.segmentleg_pt.id,
-       'nilReason', procedure.segmentleg_pt.nilReason,
-       'href', procedure.segmentleg_pt.href
+       'nilReason', procedure.segmentleg_pt.nilReason
     ) AS segmentlegpropertytype
 FROM
 
@@ -15943,8 +15834,7 @@ CREATE OR REPLACE VIEW servicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.service_pt.id,
-       'nilReason', service.service_pt.nilReason,
-       'href', service.service_pt.href
+       'nilReason', service.service_pt.nilReason
     ) AS servicepropertytype
 FROM
 
@@ -15956,8 +15846,7 @@ CREATE OR REPLACE VIEW significantpointinairspacepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.significantpointinairspace_pt.id,
-       'nilReason', navaids_points.significantpointinairspace_pt.nilReason,
-       'href', navaids_points.significantpointinairspace_pt.href
+       'nilReason', navaids_points.significantpointinairspace_pt.nilReason
     ) AS significantpointinairspacepropertytype
 FROM
 
@@ -16007,18 +15896,18 @@ ON navaids_points.significantpointinairspace_ts.location_fixdesignatedpoint_id =
 -- NavaidPropertyType
 LEFT JOIN navaids_points.significantpointinairspace_ts
 ON navaids_points.significantpointinairspace_ts.location_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN navaids_points.significantpointinairspace_ts
-ON navaids_points.significantpointinairspace_ts.location_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN navaids_points.significantpointinairspace_ts
-ON navaids_points.significantpointinairspace_ts.location_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN navaids_points.significantpointinairspace_ts
 ON navaids_points.significantpointinairspace_ts.location_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN navaids_points.significantpointinairspace_ts
+ON navaids_points.significantpointinairspace_ts.location_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN navaids_points.significantpointinairspace_ts
 ON navaids_points.significantpointinairspace_ts.location_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN navaids_points.significantpointinairspace_ts
+ON navaids_points.significantpointinairspace_ts.location_position_id = PointPropertyType.id
 -- AbstractExtensionType
 LEFT JOIN navaids_points.significantpointinairspace_ts
 ON navaids_points.significantpointinairspace_ts.abstractsignificantpointinairspaceextension_id = AbstractExtensionType.id
@@ -16054,8 +15943,7 @@ CREATE OR REPLACE VIEW specialdatepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.specialdate_pt.id,
-       'nilReason', shared.specialdate_pt.nilReason,
-       'href', shared.specialdate_pt.href
+       'nilReason', shared.specialdate_pt.nilReason
     ) AS specialdatepropertytype
 FROM
 
@@ -16138,8 +16026,7 @@ CREATE OR REPLACE VIEW specialnavigationstationpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.specialnavigationstation_pt.id,
-       'nilReason', navaids_points.specialnavigationstation_pt.nilReason,
-       'href', navaids_points.specialnavigationstation_pt.href
+       'nilReason', navaids_points.specialnavigationstation_pt.nilReason
     ) AS specialnavigationstationpropertytype
 FROM
 
@@ -16285,8 +16172,7 @@ CREATE OR REPLACE VIEW specialnavigationsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.specialnavigationsystem_pt.id,
-       'nilReason', navaids_points.specialnavigationsystem_pt.nilReason,
-       'href', navaids_points.specialnavigationsystem_pt.href
+       'nilReason', navaids_points.specialnavigationsystem_pt.nilReason
     ) AS specialnavigationsystempropertytype
 FROM
 
@@ -16367,8 +16253,7 @@ CREATE OR REPLACE VIEW standardinstrumentarrivalpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.standardinstrumentarrival_pt.id,
-       'nilReason', procedure.standardinstrumentarrival_pt.nilReason,
-       'href', procedure.standardinstrumentarrival_pt.href
+       'nilReason', procedure.standardinstrumentarrival_pt.nilReason
     ) AS standardinstrumentarrivalpropertytype
 FROM
 
@@ -16421,15 +16306,15 @@ SELECT
     ) AS standardinstrumentarrivaltimeslicetype
 FROM
 
+-- NavaidPropertyType
+LEFT JOIN procedure.standardinstrumentarrival_ts
+ON procedure.standardinstrumentarrival_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SpecialNavigationSystemPropertyType
 LEFT JOIN procedure.standardinstrumentarrival_ts
 ON procedure.standardinstrumentarrival_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id
 -- RadarSystemPropertyType
 LEFT JOIN procedure.standardinstrumentarrival_ts
 ON procedure.standardinstrumentarrival_ts.guidancefacility_radar_id = RadarSystemPropertyType.id
--- NavaidPropertyType
-LEFT JOIN procedure.standardinstrumentarrival_ts
-ON procedure.standardinstrumentarrival_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SafeAltitudeAreaPropertyType
 LEFT JOIN procedure.standardinstrumentarrival_ts
 ON procedure.standardinstrumentarrival_ts.safealtitude_id = SafeAltitudeAreaPropertyType.id
@@ -16494,8 +16379,7 @@ CREATE OR REPLACE VIEW standardinstrumentdeparturepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.standardinstrumentdeparture_pt.id,
-       'nilReason', procedure.standardinstrumentdeparture_pt.nilReason,
-       'href', procedure.standardinstrumentdeparture_pt.href
+       'nilReason', procedure.standardinstrumentdeparture_pt.nilReason
     ) AS standardinstrumentdeparturepropertytype
 FROM
 
@@ -16550,15 +16434,15 @@ SELECT
     ) AS standardinstrumentdeparturetimeslicetype
 FROM
 
+-- NavaidPropertyType
+LEFT JOIN procedure.standardinstrumentdeparture_ts
+ON procedure.standardinstrumentdeparture_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SpecialNavigationSystemPropertyType
 LEFT JOIN procedure.standardinstrumentdeparture_ts
 ON procedure.standardinstrumentdeparture_ts.guidancefacility_specialnavigationsystem_id = SpecialNavigationSystemPropertyType.id
 -- RadarSystemPropertyType
 LEFT JOIN procedure.standardinstrumentdeparture_ts
 ON procedure.standardinstrumentdeparture_ts.guidancefacility_radar_id = RadarSystemPropertyType.id
--- NavaidPropertyType
-LEFT JOIN procedure.standardinstrumentdeparture_ts
-ON procedure.standardinstrumentdeparture_ts.guidancefacility_navaid_id = NavaidPropertyType.id
 -- SafeAltitudeAreaPropertyType
 LEFT JOIN procedure.standardinstrumentdeparture_ts
 ON procedure.standardinstrumentdeparture_ts.safealtitude_id = SafeAltitudeAreaPropertyType.id
@@ -16623,8 +16507,7 @@ CREATE OR REPLACE VIEW standardlevelcolumnpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.standardlevelcolumn_pt.id,
-       'nilReason', shared.standardlevelcolumn_pt.nilReason,
-       'href', shared.standardlevelcolumn_pt.href
+       'nilReason', shared.standardlevelcolumn_pt.nilReason
     ) AS standardlevelcolumnpropertytype
 FROM
 
@@ -16649,10 +16532,9 @@ StandardLevelColumnTimeSliceType
 CREATE OR REPLACE VIEW standardlevelcolumntimeslicetype_view AS
 SELECT
     jsonb_build_object(
+       'unitofmeasurement', shared.standardlevelcolumn_ts.unitofmeasurement,
        'series_value', shared.standardlevelcolumn_ts.series_value,
        'series_nilreason', shared.standardlevelcolumn_ts.series_nilreason,
-       'unitofmeasurement_value', shared.standardlevelcolumn_ts.unitofmeasurement_value,
-       'unitofmeasurement_nilreason', shared.standardlevelcolumn_ts.unitofmeasurement_nilreason,
        'separation_value', shared.standardlevelcolumn_ts.separation_value,
        'separation_nilreason', shared.standardlevelcolumn_ts.separation_nilreason,
        'id', shared.standardlevelcolumn_ts.id,
@@ -16724,8 +16606,7 @@ CREATE OR REPLACE VIEW standardlevelsectorpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.standardlevelsector_pt.id,
-       'nilReason', shared.standardlevelsector_pt.nilReason,
-       'href', shared.standardlevelsector_pt.href
+       'nilReason', shared.standardlevelsector_pt.nilReason
     ) AS standardlevelsectorpropertytype
 FROM
 
@@ -16813,8 +16694,7 @@ CREATE OR REPLACE VIEW standardleveltablepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', shared.standardleveltable_pt.id,
-       'nilReason', shared.standardleveltable_pt.nilReason,
-       'href', shared.standardleveltable_pt.href
+       'nilReason', shared.standardleveltable_pt.nilReason
     ) AS standardleveltablepropertytype
 FROM
 
@@ -16915,8 +16795,7 @@ CREATE OR REPLACE VIEW standmarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.standmarking_pt.id,
-       'nilReason', airport_heliport.standmarking_pt.nilReason,
-       'href', airport_heliport.standmarking_pt.href
+       'nilReason', airport_heliport.standmarking_pt.nilReason
     ) AS standmarkingpropertytype
 FROM
 
@@ -17163,8 +17042,7 @@ CREATE OR REPLACE VIEW surveillanceradarpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', surveillance.surveillanceradar_pt.id,
-       'nilReason', surveillance.surveillanceradar_pt.nilReason,
-       'href', surveillance.surveillanceradar_pt.href
+       'nilReason', surveillance.surveillanceradar_pt.nilReason
     ) AS surveillanceradarpropertytype
 FROM
 
@@ -17176,8 +17054,7 @@ CREATE OR REPLACE VIEW surveycontrolpointpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.surveycontrolpoint_pt.id,
-       'nilReason', airport_heliport.surveycontrolpoint_pt.nilReason,
-       'href', airport_heliport.surveycontrolpoint_pt.href
+       'nilReason', airport_heliport.surveycontrolpoint_pt.nilReason
     ) AS surveycontrolpointpropertytype
 FROM
 
@@ -17257,8 +17134,7 @@ CREATE OR REPLACE VIEW tacanpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.tacan_pt.id,
-       'nilReason', navaids_points.tacan_pt.nilReason,
-       'href', navaids_points.tacan_pt.href
+       'nilReason', navaids_points.tacan_pt.nilReason
     ) AS tacanpropertytype
 FROM
 
@@ -17371,8 +17247,7 @@ CREATE OR REPLACE VIEW taxiholdingpositionlightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiholdingpositionlightsystem_pt.id,
-       'nilReason', airport_heliport.taxiholdingpositionlightsystem_pt.nilReason,
-       'href', airport_heliport.taxiholdingpositionlightsystem_pt.href
+       'nilReason', airport_heliport.taxiholdingpositionlightsystem_pt.nilReason
     ) AS taxiholdingpositionlightsystempropertytype
 FROM
 
@@ -17468,8 +17343,7 @@ CREATE OR REPLACE VIEW taxiholdingpositionmarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiholdingpositionmarking_pt.id,
-       'nilReason', airport_heliport.taxiholdingpositionmarking_pt.nilReason,
-       'href', airport_heliport.taxiholdingpositionmarking_pt.href
+       'nilReason', airport_heliport.taxiholdingpositionmarking_pt.nilReason
     ) AS taxiholdingpositionmarkingpropertytype
 FROM
 
@@ -17556,8 +17430,7 @@ CREATE OR REPLACE VIEW taxiholdingpositionpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiholdingposition_pt.id,
-       'nilReason', airport_heliport.taxiholdingposition_pt.nilReason,
-       'href', airport_heliport.taxiholdingposition_pt.href
+       'nilReason', airport_heliport.taxiholdingposition_pt.nilReason
     ) AS taxiholdingpositionpropertytype
 FROM
 
@@ -17657,10 +17530,10 @@ TaxiwayContaminationType
 CREATE OR REPLACE VIEW taxiwaycontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.taxiwaycontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.taxiwaycontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.taxiwaycontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.taxiwaycontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.taxiwaycontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.taxiwaycontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.taxiwaycontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.taxiwaycontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.taxiwaycontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.taxiwaycontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.taxiwaycontamination.frictionestimation_value,
@@ -17717,8 +17590,7 @@ CREATE OR REPLACE VIEW taxiwayelementpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiwayelement_pt.id,
-       'nilReason', airport_heliport.taxiwayelement_pt.nilReason,
-       'href', airport_heliport.taxiwayelement_pt.href
+       'nilReason', airport_heliport.taxiwayelement_pt.nilReason
     ) AS taxiwayelementpropertytype
 FROM
 
@@ -17814,8 +17686,7 @@ CREATE OR REPLACE VIEW taxiwaylightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiwaylightsystem_pt.id,
-       'nilReason', airport_heliport.taxiwaylightsystem_pt.nilReason,
-       'href', airport_heliport.taxiwaylightsystem_pt.href
+       'nilReason', airport_heliport.taxiwaylightsystem_pt.nilReason
     ) AS taxiwaylightsystempropertytype
 FROM
 
@@ -17911,8 +17782,7 @@ CREATE OR REPLACE VIEW taxiwaymarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiwaymarking_pt.id,
-       'nilReason', airport_heliport.taxiwaymarking_pt.nilReason,
-       'href', airport_heliport.taxiwaymarking_pt.href
+       'nilReason', airport_heliport.taxiwaymarking_pt.nilReason
     ) AS taxiwaymarkingpropertytype
 FROM
 
@@ -18004,8 +17874,7 @@ CREATE OR REPLACE VIEW taxiwaypropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.taxiway_pt.id,
-       'nilReason', airport_heliport.taxiway_pt.nilReason,
-       'href', airport_heliport.taxiway_pt.href
+       'nilReason', airport_heliport.taxiway_pt.nilReason
     ) AS taxiwaypropertytype
 FROM
 
@@ -18161,8 +18030,7 @@ CREATE OR REPLACE VIEW terminalarrivalareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', procedure.terminalarrivalarea_pt.id,
-       'nilReason', procedure.terminalarrivalarea_pt.nilReason,
-       'href', procedure.terminalarrivalarea_pt.href
+       'nilReason', procedure.terminalarrivalarea_pt.nilReason
     ) AS terminalarrivalareapropertytype
 FROM
 
@@ -18266,36 +18134,36 @@ ON procedure.terminalarrivalarea_ts.if_fixdesignatedpoint_id = DesignatedPointPr
 -- NavaidPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.if_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN procedure.terminalarrivalarea_ts
-ON procedure.terminalarrivalarea_ts.if_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN procedure.terminalarrivalarea_ts
-ON procedure.terminalarrivalarea_ts.if_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.if_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN procedure.terminalarrivalarea_ts
+ON procedure.terminalarrivalarea_ts.if_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.if_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN procedure.terminalarrivalarea_ts
+ON procedure.terminalarrivalarea_ts.if_position_id = PointPropertyType.id
 -- DesignatedPointPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.iaf_fixdesignatedpoint_id = DesignatedPointPropertyType.id
 -- NavaidPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.iaf_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN procedure.terminalarrivalarea_ts
-ON procedure.terminalarrivalarea_ts.iaf_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN procedure.terminalarrivalarea_ts
-ON procedure.terminalarrivalarea_ts.iaf_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.iaf_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN procedure.terminalarrivalarea_ts
+ON procedure.terminalarrivalarea_ts.iaf_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.iaf_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN procedure.terminalarrivalarea_ts
+ON procedure.terminalarrivalarea_ts.iaf_position_id = PointPropertyType.id
 -- SurfacePropertyType
 LEFT JOIN procedure.terminalarrivalarea_ts
 ON procedure.terminalarrivalarea_ts.buffer_id = SurfacePropertyType.id
@@ -18385,18 +18253,18 @@ ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_fixdesignatedpoint_i
 -- NavaidPropertyType
 LEFT JOIN navaids_points.terminalsegmentpoint
 ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_navaidsystem_id = NavaidPropertyType.id
--- PointPropertyType
-LEFT JOIN navaids_points.terminalsegmentpoint
-ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_position_id = PointPropertyType.id
--- RunwayCentrelinePointPropertyType
-LEFT JOIN navaids_points.terminalsegmentpoint
-ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- TouchDownLiftOffPropertyType
 LEFT JOIN navaids_points.terminalsegmentpoint
 ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_aimingpoint_id = TouchDownLiftOffPropertyType.id
+-- RunwayCentrelinePointPropertyType
+LEFT JOIN navaids_points.terminalsegmentpoint
+ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_runwaypoint_id = RunwayCentrelinePointPropertyType.id
 -- AirportHeliportPropertyType
 LEFT JOIN navaids_points.terminalsegmentpoint
 ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_airportreferencepoint_id = AirportHeliportPropertyType.id
+-- PointPropertyType
+LEFT JOIN navaids_points.terminalsegmentpoint
+ON navaids_points.terminalsegmentpoint.terminalsegmentpoint_position_id = PointPropertyType.id
 -- RadioFrequencyAreaPropertyType
 LEFT JOIN navaids_points.terminalsegmentpoint
 ON navaids_points.terminalsegmentpoint.extendedservicevolume_id = RadioFrequencyAreaPropertyType.id
@@ -18505,10 +18373,10 @@ TouchDownLiftOffContaminationType
 CREATE OR REPLACE VIEW touchdownliftoffcontaminationtype_view AS
 SELECT
     jsonb_build_object(
-       'observationtime_value', airport_heliport.touchdownliftoffcontamination.observationtime_value,
-       'observationtime_nilreason', airport_heliport.touchdownliftoffcontamination.observationtime_nilreason,
-       'nextobservationtime_value', airport_heliport.touchdownliftoffcontamination.nextobservationtime_value,
-       'nextobservationtime_nilreason', airport_heliport.touchdownliftoffcontamination.nextobservationtime_nilreason,
+       'observationTime_value', airport_heliport.touchdownliftoffcontamination.observationTime_value,
+       'observationTime_nilreason', airport_heliport.touchdownliftoffcontamination.observationTime_nilreason,
+       'nextObservationTime_value', airport_heliport.touchdownliftoffcontamination.nextObservationTime_value,
+       'nextObservationTime_nilreason', airport_heliport.touchdownliftoffcontamination.nextObservationTime_nilreason,
        'frictioncoefficient_value', airport_heliport.touchdownliftoffcontamination.frictioncoefficient_value,
        'frictioncoefficient_nilreason', airport_heliport.touchdownliftoffcontamination.frictioncoefficient_nilreason,
        'frictionestimation_value', airport_heliport.touchdownliftoffcontamination.frictionestimation_value,
@@ -18562,8 +18430,7 @@ CREATE OR REPLACE VIEW touchdownliftofflightsystempropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.touchdownliftofflightsystem_pt.id,
-       'nilReason', airport_heliport.touchdownliftofflightsystem_pt.nilReason,
-       'href', airport_heliport.touchdownliftofflightsystem_pt.href
+       'nilReason', airport_heliport.touchdownliftofflightsystem_pt.nilReason
     ) AS touchdownliftofflightsystempropertytype
 FROM
 
@@ -18659,8 +18526,7 @@ CREATE OR REPLACE VIEW touchdownliftoffmarkingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.touchdownliftoffmarking_pt.id,
-       'nilReason', airport_heliport.touchdownliftoffmarking_pt.nilReason,
-       'href', airport_heliport.touchdownliftoffmarking_pt.href
+       'nilReason', airport_heliport.touchdownliftoffmarking_pt.nilReason
     ) AS touchdownliftoffmarkingpropertytype
 FROM
 
@@ -18749,8 +18615,7 @@ CREATE OR REPLACE VIEW touchdownliftoffpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.touchdownliftoff_pt.id,
-       'nilReason', airport_heliport.touchdownliftoff_pt.nilReason,
-       'href', airport_heliport.touchdownliftoff_pt.href
+       'nilReason', airport_heliport.touchdownliftoff_pt.nilReason
     ) AS touchdownliftoffpropertytype
 FROM
 
@@ -18762,8 +18627,7 @@ CREATE OR REPLACE VIEW touchdownliftoffsafeareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.touchdownliftoffsafearea_pt.id,
-       'nilReason', airport_heliport.touchdownliftoffsafearea_pt.nilReason,
-       'href', airport_heliport.touchdownliftoffsafearea_pt.href
+       'nilReason', airport_heliport.touchdownliftoffsafearea_pt.nilReason
     ) AS touchdownliftoffsafeareapropertytype
 FROM
 
@@ -18956,8 +18820,7 @@ CREATE OR REPLACE VIEW trafficseparationservicepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', service.trafficseparationservice_pt.id,
-       'nilReason', service.trafficseparationservice_pt.nilReason,
-       'href', service.trafficseparationservice_pt.href
+       'nilReason', service.trafficseparationservice_pt.nilReason
     ) AS trafficseparationservicepropertytype
 FROM
 
@@ -19061,8 +18924,7 @@ CREATE OR REPLACE VIEW unitpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', organisation.unit_pt.id,
-       'nilReason', organisation.unit_pt.nilReason,
-       'href', organisation.unit_pt.href
+       'nilReason', organisation.unit_pt.nilReason
     ) AS unitpropertytype
 FROM
 
@@ -19168,8 +19030,7 @@ CREATE OR REPLACE VIEW unplannedholdingpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', holding.unplannedholding_pt.id,
-       'nilReason', holding.unplannedholding_pt.nilReason,
-       'href', holding.unplannedholding_pt.href
+       'nilReason', holding.unplannedholding_pt.nilReason
     ) AS unplannedholdingpropertytype
 FROM
 
@@ -19359,15 +19220,15 @@ SELECT
     ) AS verticalstructureparttype
 FROM
 
--- ElevatedSurfacePropertyType
-LEFT JOIN obstacles.verticalstructurepart
-ON obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = ElevatedSurfacePropertyType.id
--- ElevatedCurvePropertyType
-LEFT JOIN obstacles.verticalstructurepart
-ON obstacles.verticalstructurepart.horizontalprojection_linearextent_id = ElevatedCurvePropertyType.id
 -- ElevatedPointPropertyType
 LEFT JOIN obstacles.verticalstructurepart
 ON obstacles.verticalstructurepart.horizontalprojection_location_id = ElevatedPointPropertyType.id
+-- ElevatedCurvePropertyType
+LEFT JOIN obstacles.verticalstructurepart
+ON obstacles.verticalstructurepart.horizontalprojection_linearextent_id = ElevatedCurvePropertyType.id
+-- ElevatedSurfacePropertyType
+LEFT JOIN obstacles.verticalstructurepart
+ON obstacles.verticalstructurepart.horizontalprojection_surfaceextent_id = ElevatedSurfacePropertyType.id
 -- AbstractExtensionType
 LEFT JOIN obstacles.verticalstructurepart
 ON obstacles.verticalstructurepart.abstractpropertieswithscheduleextension_id = AbstractExtensionType.id
@@ -19402,8 +19263,7 @@ CREATE OR REPLACE VIEW verticalstructurepropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', obstacles.verticalstructure_pt.id,
-       'nilReason', obstacles.verticalstructure_pt.nilReason,
-       'href', obstacles.verticalstructure_pt.href
+       'nilReason', obstacles.verticalstructure_pt.nilReason
     ) AS verticalstructurepropertytype
 FROM
 
@@ -19546,8 +19406,7 @@ CREATE OR REPLACE VIEW visualglideslopeindicatorpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.visualglideslopeindicator_pt.id,
-       'nilReason', airport_heliport.visualglideslopeindicator_pt.nilReason,
-       'href', airport_heliport.visualglideslopeindicator_pt.href
+       'nilReason', airport_heliport.visualglideslopeindicator_pt.nilReason
     ) AS visualglideslopeindicatorpropertytype
 FROM
 
@@ -19654,8 +19513,7 @@ CREATE OR REPLACE VIEW vorpropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', navaids_points.vor_pt.id,
-       'nilReason', navaids_points.vor_pt.nilReason,
-       'href', navaids_points.vor_pt.href
+       'nilReason', navaids_points.vor_pt.nilReason
     ) AS vorpropertytype
 FROM
 
@@ -19824,8 +19682,7 @@ CREATE OR REPLACE VIEW workareapropertytype_view AS
 SELECT
     jsonb_build_object(
        'id', airport_heliport.workarea_pt.id,
-       'nilReason', airport_heliport.workarea_pt.nilReason,
-       'href', airport_heliport.workarea_pt.href
+       'nilReason', airport_heliport.workarea_pt.nilReason
     ) AS workareapropertytype
 FROM
 
@@ -19850,10 +19707,10 @@ WorkAreaTimeSliceType
 CREATE OR REPLACE VIEW workareatimeslicetype_view AS
 SELECT
     jsonb_build_object(
+       'plannedOperational_value', airport_heliport.workarea_ts.plannedOperational_value,
+       'plannedOperational_nilreason', airport_heliport.workarea_ts.plannedOperational_nilreason,
        'type_value', airport_heliport.workarea_ts.type_value,
        'type_nilreason', airport_heliport.workarea_ts.type_nilreason,
-       'plannedoperational_value', airport_heliport.workarea_ts.plannedoperational_value,
-       'plannedoperational_nilreason', airport_heliport.workarea_ts.plannedoperational_nilreason,
        'id', airport_heliport.workarea_ts.id,
        'xml_id', airport_heliport.workarea_ts.xml_id,
        'interpretation', airport_heliport.workarea_ts.interpretation,
