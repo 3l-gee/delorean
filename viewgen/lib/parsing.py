@@ -1,6 +1,6 @@
 import re
 
-from lib.publisher_layer import Layer
+from lib.publisher_layer import FeatureLayer
 
 class Parsing :
     def __init__(self, parsing, attribute):
@@ -22,20 +22,23 @@ class Parsing :
         self.feature = {}
         self.datatype = {}
 
-    def load_content(self, path):
+    def get_layer(self):
+        return list(self.feature.values())
+
+    def _load_content(self, path):
         with open(path, 'r', encoding='utf-8') as file:
             content = file.read()
         return content
     
     def process(self, path_list):
         for file in path_list:
-            self.classify_file(file)
+            self._classify_file(file)
 
-    def get_layer(self):
-        return list(self.feature.values())
+        for file in path_list:
+            self._process_file(file)
 
-    def classify_file(self, path):
-        content = self.load_content(path)
+    def _classify_file(self, path):
+        content = self._load_content(path)
 
         table = re.search(self.parsing["table"]["method"], content)
         if not table:
@@ -56,9 +59,7 @@ class Parsing :
             name = name.lower()
             
             if name not in self.feature.keys() : 
-                self.feature[name] = self.process_layer(name, content, Layer(name, table_schema))
-            if name in self.feature.keys() : 
-                self.feature[name] = self.process_layer(name, content, self.feature[name])
+                self.feature[name] = FeatureLayer(name, table_schema)
 
         if parent_name and parent_name[0] in self.timeslice_parent_set:
             name = class_name[0]
@@ -66,11 +67,9 @@ class Parsing :
                 name = name.replace(suffix, replacement)
 
             name = name.lower()
-
+            
             if name not in self.feature.keys() : 
-                self.feature[name] = self.process_layer(name, content, Layer(name, table_schema))
-            if name in self.feature.keys() : 
-                self.feature[name] = self.process_layer(name, content, self.feature[name])
+                self.feature[name] = FeatureLayer(name, table_schema)
 
         if parent_name and parent_name[0] in self.property_paremt_set:
             return
@@ -78,20 +77,38 @@ class Parsing :
         if parent_name and parent_name[0] in self.object_parent_set:
             return
         
-    def process_layer(self, name, content, layer):
+    def _process_file(self, path):
+        content = self._load_content(path)   
+        class_name = re.findall(self.parsing["class"]["method"], content)
+        parent_name = re.findall(self.parsing["extends"]["method"], content)
+        name = class_name[0]
+        for suffix, replacement in self.suffix.items():
+            name = name.replace(suffix, replacement)
 
+        name = name.lower()
+
+        if name in self.feature.keys():
+            if parent_name and parent_name[0] in self.feature_parent_set:
+                pass
+
+            if parent_name and parent_name[0] in self.timeslice_parent_set:
+                self._process_time_slice(self.feature[name], content)
+
+    def _process_time_slice(self, layer, content):
         for item in self.extract_embedded_columns_two(content):
             layer.add_attributes_two(item.get("value"), item.get("nil"))
 
         for item in self.extract_embedded_columns_three(content):
             layer.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
 
-        return layer
+        for item in self.extract_one_to_one(content):
+            add_association_feature_one()
+            
     
     def process_file_old(self, path):
         """Extract table, class, and column information from a Java file."""
 
-        content = self.load_content(path)
+        content = self._load_content(path)
 
 
 
