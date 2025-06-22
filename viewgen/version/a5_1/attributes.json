@@ -1,0 +1,198 @@
+{ 
+    "feature_parents": [
+        "AbstractAIXMFeatureType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractMarkingType",
+        "AbstractRadarEquipmentType",
+        "AbstractServiceType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType"
+    ],
+    "timeslice_parents": {
+        "AbstractAIXMTimeSliceType": [
+            "id",
+            "feature_status",
+            "interpretation",
+            "sequence_number",
+            "correction_number",
+            "valid_time_begin",
+            "valid_time_end",
+            "feature_lifetime_begin",
+            "feature_lifetime_end"
+        ]
+    },
+    "object_parents": {
+        "AbstractAIXMObjectType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractSurfaceContaminationType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractUsageConditionType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractDirectFlightType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractPropertiesWithScheduleType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractSegmentPointType": [
+            "id",
+            "identifier",
+            "identifier_code_space"
+        ]
+    },
+    "property_parents" :{
+        "AbstractAIXMPropertyType": [
+            "id"
+        ]
+    },
+    "parents_attributes": {
+
+        "AbstractAIXMFeatureType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractAirportHeliportProtectionAreaType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractGroundLightSystemType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractMarkingType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractRadarEquipmentType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractSurveillanceRadarType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractServiceType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractTrafficSeparationServiceType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractAirportGroundServiceType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractNavigationSystemCheckpointType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractNavaidEquipmentType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractProcedureType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractSegmentLegType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ],
+        "AbstractApproachLegType": [
+            "id",
+            "feature_status",
+            "identifier",
+            "identifier_code_space"
+        ]
+    },
+    "snowflake_attributes": {
+        "PointPropertyType": "geom",
+        "CurvePropertyType": "geom",
+        "SurfacePropertyType": "geom",
+        "ElevatedPointPropertyType": "geom",
+        "ElevatedCurvePropertyType": "geom",
+        "ElevatedSurfacePropertyType": "geom"
+    },
+    "ignore": [
+        "package-info.java",
+        "PointPropertyType",
+        "PointType",
+        "CurvePropertyType",
+        "CurveType",
+        "SurfacePropertyType",
+        "SurfaceType",
+        "ElevatedPointPropertyType",
+        "ElevatedPointType",
+        "ElevatedCurvePropertyType",
+        "ElevatedCurveType",
+        "ElevatedSurfacePropertyType",
+        "ElevatedSurfaceType",
+        "AbstractAIXMPropertyType",
+        "AbstractAIXMObjectType",
+        "AbstractSurfaceContaminationType",
+        "AbstractUsageConditionType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractSegmentPointType",
+        "AbstractAIXMTimeSliceType",
+        "AbstractAIXMFeatureType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractMarkingType",
+        "AbstractRadarEquipmentType",
+        "AbstractSurveillanceRadarType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType"
+    ]
+}

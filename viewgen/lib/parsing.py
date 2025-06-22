@@ -1,23 +1,105 @@
 import re
 
-class Parsing :
-    def __init__(self, parsing_config):
-        self.parsing = parsing_config
-    
-    def process_file(self, file_path):
-        """Extract table, class, and column information from a Java file."""
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
+from lib.publisher_layer import Layer
 
-        table_match = re.search(self.parsing["table"]["method"], content)
-        if not table_match:
+class Parsing :
+    def __init__(self, parsing, attribute):
+        self.parsing = parsing
+        self.ignore_set = set(attribute["ignore"])
+        self.feature_parent_set = set(attribute["feature_parents"])
+        self.timeslice_parent_set = set(attribute["timeslice_parents"])
+        self.object_parent_set = set(attribute["object_parents"])
+        self.property_paremt_set = set(attribute["property_parents"])
+
+        self.suffix = {
+            "TimeSlicePropertyType": "",
+            "PropertyType": "",
+            "TimeSliceType": "",
+            "TimeSlice": "",
+            "Type": "", 
+        }
+        
+        self.feature = {}
+        self.datatype = {}
+
+    def load_content(self, path):
+        with open(path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        return content
+    
+    def process(self, path_list):
+        for file in path_list:
+            self.classify_file(file)
+
+    def get_layer(self):
+        return list(self.feature.values())
+
+    def classify_file(self, path):
+        content = self.load_content(path)
+
+        table = re.search(self.parsing["table"]["method"], content)
+        if not table:
             return  # Skip files that do not contain table annotations
+                
+        table_name, table_schema = table.groups()
+        class_name = re.findall(self.parsing["class"]["method"], content)
+        parent_name = re.findall(self.parsing["extends"]["method"], content)
+
+        if class_name[0] in self.ignore_set:
+            return  # Ignore specific classes
+        
+        if parent_name and parent_name[0] in self.feature_parent_set:
+            name = class_name[0]
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+            
+            if name not in self.feature.keys() : 
+                self.feature[name] = self.process_layer(name, content, Layer(name, table_schema))
+            if name in self.feature.keys() : 
+                self.feature[name] = self.process_layer(name, content, self.feature[name])
+
+        if parent_name and parent_name[0] in self.timeslice_parent_set:
+            name = class_name[0]
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if name not in self.feature.keys() : 
+                self.feature[name] = self.process_layer(name, content, Layer(name, table_schema))
+            if name in self.feature.keys() : 
+                self.feature[name] = self.process_layer(name, content, self.feature[name])
+
+        if parent_name and parent_name[0] in self.property_paremt_set:
+            return
+
+        if parent_name and parent_name[0] in self.object_parent_set:
+            return
+        
+    def process_layer(self, name, content, layer):
+
+        for item in self.extract_embedded_columns_two(content):
+            layer.add_attributes_two(item.get("value"), item.get("nil"))
+
+        for item in self.extract_embedded_columns_three(content):
+            layer.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
+
+        return layer
+    
+    def process_file_old(self, path):
+        """Extract table, class, and column information from a Java file."""
+
+        content = self.load_content(path)
+
+
 
         table_name, schema = table_match.groups()
         full_table_name = str(schema + "." + table_name)
-        class_name = re.findall(self.parsing["class"]["method"], content) or [None]
-        if class_name[0] in self.attributes["ignore"]:
-            return  # Ignore specific classes
+        class_name = re.findall(self.parsing["class"]["method"], content)
+        if class_name and class_name[0] in  self.ignore_set:
+            return
     
         self.views["table_name"][class_name[0]] = full_table_name
 
@@ -52,16 +134,36 @@ class Parsing :
         parent_columns = self.attributes["parents_attributes"].get(parent_name[0], [])
         return [f"{schema}.{table}.{col}" for col in parent_columns]
 
-    def extract_embedded_columns(self, schema, table, content):
+    def extract_embedded_columns_two(self, content):
         """Extract embedded attributes (2 or 3 columns)."""
         embedded_columns = []
         raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)
-        raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
+        for column in raw_embedded_two:
+            print(column)
+            value, nil, type = column[0], column[1], column[2]
+            embedded_columns.append({
+                "value" : value,
+                "nil" : nil,
+                "type" : type
+            })
 
-        for column in raw_embedded_two + raw_embedded_three:
-            column_type = column[-1]
-            for col_name in column[:-1]:  # Exclude the last element (which is the type)
-                embedded_columns.append(f"{schema}.{table}.{col_name}")
+        return embedded_columns
+    
+    def extract_embedded_columns_three(self, content):
+        """Extract embedded attributes (2 or 3 columns)."""
+        embedded_columns = []
+        raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
+        for column in raw_embedded_three:
+            print(column)
+            value, uom, nil, type = column[0], column[1], column[2], column[3]
+            embedded_columns.append({
+                "value" : value,
+                "uom" : uom,
+                "nil" : nil,
+                "type" : type
+            })
+
+
         return embedded_columns
 
     def extract_one_to_one(self, schema, table, content):
