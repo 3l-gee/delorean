@@ -88,6 +88,7 @@ class Parsing :
         name = name.lower()
 
         if name in self.feature.keys():
+            print(name)
             if parent_name and parent_name[0] in self.feature_parent_set:
                 pass
 
@@ -102,7 +103,15 @@ class Parsing :
             layer.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
 
         for item in self.extract_one_to_one(content):
-            add_association_feature_one()
+            name = item.get("type")
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if name in self.feature.keys():
+                group = self.feature[name].get_group()
+                layer.add_association_feature_one(group, name, item.get("role"))
             
     
     def process_file_old(self, path):
@@ -156,7 +165,6 @@ class Parsing :
         embedded_columns = []
         raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)
         for column in raw_embedded_two:
-            print(column)
             value, nil, type = column[0], column[1], column[2]
             embedded_columns.append({
                 "value" : value,
@@ -171,7 +179,6 @@ class Parsing :
         embedded_columns = []
         raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
         for column in raw_embedded_three:
-            print(column)
             value, uom, nil, type = column[0], column[1], column[2], column[3]
             embedded_columns.append({
                 "value" : value,
@@ -179,20 +186,22 @@ class Parsing :
                 "nil" : nil,
                 "type" : type
             })
-
-
+ 
         return embedded_columns
 
-    def extract_one_to_one(self, schema, table, content):
+    def extract_one_to_one(self, content):
         """Extract one-to-one relationships."""
         res = []
         raw_one_to_one = re.findall(self.parsing["one_to_one"]["method"], content)
-        for col in raw_one_to_one:
+        for column in raw_one_to_one:
+            col, ref, type, role = column[0], column[1], column[2], column[3]
             res.append({
-                "source": f"{schema}.{table}",
-                "alias": col[2],
-                "join_condition": f"{schema}.{table}.{col[0]} = {col[2]}.{col[1]}"
+                "col" : col,
+                "ref" : ref,
+                "type" : type,
+                "role" : role.lower()
             })
+
         return res
 
     def extract_one_to_many(self, schema, table, content):

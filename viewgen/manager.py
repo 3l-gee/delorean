@@ -31,7 +31,7 @@ parsing = {
         "ignore" : [],
     },
     "one_to_one": {
-        "method": r'@JoinColumn\(name = \"([A-Z|a-z|0-9|_]+)\", referencedColumnName = \"([A-Z|a-z|0-9|_]+).*\n.*protected ([A-Z|a-z|0-9|_]+)',
+        "method": r'@JoinColumn\(name = \"([A-Z|a-z|0-9|_]+)\", referencedColumnName = \"([A-Z|a-z|0-9|_]+).*\n.*protected ([A-Z|a-z|0-9|_]+) ([A-Z|a-z|0-9|_]+)',
         "ignore": [],
     },
     "one_to_many": {

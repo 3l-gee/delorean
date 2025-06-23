@@ -20,6 +20,9 @@ class FeatureLayer :
         self.sql["group"] = self.generate_group(name, group)
         self.sql["order"] = self.genrate_order(name, group)
 
+    def get_group(self):
+        return self.group
+
     def generate_sql(self):
         # Combine attribute lists
         attributes = []
@@ -29,14 +32,20 @@ class FeatureLayer :
         # Join attributes with comma and indentation
         attributes_sql = ",\n    ".join(attributes)
 
+        # Format left joins from list
+        left_join = "\n".join(self.sql["left"])
+
         # Format GROUP BY clause from list
         group_clause = "group by\n    " + ",\n    ".join(self.sql["group"])
+
+
 
         sql_parts = [
             self.sql["view"],
             self.sql["select"],
             f"    {attributes_sql}" if attributes_sql else "",
             self.sql["inner"].strip(),
+            left_join,
             f"where {self.sql['where']}",
             group_clause,
             self.sql["order"]
@@ -54,30 +63,30 @@ class FeatureLayer :
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
         self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar) || ' ' || {self.group}.{self.name}_ts.{uom}, '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        self.add_group(self.group, self.name, value)
-        self.add_group(self.group, self.name, uom)
-        self.add_group(self.group, self.name, nil)
+        self.add_group(self.group, str(self.name + "_ts"), value)
+        self.add_group(self.group, str(self.name + "_ts"), uom)
+        self.add_group(self.group, str(self.name + "_ts"), nil)
 
     def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
         self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar), '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        self.add_group(self.group, self.name, value)
-        self.add_group(self.group, self.name, nil)
+        self.add_group(self.group, str(self.name + "_ts"),  value)
+        self.add_group(self.group , str(self.name + "_ts"), nil)
 
-    def add_association_feature_one(self, group, name):
-        if self.sql["attributes"][name]:
+    def add_association_feature_one(self, group, name, role):
+        if self.sql["attributes"].get(name):
             print("there shouldn't be something here already")
 
         self.sql["attributes"][name] =[
-            f"coalesce(cast({group}.{name}_pt.title) as varchar), '(' || {group}.{name}_pt.nilreason[1] || ')') AS {name}",
-            f"{group}.{name}_pt.href AS {name}_href"
+            f"coalesce(cast({group}.{name}_pt.title as varchar), '(' || {group}.{name}_pt.nilreason[1] || ')') AS {role}",
+            f"{group}.{name}_pt.href AS {role}_href"
         ]
         
         self.add_group(group, str(name + "_pt"), "title")
         self.add_group(group, str(name + "_pt"), "nilreason")
         self.add_group(group, str(name + "_pt"), "href")
 
-        self.sql["left"].append(f"left join {group}.{name}_pt on {self.group}.{self.name}_ts.{name}_id = {group}.{name}_pt.id")
+        self.sql["left"].append(f"left join {group}.{name}_pt on {self.group}.{self.name}_ts.{role}_id = {group}.{name}_pt.id")
 
     def generate_attributes(self, name, group) : 
         res = ["(row_number() OVER ())::integer AS row"]
@@ -120,8 +129,8 @@ inner join {group}.{name}_ts on {group}.{name}_tsp.{name}timeslice_id = {group}.
     
     def generate_group(self, name, group) :
         res = [f"{group}.{name}.id"]
-        res.append(f"{group}.{name}_ts.id as ts_id")
-        res.append(f"{group}.{name}_tsp.id as tsp_id")
+        res.append(f"{group}.{name}_ts.id")
+        res.append(f"{group}.{name}_tsp.id")
         res.append(f"{group}.{name}.identifier")
         res.append(f"{group}.{name}_ts.interpretation")
         res.append(f"{group}.{name}_ts.sequence_number")
@@ -130,6 +139,7 @@ inner join {group}.{name}_ts on {group}.{name}_tsp.{name}timeslice_id = {group}.
         res.append(f"{group}.{name}_ts.valid_time_end")
         res.append(f"{group}.{name}_ts.feature_lifetime_begin")
         res.append(f"{group}.{name}_ts.feature_lifetime_end")
+        return res 
 
     def add_group(self, group, name, column) :
          self.sql["group"].append(f"{group}.{name}.{column}")
