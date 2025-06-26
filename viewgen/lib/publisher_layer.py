@@ -1,5 +1,5 @@
-
-
+import random
+import string
 
 class FeatureLayer :
 
@@ -60,33 +60,44 @@ class FeatureLayer :
     def generate_select(self, name, group) :
         return f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"
     
+    def generate_letter_hash(self, prefix, length=6):
+        return prefix + '_' + ''.join(random.choices(string.ascii_lowercase, k=length))
+    
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
         self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar) || ' ' || {self.group}.{self.name}_ts.{uom}, '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        self.add_group(self.group, str(self.name + "_ts"), value)
-        self.add_group(self.group, str(self.name + "_ts"), uom)
-        self.add_group(self.group, str(self.name + "_ts"), nil)
+        self.add_group(str(self.name + "_ts"), value, self.group)
+        self.add_group(str(self.name + "_ts"), uom, self.group)
+        self.add_group(str(self.name + "_ts"), nil, self.group)
 
     def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
         self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar), '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        self.add_group(self.group, str(self.name + "_ts"),  value)
-        self.add_group(self.group , str(self.name + "_ts"), nil)
+        self.add_group(str(self.name + "_ts"), value, self.group)
+        self.add_group(str(self.name + "_ts"), nil, self.group)
 
     def add_association_feature_one(self, group, name, role):
         if self.sql["attributes"].get(name):
             print("there shouldn't be something here already")
+    
+        hash = self.generate_letter_hash(str(group + "_" + name + "_pt"))
 
         self.sql["attributes"][name] =[
-            f"coalesce(cast({group}.{name}_pt.title as varchar), '(' || {group}.{name}_pt.nilreason[1] || ')') AS {role}",
-            f"{group}.{name}_pt.href AS {role}_href"
+            f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
+            f"{hash}.href AS {role}_href"
         ]
-        
-        self.add_group(group, str(name + "_pt"), "title")
-        self.add_group(group, str(name + "_pt"), "nilreason")
-        self.add_group(group, str(name + "_pt"), "href")
 
-        self.sql["left"].append(f"left join {group}.{name}_pt on {self.group}.{self.name}_ts.{role}_id = {group}.{name}_pt.id")
+        # self.sql["attributes"][name] =[
+        #     f"coalesce(cast({group}.{name}_pt.title as varchar), '(' || {group}.{name}_pt.nilreason[1] || ')') AS {role}",
+        #     f"{group}.{name}_pt.href AS {role}_href"
+        # ]
+        
+        self.add_group(hash, "title")
+        self.add_group(hash, "nilreason")
+        self.add_group(hash, "href")
+
+        # self.sql["left"].append(f"left join {group}.{name}_pt on {self.group}.{self.name}_ts.{role}_id = {group}.{name}_pt.id")
+        self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}_ts.{role}_id = {hash}.id")
 
     def generate_attributes(self, name, group) : 
         res = ["(row_number() OVER ())::integer AS row"]
@@ -141,5 +152,8 @@ inner join {group}.{name}_ts on {group}.{name}_tsp.{name}timeslice_id = {group}.
         res.append(f"{group}.{name}_ts.feature_lifetime_end")
         return res 
 
-    def add_group(self, group, name, column) :
-         self.sql["group"].append(f"{group}.{name}.{column}")
+    def add_group(self, name, column, group=None):
+        if group:
+            self.sql["group"].append(f"{group}.{name}.{column}")
+        else:
+            self.sql["group"].append(f"{name}.{column}")
