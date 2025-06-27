@@ -227,7 +227,7 @@ View({
             "MissedApproachGroup",
             "TerminalArrivalArea",
             "TerminalArrivalAreaSector",
-            "FASDataBlock"
+            "FASDataBlock",
             "CirclingArea",
             "CirclingRestriction",
             "EquipmentUnavailableAdjustment",

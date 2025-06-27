@@ -29,7 +29,6 @@ class InteractionMachinery:
             if f.endswith(".java") and f not in jaxb_ignored_files
         ]
 
-
     def load_attribute(self, path):
         file_path = os.path.join(path, "attributes.json")
         

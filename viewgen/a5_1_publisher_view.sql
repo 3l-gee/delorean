@@ -1,7763 +1,1068 @@
 
-create or replace view aerial_refuelling.aerialrefuelling_publisher_view as
-select distinct on (aerialrefuelling.identifier,aerialrefuelling_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    aerial_refuelling.aerialrefuelling.id,
-    aerial_refuelling.aerialrefuelling_ts.id as ts_id,
-    aerial_refuelling.aerialrefuelling_tsp.id as tsp_id,
-    aerial_refuelling.aerialrefuelling.identifier,
-    aerial_refuelling.aerialrefuelling_ts.interpretation,
-    aerial_refuelling.aerialrefuelling_ts.sequence_number,
-    aerial_refuelling.aerialrefuelling_ts.correction_number,
-    aerial_refuelling.aerialrefuelling_ts.valid_time_begin,
-    aerial_refuelling.aerialrefuelling_ts.valid_time_end,
-    aerial_refuelling.aerialrefuelling_ts.feature_lifetime_begin,
-    aerial_refuelling.aerialrefuelling_ts.feature_lifetime_end,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.designatorprefix_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.designatorprefix_nilreason || ')') as designatorprefix,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.designatornumber_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.designatornumber_nilreason || ')') as designatornumber,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.designatorsuffix_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.designatorsuffix_nilreason || ')') as designatorsuffix,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.designatordirection_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.designatordirection_nilreason || ')') as designatordirection,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.name_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.name_nilreason || ')') as name,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.type_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.type_nilreason || ')') as type,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.radarbeaconsetting_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.radarbeaconsetting_nilreason || ')') as radarbeaconsetting,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.xbandradarsetting_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.xbandradarsetting_nilreason || ')') as xbandradarsetting,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.tankerchannel_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.tankerchannel_nilreason || ')') as tankerchannel,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.receiverchannel_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.receiverchannel_nilreason || ')') as receiverchannel,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.helicopterroute_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.helicopterroute_nilreason || ')') as helicopterroute,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.specialrefuelling_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.specialrefuelling_nilreason || ')') as specialrefuelling,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.bidirectionaluse_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.bidirectionaluse_nilreason || ')') as bidirectionaluse,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_ts.reversedirectionturn_value as varchar), '(' || aerial_refuelling.aerialrefuelling_ts.reversedirectionturn_nilreason || ')') as reversedirectionturn,
-    coalesce(cast(aerial_refuelling.aerialrefuelling_pt.title as varchar), '(' || aerial_refuelling.aerialrefuelling_pt.nilreason[1] || ')') AS oppositetrack,
-    aerial_refuelling.aerialrefuelling_pt.href AS oppositetrack_href
-from aerial_refuelling.aerialrefuelling 
-inner join master_join mj2 on aerial_refuelling.aerialrefuelling.id = mj2.source_id
-inner join aerial_refuelling.aerialrefuelling_tsp on mj2.target_id = aerial_refuelling.aerialrefuelling_tsp.id
-inner join aerial_refuelling.aerialrefuelling_ts on aerial_refuelling.aerialrefuelling_tsp.aerialrefuellingtimeslice_id = aerial_refuelling.aerialrefuelling_ts.id
-left join aerial_refuelling.aerialrefuelling_pt on aerial_refuelling.aerialrefuelling_ts.oppositetrack_id = aerial_refuelling.aerialrefuelling_pt.id
-where aerialrefuelling_ts.feature_status = 'APPROVED'
-group by
-    aerial_refuelling.aerialrefuelling.id,
-    aerial_refuelling.aerialrefuelling_ts.id,
-    aerial_refuelling.aerialrefuelling_tsp.id,
-    aerial_refuelling.aerialrefuelling.identifier,
-    aerial_refuelling.aerialrefuelling_ts.interpretation,
-    aerial_refuelling.aerialrefuelling_ts.sequence_number,
-    aerial_refuelling.aerialrefuelling_ts.correction_number,
-    aerial_refuelling.aerialrefuelling_ts.valid_time_begin,
-    aerial_refuelling.aerialrefuelling_ts.valid_time_end,
-    aerial_refuelling.aerialrefuelling_ts.feature_lifetime_begin,
-    aerial_refuelling.aerialrefuelling_ts.feature_lifetime_end,
-    aerial_refuelling.aerialrefuelling_ts.designatorprefix_value,
-    aerial_refuelling.aerialrefuelling_ts.designatorprefix_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.designatornumber_value,
-    aerial_refuelling.aerialrefuelling_ts.designatornumber_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.designatorsuffix_value,
-    aerial_refuelling.aerialrefuelling_ts.designatorsuffix_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.designatordirection_value,
-    aerial_refuelling.aerialrefuelling_ts.designatordirection_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.name_value,
-    aerial_refuelling.aerialrefuelling_ts.name_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.type_value,
-    aerial_refuelling.aerialrefuelling_ts.type_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.radarbeaconsetting_value,
-    aerial_refuelling.aerialrefuelling_ts.radarbeaconsetting_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.xbandradarsetting_value,
-    aerial_refuelling.aerialrefuelling_ts.xbandradarsetting_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.tankerchannel_value,
-    aerial_refuelling.aerialrefuelling_ts.tankerchannel_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.receiverchannel_value,
-    aerial_refuelling.aerialrefuelling_ts.receiverchannel_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.helicopterroute_value,
-    aerial_refuelling.aerialrefuelling_ts.helicopterroute_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.specialrefuelling_value,
-    aerial_refuelling.aerialrefuelling_ts.specialrefuelling_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.bidirectionaluse_value,
-    aerial_refuelling.aerialrefuelling_ts.bidirectionaluse_nilreason,
-    aerial_refuelling.aerialrefuelling_ts.reversedirectionturn_value,
-    aerial_refuelling.aerialrefuelling_ts.reversedirectionturn_nilreason,
-    aerial_refuelling.aerialrefuelling_pt.title,
-    aerial_refuelling.aerialrefuelling_pt.nilreason,
-    aerial_refuelling.aerialrefuelling_pt.href
-order by aerialrefuelling.identifier, aerialrefuelling_ts.sequence_number, aerialrefuelling_ts.correction_number DESC;
-create or replace view navaids_points.aeronauticalgroundlight_publisher_view as
-select distinct on (aeronauticalgroundlight.identifier,aeronauticalgroundlight_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.aeronauticalgroundlight.id,
-    navaids_points.aeronauticalgroundlight_ts.id as ts_id,
-    navaids_points.aeronauticalgroundlight_tsp.id as tsp_id,
-    navaids_points.aeronauticalgroundlight.identifier,
-    navaids_points.aeronauticalgroundlight_ts.interpretation,
-    navaids_points.aeronauticalgroundlight_ts.sequence_number,
-    navaids_points.aeronauticalgroundlight_ts.correction_number,
-    navaids_points.aeronauticalgroundlight_ts.valid_time_begin,
-    navaids_points.aeronauticalgroundlight_ts.valid_time_end,
-    navaids_points.aeronauticalgroundlight_ts.feature_lifetime_begin,
-    navaids_points.aeronauticalgroundlight_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.aeronauticalgroundlight_ts.name_value as varchar), '(' || navaids_points.aeronauticalgroundlight_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.aeronauticalgroundlight_ts.type_value as varchar), '(' || navaids_points.aeronauticalgroundlight_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.aeronauticalgroundlight_ts.colour_value as varchar), '(' || navaids_points.aeronauticalgroundlight_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(navaids_points.aeronauticalgroundlight_ts.flashing_value as varchar), '(' || navaids_points.aeronauticalgroundlight_ts.flashing_nilreason || ')') as flashing,
-    coalesce(cast(obstacles.verticalstructure_pt.title as varchar), '(' || obstacles.verticalstructure_pt.nilreason[1] || ')') AS structurebeacon,
-    obstacles.verticalstructure_pt.href AS structurebeacon_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS aerodromebeacon,
-    airport_heliport.airportheliport_pt.href AS aerodromebeacon_href
-from navaids_points.aeronauticalgroundlight 
-inner join master_join mj2 on navaids_points.aeronauticalgroundlight.id = mj2.source_id
-inner join navaids_points.aeronauticalgroundlight_tsp on mj2.target_id = navaids_points.aeronauticalgroundlight_tsp.id
-inner join navaids_points.aeronauticalgroundlight_ts on navaids_points.aeronauticalgroundlight_tsp.aeronauticalgroundlighttimeslice_id = navaids_points.aeronauticalgroundlight_ts.id
-left join obstacles.verticalstructure_pt on navaids_points.aeronauticalgroundlight_ts.structurebeacon_id = obstacles.verticalstructure_pt.id
-left join airport_heliport.airportheliport_pt on navaids_points.aeronauticalgroundlight_ts.aerodromebeacon_id = airport_heliport.airportheliport_pt.id
-where aeronauticalgroundlight_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.aeronauticalgroundlight.id,
-    navaids_points.aeronauticalgroundlight_ts.id,
-    navaids_points.aeronauticalgroundlight_tsp.id,
-    navaids_points.aeronauticalgroundlight.identifier,
-    navaids_points.aeronauticalgroundlight_ts.interpretation,
-    navaids_points.aeronauticalgroundlight_ts.sequence_number,
-    navaids_points.aeronauticalgroundlight_ts.correction_number,
-    navaids_points.aeronauticalgroundlight_ts.valid_time_begin,
-    navaids_points.aeronauticalgroundlight_ts.valid_time_end,
-    navaids_points.aeronauticalgroundlight_ts.feature_lifetime_begin,
-    navaids_points.aeronauticalgroundlight_ts.feature_lifetime_end,
-    navaids_points.aeronauticalgroundlight_ts.name_value,
-    navaids_points.aeronauticalgroundlight_ts.name_nilreason,
-    navaids_points.aeronauticalgroundlight_ts.type_value,
-    navaids_points.aeronauticalgroundlight_ts.type_nilreason,
-    navaids_points.aeronauticalgroundlight_ts.colour_value,
-    navaids_points.aeronauticalgroundlight_ts.colour_nilreason,
-    navaids_points.aeronauticalgroundlight_ts.flashing_value,
-    navaids_points.aeronauticalgroundlight_ts.flashing_nilreason,
-    obstacles.verticalstructure_pt.title,
-    obstacles.verticalstructure_pt.nilreason,
-    obstacles.verticalstructure_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by aeronauticalgroundlight.identifier, aeronauticalgroundlight_ts.sequence_number, aeronauticalgroundlight_ts.correction_number DESC;
-create or replace view service.aircraftgroundservice_publisher_view as
-select distinct on (aircraftgroundservice.identifier,aircraftgroundservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.aircraftgroundservice.id,
-    service.aircraftgroundservice_ts.id as ts_id,
-    service.aircraftgroundservice_tsp.id as tsp_id,
-    service.aircraftgroundservice.identifier,
-    service.aircraftgroundservice_ts.interpretation,
-    service.aircraftgroundservice_ts.sequence_number,
-    service.aircraftgroundservice_ts.correction_number,
-    service.aircraftgroundservice_ts.valid_time_begin,
-    service.aircraftgroundservice_ts.valid_time_end,
-    service.aircraftgroundservice_ts.feature_lifetime_begin,
-    service.aircraftgroundservice_ts.feature_lifetime_end,
-    coalesce(cast(service.aircraftgroundservice_ts.flightoperations_value as varchar), '(' || service.aircraftgroundservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.aircraftgroundservice_ts.rank_value as varchar), '(' || service.aircraftgroundservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.aircraftgroundservice_ts.complianticao_value as varchar), '(' || service.aircraftgroundservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.aircraftgroundservice_ts.name_value as varchar), '(' || service.aircraftgroundservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.aircraftgroundservice_ts.type_value as varchar), '(' || service.aircraftgroundservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.aircraftgroundservice 
-inner join master_join mj2 on service.aircraftgroundservice.id = mj2.source_id
-inner join service.aircraftgroundservice_tsp on mj2.target_id = service.aircraftgroundservice_tsp.id
-inner join service.aircraftgroundservice_ts on service.aircraftgroundservice_tsp.aircraftgroundservicetimeslice_id = service.aircraftgroundservice_ts.id
-left join organisation.unit_pt on service.aircraftgroundservice_ts.serviceprovider_id = organisation.unit_pt.id
-where aircraftgroundservice_ts.feature_status = 'APPROVED'
-group by
-    service.aircraftgroundservice.id,
-    service.aircraftgroundservice_ts.id,
-    service.aircraftgroundservice_tsp.id,
-    service.aircraftgroundservice.identifier,
-    service.aircraftgroundservice_ts.interpretation,
-    service.aircraftgroundservice_ts.sequence_number,
-    service.aircraftgroundservice_ts.correction_number,
-    service.aircraftgroundservice_ts.valid_time_begin,
-    service.aircraftgroundservice_ts.valid_time_end,
-    service.aircraftgroundservice_ts.feature_lifetime_begin,
-    service.aircraftgroundservice_ts.feature_lifetime_end,
-    service.aircraftgroundservice_ts.flightoperations_value,
-    service.aircraftgroundservice_ts.flightoperations_nilreason,
-    service.aircraftgroundservice_ts.rank_value,
-    service.aircraftgroundservice_ts.rank_nilreason,
-    service.aircraftgroundservice_ts.complianticao_value,
-    service.aircraftgroundservice_ts.complianticao_nilreason,
-    service.aircraftgroundservice_ts.name_value,
-    service.aircraftgroundservice_ts.name_nilreason,
-    service.aircraftgroundservice_ts.type_value,
-    service.aircraftgroundservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by aircraftgroundservice.identifier, aircraftgroundservice_ts.sequence_number, aircraftgroundservice_ts.correction_number DESC;
-create or replace view airport_heliport.aircraftstand_publisher_view as
-select distinct on (aircraftstand.identifier,aircraftstand_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.aircraftstand.id,
-    airport_heliport.aircraftstand_ts.id as ts_id,
-    airport_heliport.aircraftstand_tsp.id as tsp_id,
-    airport_heliport.aircraftstand.identifier,
-    airport_heliport.aircraftstand_ts.interpretation,
-    airport_heliport.aircraftstand_ts.sequence_number,
-    airport_heliport.aircraftstand_ts.correction_number,
-    airport_heliport.aircraftstand_ts.valid_time_begin,
-    airport_heliport.aircraftstand_ts.valid_time_end,
-    airport_heliport.aircraftstand_ts.feature_lifetime_begin,
-    airport_heliport.aircraftstand_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.aircraftstand_ts.designator_value as varchar), '(' || airport_heliport.aircraftstand_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.aircraftstand_ts.type_value as varchar), '(' || airport_heliport.aircraftstand_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.aircraftstand_ts.visualdockingsystem_value as varchar), '(' || airport_heliport.aircraftstand_ts.visualdockingsystem_nilreason || ')') as visualdockingsystem,
-    coalesce(cast(airport_heliport.apronelement_pt.title as varchar), '(' || airport_heliport.apronelement_pt.nilreason[1] || ')') AS apronlocation,
-    airport_heliport.apronelement_pt.href AS apronlocation_href
-from airport_heliport.aircraftstand 
-inner join master_join mj2 on airport_heliport.aircraftstand.id = mj2.source_id
-inner join airport_heliport.aircraftstand_tsp on mj2.target_id = airport_heliport.aircraftstand_tsp.id
-inner join airport_heliport.aircraftstand_ts on airport_heliport.aircraftstand_tsp.aircraftstandtimeslice_id = airport_heliport.aircraftstand_ts.id
-left join airport_heliport.apronelement_pt on airport_heliport.aircraftstand_ts.apronlocation_id = airport_heliport.apronelement_pt.id
-where aircraftstand_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.aircraftstand.id,
-    airport_heliport.aircraftstand_ts.id,
-    airport_heliport.aircraftstand_tsp.id,
-    airport_heliport.aircraftstand.identifier,
-    airport_heliport.aircraftstand_ts.interpretation,
-    airport_heliport.aircraftstand_ts.sequence_number,
-    airport_heliport.aircraftstand_ts.correction_number,
-    airport_heliport.aircraftstand_ts.valid_time_begin,
-    airport_heliport.aircraftstand_ts.valid_time_end,
-    airport_heliport.aircraftstand_ts.feature_lifetime_begin,
-    airport_heliport.aircraftstand_ts.feature_lifetime_end,
-    airport_heliport.aircraftstand_ts.designator_value,
-    airport_heliport.aircraftstand_ts.designator_nilreason,
-    airport_heliport.aircraftstand_ts.type_value,
-    airport_heliport.aircraftstand_ts.type_nilreason,
-    airport_heliport.aircraftstand_ts.visualdockingsystem_value,
-    airport_heliport.aircraftstand_ts.visualdockingsystem_nilreason,
-    airport_heliport.apronelement_pt.title,
-    airport_heliport.apronelement_pt.nilreason,
-    airport_heliport.apronelement_pt.href
-order by aircraftstand.identifier, aircraftstand_ts.sequence_number, aircraftstand_ts.correction_number DESC;
-create or replace view service.airportclearanceservice_publisher_view as
-select distinct on (airportclearanceservice.identifier,airportclearanceservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.airportclearanceservice.id,
-    service.airportclearanceservice_ts.id as ts_id,
-    service.airportclearanceservice_tsp.id as tsp_id,
-    service.airportclearanceservice.identifier,
-    service.airportclearanceservice_ts.interpretation,
-    service.airportclearanceservice_ts.sequence_number,
-    service.airportclearanceservice_ts.correction_number,
-    service.airportclearanceservice_ts.valid_time_begin,
-    service.airportclearanceservice_ts.valid_time_end,
-    service.airportclearanceservice_ts.feature_lifetime_begin,
-    service.airportclearanceservice_ts.feature_lifetime_end,
-    coalesce(cast(service.airportclearanceservice_ts.flightoperations_value as varchar), '(' || service.airportclearanceservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.airportclearanceservice_ts.rank_value as varchar), '(' || service.airportclearanceservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.airportclearanceservice_ts.complianticao_value as varchar), '(' || service.airportclearanceservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.airportclearanceservice_ts.name_value as varchar), '(' || service.airportclearanceservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.airportclearanceservice_ts.snowplan_value as varchar), '(' || service.airportclearanceservice_ts.snowplan_nilreason || ')') as snowplan,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.airportclearanceservice 
-inner join master_join mj2 on service.airportclearanceservice.id = mj2.source_id
-inner join service.airportclearanceservice_tsp on mj2.target_id = service.airportclearanceservice_tsp.id
-inner join service.airportclearanceservice_ts on service.airportclearanceservice_tsp.airportclearanceservicetimeslice_id = service.airportclearanceservice_ts.id
-left join organisation.unit_pt on service.airportclearanceservice_ts.serviceprovider_id = organisation.unit_pt.id
-where airportclearanceservice_ts.feature_status = 'APPROVED'
-group by
-    service.airportclearanceservice.id,
-    service.airportclearanceservice_ts.id,
-    service.airportclearanceservice_tsp.id,
-    service.airportclearanceservice.identifier,
-    service.airportclearanceservice_ts.interpretation,
-    service.airportclearanceservice_ts.sequence_number,
-    service.airportclearanceservice_ts.correction_number,
-    service.airportclearanceservice_ts.valid_time_begin,
-    service.airportclearanceservice_ts.valid_time_end,
-    service.airportclearanceservice_ts.feature_lifetime_begin,
-    service.airportclearanceservice_ts.feature_lifetime_end,
-    service.airportclearanceservice_ts.flightoperations_value,
-    service.airportclearanceservice_ts.flightoperations_nilreason,
-    service.airportclearanceservice_ts.rank_value,
-    service.airportclearanceservice_ts.rank_nilreason,
-    service.airportclearanceservice_ts.complianticao_value,
-    service.airportclearanceservice_ts.complianticao_nilreason,
-    service.airportclearanceservice_ts.name_value,
-    service.airportclearanceservice_ts.name_nilreason,
-    service.airportclearanceservice_ts.snowplan_value,
-    service.airportclearanceservice_ts.snowplan_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by airportclearanceservice.identifier, airportclearanceservice_ts.sequence_number, airportclearanceservice_ts.correction_number DESC;
-create or replace view airport_heliport.airportheliportcollocation_publisher_view as
-select distinct on (airportheliportcollocation.identifier,airportheliportcollocation_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.airportheliportcollocation.id,
-    airport_heliport.airportheliportcollocation_ts.id as ts_id,
-    airport_heliport.airportheliportcollocation_tsp.id as tsp_id,
-    airport_heliport.airportheliportcollocation.identifier,
-    airport_heliport.airportheliportcollocation_ts.interpretation,
-    airport_heliport.airportheliportcollocation_ts.sequence_number,
-    airport_heliport.airportheliportcollocation_ts.correction_number,
-    airport_heliport.airportheliportcollocation_ts.valid_time_begin,
-    airport_heliport.airportheliportcollocation_ts.valid_time_end,
-    airport_heliport.airportheliportcollocation_ts.feature_lifetime_begin,
-    airport_heliport.airportheliportcollocation_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.airportheliportcollocation_ts.type_value as varchar), '(' || airport_heliport.airportheliportcollocation_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS dependentairport,
-    airport_heliport.airportheliport_pt.href AS dependentairport_href
-from airport_heliport.airportheliportcollocation 
-inner join master_join mj2 on airport_heliport.airportheliportcollocation.id = mj2.source_id
-inner join airport_heliport.airportheliportcollocation_tsp on mj2.target_id = airport_heliport.airportheliportcollocation_tsp.id
-inner join airport_heliport.airportheliportcollocation_ts on airport_heliport.airportheliportcollocation_tsp.airportheliportcollocationtimeslice_id = airport_heliport.airportheliportcollocation_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.airportheliportcollocation_ts.hostairport_id = airport_heliport.airportheliport_pt.id
-left join airport_heliport.airportheliport_pt on airport_heliport.airportheliportcollocation_ts.dependentairport_id = airport_heliport.airportheliport_pt.id
-where airportheliportcollocation_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.airportheliportcollocation.id,
-    airport_heliport.airportheliportcollocation_ts.id,
-    airport_heliport.airportheliportcollocation_tsp.id,
-    airport_heliport.airportheliportcollocation.identifier,
-    airport_heliport.airportheliportcollocation_ts.interpretation,
-    airport_heliport.airportheliportcollocation_ts.sequence_number,
-    airport_heliport.airportheliportcollocation_ts.correction_number,
-    airport_heliport.airportheliportcollocation_ts.valid_time_begin,
-    airport_heliport.airportheliportcollocation_ts.valid_time_end,
-    airport_heliport.airportheliportcollocation_ts.feature_lifetime_begin,
-    airport_heliport.airportheliportcollocation_ts.feature_lifetime_end,
-    airport_heliport.airportheliportcollocation_ts.type_value,
-    airport_heliport.airportheliportcollocation_ts.type_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by airportheliportcollocation.identifier, airportheliportcollocation_ts.sequence_number, airportheliportcollocation_ts.correction_number DESC;
-create or replace view airport_heliport.airportheliport_publisher_view as
-select distinct on (airportheliport.identifier,airportheliport_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.airportheliport.id,
-    airport_heliport.airportheliport_ts.id as ts_id,
-    airport_heliport.airportheliport_tsp.id as tsp_id,
-    airport_heliport.airportheliport.identifier,
-    airport_heliport.airportheliport_ts.interpretation,
-    airport_heliport.airportheliport_ts.sequence_number,
-    airport_heliport.airportheliport_ts.correction_number,
-    airport_heliport.airportheliport_ts.valid_time_begin,
-    airport_heliport.airportheliport_ts.valid_time_end,
-    airport_heliport.airportheliport_ts.feature_lifetime_begin,
-    airport_heliport.airportheliport_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.airportheliport_ts.certificationDate_value as varchar), '(' || airport_heliport.airportheliport_ts.certificationDate_nilreason || ')') as certificationDate,
-    coalesce(cast(airport_heliport.airportheliport_ts.certificationExpirationDate_value as varchar), '(' || airport_heliport.airportheliport_ts.certificationExpirationDate_nilreason || ')') as certificationExpirationDate,
-    coalesce(cast(airport_heliport.airportheliport_ts.designator_value as varchar), '(' || airport_heliport.airportheliport_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.airportheliport_ts.name_value as varchar), '(' || airport_heliport.airportheliport_ts.name_nilreason || ')') as name,
-    coalesce(cast(airport_heliport.airportheliport_ts.locationindicatoricao_value as varchar), '(' || airport_heliport.airportheliport_ts.locationindicatoricao_nilreason || ')') as locationindicatoricao,
-    coalesce(cast(airport_heliport.airportheliport_ts.designatoriata_value as varchar), '(' || airport_heliport.airportheliport_ts.designatoriata_nilreason || ')') as designatoriata,
-    coalesce(cast(airport_heliport.airportheliport_ts.type_value as varchar), '(' || airport_heliport.airportheliport_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.airportheliport_ts.certifiedicao_value as varchar), '(' || airport_heliport.airportheliport_ts.certifiedicao_nilreason || ')') as certifiedicao,
-    coalesce(cast(airport_heliport.airportheliport_ts.privateuse_value as varchar), '(' || airport_heliport.airportheliport_ts.privateuse_nilreason || ')') as privateuse,
-    coalesce(cast(airport_heliport.airportheliport_ts.controltype_value as varchar), '(' || airport_heliport.airportheliport_ts.controltype_nilreason || ')') as controltype,
-    coalesce(cast(airport_heliport.airportheliport_ts.verticaldatum_value as varchar), '(' || airport_heliport.airportheliport_ts.verticaldatum_nilreason || ')') as verticaldatum,
-    coalesce(cast(airport_heliport.airportheliport_ts.magneticvariation_value as varchar), '(' || airport_heliport.airportheliport_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(airport_heliport.airportheliport_ts.magneticvariationaccuracy_value as varchar), '(' || airport_heliport.airportheliport_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(airport_heliport.airportheliport_ts.datemagneticvariation_value as varchar), '(' || airport_heliport.airportheliport_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(airport_heliport.airportheliport_ts.magneticvariationchange_value as varchar), '(' || airport_heliport.airportheliport_ts.magneticvariationchange_nilreason || ')') as magneticvariationchange,
-    coalesce(cast(airport_heliport.airportheliport_ts.altimeterchecklocation_value as varchar), '(' || airport_heliport.airportheliport_ts.altimeterchecklocation_nilreason || ')') as altimeterchecklocation,
-    coalesce(cast(airport_heliport.airportheliport_ts.secondarypowersupply_value as varchar), '(' || airport_heliport.airportheliport_ts.secondarypowersupply_nilreason || ')') as secondarypowersupply,
-    coalesce(cast(airport_heliport.airportheliport_ts.winddirectionindicator_value as varchar), '(' || airport_heliport.airportheliport_ts.winddirectionindicator_nilreason || ')') as winddirectionindicator,
-    coalesce(cast(airport_heliport.airportheliport_ts.landingdirectionindicator_value as varchar), '(' || airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason || ')') as landingdirectionindicator,
-    coalesce(cast(airport_heliport.airportheliport_ts.abandoned_value as varchar), '(' || airport_heliport.airportheliport_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.airportheliport_ts.fieldelevation_value as varchar) || ' ' || airport_heliport.airportheliport_ts.fieldelevation_uom, '(' || airport_heliport.airportheliport_ts.fieldelevation_nilreason || ')') as fieldelevation,
-    coalesce(cast(airport_heliport.airportheliport_ts.fieldelevationaccuracy_value as varchar) || ' ' || airport_heliport.airportheliport_ts.fieldelevationaccuracy_uom, '(' || airport_heliport.airportheliport_ts.fieldelevationaccuracy_nilreason || ')') as fieldelevationaccuracy,
-    coalesce(cast(airport_heliport.airportheliport_ts.referencetemperature_value as varchar) || ' ' || airport_heliport.airportheliport_ts.referencetemperature_uom, '(' || airport_heliport.airportheliport_ts.referencetemperature_nilreason || ')') as referencetemperature,
-    coalesce(cast(airport_heliport.airportheliport_ts.transitionaltitude_value as varchar) || ' ' || airport_heliport.airportheliport_ts.transitionaltitude_uom, '(' || airport_heliport.airportheliport_ts.transitionaltitude_nilreason || ')') as transitionaltitude,
-    coalesce(cast(airport_heliport.airportheliport_ts.transitionlevel_value as varchar) || ' ' || airport_heliport.airportheliport_ts.transitionlevel_uom, '(' || airport_heliport.airportheliport_ts.transitionlevel_nilreason || ')') as transitionlevel,
-    coalesce(cast(airport_heliport.airportheliport_ts.lowesttemperature_value as varchar) || ' ' || airport_heliport.airportheliport_ts.lowesttemperature_uom, '(' || airport_heliport.airportheliport_ts.lowesttemperature_nilreason || ')') as lowesttemperature
-from airport_heliport.airportheliport 
-inner join master_join mj2 on airport_heliport.airportheliport.id = mj2.source_id
-inner join airport_heliport.airportheliport_tsp on mj2.target_id = airport_heliport.airportheliport_tsp.id
-inner join airport_heliport.airportheliport_ts on airport_heliport.airportheliport_tsp.airportheliporttimeslice_id = airport_heliport.airportheliport_ts.id
-where airportheliport_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.airportheliport.id,
-    airport_heliport.airportheliport_ts.id,
-    airport_heliport.airportheliport_tsp.id,
-    airport_heliport.airportheliport.identifier,
-    airport_heliport.airportheliport_ts.interpretation,
-    airport_heliport.airportheliport_ts.sequence_number,
-    airport_heliport.airportheliport_ts.correction_number,
-    airport_heliport.airportheliport_ts.valid_time_begin,
-    airport_heliport.airportheliport_ts.valid_time_end,
-    airport_heliport.airportheliport_ts.feature_lifetime_begin,
-    airport_heliport.airportheliport_ts.feature_lifetime_end,
-    airport_heliport.airportheliport_ts.certificationDate_value,
-    airport_heliport.airportheliport_ts.certificationDate_nilreason,
-    airport_heliport.airportheliport_ts.certificationExpirationDate_value,
-    airport_heliport.airportheliport_ts.certificationExpirationDate_nilreason,
-    airport_heliport.airportheliport_ts.designator_value,
-    airport_heliport.airportheliport_ts.designator_nilreason,
-    airport_heliport.airportheliport_ts.name_value,
-    airport_heliport.airportheliport_ts.name_nilreason,
-    airport_heliport.airportheliport_ts.locationindicatoricao_value,
-    airport_heliport.airportheliport_ts.locationindicatoricao_nilreason,
-    airport_heliport.airportheliport_ts.designatoriata_value,
-    airport_heliport.airportheliport_ts.designatoriata_nilreason,
-    airport_heliport.airportheliport_ts.type_value,
-    airport_heliport.airportheliport_ts.type_nilreason,
-    airport_heliport.airportheliport_ts.certifiedicao_value,
-    airport_heliport.airportheliport_ts.certifiedicao_nilreason,
-    airport_heliport.airportheliport_ts.privateuse_value,
-    airport_heliport.airportheliport_ts.privateuse_nilreason,
-    airport_heliport.airportheliport_ts.controltype_value,
-    airport_heliport.airportheliport_ts.controltype_nilreason,
-    airport_heliport.airportheliport_ts.verticaldatum_value,
-    airport_heliport.airportheliport_ts.verticaldatum_nilreason,
-    airport_heliport.airportheliport_ts.magneticvariation_value,
-    airport_heliport.airportheliport_ts.magneticvariation_nilreason,
-    airport_heliport.airportheliport_ts.magneticvariationaccuracy_value,
-    airport_heliport.airportheliport_ts.magneticvariationaccuracy_nilreason,
-    airport_heliport.airportheliport_ts.datemagneticvariation_value,
-    airport_heliport.airportheliport_ts.datemagneticvariation_nilreason,
-    airport_heliport.airportheliport_ts.magneticvariationchange_value,
-    airport_heliport.airportheliport_ts.magneticvariationchange_nilreason,
-    airport_heliport.airportheliport_ts.altimeterchecklocation_value,
-    airport_heliport.airportheliport_ts.altimeterchecklocation_nilreason,
-    airport_heliport.airportheliport_ts.secondarypowersupply_value,
-    airport_heliport.airportheliport_ts.secondarypowersupply_nilreason,
-    airport_heliport.airportheliport_ts.winddirectionindicator_value,
-    airport_heliport.airportheliport_ts.winddirectionindicator_nilreason,
-    airport_heliport.airportheliport_ts.landingdirectionindicator_value,
-    airport_heliport.airportheliport_ts.landingdirectionindicator_nilreason,
-    airport_heliport.airportheliport_ts.abandoned_value,
-    airport_heliport.airportheliport_ts.abandoned_nilreason,
-    airport_heliport.airportheliport_ts.fieldelevation_value,
-    airport_heliport.airportheliport_ts.fieldelevation_uom,
-    airport_heliport.airportheliport_ts.fieldelevation_nilreason,
-    airport_heliport.airportheliport_ts.fieldelevationaccuracy_value,
-    airport_heliport.airportheliport_ts.fieldelevationaccuracy_uom,
-    airport_heliport.airportheliport_ts.fieldelevationaccuracy_nilreason,
-    airport_heliport.airportheliport_ts.referencetemperature_value,
-    airport_heliport.airportheliport_ts.referencetemperature_uom,
-    airport_heliport.airportheliport_ts.referencetemperature_nilreason,
-    airport_heliport.airportheliport_ts.transitionaltitude_value,
-    airport_heliport.airportheliport_ts.transitionaltitude_uom,
-    airport_heliport.airportheliport_ts.transitionaltitude_nilreason,
-    airport_heliport.airportheliport_ts.transitionlevel_value,
-    airport_heliport.airportheliport_ts.transitionlevel_uom,
-    airport_heliport.airportheliport_ts.transitionlevel_nilreason,
-    airport_heliport.airportheliport_ts.lowesttemperature_value,
-    airport_heliport.airportheliport_ts.lowesttemperature_uom,
-    airport_heliport.airportheliport_ts.lowesttemperature_nilreason
-order by airportheliport.identifier, airportheliport_ts.sequence_number, airportheliport_ts.correction_number DESC;
-create or replace view airport_heliport.airporthotspot_publisher_view as
-select distinct on (airporthotspot.identifier,airporthotspot_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.airporthotspot.id,
-    airport_heliport.airporthotspot_ts.id as ts_id,
-    airport_heliport.airporthotspot_tsp.id as tsp_id,
-    airport_heliport.airporthotspot.identifier,
-    airport_heliport.airporthotspot_ts.interpretation,
-    airport_heliport.airporthotspot_ts.sequence_number,
-    airport_heliport.airporthotspot_ts.correction_number,
-    airport_heliport.airporthotspot_ts.valid_time_begin,
-    airport_heliport.airporthotspot_ts.valid_time_end,
-    airport_heliport.airporthotspot_ts.feature_lifetime_begin,
-    airport_heliport.airporthotspot_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.airporthotspot_ts.designator_value as varchar), '(' || airport_heliport.airporthotspot_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.airporthotspot_ts.instruction_value as varchar), '(' || airport_heliport.airporthotspot_ts.instruction_nilreason || ')') as instruction,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS affectedairport,
-    airport_heliport.airportheliport_pt.href AS affectedairport_href
-from airport_heliport.airporthotspot 
-inner join master_join mj2 on airport_heliport.airporthotspot.id = mj2.source_id
-inner join airport_heliport.airporthotspot_tsp on mj2.target_id = airport_heliport.airporthotspot_tsp.id
-inner join airport_heliport.airporthotspot_ts on airport_heliport.airporthotspot_tsp.airporthotspottimeslice_id = airport_heliport.airporthotspot_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.airporthotspot_ts.affectedairport_id = airport_heliport.airportheliport_pt.id
-where airporthotspot_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.airporthotspot.id,
-    airport_heliport.airporthotspot_ts.id,
-    airport_heliport.airporthotspot_tsp.id,
-    airport_heliport.airporthotspot.identifier,
-    airport_heliport.airporthotspot_ts.interpretation,
-    airport_heliport.airporthotspot_ts.sequence_number,
-    airport_heliport.airporthotspot_ts.correction_number,
-    airport_heliport.airporthotspot_ts.valid_time_begin,
-    airport_heliport.airporthotspot_ts.valid_time_end,
-    airport_heliport.airporthotspot_ts.feature_lifetime_begin,
-    airport_heliport.airporthotspot_ts.feature_lifetime_end,
-    airport_heliport.airporthotspot_ts.designator_value,
-    airport_heliport.airporthotspot_ts.designator_nilreason,
-    airport_heliport.airporthotspot_ts.instruction_value,
-    airport_heliport.airporthotspot_ts.instruction_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by airporthotspot.identifier, airporthotspot_ts.sequence_number, airporthotspot_ts.correction_number DESC;
-create or replace view airport_heliport.airportprotectionareamarking_publisher_view as
-select distinct on (airportprotectionareamarking.identifier,airportprotectionareamarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.airportprotectionareamarking.id,
-    airport_heliport.airportprotectionareamarking_ts.id as ts_id,
-    airport_heliport.airportprotectionareamarking_tsp.id as tsp_id,
-    airport_heliport.airportprotectionareamarking.identifier,
-    airport_heliport.airportprotectionareamarking_ts.interpretation,
-    airport_heliport.airportprotectionareamarking_ts.sequence_number,
-    airport_heliport.airportprotectionareamarking_ts.correction_number,
-    airport_heliport.airportprotectionareamarking_ts.valid_time_begin,
-    airport_heliport.airportprotectionareamarking_ts.valid_time_end,
-    airport_heliport.airportprotectionareamarking_ts.feature_lifetime_begin,
-    airport_heliport.airportprotectionareamarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.airportprotectionareamarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.airportprotectionareamarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.airportprotectionareamarking_ts.condition_value as varchar), '(' || airport_heliport.airportprotectionareamarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.airportprotectionareamarking_ts.markinglocation_value as varchar), '(' || airport_heliport.airportprotectionareamarking_ts.markinglocation_nilreason || ')') as markinglocation
-from airport_heliport.airportprotectionareamarking 
-inner join master_join mj2 on airport_heliport.airportprotectionareamarking.id = mj2.source_id
-inner join airport_heliport.airportprotectionareamarking_tsp on mj2.target_id = airport_heliport.airportprotectionareamarking_tsp.id
-inner join airport_heliport.airportprotectionareamarking_ts on airport_heliport.airportprotectionareamarking_tsp.airportprotectionareamarkingtimeslice_id = airport_heliport.airportprotectionareamarking_ts.id
-where airportprotectionareamarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.airportprotectionareamarking.id,
-    airport_heliport.airportprotectionareamarking_ts.id,
-    airport_heliport.airportprotectionareamarking_tsp.id,
-    airport_heliport.airportprotectionareamarking.identifier,
-    airport_heliport.airportprotectionareamarking_ts.interpretation,
-    airport_heliport.airportprotectionareamarking_ts.sequence_number,
-    airport_heliport.airportprotectionareamarking_ts.correction_number,
-    airport_heliport.airportprotectionareamarking_ts.valid_time_begin,
-    airport_heliport.airportprotectionareamarking_ts.valid_time_end,
-    airport_heliport.airportprotectionareamarking_ts.feature_lifetime_begin,
-    airport_heliport.airportprotectionareamarking_ts.feature_lifetime_end,
-    airport_heliport.airportprotectionareamarking_ts.markingicaostandard_value,
-    airport_heliport.airportprotectionareamarking_ts.markingicaostandard_nilreason,
-    airport_heliport.airportprotectionareamarking_ts.condition_value,
-    airport_heliport.airportprotectionareamarking_ts.condition_nilreason,
-    airport_heliport.airportprotectionareamarking_ts.markinglocation_value,
-    airport_heliport.airportprotectionareamarking_ts.markinglocation_nilreason
-order by airportprotectionareamarking.identifier, airportprotectionareamarking_ts.sequence_number, airportprotectionareamarking_ts.correction_number DESC;
-create or replace view service.airportsuppliesservice_publisher_view as
-select distinct on (airportsuppliesservice.identifier,airportsuppliesservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.airportsuppliesservice.id,
-    service.airportsuppliesservice_ts.id as ts_id,
-    service.airportsuppliesservice_tsp.id as tsp_id,
-    service.airportsuppliesservice.identifier,
-    service.airportsuppliesservice_ts.interpretation,
-    service.airportsuppliesservice_ts.sequence_number,
-    service.airportsuppliesservice_ts.correction_number,
-    service.airportsuppliesservice_ts.valid_time_begin,
-    service.airportsuppliesservice_ts.valid_time_end,
-    service.airportsuppliesservice_ts.feature_lifetime_begin,
-    service.airportsuppliesservice_ts.feature_lifetime_end,
-    coalesce(cast(service.airportsuppliesservice_ts.flightoperations_value as varchar), '(' || service.airportsuppliesservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.airportsuppliesservice_ts.rank_value as varchar), '(' || service.airportsuppliesservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.airportsuppliesservice_ts.complianticao_value as varchar), '(' || service.airportsuppliesservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.airportsuppliesservice_ts.name_value as varchar), '(' || service.airportsuppliesservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.airportsuppliesservice 
-inner join master_join mj2 on service.airportsuppliesservice.id = mj2.source_id
-inner join service.airportsuppliesservice_tsp on mj2.target_id = service.airportsuppliesservice_tsp.id
-inner join service.airportsuppliesservice_ts on service.airportsuppliesservice_tsp.airportsuppliesservicetimeslice_id = service.airportsuppliesservice_ts.id
-left join organisation.unit_pt on service.airportsuppliesservice_ts.serviceprovider_id = organisation.unit_pt.id
-where airportsuppliesservice_ts.feature_status = 'APPROVED'
-group by
-    service.airportsuppliesservice.id,
-    service.airportsuppliesservice_ts.id,
-    service.airportsuppliesservice_tsp.id,
-    service.airportsuppliesservice.identifier,
-    service.airportsuppliesservice_ts.interpretation,
-    service.airportsuppliesservice_ts.sequence_number,
-    service.airportsuppliesservice_ts.correction_number,
-    service.airportsuppliesservice_ts.valid_time_begin,
-    service.airportsuppliesservice_ts.valid_time_end,
-    service.airportsuppliesservice_ts.feature_lifetime_begin,
-    service.airportsuppliesservice_ts.feature_lifetime_end,
-    service.airportsuppliesservice_ts.flightoperations_value,
-    service.airportsuppliesservice_ts.flightoperations_nilreason,
-    service.airportsuppliesservice_ts.rank_value,
-    service.airportsuppliesservice_ts.rank_nilreason,
-    service.airportsuppliesservice_ts.complianticao_value,
-    service.airportsuppliesservice_ts.complianticao_nilreason,
-    service.airportsuppliesservice_ts.name_value,
-    service.airportsuppliesservice_ts.name_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by airportsuppliesservice.identifier, airportsuppliesservice_ts.sequence_number, airportsuppliesservice_ts.correction_number DESC;
-create or replace view routes.airspacebordercrossing_publisher_view as
-select distinct on (airspacebordercrossing.identifier,airspacebordercrossing_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.airspacebordercrossing.id,
-    routes.airspacebordercrossing_ts.id as ts_id,
-    routes.airspacebordercrossing_tsp.id as tsp_id,
-    routes.airspacebordercrossing.identifier,
-    routes.airspacebordercrossing_ts.interpretation,
-    routes.airspacebordercrossing_ts.sequence_number,
-    routes.airspacebordercrossing_ts.correction_number,
-    routes.airspacebordercrossing_ts.valid_time_begin,
-    routes.airspacebordercrossing_ts.valid_time_end,
-    routes.airspacebordercrossing_ts.feature_lifetime_begin,
-    routes.airspacebordercrossing_ts.feature_lifetime_end,
-    coalesce(cast(airspace.airspace_pt.title as varchar), '(' || airspace.airspace_pt.nilreason[1] || ')') AS enteredairspace,
-    airspace.airspace_pt.href AS enteredairspace_href
-from routes.airspacebordercrossing 
-inner join master_join mj2 on routes.airspacebordercrossing.id = mj2.source_id
-inner join routes.airspacebordercrossing_tsp on mj2.target_id = routes.airspacebordercrossing_tsp.id
-inner join routes.airspacebordercrossing_ts on routes.airspacebordercrossing_tsp.airspacebordercrossingtimeslice_id = routes.airspacebordercrossing_ts.id
-left join airspace.airspace_pt on routes.airspacebordercrossing_ts.exitedairspace_id = airspace.airspace_pt.id
-left join airspace.airspace_pt on routes.airspacebordercrossing_ts.enteredairspace_id = airspace.airspace_pt.id
-where airspacebordercrossing_ts.feature_status = 'APPROVED'
-group by
-    routes.airspacebordercrossing.id,
-    routes.airspacebordercrossing_ts.id,
-    routes.airspacebordercrossing_tsp.id,
-    routes.airspacebordercrossing.identifier,
-    routes.airspacebordercrossing_ts.interpretation,
-    routes.airspacebordercrossing_ts.sequence_number,
-    routes.airspacebordercrossing_ts.correction_number,
-    routes.airspacebordercrossing_ts.valid_time_begin,
-    routes.airspacebordercrossing_ts.valid_time_end,
-    routes.airspacebordercrossing_ts.feature_lifetime_begin,
-    routes.airspacebordercrossing_ts.feature_lifetime_end,
-    airspace.airspace_pt.title,
-    airspace.airspace_pt.nilreason,
-    airspace.airspace_pt.href,
-    airspace.airspace_pt.title,
-    airspace.airspace_pt.nilreason,
-    airspace.airspace_pt.href
-order by airspacebordercrossing.identifier, airspacebordercrossing_ts.sequence_number, airspacebordercrossing_ts.correction_number DESC;
-create or replace view airspace.airspace_publisher_view as
-select distinct on (airspace.identifier,airspace_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airspace.airspace.id,
-    airspace.airspace_ts.id as ts_id,
-    airspace.airspace_tsp.id as tsp_id,
-    airspace.airspace.identifier,
-    airspace.airspace_ts.interpretation,
-    airspace.airspace_ts.sequence_number,
-    airspace.airspace_ts.correction_number,
-    airspace.airspace_ts.valid_time_begin,
-    airspace.airspace_ts.valid_time_end,
-    airspace.airspace_ts.feature_lifetime_begin,
-    airspace.airspace_ts.feature_lifetime_end,
-    coalesce(cast(airspace.airspace_ts.type_value as varchar), '(' || airspace.airspace_ts.type_nilreason || ')') as type,
-    coalesce(cast(airspace.airspace_ts.designator_value as varchar), '(' || airspace.airspace_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airspace.airspace_ts.localtype_value as varchar), '(' || airspace.airspace_ts.localtype_nilreason || ')') as localtype,
-    coalesce(cast(airspace.airspace_ts.name_value as varchar), '(' || airspace.airspace_ts.name_nilreason || ')') as name,
-    coalesce(cast(airspace.airspace_ts.designatoricao_value as varchar), '(' || airspace.airspace_ts.designatoricao_nilreason || ')') as designatoricao,
-    coalesce(cast(airspace.airspace_ts.controltype_value as varchar), '(' || airspace.airspace_ts.controltype_nilreason || ')') as controltype,
-    coalesce(cast(airspace.airspace_ts.upperlowerseparation_value as varchar) || ' ' || airspace.airspace_ts.upperlowerseparation_uom, '(' || airspace.airspace_ts.upperlowerseparation_nilreason || ')') as upperlowerseparation,
-    coalesce(cast(routes.route_pt.title as varchar), '(' || routes.route_pt.nilreason[1] || ')') AS protectedroute,
-    routes.route_pt.href AS protectedroute_href
-from airspace.airspace 
-inner join master_join mj2 on airspace.airspace.id = mj2.source_id
-inner join airspace.airspace_tsp on mj2.target_id = airspace.airspace_tsp.id
-inner join airspace.airspace_ts on airspace.airspace_tsp.airspacetimeslice_id = airspace.airspace_ts.id
-left join routes.route_pt on airspace.airspace_ts.protectedroute_id = routes.route_pt.id
-where airspace_ts.feature_status = 'APPROVED'
-group by
-    airspace.airspace.id,
-    airspace.airspace_ts.id,
-    airspace.airspace_tsp.id,
-    airspace.airspace.identifier,
-    airspace.airspace_ts.interpretation,
-    airspace.airspace_ts.sequence_number,
-    airspace.airspace_ts.correction_number,
-    airspace.airspace_ts.valid_time_begin,
-    airspace.airspace_ts.valid_time_end,
-    airspace.airspace_ts.feature_lifetime_begin,
-    airspace.airspace_ts.feature_lifetime_end,
-    airspace.airspace_ts.type_value,
-    airspace.airspace_ts.type_nilreason,
-    airspace.airspace_ts.designator_value,
-    airspace.airspace_ts.designator_nilreason,
-    airspace.airspace_ts.localtype_value,
-    airspace.airspace_ts.localtype_nilreason,
-    airspace.airspace_ts.name_value,
-    airspace.airspace_ts.name_nilreason,
-    airspace.airspace_ts.designatoricao_value,
-    airspace.airspace_ts.designatoricao_nilreason,
-    airspace.airspace_ts.controltype_value,
-    airspace.airspace_ts.controltype_nilreason,
-    airspace.airspace_ts.upperlowerseparation_value,
-    airspace.airspace_ts.upperlowerseparation_uom,
-    airspace.airspace_ts.upperlowerseparation_nilreason,
-    routes.route_pt.title,
-    routes.route_pt.nilreason,
-    routes.route_pt.href
-order by airspace.identifier, airspace_ts.sequence_number, airspace_ts.correction_number DESC;
-create or replace view service.airtrafficcontrolservice_publisher_view as
-select distinct on (airtrafficcontrolservice.identifier,airtrafficcontrolservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.airtrafficcontrolservice.id,
-    service.airtrafficcontrolservice_ts.id as ts_id,
-    service.airtrafficcontrolservice_tsp.id as tsp_id,
-    service.airtrafficcontrolservice.identifier,
-    service.airtrafficcontrolservice_ts.interpretation,
-    service.airtrafficcontrolservice_ts.sequence_number,
-    service.airtrafficcontrolservice_ts.correction_number,
-    service.airtrafficcontrolservice_ts.valid_time_begin,
-    service.airtrafficcontrolservice_ts.valid_time_end,
-    service.airtrafficcontrolservice_ts.feature_lifetime_begin,
-    service.airtrafficcontrolservice_ts.feature_lifetime_end,
-    coalesce(cast(service.airtrafficcontrolservice_ts.flightoperations_value as varchar), '(' || service.airtrafficcontrolservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.airtrafficcontrolservice_ts.rank_value as varchar), '(' || service.airtrafficcontrolservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.airtrafficcontrolservice_ts.complianticao_value as varchar), '(' || service.airtrafficcontrolservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.airtrafficcontrolservice_ts.name_value as varchar), '(' || service.airtrafficcontrolservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.airtrafficcontrolservice_ts.radarassisted_value as varchar), '(' || service.airtrafficcontrolservice_ts.radarassisted_nilreason || ')') as radarassisted,
-    coalesce(cast(service.airtrafficcontrolservice_ts.datalinkenabled_value as varchar), '(' || service.airtrafficcontrolservice_ts.datalinkenabled_nilreason || ')') as datalinkenabled,
-    coalesce(cast(service.airtrafficcontrolservice_ts.datalinkchannel_value as varchar), '(' || service.airtrafficcontrolservice_ts.datalinkchannel_nilreason || ')') as datalinkchannel,
-    coalesce(cast(service.airtrafficcontrolservice_ts.type_value as varchar), '(' || service.airtrafficcontrolservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href,
-    coalesce(cast(navaids_points.directionfinder_pt.title as varchar), '(' || navaids_points.directionfinder_pt.nilreason[1] || ')') AS aircraftlocator,
-    navaids_points.directionfinder_pt.href AS aircraftlocator_href
-from service.airtrafficcontrolservice 
-inner join master_join mj2 on service.airtrafficcontrolservice.id = mj2.source_id
-inner join service.airtrafficcontrolservice_tsp on mj2.target_id = service.airtrafficcontrolservice_tsp.id
-inner join service.airtrafficcontrolservice_ts on service.airtrafficcontrolservice_tsp.airtrafficcontrolservicetimeslice_id = service.airtrafficcontrolservice_ts.id
-left join organisation.unit_pt on service.airtrafficcontrolservice_ts.serviceprovider_id = organisation.unit_pt.id
-left join navaids_points.directionfinder_pt on service.airtrafficcontrolservice_ts.aircraftlocator_id = navaids_points.directionfinder_pt.id
-where airtrafficcontrolservice_ts.feature_status = 'APPROVED'
-group by
-    service.airtrafficcontrolservice.id,
-    service.airtrafficcontrolservice_ts.id,
-    service.airtrafficcontrolservice_tsp.id,
-    service.airtrafficcontrolservice.identifier,
-    service.airtrafficcontrolservice_ts.interpretation,
-    service.airtrafficcontrolservice_ts.sequence_number,
-    service.airtrafficcontrolservice_ts.correction_number,
-    service.airtrafficcontrolservice_ts.valid_time_begin,
-    service.airtrafficcontrolservice_ts.valid_time_end,
-    service.airtrafficcontrolservice_ts.feature_lifetime_begin,
-    service.airtrafficcontrolservice_ts.feature_lifetime_end,
-    service.airtrafficcontrolservice_ts.flightoperations_value,
-    service.airtrafficcontrolservice_ts.flightoperations_nilreason,
-    service.airtrafficcontrolservice_ts.rank_value,
-    service.airtrafficcontrolservice_ts.rank_nilreason,
-    service.airtrafficcontrolservice_ts.complianticao_value,
-    service.airtrafficcontrolservice_ts.complianticao_nilreason,
-    service.airtrafficcontrolservice_ts.name_value,
-    service.airtrafficcontrolservice_ts.name_nilreason,
-    service.airtrafficcontrolservice_ts.radarassisted_value,
-    service.airtrafficcontrolservice_ts.radarassisted_nilreason,
-    service.airtrafficcontrolservice_ts.datalinkenabled_value,
-    service.airtrafficcontrolservice_ts.datalinkenabled_nilreason,
-    service.airtrafficcontrolservice_ts.datalinkchannel_value,
-    service.airtrafficcontrolservice_ts.datalinkchannel_nilreason,
-    service.airtrafficcontrolservice_ts.type_value,
-    service.airtrafficcontrolservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href,
-    navaids_points.directionfinder_pt.title,
-    navaids_points.directionfinder_pt.nilreason,
-    navaids_points.directionfinder_pt.href
-order by airtrafficcontrolservice.identifier, airtrafficcontrolservice_ts.sequence_number, airtrafficcontrolservice_ts.correction_number DESC;
-create or replace view service.airtrafficmanagementservice_publisher_view as
-select distinct on (airtrafficmanagementservice.identifier,airtrafficmanagementservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.airtrafficmanagementservice.id,
-    service.airtrafficmanagementservice_ts.id as ts_id,
-    service.airtrafficmanagementservice_tsp.id as tsp_id,
-    service.airtrafficmanagementservice.identifier,
-    service.airtrafficmanagementservice_ts.interpretation,
-    service.airtrafficmanagementservice_ts.sequence_number,
-    service.airtrafficmanagementservice_ts.correction_number,
-    service.airtrafficmanagementservice_ts.valid_time_begin,
-    service.airtrafficmanagementservice_ts.valid_time_end,
-    service.airtrafficmanagementservice_ts.feature_lifetime_begin,
-    service.airtrafficmanagementservice_ts.feature_lifetime_end,
-    coalesce(cast(service.airtrafficmanagementservice_ts.flightoperations_value as varchar), '(' || service.airtrafficmanagementservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.airtrafficmanagementservice_ts.rank_value as varchar), '(' || service.airtrafficmanagementservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.airtrafficmanagementservice_ts.complianticao_value as varchar), '(' || service.airtrafficmanagementservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.airtrafficmanagementservice_ts.name_value as varchar), '(' || service.airtrafficmanagementservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.airtrafficmanagementservice_ts.type_value as varchar), '(' || service.airtrafficmanagementservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.airtrafficmanagementservice 
-inner join master_join mj2 on service.airtrafficmanagementservice.id = mj2.source_id
-inner join service.airtrafficmanagementservice_tsp on mj2.target_id = service.airtrafficmanagementservice_tsp.id
-inner join service.airtrafficmanagementservice_ts on service.airtrafficmanagementservice_tsp.airtrafficmanagementservicetimeslice_id = service.airtrafficmanagementservice_ts.id
-left join organisation.unit_pt on service.airtrafficmanagementservice_ts.serviceprovider_id = organisation.unit_pt.id
-where airtrafficmanagementservice_ts.feature_status = 'APPROVED'
-group by
-    service.airtrafficmanagementservice.id,
-    service.airtrafficmanagementservice_ts.id,
-    service.airtrafficmanagementservice_tsp.id,
-    service.airtrafficmanagementservice.identifier,
-    service.airtrafficmanagementservice_ts.interpretation,
-    service.airtrafficmanagementservice_ts.sequence_number,
-    service.airtrafficmanagementservice_ts.correction_number,
-    service.airtrafficmanagementservice_ts.valid_time_begin,
-    service.airtrafficmanagementservice_ts.valid_time_end,
-    service.airtrafficmanagementservice_ts.feature_lifetime_begin,
-    service.airtrafficmanagementservice_ts.feature_lifetime_end,
-    service.airtrafficmanagementservice_ts.flightoperations_value,
-    service.airtrafficmanagementservice_ts.flightoperations_nilreason,
-    service.airtrafficmanagementservice_ts.rank_value,
-    service.airtrafficmanagementservice_ts.rank_nilreason,
-    service.airtrafficmanagementservice_ts.complianticao_value,
-    service.airtrafficmanagementservice_ts.complianticao_nilreason,
-    service.airtrafficmanagementservice_ts.name_value,
-    service.airtrafficmanagementservice_ts.name_nilreason,
-    service.airtrafficmanagementservice_ts.type_value,
-    service.airtrafficmanagementservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by airtrafficmanagementservice.identifier, airtrafficmanagementservice_ts.sequence_number, airtrafficmanagementservice_ts.correction_number DESC;
-create or replace view airport_heliport.altimetersource_publisher_view as
-select distinct on (altimetersource.identifier,altimetersource_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.altimetersource.id,
-    airport_heliport.altimetersource_ts.id as ts_id,
-    airport_heliport.altimetersource_tsp.id as tsp_id,
-    airport_heliport.altimetersource.identifier,
-    airport_heliport.altimetersource_ts.interpretation,
-    airport_heliport.altimetersource_ts.sequence_number,
-    airport_heliport.altimetersource_ts.correction_number,
-    airport_heliport.altimetersource_ts.valid_time_begin,
-    airport_heliport.altimetersource_ts.valid_time_end,
-    airport_heliport.altimetersource_ts.feature_lifetime_begin,
-    airport_heliport.altimetersource_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.altimetersource_ts.isremote_value as varchar), '(' || airport_heliport.altimetersource_ts.isremote_nilreason || ')') as isremote,
-    coalesce(cast(airport_heliport.altimetersource_ts.isprimary_value as varchar), '(' || airport_heliport.altimetersource_ts.isprimary_nilreason || ')') as isprimary
-from airport_heliport.altimetersource 
-inner join master_join mj2 on airport_heliport.altimetersource.id = mj2.source_id
-inner join airport_heliport.altimetersource_tsp on mj2.target_id = airport_heliport.altimetersource_tsp.id
-inner join airport_heliport.altimetersource_ts on airport_heliport.altimetersource_tsp.altimetersourcetimeslice_id = airport_heliport.altimetersource_ts.id
-where altimetersource_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.altimetersource.id,
-    airport_heliport.altimetersource_ts.id,
-    airport_heliport.altimetersource_tsp.id,
-    airport_heliport.altimetersource.identifier,
-    airport_heliport.altimetersource_ts.interpretation,
-    airport_heliport.altimetersource_ts.sequence_number,
-    airport_heliport.altimetersource_ts.correction_number,
-    airport_heliport.altimetersource_ts.valid_time_begin,
-    airport_heliport.altimetersource_ts.valid_time_end,
-    airport_heliport.altimetersource_ts.feature_lifetime_begin,
-    airport_heliport.altimetersource_ts.feature_lifetime_end,
-    airport_heliport.altimetersource_ts.isremote_value,
-    airport_heliport.altimetersource_ts.isremote_nilreason,
-    airport_heliport.altimetersource_ts.isprimary_value,
-    airport_heliport.altimetersource_ts.isprimary_nilreason
-order by altimetersource.identifier, altimetersource_ts.sequence_number, altimetersource_ts.correction_number DESC;
-create or replace view navaids_points.angleindication_publisher_view as
-select distinct on (angleindication.identifier,angleindication_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.angleindication.id,
-    navaids_points.angleindication_ts.id as ts_id,
-    navaids_points.angleindication_tsp.id as tsp_id,
-    navaids_points.angleindication.identifier,
-    navaids_points.angleindication_ts.interpretation,
-    navaids_points.angleindication_ts.sequence_number,
-    navaids_points.angleindication_ts.correction_number,
-    navaids_points.angleindication_ts.valid_time_begin,
-    navaids_points.angleindication_ts.valid_time_end,
-    navaids_points.angleindication_ts.feature_lifetime_begin,
-    navaids_points.angleindication_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.angleindication_ts.angle_value as varchar), '(' || navaids_points.angleindication_ts.angle_nilreason || ')') as angle,
-    coalesce(cast(navaids_points.angleindication_ts.angletype_value as varchar), '(' || navaids_points.angleindication_ts.angletype_nilreason || ')') as angletype,
-    coalesce(cast(navaids_points.angleindication_ts.indicationdirection_value as varchar), '(' || navaids_points.angleindication_ts.indicationdirection_nilreason || ')') as indicationdirection,
-    coalesce(cast(navaids_points.angleindication_ts.trueangle_value as varchar), '(' || navaids_points.angleindication_ts.trueangle_nilreason || ')') as trueangle,
-    coalesce(cast(navaids_points.angleindication_ts.cardinaldirection_value as varchar), '(' || navaids_points.angleindication_ts.cardinaldirection_nilreason || ')') as cardinaldirection,
-    coalesce(cast(navaids_points.angleindication_ts.minimumreceptionaltitude_value as varchar) || ' ' || navaids_points.angleindication_ts.minimumreceptionaltitude_uom, '(' || navaids_points.angleindication_ts.minimumreceptionaltitude_nilreason || ')') as minimumreceptionaltitude,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS pointchoicefixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS pointchoicefixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS pointchoicenavaidsystem,
-    navaids_points.navaid_pt.href AS pointchoicenavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS pointchoiceaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS pointchoiceaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS pointchoicerunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS pointchoicerunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS pointchoiceairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS pointchoiceairportreferencepoint_href
-from navaids_points.angleindication 
-inner join master_join mj2 on navaids_points.angleindication.id = mj2.source_id
-inner join navaids_points.angleindication_tsp on mj2.target_id = navaids_points.angleindication_tsp.id
-inner join navaids_points.angleindication_ts on navaids_points.angleindication_tsp.angleindicationtimeslice_id = navaids_points.angleindication_ts.id
-left join navaids_points.designatedpoint_pt on navaids_points.angleindication_ts.fix_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.designatedpoint_pt on navaids_points.angleindication_ts.pointchoicefixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on navaids_points.angleindication_ts.pointchoicenavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on navaids_points.angleindication_ts.pointchoiceaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on navaids_points.angleindication_ts.pointchoicerunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on navaids_points.angleindication_ts.pointchoiceairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where angleindication_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.angleindication.id,
-    navaids_points.angleindication_ts.id,
-    navaids_points.angleindication_tsp.id,
-    navaids_points.angleindication.identifier,
-    navaids_points.angleindication_ts.interpretation,
-    navaids_points.angleindication_ts.sequence_number,
-    navaids_points.angleindication_ts.correction_number,
-    navaids_points.angleindication_ts.valid_time_begin,
-    navaids_points.angleindication_ts.valid_time_end,
-    navaids_points.angleindication_ts.feature_lifetime_begin,
-    navaids_points.angleindication_ts.feature_lifetime_end,
-    navaids_points.angleindication_ts.angle_value,
-    navaids_points.angleindication_ts.angle_nilreason,
-    navaids_points.angleindication_ts.angletype_value,
-    navaids_points.angleindication_ts.angletype_nilreason,
-    navaids_points.angleindication_ts.indicationdirection_value,
-    navaids_points.angleindication_ts.indicationdirection_nilreason,
-    navaids_points.angleindication_ts.trueangle_value,
-    navaids_points.angleindication_ts.trueangle_nilreason,
-    navaids_points.angleindication_ts.cardinaldirection_value,
-    navaids_points.angleindication_ts.cardinaldirection_nilreason,
-    navaids_points.angleindication_ts.minimumreceptionaltitude_value,
-    navaids_points.angleindication_ts.minimumreceptionaltitude_uom,
-    navaids_points.angleindication_ts.minimumreceptionaltitude_nilreason,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by angleindication.identifier, angleindication_ts.sequence_number, angleindication_ts.correction_number DESC;
-create or replace view airport_heliport.approachlightingsystem_publisher_view as
-select distinct on (approachlightingsystem.identifier,approachlightingsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.approachlightingsystem.id,
-    airport_heliport.approachlightingsystem_ts.id as ts_id,
-    airport_heliport.approachlightingsystem_tsp.id as tsp_id,
-    airport_heliport.approachlightingsystem.identifier,
-    airport_heliport.approachlightingsystem_ts.interpretation,
-    airport_heliport.approachlightingsystem_ts.sequence_number,
-    airport_heliport.approachlightingsystem_ts.correction_number,
-    airport_heliport.approachlightingsystem_ts.valid_time_begin,
-    airport_heliport.approachlightingsystem_ts.valid_time_end,
-    airport_heliport.approachlightingsystem_ts.feature_lifetime_begin,
-    airport_heliport.approachlightingsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.colour_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.classicao_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.classicao_nilreason || ')') as classicao,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.type_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.sequencedflashing_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.sequencedflashing_nilreason || ')') as sequencedflashing,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.alignmentindicator_value as varchar), '(' || airport_heliport.approachlightingsystem_ts.alignmentindicator_nilreason || ')') as alignmentindicator,
-    coalesce(cast(airport_heliport.approachlightingsystem_ts.length_value as varchar) || ' ' || airport_heliport.approachlightingsystem_ts.length_uom, '(' || airport_heliport.approachlightingsystem_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS servedrunwaydirection,
-    airport_heliport.runwaydirection_pt.href AS servedrunwaydirection_href
-from airport_heliport.approachlightingsystem 
-inner join master_join mj2 on airport_heliport.approachlightingsystem.id = mj2.source_id
-inner join airport_heliport.approachlightingsystem_tsp on mj2.target_id = airport_heliport.approachlightingsystem_tsp.id
-inner join airport_heliport.approachlightingsystem_ts on airport_heliport.approachlightingsystem_tsp.approachlightingsystemtimeslice_id = airport_heliport.approachlightingsystem_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.approachlightingsystem_ts.servedrunwaydirection_id = airport_heliport.runwaydirection_pt.id
-where approachlightingsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.approachlightingsystem.id,
-    airport_heliport.approachlightingsystem_ts.id,
-    airport_heliport.approachlightingsystem_tsp.id,
-    airport_heliport.approachlightingsystem.identifier,
-    airport_heliport.approachlightingsystem_ts.interpretation,
-    airport_heliport.approachlightingsystem_ts.sequence_number,
-    airport_heliport.approachlightingsystem_ts.correction_number,
-    airport_heliport.approachlightingsystem_ts.valid_time_begin,
-    airport_heliport.approachlightingsystem_ts.valid_time_end,
-    airport_heliport.approachlightingsystem_ts.feature_lifetime_begin,
-    airport_heliport.approachlightingsystem_ts.feature_lifetime_end,
-    airport_heliport.approachlightingsystem_ts.emergencylighting_value,
-    airport_heliport.approachlightingsystem_ts.emergencylighting_nilreason,
-    airport_heliport.approachlightingsystem_ts.intensitylevel_value,
-    airport_heliport.approachlightingsystem_ts.intensitylevel_nilreason,
-    airport_heliport.approachlightingsystem_ts.colour_value,
-    airport_heliport.approachlightingsystem_ts.colour_nilreason,
-    airport_heliport.approachlightingsystem_ts.classicao_value,
-    airport_heliport.approachlightingsystem_ts.classicao_nilreason,
-    airport_heliport.approachlightingsystem_ts.type_value,
-    airport_heliport.approachlightingsystem_ts.type_nilreason,
-    airport_heliport.approachlightingsystem_ts.sequencedflashing_value,
-    airport_heliport.approachlightingsystem_ts.sequencedflashing_nilreason,
-    airport_heliport.approachlightingsystem_ts.alignmentindicator_value,
-    airport_heliport.approachlightingsystem_ts.alignmentindicator_nilreason,
-    airport_heliport.approachlightingsystem_ts.length_value,
-    airport_heliport.approachlightingsystem_ts.length_uom,
-    airport_heliport.approachlightingsystem_ts.length_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by approachlightingsystem.identifier, approachlightingsystem_ts.sequence_number, approachlightingsystem_ts.correction_number DESC;
-create or replace view airport_heliport.apronelement_publisher_view as
-select distinct on (apronelement.identifier,apronelement_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.apronelement.id,
-    airport_heliport.apronelement_ts.id as ts_id,
-    airport_heliport.apronelement_tsp.id as tsp_id,
-    airport_heliport.apronelement.identifier,
-    airport_heliport.apronelement_ts.interpretation,
-    airport_heliport.apronelement_ts.sequence_number,
-    airport_heliport.apronelement_ts.correction_number,
-    airport_heliport.apronelement_ts.valid_time_begin,
-    airport_heliport.apronelement_ts.valid_time_end,
-    airport_heliport.apronelement_ts.feature_lifetime_begin,
-    airport_heliport.apronelement_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.apronelement_ts.type_value as varchar), '(' || airport_heliport.apronelement_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.apronelement_ts.jetwayavailability_value as varchar), '(' || airport_heliport.apronelement_ts.jetwayavailability_nilreason || ')') as jetwayavailability,
-    coalesce(cast(airport_heliport.apronelement_ts.towingavailability_value as varchar), '(' || airport_heliport.apronelement_ts.towingavailability_nilreason || ')') as towingavailability,
-    coalesce(cast(airport_heliport.apronelement_ts.dockingavailability_value as varchar), '(' || airport_heliport.apronelement_ts.dockingavailability_nilreason || ')') as dockingavailability,
-    coalesce(cast(airport_heliport.apronelement_ts.groundpoweravailability_value as varchar), '(' || airport_heliport.apronelement_ts.groundpoweravailability_nilreason || ')') as groundpoweravailability,
-    coalesce(cast(airport_heliport.apronelement_ts.length_value as varchar) || ' ' || airport_heliport.apronelement_ts.length_uom, '(' || airport_heliport.apronelement_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.apronelement_ts.width_value as varchar) || ' ' || airport_heliport.apronelement_ts.width_uom, '(' || airport_heliport.apronelement_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.apron_pt.title as varchar), '(' || airport_heliport.apron_pt.nilreason[1] || ')') AS associatedapron,
-    airport_heliport.apron_pt.href AS associatedapron_href
-from airport_heliport.apronelement 
-inner join master_join mj2 on airport_heliport.apronelement.id = mj2.source_id
-inner join airport_heliport.apronelement_tsp on mj2.target_id = airport_heliport.apronelement_tsp.id
-inner join airport_heliport.apronelement_ts on airport_heliport.apronelement_tsp.apronelementtimeslice_id = airport_heliport.apronelement_ts.id
-left join airport_heliport.apron_pt on airport_heliport.apronelement_ts.associatedapron_id = airport_heliport.apron_pt.id
-where apronelement_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.apronelement.id,
-    airport_heliport.apronelement_ts.id,
-    airport_heliport.apronelement_tsp.id,
-    airport_heliport.apronelement.identifier,
-    airport_heliport.apronelement_ts.interpretation,
-    airport_heliport.apronelement_ts.sequence_number,
-    airport_heliport.apronelement_ts.correction_number,
-    airport_heliport.apronelement_ts.valid_time_begin,
-    airport_heliport.apronelement_ts.valid_time_end,
-    airport_heliport.apronelement_ts.feature_lifetime_begin,
-    airport_heliport.apronelement_ts.feature_lifetime_end,
-    airport_heliport.apronelement_ts.type_value,
-    airport_heliport.apronelement_ts.type_nilreason,
-    airport_heliport.apronelement_ts.jetwayavailability_value,
-    airport_heliport.apronelement_ts.jetwayavailability_nilreason,
-    airport_heliport.apronelement_ts.towingavailability_value,
-    airport_heliport.apronelement_ts.towingavailability_nilreason,
-    airport_heliport.apronelement_ts.dockingavailability_value,
-    airport_heliport.apronelement_ts.dockingavailability_nilreason,
-    airport_heliport.apronelement_ts.groundpoweravailability_value,
-    airport_heliport.apronelement_ts.groundpoweravailability_nilreason,
-    airport_heliport.apronelement_ts.length_value,
-    airport_heliport.apronelement_ts.length_uom,
-    airport_heliport.apronelement_ts.length_nilreason,
-    airport_heliport.apronelement_ts.width_value,
-    airport_heliport.apronelement_ts.width_uom,
-    airport_heliport.apronelement_ts.width_nilreason,
-    airport_heliport.apron_pt.title,
-    airport_heliport.apron_pt.nilreason,
-    airport_heliport.apron_pt.href
-order by apronelement.identifier, apronelement_ts.sequence_number, apronelement_ts.correction_number DESC;
-create or replace view airport_heliport.apronlightsystem_publisher_view as
-select distinct on (apronlightsystem.identifier,apronlightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.apronlightsystem.id,
-    airport_heliport.apronlightsystem_ts.id as ts_id,
-    airport_heliport.apronlightsystem_tsp.id as tsp_id,
-    airport_heliport.apronlightsystem.identifier,
-    airport_heliport.apronlightsystem_ts.interpretation,
-    airport_heliport.apronlightsystem_ts.sequence_number,
-    airport_heliport.apronlightsystem_ts.correction_number,
-    airport_heliport.apronlightsystem_ts.valid_time_begin,
-    airport_heliport.apronlightsystem_ts.valid_time_end,
-    airport_heliport.apronlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.apronlightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.apronlightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.apronlightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.apronlightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.apronlightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.apronlightsystem_ts.colour_value as varchar), '(' || airport_heliport.apronlightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.apronlightsystem_ts.position_value as varchar), '(' || airport_heliport.apronlightsystem_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.apron_pt.title as varchar), '(' || airport_heliport.apron_pt.nilreason[1] || ')') AS lightedapron,
-    airport_heliport.apron_pt.href AS lightedapron_href
-from airport_heliport.apronlightsystem 
-inner join master_join mj2 on airport_heliport.apronlightsystem.id = mj2.source_id
-inner join airport_heliport.apronlightsystem_tsp on mj2.target_id = airport_heliport.apronlightsystem_tsp.id
-inner join airport_heliport.apronlightsystem_ts on airport_heliport.apronlightsystem_tsp.apronlightsystemtimeslice_id = airport_heliport.apronlightsystem_ts.id
-left join airport_heliport.apron_pt on airport_heliport.apronlightsystem_ts.lightedapron_id = airport_heliport.apron_pt.id
-where apronlightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.apronlightsystem.id,
-    airport_heliport.apronlightsystem_ts.id,
-    airport_heliport.apronlightsystem_tsp.id,
-    airport_heliport.apronlightsystem.identifier,
-    airport_heliport.apronlightsystem_ts.interpretation,
-    airport_heliport.apronlightsystem_ts.sequence_number,
-    airport_heliport.apronlightsystem_ts.correction_number,
-    airport_heliport.apronlightsystem_ts.valid_time_begin,
-    airport_heliport.apronlightsystem_ts.valid_time_end,
-    airport_heliport.apronlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.apronlightsystem_ts.feature_lifetime_end,
-    airport_heliport.apronlightsystem_ts.emergencylighting_value,
-    airport_heliport.apronlightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.apronlightsystem_ts.intensitylevel_value,
-    airport_heliport.apronlightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.apronlightsystem_ts.colour_value,
-    airport_heliport.apronlightsystem_ts.colour_nilreason,
-    airport_heliport.apronlightsystem_ts.position_value,
-    airport_heliport.apronlightsystem_ts.position_nilreason,
-    airport_heliport.apron_pt.title,
-    airport_heliport.apron_pt.nilreason,
-    airport_heliport.apron_pt.href
-order by apronlightsystem.identifier, apronlightsystem_ts.sequence_number, apronlightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.apronmarking_publisher_view as
-select distinct on (apronmarking.identifier,apronmarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.apronmarking.id,
-    airport_heliport.apronmarking_ts.id as ts_id,
-    airport_heliport.apronmarking_tsp.id as tsp_id,
-    airport_heliport.apronmarking.identifier,
-    airport_heliport.apronmarking_ts.interpretation,
-    airport_heliport.apronmarking_ts.sequence_number,
-    airport_heliport.apronmarking_ts.correction_number,
-    airport_heliport.apronmarking_ts.valid_time_begin,
-    airport_heliport.apronmarking_ts.valid_time_end,
-    airport_heliport.apronmarking_ts.feature_lifetime_begin,
-    airport_heliport.apronmarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.apronmarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.apronmarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.apronmarking_ts.condition_value as varchar), '(' || airport_heliport.apronmarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.apronmarking_ts.markinglocation_value as varchar), '(' || airport_heliport.apronmarking_ts.markinglocation_nilreason || ')') as markinglocation,
-    coalesce(cast(airport_heliport.apron_pt.title as varchar), '(' || airport_heliport.apron_pt.nilreason[1] || ')') AS markedapron,
-    airport_heliport.apron_pt.href AS markedapron_href
-from airport_heliport.apronmarking 
-inner join master_join mj2 on airport_heliport.apronmarking.id = mj2.source_id
-inner join airport_heliport.apronmarking_tsp on mj2.target_id = airport_heliport.apronmarking_tsp.id
-inner join airport_heliport.apronmarking_ts on airport_heliport.apronmarking_tsp.apronmarkingtimeslice_id = airport_heliport.apronmarking_ts.id
-left join airport_heliport.apron_pt on airport_heliport.apronmarking_ts.markedapron_id = airport_heliport.apron_pt.id
-where apronmarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.apronmarking.id,
-    airport_heliport.apronmarking_ts.id,
-    airport_heliport.apronmarking_tsp.id,
-    airport_heliport.apronmarking.identifier,
-    airport_heliport.apronmarking_ts.interpretation,
-    airport_heliport.apronmarking_ts.sequence_number,
-    airport_heliport.apronmarking_ts.correction_number,
-    airport_heliport.apronmarking_ts.valid_time_begin,
-    airport_heliport.apronmarking_ts.valid_time_end,
-    airport_heliport.apronmarking_ts.feature_lifetime_begin,
-    airport_heliport.apronmarking_ts.feature_lifetime_end,
-    airport_heliport.apronmarking_ts.markingicaostandard_value,
-    airport_heliport.apronmarking_ts.markingicaostandard_nilreason,
-    airport_heliport.apronmarking_ts.condition_value,
-    airport_heliport.apronmarking_ts.condition_nilreason,
-    airport_heliport.apronmarking_ts.markinglocation_value,
-    airport_heliport.apronmarking_ts.markinglocation_nilreason,
-    airport_heliport.apron_pt.title,
-    airport_heliport.apron_pt.nilreason,
-    airport_heliport.apron_pt.href
-order by apronmarking.identifier, apronmarking_ts.sequence_number, apronmarking_ts.correction_number DESC;
-create or replace view airport_heliport.apron_publisher_view as
-select distinct on (apron.identifier,apron_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.apron.id,
-    airport_heliport.apron_ts.id as ts_id,
-    airport_heliport.apron_tsp.id as tsp_id,
-    airport_heliport.apron.identifier,
-    airport_heliport.apron_ts.interpretation,
-    airport_heliport.apron_ts.sequence_number,
-    airport_heliport.apron_ts.correction_number,
-    airport_heliport.apron_ts.valid_time_begin,
-    airport_heliport.apron_ts.valid_time_end,
-    airport_heliport.apron_ts.feature_lifetime_begin,
-    airport_heliport.apron_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.apron_ts.name_value as varchar), '(' || airport_heliport.apron_ts.name_nilreason || ')') as name,
-    coalesce(cast(airport_heliport.apron_ts.abandoned_value as varchar), '(' || airport_heliport.apron_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.apron 
-inner join master_join mj2 on airport_heliport.apron.id = mj2.source_id
-inner join airport_heliport.apron_tsp on mj2.target_id = airport_heliport.apron_tsp.id
-inner join airport_heliport.apron_ts on airport_heliport.apron_tsp.aprontimeslice_id = airport_heliport.apron_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.apron_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where apron_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.apron.id,
-    airport_heliport.apron_ts.id,
-    airport_heliport.apron_tsp.id,
-    airport_heliport.apron.identifier,
-    airport_heliport.apron_ts.interpretation,
-    airport_heliport.apron_ts.sequence_number,
-    airport_heliport.apron_ts.correction_number,
-    airport_heliport.apron_ts.valid_time_begin,
-    airport_heliport.apron_ts.valid_time_end,
-    airport_heliport.apron_ts.feature_lifetime_begin,
-    airport_heliport.apron_ts.feature_lifetime_end,
-    airport_heliport.apron_ts.name_value,
-    airport_heliport.apron_ts.name_nilreason,
-    airport_heliport.apron_ts.abandoned_value,
-    airport_heliport.apron_ts.abandoned_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by apron.identifier, apron_ts.sequence_number, apron_ts.correction_number DESC;
-create or replace view airport_heliport.arrestinggear_publisher_view as
-select distinct on (arrestinggear.identifier,arrestinggear_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.arrestinggear.id,
-    airport_heliport.arrestinggear_ts.id as ts_id,
-    airport_heliport.arrestinggear_tsp.id as tsp_id,
-    airport_heliport.arrestinggear.identifier,
-    airport_heliport.arrestinggear_ts.interpretation,
-    airport_heliport.arrestinggear_ts.sequence_number,
-    airport_heliport.arrestinggear_ts.correction_number,
-    airport_heliport.arrestinggear_ts.valid_time_begin,
-    airport_heliport.arrestinggear_ts.valid_time_end,
-    airport_heliport.arrestinggear_ts.feature_lifetime_begin,
-    airport_heliport.arrestinggear_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.arrestinggear_ts.status_value as varchar), '(' || airport_heliport.arrestinggear_ts.status_nilreason || ')') as status,
-    coalesce(cast(airport_heliport.arrestinggear_ts.engagedevice_value as varchar), '(' || airport_heliport.arrestinggear_ts.engagedevice_nilreason || ')') as engagedevice,
-    coalesce(cast(airport_heliport.arrestinggear_ts.absorbtype_value as varchar), '(' || airport_heliport.arrestinggear_ts.absorbtype_nilreason || ')') as absorbtype,
-    coalesce(cast(airport_heliport.arrestinggear_ts.bidirectional_value as varchar), '(' || airport_heliport.arrestinggear_ts.bidirectional_nilreason || ')') as bidirectional,
-    coalesce(cast(airport_heliport.arrestinggear_ts.length_value as varchar) || ' ' || airport_heliport.arrestinggear_ts.length_uom, '(' || airport_heliport.arrestinggear_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.arrestinggear_ts.width_value as varchar) || ' ' || airport_heliport.arrestinggear_ts.width_uom, '(' || airport_heliport.arrestinggear_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.arrestinggear_ts.location_value as varchar) || ' ' || airport_heliport.arrestinggear_ts.location_uom, '(' || airport_heliport.arrestinggear_ts.location_nilreason || ')') as location
-from airport_heliport.arrestinggear 
-inner join master_join mj2 on airport_heliport.arrestinggear.id = mj2.source_id
-inner join airport_heliport.arrestinggear_tsp on mj2.target_id = airport_heliport.arrestinggear_tsp.id
-inner join airport_heliport.arrestinggear_ts on airport_heliport.arrestinggear_tsp.arrestinggeartimeslice_id = airport_heliport.arrestinggear_ts.id
-where arrestinggear_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.arrestinggear.id,
-    airport_heliport.arrestinggear_ts.id,
-    airport_heliport.arrestinggear_tsp.id,
-    airport_heliport.arrestinggear.identifier,
-    airport_heliport.arrestinggear_ts.interpretation,
-    airport_heliport.arrestinggear_ts.sequence_number,
-    airport_heliport.arrestinggear_ts.correction_number,
-    airport_heliport.arrestinggear_ts.valid_time_begin,
-    airport_heliport.arrestinggear_ts.valid_time_end,
-    airport_heliport.arrestinggear_ts.feature_lifetime_begin,
-    airport_heliport.arrestinggear_ts.feature_lifetime_end,
-    airport_heliport.arrestinggear_ts.status_value,
-    airport_heliport.arrestinggear_ts.status_nilreason,
-    airport_heliport.arrestinggear_ts.engagedevice_value,
-    airport_heliport.arrestinggear_ts.engagedevice_nilreason,
-    airport_heliport.arrestinggear_ts.absorbtype_value,
-    airport_heliport.arrestinggear_ts.absorbtype_nilreason,
-    airport_heliport.arrestinggear_ts.bidirectional_value,
-    airport_heliport.arrestinggear_ts.bidirectional_nilreason,
-    airport_heliport.arrestinggear_ts.length_value,
-    airport_heliport.arrestinggear_ts.length_uom,
-    airport_heliport.arrestinggear_ts.length_nilreason,
-    airport_heliport.arrestinggear_ts.width_value,
-    airport_heliport.arrestinggear_ts.width_uom,
-    airport_heliport.arrestinggear_ts.width_nilreason,
-    airport_heliport.arrestinggear_ts.location_value,
-    airport_heliport.arrestinggear_ts.location_uom,
-    airport_heliport.arrestinggear_ts.location_nilreason
-order by arrestinggear.identifier, arrestinggear_ts.sequence_number, arrestinggear_ts.correction_number DESC;
-create or replace view procedure.arrivalfeederleg_publisher_view as
-select distinct on (arrivalfeederleg.identifier,arrivalfeederleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.arrivalfeederleg.id,
-    procedure.arrivalfeederleg_ts.id as ts_id,
-    procedure.arrivalfeederleg_tsp.id as tsp_id,
-    procedure.arrivalfeederleg.identifier,
-    procedure.arrivalfeederleg_ts.interpretation,
-    procedure.arrivalfeederleg_ts.sequence_number,
-    procedure.arrivalfeederleg_ts.correction_number,
-    procedure.arrivalfeederleg_ts.valid_time_begin,
-    procedure.arrivalfeederleg_ts.valid_time_end,
-    procedure.arrivalfeederleg_ts.feature_lifetime_begin,
-    procedure.arrivalfeederleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.arrivalfeederleg_ts.endconditiondesignator_value as varchar), '(' || procedure.arrivalfeederleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.arrivalfeederleg_ts.legpath_value as varchar), '(' || procedure.arrivalfeederleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.arrivalfeederleg_ts.legtypearinc_value as varchar), '(' || procedure.arrivalfeederleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.arrivalfeederleg_ts.course_value as varchar), '(' || procedure.arrivalfeederleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.arrivalfeederleg_ts.coursetype_value as varchar), '(' || procedure.arrivalfeederleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.arrivalfeederleg_ts.coursedirection_value as varchar), '(' || procedure.arrivalfeederleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.arrivalfeederleg_ts.turndirection_value as varchar), '(' || procedure.arrivalfeederleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.arrivalfeederleg_ts.speedreference_value as varchar), '(' || procedure.arrivalfeederleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.arrivalfeederleg_ts.speedinterpretation_value as varchar), '(' || procedure.arrivalfeederleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.arrivalfeederleg_ts.bankangle_value as varchar), '(' || procedure.arrivalfeederleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.arrivalfeederleg_ts.procedureturnrequired_value as varchar), '(' || procedure.arrivalfeederleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.arrivalfeederleg_ts.upperlimitreference_value as varchar), '(' || procedure.arrivalfeederleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.arrivalfeederleg_ts.lowerlimitreference_value as varchar), '(' || procedure.arrivalfeederleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.arrivalfeederleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.arrivalfeederleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.arrivalfeederleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.arrivalfeederleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.arrivalfeederleg_ts.verticalangle_value as varchar), '(' || procedure.arrivalfeederleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.arrivalfeederleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.arrivalfeederleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.arrivalfeederleg_ts.speedlimit_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.speedlimit_uom, '(' || procedure.arrivalfeederleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.arrivalfeederleg_ts.length_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.length_uom, '(' || procedure.arrivalfeederleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.arrivalfeederleg_ts.duration_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.duration_uom, '(' || procedure.arrivalfeederleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.arrivalfeederleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.upperlimitaltitude_uom, '(' || procedure.arrivalfeederleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.arrivalfeederleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.lowerlimitaltitude_uom, '(' || procedure.arrivalfeederleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.arrivalfeederleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.arrivalfeederleg_ts.altitudeoverrideatc_uom, '(' || procedure.arrivalfeederleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href
-from procedure.arrivalfeederleg 
-inner join master_join mj2 on procedure.arrivalfeederleg.id = mj2.source_id
-inner join procedure.arrivalfeederleg_tsp on mj2.target_id = procedure.arrivalfeederleg_tsp.id
-inner join procedure.arrivalfeederleg_ts on procedure.arrivalfeederleg_tsp.arrivalfeederlegtimeslice_id = procedure.arrivalfeederleg_ts.id
-left join navaids_points.angleindication_pt on procedure.arrivalfeederleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.arrivalfeederleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.arrivalfeederleg_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-where arrivalfeederleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.arrivalfeederleg.id,
-    procedure.arrivalfeederleg_ts.id,
-    procedure.arrivalfeederleg_tsp.id,
-    procedure.arrivalfeederleg.identifier,
-    procedure.arrivalfeederleg_ts.interpretation,
-    procedure.arrivalfeederleg_ts.sequence_number,
-    procedure.arrivalfeederleg_ts.correction_number,
-    procedure.arrivalfeederleg_ts.valid_time_begin,
-    procedure.arrivalfeederleg_ts.valid_time_end,
-    procedure.arrivalfeederleg_ts.feature_lifetime_begin,
-    procedure.arrivalfeederleg_ts.feature_lifetime_end,
-    procedure.arrivalfeederleg_ts.endconditiondesignator_value,
-    procedure.arrivalfeederleg_ts.endconditiondesignator_nilreason,
-    procedure.arrivalfeederleg_ts.legpath_value,
-    procedure.arrivalfeederleg_ts.legpath_nilreason,
-    procedure.arrivalfeederleg_ts.legtypearinc_value,
-    procedure.arrivalfeederleg_ts.legtypearinc_nilreason,
-    procedure.arrivalfeederleg_ts.course_value,
-    procedure.arrivalfeederleg_ts.course_nilreason,
-    procedure.arrivalfeederleg_ts.coursetype_value,
-    procedure.arrivalfeederleg_ts.coursetype_nilreason,
-    procedure.arrivalfeederleg_ts.coursedirection_value,
-    procedure.arrivalfeederleg_ts.coursedirection_nilreason,
-    procedure.arrivalfeederleg_ts.turndirection_value,
-    procedure.arrivalfeederleg_ts.turndirection_nilreason,
-    procedure.arrivalfeederleg_ts.speedreference_value,
-    procedure.arrivalfeederleg_ts.speedreference_nilreason,
-    procedure.arrivalfeederleg_ts.speedinterpretation_value,
-    procedure.arrivalfeederleg_ts.speedinterpretation_nilreason,
-    procedure.arrivalfeederleg_ts.bankangle_value,
-    procedure.arrivalfeederleg_ts.bankangle_nilreason,
-    procedure.arrivalfeederleg_ts.procedureturnrequired_value,
-    procedure.arrivalfeederleg_ts.procedureturnrequired_nilreason,
-    procedure.arrivalfeederleg_ts.upperlimitreference_value,
-    procedure.arrivalfeederleg_ts.upperlimitreference_nilreason,
-    procedure.arrivalfeederleg_ts.lowerlimitreference_value,
-    procedure.arrivalfeederleg_ts.lowerlimitreference_nilreason,
-    procedure.arrivalfeederleg_ts.altitudeinterpretation_value,
-    procedure.arrivalfeederleg_ts.altitudeinterpretation_nilreason,
-    procedure.arrivalfeederleg_ts.altitudeoverridereference_value,
-    procedure.arrivalfeederleg_ts.altitudeoverridereference_nilreason,
-    procedure.arrivalfeederleg_ts.verticalangle_value,
-    procedure.arrivalfeederleg_ts.verticalangle_nilreason,
-    procedure.arrivalfeederleg_ts.requirednavigationperformance_value,
-    procedure.arrivalfeederleg_ts.requirednavigationperformance_nilreason,
-    procedure.arrivalfeederleg_ts.speedlimit_value,
-    procedure.arrivalfeederleg_ts.speedlimit_uom,
-    procedure.arrivalfeederleg_ts.speedlimit_nilreason,
-    procedure.arrivalfeederleg_ts.length_value,
-    procedure.arrivalfeederleg_ts.length_uom,
-    procedure.arrivalfeederleg_ts.length_nilreason,
-    procedure.arrivalfeederleg_ts.duration_value,
-    procedure.arrivalfeederleg_ts.duration_uom,
-    procedure.arrivalfeederleg_ts.duration_nilreason,
-    procedure.arrivalfeederleg_ts.upperlimitaltitude_value,
-    procedure.arrivalfeederleg_ts.upperlimitaltitude_uom,
-    procedure.arrivalfeederleg_ts.upperlimitaltitude_nilreason,
-    procedure.arrivalfeederleg_ts.lowerlimitaltitude_value,
-    procedure.arrivalfeederleg_ts.lowerlimitaltitude_uom,
-    procedure.arrivalfeederleg_ts.lowerlimitaltitude_nilreason,
-    procedure.arrivalfeederleg_ts.altitudeoverrideatc_value,
-    procedure.arrivalfeederleg_ts.altitudeoverrideatc_uom,
-    procedure.arrivalfeederleg_ts.altitudeoverrideatc_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by arrivalfeederleg.identifier, arrivalfeederleg_ts.sequence_number, arrivalfeederleg_ts.correction_number DESC;
-create or replace view procedure.arrivalleg_publisher_view as
-select distinct on (arrivalleg.identifier,arrivalleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.arrivalleg.id,
-    procedure.arrivalleg_ts.id as ts_id,
-    procedure.arrivalleg_tsp.id as tsp_id,
-    procedure.arrivalleg.identifier,
-    procedure.arrivalleg_ts.interpretation,
-    procedure.arrivalleg_ts.sequence_number,
-    procedure.arrivalleg_ts.correction_number,
-    procedure.arrivalleg_ts.valid_time_begin,
-    procedure.arrivalleg_ts.valid_time_end,
-    procedure.arrivalleg_ts.feature_lifetime_begin,
-    procedure.arrivalleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.arrivalleg_ts.endconditiondesignator_value as varchar), '(' || procedure.arrivalleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.arrivalleg_ts.legpath_value as varchar), '(' || procedure.arrivalleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.arrivalleg_ts.legtypearinc_value as varchar), '(' || procedure.arrivalleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.arrivalleg_ts.course_value as varchar), '(' || procedure.arrivalleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.arrivalleg_ts.coursetype_value as varchar), '(' || procedure.arrivalleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.arrivalleg_ts.coursedirection_value as varchar), '(' || procedure.arrivalleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.arrivalleg_ts.turndirection_value as varchar), '(' || procedure.arrivalleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.arrivalleg_ts.speedreference_value as varchar), '(' || procedure.arrivalleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.arrivalleg_ts.speedinterpretation_value as varchar), '(' || procedure.arrivalleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.arrivalleg_ts.bankangle_value as varchar), '(' || procedure.arrivalleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.arrivalleg_ts.procedureturnrequired_value as varchar), '(' || procedure.arrivalleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.arrivalleg_ts.upperlimitreference_value as varchar), '(' || procedure.arrivalleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.arrivalleg_ts.lowerlimitreference_value as varchar), '(' || procedure.arrivalleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.arrivalleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.arrivalleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.arrivalleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.arrivalleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.arrivalleg_ts.verticalangle_value as varchar), '(' || procedure.arrivalleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.arrivalleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.arrivalleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.arrivalleg_ts.speedlimit_value as varchar) || ' ' || procedure.arrivalleg_ts.speedlimit_uom, '(' || procedure.arrivalleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.arrivalleg_ts.length_value as varchar) || ' ' || procedure.arrivalleg_ts.length_uom, '(' || procedure.arrivalleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.arrivalleg_ts.duration_value as varchar) || ' ' || procedure.arrivalleg_ts.duration_uom, '(' || procedure.arrivalleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.arrivalleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.arrivalleg_ts.upperlimitaltitude_uom, '(' || procedure.arrivalleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.arrivalleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.arrivalleg_ts.lowerlimitaltitude_uom, '(' || procedure.arrivalleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.arrivalleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.arrivalleg_ts.altitudeoverrideatc_uom, '(' || procedure.arrivalleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.standardinstrumentarrival_pt.title as varchar), '(' || procedure.standardinstrumentarrival_pt.nilreason[1] || ')') AS arrival,
-    procedure.standardinstrumentarrival_pt.href AS arrival_href
-from procedure.arrivalleg 
-inner join master_join mj2 on procedure.arrivalleg.id = mj2.source_id
-inner join procedure.arrivalleg_tsp on mj2.target_id = procedure.arrivalleg_tsp.id
-inner join procedure.arrivalleg_ts on procedure.arrivalleg_tsp.arrivallegtimeslice_id = procedure.arrivalleg_ts.id
-left join navaids_points.angleindication_pt on procedure.arrivalleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.arrivalleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.standardinstrumentarrival_pt on procedure.arrivalleg_ts.arrival_id = procedure.standardinstrumentarrival_pt.id
-where arrivalleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.arrivalleg.id,
-    procedure.arrivalleg_ts.id,
-    procedure.arrivalleg_tsp.id,
-    procedure.arrivalleg.identifier,
-    procedure.arrivalleg_ts.interpretation,
-    procedure.arrivalleg_ts.sequence_number,
-    procedure.arrivalleg_ts.correction_number,
-    procedure.arrivalleg_ts.valid_time_begin,
-    procedure.arrivalleg_ts.valid_time_end,
-    procedure.arrivalleg_ts.feature_lifetime_begin,
-    procedure.arrivalleg_ts.feature_lifetime_end,
-    procedure.arrivalleg_ts.endconditiondesignator_value,
-    procedure.arrivalleg_ts.endconditiondesignator_nilreason,
-    procedure.arrivalleg_ts.legpath_value,
-    procedure.arrivalleg_ts.legpath_nilreason,
-    procedure.arrivalleg_ts.legtypearinc_value,
-    procedure.arrivalleg_ts.legtypearinc_nilreason,
-    procedure.arrivalleg_ts.course_value,
-    procedure.arrivalleg_ts.course_nilreason,
-    procedure.arrivalleg_ts.coursetype_value,
-    procedure.arrivalleg_ts.coursetype_nilreason,
-    procedure.arrivalleg_ts.coursedirection_value,
-    procedure.arrivalleg_ts.coursedirection_nilreason,
-    procedure.arrivalleg_ts.turndirection_value,
-    procedure.arrivalleg_ts.turndirection_nilreason,
-    procedure.arrivalleg_ts.speedreference_value,
-    procedure.arrivalleg_ts.speedreference_nilreason,
-    procedure.arrivalleg_ts.speedinterpretation_value,
-    procedure.arrivalleg_ts.speedinterpretation_nilreason,
-    procedure.arrivalleg_ts.bankangle_value,
-    procedure.arrivalleg_ts.bankangle_nilreason,
-    procedure.arrivalleg_ts.procedureturnrequired_value,
-    procedure.arrivalleg_ts.procedureturnrequired_nilreason,
-    procedure.arrivalleg_ts.upperlimitreference_value,
-    procedure.arrivalleg_ts.upperlimitreference_nilreason,
-    procedure.arrivalleg_ts.lowerlimitreference_value,
-    procedure.arrivalleg_ts.lowerlimitreference_nilreason,
-    procedure.arrivalleg_ts.altitudeinterpretation_value,
-    procedure.arrivalleg_ts.altitudeinterpretation_nilreason,
-    procedure.arrivalleg_ts.altitudeoverridereference_value,
-    procedure.arrivalleg_ts.altitudeoverridereference_nilreason,
-    procedure.arrivalleg_ts.verticalangle_value,
-    procedure.arrivalleg_ts.verticalangle_nilreason,
-    procedure.arrivalleg_ts.requirednavigationperformance_value,
-    procedure.arrivalleg_ts.requirednavigationperformance_nilreason,
-    procedure.arrivalleg_ts.speedlimit_value,
-    procedure.arrivalleg_ts.speedlimit_uom,
-    procedure.arrivalleg_ts.speedlimit_nilreason,
-    procedure.arrivalleg_ts.length_value,
-    procedure.arrivalleg_ts.length_uom,
-    procedure.arrivalleg_ts.length_nilreason,
-    procedure.arrivalleg_ts.duration_value,
-    procedure.arrivalleg_ts.duration_uom,
-    procedure.arrivalleg_ts.duration_nilreason,
-    procedure.arrivalleg_ts.upperlimitaltitude_value,
-    procedure.arrivalleg_ts.upperlimitaltitude_uom,
-    procedure.arrivalleg_ts.upperlimitaltitude_nilreason,
-    procedure.arrivalleg_ts.lowerlimitaltitude_value,
-    procedure.arrivalleg_ts.lowerlimitaltitude_uom,
-    procedure.arrivalleg_ts.lowerlimitaltitude_nilreason,
-    procedure.arrivalleg_ts.altitudeoverrideatc_value,
-    procedure.arrivalleg_ts.altitudeoverrideatc_uom,
-    procedure.arrivalleg_ts.altitudeoverrideatc_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.standardinstrumentarrival_pt.title,
-    procedure.standardinstrumentarrival_pt.nilreason,
-    procedure.standardinstrumentarrival_pt.href
-order by arrivalleg.identifier, arrivalleg_ts.sequence_number, arrivalleg_ts.correction_number DESC;
-create or replace view airspace.authorityforairspace_publisher_view as
-select distinct on (authorityforairspace.identifier,authorityforairspace_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airspace.authorityforairspace.id,
-    airspace.authorityforairspace_ts.id as ts_id,
-    airspace.authorityforairspace_tsp.id as tsp_id,
-    airspace.authorityforairspace.identifier,
-    airspace.authorityforairspace_ts.interpretation,
-    airspace.authorityforairspace_ts.sequence_number,
-    airspace.authorityforairspace_ts.correction_number,
-    airspace.authorityforairspace_ts.valid_time_begin,
-    airspace.authorityforairspace_ts.valid_time_end,
-    airspace.authorityforairspace_ts.feature_lifetime_begin,
-    airspace.authorityforairspace_ts.feature_lifetime_end,
-    coalesce(cast(airspace.authorityforairspace_ts.type_value as varchar), '(' || airspace.authorityforairspace_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.organisationauthority_pt.title as varchar), '(' || organisation.organisationauthority_pt.nilreason[1] || ')') AS responsibleorganisation,
-    organisation.organisationauthority_pt.href AS responsibleorganisation_href,
-    coalesce(cast(airspace.airspace_pt.title as varchar), '(' || airspace.airspace_pt.nilreason[1] || ')') AS assignedairspace,
-    airspace.airspace_pt.href AS assignedairspace_href
-from airspace.authorityforairspace 
-inner join master_join mj2 on airspace.authorityforairspace.id = mj2.source_id
-inner join airspace.authorityforairspace_tsp on mj2.target_id = airspace.authorityforairspace_tsp.id
-inner join airspace.authorityforairspace_ts on airspace.authorityforairspace_tsp.authorityforairspacetimeslice_id = airspace.authorityforairspace_ts.id
-left join organisation.organisationauthority_pt on airspace.authorityforairspace_ts.responsibleorganisation_id = organisation.organisationauthority_pt.id
-left join airspace.airspace_pt on airspace.authorityforairspace_ts.assignedairspace_id = airspace.airspace_pt.id
-where authorityforairspace_ts.feature_status = 'APPROVED'
-group by
-    airspace.authorityforairspace.id,
-    airspace.authorityforairspace_ts.id,
-    airspace.authorityforairspace_tsp.id,
-    airspace.authorityforairspace.identifier,
-    airspace.authorityforairspace_ts.interpretation,
-    airspace.authorityforairspace_ts.sequence_number,
-    airspace.authorityforairspace_ts.correction_number,
-    airspace.authorityforairspace_ts.valid_time_begin,
-    airspace.authorityforairspace_ts.valid_time_end,
-    airspace.authorityforairspace_ts.feature_lifetime_begin,
-    airspace.authorityforairspace_ts.feature_lifetime_end,
-    airspace.authorityforairspace_ts.type_value,
-    airspace.authorityforairspace_ts.type_nilreason,
-    organisation.organisationauthority_pt.title,
-    organisation.organisationauthority_pt.nilreason,
-    organisation.organisationauthority_pt.href,
-    airspace.airspace_pt.title,
-    airspace.airspace_pt.nilreason,
-    airspace.airspace_pt.href
-order by authorityforairspace.identifier, authorityforairspace_ts.sequence_number, authorityforairspace_ts.correction_number DESC;
-create or replace view navaids_points.azimuth_publisher_view as
-select distinct on (azimuth.identifier,azimuth_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.azimuth.id,
-    navaids_points.azimuth_ts.id as ts_id,
-    navaids_points.azimuth_tsp.id as tsp_id,
-    navaids_points.azimuth.identifier,
-    navaids_points.azimuth_ts.interpretation,
-    navaids_points.azimuth_ts.sequence_number,
-    navaids_points.azimuth_ts.correction_number,
-    navaids_points.azimuth_ts.valid_time_begin,
-    navaids_points.azimuth_ts.valid_time_end,
-    navaids_points.azimuth_ts.feature_lifetime_begin,
-    navaids_points.azimuth_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.azimuth_ts.designator_value as varchar), '(' || navaids_points.azimuth_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.azimuth_ts.name_value as varchar), '(' || navaids_points.azimuth_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.azimuth_ts.emissionclass_value as varchar), '(' || navaids_points.azimuth_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.azimuth_ts.mobile_value as varchar), '(' || navaids_points.azimuth_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.azimuth_ts.magneticvariation_value as varchar), '(' || navaids_points.azimuth_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.azimuth_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.azimuth_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.azimuth_ts.datemagneticvariation_value as varchar), '(' || navaids_points.azimuth_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.azimuth_ts.flightchecked_value as varchar), '(' || navaids_points.azimuth_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.azimuth_ts.type_value as varchar), '(' || navaids_points.azimuth_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.azimuth_ts.truebearing_value as varchar), '(' || navaids_points.azimuth_ts.truebearing_nilreason || ')') as truebearing,
-    coalesce(cast(navaids_points.azimuth_ts.truebearingaccuracy_value as varchar), '(' || navaids_points.azimuth_ts.truebearingaccuracy_nilreason || ')') as truebearingaccuracy,
-    coalesce(cast(navaids_points.azimuth_ts.magneticbearing_value as varchar), '(' || navaids_points.azimuth_ts.magneticbearing_nilreason || ')') as magneticbearing,
-    coalesce(cast(navaids_points.azimuth_ts.angleproportionalleft_value as varchar), '(' || navaids_points.azimuth_ts.angleproportionalleft_nilreason || ')') as angleproportionalleft,
-    coalesce(cast(navaids_points.azimuth_ts.angleproportionalright_value as varchar), '(' || navaids_points.azimuth_ts.angleproportionalright_nilreason || ')') as angleproportionalright,
-    coalesce(cast(navaids_points.azimuth_ts.anglecoverleft_value as varchar), '(' || navaids_points.azimuth_ts.anglecoverleft_nilreason || ')') as anglecoverleft,
-    coalesce(cast(navaids_points.azimuth_ts.anglecoverright_value as varchar), '(' || navaids_points.azimuth_ts.anglecoverright_nilreason || ')') as anglecoverright,
-    coalesce(cast(navaids_points.azimuth_ts.channel_value as varchar), '(' || navaids_points.azimuth_ts.channel_nilreason || ')') as channel
-from navaids_points.azimuth 
-inner join master_join mj2 on navaids_points.azimuth.id = mj2.source_id
-inner join navaids_points.azimuth_tsp on mj2.target_id = navaids_points.azimuth_tsp.id
-inner join navaids_points.azimuth_ts on navaids_points.azimuth_tsp.azimuthtimeslice_id = navaids_points.azimuth_ts.id
-where azimuth_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.azimuth.id,
-    navaids_points.azimuth_ts.id,
-    navaids_points.azimuth_tsp.id,
-    navaids_points.azimuth.identifier,
-    navaids_points.azimuth_ts.interpretation,
-    navaids_points.azimuth_ts.sequence_number,
-    navaids_points.azimuth_ts.correction_number,
-    navaids_points.azimuth_ts.valid_time_begin,
-    navaids_points.azimuth_ts.valid_time_end,
-    navaids_points.azimuth_ts.feature_lifetime_begin,
-    navaids_points.azimuth_ts.feature_lifetime_end,
-    navaids_points.azimuth_ts.designator_value,
-    navaids_points.azimuth_ts.designator_nilreason,
-    navaids_points.azimuth_ts.name_value,
-    navaids_points.azimuth_ts.name_nilreason,
-    navaids_points.azimuth_ts.emissionclass_value,
-    navaids_points.azimuth_ts.emissionclass_nilreason,
-    navaids_points.azimuth_ts.mobile_value,
-    navaids_points.azimuth_ts.mobile_nilreason,
-    navaids_points.azimuth_ts.magneticvariation_value,
-    navaids_points.azimuth_ts.magneticvariation_nilreason,
-    navaids_points.azimuth_ts.magneticvariationaccuracy_value,
-    navaids_points.azimuth_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.azimuth_ts.datemagneticvariation_value,
-    navaids_points.azimuth_ts.datemagneticvariation_nilreason,
-    navaids_points.azimuth_ts.flightchecked_value,
-    navaids_points.azimuth_ts.flightchecked_nilreason,
-    navaids_points.azimuth_ts.type_value,
-    navaids_points.azimuth_ts.type_nilreason,
-    navaids_points.azimuth_ts.truebearing_value,
-    navaids_points.azimuth_ts.truebearing_nilreason,
-    navaids_points.azimuth_ts.truebearingaccuracy_value,
-    navaids_points.azimuth_ts.truebearingaccuracy_nilreason,
-    navaids_points.azimuth_ts.magneticbearing_value,
-    navaids_points.azimuth_ts.magneticbearing_nilreason,
-    navaids_points.azimuth_ts.angleproportionalleft_value,
-    navaids_points.azimuth_ts.angleproportionalleft_nilreason,
-    navaids_points.azimuth_ts.angleproportionalright_value,
-    navaids_points.azimuth_ts.angleproportionalright_nilreason,
-    navaids_points.azimuth_ts.anglecoverleft_value,
-    navaids_points.azimuth_ts.anglecoverleft_nilreason,
-    navaids_points.azimuth_ts.anglecoverright_value,
-    navaids_points.azimuth_ts.anglecoverright_nilreason,
-    navaids_points.azimuth_ts.channel_value,
-    navaids_points.azimuth_ts.channel_nilreason
-order by azimuth.identifier, azimuth_ts.sequence_number, azimuth_ts.correction_number DESC;
-create or replace view routes.changeoverpoint_publisher_view as
-select distinct on (changeoverpoint.identifier,changeoverpoint_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.changeoverpoint.id,
-    routes.changeoverpoint_ts.id as ts_id,
-    routes.changeoverpoint_tsp.id as tsp_id,
-    routes.changeoverpoint.identifier,
-    routes.changeoverpoint_ts.interpretation,
-    routes.changeoverpoint_ts.sequence_number,
-    routes.changeoverpoint_ts.correction_number,
-    routes.changeoverpoint_ts.valid_time_begin,
-    routes.changeoverpoint_ts.valid_time_end,
-    routes.changeoverpoint_ts.feature_lifetime_begin,
-    routes.changeoverpoint_ts.feature_lifetime_end,
-    coalesce(cast(routes.changeoverpoint_ts.distance_value as varchar) || ' ' || routes.changeoverpoint_ts.distance_uom, '(' || routes.changeoverpoint_ts.distance_nilreason || ')') as distance,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS locationfixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS locationfixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS locationnavaidsystem,
-    navaids_points.navaid_pt.href AS locationnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS locationaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS locationaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS locationrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS locationrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS locationairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS locationairportreferencepoint_href
-from routes.changeoverpoint 
-inner join master_join mj2 on routes.changeoverpoint.id = mj2.source_id
-inner join routes.changeoverpoint_tsp on mj2.target_id = routes.changeoverpoint_tsp.id
-inner join routes.changeoverpoint_ts on routes.changeoverpoint_tsp.changeoverpointtimeslice_id = routes.changeoverpoint_ts.id
-left join navaids_points.designatedpoint_pt on routes.changeoverpoint_ts.locationfixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on routes.changeoverpoint_ts.locationnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on routes.changeoverpoint_ts.locationaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on routes.changeoverpoint_ts.locationrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on routes.changeoverpoint_ts.locationairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where changeoverpoint_ts.feature_status = 'APPROVED'
-group by
-    routes.changeoverpoint.id,
-    routes.changeoverpoint_ts.id,
-    routes.changeoverpoint_tsp.id,
-    routes.changeoverpoint.identifier,
-    routes.changeoverpoint_ts.interpretation,
-    routes.changeoverpoint_ts.sequence_number,
-    routes.changeoverpoint_ts.correction_number,
-    routes.changeoverpoint_ts.valid_time_begin,
-    routes.changeoverpoint_ts.valid_time_end,
-    routes.changeoverpoint_ts.feature_lifetime_begin,
-    routes.changeoverpoint_ts.feature_lifetime_end,
-    routes.changeoverpoint_ts.distance_value,
-    routes.changeoverpoint_ts.distance_uom,
-    routes.changeoverpoint_ts.distance_nilreason,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by changeoverpoint.identifier, changeoverpoint_ts.sequence_number, changeoverpoint_ts.correction_number DESC;
-create or replace view navaids_points.checkpointins_publisher_view as
-select distinct on (checkpointins.identifier,checkpointins_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.checkpointins.id,
-    navaids_points.checkpointins_ts.id as ts_id,
-    navaids_points.checkpointins_tsp.id as tsp_id,
-    navaids_points.checkpointins.identifier,
-    navaids_points.checkpointins_ts.interpretation,
-    navaids_points.checkpointins_ts.sequence_number,
-    navaids_points.checkpointins_ts.correction_number,
-    navaids_points.checkpointins_ts.valid_time_begin,
-    navaids_points.checkpointins_ts.valid_time_end,
-    navaids_points.checkpointins_ts.feature_lifetime_begin,
-    navaids_points.checkpointins_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.checkpointins_ts.category_value as varchar), '(' || navaids_points.checkpointins_ts.category_nilreason || ')') as category,
-    coalesce(cast(navaids_points.checkpointins_ts.upperlimitreference_value as varchar), '(' || navaids_points.checkpointins_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(navaids_points.checkpointins_ts.lowerlimitreference_value as varchar), '(' || navaids_points.checkpointins_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(navaids_points.checkpointins_ts.altitudeinterpretation_value as varchar), '(' || navaids_points.checkpointins_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(navaids_points.checkpointins_ts.angle_value as varchar), '(' || navaids_points.checkpointins_ts.angle_nilreason || ')') as angle,
-    coalesce(cast(navaids_points.checkpointins_ts.upperlimit_value as varchar) || ' ' || navaids_points.checkpointins_ts.upperlimit_uom, '(' || navaids_points.checkpointins_ts.upperlimit_nilreason || ')') as upperlimit,
-    coalesce(cast(navaids_points.checkpointins_ts.lowerlimit_value as varchar) || ' ' || navaids_points.checkpointins_ts.lowerlimit_uom, '(' || navaids_points.checkpointins_ts.lowerlimit_nilreason || ')') as lowerlimit,
-    coalesce(cast(navaids_points.checkpointins_ts.distance_value as varchar) || ' ' || navaids_points.checkpointins_ts.distance_uom, '(' || navaids_points.checkpointins_ts.distance_nilreason || ')') as distance,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS airportheliport,
-    airport_heliport.airportheliport_pt.href AS airportheliport_href
-from navaids_points.checkpointins 
-inner join master_join mj2 on navaids_points.checkpointins.id = mj2.source_id
-inner join navaids_points.checkpointins_tsp on mj2.target_id = navaids_points.checkpointins_tsp.id
-inner join navaids_points.checkpointins_ts on navaids_points.checkpointins_tsp.checkpointinstimeslice_id = navaids_points.checkpointins_ts.id
-left join airport_heliport.airportheliport_pt on navaids_points.checkpointins_ts.airportheliport_id = airport_heliport.airportheliport_pt.id
-where checkpointins_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.checkpointins.id,
-    navaids_points.checkpointins_ts.id,
-    navaids_points.checkpointins_tsp.id,
-    navaids_points.checkpointins.identifier,
-    navaids_points.checkpointins_ts.interpretation,
-    navaids_points.checkpointins_ts.sequence_number,
-    navaids_points.checkpointins_ts.correction_number,
-    navaids_points.checkpointins_ts.valid_time_begin,
-    navaids_points.checkpointins_ts.valid_time_end,
-    navaids_points.checkpointins_ts.feature_lifetime_begin,
-    navaids_points.checkpointins_ts.feature_lifetime_end,
-    navaids_points.checkpointins_ts.category_value,
-    navaids_points.checkpointins_ts.category_nilreason,
-    navaids_points.checkpointins_ts.upperlimitreference_value,
-    navaids_points.checkpointins_ts.upperlimitreference_nilreason,
-    navaids_points.checkpointins_ts.lowerlimitreference_value,
-    navaids_points.checkpointins_ts.lowerlimitreference_nilreason,
-    navaids_points.checkpointins_ts.altitudeinterpretation_value,
-    navaids_points.checkpointins_ts.altitudeinterpretation_nilreason,
-    navaids_points.checkpointins_ts.angle_value,
-    navaids_points.checkpointins_ts.angle_nilreason,
-    navaids_points.checkpointins_ts.upperlimit_value,
-    navaids_points.checkpointins_ts.upperlimit_uom,
-    navaids_points.checkpointins_ts.upperlimit_nilreason,
-    navaids_points.checkpointins_ts.lowerlimit_value,
-    navaids_points.checkpointins_ts.lowerlimit_uom,
-    navaids_points.checkpointins_ts.lowerlimit_nilreason,
-    navaids_points.checkpointins_ts.distance_value,
-    navaids_points.checkpointins_ts.distance_uom,
-    navaids_points.checkpointins_ts.distance_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by checkpointins.identifier, checkpointins_ts.sequence_number, checkpointins_ts.correction_number DESC;
-create or replace view navaids_points.checkpointvor_publisher_view as
-select distinct on (checkpointvor.identifier,checkpointvor_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.checkpointvor.id,
-    navaids_points.checkpointvor_ts.id as ts_id,
-    navaids_points.checkpointvor_tsp.id as tsp_id,
-    navaids_points.checkpointvor.identifier,
-    navaids_points.checkpointvor_ts.interpretation,
-    navaids_points.checkpointvor_ts.sequence_number,
-    navaids_points.checkpointvor_ts.correction_number,
-    navaids_points.checkpointvor_ts.valid_time_begin,
-    navaids_points.checkpointvor_ts.valid_time_end,
-    navaids_points.checkpointvor_ts.feature_lifetime_begin,
-    navaids_points.checkpointvor_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.checkpointvor_ts.category_value as varchar), '(' || navaids_points.checkpointvor_ts.category_nilreason || ')') as category,
-    coalesce(cast(navaids_points.checkpointvor_ts.upperlimitreference_value as varchar), '(' || navaids_points.checkpointvor_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(navaids_points.checkpointvor_ts.lowerlimitreference_value as varchar), '(' || navaids_points.checkpointvor_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(navaids_points.checkpointvor_ts.altitudeinterpretation_value as varchar), '(' || navaids_points.checkpointvor_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(navaids_points.checkpointvor_ts.angle_value as varchar), '(' || navaids_points.checkpointvor_ts.angle_nilreason || ')') as angle,
-    coalesce(cast(navaids_points.checkpointvor_ts.upperlimit_value as varchar) || ' ' || navaids_points.checkpointvor_ts.upperlimit_uom, '(' || navaids_points.checkpointvor_ts.upperlimit_nilreason || ')') as upperlimit,
-    coalesce(cast(navaids_points.checkpointvor_ts.lowerlimit_value as varchar) || ' ' || navaids_points.checkpointvor_ts.lowerlimit_uom, '(' || navaids_points.checkpointvor_ts.lowerlimit_nilreason || ')') as lowerlimit,
-    coalesce(cast(navaids_points.checkpointvor_ts.distance_value as varchar) || ' ' || navaids_points.checkpointvor_ts.distance_uom, '(' || navaids_points.checkpointvor_ts.distance_nilreason || ')') as distance,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS airportheliport,
-    airport_heliport.airportheliport_pt.href AS airportheliport_href,
-    coalesce(cast(navaids_points.vor_pt.title as varchar), '(' || navaids_points.vor_pt.nilreason[1] || ')') AS checkpointfacility,
-    navaids_points.vor_pt.href AS checkpointfacility_href
-from navaids_points.checkpointvor 
-inner join master_join mj2 on navaids_points.checkpointvor.id = mj2.source_id
-inner join navaids_points.checkpointvor_tsp on mj2.target_id = navaids_points.checkpointvor_tsp.id
-inner join navaids_points.checkpointvor_ts on navaids_points.checkpointvor_tsp.checkpointvortimeslice_id = navaids_points.checkpointvor_ts.id
-left join airport_heliport.airportheliport_pt on navaids_points.checkpointvor_ts.airportheliport_id = airport_heliport.airportheliport_pt.id
-left join navaids_points.vor_pt on navaids_points.checkpointvor_ts.checkpointfacility_id = navaids_points.vor_pt.id
-where checkpointvor_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.checkpointvor.id,
-    navaids_points.checkpointvor_ts.id,
-    navaids_points.checkpointvor_tsp.id,
-    navaids_points.checkpointvor.identifier,
-    navaids_points.checkpointvor_ts.interpretation,
-    navaids_points.checkpointvor_ts.sequence_number,
-    navaids_points.checkpointvor_ts.correction_number,
-    navaids_points.checkpointvor_ts.valid_time_begin,
-    navaids_points.checkpointvor_ts.valid_time_end,
-    navaids_points.checkpointvor_ts.feature_lifetime_begin,
-    navaids_points.checkpointvor_ts.feature_lifetime_end,
-    navaids_points.checkpointvor_ts.category_value,
-    navaids_points.checkpointvor_ts.category_nilreason,
-    navaids_points.checkpointvor_ts.upperlimitreference_value,
-    navaids_points.checkpointvor_ts.upperlimitreference_nilreason,
-    navaids_points.checkpointvor_ts.lowerlimitreference_value,
-    navaids_points.checkpointvor_ts.lowerlimitreference_nilreason,
-    navaids_points.checkpointvor_ts.altitudeinterpretation_value,
-    navaids_points.checkpointvor_ts.altitudeinterpretation_nilreason,
-    navaids_points.checkpointvor_ts.angle_value,
-    navaids_points.checkpointvor_ts.angle_nilreason,
-    navaids_points.checkpointvor_ts.upperlimit_value,
-    navaids_points.checkpointvor_ts.upperlimit_uom,
-    navaids_points.checkpointvor_ts.upperlimit_nilreason,
-    navaids_points.checkpointvor_ts.lowerlimit_value,
-    navaids_points.checkpointvor_ts.lowerlimit_uom,
-    navaids_points.checkpointvor_ts.lowerlimit_nilreason,
-    navaids_points.checkpointvor_ts.distance_value,
-    navaids_points.checkpointvor_ts.distance_uom,
-    navaids_points.checkpointvor_ts.distance_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    navaids_points.vor_pt.title,
-    navaids_points.vor_pt.nilreason,
-    navaids_points.vor_pt.href
-order by checkpointvor.identifier, checkpointvor_ts.sequence_number, checkpointvor_ts.correction_number DESC;
-create or replace view public.circlingarea_publisher_view as
-select distinct on (circlingarea.identifier,circlingarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    public.circlingarea.id,
-    public.circlingarea_ts.id as ts_id,
-    public.circlingarea_tsp.id as tsp_id,
-    public.circlingarea.identifier,
-    public.circlingarea_ts.interpretation,
-    public.circlingarea_ts.sequence_number,
-    public.circlingarea_ts.correction_number,
-    public.circlingarea_ts.valid_time_begin,
-    public.circlingarea_ts.valid_time_end,
-    public.circlingarea_ts.feature_lifetime_begin,
-    public.circlingarea_ts.feature_lifetime_end,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href
-from public.circlingarea 
-inner join master_join mj2 on public.circlingarea.id = mj2.source_id
-inner join public.circlingarea_tsp on mj2.target_id = public.circlingarea_tsp.id
-inner join public.circlingarea_ts on public.circlingarea_tsp.circlingareatimeslice_id = public.circlingarea_ts.id
-left join procedure.instrumentapproachprocedure_pt on public.circlingarea_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-where circlingarea_ts.feature_status = 'APPROVED'
-group by
-    public.circlingarea.id,
-    public.circlingarea_ts.id,
-    public.circlingarea_tsp.id,
-    public.circlingarea.identifier,
-    public.circlingarea_ts.interpretation,
-    public.circlingarea_ts.sequence_number,
-    public.circlingarea_ts.correction_number,
-    public.circlingarea_ts.valid_time_begin,
-    public.circlingarea_ts.valid_time_end,
-    public.circlingarea_ts.feature_lifetime_begin,
-    public.circlingarea_ts.feature_lifetime_end,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by circlingarea.identifier, circlingarea_ts.sequence_number, circlingarea_ts.correction_number DESC;
-create or replace view airport_heliport.deicingareamarking_publisher_view as
-select distinct on (deicingareamarking.identifier,deicingareamarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.deicingareamarking.id,
-    airport_heliport.deicingareamarking_ts.id as ts_id,
-    airport_heliport.deicingareamarking_tsp.id as tsp_id,
-    airport_heliport.deicingareamarking.identifier,
-    airport_heliport.deicingareamarking_ts.interpretation,
-    airport_heliport.deicingareamarking_ts.sequence_number,
-    airport_heliport.deicingareamarking_ts.correction_number,
-    airport_heliport.deicingareamarking_ts.valid_time_begin,
-    airport_heliport.deicingareamarking_ts.valid_time_end,
-    airport_heliport.deicingareamarking_ts.feature_lifetime_begin,
-    airport_heliport.deicingareamarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.deicingareamarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.deicingareamarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.deicingareamarking_ts.condition_value as varchar), '(' || airport_heliport.deicingareamarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.deicingarea_pt.title as varchar), '(' || airport_heliport.deicingarea_pt.nilreason[1] || ')') AS markeddeicingarea,
-    airport_heliport.deicingarea_pt.href AS markeddeicingarea_href
-from airport_heliport.deicingareamarking 
-inner join master_join mj2 on airport_heliport.deicingareamarking.id = mj2.source_id
-inner join airport_heliport.deicingareamarking_tsp on mj2.target_id = airport_heliport.deicingareamarking_tsp.id
-inner join airport_heliport.deicingareamarking_ts on airport_heliport.deicingareamarking_tsp.deicingareamarkingtimeslice_id = airport_heliport.deicingareamarking_ts.id
-left join airport_heliport.deicingarea_pt on airport_heliport.deicingareamarking_ts.markeddeicingarea_id = airport_heliport.deicingarea_pt.id
-where deicingareamarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.deicingareamarking.id,
-    airport_heliport.deicingareamarking_ts.id,
-    airport_heliport.deicingareamarking_tsp.id,
-    airport_heliport.deicingareamarking.identifier,
-    airport_heliport.deicingareamarking_ts.interpretation,
-    airport_heliport.deicingareamarking_ts.sequence_number,
-    airport_heliport.deicingareamarking_ts.correction_number,
-    airport_heliport.deicingareamarking_ts.valid_time_begin,
-    airport_heliport.deicingareamarking_ts.valid_time_end,
-    airport_heliport.deicingareamarking_ts.feature_lifetime_begin,
-    airport_heliport.deicingareamarking_ts.feature_lifetime_end,
-    airport_heliport.deicingareamarking_ts.markingicaostandard_value,
-    airport_heliport.deicingareamarking_ts.markingicaostandard_nilreason,
-    airport_heliport.deicingareamarking_ts.condition_value,
-    airport_heliport.deicingareamarking_ts.condition_nilreason,
-    airport_heliport.deicingarea_pt.title,
-    airport_heliport.deicingarea_pt.nilreason,
-    airport_heliport.deicingarea_pt.href
-order by deicingareamarking.identifier, deicingareamarking_ts.sequence_number, deicingareamarking_ts.correction_number DESC;
-create or replace view airport_heliport.deicingarea_publisher_view as
-select distinct on (deicingarea.identifier,deicingarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.deicingarea.id,
-    airport_heliport.deicingarea_ts.id as ts_id,
-    airport_heliport.deicingarea_tsp.id as tsp_id,
-    airport_heliport.deicingarea.identifier,
-    airport_heliport.deicingarea_ts.interpretation,
-    airport_heliport.deicingarea_ts.sequence_number,
-    airport_heliport.deicingarea_ts.correction_number,
-    airport_heliport.deicingarea_ts.valid_time_begin,
-    airport_heliport.deicingarea_ts.valid_time_end,
-    airport_heliport.deicingarea_ts.feature_lifetime_begin,
-    airport_heliport.deicingarea_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.apron_pt.title as varchar), '(' || airport_heliport.apron_pt.nilreason[1] || ')') AS associatedapron,
-    airport_heliport.apron_pt.href AS associatedapron_href,
-    coalesce(cast(airport_heliport.taxiway_pt.title as varchar), '(' || airport_heliport.taxiway_pt.nilreason[1] || ')') AS taxiwaylocation,
-    airport_heliport.taxiway_pt.href AS taxiwaylocation_href,
-    coalesce(cast(airport_heliport.aircraftstand_pt.title as varchar), '(' || airport_heliport.aircraftstand_pt.nilreason[1] || ')') AS standlocation,
-    airport_heliport.aircraftstand_pt.href AS standlocation_href
-from airport_heliport.deicingarea 
-inner join master_join mj2 on airport_heliport.deicingarea.id = mj2.source_id
-inner join airport_heliport.deicingarea_tsp on mj2.target_id = airport_heliport.deicingarea_tsp.id
-inner join airport_heliport.deicingarea_ts on airport_heliport.deicingarea_tsp.deicingareatimeslice_id = airport_heliport.deicingarea_ts.id
-left join airport_heliport.apron_pt on airport_heliport.deicingarea_ts.associatedapron_id = airport_heliport.apron_pt.id
-left join airport_heliport.taxiway_pt on airport_heliport.deicingarea_ts.taxiwaylocation_id = airport_heliport.taxiway_pt.id
-left join airport_heliport.aircraftstand_pt on airport_heliport.deicingarea_ts.standlocation_id = airport_heliport.aircraftstand_pt.id
-where deicingarea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.deicingarea.id,
-    airport_heliport.deicingarea_ts.id,
-    airport_heliport.deicingarea_tsp.id,
-    airport_heliport.deicingarea.identifier,
-    airport_heliport.deicingarea_ts.interpretation,
-    airport_heliport.deicingarea_ts.sequence_number,
-    airport_heliport.deicingarea_ts.correction_number,
-    airport_heliport.deicingarea_ts.valid_time_begin,
-    airport_heliport.deicingarea_ts.valid_time_end,
-    airport_heliport.deicingarea_ts.feature_lifetime_begin,
-    airport_heliport.deicingarea_ts.feature_lifetime_end,
-    airport_heliport.apron_pt.title,
-    airport_heliport.apron_pt.nilreason,
-    airport_heliport.apron_pt.href,
-    airport_heliport.taxiway_pt.title,
-    airport_heliport.taxiway_pt.nilreason,
-    airport_heliport.taxiway_pt.href,
-    airport_heliport.aircraftstand_pt.title,
-    airport_heliport.aircraftstand_pt.nilreason,
-    airport_heliport.aircraftstand_pt.href
-order by deicingarea.identifier, deicingarea_ts.sequence_number, deicingarea_ts.correction_number DESC;
-create or replace view procedure.departureleg_publisher_view as
-select distinct on (departureleg.identifier,departureleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.departureleg.id,
-    procedure.departureleg_ts.id as ts_id,
-    procedure.departureleg_tsp.id as tsp_id,
-    procedure.departureleg.identifier,
-    procedure.departureleg_ts.interpretation,
-    procedure.departureleg_ts.sequence_number,
-    procedure.departureleg_ts.correction_number,
-    procedure.departureleg_ts.valid_time_begin,
-    procedure.departureleg_ts.valid_time_end,
-    procedure.departureleg_ts.feature_lifetime_begin,
-    procedure.departureleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.departureleg_ts.endconditiondesignator_value as varchar), '(' || procedure.departureleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.departureleg_ts.legpath_value as varchar), '(' || procedure.departureleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.departureleg_ts.legtypearinc_value as varchar), '(' || procedure.departureleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.departureleg_ts.course_value as varchar), '(' || procedure.departureleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.departureleg_ts.coursetype_value as varchar), '(' || procedure.departureleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.departureleg_ts.coursedirection_value as varchar), '(' || procedure.departureleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.departureleg_ts.turndirection_value as varchar), '(' || procedure.departureleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.departureleg_ts.speedreference_value as varchar), '(' || procedure.departureleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.departureleg_ts.speedinterpretation_value as varchar), '(' || procedure.departureleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.departureleg_ts.bankangle_value as varchar), '(' || procedure.departureleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.departureleg_ts.procedureturnrequired_value as varchar), '(' || procedure.departureleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.departureleg_ts.upperlimitreference_value as varchar), '(' || procedure.departureleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.departureleg_ts.lowerlimitreference_value as varchar), '(' || procedure.departureleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.departureleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.departureleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.departureleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.departureleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.departureleg_ts.verticalangle_value as varchar), '(' || procedure.departureleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.departureleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.departureleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.departureleg_ts.speedlimit_value as varchar) || ' ' || procedure.departureleg_ts.speedlimit_uom, '(' || procedure.departureleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.departureleg_ts.length_value as varchar) || ' ' || procedure.departureleg_ts.length_uom, '(' || procedure.departureleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.departureleg_ts.duration_value as varchar) || ' ' || procedure.departureleg_ts.duration_uom, '(' || procedure.departureleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.departureleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.departureleg_ts.upperlimitaltitude_uom, '(' || procedure.departureleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.departureleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.departureleg_ts.lowerlimitaltitude_uom, '(' || procedure.departureleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.departureleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.departureleg_ts.altitudeoverrideatc_uom, '(' || procedure.departureleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(procedure.departureleg_ts.minimumobstacleclearancealtitude_value as varchar) || ' ' || procedure.departureleg_ts.minimumobstacleclearancealtitude_uom, '(' || procedure.departureleg_ts.minimumobstacleclearancealtitude_nilreason || ')') as minimumobstacleclearancealtitude,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.standardinstrumentdeparture_pt.title as varchar), '(' || procedure.standardinstrumentdeparture_pt.nilreason[1] || ')') AS departure,
-    procedure.standardinstrumentdeparture_pt.href AS departure_href
-from procedure.departureleg 
-inner join master_join mj2 on procedure.departureleg.id = mj2.source_id
-inner join procedure.departureleg_tsp on mj2.target_id = procedure.departureleg_tsp.id
-inner join procedure.departureleg_ts on procedure.departureleg_tsp.departurelegtimeslice_id = procedure.departureleg_ts.id
-left join navaids_points.angleindication_pt on procedure.departureleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.departureleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.standardinstrumentdeparture_pt on procedure.departureleg_ts.departure_id = procedure.standardinstrumentdeparture_pt.id
-where departureleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.departureleg.id,
-    procedure.departureleg_ts.id,
-    procedure.departureleg_tsp.id,
-    procedure.departureleg.identifier,
-    procedure.departureleg_ts.interpretation,
-    procedure.departureleg_ts.sequence_number,
-    procedure.departureleg_ts.correction_number,
-    procedure.departureleg_ts.valid_time_begin,
-    procedure.departureleg_ts.valid_time_end,
-    procedure.departureleg_ts.feature_lifetime_begin,
-    procedure.departureleg_ts.feature_lifetime_end,
-    procedure.departureleg_ts.endconditiondesignator_value,
-    procedure.departureleg_ts.endconditiondesignator_nilreason,
-    procedure.departureleg_ts.legpath_value,
-    procedure.departureleg_ts.legpath_nilreason,
-    procedure.departureleg_ts.legtypearinc_value,
-    procedure.departureleg_ts.legtypearinc_nilreason,
-    procedure.departureleg_ts.course_value,
-    procedure.departureleg_ts.course_nilreason,
-    procedure.departureleg_ts.coursetype_value,
-    procedure.departureleg_ts.coursetype_nilreason,
-    procedure.departureleg_ts.coursedirection_value,
-    procedure.departureleg_ts.coursedirection_nilreason,
-    procedure.departureleg_ts.turndirection_value,
-    procedure.departureleg_ts.turndirection_nilreason,
-    procedure.departureleg_ts.speedreference_value,
-    procedure.departureleg_ts.speedreference_nilreason,
-    procedure.departureleg_ts.speedinterpretation_value,
-    procedure.departureleg_ts.speedinterpretation_nilreason,
-    procedure.departureleg_ts.bankangle_value,
-    procedure.departureleg_ts.bankangle_nilreason,
-    procedure.departureleg_ts.procedureturnrequired_value,
-    procedure.departureleg_ts.procedureturnrequired_nilreason,
-    procedure.departureleg_ts.upperlimitreference_value,
-    procedure.departureleg_ts.upperlimitreference_nilreason,
-    procedure.departureleg_ts.lowerlimitreference_value,
-    procedure.departureleg_ts.lowerlimitreference_nilreason,
-    procedure.departureleg_ts.altitudeinterpretation_value,
-    procedure.departureleg_ts.altitudeinterpretation_nilreason,
-    procedure.departureleg_ts.altitudeoverridereference_value,
-    procedure.departureleg_ts.altitudeoverridereference_nilreason,
-    procedure.departureleg_ts.verticalangle_value,
-    procedure.departureleg_ts.verticalangle_nilreason,
-    procedure.departureleg_ts.requirednavigationperformance_value,
-    procedure.departureleg_ts.requirednavigationperformance_nilreason,
-    procedure.departureleg_ts.speedlimit_value,
-    procedure.departureleg_ts.speedlimit_uom,
-    procedure.departureleg_ts.speedlimit_nilreason,
-    procedure.departureleg_ts.length_value,
-    procedure.departureleg_ts.length_uom,
-    procedure.departureleg_ts.length_nilreason,
-    procedure.departureleg_ts.duration_value,
-    procedure.departureleg_ts.duration_uom,
-    procedure.departureleg_ts.duration_nilreason,
-    procedure.departureleg_ts.upperlimitaltitude_value,
-    procedure.departureleg_ts.upperlimitaltitude_uom,
-    procedure.departureleg_ts.upperlimitaltitude_nilreason,
-    procedure.departureleg_ts.lowerlimitaltitude_value,
-    procedure.departureleg_ts.lowerlimitaltitude_uom,
-    procedure.departureleg_ts.lowerlimitaltitude_nilreason,
-    procedure.departureleg_ts.altitudeoverrideatc_value,
-    procedure.departureleg_ts.altitudeoverrideatc_uom,
-    procedure.departureleg_ts.altitudeoverrideatc_nilreason,
-    procedure.departureleg_ts.minimumobstacleclearancealtitude_value,
-    procedure.departureleg_ts.minimumobstacleclearancealtitude_uom,
-    procedure.departureleg_ts.minimumobstacleclearancealtitude_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.standardinstrumentdeparture_pt.title,
-    procedure.standardinstrumentdeparture_pt.nilreason,
-    procedure.standardinstrumentdeparture_pt.href
-order by departureleg.identifier, departureleg_ts.sequence_number, departureleg_ts.correction_number DESC;
-create or replace view navaids_points.designatedpoint_publisher_view as
-select distinct on (designatedpoint.identifier,designatedpoint_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.designatedpoint.id,
-    navaids_points.designatedpoint_ts.id as ts_id,
-    navaids_points.designatedpoint_tsp.id as tsp_id,
-    navaids_points.designatedpoint.identifier,
-    navaids_points.designatedpoint_ts.interpretation,
-    navaids_points.designatedpoint_ts.sequence_number,
-    navaids_points.designatedpoint_ts.correction_number,
-    navaids_points.designatedpoint_ts.valid_time_begin,
-    navaids_points.designatedpoint_ts.valid_time_end,
-    navaids_points.designatedpoint_ts.feature_lifetime_begin,
-    navaids_points.designatedpoint_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.designatedpoint_ts.designator_value as varchar), '(' || navaids_points.designatedpoint_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.designatedpoint_ts.type_value as varchar), '(' || navaids_points.designatedpoint_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.designatedpoint_ts.name_value as varchar), '(' || navaids_points.designatedpoint_ts.name_nilreason || ')') as name,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS aimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS aimingpoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS airportheliport,
-    airport_heliport.airportheliport_pt.href AS airportheliport_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS runwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS runwaypoint_href
-from navaids_points.designatedpoint 
-inner join master_join mj2 on navaids_points.designatedpoint.id = mj2.source_id
-inner join navaids_points.designatedpoint_tsp on mj2.target_id = navaids_points.designatedpoint_tsp.id
-inner join navaids_points.designatedpoint_ts on navaids_points.designatedpoint_tsp.designatedpointtimeslice_id = navaids_points.designatedpoint_ts.id
-left join airport_heliport.touchdownliftoff_pt on navaids_points.designatedpoint_ts.aimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.airportheliport_pt on navaids_points.designatedpoint_ts.airportheliport_id = airport_heliport.airportheliport_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on navaids_points.designatedpoint_ts.runwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-where designatedpoint_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.designatedpoint.id,
-    navaids_points.designatedpoint_ts.id,
-    navaids_points.designatedpoint_tsp.id,
-    navaids_points.designatedpoint.identifier,
-    navaids_points.designatedpoint_ts.interpretation,
-    navaids_points.designatedpoint_ts.sequence_number,
-    navaids_points.designatedpoint_ts.correction_number,
-    navaids_points.designatedpoint_ts.valid_time_begin,
-    navaids_points.designatedpoint_ts.valid_time_end,
-    navaids_points.designatedpoint_ts.feature_lifetime_begin,
-    navaids_points.designatedpoint_ts.feature_lifetime_end,
-    navaids_points.designatedpoint_ts.designator_value,
-    navaids_points.designatedpoint_ts.designator_nilreason,
-    navaids_points.designatedpoint_ts.type_value,
-    navaids_points.designatedpoint_ts.type_nilreason,
-    navaids_points.designatedpoint_ts.name_value,
-    navaids_points.designatedpoint_ts.name_nilreason,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href
-order by designatedpoint.identifier, designatedpoint_ts.sequence_number, designatedpoint_ts.correction_number DESC;
-create or replace view navaids_points.directionfinder_publisher_view as
-select distinct on (directionfinder.identifier,directionfinder_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.directionfinder.id,
-    navaids_points.directionfinder_ts.id as ts_id,
-    navaids_points.directionfinder_tsp.id as tsp_id,
-    navaids_points.directionfinder.identifier,
-    navaids_points.directionfinder_ts.interpretation,
-    navaids_points.directionfinder_ts.sequence_number,
-    navaids_points.directionfinder_ts.correction_number,
-    navaids_points.directionfinder_ts.valid_time_begin,
-    navaids_points.directionfinder_ts.valid_time_end,
-    navaids_points.directionfinder_ts.feature_lifetime_begin,
-    navaids_points.directionfinder_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.directionfinder_ts.designator_value as varchar), '(' || navaids_points.directionfinder_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.directionfinder_ts.name_value as varchar), '(' || navaids_points.directionfinder_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.directionfinder_ts.emissionclass_value as varchar), '(' || navaids_points.directionfinder_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.directionfinder_ts.mobile_value as varchar), '(' || navaids_points.directionfinder_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.directionfinder_ts.magneticvariation_value as varchar), '(' || navaids_points.directionfinder_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.directionfinder_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.directionfinder_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.directionfinder_ts.datemagneticvariation_value as varchar), '(' || navaids_points.directionfinder_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.directionfinder_ts.flightchecked_value as varchar), '(' || navaids_points.directionfinder_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.directionfinder_ts.doppler_value as varchar), '(' || navaids_points.directionfinder_ts.doppler_nilreason || ')') as doppler
-from navaids_points.directionfinder 
-inner join master_join mj2 on navaids_points.directionfinder.id = mj2.source_id
-inner join navaids_points.directionfinder_tsp on mj2.target_id = navaids_points.directionfinder_tsp.id
-inner join navaids_points.directionfinder_ts on navaids_points.directionfinder_tsp.directionfindertimeslice_id = navaids_points.directionfinder_ts.id
-where directionfinder_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.directionfinder.id,
-    navaids_points.directionfinder_ts.id,
-    navaids_points.directionfinder_tsp.id,
-    navaids_points.directionfinder.identifier,
-    navaids_points.directionfinder_ts.interpretation,
-    navaids_points.directionfinder_ts.sequence_number,
-    navaids_points.directionfinder_ts.correction_number,
-    navaids_points.directionfinder_ts.valid_time_begin,
-    navaids_points.directionfinder_ts.valid_time_end,
-    navaids_points.directionfinder_ts.feature_lifetime_begin,
-    navaids_points.directionfinder_ts.feature_lifetime_end,
-    navaids_points.directionfinder_ts.designator_value,
-    navaids_points.directionfinder_ts.designator_nilreason,
-    navaids_points.directionfinder_ts.name_value,
-    navaids_points.directionfinder_ts.name_nilreason,
-    navaids_points.directionfinder_ts.emissionclass_value,
-    navaids_points.directionfinder_ts.emissionclass_nilreason,
-    navaids_points.directionfinder_ts.mobile_value,
-    navaids_points.directionfinder_ts.mobile_nilreason,
-    navaids_points.directionfinder_ts.magneticvariation_value,
-    navaids_points.directionfinder_ts.magneticvariation_nilreason,
-    navaids_points.directionfinder_ts.magneticvariationaccuracy_value,
-    navaids_points.directionfinder_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.directionfinder_ts.datemagneticvariation_value,
-    navaids_points.directionfinder_ts.datemagneticvariation_nilreason,
-    navaids_points.directionfinder_ts.flightchecked_value,
-    navaids_points.directionfinder_ts.flightchecked_nilreason,
-    navaids_points.directionfinder_ts.doppler_value,
-    navaids_points.directionfinder_ts.doppler_nilreason
-order by directionfinder.identifier, directionfinder_ts.sequence_number, directionfinder_ts.correction_number DESC;
-create or replace view navaids_points.distanceindication_publisher_view as
-select distinct on (distanceindication.identifier,distanceindication_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.distanceindication.id,
-    navaids_points.distanceindication_ts.id as ts_id,
-    navaids_points.distanceindication_tsp.id as tsp_id,
-    navaids_points.distanceindication.identifier,
-    navaids_points.distanceindication_ts.interpretation,
-    navaids_points.distanceindication_ts.sequence_number,
-    navaids_points.distanceindication_ts.correction_number,
-    navaids_points.distanceindication_ts.valid_time_begin,
-    navaids_points.distanceindication_ts.valid_time_end,
-    navaids_points.distanceindication_ts.feature_lifetime_begin,
-    navaids_points.distanceindication_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.distanceindication_ts.type_value as varchar), '(' || navaids_points.distanceindication_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.distanceindication_ts.distance_value as varchar) || ' ' || navaids_points.distanceindication_ts.distance_uom, '(' || navaids_points.distanceindication_ts.distance_nilreason || ')') as distance,
-    coalesce(cast(navaids_points.distanceindication_ts.minimumreceptionaltitude_value as varchar) || ' ' || navaids_points.distanceindication_ts.minimumreceptionaltitude_uom, '(' || navaids_points.distanceindication_ts.minimumreceptionaltitude_nilreason || ')') as minimumreceptionaltitude,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS pointchoicefixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS pointchoicefixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS pointchoicenavaidsystem,
-    navaids_points.navaid_pt.href AS pointchoicenavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS pointchoiceaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS pointchoiceaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS pointchoicerunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS pointchoicerunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS pointchoiceairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS pointchoiceairportreferencepoint_href
-from navaids_points.distanceindication 
-inner join master_join mj2 on navaids_points.distanceindication.id = mj2.source_id
-inner join navaids_points.distanceindication_tsp on mj2.target_id = navaids_points.distanceindication_tsp.id
-inner join navaids_points.distanceindication_ts on navaids_points.distanceindication_tsp.distanceindicationtimeslice_id = navaids_points.distanceindication_ts.id
-left join navaids_points.designatedpoint_pt on navaids_points.distanceindication_ts.fix_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.designatedpoint_pt on navaids_points.distanceindication_ts.pointchoicefixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on navaids_points.distanceindication_ts.pointchoicenavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on navaids_points.distanceindication_ts.pointchoiceaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on navaids_points.distanceindication_ts.pointchoicerunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on navaids_points.distanceindication_ts.pointchoiceairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where distanceindication_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.distanceindication.id,
-    navaids_points.distanceindication_ts.id,
-    navaids_points.distanceindication_tsp.id,
-    navaids_points.distanceindication.identifier,
-    navaids_points.distanceindication_ts.interpretation,
-    navaids_points.distanceindication_ts.sequence_number,
-    navaids_points.distanceindication_ts.correction_number,
-    navaids_points.distanceindication_ts.valid_time_begin,
-    navaids_points.distanceindication_ts.valid_time_end,
-    navaids_points.distanceindication_ts.feature_lifetime_begin,
-    navaids_points.distanceindication_ts.feature_lifetime_end,
-    navaids_points.distanceindication_ts.type_value,
-    navaids_points.distanceindication_ts.type_nilreason,
-    navaids_points.distanceindication_ts.distance_value,
-    navaids_points.distanceindication_ts.distance_uom,
-    navaids_points.distanceindication_ts.distance_nilreason,
-    navaids_points.distanceindication_ts.minimumreceptionaltitude_value,
-    navaids_points.distanceindication_ts.minimumreceptionaltitude_uom,
-    navaids_points.distanceindication_ts.minimumreceptionaltitude_nilreason,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by distanceindication.identifier, distanceindication_ts.sequence_number, distanceindication_ts.correction_number DESC;
-create or replace view navaids_points.dme_publisher_view as
-select distinct on (dme.identifier,dme_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.dme.id,
-    navaids_points.dme_ts.id as ts_id,
-    navaids_points.dme_tsp.id as tsp_id,
-    navaids_points.dme.identifier,
-    navaids_points.dme_ts.interpretation,
-    navaids_points.dme_ts.sequence_number,
-    navaids_points.dme_ts.correction_number,
-    navaids_points.dme_ts.valid_time_begin,
-    navaids_points.dme_ts.valid_time_end,
-    navaids_points.dme_ts.feature_lifetime_begin,
-    navaids_points.dme_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.dme_ts.designator_value as varchar), '(' || navaids_points.dme_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.dme_ts.name_value as varchar), '(' || navaids_points.dme_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.dme_ts.emissionclass_value as varchar), '(' || navaids_points.dme_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.dme_ts.mobile_value as varchar), '(' || navaids_points.dme_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.dme_ts.magneticvariation_value as varchar), '(' || navaids_points.dme_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.dme_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.dme_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.dme_ts.datemagneticvariation_value as varchar), '(' || navaids_points.dme_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.dme_ts.flightchecked_value as varchar), '(' || navaids_points.dme_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.dme_ts.type_value as varchar), '(' || navaids_points.dme_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.dme_ts.channel_value as varchar), '(' || navaids_points.dme_ts.channel_nilreason || ')') as channel,
-    coalesce(cast(navaids_points.dme_ts.ghostfrequency_value as varchar) || ' ' || navaids_points.dme_ts.ghostfrequency_uom, '(' || navaids_points.dme_ts.ghostfrequency_nilreason || ')') as ghostfrequency,
-    coalesce(cast(navaids_points.dme_ts.displace_value as varchar) || ' ' || navaids_points.dme_ts.displace_uom, '(' || navaids_points.dme_ts.displace_nilreason || ')') as displace
-from navaids_points.dme 
-inner join master_join mj2 on navaids_points.dme.id = mj2.source_id
-inner join navaids_points.dme_tsp on mj2.target_id = navaids_points.dme_tsp.id
-inner join navaids_points.dme_ts on navaids_points.dme_tsp.dmetimeslice_id = navaids_points.dme_ts.id
-where dme_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.dme.id,
-    navaids_points.dme_ts.id,
-    navaids_points.dme_tsp.id,
-    navaids_points.dme.identifier,
-    navaids_points.dme_ts.interpretation,
-    navaids_points.dme_ts.sequence_number,
-    navaids_points.dme_ts.correction_number,
-    navaids_points.dme_ts.valid_time_begin,
-    navaids_points.dme_ts.valid_time_end,
-    navaids_points.dme_ts.feature_lifetime_begin,
-    navaids_points.dme_ts.feature_lifetime_end,
-    navaids_points.dme_ts.designator_value,
-    navaids_points.dme_ts.designator_nilreason,
-    navaids_points.dme_ts.name_value,
-    navaids_points.dme_ts.name_nilreason,
-    navaids_points.dme_ts.emissionclass_value,
-    navaids_points.dme_ts.emissionclass_nilreason,
-    navaids_points.dme_ts.mobile_value,
-    navaids_points.dme_ts.mobile_nilreason,
-    navaids_points.dme_ts.magneticvariation_value,
-    navaids_points.dme_ts.magneticvariation_nilreason,
-    navaids_points.dme_ts.magneticvariationaccuracy_value,
-    navaids_points.dme_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.dme_ts.datemagneticvariation_value,
-    navaids_points.dme_ts.datemagneticvariation_nilreason,
-    navaids_points.dme_ts.flightchecked_value,
-    navaids_points.dme_ts.flightchecked_nilreason,
-    navaids_points.dme_ts.type_value,
-    navaids_points.dme_ts.type_nilreason,
-    navaids_points.dme_ts.channel_value,
-    navaids_points.dme_ts.channel_nilreason,
-    navaids_points.dme_ts.ghostfrequency_value,
-    navaids_points.dme_ts.ghostfrequency_uom,
-    navaids_points.dme_ts.ghostfrequency_nilreason,
-    navaids_points.dme_ts.displace_value,
-    navaids_points.dme_ts.displace_uom,
-    navaids_points.dme_ts.displace_nilreason
-order by dme.identifier, dme_ts.sequence_number, dme_ts.correction_number DESC;
-create or replace view navaids_points.elevation_publisher_view as
-select distinct on (elevation.identifier,elevation_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.elevation.id,
-    navaids_points.elevation_ts.id as ts_id,
-    navaids_points.elevation_tsp.id as tsp_id,
-    navaids_points.elevation.identifier,
-    navaids_points.elevation_ts.interpretation,
-    navaids_points.elevation_ts.sequence_number,
-    navaids_points.elevation_ts.correction_number,
-    navaids_points.elevation_ts.valid_time_begin,
-    navaids_points.elevation_ts.valid_time_end,
-    navaids_points.elevation_ts.feature_lifetime_begin,
-    navaids_points.elevation_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.elevation_ts.designator_value as varchar), '(' || navaids_points.elevation_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.elevation_ts.name_value as varchar), '(' || navaids_points.elevation_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.elevation_ts.emissionclass_value as varchar), '(' || navaids_points.elevation_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.elevation_ts.mobile_value as varchar), '(' || navaids_points.elevation_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.elevation_ts.magneticvariation_value as varchar), '(' || navaids_points.elevation_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.elevation_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.elevation_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.elevation_ts.datemagneticvariation_value as varchar), '(' || navaids_points.elevation_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.elevation_ts.flightchecked_value as varchar), '(' || navaids_points.elevation_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.elevation_ts.anglenominal_value as varchar), '(' || navaids_points.elevation_ts.anglenominal_nilreason || ')') as anglenominal,
-    coalesce(cast(navaids_points.elevation_ts.angleminimum_value as varchar), '(' || navaids_points.elevation_ts.angleminimum_nilreason || ')') as angleminimum,
-    coalesce(cast(navaids_points.elevation_ts.anglespan_value as varchar), '(' || navaids_points.elevation_ts.anglespan_nilreason || ')') as anglespan,
-    coalesce(cast(navaids_points.elevation_ts.angleaccuracy_value as varchar), '(' || navaids_points.elevation_ts.angleaccuracy_nilreason || ')') as angleaccuracy
-from navaids_points.elevation 
-inner join master_join mj2 on navaids_points.elevation.id = mj2.source_id
-inner join navaids_points.elevation_tsp on mj2.target_id = navaids_points.elevation_tsp.id
-inner join navaids_points.elevation_ts on navaids_points.elevation_tsp.elevationtimeslice_id = navaids_points.elevation_ts.id
-where elevation_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.elevation.id,
-    navaids_points.elevation_ts.id,
-    navaids_points.elevation_tsp.id,
-    navaids_points.elevation.identifier,
-    navaids_points.elevation_ts.interpretation,
-    navaids_points.elevation_ts.sequence_number,
-    navaids_points.elevation_ts.correction_number,
-    navaids_points.elevation_ts.valid_time_begin,
-    navaids_points.elevation_ts.valid_time_end,
-    navaids_points.elevation_ts.feature_lifetime_begin,
-    navaids_points.elevation_ts.feature_lifetime_end,
-    navaids_points.elevation_ts.designator_value,
-    navaids_points.elevation_ts.designator_nilreason,
-    navaids_points.elevation_ts.name_value,
-    navaids_points.elevation_ts.name_nilreason,
-    navaids_points.elevation_ts.emissionclass_value,
-    navaids_points.elevation_ts.emissionclass_nilreason,
-    navaids_points.elevation_ts.mobile_value,
-    navaids_points.elevation_ts.mobile_nilreason,
-    navaids_points.elevation_ts.magneticvariation_value,
-    navaids_points.elevation_ts.magneticvariation_nilreason,
-    navaids_points.elevation_ts.magneticvariationaccuracy_value,
-    navaids_points.elevation_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.elevation_ts.datemagneticvariation_value,
-    navaids_points.elevation_ts.datemagneticvariation_nilreason,
-    navaids_points.elevation_ts.flightchecked_value,
-    navaids_points.elevation_ts.flightchecked_nilreason,
-    navaids_points.elevation_ts.anglenominal_value,
-    navaids_points.elevation_ts.anglenominal_nilreason,
-    navaids_points.elevation_ts.angleminimum_value,
-    navaids_points.elevation_ts.angleminimum_nilreason,
-    navaids_points.elevation_ts.anglespan_value,
-    navaids_points.elevation_ts.anglespan_nilreason,
-    navaids_points.elevation_ts.angleaccuracy_value,
-    navaids_points.elevation_ts.angleaccuracy_nilreason
-order by elevation.identifier, elevation_ts.sequence_number, elevation_ts.correction_number DESC;
-create or replace view procedure.finalleg_publisher_view as
-select distinct on (finalleg.identifier,finalleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.finalleg.id,
-    procedure.finalleg_ts.id as ts_id,
-    procedure.finalleg_tsp.id as tsp_id,
-    procedure.finalleg.identifier,
-    procedure.finalleg_ts.interpretation,
-    procedure.finalleg_ts.sequence_number,
-    procedure.finalleg_ts.correction_number,
-    procedure.finalleg_ts.valid_time_begin,
-    procedure.finalleg_ts.valid_time_end,
-    procedure.finalleg_ts.feature_lifetime_begin,
-    procedure.finalleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.finalleg_ts.endconditiondesignator_value as varchar), '(' || procedure.finalleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.finalleg_ts.legpath_value as varchar), '(' || procedure.finalleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.finalleg_ts.legtypearinc_value as varchar), '(' || procedure.finalleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.finalleg_ts.course_value as varchar), '(' || procedure.finalleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.finalleg_ts.coursetype_value as varchar), '(' || procedure.finalleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.finalleg_ts.coursedirection_value as varchar), '(' || procedure.finalleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.finalleg_ts.turndirection_value as varchar), '(' || procedure.finalleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.finalleg_ts.speedreference_value as varchar), '(' || procedure.finalleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.finalleg_ts.speedinterpretation_value as varchar), '(' || procedure.finalleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.finalleg_ts.bankangle_value as varchar), '(' || procedure.finalleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.finalleg_ts.procedureturnrequired_value as varchar), '(' || procedure.finalleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.finalleg_ts.upperlimitreference_value as varchar), '(' || procedure.finalleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.finalleg_ts.lowerlimitreference_value as varchar), '(' || procedure.finalleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.finalleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.finalleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.finalleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.finalleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.finalleg_ts.verticalangle_value as varchar), '(' || procedure.finalleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.finalleg_ts.guidancesystem_value as varchar), '(' || procedure.finalleg_ts.guidancesystem_nilreason || ')') as guidancesystem,
-    coalesce(cast(procedure.finalleg_ts.landingsystemcategory_value as varchar), '(' || procedure.finalleg_ts.landingsystemcategory_nilreason || ')') as landingsystemcategory,
-    coalesce(cast(procedure.finalleg_ts.rnpdmeauthorized_value as varchar), '(' || procedure.finalleg_ts.rnpdmeauthorized_nilreason || ')') as rnpdmeauthorized,
-    coalesce(cast(procedure.finalleg_ts.courseoffsetangle_value as varchar), '(' || procedure.finalleg_ts.courseoffsetangle_nilreason || ')') as courseoffsetangle,
-    coalesce(cast(procedure.finalleg_ts.courseoffsetside_value as varchar), '(' || procedure.finalleg_ts.courseoffsetside_nilreason || ')') as courseoffsetside,
-    coalesce(cast(procedure.finalleg_ts.coursecentrelineintersect_value as varchar), '(' || procedure.finalleg_ts.coursecentrelineintersect_nilreason || ')') as coursecentrelineintersect,
-    coalesce(cast(procedure.finalleg_ts.speedlimit_value as varchar) || ' ' || procedure.finalleg_ts.speedlimit_uom, '(' || procedure.finalleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.finalleg_ts.length_value as varchar) || ' ' || procedure.finalleg_ts.length_uom, '(' || procedure.finalleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.finalleg_ts.duration_value as varchar) || ' ' || procedure.finalleg_ts.duration_uom, '(' || procedure.finalleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.finalleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.finalleg_ts.upperlimitaltitude_uom, '(' || procedure.finalleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.finalleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.finalleg_ts.lowerlimitaltitude_uom, '(' || procedure.finalleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.finalleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.finalleg_ts.altitudeoverrideatc_uom, '(' || procedure.finalleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(procedure.finalleg_ts.minimumbarovnavtemperature_value as varchar) || ' ' || procedure.finalleg_ts.minimumbarovnavtemperature_uom, '(' || procedure.finalleg_ts.minimumbarovnavtemperature_nilreason || ')') as minimumbarovnavtemperature,
-    coalesce(cast(procedure.finalleg_ts.coursecentrelinedistance_value as varchar) || ' ' || procedure.finalleg_ts.coursecentrelinedistance_uom, '(' || procedure.finalleg_ts.coursecentrelinedistance_nilreason || ')') as coursecentrelinedistance,
-    coalesce(cast(procedure.finalleg_ts.courseoffsetdistance_value as varchar) || ' ' || procedure.finalleg_ts.courseoffsetdistance_uom, '(' || procedure.finalleg_ts.courseoffsetdistance_nilreason || ')') as courseoffsetdistance,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS finalpathalignmentpointfixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS finalpathalignmentpointfixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS finalpathalignmentpointnavaidsystem,
-    navaids_points.navaid_pt.href AS finalpathalignmentpointnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS finalpathalignmentpointaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS finalpathalignmentpointaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS finalpathalignmentpointrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS finalpathalignmentpointrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS finalpathalignmentpointairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS finalpathalignmentpointairportreferencepoint_href
-from procedure.finalleg 
-inner join master_join mj2 on procedure.finalleg.id = mj2.source_id
-inner join procedure.finalleg_tsp on mj2.target_id = procedure.finalleg_tsp.id
-inner join procedure.finalleg_ts on procedure.finalleg_tsp.finallegtimeslice_id = procedure.finalleg_ts.id
-left join navaids_points.angleindication_pt on procedure.finalleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.finalleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.finalleg_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-left join navaids_points.designatedpoint_pt on procedure.finalleg_ts.finalpathalignmentpointfixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on procedure.finalleg_ts.finalpathalignmentpointnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on procedure.finalleg_ts.finalpathalignmentpointaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on procedure.finalleg_ts.finalpathalignmentpointrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on procedure.finalleg_ts.finalpathalignmentpointairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where finalleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.finalleg.id,
-    procedure.finalleg_ts.id,
-    procedure.finalleg_tsp.id,
-    procedure.finalleg.identifier,
-    procedure.finalleg_ts.interpretation,
-    procedure.finalleg_ts.sequence_number,
-    procedure.finalleg_ts.correction_number,
-    procedure.finalleg_ts.valid_time_begin,
-    procedure.finalleg_ts.valid_time_end,
-    procedure.finalleg_ts.feature_lifetime_begin,
-    procedure.finalleg_ts.feature_lifetime_end,
-    procedure.finalleg_ts.endconditiondesignator_value,
-    procedure.finalleg_ts.endconditiondesignator_nilreason,
-    procedure.finalleg_ts.legpath_value,
-    procedure.finalleg_ts.legpath_nilreason,
-    procedure.finalleg_ts.legtypearinc_value,
-    procedure.finalleg_ts.legtypearinc_nilreason,
-    procedure.finalleg_ts.course_value,
-    procedure.finalleg_ts.course_nilreason,
-    procedure.finalleg_ts.coursetype_value,
-    procedure.finalleg_ts.coursetype_nilreason,
-    procedure.finalleg_ts.coursedirection_value,
-    procedure.finalleg_ts.coursedirection_nilreason,
-    procedure.finalleg_ts.turndirection_value,
-    procedure.finalleg_ts.turndirection_nilreason,
-    procedure.finalleg_ts.speedreference_value,
-    procedure.finalleg_ts.speedreference_nilreason,
-    procedure.finalleg_ts.speedinterpretation_value,
-    procedure.finalleg_ts.speedinterpretation_nilreason,
-    procedure.finalleg_ts.bankangle_value,
-    procedure.finalleg_ts.bankangle_nilreason,
-    procedure.finalleg_ts.procedureturnrequired_value,
-    procedure.finalleg_ts.procedureturnrequired_nilreason,
-    procedure.finalleg_ts.upperlimitreference_value,
-    procedure.finalleg_ts.upperlimitreference_nilreason,
-    procedure.finalleg_ts.lowerlimitreference_value,
-    procedure.finalleg_ts.lowerlimitreference_nilreason,
-    procedure.finalleg_ts.altitudeinterpretation_value,
-    procedure.finalleg_ts.altitudeinterpretation_nilreason,
-    procedure.finalleg_ts.altitudeoverridereference_value,
-    procedure.finalleg_ts.altitudeoverridereference_nilreason,
-    procedure.finalleg_ts.verticalangle_value,
-    procedure.finalleg_ts.verticalangle_nilreason,
-    procedure.finalleg_ts.guidancesystem_value,
-    procedure.finalleg_ts.guidancesystem_nilreason,
-    procedure.finalleg_ts.landingsystemcategory_value,
-    procedure.finalleg_ts.landingsystemcategory_nilreason,
-    procedure.finalleg_ts.rnpdmeauthorized_value,
-    procedure.finalleg_ts.rnpdmeauthorized_nilreason,
-    procedure.finalleg_ts.courseoffsetangle_value,
-    procedure.finalleg_ts.courseoffsetangle_nilreason,
-    procedure.finalleg_ts.courseoffsetside_value,
-    procedure.finalleg_ts.courseoffsetside_nilreason,
-    procedure.finalleg_ts.coursecentrelineintersect_value,
-    procedure.finalleg_ts.coursecentrelineintersect_nilreason,
-    procedure.finalleg_ts.speedlimit_value,
-    procedure.finalleg_ts.speedlimit_uom,
-    procedure.finalleg_ts.speedlimit_nilreason,
-    procedure.finalleg_ts.length_value,
-    procedure.finalleg_ts.length_uom,
-    procedure.finalleg_ts.length_nilreason,
-    procedure.finalleg_ts.duration_value,
-    procedure.finalleg_ts.duration_uom,
-    procedure.finalleg_ts.duration_nilreason,
-    procedure.finalleg_ts.upperlimitaltitude_value,
-    procedure.finalleg_ts.upperlimitaltitude_uom,
-    procedure.finalleg_ts.upperlimitaltitude_nilreason,
-    procedure.finalleg_ts.lowerlimitaltitude_value,
-    procedure.finalleg_ts.lowerlimitaltitude_uom,
-    procedure.finalleg_ts.lowerlimitaltitude_nilreason,
-    procedure.finalleg_ts.altitudeoverrideatc_value,
-    procedure.finalleg_ts.altitudeoverrideatc_uom,
-    procedure.finalleg_ts.altitudeoverrideatc_nilreason,
-    procedure.finalleg_ts.minimumbarovnavtemperature_value,
-    procedure.finalleg_ts.minimumbarovnavtemperature_uom,
-    procedure.finalleg_ts.minimumbarovnavtemperature_nilreason,
-    procedure.finalleg_ts.coursecentrelinedistance_value,
-    procedure.finalleg_ts.coursecentrelinedistance_uom,
-    procedure.finalleg_ts.coursecentrelinedistance_nilreason,
-    procedure.finalleg_ts.courseoffsetdistance_value,
-    procedure.finalleg_ts.courseoffsetdistance_uom,
-    procedure.finalleg_ts.courseoffsetdistance_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by finalleg.identifier, finalleg_ts.sequence_number, finalleg_ts.correction_number DESC;
-create or replace view service.firefightingservice_publisher_view as
-select distinct on (firefightingservice.identifier,firefightingservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.firefightingservice.id,
-    service.firefightingservice_ts.id as ts_id,
-    service.firefightingservice_tsp.id as tsp_id,
-    service.firefightingservice.identifier,
-    service.firefightingservice_ts.interpretation,
-    service.firefightingservice_ts.sequence_number,
-    service.firefightingservice_ts.correction_number,
-    service.firefightingservice_ts.valid_time_begin,
-    service.firefightingservice_ts.valid_time_end,
-    service.firefightingservice_ts.feature_lifetime_begin,
-    service.firefightingservice_ts.feature_lifetime_end,
-    coalesce(cast(service.firefightingservice_ts.flightoperations_value as varchar), '(' || service.firefightingservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.firefightingservice_ts.rank_value as varchar), '(' || service.firefightingservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.firefightingservice_ts.complianticao_value as varchar), '(' || service.firefightingservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.firefightingservice_ts.name_value as varchar), '(' || service.firefightingservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.firefightingservice_ts.category_value as varchar), '(' || service.firefightingservice_ts.category_nilreason || ')') as category,
-    coalesce(cast(service.firefightingservice_ts.standard_value as varchar), '(' || service.firefightingservice_ts.standard_nilreason || ')') as standard,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.firefightingservice 
-inner join master_join mj2 on service.firefightingservice.id = mj2.source_id
-inner join service.firefightingservice_tsp on mj2.target_id = service.firefightingservice_tsp.id
-inner join service.firefightingservice_ts on service.firefightingservice_tsp.firefightingservicetimeslice_id = service.firefightingservice_ts.id
-left join organisation.unit_pt on service.firefightingservice_ts.serviceprovider_id = organisation.unit_pt.id
-where firefightingservice_ts.feature_status = 'APPROVED'
-group by
-    service.firefightingservice.id,
-    service.firefightingservice_ts.id,
-    service.firefightingservice_tsp.id,
-    service.firefightingservice.identifier,
-    service.firefightingservice_ts.interpretation,
-    service.firefightingservice_ts.sequence_number,
-    service.firefightingservice_ts.correction_number,
-    service.firefightingservice_ts.valid_time_begin,
-    service.firefightingservice_ts.valid_time_end,
-    service.firefightingservice_ts.feature_lifetime_begin,
-    service.firefightingservice_ts.feature_lifetime_end,
-    service.firefightingservice_ts.flightoperations_value,
-    service.firefightingservice_ts.flightoperations_nilreason,
-    service.firefightingservice_ts.rank_value,
-    service.firefightingservice_ts.rank_nilreason,
-    service.firefightingservice_ts.complianticao_value,
-    service.firefightingservice_ts.complianticao_nilreason,
-    service.firefightingservice_ts.name_value,
-    service.firefightingservice_ts.name_nilreason,
-    service.firefightingservice_ts.category_value,
-    service.firefightingservice_ts.category_nilreason,
-    service.firefightingservice_ts.standard_value,
-    service.firefightingservice_ts.standard_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by firefightingservice.identifier, firefightingservice_ts.sequence_number, firefightingservice_ts.correction_number DESC;
-create or replace view routes.flightrestriction_publisher_view as
-select distinct on (flightrestriction.identifier,flightrestriction_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.flightrestriction.id,
-    routes.flightrestriction_ts.id as ts_id,
-    routes.flightrestriction_tsp.id as tsp_id,
-    routes.flightrestriction.identifier,
-    routes.flightrestriction_ts.interpretation,
-    routes.flightrestriction_ts.sequence_number,
-    routes.flightrestriction_ts.correction_number,
-    routes.flightrestriction_ts.valid_time_begin,
-    routes.flightrestriction_ts.valid_time_end,
-    routes.flightrestriction_ts.feature_lifetime_begin,
-    routes.flightrestriction_ts.feature_lifetime_end,
-    coalesce(cast(routes.flightrestriction_ts.designator_value as varchar), '(' || routes.flightrestriction_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(routes.flightrestriction_ts.type_value as varchar), '(' || routes.flightrestriction_ts.type_nilreason || ')') as type,
-    coalesce(cast(routes.flightrestriction_ts.instruction_value as varchar), '(' || routes.flightrestriction_ts.instruction_nilreason || ')') as instruction
-from routes.flightrestriction 
-inner join master_join mj2 on routes.flightrestriction.id = mj2.source_id
-inner join routes.flightrestriction_tsp on mj2.target_id = routes.flightrestriction_tsp.id
-inner join routes.flightrestriction_ts on routes.flightrestriction_tsp.flightrestrictiontimeslice_id = routes.flightrestriction_ts.id
-where flightrestriction_ts.feature_status = 'APPROVED'
-group by
-    routes.flightrestriction.id,
-    routes.flightrestriction_ts.id,
-    routes.flightrestriction_tsp.id,
-    routes.flightrestriction.identifier,
-    routes.flightrestriction_ts.interpretation,
-    routes.flightrestriction_ts.sequence_number,
-    routes.flightrestriction_ts.correction_number,
-    routes.flightrestriction_ts.valid_time_begin,
-    routes.flightrestriction_ts.valid_time_end,
-    routes.flightrestriction_ts.feature_lifetime_begin,
-    routes.flightrestriction_ts.feature_lifetime_end,
-    routes.flightrestriction_ts.designator_value,
-    routes.flightrestriction_ts.designator_nilreason,
-    routes.flightrestriction_ts.type_value,
-    routes.flightrestriction_ts.type_nilreason,
-    routes.flightrestriction_ts.instruction_value,
-    routes.flightrestriction_ts.instruction_nilreason
-order by flightrestriction.identifier, flightrestriction_ts.sequence_number, flightrestriction_ts.correction_number DESC;
-create or replace view airport_heliport.floatingdocksite_publisher_view as
-select distinct on (floatingdocksite.identifier,floatingdocksite_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.floatingdocksite.id,
-    airport_heliport.floatingdocksite_ts.id as ts_id,
-    airport_heliport.floatingdocksite_tsp.id as tsp_id,
-    airport_heliport.floatingdocksite.identifier,
-    airport_heliport.floatingdocksite_ts.interpretation,
-    airport_heliport.floatingdocksite_ts.sequence_number,
-    airport_heliport.floatingdocksite_ts.correction_number,
-    airport_heliport.floatingdocksite_ts.valid_time_begin,
-    airport_heliport.floatingdocksite_ts.valid_time_end,
-    airport_heliport.floatingdocksite_ts.feature_lifetime_begin,
-    airport_heliport.floatingdocksite_ts.feature_lifetime_end
-from airport_heliport.floatingdocksite 
-inner join master_join mj2 on airport_heliport.floatingdocksite.id = mj2.source_id
-inner join airport_heliport.floatingdocksite_tsp on mj2.target_id = airport_heliport.floatingdocksite_tsp.id
-inner join airport_heliport.floatingdocksite_ts on airport_heliport.floatingdocksite_tsp.floatingdocksitetimeslice_id = airport_heliport.floatingdocksite_ts.id
-where floatingdocksite_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.floatingdocksite.id,
-    airport_heliport.floatingdocksite_ts.id,
-    airport_heliport.floatingdocksite_tsp.id,
-    airport_heliport.floatingdocksite.identifier,
-    airport_heliport.floatingdocksite_ts.interpretation,
-    airport_heliport.floatingdocksite_ts.sequence_number,
-    airport_heliport.floatingdocksite_ts.correction_number,
-    airport_heliport.floatingdocksite_ts.valid_time_begin,
-    airport_heliport.floatingdocksite_ts.valid_time_end,
-    airport_heliport.floatingdocksite_ts.feature_lifetime_begin,
-    airport_heliport.floatingdocksite_ts.feature_lifetime_end
-order by floatingdocksite.identifier, floatingdocksite_ts.sequence_number, floatingdocksite_ts.correction_number DESC;
-create or replace view airspace.geoborder_publisher_view as
-select distinct on (geoborder.identifier,geoborder_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airspace.geoborder.id,
-    airspace.geoborder_ts.id as ts_id,
-    airspace.geoborder_tsp.id as tsp_id,
-    airspace.geoborder.identifier,
-    airspace.geoborder_ts.interpretation,
-    airspace.geoborder_ts.sequence_number,
-    airspace.geoborder_ts.correction_number,
-    airspace.geoborder_ts.valid_time_begin,
-    airspace.geoborder_ts.valid_time_end,
-    airspace.geoborder_ts.feature_lifetime_begin,
-    airspace.geoborder_ts.feature_lifetime_end,
-    coalesce(cast(airspace.geoborder_ts.name_value as varchar), '(' || airspace.geoborder_ts.name_nilreason || ')') as name,
-    coalesce(cast(airspace.geoborder_ts.type_value as varchar), '(' || airspace.geoborder_ts.type_nilreason || ')') as type
-from airspace.geoborder 
-inner join master_join mj2 on airspace.geoborder.id = mj2.source_id
-inner join airspace.geoborder_tsp on mj2.target_id = airspace.geoborder_tsp.id
-inner join airspace.geoborder_ts on airspace.geoborder_tsp.geobordertimeslice_id = airspace.geoborder_ts.id
-where geoborder_ts.feature_status = 'APPROVED'
-group by
-    airspace.geoborder.id,
-    airspace.geoborder_ts.id,
-    airspace.geoborder_tsp.id,
-    airspace.geoborder.identifier,
-    airspace.geoborder_ts.interpretation,
-    airspace.geoborder_ts.sequence_number,
-    airspace.geoborder_ts.correction_number,
-    airspace.geoborder_ts.valid_time_begin,
-    airspace.geoborder_ts.valid_time_end,
-    airspace.geoborder_ts.feature_lifetime_begin,
-    airspace.geoborder_ts.feature_lifetime_end,
-    airspace.geoborder_ts.name_value,
-    airspace.geoborder_ts.name_nilreason,
-    airspace.geoborder_ts.type_value,
-    airspace.geoborder_ts.type_nilreason
-order by geoborder.identifier, geoborder_ts.sequence_number, geoborder_ts.correction_number DESC;
-create or replace view navaids_points.glidepath_publisher_view as
-select distinct on (glidepath.identifier,glidepath_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.glidepath.id,
-    navaids_points.glidepath_ts.id as ts_id,
-    navaids_points.glidepath_tsp.id as tsp_id,
-    navaids_points.glidepath.identifier,
-    navaids_points.glidepath_ts.interpretation,
-    navaids_points.glidepath_ts.sequence_number,
-    navaids_points.glidepath_ts.correction_number,
-    navaids_points.glidepath_ts.valid_time_begin,
-    navaids_points.glidepath_ts.valid_time_end,
-    navaids_points.glidepath_ts.feature_lifetime_begin,
-    navaids_points.glidepath_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.glidepath_ts.designator_value as varchar), '(' || navaids_points.glidepath_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.glidepath_ts.name_value as varchar), '(' || navaids_points.glidepath_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.glidepath_ts.emissionclass_value as varchar), '(' || navaids_points.glidepath_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.glidepath_ts.mobile_value as varchar), '(' || navaids_points.glidepath_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.glidepath_ts.magneticvariation_value as varchar), '(' || navaids_points.glidepath_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.glidepath_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.glidepath_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.glidepath_ts.datemagneticvariation_value as varchar), '(' || navaids_points.glidepath_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.glidepath_ts.flightchecked_value as varchar), '(' || navaids_points.glidepath_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.glidepath_ts.slope_value as varchar), '(' || navaids_points.glidepath_ts.slope_nilreason || ')') as slope,
-    coalesce(cast(navaids_points.glidepath_ts.angleaccuracy_value as varchar), '(' || navaids_points.glidepath_ts.angleaccuracy_nilreason || ')') as angleaccuracy,
-    coalesce(cast(navaids_points.glidepath_ts.frequency_value as varchar) || ' ' || navaids_points.glidepath_ts.frequency_uom, '(' || navaids_points.glidepath_ts.frequency_nilreason || ')') as frequency,
-    coalesce(cast(navaids_points.glidepath_ts.rdh_value as varchar) || ' ' || navaids_points.glidepath_ts.rdh_uom, '(' || navaids_points.glidepath_ts.rdh_nilreason || ')') as rdh,
-    coalesce(cast(navaids_points.glidepath_ts.rdhaccuracy_value as varchar) || ' ' || navaids_points.glidepath_ts.rdhaccuracy_uom, '(' || navaids_points.glidepath_ts.rdhaccuracy_nilreason || ')') as rdhaccuracy
-from navaids_points.glidepath 
-inner join master_join mj2 on navaids_points.glidepath.id = mj2.source_id
-inner join navaids_points.glidepath_tsp on mj2.target_id = navaids_points.glidepath_tsp.id
-inner join navaids_points.glidepath_ts on navaids_points.glidepath_tsp.glidepathtimeslice_id = navaids_points.glidepath_ts.id
-where glidepath_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.glidepath.id,
-    navaids_points.glidepath_ts.id,
-    navaids_points.glidepath_tsp.id,
-    navaids_points.glidepath.identifier,
-    navaids_points.glidepath_ts.interpretation,
-    navaids_points.glidepath_ts.sequence_number,
-    navaids_points.glidepath_ts.correction_number,
-    navaids_points.glidepath_ts.valid_time_begin,
-    navaids_points.glidepath_ts.valid_time_end,
-    navaids_points.glidepath_ts.feature_lifetime_begin,
-    navaids_points.glidepath_ts.feature_lifetime_end,
-    navaids_points.glidepath_ts.designator_value,
-    navaids_points.glidepath_ts.designator_nilreason,
-    navaids_points.glidepath_ts.name_value,
-    navaids_points.glidepath_ts.name_nilreason,
-    navaids_points.glidepath_ts.emissionclass_value,
-    navaids_points.glidepath_ts.emissionclass_nilreason,
-    navaids_points.glidepath_ts.mobile_value,
-    navaids_points.glidepath_ts.mobile_nilreason,
-    navaids_points.glidepath_ts.magneticvariation_value,
-    navaids_points.glidepath_ts.magneticvariation_nilreason,
-    navaids_points.glidepath_ts.magneticvariationaccuracy_value,
-    navaids_points.glidepath_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.glidepath_ts.datemagneticvariation_value,
-    navaids_points.glidepath_ts.datemagneticvariation_nilreason,
-    navaids_points.glidepath_ts.flightchecked_value,
-    navaids_points.glidepath_ts.flightchecked_nilreason,
-    navaids_points.glidepath_ts.slope_value,
-    navaids_points.glidepath_ts.slope_nilreason,
-    navaids_points.glidepath_ts.angleaccuracy_value,
-    navaids_points.glidepath_ts.angleaccuracy_nilreason,
-    navaids_points.glidepath_ts.frequency_value,
-    navaids_points.glidepath_ts.frequency_uom,
-    navaids_points.glidepath_ts.frequency_nilreason,
-    navaids_points.glidepath_ts.rdh_value,
-    navaids_points.glidepath_ts.rdh_uom,
-    navaids_points.glidepath_ts.rdh_nilreason,
-    navaids_points.glidepath_ts.rdhaccuracy_value,
-    navaids_points.glidepath_ts.rdhaccuracy_uom,
-    navaids_points.glidepath_ts.rdhaccuracy_nilreason
-order by glidepath.identifier, glidepath_ts.sequence_number, glidepath_ts.correction_number DESC;
-create or replace view service.groundtrafficcontrolservice_publisher_view as
-select distinct on (groundtrafficcontrolservice.identifier,groundtrafficcontrolservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.groundtrafficcontrolservice.id,
-    service.groundtrafficcontrolservice_ts.id as ts_id,
-    service.groundtrafficcontrolservice_tsp.id as tsp_id,
-    service.groundtrafficcontrolservice.identifier,
-    service.groundtrafficcontrolservice_ts.interpretation,
-    service.groundtrafficcontrolservice_ts.sequence_number,
-    service.groundtrafficcontrolservice_ts.correction_number,
-    service.groundtrafficcontrolservice_ts.valid_time_begin,
-    service.groundtrafficcontrolservice_ts.valid_time_end,
-    service.groundtrafficcontrolservice_ts.feature_lifetime_begin,
-    service.groundtrafficcontrolservice_ts.feature_lifetime_end,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.flightoperations_value as varchar), '(' || service.groundtrafficcontrolservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.rank_value as varchar), '(' || service.groundtrafficcontrolservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.complianticao_value as varchar), '(' || service.groundtrafficcontrolservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.name_value as varchar), '(' || service.groundtrafficcontrolservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.radarassisted_value as varchar), '(' || service.groundtrafficcontrolservice_ts.radarassisted_nilreason || ')') as radarassisted,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.datalinkenabled_value as varchar), '(' || service.groundtrafficcontrolservice_ts.datalinkenabled_nilreason || ')') as datalinkenabled,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.datalinkchannel_value as varchar), '(' || service.groundtrafficcontrolservice_ts.datalinkchannel_nilreason || ')') as datalinkchannel,
-    coalesce(cast(service.groundtrafficcontrolservice_ts.type_value as varchar), '(' || service.groundtrafficcontrolservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS clientairport,
-    airport_heliport.airportheliport_pt.href AS clientairport_href
-from service.groundtrafficcontrolservice 
-inner join master_join mj2 on service.groundtrafficcontrolservice.id = mj2.source_id
-inner join service.groundtrafficcontrolservice_tsp on mj2.target_id = service.groundtrafficcontrolservice_tsp.id
-inner join service.groundtrafficcontrolservice_ts on service.groundtrafficcontrolservice_tsp.groundtrafficcontrolservicetimeslice_id = service.groundtrafficcontrolservice_ts.id
-left join organisation.unit_pt on service.groundtrafficcontrolservice_ts.serviceprovider_id = organisation.unit_pt.id
-left join airport_heliport.airportheliport_pt on service.groundtrafficcontrolservice_ts.clientairport_id = airport_heliport.airportheliport_pt.id
-where groundtrafficcontrolservice_ts.feature_status = 'APPROVED'
-group by
-    service.groundtrafficcontrolservice.id,
-    service.groundtrafficcontrolservice_ts.id,
-    service.groundtrafficcontrolservice_tsp.id,
-    service.groundtrafficcontrolservice.identifier,
-    service.groundtrafficcontrolservice_ts.interpretation,
-    service.groundtrafficcontrolservice_ts.sequence_number,
-    service.groundtrafficcontrolservice_ts.correction_number,
-    service.groundtrafficcontrolservice_ts.valid_time_begin,
-    service.groundtrafficcontrolservice_ts.valid_time_end,
-    service.groundtrafficcontrolservice_ts.feature_lifetime_begin,
-    service.groundtrafficcontrolservice_ts.feature_lifetime_end,
-    service.groundtrafficcontrolservice_ts.flightoperations_value,
-    service.groundtrafficcontrolservice_ts.flightoperations_nilreason,
-    service.groundtrafficcontrolservice_ts.rank_value,
-    service.groundtrafficcontrolservice_ts.rank_nilreason,
-    service.groundtrafficcontrolservice_ts.complianticao_value,
-    service.groundtrafficcontrolservice_ts.complianticao_nilreason,
-    service.groundtrafficcontrolservice_ts.name_value,
-    service.groundtrafficcontrolservice_ts.name_nilreason,
-    service.groundtrafficcontrolservice_ts.radarassisted_value,
-    service.groundtrafficcontrolservice_ts.radarassisted_nilreason,
-    service.groundtrafficcontrolservice_ts.datalinkenabled_value,
-    service.groundtrafficcontrolservice_ts.datalinkenabled_nilreason,
-    service.groundtrafficcontrolservice_ts.datalinkchannel_value,
-    service.groundtrafficcontrolservice_ts.datalinkchannel_nilreason,
-    service.groundtrafficcontrolservice_ts.type_value,
-    service.groundtrafficcontrolservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by groundtrafficcontrolservice.identifier, groundtrafficcontrolservice_ts.sequence_number, groundtrafficcontrolservice_ts.correction_number DESC;
-create or replace view airport_heliport.guidancelinelightsystem_publisher_view as
-select distinct on (guidancelinelightsystem.identifier,guidancelinelightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.guidancelinelightsystem.id,
-    airport_heliport.guidancelinelightsystem_ts.id as ts_id,
-    airport_heliport.guidancelinelightsystem_tsp.id as tsp_id,
-    airport_heliport.guidancelinelightsystem.identifier,
-    airport_heliport.guidancelinelightsystem_ts.interpretation,
-    airport_heliport.guidancelinelightsystem_ts.sequence_number,
-    airport_heliport.guidancelinelightsystem_ts.correction_number,
-    airport_heliport.guidancelinelightsystem_ts.valid_time_begin,
-    airport_heliport.guidancelinelightsystem_ts.valid_time_end,
-    airport_heliport.guidancelinelightsystem_ts.feature_lifetime_begin,
-    airport_heliport.guidancelinelightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.guidancelinelightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.guidancelinelightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.guidancelinelightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.guidancelinelightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.guidancelinelightsystem_ts.colour_value as varchar), '(' || airport_heliport.guidancelinelightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.guidanceline_pt.title as varchar), '(' || airport_heliport.guidanceline_pt.nilreason[1] || ')') AS lightedguidanceline,
-    airport_heliport.guidanceline_pt.href AS lightedguidanceline_href
-from airport_heliport.guidancelinelightsystem 
-inner join master_join mj2 on airport_heliport.guidancelinelightsystem.id = mj2.source_id
-inner join airport_heliport.guidancelinelightsystem_tsp on mj2.target_id = airport_heliport.guidancelinelightsystem_tsp.id
-inner join airport_heliport.guidancelinelightsystem_ts on airport_heliport.guidancelinelightsystem_tsp.guidancelinelightsystemtimeslice_id = airport_heliport.guidancelinelightsystem_ts.id
-left join airport_heliport.guidanceline_pt on airport_heliport.guidancelinelightsystem_ts.lightedguidanceline_id = airport_heliport.guidanceline_pt.id
-where guidancelinelightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.guidancelinelightsystem.id,
-    airport_heliport.guidancelinelightsystem_ts.id,
-    airport_heliport.guidancelinelightsystem_tsp.id,
-    airport_heliport.guidancelinelightsystem.identifier,
-    airport_heliport.guidancelinelightsystem_ts.interpretation,
-    airport_heliport.guidancelinelightsystem_ts.sequence_number,
-    airport_heliport.guidancelinelightsystem_ts.correction_number,
-    airport_heliport.guidancelinelightsystem_ts.valid_time_begin,
-    airport_heliport.guidancelinelightsystem_ts.valid_time_end,
-    airport_heliport.guidancelinelightsystem_ts.feature_lifetime_begin,
-    airport_heliport.guidancelinelightsystem_ts.feature_lifetime_end,
-    airport_heliport.guidancelinelightsystem_ts.emergencylighting_value,
-    airport_heliport.guidancelinelightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.guidancelinelightsystem_ts.intensitylevel_value,
-    airport_heliport.guidancelinelightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.guidancelinelightsystem_ts.colour_value,
-    airport_heliport.guidancelinelightsystem_ts.colour_nilreason,
-    airport_heliport.guidanceline_pt.title,
-    airport_heliport.guidanceline_pt.nilreason,
-    airport_heliport.guidanceline_pt.href
-order by guidancelinelightsystem.identifier, guidancelinelightsystem_ts.sequence_number, guidancelinelightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.guidancelinemarking_publisher_view as
-select distinct on (guidancelinemarking.identifier,guidancelinemarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.guidancelinemarking.id,
-    airport_heliport.guidancelinemarking_ts.id as ts_id,
-    airport_heliport.guidancelinemarking_tsp.id as tsp_id,
-    airport_heliport.guidancelinemarking.identifier,
-    airport_heliport.guidancelinemarking_ts.interpretation,
-    airport_heliport.guidancelinemarking_ts.sequence_number,
-    airport_heliport.guidancelinemarking_ts.correction_number,
-    airport_heliport.guidancelinemarking_ts.valid_time_begin,
-    airport_heliport.guidancelinemarking_ts.valid_time_end,
-    airport_heliport.guidancelinemarking_ts.feature_lifetime_begin,
-    airport_heliport.guidancelinemarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.guidancelinemarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.guidancelinemarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.guidancelinemarking_ts.condition_value as varchar), '(' || airport_heliport.guidancelinemarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.guidanceline_pt.title as varchar), '(' || airport_heliport.guidanceline_pt.nilreason[1] || ')') AS markedguidanceline,
-    airport_heliport.guidanceline_pt.href AS markedguidanceline_href
-from airport_heliport.guidancelinemarking 
-inner join master_join mj2 on airport_heliport.guidancelinemarking.id = mj2.source_id
-inner join airport_heliport.guidancelinemarking_tsp on mj2.target_id = airport_heliport.guidancelinemarking_tsp.id
-inner join airport_heliport.guidancelinemarking_ts on airport_heliport.guidancelinemarking_tsp.guidancelinemarkingtimeslice_id = airport_heliport.guidancelinemarking_ts.id
-left join airport_heliport.guidanceline_pt on airport_heliport.guidancelinemarking_ts.markedguidanceline_id = airport_heliport.guidanceline_pt.id
-where guidancelinemarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.guidancelinemarking.id,
-    airport_heliport.guidancelinemarking_ts.id,
-    airport_heliport.guidancelinemarking_tsp.id,
-    airport_heliport.guidancelinemarking.identifier,
-    airport_heliport.guidancelinemarking_ts.interpretation,
-    airport_heliport.guidancelinemarking_ts.sequence_number,
-    airport_heliport.guidancelinemarking_ts.correction_number,
-    airport_heliport.guidancelinemarking_ts.valid_time_begin,
-    airport_heliport.guidancelinemarking_ts.valid_time_end,
-    airport_heliport.guidancelinemarking_ts.feature_lifetime_begin,
-    airport_heliport.guidancelinemarking_ts.feature_lifetime_end,
-    airport_heliport.guidancelinemarking_ts.markingicaostandard_value,
-    airport_heliport.guidancelinemarking_ts.markingicaostandard_nilreason,
-    airport_heliport.guidancelinemarking_ts.condition_value,
-    airport_heliport.guidancelinemarking_ts.condition_nilreason,
-    airport_heliport.guidanceline_pt.title,
-    airport_heliport.guidanceline_pt.nilreason,
-    airport_heliport.guidanceline_pt.href
-order by guidancelinemarking.identifier, guidancelinemarking_ts.sequence_number, guidancelinemarking_ts.correction_number DESC;
-create or replace view airport_heliport.guidanceline_publisher_view as
-select distinct on (guidanceline.identifier,guidanceline_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.guidanceline.id,
-    airport_heliport.guidanceline_ts.id as ts_id,
-    airport_heliport.guidanceline_tsp.id as tsp_id,
-    airport_heliport.guidanceline.identifier,
-    airport_heliport.guidanceline_ts.interpretation,
-    airport_heliport.guidanceline_ts.sequence_number,
-    airport_heliport.guidanceline_ts.correction_number,
-    airport_heliport.guidanceline_ts.valid_time_begin,
-    airport_heliport.guidanceline_ts.valid_time_end,
-    airport_heliport.guidanceline_ts.feature_lifetime_begin,
-    airport_heliport.guidanceline_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.guidanceline_ts.designator_value as varchar), '(' || airport_heliport.guidanceline_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.guidanceline_ts.type_value as varchar), '(' || airport_heliport.guidanceline_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.guidanceline_ts.usagedirection_value as varchar), '(' || airport_heliport.guidanceline_ts.usagedirection_nilreason || ')') as usagedirection,
-    coalesce(cast(airport_heliport.guidanceline_ts.maxspeed_value as varchar) || ' ' || airport_heliport.guidanceline_ts.maxspeed_uom, '(' || airport_heliport.guidanceline_ts.maxspeed_nilreason || ')') as maxspeed
-from airport_heliport.guidanceline 
-inner join master_join mj2 on airport_heliport.guidanceline.id = mj2.source_id
-inner join airport_heliport.guidanceline_tsp on mj2.target_id = airport_heliport.guidanceline_tsp.id
-inner join airport_heliport.guidanceline_ts on airport_heliport.guidanceline_tsp.guidancelinetimeslice_id = airport_heliport.guidanceline_ts.id
-where guidanceline_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.guidanceline.id,
-    airport_heliport.guidanceline_ts.id,
-    airport_heliport.guidanceline_tsp.id,
-    airport_heliport.guidanceline.identifier,
-    airport_heliport.guidanceline_ts.interpretation,
-    airport_heliport.guidanceline_ts.sequence_number,
-    airport_heliport.guidanceline_ts.correction_number,
-    airport_heliport.guidanceline_ts.valid_time_begin,
-    airport_heliport.guidanceline_ts.valid_time_end,
-    airport_heliport.guidanceline_ts.feature_lifetime_begin,
-    airport_heliport.guidanceline_ts.feature_lifetime_end,
-    airport_heliport.guidanceline_ts.designator_value,
-    airport_heliport.guidanceline_ts.designator_nilreason,
-    airport_heliport.guidanceline_ts.type_value,
-    airport_heliport.guidanceline_ts.type_nilreason,
-    airport_heliport.guidanceline_ts.usagedirection_value,
-    airport_heliport.guidanceline_ts.usagedirection_nilreason,
-    airport_heliport.guidanceline_ts.maxspeed_value,
-    airport_heliport.guidanceline_ts.maxspeed_uom,
-    airport_heliport.guidanceline_ts.maxspeed_nilreason
-order by guidanceline.identifier, guidanceline_ts.sequence_number, guidanceline_ts.correction_number DESC;
-create or replace view shared.holdingassessment_publisher_view as
-select distinct on (holdingassessment.identifier,holdingassessment_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.holdingassessment.id,
-    shared.holdingassessment_ts.id as ts_id,
-    shared.holdingassessment_tsp.id as tsp_id,
-    shared.holdingassessment.identifier,
-    shared.holdingassessment_ts.interpretation,
-    shared.holdingassessment_ts.sequence_number,
-    shared.holdingassessment_ts.correction_number,
-    shared.holdingassessment_ts.valid_time_begin,
-    shared.holdingassessment_ts.valid_time_end,
-    shared.holdingassessment_ts.feature_lifetime_begin,
-    shared.holdingassessment_ts.feature_lifetime_end,
-    coalesce(cast(shared.holdingassessment_ts.upperlimitreference_value as varchar), '(' || shared.holdingassessment_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(shared.holdingassessment_ts.lowerlimitreference_value as varchar), '(' || shared.holdingassessment_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(shared.holdingassessment_ts.patterntemplate_value as varchar), '(' || shared.holdingassessment_ts.patterntemplate_nilreason || ')') as patterntemplate,
-    coalesce(cast(shared.holdingassessment_ts.turbulentair_value as varchar), '(' || shared.holdingassessment_ts.turbulentair_nilreason || ')') as turbulentair,
-    coalesce(cast(shared.holdingassessment_ts.upperlimit_value as varchar) || ' ' || shared.holdingassessment_ts.upperlimit_uom, '(' || shared.holdingassessment_ts.upperlimit_nilreason || ')') as upperlimit,
-    coalesce(cast(shared.holdingassessment_ts.lowerlimit_value as varchar) || ' ' || shared.holdingassessment_ts.lowerlimit_uom, '(' || shared.holdingassessment_ts.lowerlimit_nilreason || ')') as lowerlimit,
-    coalesce(cast(shared.holdingassessment_ts.speedlimit_value as varchar) || ' ' || shared.holdingassessment_ts.speedlimit_uom, '(' || shared.holdingassessment_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(shared.holdingassessment_ts.leglengthtoward_value as varchar) || ' ' || shared.holdingassessment_ts.leglengthtoward_uom, '(' || shared.holdingassessment_ts.leglengthtoward_nilreason || ')') as leglengthtoward,
-    coalesce(cast(shared.holdingassessment_ts.leglengthaway_value as varchar) || ' ' || shared.holdingassessment_ts.leglengthaway_uom, '(' || shared.holdingassessment_ts.leglengthaway_nilreason || ')') as leglengthaway,
-    coalesce(cast(holding.unplannedholding_pt.title as varchar), '(' || holding.unplannedholding_pt.nilreason[1] || ')') AS unplannedholding,
-    holding.unplannedholding_pt.href AS unplannedholding_href,
-    coalesce(cast(holding.holdingpattern_pt.title as varchar), '(' || holding.holdingpattern_pt.nilreason[1] || ')') AS assessedholdingpattern,
-    holding.holdingpattern_pt.href AS assessedholdingpattern_href
-from shared.holdingassessment 
-inner join master_join mj2 on shared.holdingassessment.id = mj2.source_id
-inner join shared.holdingassessment_tsp on mj2.target_id = shared.holdingassessment_tsp.id
-inner join shared.holdingassessment_ts on shared.holdingassessment_tsp.holdingassessmenttimeslice_id = shared.holdingassessment_ts.id
-left join holding.unplannedholding_pt on shared.holdingassessment_ts.unplannedholding_id = holding.unplannedholding_pt.id
-left join holding.holdingpattern_pt on shared.holdingassessment_ts.assessedholdingpattern_id = holding.holdingpattern_pt.id
-where holdingassessment_ts.feature_status = 'APPROVED'
-group by
-    shared.holdingassessment.id,
-    shared.holdingassessment_ts.id,
-    shared.holdingassessment_tsp.id,
-    shared.holdingassessment.identifier,
-    shared.holdingassessment_ts.interpretation,
-    shared.holdingassessment_ts.sequence_number,
-    shared.holdingassessment_ts.correction_number,
-    shared.holdingassessment_ts.valid_time_begin,
-    shared.holdingassessment_ts.valid_time_end,
-    shared.holdingassessment_ts.feature_lifetime_begin,
-    shared.holdingassessment_ts.feature_lifetime_end,
-    shared.holdingassessment_ts.upperlimitreference_value,
-    shared.holdingassessment_ts.upperlimitreference_nilreason,
-    shared.holdingassessment_ts.lowerlimitreference_value,
-    shared.holdingassessment_ts.lowerlimitreference_nilreason,
-    shared.holdingassessment_ts.patterntemplate_value,
-    shared.holdingassessment_ts.patterntemplate_nilreason,
-    shared.holdingassessment_ts.turbulentair_value,
-    shared.holdingassessment_ts.turbulentair_nilreason,
-    shared.holdingassessment_ts.upperlimit_value,
-    shared.holdingassessment_ts.upperlimit_uom,
-    shared.holdingassessment_ts.upperlimit_nilreason,
-    shared.holdingassessment_ts.lowerlimit_value,
-    shared.holdingassessment_ts.lowerlimit_uom,
-    shared.holdingassessment_ts.lowerlimit_nilreason,
-    shared.holdingassessment_ts.speedlimit_value,
-    shared.holdingassessment_ts.speedlimit_uom,
-    shared.holdingassessment_ts.speedlimit_nilreason,
-    shared.holdingassessment_ts.leglengthtoward_value,
-    shared.holdingassessment_ts.leglengthtoward_uom,
-    shared.holdingassessment_ts.leglengthtoward_nilreason,
-    shared.holdingassessment_ts.leglengthaway_value,
-    shared.holdingassessment_ts.leglengthaway_uom,
-    shared.holdingassessment_ts.leglengthaway_nilreason,
-    holding.unplannedholding_pt.title,
-    holding.unplannedholding_pt.nilreason,
-    holding.unplannedholding_pt.href,
-    holding.holdingpattern_pt.title,
-    holding.holdingpattern_pt.nilreason,
-    holding.holdingpattern_pt.href
-order by holdingassessment.identifier, holdingassessment_ts.sequence_number, holdingassessment_ts.correction_number DESC;
-create or replace view holding.holdingpattern_publisher_view as
-select distinct on (holdingpattern.identifier,holdingpattern_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    holding.holdingpattern.id,
-    holding.holdingpattern_ts.id as ts_id,
-    holding.holdingpattern_tsp.id as tsp_id,
-    holding.holdingpattern.identifier,
-    holding.holdingpattern_ts.interpretation,
-    holding.holdingpattern_ts.sequence_number,
-    holding.holdingpattern_ts.correction_number,
-    holding.holdingpattern_ts.valid_time_begin,
-    holding.holdingpattern_ts.valid_time_end,
-    holding.holdingpattern_ts.feature_lifetime_begin,
-    holding.holdingpattern_ts.feature_lifetime_end,
-    coalesce(cast(holding.holdingpattern_ts.type_value as varchar), '(' || holding.holdingpattern_ts.type_nilreason || ')') as type,
-    coalesce(cast(holding.holdingpattern_ts.outboundcourse_value as varchar), '(' || holding.holdingpattern_ts.outboundcourse_nilreason || ')') as outboundcourse,
-    coalesce(cast(holding.holdingpattern_ts.outboundcoursetype_value as varchar), '(' || holding.holdingpattern_ts.outboundcoursetype_nilreason || ')') as outboundcoursetype,
-    coalesce(cast(holding.holdingpattern_ts.inboundcourse_value as varchar), '(' || holding.holdingpattern_ts.inboundcourse_nilreason || ')') as inboundcourse,
-    coalesce(cast(holding.holdingpattern_ts.turndirection_value as varchar), '(' || holding.holdingpattern_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(holding.holdingpattern_ts.upperlimitreference_value as varchar), '(' || holding.holdingpattern_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(holding.holdingpattern_ts.lowerlimitreference_value as varchar), '(' || holding.holdingpattern_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(holding.holdingpattern_ts.instruction_value as varchar), '(' || holding.holdingpattern_ts.instruction_nilreason || ')') as instruction,
-    coalesce(cast(holding.holdingpattern_ts.nonstandardholding_value as varchar), '(' || holding.holdingpattern_ts.nonstandardholding_nilreason || ')') as nonstandardholding,
-    coalesce(cast(holding.holdingpattern_ts.upperlimit_value as varchar) || ' ' || holding.holdingpattern_ts.upperlimit_uom, '(' || holding.holdingpattern_ts.upperlimit_nilreason || ')') as upperlimit,
-    coalesce(cast(holding.holdingpattern_ts.lowerlimit_value as varchar) || ' ' || holding.holdingpattern_ts.lowerlimit_uom, '(' || holding.holdingpattern_ts.lowerlimit_nilreason || ')') as lowerlimit,
-    coalesce(cast(holding.holdingpattern_ts.speedlimit_value as varchar) || ' ' || holding.holdingpattern_ts.speedlimit_uom, '(' || holding.holdingpattern_ts.speedlimit_nilreason || ')') as speedlimit
-from holding.holdingpattern 
-inner join master_join mj2 on holding.holdingpattern.id = mj2.source_id
-inner join holding.holdingpattern_tsp on mj2.target_id = holding.holdingpattern_tsp.id
-inner join holding.holdingpattern_ts on holding.holdingpattern_tsp.holdingpatterntimeslice_id = holding.holdingpattern_ts.id
-where holdingpattern_ts.feature_status = 'APPROVED'
-group by
-    holding.holdingpattern.id,
-    holding.holdingpattern_ts.id,
-    holding.holdingpattern_tsp.id,
-    holding.holdingpattern.identifier,
-    holding.holdingpattern_ts.interpretation,
-    holding.holdingpattern_ts.sequence_number,
-    holding.holdingpattern_ts.correction_number,
-    holding.holdingpattern_ts.valid_time_begin,
-    holding.holdingpattern_ts.valid_time_end,
-    holding.holdingpattern_ts.feature_lifetime_begin,
-    holding.holdingpattern_ts.feature_lifetime_end,
-    holding.holdingpattern_ts.type_value,
-    holding.holdingpattern_ts.type_nilreason,
-    holding.holdingpattern_ts.outboundcourse_value,
-    holding.holdingpattern_ts.outboundcourse_nilreason,
-    holding.holdingpattern_ts.outboundcoursetype_value,
-    holding.holdingpattern_ts.outboundcoursetype_nilreason,
-    holding.holdingpattern_ts.inboundcourse_value,
-    holding.holdingpattern_ts.inboundcourse_nilreason,
-    holding.holdingpattern_ts.turndirection_value,
-    holding.holdingpattern_ts.turndirection_nilreason,
-    holding.holdingpattern_ts.upperlimitreference_value,
-    holding.holdingpattern_ts.upperlimitreference_nilreason,
-    holding.holdingpattern_ts.lowerlimitreference_value,
-    holding.holdingpattern_ts.lowerlimitreference_nilreason,
-    holding.holdingpattern_ts.instruction_value,
-    holding.holdingpattern_ts.instruction_nilreason,
-    holding.holdingpattern_ts.nonstandardholding_value,
-    holding.holdingpattern_ts.nonstandardholding_nilreason,
-    holding.holdingpattern_ts.upperlimit_value,
-    holding.holdingpattern_ts.upperlimit_uom,
-    holding.holdingpattern_ts.upperlimit_nilreason,
-    holding.holdingpattern_ts.lowerlimit_value,
-    holding.holdingpattern_ts.lowerlimit_uom,
-    holding.holdingpattern_ts.lowerlimit_nilreason,
-    holding.holdingpattern_ts.speedlimit_value,
-    holding.holdingpattern_ts.speedlimit_uom,
-    holding.holdingpattern_ts.speedlimit_nilreason
-order by holdingpattern.identifier, holdingpattern_ts.sequence_number, holdingpattern_ts.correction_number DESC;
-create or replace view service.informationservice_publisher_view as
-select distinct on (informationservice.identifier,informationservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.informationservice.id,
-    service.informationservice_ts.id as ts_id,
-    service.informationservice_tsp.id as tsp_id,
-    service.informationservice.identifier,
-    service.informationservice_ts.interpretation,
-    service.informationservice_ts.sequence_number,
-    service.informationservice_ts.correction_number,
-    service.informationservice_ts.valid_time_begin,
-    service.informationservice_ts.valid_time_end,
-    service.informationservice_ts.feature_lifetime_begin,
-    service.informationservice_ts.feature_lifetime_end,
-    coalesce(cast(service.informationservice_ts.flightoperations_value as varchar), '(' || service.informationservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.informationservice_ts.rank_value as varchar), '(' || service.informationservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.informationservice_ts.complianticao_value as varchar), '(' || service.informationservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.informationservice_ts.name_value as varchar), '(' || service.informationservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.informationservice_ts.type_value as varchar), '(' || service.informationservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(service.informationservice_ts.voice_value as varchar), '(' || service.informationservice_ts.voice_nilreason || ')') as voice,
-    coalesce(cast(service.informationservice_ts.datalink_value as varchar), '(' || service.informationservice_ts.datalink_nilreason || ')') as datalink,
-    coalesce(cast(service.informationservice_ts.recorded_value as varchar), '(' || service.informationservice_ts.recorded_nilreason || ')') as recorded,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.informationservice 
-inner join master_join mj2 on service.informationservice.id = mj2.source_id
-inner join service.informationservice_tsp on mj2.target_id = service.informationservice_tsp.id
-inner join service.informationservice_ts on service.informationservice_tsp.informationservicetimeslice_id = service.informationservice_ts.id
-left join organisation.unit_pt on service.informationservice_ts.serviceprovider_id = organisation.unit_pt.id
-where informationservice_ts.feature_status = 'APPROVED'
-group by
-    service.informationservice.id,
-    service.informationservice_ts.id,
-    service.informationservice_tsp.id,
-    service.informationservice.identifier,
-    service.informationservice_ts.interpretation,
-    service.informationservice_ts.sequence_number,
-    service.informationservice_ts.correction_number,
-    service.informationservice_ts.valid_time_begin,
-    service.informationservice_ts.valid_time_end,
-    service.informationservice_ts.feature_lifetime_begin,
-    service.informationservice_ts.feature_lifetime_end,
-    service.informationservice_ts.flightoperations_value,
-    service.informationservice_ts.flightoperations_nilreason,
-    service.informationservice_ts.rank_value,
-    service.informationservice_ts.rank_nilreason,
-    service.informationservice_ts.complianticao_value,
-    service.informationservice_ts.complianticao_nilreason,
-    service.informationservice_ts.name_value,
-    service.informationservice_ts.name_nilreason,
-    service.informationservice_ts.type_value,
-    service.informationservice_ts.type_nilreason,
-    service.informationservice_ts.voice_value,
-    service.informationservice_ts.voice_nilreason,
-    service.informationservice_ts.datalink_value,
-    service.informationservice_ts.datalink_nilreason,
-    service.informationservice_ts.recorded_value,
-    service.informationservice_ts.recorded_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by informationservice.identifier, informationservice_ts.sequence_number, informationservice_ts.correction_number DESC;
-create or replace view procedure.initialleg_publisher_view as
-select distinct on (initialleg.identifier,initialleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.initialleg.id,
-    procedure.initialleg_ts.id as ts_id,
-    procedure.initialleg_tsp.id as tsp_id,
-    procedure.initialleg.identifier,
-    procedure.initialleg_ts.interpretation,
-    procedure.initialleg_ts.sequence_number,
-    procedure.initialleg_ts.correction_number,
-    procedure.initialleg_ts.valid_time_begin,
-    procedure.initialleg_ts.valid_time_end,
-    procedure.initialleg_ts.feature_lifetime_begin,
-    procedure.initialleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.initialleg_ts.endconditiondesignator_value as varchar), '(' || procedure.initialleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.initialleg_ts.legpath_value as varchar), '(' || procedure.initialleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.initialleg_ts.legtypearinc_value as varchar), '(' || procedure.initialleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.initialleg_ts.course_value as varchar), '(' || procedure.initialleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.initialleg_ts.coursetype_value as varchar), '(' || procedure.initialleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.initialleg_ts.coursedirection_value as varchar), '(' || procedure.initialleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.initialleg_ts.turndirection_value as varchar), '(' || procedure.initialleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.initialleg_ts.speedreference_value as varchar), '(' || procedure.initialleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.initialleg_ts.speedinterpretation_value as varchar), '(' || procedure.initialleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.initialleg_ts.bankangle_value as varchar), '(' || procedure.initialleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.initialleg_ts.procedureturnrequired_value as varchar), '(' || procedure.initialleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.initialleg_ts.upperlimitreference_value as varchar), '(' || procedure.initialleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.initialleg_ts.lowerlimitreference_value as varchar), '(' || procedure.initialleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.initialleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.initialleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.initialleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.initialleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.initialleg_ts.verticalangle_value as varchar), '(' || procedure.initialleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.initialleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.initialleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.initialleg_ts.speedlimit_value as varchar) || ' ' || procedure.initialleg_ts.speedlimit_uom, '(' || procedure.initialleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.initialleg_ts.length_value as varchar) || ' ' || procedure.initialleg_ts.length_uom, '(' || procedure.initialleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.initialleg_ts.duration_value as varchar) || ' ' || procedure.initialleg_ts.duration_uom, '(' || procedure.initialleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.initialleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.initialleg_ts.upperlimitaltitude_uom, '(' || procedure.initialleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.initialleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.initialleg_ts.lowerlimitaltitude_uom, '(' || procedure.initialleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.initialleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.initialleg_ts.altitudeoverrideatc_uom, '(' || procedure.initialleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href
-from procedure.initialleg 
-inner join master_join mj2 on procedure.initialleg.id = mj2.source_id
-inner join procedure.initialleg_tsp on mj2.target_id = procedure.initialleg_tsp.id
-inner join procedure.initialleg_ts on procedure.initialleg_tsp.initiallegtimeslice_id = procedure.initialleg_ts.id
-left join navaids_points.angleindication_pt on procedure.initialleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.initialleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.initialleg_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-where initialleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.initialleg.id,
-    procedure.initialleg_ts.id,
-    procedure.initialleg_tsp.id,
-    procedure.initialleg.identifier,
-    procedure.initialleg_ts.interpretation,
-    procedure.initialleg_ts.sequence_number,
-    procedure.initialleg_ts.correction_number,
-    procedure.initialleg_ts.valid_time_begin,
-    procedure.initialleg_ts.valid_time_end,
-    procedure.initialleg_ts.feature_lifetime_begin,
-    procedure.initialleg_ts.feature_lifetime_end,
-    procedure.initialleg_ts.endconditiondesignator_value,
-    procedure.initialleg_ts.endconditiondesignator_nilreason,
-    procedure.initialleg_ts.legpath_value,
-    procedure.initialleg_ts.legpath_nilreason,
-    procedure.initialleg_ts.legtypearinc_value,
-    procedure.initialleg_ts.legtypearinc_nilreason,
-    procedure.initialleg_ts.course_value,
-    procedure.initialleg_ts.course_nilreason,
-    procedure.initialleg_ts.coursetype_value,
-    procedure.initialleg_ts.coursetype_nilreason,
-    procedure.initialleg_ts.coursedirection_value,
-    procedure.initialleg_ts.coursedirection_nilreason,
-    procedure.initialleg_ts.turndirection_value,
-    procedure.initialleg_ts.turndirection_nilreason,
-    procedure.initialleg_ts.speedreference_value,
-    procedure.initialleg_ts.speedreference_nilreason,
-    procedure.initialleg_ts.speedinterpretation_value,
-    procedure.initialleg_ts.speedinterpretation_nilreason,
-    procedure.initialleg_ts.bankangle_value,
-    procedure.initialleg_ts.bankangle_nilreason,
-    procedure.initialleg_ts.procedureturnrequired_value,
-    procedure.initialleg_ts.procedureturnrequired_nilreason,
-    procedure.initialleg_ts.upperlimitreference_value,
-    procedure.initialleg_ts.upperlimitreference_nilreason,
-    procedure.initialleg_ts.lowerlimitreference_value,
-    procedure.initialleg_ts.lowerlimitreference_nilreason,
-    procedure.initialleg_ts.altitudeinterpretation_value,
-    procedure.initialleg_ts.altitudeinterpretation_nilreason,
-    procedure.initialleg_ts.altitudeoverridereference_value,
-    procedure.initialleg_ts.altitudeoverridereference_nilreason,
-    procedure.initialleg_ts.verticalangle_value,
-    procedure.initialleg_ts.verticalangle_nilreason,
-    procedure.initialleg_ts.requirednavigationperformance_value,
-    procedure.initialleg_ts.requirednavigationperformance_nilreason,
-    procedure.initialleg_ts.speedlimit_value,
-    procedure.initialleg_ts.speedlimit_uom,
-    procedure.initialleg_ts.speedlimit_nilreason,
-    procedure.initialleg_ts.length_value,
-    procedure.initialleg_ts.length_uom,
-    procedure.initialleg_ts.length_nilreason,
-    procedure.initialleg_ts.duration_value,
-    procedure.initialleg_ts.duration_uom,
-    procedure.initialleg_ts.duration_nilreason,
-    procedure.initialleg_ts.upperlimitaltitude_value,
-    procedure.initialleg_ts.upperlimitaltitude_uom,
-    procedure.initialleg_ts.upperlimitaltitude_nilreason,
-    procedure.initialleg_ts.lowerlimitaltitude_value,
-    procedure.initialleg_ts.lowerlimitaltitude_uom,
-    procedure.initialleg_ts.lowerlimitaltitude_nilreason,
-    procedure.initialleg_ts.altitudeoverrideatc_value,
-    procedure.initialleg_ts.altitudeoverrideatc_uom,
-    procedure.initialleg_ts.altitudeoverrideatc_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by initialleg.identifier, initialleg_ts.sequence_number, initialleg_ts.correction_number DESC;
-create or replace view procedure.instrumentapproachprocedure_publisher_view as
-select distinct on (instrumentapproachprocedure.identifier,instrumentapproachprocedure_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.instrumentapproachprocedure.id,
-    procedure.instrumentapproachprocedure_ts.id as ts_id,
-    procedure.instrumentapproachprocedure_tsp.id as tsp_id,
-    procedure.instrumentapproachprocedure.identifier,
-    procedure.instrumentapproachprocedure_ts.interpretation,
-    procedure.instrumentapproachprocedure_ts.sequence_number,
-    procedure.instrumentapproachprocedure_ts.correction_number,
-    procedure.instrumentapproachprocedure_ts.valid_time_begin,
-    procedure.instrumentapproachprocedure_ts.valid_time_end,
-    procedure.instrumentapproachprocedure_ts.feature_lifetime_begin,
-    procedure.instrumentapproachprocedure_ts.feature_lifetime_end,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.communicationfailureinstruction_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.communicationfailureinstruction_nilreason || ')') as communicationfailureinstruction,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.instruction_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.instruction_nilreason || ')') as instruction,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.designcriteria_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.designcriteria_nilreason || ')') as designcriteria,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.codingstandard_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.codingstandard_nilreason || ')') as codingstandard,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.flightchecked_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.name_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.name_nilreason || ')') as name,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.rnav_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.rnav_nilreason || ')') as rnav,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.approachprefix_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.approachprefix_nilreason || ')') as approachprefix,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.approachtype_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.approachtype_nilreason || ')') as approachtype,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.multipleidentification_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.multipleidentification_nilreason || ')') as multipleidentification,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.coptertrack_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.coptertrack_nilreason || ')') as coptertrack,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.circlingidentification_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.circlingidentification_nilreason || ')') as circlingidentification,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.coursereversalinstruction_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.coursereversalinstruction_nilreason || ')') as coursereversalinstruction,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.additionalequipment_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.additionalequipment_nilreason || ')') as additionalequipment,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.channelgnss_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.channelgnss_nilreason || ')') as channelgnss,
-    coalesce(cast(procedure.instrumentapproachprocedure_ts.waasreliable_value as varchar), '(' || procedure.instrumentapproachprocedure_ts.waasreliable_nilreason || ')') as waasreliable,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS guidancefacilitynavaid,
-    navaids_points.navaid_pt.href AS guidancefacilitynavaid_href,
-    coalesce(cast(navaids_points.specialnavigationsystem_pt.title as varchar), '(' || navaids_points.specialnavigationsystem_pt.nilreason[1] || ')') AS guidancefacilityspecialnavigationsystem,
-    navaids_points.specialnavigationsystem_pt.href AS guidancefacilityspecialnavigationsystem_href,
-    coalesce(cast(surveillance.radarsystem_pt.title as varchar), '(' || surveillance.radarsystem_pt.nilreason[1] || ')') AS guidancefacilityradar,
-    surveillance.radarsystem_pt.href AS guidancefacilityradar_href,
-    coalesce(cast(procedure.safealtitudearea_pt.title as varchar), '(' || procedure.safealtitudearea_pt.nilreason[1] || ')') AS safealtitude,
-    procedure.safealtitudearea_pt.href AS safealtitude_href
-from procedure.instrumentapproachprocedure 
-inner join master_join mj2 on procedure.instrumentapproachprocedure.id = mj2.source_id
-inner join procedure.instrumentapproachprocedure_tsp on mj2.target_id = procedure.instrumentapproachprocedure_tsp.id
-inner join procedure.instrumentapproachprocedure_ts on procedure.instrumentapproachprocedure_tsp.instrumentapproachproceduretimeslice_id = procedure.instrumentapproachprocedure_ts.id
-left join navaids_points.navaid_pt on procedure.instrumentapproachprocedure_ts.guidancefacilitynavaid_id = navaids_points.navaid_pt.id
-left join navaids_points.specialnavigationsystem_pt on procedure.instrumentapproachprocedure_ts.guidancefacilityspecialnavigationsystem_id = navaids_points.specialnavigationsystem_pt.id
-left join surveillance.radarsystem_pt on procedure.instrumentapproachprocedure_ts.guidancefacilityradar_id = surveillance.radarsystem_pt.id
-left join procedure.safealtitudearea_pt on procedure.instrumentapproachprocedure_ts.safealtitude_id = procedure.safealtitudearea_pt.id
-where instrumentapproachprocedure_ts.feature_status = 'APPROVED'
-group by
-    procedure.instrumentapproachprocedure.id,
-    procedure.instrumentapproachprocedure_ts.id,
-    procedure.instrumentapproachprocedure_tsp.id,
-    procedure.instrumentapproachprocedure.identifier,
-    procedure.instrumentapproachprocedure_ts.interpretation,
-    procedure.instrumentapproachprocedure_ts.sequence_number,
-    procedure.instrumentapproachprocedure_ts.correction_number,
-    procedure.instrumentapproachprocedure_ts.valid_time_begin,
-    procedure.instrumentapproachprocedure_ts.valid_time_end,
-    procedure.instrumentapproachprocedure_ts.feature_lifetime_begin,
-    procedure.instrumentapproachprocedure_ts.feature_lifetime_end,
-    procedure.instrumentapproachprocedure_ts.communicationfailureinstruction_value,
-    procedure.instrumentapproachprocedure_ts.communicationfailureinstruction_nilreason,
-    procedure.instrumentapproachprocedure_ts.instruction_value,
-    procedure.instrumentapproachprocedure_ts.instruction_nilreason,
-    procedure.instrumentapproachprocedure_ts.designcriteria_value,
-    procedure.instrumentapproachprocedure_ts.designcriteria_nilreason,
-    procedure.instrumentapproachprocedure_ts.codingstandard_value,
-    procedure.instrumentapproachprocedure_ts.codingstandard_nilreason,
-    procedure.instrumentapproachprocedure_ts.flightchecked_value,
-    procedure.instrumentapproachprocedure_ts.flightchecked_nilreason,
-    procedure.instrumentapproachprocedure_ts.name_value,
-    procedure.instrumentapproachprocedure_ts.name_nilreason,
-    procedure.instrumentapproachprocedure_ts.rnav_value,
-    procedure.instrumentapproachprocedure_ts.rnav_nilreason,
-    procedure.instrumentapproachprocedure_ts.approachprefix_value,
-    procedure.instrumentapproachprocedure_ts.approachprefix_nilreason,
-    procedure.instrumentapproachprocedure_ts.approachtype_value,
-    procedure.instrumentapproachprocedure_ts.approachtype_nilreason,
-    procedure.instrumentapproachprocedure_ts.multipleidentification_value,
-    procedure.instrumentapproachprocedure_ts.multipleidentification_nilreason,
-    procedure.instrumentapproachprocedure_ts.coptertrack_value,
-    procedure.instrumentapproachprocedure_ts.coptertrack_nilreason,
-    procedure.instrumentapproachprocedure_ts.circlingidentification_value,
-    procedure.instrumentapproachprocedure_ts.circlingidentification_nilreason,
-    procedure.instrumentapproachprocedure_ts.coursereversalinstruction_value,
-    procedure.instrumentapproachprocedure_ts.coursereversalinstruction_nilreason,
-    procedure.instrumentapproachprocedure_ts.additionalequipment_value,
-    procedure.instrumentapproachprocedure_ts.additionalequipment_nilreason,
-    procedure.instrumentapproachprocedure_ts.channelgnss_value,
-    procedure.instrumentapproachprocedure_ts.channelgnss_nilreason,
-    procedure.instrumentapproachprocedure_ts.waasreliable_value,
-    procedure.instrumentapproachprocedure_ts.waasreliable_nilreason,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    navaids_points.specialnavigationsystem_pt.title,
-    navaids_points.specialnavigationsystem_pt.nilreason,
-    navaids_points.specialnavigationsystem_pt.href,
-    surveillance.radarsystem_pt.title,
-    surveillance.radarsystem_pt.nilreason,
-    surveillance.radarsystem_pt.href,
-    procedure.safealtitudearea_pt.title,
-    procedure.safealtitudearea_pt.nilreason,
-    procedure.safealtitudearea_pt.href
-order by instrumentapproachprocedure.identifier, instrumentapproachprocedure_ts.sequence_number, instrumentapproachprocedure_ts.correction_number DESC;
-create or replace view procedure.intermediateleg_publisher_view as
-select distinct on (intermediateleg.identifier,intermediateleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.intermediateleg.id,
-    procedure.intermediateleg_ts.id as ts_id,
-    procedure.intermediateleg_tsp.id as tsp_id,
-    procedure.intermediateleg.identifier,
-    procedure.intermediateleg_ts.interpretation,
-    procedure.intermediateleg_ts.sequence_number,
-    procedure.intermediateleg_ts.correction_number,
-    procedure.intermediateleg_ts.valid_time_begin,
-    procedure.intermediateleg_ts.valid_time_end,
-    procedure.intermediateleg_ts.feature_lifetime_begin,
-    procedure.intermediateleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.intermediateleg_ts.endconditiondesignator_value as varchar), '(' || procedure.intermediateleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.intermediateleg_ts.legpath_value as varchar), '(' || procedure.intermediateleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.intermediateleg_ts.legtypearinc_value as varchar), '(' || procedure.intermediateleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.intermediateleg_ts.course_value as varchar), '(' || procedure.intermediateleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.intermediateleg_ts.coursetype_value as varchar), '(' || procedure.intermediateleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.intermediateleg_ts.coursedirection_value as varchar), '(' || procedure.intermediateleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.intermediateleg_ts.turndirection_value as varchar), '(' || procedure.intermediateleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.intermediateleg_ts.speedreference_value as varchar), '(' || procedure.intermediateleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.intermediateleg_ts.speedinterpretation_value as varchar), '(' || procedure.intermediateleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.intermediateleg_ts.bankangle_value as varchar), '(' || procedure.intermediateleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.intermediateleg_ts.procedureturnrequired_value as varchar), '(' || procedure.intermediateleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.intermediateleg_ts.upperlimitreference_value as varchar), '(' || procedure.intermediateleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.intermediateleg_ts.lowerlimitreference_value as varchar), '(' || procedure.intermediateleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.intermediateleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.intermediateleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.intermediateleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.intermediateleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.intermediateleg_ts.verticalangle_value as varchar), '(' || procedure.intermediateleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.intermediateleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.intermediateleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.intermediateleg_ts.speedlimit_value as varchar) || ' ' || procedure.intermediateleg_ts.speedlimit_uom, '(' || procedure.intermediateleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.intermediateleg_ts.length_value as varchar) || ' ' || procedure.intermediateleg_ts.length_uom, '(' || procedure.intermediateleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.intermediateleg_ts.duration_value as varchar) || ' ' || procedure.intermediateleg_ts.duration_uom, '(' || procedure.intermediateleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.intermediateleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.intermediateleg_ts.upperlimitaltitude_uom, '(' || procedure.intermediateleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.intermediateleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.intermediateleg_ts.lowerlimitaltitude_uom, '(' || procedure.intermediateleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.intermediateleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.intermediateleg_ts.altitudeoverrideatc_uom, '(' || procedure.intermediateleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href
-from procedure.intermediateleg 
-inner join master_join mj2 on procedure.intermediateleg.id = mj2.source_id
-inner join procedure.intermediateleg_tsp on mj2.target_id = procedure.intermediateleg_tsp.id
-inner join procedure.intermediateleg_ts on procedure.intermediateleg_tsp.intermediatelegtimeslice_id = procedure.intermediateleg_ts.id
-left join navaids_points.angleindication_pt on procedure.intermediateleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.intermediateleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.intermediateleg_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-where intermediateleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.intermediateleg.id,
-    procedure.intermediateleg_ts.id,
-    procedure.intermediateleg_tsp.id,
-    procedure.intermediateleg.identifier,
-    procedure.intermediateleg_ts.interpretation,
-    procedure.intermediateleg_ts.sequence_number,
-    procedure.intermediateleg_ts.correction_number,
-    procedure.intermediateleg_ts.valid_time_begin,
-    procedure.intermediateleg_ts.valid_time_end,
-    procedure.intermediateleg_ts.feature_lifetime_begin,
-    procedure.intermediateleg_ts.feature_lifetime_end,
-    procedure.intermediateleg_ts.endconditiondesignator_value,
-    procedure.intermediateleg_ts.endconditiondesignator_nilreason,
-    procedure.intermediateleg_ts.legpath_value,
-    procedure.intermediateleg_ts.legpath_nilreason,
-    procedure.intermediateleg_ts.legtypearinc_value,
-    procedure.intermediateleg_ts.legtypearinc_nilreason,
-    procedure.intermediateleg_ts.course_value,
-    procedure.intermediateleg_ts.course_nilreason,
-    procedure.intermediateleg_ts.coursetype_value,
-    procedure.intermediateleg_ts.coursetype_nilreason,
-    procedure.intermediateleg_ts.coursedirection_value,
-    procedure.intermediateleg_ts.coursedirection_nilreason,
-    procedure.intermediateleg_ts.turndirection_value,
-    procedure.intermediateleg_ts.turndirection_nilreason,
-    procedure.intermediateleg_ts.speedreference_value,
-    procedure.intermediateleg_ts.speedreference_nilreason,
-    procedure.intermediateleg_ts.speedinterpretation_value,
-    procedure.intermediateleg_ts.speedinterpretation_nilreason,
-    procedure.intermediateleg_ts.bankangle_value,
-    procedure.intermediateleg_ts.bankangle_nilreason,
-    procedure.intermediateleg_ts.procedureturnrequired_value,
-    procedure.intermediateleg_ts.procedureturnrequired_nilreason,
-    procedure.intermediateleg_ts.upperlimitreference_value,
-    procedure.intermediateleg_ts.upperlimitreference_nilreason,
-    procedure.intermediateleg_ts.lowerlimitreference_value,
-    procedure.intermediateleg_ts.lowerlimitreference_nilreason,
-    procedure.intermediateleg_ts.altitudeinterpretation_value,
-    procedure.intermediateleg_ts.altitudeinterpretation_nilreason,
-    procedure.intermediateleg_ts.altitudeoverridereference_value,
-    procedure.intermediateleg_ts.altitudeoverridereference_nilreason,
-    procedure.intermediateleg_ts.verticalangle_value,
-    procedure.intermediateleg_ts.verticalangle_nilreason,
-    procedure.intermediateleg_ts.requirednavigationperformance_value,
-    procedure.intermediateleg_ts.requirednavigationperformance_nilreason,
-    procedure.intermediateleg_ts.speedlimit_value,
-    procedure.intermediateleg_ts.speedlimit_uom,
-    procedure.intermediateleg_ts.speedlimit_nilreason,
-    procedure.intermediateleg_ts.length_value,
-    procedure.intermediateleg_ts.length_uom,
-    procedure.intermediateleg_ts.length_nilreason,
-    procedure.intermediateleg_ts.duration_value,
-    procedure.intermediateleg_ts.duration_uom,
-    procedure.intermediateleg_ts.duration_nilreason,
-    procedure.intermediateleg_ts.upperlimitaltitude_value,
-    procedure.intermediateleg_ts.upperlimitaltitude_uom,
-    procedure.intermediateleg_ts.upperlimitaltitude_nilreason,
-    procedure.intermediateleg_ts.lowerlimitaltitude_value,
-    procedure.intermediateleg_ts.lowerlimitaltitude_uom,
-    procedure.intermediateleg_ts.lowerlimitaltitude_nilreason,
-    procedure.intermediateleg_ts.altitudeoverrideatc_value,
-    procedure.intermediateleg_ts.altitudeoverrideatc_uom,
-    procedure.intermediateleg_ts.altitudeoverrideatc_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by intermediateleg.identifier, intermediateleg_ts.sequence_number, intermediateleg_ts.correction_number DESC;
-create or replace view navaids_points.localizer_publisher_view as
-select distinct on (localizer.identifier,localizer_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.localizer.id,
-    navaids_points.localizer_ts.id as ts_id,
-    navaids_points.localizer_tsp.id as tsp_id,
-    navaids_points.localizer.identifier,
-    navaids_points.localizer_ts.interpretation,
-    navaids_points.localizer_ts.sequence_number,
-    navaids_points.localizer_ts.correction_number,
-    navaids_points.localizer_ts.valid_time_begin,
-    navaids_points.localizer_ts.valid_time_end,
-    navaids_points.localizer_ts.feature_lifetime_begin,
-    navaids_points.localizer_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.localizer_ts.designator_value as varchar), '(' || navaids_points.localizer_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.localizer_ts.name_value as varchar), '(' || navaids_points.localizer_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.localizer_ts.emissionclass_value as varchar), '(' || navaids_points.localizer_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.localizer_ts.mobile_value as varchar), '(' || navaids_points.localizer_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.localizer_ts.magneticvariation_value as varchar), '(' || navaids_points.localizer_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.localizer_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.localizer_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.localizer_ts.datemagneticvariation_value as varchar), '(' || navaids_points.localizer_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.localizer_ts.flightchecked_value as varchar), '(' || navaids_points.localizer_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.localizer_ts.magneticbearing_value as varchar), '(' || navaids_points.localizer_ts.magneticbearing_nilreason || ')') as magneticbearing,
-    coalesce(cast(navaids_points.localizer_ts.magneticbearingaccuracy_value as varchar), '(' || navaids_points.localizer_ts.magneticbearingaccuracy_nilreason || ')') as magneticbearingaccuracy,
-    coalesce(cast(navaids_points.localizer_ts.truebearing_value as varchar), '(' || navaids_points.localizer_ts.truebearing_nilreason || ')') as truebearing,
-    coalesce(cast(navaids_points.localizer_ts.truebearingaccuracy_value as varchar), '(' || navaids_points.localizer_ts.truebearingaccuracy_nilreason || ')') as truebearingaccuracy,
-    coalesce(cast(navaids_points.localizer_ts.declination_value as varchar), '(' || navaids_points.localizer_ts.declination_nilreason || ')') as declination,
-    coalesce(cast(navaids_points.localizer_ts.widthcourse_value as varchar), '(' || navaids_points.localizer_ts.widthcourse_nilreason || ')') as widthcourse,
-    coalesce(cast(navaids_points.localizer_ts.widthcourseaccuracy_value as varchar), '(' || navaids_points.localizer_ts.widthcourseaccuracy_nilreason || ')') as widthcourseaccuracy,
-    coalesce(cast(navaids_points.localizer_ts.backcourseusable_value as varchar), '(' || navaids_points.localizer_ts.backcourseusable_nilreason || ')') as backcourseusable,
-    coalesce(cast(navaids_points.localizer_ts.frequency_value as varchar) || ' ' || navaids_points.localizer_ts.frequency_uom, '(' || navaids_points.localizer_ts.frequency_nilreason || ')') as frequency
-from navaids_points.localizer 
-inner join master_join mj2 on navaids_points.localizer.id = mj2.source_id
-inner join navaids_points.localizer_tsp on mj2.target_id = navaids_points.localizer_tsp.id
-inner join navaids_points.localizer_ts on navaids_points.localizer_tsp.localizertimeslice_id = navaids_points.localizer_ts.id
-where localizer_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.localizer.id,
-    navaids_points.localizer_ts.id,
-    navaids_points.localizer_tsp.id,
-    navaids_points.localizer.identifier,
-    navaids_points.localizer_ts.interpretation,
-    navaids_points.localizer_ts.sequence_number,
-    navaids_points.localizer_ts.correction_number,
-    navaids_points.localizer_ts.valid_time_begin,
-    navaids_points.localizer_ts.valid_time_end,
-    navaids_points.localizer_ts.feature_lifetime_begin,
-    navaids_points.localizer_ts.feature_lifetime_end,
-    navaids_points.localizer_ts.designator_value,
-    navaids_points.localizer_ts.designator_nilreason,
-    navaids_points.localizer_ts.name_value,
-    navaids_points.localizer_ts.name_nilreason,
-    navaids_points.localizer_ts.emissionclass_value,
-    navaids_points.localizer_ts.emissionclass_nilreason,
-    navaids_points.localizer_ts.mobile_value,
-    navaids_points.localizer_ts.mobile_nilreason,
-    navaids_points.localizer_ts.magneticvariation_value,
-    navaids_points.localizer_ts.magneticvariation_nilreason,
-    navaids_points.localizer_ts.magneticvariationaccuracy_value,
-    navaids_points.localizer_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.localizer_ts.datemagneticvariation_value,
-    navaids_points.localizer_ts.datemagneticvariation_nilreason,
-    navaids_points.localizer_ts.flightchecked_value,
-    navaids_points.localizer_ts.flightchecked_nilreason,
-    navaids_points.localizer_ts.magneticbearing_value,
-    navaids_points.localizer_ts.magneticbearing_nilreason,
-    navaids_points.localizer_ts.magneticbearingaccuracy_value,
-    navaids_points.localizer_ts.magneticbearingaccuracy_nilreason,
-    navaids_points.localizer_ts.truebearing_value,
-    navaids_points.localizer_ts.truebearing_nilreason,
-    navaids_points.localizer_ts.truebearingaccuracy_value,
-    navaids_points.localizer_ts.truebearingaccuracy_nilreason,
-    navaids_points.localizer_ts.declination_value,
-    navaids_points.localizer_ts.declination_nilreason,
-    navaids_points.localizer_ts.widthcourse_value,
-    navaids_points.localizer_ts.widthcourse_nilreason,
-    navaids_points.localizer_ts.widthcourseaccuracy_value,
-    navaids_points.localizer_ts.widthcourseaccuracy_nilreason,
-    navaids_points.localizer_ts.backcourseusable_value,
-    navaids_points.localizer_ts.backcourseusable_nilreason,
-    navaids_points.localizer_ts.frequency_value,
-    navaids_points.localizer_ts.frequency_uom,
-    navaids_points.localizer_ts.frequency_nilreason
-order by localizer.identifier, localizer_ts.sequence_number, localizer_ts.correction_number DESC;
-create or replace view navaids_points.markerbeacon_publisher_view as
-select distinct on (markerbeacon.identifier,markerbeacon_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.markerbeacon.id,
-    navaids_points.markerbeacon_ts.id as ts_id,
-    navaids_points.markerbeacon_tsp.id as tsp_id,
-    navaids_points.markerbeacon.identifier,
-    navaids_points.markerbeacon_ts.interpretation,
-    navaids_points.markerbeacon_ts.sequence_number,
-    navaids_points.markerbeacon_ts.correction_number,
-    navaids_points.markerbeacon_ts.valid_time_begin,
-    navaids_points.markerbeacon_ts.valid_time_end,
-    navaids_points.markerbeacon_ts.feature_lifetime_begin,
-    navaids_points.markerbeacon_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.markerbeacon_ts.designator_value as varchar), '(' || navaids_points.markerbeacon_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.markerbeacon_ts.name_value as varchar), '(' || navaids_points.markerbeacon_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.markerbeacon_ts.emissionclass_value as varchar), '(' || navaids_points.markerbeacon_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.markerbeacon_ts.mobile_value as varchar), '(' || navaids_points.markerbeacon_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.markerbeacon_ts.magneticvariation_value as varchar), '(' || navaids_points.markerbeacon_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.markerbeacon_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.markerbeacon_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.markerbeacon_ts.datemagneticvariation_value as varchar), '(' || navaids_points.markerbeacon_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.markerbeacon_ts.flightchecked_value as varchar), '(' || navaids_points.markerbeacon_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.markerbeacon_ts.class_value as varchar), '(' || navaids_points.markerbeacon_ts.class_nilreason || ')') as class,
-    coalesce(cast(navaids_points.markerbeacon_ts.axisbearing_value as varchar), '(' || navaids_points.markerbeacon_ts.axisbearing_nilreason || ')') as axisbearing,
-    coalesce(cast(navaids_points.markerbeacon_ts.auralmorsecode_value as varchar), '(' || navaids_points.markerbeacon_ts.auralmorsecode_nilreason || ')') as auralmorsecode,
-    coalesce(cast(navaids_points.markerbeacon_ts.frequency_value as varchar) || ' ' || navaids_points.markerbeacon_ts.frequency_uom, '(' || navaids_points.markerbeacon_ts.frequency_nilreason || ')') as frequency
-from navaids_points.markerbeacon 
-inner join master_join mj2 on navaids_points.markerbeacon.id = mj2.source_id
-inner join navaids_points.markerbeacon_tsp on mj2.target_id = navaids_points.markerbeacon_tsp.id
-inner join navaids_points.markerbeacon_ts on navaids_points.markerbeacon_tsp.markerbeacontimeslice_id = navaids_points.markerbeacon_ts.id
-where markerbeacon_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.markerbeacon.id,
-    navaids_points.markerbeacon_ts.id,
-    navaids_points.markerbeacon_tsp.id,
-    navaids_points.markerbeacon.identifier,
-    navaids_points.markerbeacon_ts.interpretation,
-    navaids_points.markerbeacon_ts.sequence_number,
-    navaids_points.markerbeacon_ts.correction_number,
-    navaids_points.markerbeacon_ts.valid_time_begin,
-    navaids_points.markerbeacon_ts.valid_time_end,
-    navaids_points.markerbeacon_ts.feature_lifetime_begin,
-    navaids_points.markerbeacon_ts.feature_lifetime_end,
-    navaids_points.markerbeacon_ts.designator_value,
-    navaids_points.markerbeacon_ts.designator_nilreason,
-    navaids_points.markerbeacon_ts.name_value,
-    navaids_points.markerbeacon_ts.name_nilreason,
-    navaids_points.markerbeacon_ts.emissionclass_value,
-    navaids_points.markerbeacon_ts.emissionclass_nilreason,
-    navaids_points.markerbeacon_ts.mobile_value,
-    navaids_points.markerbeacon_ts.mobile_nilreason,
-    navaids_points.markerbeacon_ts.magneticvariation_value,
-    navaids_points.markerbeacon_ts.magneticvariation_nilreason,
-    navaids_points.markerbeacon_ts.magneticvariationaccuracy_value,
-    navaids_points.markerbeacon_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.markerbeacon_ts.datemagneticvariation_value,
-    navaids_points.markerbeacon_ts.datemagneticvariation_nilreason,
-    navaids_points.markerbeacon_ts.flightchecked_value,
-    navaids_points.markerbeacon_ts.flightchecked_nilreason,
-    navaids_points.markerbeacon_ts.class_value,
-    navaids_points.markerbeacon_ts.class_nilreason,
-    navaids_points.markerbeacon_ts.axisbearing_value,
-    navaids_points.markerbeacon_ts.axisbearing_nilreason,
-    navaids_points.markerbeacon_ts.auralmorsecode_value,
-    navaids_points.markerbeacon_ts.auralmorsecode_nilreason,
-    navaids_points.markerbeacon_ts.frequency_value,
-    navaids_points.markerbeacon_ts.frequency_uom,
-    navaids_points.markerbeacon_ts.frequency_nilreason
-order by markerbeacon.identifier, markerbeacon_ts.sequence_number, markerbeacon_ts.correction_number DESC;
-create or replace view airport_heliport.markingbuoy_publisher_view as
-select distinct on (markingbuoy.identifier,markingbuoy_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.markingbuoy.id,
-    airport_heliport.markingbuoy_ts.id as ts_id,
-    airport_heliport.markingbuoy_tsp.id as tsp_id,
-    airport_heliport.markingbuoy.identifier,
-    airport_heliport.markingbuoy_ts.interpretation,
-    airport_heliport.markingbuoy_ts.sequence_number,
-    airport_heliport.markingbuoy_ts.correction_number,
-    airport_heliport.markingbuoy_ts.valid_time_begin,
-    airport_heliport.markingbuoy_ts.valid_time_end,
-    airport_heliport.markingbuoy_ts.feature_lifetime_begin,
-    airport_heliport.markingbuoy_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.markingbuoy_ts.type_value as varchar), '(' || airport_heliport.markingbuoy_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.markingbuoy_ts.colour_value as varchar), '(' || airport_heliport.markingbuoy_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.seaplanelandingarea_pt.title as varchar), '(' || airport_heliport.seaplanelandingarea_pt.nilreason[1] || ')') AS theseaplanelandingarea,
-    airport_heliport.seaplanelandingarea_pt.href AS theseaplanelandingarea_href
-from airport_heliport.markingbuoy 
-inner join master_join mj2 on airport_heliport.markingbuoy.id = mj2.source_id
-inner join airport_heliport.markingbuoy_tsp on mj2.target_id = airport_heliport.markingbuoy_tsp.id
-inner join airport_heliport.markingbuoy_ts on airport_heliport.markingbuoy_tsp.markingbuoytimeslice_id = airport_heliport.markingbuoy_ts.id
-left join airport_heliport.seaplanelandingarea_pt on airport_heliport.markingbuoy_ts.theseaplanelandingarea_id = airport_heliport.seaplanelandingarea_pt.id
-where markingbuoy_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.markingbuoy.id,
-    airport_heliport.markingbuoy_ts.id,
-    airport_heliport.markingbuoy_tsp.id,
-    airport_heliport.markingbuoy.identifier,
-    airport_heliport.markingbuoy_ts.interpretation,
-    airport_heliport.markingbuoy_ts.sequence_number,
-    airport_heliport.markingbuoy_ts.correction_number,
-    airport_heliport.markingbuoy_ts.valid_time_begin,
-    airport_heliport.markingbuoy_ts.valid_time_end,
-    airport_heliport.markingbuoy_ts.feature_lifetime_begin,
-    airport_heliport.markingbuoy_ts.feature_lifetime_end,
-    airport_heliport.markingbuoy_ts.type_value,
-    airport_heliport.markingbuoy_ts.type_nilreason,
-    airport_heliport.markingbuoy_ts.colour_value,
-    airport_heliport.markingbuoy_ts.colour_nilreason,
-    airport_heliport.seaplanelandingarea_pt.title,
-    airport_heliport.seaplanelandingarea_pt.nilreason,
-    airport_heliport.seaplanelandingarea_pt.href
-order by markingbuoy.identifier, markingbuoy_ts.sequence_number, markingbuoy_ts.correction_number DESC;
-create or replace view procedure.missedapproachleg_publisher_view as
-select distinct on (missedapproachleg.identifier,missedapproachleg_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.missedapproachleg.id,
-    procedure.missedapproachleg_ts.id as ts_id,
-    procedure.missedapproachleg_tsp.id as tsp_id,
-    procedure.missedapproachleg.identifier,
-    procedure.missedapproachleg_ts.interpretation,
-    procedure.missedapproachleg_ts.sequence_number,
-    procedure.missedapproachleg_ts.correction_number,
-    procedure.missedapproachleg_ts.valid_time_begin,
-    procedure.missedapproachleg_ts.valid_time_end,
-    procedure.missedapproachleg_ts.feature_lifetime_begin,
-    procedure.missedapproachleg_ts.feature_lifetime_end,
-    coalesce(cast(procedure.missedapproachleg_ts.endconditiondesignator_value as varchar), '(' || procedure.missedapproachleg_ts.endconditiondesignator_nilreason || ')') as endconditiondesignator,
-    coalesce(cast(procedure.missedapproachleg_ts.legpath_value as varchar), '(' || procedure.missedapproachleg_ts.legpath_nilreason || ')') as legpath,
-    coalesce(cast(procedure.missedapproachleg_ts.legtypearinc_value as varchar), '(' || procedure.missedapproachleg_ts.legtypearinc_nilreason || ')') as legtypearinc,
-    coalesce(cast(procedure.missedapproachleg_ts.course_value as varchar), '(' || procedure.missedapproachleg_ts.course_nilreason || ')') as course,
-    coalesce(cast(procedure.missedapproachleg_ts.coursetype_value as varchar), '(' || procedure.missedapproachleg_ts.coursetype_nilreason || ')') as coursetype,
-    coalesce(cast(procedure.missedapproachleg_ts.coursedirection_value as varchar), '(' || procedure.missedapproachleg_ts.coursedirection_nilreason || ')') as coursedirection,
-    coalesce(cast(procedure.missedapproachleg_ts.turndirection_value as varchar), '(' || procedure.missedapproachleg_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(procedure.missedapproachleg_ts.speedreference_value as varchar), '(' || procedure.missedapproachleg_ts.speedreference_nilreason || ')') as speedreference,
-    coalesce(cast(procedure.missedapproachleg_ts.speedinterpretation_value as varchar), '(' || procedure.missedapproachleg_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
-    coalesce(cast(procedure.missedapproachleg_ts.bankangle_value as varchar), '(' || procedure.missedapproachleg_ts.bankangle_nilreason || ')') as bankangle,
-    coalesce(cast(procedure.missedapproachleg_ts.procedureturnrequired_value as varchar), '(' || procedure.missedapproachleg_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
-    coalesce(cast(procedure.missedapproachleg_ts.upperlimitreference_value as varchar), '(' || procedure.missedapproachleg_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(procedure.missedapproachleg_ts.lowerlimitreference_value as varchar), '(' || procedure.missedapproachleg_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(procedure.missedapproachleg_ts.altitudeinterpretation_value as varchar), '(' || procedure.missedapproachleg_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
-    coalesce(cast(procedure.missedapproachleg_ts.altitudeoverridereference_value as varchar), '(' || procedure.missedapproachleg_ts.altitudeoverridereference_nilreason || ')') as altitudeoverridereference,
-    coalesce(cast(procedure.missedapproachleg_ts.verticalangle_value as varchar), '(' || procedure.missedapproachleg_ts.verticalangle_nilreason || ')') as verticalangle,
-    coalesce(cast(procedure.missedapproachleg_ts.type_value as varchar), '(' || procedure.missedapproachleg_ts.type_nilreason || ')') as type,
-    coalesce(cast(procedure.missedapproachleg_ts.thresholdaftermapt_value as varchar), '(' || procedure.missedapproachleg_ts.thresholdaftermapt_nilreason || ')') as thresholdaftermapt,
-    coalesce(cast(procedure.missedapproachleg_ts.requirednavigationperformance_value as varchar), '(' || procedure.missedapproachleg_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(procedure.missedapproachleg_ts.speedlimit_value as varchar) || ' ' || procedure.missedapproachleg_ts.speedlimit_uom, '(' || procedure.missedapproachleg_ts.speedlimit_nilreason || ')') as speedlimit,
-    coalesce(cast(procedure.missedapproachleg_ts.length_value as varchar) || ' ' || procedure.missedapproachleg_ts.length_uom, '(' || procedure.missedapproachleg_ts.length_nilreason || ')') as length,
-    coalesce(cast(procedure.missedapproachleg_ts.duration_value as varchar) || ' ' || procedure.missedapproachleg_ts.duration_uom, '(' || procedure.missedapproachleg_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(procedure.missedapproachleg_ts.upperlimitaltitude_value as varchar) || ' ' || procedure.missedapproachleg_ts.upperlimitaltitude_uom, '(' || procedure.missedapproachleg_ts.upperlimitaltitude_nilreason || ')') as upperlimitaltitude,
-    coalesce(cast(procedure.missedapproachleg_ts.lowerlimitaltitude_value as varchar) || ' ' || procedure.missedapproachleg_ts.lowerlimitaltitude_uom, '(' || procedure.missedapproachleg_ts.lowerlimitaltitude_nilreason || ')') as lowerlimitaltitude,
-    coalesce(cast(procedure.missedapproachleg_ts.altitudeoverrideatc_value as varchar) || ' ' || procedure.missedapproachleg_ts.altitudeoverrideatc_uom, '(' || procedure.missedapproachleg_ts.altitudeoverrideatc_nilreason || ')') as altitudeoverrideatc,
-    coalesce(cast(procedure.missedapproachleg_ts.heightmapt_value as varchar) || ' ' || procedure.missedapproachleg_ts.heightmapt_uom, '(' || procedure.missedapproachleg_ts.heightmapt_nilreason || ')') as heightmapt,
-    coalesce(cast(navaids_points.angleindication_pt.title as varchar), '(' || navaids_points.angleindication_pt.nilreason[1] || ')') AS angle,
-    navaids_points.angleindication_pt.href AS angle_href,
-    coalesce(cast(navaids_points.distanceindication_pt.title as varchar), '(' || navaids_points.distanceindication_pt.nilreason[1] || ')') AS distance,
-    navaids_points.distanceindication_pt.href AS distance_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approach,
-    procedure.instrumentapproachprocedure_pt.href AS approach_href
-from procedure.missedapproachleg 
-inner join master_join mj2 on procedure.missedapproachleg.id = mj2.source_id
-inner join procedure.missedapproachleg_tsp on mj2.target_id = procedure.missedapproachleg_tsp.id
-inner join procedure.missedapproachleg_ts on procedure.missedapproachleg_tsp.missedapproachlegtimeslice_id = procedure.missedapproachleg_ts.id
-left join navaids_points.angleindication_pt on procedure.missedapproachleg_ts.angle_id = navaids_points.angleindication_pt.id
-left join navaids_points.distanceindication_pt on procedure.missedapproachleg_ts.distance_id = navaids_points.distanceindication_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.missedapproachleg_ts.approach_id = procedure.instrumentapproachprocedure_pt.id
-where missedapproachleg_ts.feature_status = 'APPROVED'
-group by
-    procedure.missedapproachleg.id,
-    procedure.missedapproachleg_ts.id,
-    procedure.missedapproachleg_tsp.id,
-    procedure.missedapproachleg.identifier,
-    procedure.missedapproachleg_ts.interpretation,
-    procedure.missedapproachleg_ts.sequence_number,
-    procedure.missedapproachleg_ts.correction_number,
-    procedure.missedapproachleg_ts.valid_time_begin,
-    procedure.missedapproachleg_ts.valid_time_end,
-    procedure.missedapproachleg_ts.feature_lifetime_begin,
-    procedure.missedapproachleg_ts.feature_lifetime_end,
-    procedure.missedapproachleg_ts.endconditiondesignator_value,
-    procedure.missedapproachleg_ts.endconditiondesignator_nilreason,
-    procedure.missedapproachleg_ts.legpath_value,
-    procedure.missedapproachleg_ts.legpath_nilreason,
-    procedure.missedapproachleg_ts.legtypearinc_value,
-    procedure.missedapproachleg_ts.legtypearinc_nilreason,
-    procedure.missedapproachleg_ts.course_value,
-    procedure.missedapproachleg_ts.course_nilreason,
-    procedure.missedapproachleg_ts.coursetype_value,
-    procedure.missedapproachleg_ts.coursetype_nilreason,
-    procedure.missedapproachleg_ts.coursedirection_value,
-    procedure.missedapproachleg_ts.coursedirection_nilreason,
-    procedure.missedapproachleg_ts.turndirection_value,
-    procedure.missedapproachleg_ts.turndirection_nilreason,
-    procedure.missedapproachleg_ts.speedreference_value,
-    procedure.missedapproachleg_ts.speedreference_nilreason,
-    procedure.missedapproachleg_ts.speedinterpretation_value,
-    procedure.missedapproachleg_ts.speedinterpretation_nilreason,
-    procedure.missedapproachleg_ts.bankangle_value,
-    procedure.missedapproachleg_ts.bankangle_nilreason,
-    procedure.missedapproachleg_ts.procedureturnrequired_value,
-    procedure.missedapproachleg_ts.procedureturnrequired_nilreason,
-    procedure.missedapproachleg_ts.upperlimitreference_value,
-    procedure.missedapproachleg_ts.upperlimitreference_nilreason,
-    procedure.missedapproachleg_ts.lowerlimitreference_value,
-    procedure.missedapproachleg_ts.lowerlimitreference_nilreason,
-    procedure.missedapproachleg_ts.altitudeinterpretation_value,
-    procedure.missedapproachleg_ts.altitudeinterpretation_nilreason,
-    procedure.missedapproachleg_ts.altitudeoverridereference_value,
-    procedure.missedapproachleg_ts.altitudeoverridereference_nilreason,
-    procedure.missedapproachleg_ts.verticalangle_value,
-    procedure.missedapproachleg_ts.verticalangle_nilreason,
-    procedure.missedapproachleg_ts.type_value,
-    procedure.missedapproachleg_ts.type_nilreason,
-    procedure.missedapproachleg_ts.thresholdaftermapt_value,
-    procedure.missedapproachleg_ts.thresholdaftermapt_nilreason,
-    procedure.missedapproachleg_ts.requirednavigationperformance_value,
-    procedure.missedapproachleg_ts.requirednavigationperformance_nilreason,
-    procedure.missedapproachleg_ts.speedlimit_value,
-    procedure.missedapproachleg_ts.speedlimit_uom,
-    procedure.missedapproachleg_ts.speedlimit_nilreason,
-    procedure.missedapproachleg_ts.length_value,
-    procedure.missedapproachleg_ts.length_uom,
-    procedure.missedapproachleg_ts.length_nilreason,
-    procedure.missedapproachleg_ts.duration_value,
-    procedure.missedapproachleg_ts.duration_uom,
-    procedure.missedapproachleg_ts.duration_nilreason,
-    procedure.missedapproachleg_ts.upperlimitaltitude_value,
-    procedure.missedapproachleg_ts.upperlimitaltitude_uom,
-    procedure.missedapproachleg_ts.upperlimitaltitude_nilreason,
-    procedure.missedapproachleg_ts.lowerlimitaltitude_value,
-    procedure.missedapproachleg_ts.lowerlimitaltitude_uom,
-    procedure.missedapproachleg_ts.lowerlimitaltitude_nilreason,
-    procedure.missedapproachleg_ts.altitudeoverrideatc_value,
-    procedure.missedapproachleg_ts.altitudeoverrideatc_uom,
-    procedure.missedapproachleg_ts.altitudeoverrideatc_nilreason,
-    procedure.missedapproachleg_ts.heightmapt_value,
-    procedure.missedapproachleg_ts.heightmapt_uom,
-    procedure.missedapproachleg_ts.heightmapt_nilreason,
-    navaids_points.angleindication_pt.title,
-    navaids_points.angleindication_pt.nilreason,
-    navaids_points.angleindication_pt.href,
-    navaids_points.distanceindication_pt.title,
-    navaids_points.distanceindication_pt.nilreason,
-    navaids_points.distanceindication_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by missedapproachleg.identifier, missedapproachleg_ts.sequence_number, missedapproachleg_ts.correction_number DESC;
-create or replace view navaids_points.navaid_publisher_view as
-select distinct on (navaid.identifier,navaid_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.navaid.id,
-    navaids_points.navaid_ts.id as ts_id,
-    navaids_points.navaid_tsp.id as tsp_id,
-    navaids_points.navaid.identifier,
-    navaids_points.navaid_ts.interpretation,
-    navaids_points.navaid_ts.sequence_number,
-    navaids_points.navaid_ts.correction_number,
-    navaids_points.navaid_ts.valid_time_begin,
-    navaids_points.navaid_ts.valid_time_end,
-    navaids_points.navaid_ts.feature_lifetime_begin,
-    navaids_points.navaid_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.navaid_ts.type_value as varchar), '(' || navaids_points.navaid_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.navaid_ts.designator_value as varchar), '(' || navaids_points.navaid_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.navaid_ts.name_value as varchar), '(' || navaids_points.navaid_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.navaid_ts.flightchecked_value as varchar), '(' || navaids_points.navaid_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.navaid_ts.purpose_value as varchar), '(' || navaids_points.navaid_ts.purpose_nilreason || ')') as purpose,
-    coalesce(cast(navaids_points.navaid_ts.signalperformance_value as varchar), '(' || navaids_points.navaid_ts.signalperformance_nilreason || ')') as signalperformance,
-    coalesce(cast(navaids_points.navaid_ts.coursequality_value as varchar), '(' || navaids_points.navaid_ts.coursequality_nilreason || ')') as coursequality,
-    coalesce(cast(navaids_points.navaid_ts.integritylevel_value as varchar), '(' || navaids_points.navaid_ts.integritylevel_nilreason || ')') as integritylevel
-from navaids_points.navaid 
-inner join master_join mj2 on navaids_points.navaid.id = mj2.source_id
-inner join navaids_points.navaid_tsp on mj2.target_id = navaids_points.navaid_tsp.id
-inner join navaids_points.navaid_ts on navaids_points.navaid_tsp.navaidtimeslice_id = navaids_points.navaid_ts.id
-where navaid_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.navaid.id,
-    navaids_points.navaid_ts.id,
-    navaids_points.navaid_tsp.id,
-    navaids_points.navaid.identifier,
-    navaids_points.navaid_ts.interpretation,
-    navaids_points.navaid_ts.sequence_number,
-    navaids_points.navaid_ts.correction_number,
-    navaids_points.navaid_ts.valid_time_begin,
-    navaids_points.navaid_ts.valid_time_end,
-    navaids_points.navaid_ts.feature_lifetime_begin,
-    navaids_points.navaid_ts.feature_lifetime_end,
-    navaids_points.navaid_ts.type_value,
-    navaids_points.navaid_ts.type_nilreason,
-    navaids_points.navaid_ts.designator_value,
-    navaids_points.navaid_ts.designator_nilreason,
-    navaids_points.navaid_ts.name_value,
-    navaids_points.navaid_ts.name_nilreason,
-    navaids_points.navaid_ts.flightchecked_value,
-    navaids_points.navaid_ts.flightchecked_nilreason,
-    navaids_points.navaid_ts.purpose_value,
-    navaids_points.navaid_ts.purpose_nilreason,
-    navaids_points.navaid_ts.signalperformance_value,
-    navaids_points.navaid_ts.signalperformance_nilreason,
-    navaids_points.navaid_ts.coursequality_value,
-    navaids_points.navaid_ts.coursequality_nilreason,
-    navaids_points.navaid_ts.integritylevel_value,
-    navaids_points.navaid_ts.integritylevel_nilreason
-order by navaid.identifier, navaid_ts.sequence_number, navaid_ts.correction_number DESC;
-create or replace view procedure.navigationarearestriction_publisher_view as
-select distinct on (navigationarearestriction.identifier,navigationarearestriction_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.navigationarearestriction.id,
-    procedure.navigationarearestriction_ts.id as ts_id,
-    procedure.navigationarearestriction_tsp.id as tsp_id,
-    procedure.navigationarearestriction.identifier,
-    procedure.navigationarearestriction_ts.interpretation,
-    procedure.navigationarearestriction_ts.sequence_number,
-    procedure.navigationarearestriction_ts.correction_number,
-    procedure.navigationarearestriction_ts.valid_time_begin,
-    procedure.navigationarearestriction_ts.valid_time_end,
-    procedure.navigationarearestriction_ts.feature_lifetime_begin,
-    procedure.navigationarearestriction_ts.feature_lifetime_end,
-    coalesce(cast(procedure.navigationarearestriction_ts.type_value as varchar), '(' || procedure.navigationarearestriction_ts.type_nilreason || ')') as type
-from procedure.navigationarearestriction 
-inner join master_join mj2 on procedure.navigationarearestriction.id = mj2.source_id
-inner join procedure.navigationarearestriction_tsp on mj2.target_id = procedure.navigationarearestriction_tsp.id
-inner join procedure.navigationarearestriction_ts on procedure.navigationarearestriction_tsp.navigationarearestrictiontimeslice_id = procedure.navigationarearestriction_ts.id
-where navigationarearestriction_ts.feature_status = 'APPROVED'
-group by
-    procedure.navigationarearestriction.id,
-    procedure.navigationarearestriction_ts.id,
-    procedure.navigationarearestriction_tsp.id,
-    procedure.navigationarearestriction.identifier,
-    procedure.navigationarearestriction_ts.interpretation,
-    procedure.navigationarearestriction_ts.sequence_number,
-    procedure.navigationarearestriction_ts.correction_number,
-    procedure.navigationarearestriction_ts.valid_time_begin,
-    procedure.navigationarearestriction_ts.valid_time_end,
-    procedure.navigationarearestriction_ts.feature_lifetime_begin,
-    procedure.navigationarearestriction_ts.feature_lifetime_end,
-    procedure.navigationarearestriction_ts.type_value,
-    procedure.navigationarearestriction_ts.type_nilreason
-order by navigationarearestriction.identifier, navigationarearestriction_ts.sequence_number, navigationarearestriction_ts.correction_number DESC;
-create or replace view procedure.navigationarea_publisher_view as
-select distinct on (navigationarea.identifier,navigationarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.navigationarea.id,
-    procedure.navigationarea_ts.id as ts_id,
-    procedure.navigationarea_tsp.id as tsp_id,
-    procedure.navigationarea.identifier,
-    procedure.navigationarea_ts.interpretation,
-    procedure.navigationarea_ts.sequence_number,
-    procedure.navigationarea_ts.correction_number,
-    procedure.navigationarea_ts.valid_time_begin,
-    procedure.navigationarea_ts.valid_time_end,
-    procedure.navigationarea_ts.feature_lifetime_begin,
-    procedure.navigationarea_ts.feature_lifetime_end,
-    coalesce(cast(procedure.navigationarea_ts.navigationareatype_value as varchar), '(' || procedure.navigationarea_ts.navigationareatype_nilreason || ')') as navigationareatype,
-    coalesce(cast(procedure.navigationarea_ts.minimumceiling_value as varchar) || ' ' || procedure.navigationarea_ts.minimumceiling_uom, '(' || procedure.navigationarea_ts.minimumceiling_nilreason || ')') as minimumceiling,
-    coalesce(cast(procedure.navigationarea_ts.minimumvisibility_value as varchar) || ' ' || procedure.navigationarea_ts.minimumvisibility_uom, '(' || procedure.navigationarea_ts.minimumvisibility_nilreason || ')') as minimumvisibility,
-    coalesce(cast(procedure.standardinstrumentdeparture_pt.title as varchar), '(' || procedure.standardinstrumentdeparture_pt.nilreason[1] || ')') AS departure,
-    procedure.standardinstrumentdeparture_pt.href AS departure_href,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS centrepointfixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS centrepointfixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS centrepointnavaidsystem,
-    navaids_points.navaid_pt.href AS centrepointnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS centrepointaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS centrepointaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS centrepointrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS centrepointrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS centrepointairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS centrepointairportreferencepoint_href
-from procedure.navigationarea 
-inner join master_join mj2 on procedure.navigationarea.id = mj2.source_id
-inner join procedure.navigationarea_tsp on mj2.target_id = procedure.navigationarea_tsp.id
-inner join procedure.navigationarea_ts on procedure.navigationarea_tsp.navigationareatimeslice_id = procedure.navigationarea_ts.id
-left join procedure.standardinstrumentdeparture_pt on procedure.navigationarea_ts.departure_id = procedure.standardinstrumentdeparture_pt.id
-left join navaids_points.designatedpoint_pt on procedure.navigationarea_ts.centrepointfixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on procedure.navigationarea_ts.centrepointnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on procedure.navigationarea_ts.centrepointaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on procedure.navigationarea_ts.centrepointrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on procedure.navigationarea_ts.centrepointairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where navigationarea_ts.feature_status = 'APPROVED'
-group by
-    procedure.navigationarea.id,
-    procedure.navigationarea_ts.id,
-    procedure.navigationarea_tsp.id,
-    procedure.navigationarea.identifier,
-    procedure.navigationarea_ts.interpretation,
-    procedure.navigationarea_ts.sequence_number,
-    procedure.navigationarea_ts.correction_number,
-    procedure.navigationarea_ts.valid_time_begin,
-    procedure.navigationarea_ts.valid_time_end,
-    procedure.navigationarea_ts.feature_lifetime_begin,
-    procedure.navigationarea_ts.feature_lifetime_end,
-    procedure.navigationarea_ts.navigationareatype_value,
-    procedure.navigationarea_ts.navigationareatype_nilreason,
-    procedure.navigationarea_ts.minimumceiling_value,
-    procedure.navigationarea_ts.minimumceiling_uom,
-    procedure.navigationarea_ts.minimumceiling_nilreason,
-    procedure.navigationarea_ts.minimumvisibility_value,
-    procedure.navigationarea_ts.minimumvisibility_uom,
-    procedure.navigationarea_ts.minimumvisibility_nilreason,
-    procedure.standardinstrumentdeparture_pt.title,
-    procedure.standardinstrumentdeparture_pt.nilreason,
-    procedure.standardinstrumentdeparture_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by navigationarea.identifier, navigationarea_ts.sequence_number, navigationarea_ts.correction_number DESC;
-create or replace view navaids_points.ndb_publisher_view as
-select distinct on (ndb.identifier,ndb_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.ndb.id,
-    navaids_points.ndb_ts.id as ts_id,
-    navaids_points.ndb_tsp.id as tsp_id,
-    navaids_points.ndb.identifier,
-    navaids_points.ndb_ts.interpretation,
-    navaids_points.ndb_ts.sequence_number,
-    navaids_points.ndb_ts.correction_number,
-    navaids_points.ndb_ts.valid_time_begin,
-    navaids_points.ndb_ts.valid_time_end,
-    navaids_points.ndb_ts.feature_lifetime_begin,
-    navaids_points.ndb_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.ndb_ts.designator_value as varchar), '(' || navaids_points.ndb_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.ndb_ts.name_value as varchar), '(' || navaids_points.ndb_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.ndb_ts.emissionclass_value as varchar), '(' || navaids_points.ndb_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.ndb_ts.mobile_value as varchar), '(' || navaids_points.ndb_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.ndb_ts.magneticvariation_value as varchar), '(' || navaids_points.ndb_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.ndb_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.ndb_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.ndb_ts.datemagneticvariation_value as varchar), '(' || navaids_points.ndb_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.ndb_ts.flightchecked_value as varchar), '(' || navaids_points.ndb_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.ndb_ts.class_value as varchar), '(' || navaids_points.ndb_ts.class_nilreason || ')') as class,
-    coalesce(cast(navaids_points.ndb_ts.emissionband_value as varchar), '(' || navaids_points.ndb_ts.emissionband_nilreason || ')') as emissionband,
-    coalesce(cast(navaids_points.ndb_ts.frequency_value as varchar) || ' ' || navaids_points.ndb_ts.frequency_uom, '(' || navaids_points.ndb_ts.frequency_nilreason || ')') as frequency
-from navaids_points.ndb 
-inner join master_join mj2 on navaids_points.ndb.id = mj2.source_id
-inner join navaids_points.ndb_tsp on mj2.target_id = navaids_points.ndb_tsp.id
-inner join navaids_points.ndb_ts on navaids_points.ndb_tsp.ndbtimeslice_id = navaids_points.ndb_ts.id
-where ndb_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.ndb.id,
-    navaids_points.ndb_ts.id,
-    navaids_points.ndb_tsp.id,
-    navaids_points.ndb.identifier,
-    navaids_points.ndb_ts.interpretation,
-    navaids_points.ndb_ts.sequence_number,
-    navaids_points.ndb_ts.correction_number,
-    navaids_points.ndb_ts.valid_time_begin,
-    navaids_points.ndb_ts.valid_time_end,
-    navaids_points.ndb_ts.feature_lifetime_begin,
-    navaids_points.ndb_ts.feature_lifetime_end,
-    navaids_points.ndb_ts.designator_value,
-    navaids_points.ndb_ts.designator_nilreason,
-    navaids_points.ndb_ts.name_value,
-    navaids_points.ndb_ts.name_nilreason,
-    navaids_points.ndb_ts.emissionclass_value,
-    navaids_points.ndb_ts.emissionclass_nilreason,
-    navaids_points.ndb_ts.mobile_value,
-    navaids_points.ndb_ts.mobile_nilreason,
-    navaids_points.ndb_ts.magneticvariation_value,
-    navaids_points.ndb_ts.magneticvariation_nilreason,
-    navaids_points.ndb_ts.magneticvariationaccuracy_value,
-    navaids_points.ndb_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.ndb_ts.datemagneticvariation_value,
-    navaids_points.ndb_ts.datemagneticvariation_nilreason,
-    navaids_points.ndb_ts.flightchecked_value,
-    navaids_points.ndb_ts.flightchecked_nilreason,
-    navaids_points.ndb_ts.class_value,
-    navaids_points.ndb_ts.class_nilreason,
-    navaids_points.ndb_ts.emissionband_value,
-    navaids_points.ndb_ts.emissionband_nilreason,
-    navaids_points.ndb_ts.frequency_value,
-    navaids_points.ndb_ts.frequency_uom,
-    navaids_points.ndb_ts.frequency_nilreason
-order by ndb.identifier, ndb_ts.sequence_number, ndb_ts.correction_number DESC;
-create or replace view airport_heliport.nonmovementarea_publisher_view as
-select distinct on (nonmovementarea.identifier,nonmovementarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.nonmovementarea.id,
-    airport_heliport.nonmovementarea_ts.id as ts_id,
-    airport_heliport.nonmovementarea_tsp.id as tsp_id,
-    airport_heliport.nonmovementarea.identifier,
-    airport_heliport.nonmovementarea_ts.interpretation,
-    airport_heliport.nonmovementarea_ts.sequence_number,
-    airport_heliport.nonmovementarea_ts.correction_number,
-    airport_heliport.nonmovementarea_ts.valid_time_begin,
-    airport_heliport.nonmovementarea_ts.valid_time_end,
-    airport_heliport.nonmovementarea_ts.feature_lifetime_begin,
-    airport_heliport.nonmovementarea_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.nonmovementarea 
-inner join master_join mj2 on airport_heliport.nonmovementarea.id = mj2.source_id
-inner join airport_heliport.nonmovementarea_tsp on mj2.target_id = airport_heliport.nonmovementarea_tsp.id
-inner join airport_heliport.nonmovementarea_ts on airport_heliport.nonmovementarea_tsp.nonmovementareatimeslice_id = airport_heliport.nonmovementarea_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.nonmovementarea_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where nonmovementarea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.nonmovementarea.id,
-    airport_heliport.nonmovementarea_ts.id,
-    airport_heliport.nonmovementarea_tsp.id,
-    airport_heliport.nonmovementarea.identifier,
-    airport_heliport.nonmovementarea_ts.interpretation,
-    airport_heliport.nonmovementarea_ts.sequence_number,
-    airport_heliport.nonmovementarea_ts.correction_number,
-    airport_heliport.nonmovementarea_ts.valid_time_begin,
-    airport_heliport.nonmovementarea_ts.valid_time_end,
-    airport_heliport.nonmovementarea_ts.feature_lifetime_begin,
-    airport_heliport.nonmovementarea_ts.feature_lifetime_end,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by nonmovementarea.identifier, nonmovementarea_ts.sequence_number, nonmovementarea_ts.correction_number DESC;
-create or replace view obstacles.obstaclearea_publisher_view as
-select distinct on (obstaclearea.identifier,obstaclearea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    obstacles.obstaclearea.id,
-    obstacles.obstaclearea_ts.id as ts_id,
-    obstacles.obstaclearea_tsp.id as tsp_id,
-    obstacles.obstaclearea.identifier,
-    obstacles.obstaclearea_ts.interpretation,
-    obstacles.obstaclearea_ts.sequence_number,
-    obstacles.obstaclearea_ts.correction_number,
-    obstacles.obstaclearea_ts.valid_time_begin,
-    obstacles.obstaclearea_ts.valid_time_end,
-    obstacles.obstaclearea_ts.feature_lifetime_begin,
-    obstacles.obstaclearea_ts.feature_lifetime_end,
-    coalesce(cast(obstacles.obstaclearea_ts.type_value as varchar), '(' || obstacles.obstaclearea_ts.type_nilreason || ')') as type,
-    coalesce(cast(obstacles.obstaclearea_ts.obstructionidsurfacecondition_value as varchar), '(' || obstacles.obstaclearea_ts.obstructionidsurfacecondition_nilreason || ')') as obstructionidsurfacecondition,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS referenceownerairport,
-    airport_heliport.airportheliport_pt.href AS referenceownerairport_href,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS referenceownerrunway,
-    airport_heliport.runwaydirection_pt.href AS referenceownerrunway_href,
-    coalesce(cast(organisation.organisationauthority_pt.title as varchar), '(' || organisation.organisationauthority_pt.nilreason[1] || ')') AS referenceownerorganisation,
-    organisation.organisationauthority_pt.href AS referenceownerorganisation_href
-from obstacles.obstaclearea 
-inner join master_join mj2 on obstacles.obstaclearea.id = mj2.source_id
-inner join obstacles.obstaclearea_tsp on mj2.target_id = obstacles.obstaclearea_tsp.id
-inner join obstacles.obstaclearea_ts on obstacles.obstaclearea_tsp.obstacleareatimeslice_id = obstacles.obstaclearea_ts.id
-left join airport_heliport.airportheliport_pt on obstacles.obstaclearea_ts.referenceownerairport_id = airport_heliport.airportheliport_pt.id
-left join airport_heliport.runwaydirection_pt on obstacles.obstaclearea_ts.referenceownerrunway_id = airport_heliport.runwaydirection_pt.id
-left join organisation.organisationauthority_pt on obstacles.obstaclearea_ts.referenceownerorganisation_id = organisation.organisationauthority_pt.id
-where obstaclearea_ts.feature_status = 'APPROVED'
-group by
-    obstacles.obstaclearea.id,
-    obstacles.obstaclearea_ts.id,
-    obstacles.obstaclearea_tsp.id,
-    obstacles.obstaclearea.identifier,
-    obstacles.obstaclearea_ts.interpretation,
-    obstacles.obstaclearea_ts.sequence_number,
-    obstacles.obstaclearea_ts.correction_number,
-    obstacles.obstaclearea_ts.valid_time_begin,
-    obstacles.obstaclearea_ts.valid_time_end,
-    obstacles.obstaclearea_ts.feature_lifetime_begin,
-    obstacles.obstaclearea_ts.feature_lifetime_end,
-    obstacles.obstaclearea_ts.type_value,
-    obstacles.obstaclearea_ts.type_nilreason,
-    obstacles.obstaclearea_ts.obstructionidsurfacecondition_value,
-    obstacles.obstaclearea_ts.obstructionidsurfacecondition_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href,
-    organisation.organisationauthority_pt.title,
-    organisation.organisationauthority_pt.nilreason,
-    organisation.organisationauthority_pt.href
-order by obstaclearea.identifier, obstaclearea_ts.sequence_number, obstaclearea_ts.correction_number DESC;
-create or replace view organisation.organisationauthority_publisher_view as
-select distinct on (organisationauthority.identifier,organisationauthority_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    organisation.organisationauthority.id,
-    organisation.organisationauthority_ts.id as ts_id,
-    organisation.organisationauthority_tsp.id as tsp_id,
-    organisation.organisationauthority.identifier,
-    organisation.organisationauthority_ts.interpretation,
-    organisation.organisationauthority_ts.sequence_number,
-    organisation.organisationauthority_ts.correction_number,
-    organisation.organisationauthority_ts.valid_time_begin,
-    organisation.organisationauthority_ts.valid_time_end,
-    organisation.organisationauthority_ts.feature_lifetime_begin,
-    organisation.organisationauthority_ts.feature_lifetime_end,
-    coalesce(cast(organisation.organisationauthority_ts.name_value as varchar), '(' || organisation.organisationauthority_ts.name_nilreason || ')') as name,
-    coalesce(cast(organisation.organisationauthority_ts.designator_value as varchar), '(' || organisation.organisationauthority_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(organisation.organisationauthority_ts.type_value as varchar), '(' || organisation.organisationauthority_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.organisationauthority_ts.military_value as varchar), '(' || organisation.organisationauthority_ts.military_nilreason || ')') as military
-from organisation.organisationauthority 
-inner join master_join mj2 on organisation.organisationauthority.id = mj2.source_id
-inner join organisation.organisationauthority_tsp on mj2.target_id = organisation.organisationauthority_tsp.id
-inner join organisation.organisationauthority_ts on organisation.organisationauthority_tsp.organisationauthoritytimeslice_id = organisation.organisationauthority_ts.id
-where organisationauthority_ts.feature_status = 'APPROVED'
-group by
-    organisation.organisationauthority.id,
-    organisation.organisationauthority_ts.id,
-    organisation.organisationauthority_tsp.id,
-    organisation.organisationauthority.identifier,
-    organisation.organisationauthority_ts.interpretation,
-    organisation.organisationauthority_ts.sequence_number,
-    organisation.organisationauthority_ts.correction_number,
-    organisation.organisationauthority_ts.valid_time_begin,
-    organisation.organisationauthority_ts.valid_time_end,
-    organisation.organisationauthority_ts.feature_lifetime_begin,
-    organisation.organisationauthority_ts.feature_lifetime_end,
-    organisation.organisationauthority_ts.name_value,
-    organisation.organisationauthority_ts.name_nilreason,
-    organisation.organisationauthority_ts.designator_value,
-    organisation.organisationauthority_ts.designator_nilreason,
-    organisation.organisationauthority_ts.type_value,
-    organisation.organisationauthority_ts.type_nilreason,
-    organisation.organisationauthority_ts.military_value,
-    organisation.organisationauthority_ts.military_nilreason
-order by organisationauthority.identifier, organisationauthority_ts.sequence_number, organisationauthority_ts.correction_number DESC;
-create or replace view airport_heliport.passengerloadingbridge_publisher_view as
-select distinct on (passengerloadingbridge.identifier,passengerloadingbridge_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.passengerloadingbridge.id,
-    airport_heliport.passengerloadingbridge_ts.id as ts_id,
-    airport_heliport.passengerloadingbridge_tsp.id as tsp_id,
-    airport_heliport.passengerloadingbridge.identifier,
-    airport_heliport.passengerloadingbridge_ts.interpretation,
-    airport_heliport.passengerloadingbridge_ts.sequence_number,
-    airport_heliport.passengerloadingbridge_ts.correction_number,
-    airport_heliport.passengerloadingbridge_ts.valid_time_begin,
-    airport_heliport.passengerloadingbridge_ts.valid_time_end,
-    airport_heliport.passengerloadingbridge_ts.feature_lifetime_begin,
-    airport_heliport.passengerloadingbridge_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.passengerloadingbridge_ts.type_value as varchar), '(' || airport_heliport.passengerloadingbridge_ts.type_nilreason || ')') as type
-from airport_heliport.passengerloadingbridge 
-inner join master_join mj2 on airport_heliport.passengerloadingbridge.id = mj2.source_id
-inner join airport_heliport.passengerloadingbridge_tsp on mj2.target_id = airport_heliport.passengerloadingbridge_tsp.id
-inner join airport_heliport.passengerloadingbridge_ts on airport_heliport.passengerloadingbridge_tsp.passengerloadingbridgetimeslice_id = airport_heliport.passengerloadingbridge_ts.id
-where passengerloadingbridge_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.passengerloadingbridge.id,
-    airport_heliport.passengerloadingbridge_ts.id,
-    airport_heliport.passengerloadingbridge_tsp.id,
-    airport_heliport.passengerloadingbridge.identifier,
-    airport_heliport.passengerloadingbridge_ts.interpretation,
-    airport_heliport.passengerloadingbridge_ts.sequence_number,
-    airport_heliport.passengerloadingbridge_ts.correction_number,
-    airport_heliport.passengerloadingbridge_ts.valid_time_begin,
-    airport_heliport.passengerloadingbridge_ts.valid_time_end,
-    airport_heliport.passengerloadingbridge_ts.feature_lifetime_begin,
-    airport_heliport.passengerloadingbridge_ts.feature_lifetime_end,
-    airport_heliport.passengerloadingbridge_ts.type_value,
-    airport_heliport.passengerloadingbridge_ts.type_nilreason
-order by passengerloadingbridge.identifier, passengerloadingbridge_ts.sequence_number, passengerloadingbridge_ts.correction_number DESC;
-create or replace view service.passengerservice_publisher_view as
-select distinct on (passengerservice.identifier,passengerservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.passengerservice.id,
-    service.passengerservice_ts.id as ts_id,
-    service.passengerservice_tsp.id as tsp_id,
-    service.passengerservice.identifier,
-    service.passengerservice_ts.interpretation,
-    service.passengerservice_ts.sequence_number,
-    service.passengerservice_ts.correction_number,
-    service.passengerservice_ts.valid_time_begin,
-    service.passengerservice_ts.valid_time_end,
-    service.passengerservice_ts.feature_lifetime_begin,
-    service.passengerservice_ts.feature_lifetime_end,
-    coalesce(cast(service.passengerservice_ts.flightoperations_value as varchar), '(' || service.passengerservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.passengerservice_ts.rank_value as varchar), '(' || service.passengerservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.passengerservice_ts.complianticao_value as varchar), '(' || service.passengerservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.passengerservice_ts.name_value as varchar), '(' || service.passengerservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.passengerservice_ts.type_value as varchar), '(' || service.passengerservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.passengerservice 
-inner join master_join mj2 on service.passengerservice.id = mj2.source_id
-inner join service.passengerservice_tsp on mj2.target_id = service.passengerservice_tsp.id
-inner join service.passengerservice_ts on service.passengerservice_tsp.passengerservicetimeslice_id = service.passengerservice_ts.id
-left join organisation.unit_pt on service.passengerservice_ts.serviceprovider_id = organisation.unit_pt.id
-where passengerservice_ts.feature_status = 'APPROVED'
-group by
-    service.passengerservice.id,
-    service.passengerservice_ts.id,
-    service.passengerservice_tsp.id,
-    service.passengerservice.identifier,
-    service.passengerservice_ts.interpretation,
-    service.passengerservice_ts.sequence_number,
-    service.passengerservice_ts.correction_number,
-    service.passengerservice_ts.valid_time_begin,
-    service.passengerservice_ts.valid_time_end,
-    service.passengerservice_ts.feature_lifetime_begin,
-    service.passengerservice_ts.feature_lifetime_end,
-    service.passengerservice_ts.flightoperations_value,
-    service.passengerservice_ts.flightoperations_nilreason,
-    service.passengerservice_ts.rank_value,
-    service.passengerservice_ts.rank_nilreason,
-    service.passengerservice_ts.complianticao_value,
-    service.passengerservice_ts.complianticao_nilreason,
-    service.passengerservice_ts.name_value,
-    service.passengerservice_ts.name_nilreason,
-    service.passengerservice_ts.type_value,
-    service.passengerservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by passengerservice.identifier, passengerservice_ts.sequence_number, passengerservice_ts.correction_number DESC;
-create or replace view service.pilotcontrolledlighting_publisher_view as
-select distinct on (pilotcontrolledlighting.identifier,pilotcontrolledlighting_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.pilotcontrolledlighting.id,
-    service.pilotcontrolledlighting_ts.id as ts_id,
-    service.pilotcontrolledlighting_tsp.id as tsp_id,
-    service.pilotcontrolledlighting.identifier,
-    service.pilotcontrolledlighting_ts.interpretation,
-    service.pilotcontrolledlighting_ts.sequence_number,
-    service.pilotcontrolledlighting_ts.correction_number,
-    service.pilotcontrolledlighting_ts.valid_time_begin,
-    service.pilotcontrolledlighting_ts.valid_time_end,
-    service.pilotcontrolledlighting_ts.feature_lifetime_begin,
-    service.pilotcontrolledlighting_ts.feature_lifetime_end,
-    coalesce(cast(service.pilotcontrolledlighting_ts.type_value as varchar), '(' || service.pilotcontrolledlighting_ts.type_nilreason || ')') as type,
-    coalesce(cast(service.pilotcontrolledlighting_ts.intensitysteps_value as varchar), '(' || service.pilotcontrolledlighting_ts.intensitysteps_nilreason || ')') as intensitysteps,
-    coalesce(cast(service.pilotcontrolledlighting_ts.standbyintensity_value as varchar), '(' || service.pilotcontrolledlighting_ts.standbyintensity_nilreason || ')') as standbyintensity,
-    coalesce(cast(service.pilotcontrolledlighting_ts.activationinstruction_value as varchar), '(' || service.pilotcontrolledlighting_ts.activationinstruction_nilreason || ')') as activationinstruction,
-    coalesce(cast(service.pilotcontrolledlighting_ts.duration_value as varchar) || ' ' || service.pilotcontrolledlighting_ts.duration_uom, '(' || service.pilotcontrolledlighting_ts.duration_nilreason || ')') as duration,
-    coalesce(cast(service.pilotcontrolledlighting_ts.radiofrequency_value as varchar) || ' ' || service.pilotcontrolledlighting_ts.radiofrequency_uom, '(' || service.pilotcontrolledlighting_ts.radiofrequency_nilreason || ')') as radiofrequency
-from service.pilotcontrolledlighting 
-inner join master_join mj2 on service.pilotcontrolledlighting.id = mj2.source_id
-inner join service.pilotcontrolledlighting_tsp on mj2.target_id = service.pilotcontrolledlighting_tsp.id
-inner join service.pilotcontrolledlighting_ts on service.pilotcontrolledlighting_tsp.pilotcontrolledlightingtimeslice_id = service.pilotcontrolledlighting_ts.id
-where pilotcontrolledlighting_ts.feature_status = 'APPROVED'
-group by
-    service.pilotcontrolledlighting.id,
-    service.pilotcontrolledlighting_ts.id,
-    service.pilotcontrolledlighting_tsp.id,
-    service.pilotcontrolledlighting.identifier,
-    service.pilotcontrolledlighting_ts.interpretation,
-    service.pilotcontrolledlighting_ts.sequence_number,
-    service.pilotcontrolledlighting_ts.correction_number,
-    service.pilotcontrolledlighting_ts.valid_time_begin,
-    service.pilotcontrolledlighting_ts.valid_time_end,
-    service.pilotcontrolledlighting_ts.feature_lifetime_begin,
-    service.pilotcontrolledlighting_ts.feature_lifetime_end,
-    service.pilotcontrolledlighting_ts.type_value,
-    service.pilotcontrolledlighting_ts.type_nilreason,
-    service.pilotcontrolledlighting_ts.intensitysteps_value,
-    service.pilotcontrolledlighting_ts.intensitysteps_nilreason,
-    service.pilotcontrolledlighting_ts.standbyintensity_value,
-    service.pilotcontrolledlighting_ts.standbyintensity_nilreason,
-    service.pilotcontrolledlighting_ts.activationinstruction_value,
-    service.pilotcontrolledlighting_ts.activationinstruction_nilreason,
-    service.pilotcontrolledlighting_ts.duration_value,
-    service.pilotcontrolledlighting_ts.duration_uom,
-    service.pilotcontrolledlighting_ts.duration_nilreason,
-    service.pilotcontrolledlighting_ts.radiofrequency_value,
-    service.pilotcontrolledlighting_ts.radiofrequency_uom,
-    service.pilotcontrolledlighting_ts.radiofrequency_nilreason
-order by pilotcontrolledlighting.identifier, pilotcontrolledlighting_ts.sequence_number, pilotcontrolledlighting_ts.correction_number DESC;
-create or replace view surveillance.precisionapproachradar_publisher_view as
-select distinct on (precisionapproachradar.identifier,precisionapproachradar_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    surveillance.precisionapproachradar.id,
-    surveillance.precisionapproachradar_ts.id as ts_id,
-    surveillance.precisionapproachradar_tsp.id as tsp_id,
-    surveillance.precisionapproachradar.identifier,
-    surveillance.precisionapproachradar_ts.interpretation,
-    surveillance.precisionapproachradar_ts.sequence_number,
-    surveillance.precisionapproachradar_ts.correction_number,
-    surveillance.precisionapproachradar_ts.valid_time_begin,
-    surveillance.precisionapproachradar_ts.valid_time_end,
-    surveillance.precisionapproachradar_ts.feature_lifetime_begin,
-    surveillance.precisionapproachradar_ts.feature_lifetime_end,
-    coalesce(cast(surveillance.precisionapproachradar_ts.name_value as varchar), '(' || surveillance.precisionapproachradar_ts.name_nilreason || ')') as name,
-    coalesce(cast(surveillance.precisionapproachradar_ts.serialnumber_value as varchar), '(' || surveillance.precisionapproachradar_ts.serialnumber_nilreason || ')') as serialnumber,
-    coalesce(cast(surveillance.precisionapproachradar_ts.dualchannel_value as varchar), '(' || surveillance.precisionapproachradar_ts.dualchannel_nilreason || ')') as dualchannel,
-    coalesce(cast(surveillance.precisionapproachradar_ts.movingtargetindicator_value as varchar), '(' || surveillance.precisionapproachradar_ts.movingtargetindicator_nilreason || ')') as movingtargetindicator,
-    coalesce(cast(surveillance.precisionapproachradar_ts.standbypower_value as varchar), '(' || surveillance.precisionapproachradar_ts.standbypower_nilreason || ')') as standbypower,
-    coalesce(cast(surveillance.precisionapproachradar_ts.digital_value as varchar), '(' || surveillance.precisionapproachradar_ts.digital_nilreason || ')') as digital,
-    coalesce(cast(surveillance.precisionapproachradar_ts.militaryuseonly_value as varchar), '(' || surveillance.precisionapproachradar_ts.militaryuseonly_nilreason || ')') as militaryuseonly,
-    coalesce(cast(surveillance.precisionapproachradar_ts.specialuseonly_value as varchar), '(' || surveillance.precisionapproachradar_ts.specialuseonly_nilreason || ')') as specialuseonly,
-    coalesce(cast(surveillance.precisionapproachradar_ts.specialaircraftonly_value as varchar), '(' || surveillance.precisionapproachradar_ts.specialaircraftonly_nilreason || ')') as specialaircraftonly,
-    coalesce(cast(surveillance.precisionapproachradar_ts.magneticvariation_value as varchar), '(' || surveillance.precisionapproachradar_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(surveillance.precisionapproachradar_ts.magneticvariationaccuracy_value as varchar), '(' || surveillance.precisionapproachradar_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(surveillance.precisionapproachradar_ts.datemagneticvariation_value as varchar), '(' || surveillance.precisionapproachradar_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(surveillance.precisionapproachradar_ts.precisionapproachradartype_value as varchar), '(' || surveillance.precisionapproachradar_ts.precisionapproachradartype_nilreason || ')') as precisionapproachradartype,
-    coalesce(cast(surveillance.precisionapproachradar_ts.slope_value as varchar), '(' || surveillance.precisionapproachradar_ts.slope_nilreason || ')') as slope,
-    coalesce(cast(surveillance.precisionapproachradar_ts.slopeaccuracy_value as varchar), '(' || surveillance.precisionapproachradar_ts.slopeaccuracy_nilreason || ')') as slopeaccuracy,
-    coalesce(cast(surveillance.precisionapproachradar_ts.range_value as varchar) || ' ' || surveillance.precisionapproachradar_ts.range_uom, '(' || surveillance.precisionapproachradar_ts.range_nilreason || ')') as range,
-    coalesce(cast(surveillance.precisionapproachradar_ts.rangeaccuracy_value as varchar) || ' ' || surveillance.precisionapproachradar_ts.rangeaccuracy_uom, '(' || surveillance.precisionapproachradar_ts.rangeaccuracy_nilreason || ')') as rangeaccuracy
-from surveillance.precisionapproachradar 
-inner join master_join mj2 on surveillance.precisionapproachradar.id = mj2.source_id
-inner join surveillance.precisionapproachradar_tsp on mj2.target_id = surveillance.precisionapproachradar_tsp.id
-inner join surveillance.precisionapproachradar_ts on surveillance.precisionapproachradar_tsp.precisionapproachradartimeslice_id = surveillance.precisionapproachradar_ts.id
-where precisionapproachradar_ts.feature_status = 'APPROVED'
-group by
-    surveillance.precisionapproachradar.id,
-    surveillance.precisionapproachradar_ts.id,
-    surveillance.precisionapproachradar_tsp.id,
-    surveillance.precisionapproachradar.identifier,
-    surveillance.precisionapproachradar_ts.interpretation,
-    surveillance.precisionapproachradar_ts.sequence_number,
-    surveillance.precisionapproachradar_ts.correction_number,
-    surveillance.precisionapproachradar_ts.valid_time_begin,
-    surveillance.precisionapproachradar_ts.valid_time_end,
-    surveillance.precisionapproachradar_ts.feature_lifetime_begin,
-    surveillance.precisionapproachradar_ts.feature_lifetime_end,
-    surveillance.precisionapproachradar_ts.name_value,
-    surveillance.precisionapproachradar_ts.name_nilreason,
-    surveillance.precisionapproachradar_ts.serialnumber_value,
-    surveillance.precisionapproachradar_ts.serialnumber_nilreason,
-    surveillance.precisionapproachradar_ts.dualchannel_value,
-    surveillance.precisionapproachradar_ts.dualchannel_nilreason,
-    surveillance.precisionapproachradar_ts.movingtargetindicator_value,
-    surveillance.precisionapproachradar_ts.movingtargetindicator_nilreason,
-    surveillance.precisionapproachradar_ts.standbypower_value,
-    surveillance.precisionapproachradar_ts.standbypower_nilreason,
-    surveillance.precisionapproachradar_ts.digital_value,
-    surveillance.precisionapproachradar_ts.digital_nilreason,
-    surveillance.precisionapproachradar_ts.militaryuseonly_value,
-    surveillance.precisionapproachradar_ts.militaryuseonly_nilreason,
-    surveillance.precisionapproachradar_ts.specialuseonly_value,
-    surveillance.precisionapproachradar_ts.specialuseonly_nilreason,
-    surveillance.precisionapproachradar_ts.specialaircraftonly_value,
-    surveillance.precisionapproachradar_ts.specialaircraftonly_nilreason,
-    surveillance.precisionapproachradar_ts.magneticvariation_value,
-    surveillance.precisionapproachradar_ts.magneticvariation_nilreason,
-    surveillance.precisionapproachradar_ts.magneticvariationaccuracy_value,
-    surveillance.precisionapproachradar_ts.magneticvariationaccuracy_nilreason,
-    surveillance.precisionapproachradar_ts.datemagneticvariation_value,
-    surveillance.precisionapproachradar_ts.datemagneticvariation_nilreason,
-    surveillance.precisionapproachradar_ts.precisionapproachradartype_value,
-    surveillance.precisionapproachradar_ts.precisionapproachradartype_nilreason,
-    surveillance.precisionapproachradar_ts.slope_value,
-    surveillance.precisionapproachradar_ts.slope_nilreason,
-    surveillance.precisionapproachradar_ts.slopeaccuracy_value,
-    surveillance.precisionapproachradar_ts.slopeaccuracy_nilreason,
-    surveillance.precisionapproachradar_ts.range_value,
-    surveillance.precisionapproachradar_ts.range_uom,
-    surveillance.precisionapproachradar_ts.range_nilreason,
-    surveillance.precisionapproachradar_ts.rangeaccuracy_value,
-    surveillance.precisionapproachradar_ts.rangeaccuracy_uom,
-    surveillance.precisionapproachradar_ts.rangeaccuracy_nilreason
-order by precisionapproachradar.identifier, precisionapproachradar_ts.sequence_number, precisionapproachradar_ts.correction_number DESC;
-create or replace view surveillance.primarysurveillanceradar_publisher_view as
-select distinct on (primarysurveillanceradar.identifier,primarysurveillanceradar_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    surveillance.primarysurveillanceradar.id,
-    surveillance.primarysurveillanceradar_ts.id as ts_id,
-    surveillance.primarysurveillanceradar_tsp.id as tsp_id,
-    surveillance.primarysurveillanceradar.identifier,
-    surveillance.primarysurveillanceradar_ts.interpretation,
-    surveillance.primarysurveillanceradar_ts.sequence_number,
-    surveillance.primarysurveillanceradar_ts.correction_number,
-    surveillance.primarysurveillanceradar_ts.valid_time_begin,
-    surveillance.primarysurveillanceradar_ts.valid_time_end,
-    surveillance.primarysurveillanceradar_ts.feature_lifetime_begin,
-    surveillance.primarysurveillanceradar_ts.feature_lifetime_end,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.name_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.name_nilreason || ')') as name,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.serialnumber_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.serialnumber_nilreason || ')') as serialnumber,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.dualchannel_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.dualchannel_nilreason || ')') as dualchannel,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.movingtargetindicator_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.movingtargetindicator_nilreason || ')') as movingtargetindicator,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.standbypower_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.standbypower_nilreason || ')') as standbypower,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.digital_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.digital_nilreason || ')') as digital,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.militaryuseonly_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.militaryuseonly_nilreason || ')') as militaryuseonly,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.specialuseonly_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.specialuseonly_nilreason || ')') as specialuseonly,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.specialaircraftonly_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.specialaircraftonly_nilreason || ')') as specialaircraftonly,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.magneticvariation_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.magneticvariationaccuracy_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.datemagneticvariation_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.verticalcoverageazimuth_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.verticalcoverageazimuth_nilreason || ')') as verticalcoverageazimuth,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.antennatiltfixed_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.antennatiltfixed_nilreason || ')') as antennatiltfixed,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.tiltangle_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.tiltangle_nilreason || ')') as tiltangle,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.automatedradarterminalsystem_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.automatedradarterminalsystem_nilreason || ')') as automatedradarterminalsystem,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.type_value as varchar), '(' || surveillance.primarysurveillanceradar_ts.type_nilreason || ')') as type,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.range_value as varchar) || ' ' || surveillance.primarysurveillanceradar_ts.range_uom, '(' || surveillance.primarysurveillanceradar_ts.range_nilreason || ')') as range,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.rangeaccuracy_value as varchar) || ' ' || surveillance.primarysurveillanceradar_ts.rangeaccuracy_uom, '(' || surveillance.primarysurveillanceradar_ts.rangeaccuracy_nilreason || ')') as rangeaccuracy,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_value as varchar) || ' ' || surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_uom, '(' || surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_nilreason || ')') as verticalcoveragealtitude,
-    coalesce(cast(surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_value as varchar) || ' ' || surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_uom, '(' || surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_nilreason || ')') as verticalcoveragedistance
-from surveillance.primarysurveillanceradar 
-inner join master_join mj2 on surveillance.primarysurveillanceradar.id = mj2.source_id
-inner join surveillance.primarysurveillanceradar_tsp on mj2.target_id = surveillance.primarysurveillanceradar_tsp.id
-inner join surveillance.primarysurveillanceradar_ts on surveillance.primarysurveillanceradar_tsp.primarysurveillanceradartimeslice_id = surveillance.primarysurveillanceradar_ts.id
-where primarysurveillanceradar_ts.feature_status = 'APPROVED'
-group by
-    surveillance.primarysurveillanceradar.id,
-    surveillance.primarysurveillanceradar_ts.id,
-    surveillance.primarysurveillanceradar_tsp.id,
-    surveillance.primarysurveillanceradar.identifier,
-    surveillance.primarysurveillanceradar_ts.interpretation,
-    surveillance.primarysurveillanceradar_ts.sequence_number,
-    surveillance.primarysurveillanceradar_ts.correction_number,
-    surveillance.primarysurveillanceradar_ts.valid_time_begin,
-    surveillance.primarysurveillanceradar_ts.valid_time_end,
-    surveillance.primarysurveillanceradar_ts.feature_lifetime_begin,
-    surveillance.primarysurveillanceradar_ts.feature_lifetime_end,
-    surveillance.primarysurveillanceradar_ts.name_value,
-    surveillance.primarysurveillanceradar_ts.name_nilreason,
-    surveillance.primarysurveillanceradar_ts.serialnumber_value,
-    surveillance.primarysurveillanceradar_ts.serialnumber_nilreason,
-    surveillance.primarysurveillanceradar_ts.dualchannel_value,
-    surveillance.primarysurveillanceradar_ts.dualchannel_nilreason,
-    surveillance.primarysurveillanceradar_ts.movingtargetindicator_value,
-    surveillance.primarysurveillanceradar_ts.movingtargetindicator_nilreason,
-    surveillance.primarysurveillanceradar_ts.standbypower_value,
-    surveillance.primarysurveillanceradar_ts.standbypower_nilreason,
-    surveillance.primarysurveillanceradar_ts.digital_value,
-    surveillance.primarysurveillanceradar_ts.digital_nilreason,
-    surveillance.primarysurveillanceradar_ts.militaryuseonly_value,
-    surveillance.primarysurveillanceradar_ts.militaryuseonly_nilreason,
-    surveillance.primarysurveillanceradar_ts.specialuseonly_value,
-    surveillance.primarysurveillanceradar_ts.specialuseonly_nilreason,
-    surveillance.primarysurveillanceradar_ts.specialaircraftonly_value,
-    surveillance.primarysurveillanceradar_ts.specialaircraftonly_nilreason,
-    surveillance.primarysurveillanceradar_ts.magneticvariation_value,
-    surveillance.primarysurveillanceradar_ts.magneticvariation_nilreason,
-    surveillance.primarysurveillanceradar_ts.magneticvariationaccuracy_value,
-    surveillance.primarysurveillanceradar_ts.magneticvariationaccuracy_nilreason,
-    surveillance.primarysurveillanceradar_ts.datemagneticvariation_value,
-    surveillance.primarysurveillanceradar_ts.datemagneticvariation_nilreason,
-    surveillance.primarysurveillanceradar_ts.verticalcoverageazimuth_value,
-    surveillance.primarysurveillanceradar_ts.verticalcoverageazimuth_nilreason,
-    surveillance.primarysurveillanceradar_ts.antennatiltfixed_value,
-    surveillance.primarysurveillanceradar_ts.antennatiltfixed_nilreason,
-    surveillance.primarysurveillanceradar_ts.tiltangle_value,
-    surveillance.primarysurveillanceradar_ts.tiltangle_nilreason,
-    surveillance.primarysurveillanceradar_ts.automatedradarterminalsystem_value,
-    surveillance.primarysurveillanceradar_ts.automatedradarterminalsystem_nilreason,
-    surveillance.primarysurveillanceradar_ts.type_value,
-    surveillance.primarysurveillanceradar_ts.type_nilreason,
-    surveillance.primarysurveillanceradar_ts.range_value,
-    surveillance.primarysurveillanceradar_ts.range_uom,
-    surveillance.primarysurveillanceradar_ts.range_nilreason,
-    surveillance.primarysurveillanceradar_ts.rangeaccuracy_value,
-    surveillance.primarysurveillanceradar_ts.rangeaccuracy_uom,
-    surveillance.primarysurveillanceradar_ts.rangeaccuracy_nilreason,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_value,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_uom,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragealtitude_nilreason,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_value,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_uom,
-    surveillance.primarysurveillanceradar_ts.verticalcoveragedistance_nilreason
-order by primarysurveillanceradar.identifier, primarysurveillanceradar_ts.sequence_number, primarysurveillanceradar_ts.correction_number DESC;
-create or replace view procedure.proceduredme_publisher_view as
-select distinct on (proceduredme.identifier,proceduredme_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.proceduredme.id,
-    procedure.proceduredme_ts.id as ts_id,
-    procedure.proceduredme_tsp.id as tsp_id,
-    procedure.proceduredme.identifier,
-    procedure.proceduredme_ts.interpretation,
-    procedure.proceduredme_ts.sequence_number,
-    procedure.proceduredme_ts.correction_number,
-    procedure.proceduredme_ts.valid_time_begin,
-    procedure.proceduredme_ts.valid_time_end,
-    procedure.proceduredme_ts.feature_lifetime_begin,
-    procedure.proceduredme_ts.feature_lifetime_end,
-    coalesce(cast(procedure.proceduredme_ts.criticaldme_value as varchar), '(' || procedure.proceduredme_ts.criticaldme_nilreason || ')') as criticaldme,
-    coalesce(cast(procedure.proceduredme_ts.satisfactory_value as varchar), '(' || procedure.proceduredme_ts.satisfactory_nilreason || ')') as satisfactory,
-    coalesce(cast(navaids_points.dme_pt.title as varchar), '(' || navaids_points.dme_pt.nilreason[1] || ')') AS dme,
-    navaids_points.dme_pt.href AS dme_href
-from procedure.proceduredme 
-inner join master_join mj2 on procedure.proceduredme.id = mj2.source_id
-inner join procedure.proceduredme_tsp on mj2.target_id = procedure.proceduredme_tsp.id
-inner join procedure.proceduredme_ts on procedure.proceduredme_tsp.proceduredmetimeslice_id = procedure.proceduredme_ts.id
-left join navaids_points.dme_pt on procedure.proceduredme_ts.dme_id = navaids_points.dme_pt.id
-where proceduredme_ts.feature_status = 'APPROVED'
-group by
-    procedure.proceduredme.id,
-    procedure.proceduredme_ts.id,
-    procedure.proceduredme_tsp.id,
-    procedure.proceduredme.identifier,
-    procedure.proceduredme_ts.interpretation,
-    procedure.proceduredme_ts.sequence_number,
-    procedure.proceduredme_ts.correction_number,
-    procedure.proceduredme_ts.valid_time_begin,
-    procedure.proceduredme_ts.valid_time_end,
-    procedure.proceduredme_ts.feature_lifetime_begin,
-    procedure.proceduredme_ts.feature_lifetime_end,
-    procedure.proceduredme_ts.criticaldme_value,
-    procedure.proceduredme_ts.criticaldme_nilreason,
-    procedure.proceduredme_ts.satisfactory_value,
-    procedure.proceduredme_ts.satisfactory_nilreason,
-    navaids_points.dme_pt.title,
-    navaids_points.dme_pt.nilreason,
-    navaids_points.dme_pt.href
-order by proceduredme.identifier, proceduredme_ts.sequence_number, proceduredme_ts.correction_number DESC;
-create or replace view surveillance.radarsystem_publisher_view as
-select distinct on (radarsystem.identifier,radarsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    surveillance.radarsystem.id,
-    surveillance.radarsystem_ts.id as ts_id,
-    surveillance.radarsystem_tsp.id as tsp_id,
-    surveillance.radarsystem.identifier,
-    surveillance.radarsystem_ts.interpretation,
-    surveillance.radarsystem_ts.sequence_number,
-    surveillance.radarsystem_ts.correction_number,
-    surveillance.radarsystem_ts.valid_time_begin,
-    surveillance.radarsystem_ts.valid_time_end,
-    surveillance.radarsystem_ts.feature_lifetime_begin,
-    surveillance.radarsystem_ts.feature_lifetime_end,
-    coalesce(cast(surveillance.radarsystem_ts.type_value as varchar), '(' || surveillance.radarsystem_ts.type_nilreason || ')') as type,
-    coalesce(cast(surveillance.radarsystem_ts.model_value as varchar), '(' || surveillance.radarsystem_ts.model_nilreason || ')') as model,
-    coalesce(cast(surveillance.radarsystem_ts.generalterrainmonitor_value as varchar), '(' || surveillance.radarsystem_ts.generalterrainmonitor_nilreason || ')') as generalterrainmonitor,
-    coalesce(cast(surveillance.radarsystem_ts.broadcastidentifier_value as varchar), '(' || surveillance.radarsystem_ts.broadcastidentifier_nilreason || ')') as broadcastidentifier,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS airportheliport,
-    airport_heliport.airportheliport_pt.href AS airportheliport_href
-from surveillance.radarsystem 
-inner join master_join mj2 on surveillance.radarsystem.id = mj2.source_id
-inner join surveillance.radarsystem_tsp on mj2.target_id = surveillance.radarsystem_tsp.id
-inner join surveillance.radarsystem_ts on surveillance.radarsystem_tsp.radarsystemtimeslice_id = surveillance.radarsystem_ts.id
-left join airport_heliport.airportheliport_pt on surveillance.radarsystem_ts.airportheliport_id = airport_heliport.airportheliport_pt.id
-where radarsystem_ts.feature_status = 'APPROVED'
-group by
-    surveillance.radarsystem.id,
-    surveillance.radarsystem_ts.id,
-    surveillance.radarsystem_tsp.id,
-    surveillance.radarsystem.identifier,
-    surveillance.radarsystem_ts.interpretation,
-    surveillance.radarsystem_ts.sequence_number,
-    surveillance.radarsystem_ts.correction_number,
-    surveillance.radarsystem_ts.valid_time_begin,
-    surveillance.radarsystem_ts.valid_time_end,
-    surveillance.radarsystem_ts.feature_lifetime_begin,
-    surveillance.radarsystem_ts.feature_lifetime_end,
-    surveillance.radarsystem_ts.type_value,
-    surveillance.radarsystem_ts.type_nilreason,
-    surveillance.radarsystem_ts.model_value,
-    surveillance.radarsystem_ts.model_nilreason,
-    surveillance.radarsystem_ts.generalterrainmonitor_value,
-    surveillance.radarsystem_ts.generalterrainmonitor_nilreason,
-    surveillance.radarsystem_ts.broadcastidentifier_value,
-    surveillance.radarsystem_ts.broadcastidentifier_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by radarsystem.identifier, radarsystem_ts.sequence_number, radarsystem_ts.correction_number DESC;
-create or replace view service.radiocommunicationchannel_publisher_view as
-select distinct on (radiocommunicationchannel.identifier,radiocommunicationchannel_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.radiocommunicationchannel.id,
-    service.radiocommunicationchannel_ts.id as ts_id,
-    service.radiocommunicationchannel_tsp.id as tsp_id,
-    service.radiocommunicationchannel.identifier,
-    service.radiocommunicationchannel_ts.interpretation,
-    service.radiocommunicationchannel_ts.sequence_number,
-    service.radiocommunicationchannel_ts.correction_number,
-    service.radiocommunicationchannel_ts.valid_time_begin,
-    service.radiocommunicationchannel_ts.valid_time_end,
-    service.radiocommunicationchannel_ts.feature_lifetime_begin,
-    service.radiocommunicationchannel_ts.feature_lifetime_end,
-    coalesce(cast(service.radiocommunicationchannel_ts.mode_value as varchar), '(' || service.radiocommunicationchannel_ts.mode_nilreason || ')') as mode,
-    coalesce(cast(service.radiocommunicationchannel_ts.rank_value as varchar), '(' || service.radiocommunicationchannel_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.radiocommunicationchannel_ts.channel_value as varchar), '(' || service.radiocommunicationchannel_ts.channel_nilreason || ')') as channel,
-    coalesce(cast(service.radiocommunicationchannel_ts.logon_value as varchar), '(' || service.radiocommunicationchannel_ts.logon_nilreason || ')') as logon,
-    coalesce(cast(service.radiocommunicationchannel_ts.emissiontype_value as varchar), '(' || service.radiocommunicationchannel_ts.emissiontype_nilreason || ')') as emissiontype,
-    coalesce(cast(service.radiocommunicationchannel_ts.selectivecall_value as varchar), '(' || service.radiocommunicationchannel_ts.selectivecall_nilreason || ')') as selectivecall,
-    coalesce(cast(service.radiocommunicationchannel_ts.flightchecked_value as varchar), '(' || service.radiocommunicationchannel_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(service.radiocommunicationchannel_ts.trafficdirection_value as varchar), '(' || service.radiocommunicationchannel_ts.trafficdirection_nilreason || ')') as trafficdirection,
-    coalesce(cast(service.radiocommunicationchannel_ts.frequencytransmission_value as varchar) || ' ' || service.radiocommunicationchannel_ts.frequencytransmission_uom, '(' || service.radiocommunicationchannel_ts.frequencytransmission_nilreason || ')') as frequencytransmission,
-    coalesce(cast(service.radiocommunicationchannel_ts.frequencyreception_value as varchar) || ' ' || service.radiocommunicationchannel_ts.frequencyreception_uom, '(' || service.radiocommunicationchannel_ts.frequencyreception_nilreason || ')') as frequencyreception
-from service.radiocommunicationchannel 
-inner join master_join mj2 on service.radiocommunicationchannel.id = mj2.source_id
-inner join service.radiocommunicationchannel_tsp on mj2.target_id = service.radiocommunicationchannel_tsp.id
-inner join service.radiocommunicationchannel_ts on service.radiocommunicationchannel_tsp.radiocommunicationchanneltimeslice_id = service.radiocommunicationchannel_ts.id
-where radiocommunicationchannel_ts.feature_status = 'APPROVED'
-group by
-    service.radiocommunicationchannel.id,
-    service.radiocommunicationchannel_ts.id,
-    service.radiocommunicationchannel_tsp.id,
-    service.radiocommunicationchannel.identifier,
-    service.radiocommunicationchannel_ts.interpretation,
-    service.radiocommunicationchannel_ts.sequence_number,
-    service.radiocommunicationchannel_ts.correction_number,
-    service.radiocommunicationchannel_ts.valid_time_begin,
-    service.radiocommunicationchannel_ts.valid_time_end,
-    service.radiocommunicationchannel_ts.feature_lifetime_begin,
-    service.radiocommunicationchannel_ts.feature_lifetime_end,
-    service.radiocommunicationchannel_ts.mode_value,
-    service.radiocommunicationchannel_ts.mode_nilreason,
-    service.radiocommunicationchannel_ts.rank_value,
-    service.radiocommunicationchannel_ts.rank_nilreason,
-    service.radiocommunicationchannel_ts.channel_value,
-    service.radiocommunicationchannel_ts.channel_nilreason,
-    service.radiocommunicationchannel_ts.logon_value,
-    service.radiocommunicationchannel_ts.logon_nilreason,
-    service.radiocommunicationchannel_ts.emissiontype_value,
-    service.radiocommunicationchannel_ts.emissiontype_nilreason,
-    service.radiocommunicationchannel_ts.selectivecall_value,
-    service.radiocommunicationchannel_ts.selectivecall_nilreason,
-    service.radiocommunicationchannel_ts.flightchecked_value,
-    service.radiocommunicationchannel_ts.flightchecked_nilreason,
-    service.radiocommunicationchannel_ts.trafficdirection_value,
-    service.radiocommunicationchannel_ts.trafficdirection_nilreason,
-    service.radiocommunicationchannel_ts.frequencytransmission_value,
-    service.radiocommunicationchannel_ts.frequencytransmission_uom,
-    service.radiocommunicationchannel_ts.frequencytransmission_nilreason,
-    service.radiocommunicationchannel_ts.frequencyreception_value,
-    service.radiocommunicationchannel_ts.frequencyreception_uom,
-    service.radiocommunicationchannel_ts.frequencyreception_nilreason
-order by radiocommunicationchannel.identifier, radiocommunicationchannel_ts.sequence_number, radiocommunicationchannel_ts.correction_number DESC;
-create or replace view shared.radiofrequencyarea_publisher_view as
-select distinct on (radiofrequencyarea.identifier,radiofrequencyarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.radiofrequencyarea.id,
-    shared.radiofrequencyarea_ts.id as ts_id,
-    shared.radiofrequencyarea_tsp.id as tsp_id,
-    shared.radiofrequencyarea.identifier,
-    shared.radiofrequencyarea_ts.interpretation,
-    shared.radiofrequencyarea_ts.sequence_number,
-    shared.radiofrequencyarea_ts.correction_number,
-    shared.radiofrequencyarea_ts.valid_time_begin,
-    shared.radiofrequencyarea_ts.valid_time_end,
-    shared.radiofrequencyarea_ts.feature_lifetime_begin,
-    shared.radiofrequencyarea_ts.feature_lifetime_end,
-    coalesce(cast(shared.radiofrequencyarea_ts.type_value as varchar), '(' || shared.radiofrequencyarea_ts.type_nilreason || ')') as type,
-    coalesce(cast(shared.radiofrequencyarea_ts.anglescallop_value as varchar), '(' || shared.radiofrequencyarea_ts.anglescallop_nilreason || ')') as anglescallop,
-    coalesce(cast(shared.radiofrequencyarea_ts.signaltype_value as varchar), '(' || shared.radiofrequencyarea_ts.signaltype_nilreason || ')') as signaltype,
-    coalesce(cast(service.radiocommunicationchannel_pt.title as varchar), '(' || service.radiocommunicationchannel_pt.nilreason[1] || ')') AS equipmentfrequency,
-    service.radiocommunicationchannel_pt.href AS equipmentfrequency_href,
-    coalesce(cast(navaids_points.specialnavigationstation_pt.title as varchar), '(' || navaids_points.specialnavigationstation_pt.nilreason[1] || ')') AS equipmentspecialnavigationstation,
-    navaids_points.specialnavigationstation_pt.href AS equipmentspecialnavigationstation_href,
-    coalesce(cast(surveillance.precisionapproachradar_pt.title as varchar), '(' || surveillance.precisionapproachradar_pt.nilreason[1] || ')') AS equipmentprecisionapproachradar,
-    surveillance.precisionapproachradar_pt.href AS equipmentprecisionapproachradar_href,
-    coalesce(cast(surveillance.secondarysurveillanceradar_pt.title as varchar), '(' || surveillance.secondarysurveillanceradar_pt.nilreason[1] || ')') AS equipmentradar,
-    surveillance.secondarysurveillanceradar_pt.href AS equipmentradar_href
-from shared.radiofrequencyarea 
-inner join master_join mj2 on shared.radiofrequencyarea.id = mj2.source_id
-inner join shared.radiofrequencyarea_tsp on mj2.target_id = shared.radiofrequencyarea_tsp.id
-inner join shared.radiofrequencyarea_ts on shared.radiofrequencyarea_tsp.radiofrequencyareatimeslice_id = shared.radiofrequencyarea_ts.id
-left join service.radiocommunicationchannel_pt on shared.radiofrequencyarea_ts.equipmentfrequency_id = service.radiocommunicationchannel_pt.id
-left join navaids_points.specialnavigationstation_pt on shared.radiofrequencyarea_ts.equipmentspecialnavigationstation_id = navaids_points.specialnavigationstation_pt.id
-left join surveillance.precisionapproachradar_pt on shared.radiofrequencyarea_ts.equipmentprecisionapproachradar_id = surveillance.precisionapproachradar_pt.id
-left join surveillance.secondarysurveillanceradar_pt on shared.radiofrequencyarea_ts.equipmentradar_id = surveillance.secondarysurveillanceradar_pt.id
-where radiofrequencyarea_ts.feature_status = 'APPROVED'
-group by
-    shared.radiofrequencyarea.id,
-    shared.radiofrequencyarea_ts.id,
-    shared.radiofrequencyarea_tsp.id,
-    shared.radiofrequencyarea.identifier,
-    shared.radiofrequencyarea_ts.interpretation,
-    shared.radiofrequencyarea_ts.sequence_number,
-    shared.radiofrequencyarea_ts.correction_number,
-    shared.radiofrequencyarea_ts.valid_time_begin,
-    shared.radiofrequencyarea_ts.valid_time_end,
-    shared.radiofrequencyarea_ts.feature_lifetime_begin,
-    shared.radiofrequencyarea_ts.feature_lifetime_end,
-    shared.radiofrequencyarea_ts.type_value,
-    shared.radiofrequencyarea_ts.type_nilreason,
-    shared.radiofrequencyarea_ts.anglescallop_value,
-    shared.radiofrequencyarea_ts.anglescallop_nilreason,
-    shared.radiofrequencyarea_ts.signaltype_value,
-    shared.radiofrequencyarea_ts.signaltype_nilreason,
-    service.radiocommunicationchannel_pt.title,
-    service.radiocommunicationchannel_pt.nilreason,
-    service.radiocommunicationchannel_pt.href,
-    navaids_points.specialnavigationstation_pt.title,
-    navaids_points.specialnavigationstation_pt.nilreason,
-    navaids_points.specialnavigationstation_pt.href,
-    surveillance.precisionapproachradar_pt.title,
-    surveillance.precisionapproachradar_pt.nilreason,
-    surveillance.precisionapproachradar_pt.href,
-    surveillance.secondarysurveillanceradar_pt.title,
-    surveillance.secondarysurveillanceradar_pt.nilreason,
-    surveillance.secondarysurveillanceradar_pt.href
-order by radiofrequencyarea.identifier, radiofrequencyarea_ts.sequence_number, radiofrequencyarea_ts.correction_number DESC;
-create or replace view airport_heliport.road_publisher_view as
-select distinct on (road.identifier,road_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.road.id,
-    airport_heliport.road_ts.id as ts_id,
-    airport_heliport.road_tsp.id as tsp_id,
-    airport_heliport.road.identifier,
-    airport_heliport.road_ts.interpretation,
-    airport_heliport.road_ts.sequence_number,
-    airport_heliport.road_ts.correction_number,
-    airport_heliport.road_ts.valid_time_begin,
-    airport_heliport.road_ts.valid_time_end,
-    airport_heliport.road_ts.feature_lifetime_begin,
-    airport_heliport.road_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.road_ts.designator_value as varchar), '(' || airport_heliport.road_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.road_ts.status_value as varchar), '(' || airport_heliport.road_ts.status_nilreason || ')') as status,
-    coalesce(cast(airport_heliport.road_ts.type_value as varchar), '(' || airport_heliport.road_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.road_ts.abandoned_value as varchar), '(' || airport_heliport.road_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairport,
-    airport_heliport.airportheliport_pt.href AS associatedairport_href
-from airport_heliport.road 
-inner join master_join mj2 on airport_heliport.road.id = mj2.source_id
-inner join airport_heliport.road_tsp on mj2.target_id = airport_heliport.road_tsp.id
-inner join airport_heliport.road_ts on airport_heliport.road_tsp.roadtimeslice_id = airport_heliport.road_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.road_ts.associatedairport_id = airport_heliport.airportheliport_pt.id
-where road_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.road.id,
-    airport_heliport.road_ts.id,
-    airport_heliport.road_tsp.id,
-    airport_heliport.road.identifier,
-    airport_heliport.road_ts.interpretation,
-    airport_heliport.road_ts.sequence_number,
-    airport_heliport.road_ts.correction_number,
-    airport_heliport.road_ts.valid_time_begin,
-    airport_heliport.road_ts.valid_time_end,
-    airport_heliport.road_ts.feature_lifetime_begin,
-    airport_heliport.road_ts.feature_lifetime_end,
-    airport_heliport.road_ts.designator_value,
-    airport_heliport.road_ts.designator_nilreason,
-    airport_heliport.road_ts.status_value,
-    airport_heliport.road_ts.status_nilreason,
-    airport_heliport.road_ts.type_value,
-    airport_heliport.road_ts.type_nilreason,
-    airport_heliport.road_ts.abandoned_value,
-    airport_heliport.road_ts.abandoned_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by road.identifier, road_ts.sequence_number, road_ts.correction_number DESC;
-create or replace view routes.routedme_publisher_view as
-select distinct on (routedme.identifier,routedme_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.routedme.id,
-    routes.routedme_ts.id as ts_id,
-    routes.routedme_tsp.id as tsp_id,
-    routes.routedme.identifier,
-    routes.routedme_ts.interpretation,
-    routes.routedme_ts.sequence_number,
-    routes.routedme_ts.correction_number,
-    routes.routedme_ts.valid_time_begin,
-    routes.routedme_ts.valid_time_end,
-    routes.routedme_ts.feature_lifetime_begin,
-    routes.routedme_ts.feature_lifetime_end,
-    coalesce(cast(routes.routedme_ts.criticaldme_value as varchar), '(' || routes.routedme_ts.criticaldme_nilreason || ')') as criticaldme,
-    coalesce(cast(routes.routedme_ts.satisfactory_value as varchar), '(' || routes.routedme_ts.satisfactory_nilreason || ')') as satisfactory,
-    coalesce(cast(navaids_points.dme_pt.title as varchar), '(' || navaids_points.dme_pt.nilreason[1] || ')') AS referenceddme,
-    navaids_points.dme_pt.href AS referenceddme_href
-from routes.routedme 
-inner join master_join mj2 on routes.routedme.id = mj2.source_id
-inner join routes.routedme_tsp on mj2.target_id = routes.routedme_tsp.id
-inner join routes.routedme_ts on routes.routedme_tsp.routedmetimeslice_id = routes.routedme_ts.id
-left join navaids_points.dme_pt on routes.routedme_ts.referenceddme_id = navaids_points.dme_pt.id
-where routedme_ts.feature_status = 'APPROVED'
-group by
-    routes.routedme.id,
-    routes.routedme_ts.id,
-    routes.routedme_tsp.id,
-    routes.routedme.identifier,
-    routes.routedme_ts.interpretation,
-    routes.routedme_ts.sequence_number,
-    routes.routedme_ts.correction_number,
-    routes.routedme_ts.valid_time_begin,
-    routes.routedme_ts.valid_time_end,
-    routes.routedme_ts.feature_lifetime_begin,
-    routes.routedme_ts.feature_lifetime_end,
-    routes.routedme_ts.criticaldme_value,
-    routes.routedme_ts.criticaldme_nilreason,
-    routes.routedme_ts.satisfactory_value,
-    routes.routedme_ts.satisfactory_nilreason,
-    navaids_points.dme_pt.title,
-    navaids_points.dme_pt.nilreason,
-    navaids_points.dme_pt.href
-order by routedme.identifier, routedme_ts.sequence_number, routedme_ts.correction_number DESC;
-create or replace view routes.routesegment_publisher_view as
-select distinct on (routesegment.identifier,routesegment_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.routesegment.id,
-    routes.routesegment_ts.id as ts_id,
-    routes.routesegment_tsp.id as tsp_id,
-    routes.routesegment.identifier,
-    routes.routesegment_ts.interpretation,
-    routes.routesegment_ts.sequence_number,
-    routes.routesegment_ts.correction_number,
-    routes.routesegment_ts.valid_time_begin,
-    routes.routesegment_ts.valid_time_end,
-    routes.routesegment_ts.feature_lifetime_begin,
-    routes.routesegment_ts.feature_lifetime_end,
-    coalesce(cast(routes.routesegment_ts.level_value as varchar), '(' || routes.routesegment_ts.level_nilreason || ')') as level,
-    coalesce(cast(routes.routesegment_ts.upperlimitreference_value as varchar), '(' || routes.routesegment_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
-    coalesce(cast(routes.routesegment_ts.lowerlimitreference_value as varchar), '(' || routes.routesegment_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
-    coalesce(cast(routes.routesegment_ts.pathtype_value as varchar), '(' || routes.routesegment_ts.pathtype_nilreason || ')') as pathtype,
-    coalesce(cast(routes.routesegment_ts.truetrack_value as varchar), '(' || routes.routesegment_ts.truetrack_nilreason || ')') as truetrack,
-    coalesce(cast(routes.routesegment_ts.magnetictrack_value as varchar), '(' || routes.routesegment_ts.magnetictrack_nilreason || ')') as magnetictrack,
-    coalesce(cast(routes.routesegment_ts.reversetruetrack_value as varchar), '(' || routes.routesegment_ts.reversetruetrack_nilreason || ')') as reversetruetrack,
-    coalesce(cast(routes.routesegment_ts.reversemagnetictrack_value as varchar), '(' || routes.routesegment_ts.reversemagnetictrack_nilreason || ')') as reversemagnetictrack,
-    coalesce(cast(routes.routesegment_ts.turndirection_value as varchar), '(' || routes.routesegment_ts.turndirection_nilreason || ')') as turndirection,
-    coalesce(cast(routes.routesegment_ts.signalgap_value as varchar), '(' || routes.routesegment_ts.signalgap_nilreason || ')') as signalgap,
-    coalesce(cast(routes.routesegment_ts.minimumcrossingatendreference_value as varchar), '(' || routes.routesegment_ts.minimumcrossingatendreference_nilreason || ')') as minimumcrossingatendreference,
-    coalesce(cast(routes.routesegment_ts.maximumcrossingatendreference_value as varchar), '(' || routes.routesegment_ts.maximumcrossingatendreference_nilreason || ')') as maximumcrossingatendreference,
-    coalesce(cast(routes.routesegment_ts.navigationtype_value as varchar), '(' || routes.routesegment_ts.navigationtype_nilreason || ')') as navigationtype,
-    coalesce(cast(routes.routesegment_ts.requirednavigationperformance_value as varchar), '(' || routes.routesegment_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
-    coalesce(cast(routes.routesegment_ts.designatorsuffix_value as varchar), '(' || routes.routesegment_ts.designatorsuffix_nilreason || ')') as designatorsuffix,
-    coalesce(cast(routes.routesegment_ts.upperlimit_value as varchar) || ' ' || routes.routesegment_ts.upperlimit_uom, '(' || routes.routesegment_ts.upperlimit_nilreason || ')') as upperlimit,
-    coalesce(cast(routes.routesegment_ts.lowerlimit_value as varchar) || ' ' || routes.routesegment_ts.lowerlimit_uom, '(' || routes.routesegment_ts.lowerlimit_nilreason || ')') as lowerlimit,
-    coalesce(cast(routes.routesegment_ts.minimumobstacleclearancealtitude_value as varchar) || ' ' || routes.routesegment_ts.minimumobstacleclearancealtitude_uom, '(' || routes.routesegment_ts.minimumobstacleclearancealtitude_nilreason || ')') as minimumobstacleclearancealtitude,
-    coalesce(cast(routes.routesegment_ts.length_value as varchar) || ' ' || routes.routesegment_ts.length_uom, '(' || routes.routesegment_ts.length_nilreason || ')') as length,
-    coalesce(cast(routes.routesegment_ts.widthleft_value as varchar) || ' ' || routes.routesegment_ts.widthleft_uom, '(' || routes.routesegment_ts.widthleft_nilreason || ')') as widthleft,
-    coalesce(cast(routes.routesegment_ts.widthright_value as varchar) || ' ' || routes.routesegment_ts.widthright_uom, '(' || routes.routesegment_ts.widthright_nilreason || ')') as widthright,
-    coalesce(cast(routes.routesegment_ts.minimumenroutealtitude_value as varchar) || ' ' || routes.routesegment_ts.minimumenroutealtitude_uom, '(' || routes.routesegment_ts.minimumenroutealtitude_nilreason || ')') as minimumenroutealtitude,
-    coalesce(cast(routes.routesegment_ts.minimumcrossingatend_value as varchar) || ' ' || routes.routesegment_ts.minimumcrossingatend_uom, '(' || routes.routesegment_ts.minimumcrossingatend_nilreason || ')') as minimumcrossingatend,
-    coalesce(cast(routes.routesegment_ts.maximumcrossingatend_value as varchar) || ' ' || routes.routesegment_ts.maximumcrossingatend_uom, '(' || routes.routesegment_ts.maximumcrossingatend_nilreason || ')') as maximumcrossingatend,
-    coalesce(cast(routes.route_pt.title as varchar), '(' || routes.route_pt.nilreason[1] || ')') AS routeformed,
-    routes.route_pt.href AS routeformed_href
-from routes.routesegment 
-inner join master_join mj2 on routes.routesegment.id = mj2.source_id
-inner join routes.routesegment_tsp on mj2.target_id = routes.routesegment_tsp.id
-inner join routes.routesegment_ts on routes.routesegment_tsp.routesegmenttimeslice_id = routes.routesegment_ts.id
-left join routes.route_pt on routes.routesegment_ts.routeformed_id = routes.route_pt.id
-where routesegment_ts.feature_status = 'APPROVED'
-group by
-    routes.routesegment.id,
-    routes.routesegment_ts.id,
-    routes.routesegment_tsp.id,
-    routes.routesegment.identifier,
-    routes.routesegment_ts.interpretation,
-    routes.routesegment_ts.sequence_number,
-    routes.routesegment_ts.correction_number,
-    routes.routesegment_ts.valid_time_begin,
-    routes.routesegment_ts.valid_time_end,
-    routes.routesegment_ts.feature_lifetime_begin,
-    routes.routesegment_ts.feature_lifetime_end,
-    routes.routesegment_ts.level_value,
-    routes.routesegment_ts.level_nilreason,
-    routes.routesegment_ts.upperlimitreference_value,
-    routes.routesegment_ts.upperlimitreference_nilreason,
-    routes.routesegment_ts.lowerlimitreference_value,
-    routes.routesegment_ts.lowerlimitreference_nilreason,
-    routes.routesegment_ts.pathtype_value,
-    routes.routesegment_ts.pathtype_nilreason,
-    routes.routesegment_ts.truetrack_value,
-    routes.routesegment_ts.truetrack_nilreason,
-    routes.routesegment_ts.magnetictrack_value,
-    routes.routesegment_ts.magnetictrack_nilreason,
-    routes.routesegment_ts.reversetruetrack_value,
-    routes.routesegment_ts.reversetruetrack_nilreason,
-    routes.routesegment_ts.reversemagnetictrack_value,
-    routes.routesegment_ts.reversemagnetictrack_nilreason,
-    routes.routesegment_ts.turndirection_value,
-    routes.routesegment_ts.turndirection_nilreason,
-    routes.routesegment_ts.signalgap_value,
-    routes.routesegment_ts.signalgap_nilreason,
-    routes.routesegment_ts.minimumcrossingatendreference_value,
-    routes.routesegment_ts.minimumcrossingatendreference_nilreason,
-    routes.routesegment_ts.maximumcrossingatendreference_value,
-    routes.routesegment_ts.maximumcrossingatendreference_nilreason,
-    routes.routesegment_ts.navigationtype_value,
-    routes.routesegment_ts.navigationtype_nilreason,
-    routes.routesegment_ts.requirednavigationperformance_value,
-    routes.routesegment_ts.requirednavigationperformance_nilreason,
-    routes.routesegment_ts.designatorsuffix_value,
-    routes.routesegment_ts.designatorsuffix_nilreason,
-    routes.routesegment_ts.upperlimit_value,
-    routes.routesegment_ts.upperlimit_uom,
-    routes.routesegment_ts.upperlimit_nilreason,
-    routes.routesegment_ts.lowerlimit_value,
-    routes.routesegment_ts.lowerlimit_uom,
-    routes.routesegment_ts.lowerlimit_nilreason,
-    routes.routesegment_ts.minimumobstacleclearancealtitude_value,
-    routes.routesegment_ts.minimumobstacleclearancealtitude_uom,
-    routes.routesegment_ts.minimumobstacleclearancealtitude_nilreason,
-    routes.routesegment_ts.length_value,
-    routes.routesegment_ts.length_uom,
-    routes.routesegment_ts.length_nilreason,
-    routes.routesegment_ts.widthleft_value,
-    routes.routesegment_ts.widthleft_uom,
-    routes.routesegment_ts.widthleft_nilreason,
-    routes.routesegment_ts.widthright_value,
-    routes.routesegment_ts.widthright_uom,
-    routes.routesegment_ts.widthright_nilreason,
-    routes.routesegment_ts.minimumenroutealtitude_value,
-    routes.routesegment_ts.minimumenroutealtitude_uom,
-    routes.routesegment_ts.minimumenroutealtitude_nilreason,
-    routes.routesegment_ts.minimumcrossingatend_value,
-    routes.routesegment_ts.minimumcrossingatend_uom,
-    routes.routesegment_ts.minimumcrossingatend_nilreason,
-    routes.routesegment_ts.maximumcrossingatend_value,
-    routes.routesegment_ts.maximumcrossingatend_uom,
-    routes.routesegment_ts.maximumcrossingatend_nilreason,
-    routes.route_pt.title,
-    routes.route_pt.nilreason,
-    routes.route_pt.href
-order by routesegment.identifier, routesegment_ts.sequence_number, routesegment_ts.correction_number DESC;
-create or replace view routes.route_publisher_view as
-select distinct on (route.identifier,route_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    routes.route.id,
-    routes.route_ts.id as ts_id,
-    routes.route_tsp.id as tsp_id,
-    routes.route.identifier,
-    routes.route_ts.interpretation,
-    routes.route_ts.sequence_number,
-    routes.route_ts.correction_number,
-    routes.route_ts.valid_time_begin,
-    routes.route_ts.valid_time_end,
-    routes.route_ts.feature_lifetime_begin,
-    routes.route_ts.feature_lifetime_end,
-    coalesce(cast(routes.route_ts.designatorprefix_value as varchar), '(' || routes.route_ts.designatorprefix_nilreason || ')') as designatorprefix,
-    coalesce(cast(routes.route_ts.designatorsecondletter_value as varchar), '(' || routes.route_ts.designatorsecondletter_nilreason || ')') as designatorsecondletter,
-    coalesce(cast(routes.route_ts.designatornumber_value as varchar), '(' || routes.route_ts.designatornumber_nilreason || ')') as designatornumber,
-    coalesce(cast(routes.route_ts.multipleidentifier_value as varchar), '(' || routes.route_ts.multipleidentifier_nilreason || ')') as multipleidentifier,
-    coalesce(cast(routes.route_ts.locationdesignator_value as varchar), '(' || routes.route_ts.locationdesignator_nilreason || ')') as locationdesignator,
-    coalesce(cast(routes.route_ts.name_value as varchar), '(' || routes.route_ts.name_nilreason || ')') as name,
-    coalesce(cast(routes.route_ts.type_value as varchar), '(' || routes.route_ts.type_nilreason || ')') as type,
-    coalesce(cast(routes.route_ts.flightrule_value as varchar), '(' || routes.route_ts.flightrule_nilreason || ')') as flightrule,
-    coalesce(cast(routes.route_ts.internationaluse_value as varchar), '(' || routes.route_ts.internationaluse_nilreason || ')') as internationaluse,
-    coalesce(cast(routes.route_ts.militaryuse_value as varchar), '(' || routes.route_ts.militaryuse_nilreason || ')') as militaryuse,
-    coalesce(cast(routes.route_ts.militarytrainingtype_value as varchar), '(' || routes.route_ts.militarytrainingtype_nilreason || ')') as militarytrainingtype,
-    coalesce(cast(organisation.organisationauthority_pt.title as varchar), '(' || organisation.organisationauthority_pt.nilreason[1] || ')') AS userorganisation,
-    organisation.organisationauthority_pt.href AS userorganisation_href
-from routes.route 
-inner join master_join mj2 on routes.route.id = mj2.source_id
-inner join routes.route_tsp on mj2.target_id = routes.route_tsp.id
-inner join routes.route_ts on routes.route_tsp.routetimeslice_id = routes.route_ts.id
-left join organisation.organisationauthority_pt on routes.route_ts.userorganisation_id = organisation.organisationauthority_pt.id
-where route_ts.feature_status = 'APPROVED'
-group by
-    routes.route.id,
-    routes.route_ts.id,
-    routes.route_tsp.id,
-    routes.route.identifier,
-    routes.route_ts.interpretation,
-    routes.route_ts.sequence_number,
-    routes.route_ts.correction_number,
-    routes.route_ts.valid_time_begin,
-    routes.route_ts.valid_time_end,
-    routes.route_ts.feature_lifetime_begin,
-    routes.route_ts.feature_lifetime_end,
-    routes.route_ts.designatorprefix_value,
-    routes.route_ts.designatorprefix_nilreason,
-    routes.route_ts.designatorsecondletter_value,
-    routes.route_ts.designatorsecondletter_nilreason,
-    routes.route_ts.designatornumber_value,
-    routes.route_ts.designatornumber_nilreason,
-    routes.route_ts.multipleidentifier_value,
-    routes.route_ts.multipleidentifier_nilreason,
-    routes.route_ts.locationdesignator_value,
-    routes.route_ts.locationdesignator_nilreason,
-    routes.route_ts.name_value,
-    routes.route_ts.name_nilreason,
-    routes.route_ts.type_value,
-    routes.route_ts.type_nilreason,
-    routes.route_ts.flightrule_value,
-    routes.route_ts.flightrule_nilreason,
-    routes.route_ts.internationaluse_value,
-    routes.route_ts.internationaluse_nilreason,
-    routes.route_ts.militaryuse_value,
-    routes.route_ts.militaryuse_nilreason,
-    routes.route_ts.militarytrainingtype_value,
-    routes.route_ts.militarytrainingtype_nilreason,
-    organisation.organisationauthority_pt.title,
-    organisation.organisationauthority_pt.nilreason,
-    organisation.organisationauthority_pt.href
-order by route.identifier, route_ts.sequence_number, route_ts.correction_number DESC;
-create or replace view rules_procedures.rulesprocedures_publisher_view as
-select distinct on (rulesprocedures.identifier,rulesprocedures_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    rules_procedures.rulesprocedures.id,
-    rules_procedures.rulesprocedures_ts.id as ts_id,
-    rules_procedures.rulesprocedures_tsp.id as tsp_id,
-    rules_procedures.rulesprocedures.identifier,
-    rules_procedures.rulesprocedures_ts.interpretation,
-    rules_procedures.rulesprocedures_ts.sequence_number,
-    rules_procedures.rulesprocedures_ts.correction_number,
-    rules_procedures.rulesprocedures_ts.valid_time_begin,
-    rules_procedures.rulesprocedures_ts.valid_time_end,
-    rules_procedures.rulesprocedures_ts.feature_lifetime_begin,
-    rules_procedures.rulesprocedures_ts.feature_lifetime_end,
-    coalesce(cast(rules_procedures.rulesprocedures_ts.category_value as varchar), '(' || rules_procedures.rulesprocedures_ts.category_nilreason || ')') as category,
-    coalesce(cast(rules_procedures.rulesprocedures_ts.title_value as varchar), '(' || rules_procedures.rulesprocedures_ts.title_nilreason || ')') as title
-from rules_procedures.rulesprocedures 
-inner join master_join mj2 on rules_procedures.rulesprocedures.id = mj2.source_id
-inner join rules_procedures.rulesprocedures_tsp on mj2.target_id = rules_procedures.rulesprocedures_tsp.id
-inner join rules_procedures.rulesprocedures_ts on rules_procedures.rulesprocedures_tsp.rulesprocedurestimeslice_id = rules_procedures.rulesprocedures_ts.id
-where rulesprocedures_ts.feature_status = 'APPROVED'
-group by
-    rules_procedures.rulesprocedures.id,
-    rules_procedures.rulesprocedures_ts.id,
-    rules_procedures.rulesprocedures_tsp.id,
-    rules_procedures.rulesprocedures.identifier,
-    rules_procedures.rulesprocedures_ts.interpretation,
-    rules_procedures.rulesprocedures_ts.sequence_number,
-    rules_procedures.rulesprocedures_ts.correction_number,
-    rules_procedures.rulesprocedures_ts.valid_time_begin,
-    rules_procedures.rulesprocedures_ts.valid_time_end,
-    rules_procedures.rulesprocedures_ts.feature_lifetime_begin,
-    rules_procedures.rulesprocedures_ts.feature_lifetime_end,
-    rules_procedures.rulesprocedures_ts.category_value,
-    rules_procedures.rulesprocedures_ts.category_nilreason,
-    rules_procedures.rulesprocedures_ts.title_value,
-    rules_procedures.rulesprocedures_ts.title_nilreason
-order by rulesprocedures.identifier, rulesprocedures_ts.sequence_number, rulesprocedures_ts.correction_number DESC;
-create or replace view airport_heliport.runwayblastpad_publisher_view as
-select distinct on (runwayblastpad.identifier,runwayblastpad_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwayblastpad.id,
-    airport_heliport.runwayblastpad_ts.id as ts_id,
-    airport_heliport.runwayblastpad_tsp.id as tsp_id,
-    airport_heliport.runwayblastpad.identifier,
-    airport_heliport.runwayblastpad_ts.interpretation,
-    airport_heliport.runwayblastpad_ts.sequence_number,
-    airport_heliport.runwayblastpad_ts.correction_number,
-    airport_heliport.runwayblastpad_ts.valid_time_begin,
-    airport_heliport.runwayblastpad_ts.valid_time_end,
-    airport_heliport.runwayblastpad_ts.feature_lifetime_begin,
-    airport_heliport.runwayblastpad_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwayblastpad_ts.status_value as varchar), '(' || airport_heliport.runwayblastpad_ts.status_nilreason || ')') as status,
-    coalesce(cast(airport_heliport.runwayblastpad_ts.length_value as varchar) || ' ' || airport_heliport.runwayblastpad_ts.length_uom, '(' || airport_heliport.runwayblastpad_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS usedrunwaydirection,
-    airport_heliport.runwaydirection_pt.href AS usedrunwaydirection_href
-from airport_heliport.runwayblastpad 
-inner join master_join mj2 on airport_heliport.runwayblastpad.id = mj2.source_id
-inner join airport_heliport.runwayblastpad_tsp on mj2.target_id = airport_heliport.runwayblastpad_tsp.id
-inner join airport_heliport.runwayblastpad_ts on airport_heliport.runwayblastpad_tsp.runwayblastpadtimeslice_id = airport_heliport.runwayblastpad_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.runwayblastpad_ts.usedrunwaydirection_id = airport_heliport.runwaydirection_pt.id
-where runwayblastpad_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwayblastpad.id,
-    airport_heliport.runwayblastpad_ts.id,
-    airport_heliport.runwayblastpad_tsp.id,
-    airport_heliport.runwayblastpad.identifier,
-    airport_heliport.runwayblastpad_ts.interpretation,
-    airport_heliport.runwayblastpad_ts.sequence_number,
-    airport_heliport.runwayblastpad_ts.correction_number,
-    airport_heliport.runwayblastpad_ts.valid_time_begin,
-    airport_heliport.runwayblastpad_ts.valid_time_end,
-    airport_heliport.runwayblastpad_ts.feature_lifetime_begin,
-    airport_heliport.runwayblastpad_ts.feature_lifetime_end,
-    airport_heliport.runwayblastpad_ts.status_value,
-    airport_heliport.runwayblastpad_ts.status_nilreason,
-    airport_heliport.runwayblastpad_ts.length_value,
-    airport_heliport.runwayblastpad_ts.length_uom,
-    airport_heliport.runwayblastpad_ts.length_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by runwayblastpad.identifier, runwayblastpad_ts.sequence_number, runwayblastpad_ts.correction_number DESC;
-create or replace view airport_heliport.runwaycentrelinepoint_publisher_view as
-select distinct on (runwaycentrelinepoint.identifier,runwaycentrelinepoint_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwaycentrelinepoint.id,
-    airport_heliport.runwaycentrelinepoint_ts.id as ts_id,
-    airport_heliport.runwaycentrelinepoint_tsp.id as tsp_id,
-    airport_heliport.runwaycentrelinepoint.identifier,
-    airport_heliport.runwaycentrelinepoint_ts.interpretation,
-    airport_heliport.runwaycentrelinepoint_ts.sequence_number,
-    airport_heliport.runwaycentrelinepoint_ts.correction_number,
-    airport_heliport.runwaycentrelinepoint_ts.valid_time_begin,
-    airport_heliport.runwaycentrelinepoint_ts.valid_time_end,
-    airport_heliport.runwaycentrelinepoint_ts.feature_lifetime_begin,
-    airport_heliport.runwaycentrelinepoint_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_ts.role_value as varchar), '(' || airport_heliport.runwaycentrelinepoint_ts.role_nilreason || ')') as role,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_ts.designator_value as varchar), '(' || airport_heliport.runwaycentrelinepoint_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS onrunway,
-    airport_heliport.runwaydirection_pt.href AS onrunway_href
-from airport_heliport.runwaycentrelinepoint 
-inner join master_join mj2 on airport_heliport.runwaycentrelinepoint.id = mj2.source_id
-inner join airport_heliport.runwaycentrelinepoint_tsp on mj2.target_id = airport_heliport.runwaycentrelinepoint_tsp.id
-inner join airport_heliport.runwaycentrelinepoint_ts on airport_heliport.runwaycentrelinepoint_tsp.runwaycentrelinepointtimeslice_id = airport_heliport.runwaycentrelinepoint_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.runwaycentrelinepoint_ts.onrunway_id = airport_heliport.runwaydirection_pt.id
-where runwaycentrelinepoint_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwaycentrelinepoint.id,
-    airport_heliport.runwaycentrelinepoint_ts.id,
-    airport_heliport.runwaycentrelinepoint_tsp.id,
-    airport_heliport.runwaycentrelinepoint.identifier,
-    airport_heliport.runwaycentrelinepoint_ts.interpretation,
-    airport_heliport.runwaycentrelinepoint_ts.sequence_number,
-    airport_heliport.runwaycentrelinepoint_ts.correction_number,
-    airport_heliport.runwaycentrelinepoint_ts.valid_time_begin,
-    airport_heliport.runwaycentrelinepoint_ts.valid_time_end,
-    airport_heliport.runwaycentrelinepoint_ts.feature_lifetime_begin,
-    airport_heliport.runwaycentrelinepoint_ts.feature_lifetime_end,
-    airport_heliport.runwaycentrelinepoint_ts.role_value,
-    airport_heliport.runwaycentrelinepoint_ts.role_nilreason,
-    airport_heliport.runwaycentrelinepoint_ts.designator_value,
-    airport_heliport.runwaycentrelinepoint_ts.designator_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by runwaycentrelinepoint.identifier, runwaycentrelinepoint_ts.sequence_number, runwaycentrelinepoint_ts.correction_number DESC;
-create or replace view airport_heliport.runwaydirectionlightsystem_publisher_view as
-select distinct on (runwaydirectionlightsystem.identifier,runwaydirectionlightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwaydirectionlightsystem.id,
-    airport_heliport.runwaydirectionlightsystem_ts.id as ts_id,
-    airport_heliport.runwaydirectionlightsystem_tsp.id as tsp_id,
-    airport_heliport.runwaydirectionlightsystem.identifier,
-    airport_heliport.runwaydirectionlightsystem_ts.interpretation,
-    airport_heliport.runwaydirectionlightsystem_ts.sequence_number,
-    airport_heliport.runwaydirectionlightsystem_ts.correction_number,
-    airport_heliport.runwaydirectionlightsystem_ts.valid_time_begin,
-    airport_heliport.runwaydirectionlightsystem_ts.valid_time_end,
-    airport_heliport.runwaydirectionlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.runwaydirectionlightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwaydirectionlightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.runwaydirectionlightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.runwaydirectionlightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.runwaydirectionlightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.runwaydirectionlightsystem_ts.colour_value as varchar), '(' || airport_heliport.runwaydirectionlightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.runwaydirectionlightsystem_ts.position_value as varchar), '(' || airport_heliport.runwaydirectionlightsystem_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS associatedrunwaydirection,
-    airport_heliport.runwaydirection_pt.href AS associatedrunwaydirection_href
-from airport_heliport.runwaydirectionlightsystem 
-inner join master_join mj2 on airport_heliport.runwaydirectionlightsystem.id = mj2.source_id
-inner join airport_heliport.runwaydirectionlightsystem_tsp on mj2.target_id = airport_heliport.runwaydirectionlightsystem_tsp.id
-inner join airport_heliport.runwaydirectionlightsystem_ts on airport_heliport.runwaydirectionlightsystem_tsp.runwaydirectionlightsystemtimeslice_id = airport_heliport.runwaydirectionlightsystem_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.runwaydirectionlightsystem_ts.associatedrunwaydirection_id = airport_heliport.runwaydirection_pt.id
-where runwaydirectionlightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwaydirectionlightsystem.id,
-    airport_heliport.runwaydirectionlightsystem_ts.id,
-    airport_heliport.runwaydirectionlightsystem_tsp.id,
-    airport_heliport.runwaydirectionlightsystem.identifier,
-    airport_heliport.runwaydirectionlightsystem_ts.interpretation,
-    airport_heliport.runwaydirectionlightsystem_ts.sequence_number,
-    airport_heliport.runwaydirectionlightsystem_ts.correction_number,
-    airport_heliport.runwaydirectionlightsystem_ts.valid_time_begin,
-    airport_heliport.runwaydirectionlightsystem_ts.valid_time_end,
-    airport_heliport.runwaydirectionlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.runwaydirectionlightsystem_ts.feature_lifetime_end,
-    airport_heliport.runwaydirectionlightsystem_ts.emergencylighting_value,
-    airport_heliport.runwaydirectionlightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.runwaydirectionlightsystem_ts.intensitylevel_value,
-    airport_heliport.runwaydirectionlightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.runwaydirectionlightsystem_ts.colour_value,
-    airport_heliport.runwaydirectionlightsystem_ts.colour_nilreason,
-    airport_heliport.runwaydirectionlightsystem_ts.position_value,
-    airport_heliport.runwaydirectionlightsystem_ts.position_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by runwaydirectionlightsystem.identifier, runwaydirectionlightsystem_ts.sequence_number, runwaydirectionlightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.runwaydirection_publisher_view as
-select distinct on (runwaydirection.identifier,runwaydirection_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwaydirection.id,
-    airport_heliport.runwaydirection_ts.id as ts_id,
-    airport_heliport.runwaydirection_tsp.id as tsp_id,
-    airport_heliport.runwaydirection.identifier,
-    airport_heliport.runwaydirection_ts.interpretation,
-    airport_heliport.runwaydirection_ts.sequence_number,
-    airport_heliport.runwaydirection_ts.correction_number,
-    airport_heliport.runwaydirection_ts.valid_time_begin,
-    airport_heliport.runwaydirection_ts.valid_time_end,
-    airport_heliport.runwaydirection_ts.feature_lifetime_begin,
-    airport_heliport.runwaydirection_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwaydirection_ts.designator_value as varchar), '(' || airport_heliport.runwaydirection_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.runwaydirection_ts.truebearing_value as varchar), '(' || airport_heliport.runwaydirection_ts.truebearing_nilreason || ')') as truebearing,
-    coalesce(cast(airport_heliport.runwaydirection_ts.truebearingaccuracy_value as varchar), '(' || airport_heliport.runwaydirection_ts.truebearingaccuracy_nilreason || ')') as truebearingaccuracy,
-    coalesce(cast(airport_heliport.runwaydirection_ts.magneticbearing_value as varchar), '(' || airport_heliport.runwaydirection_ts.magneticbearing_nilreason || ')') as magneticbearing,
-    coalesce(cast(airport_heliport.runwaydirection_ts.patternvfr_value as varchar), '(' || airport_heliport.runwaydirection_ts.patternvfr_nilreason || ')') as patternvfr,
-    coalesce(cast(airport_heliport.runwaydirection_ts.slopetdz_value as varchar), '(' || airport_heliport.runwaydirection_ts.slopetdz_nilreason || ')') as slopetdz,
-    coalesce(cast(airport_heliport.runwaydirection_ts.approachmarkingtype_value as varchar), '(' || airport_heliport.runwaydirection_ts.approachmarkingtype_nilreason || ')') as approachmarkingtype,
-    coalesce(cast(airport_heliport.runwaydirection_ts.approachmarkingcondition_value as varchar), '(' || airport_heliport.runwaydirection_ts.approachmarkingcondition_nilreason || ')') as approachmarkingcondition,
-    coalesce(cast(airport_heliport.runwaydirection_ts.classlightingjar_value as varchar), '(' || airport_heliport.runwaydirection_ts.classlightingjar_nilreason || ')') as classlightingjar,
-    coalesce(cast(airport_heliport.runwaydirection_ts.precisionapproachguidance_value as varchar), '(' || airport_heliport.runwaydirection_ts.precisionapproachguidance_nilreason || ')') as precisionapproachguidance,
-    coalesce(cast(airport_heliport.runwaydirection_ts.elevationtdz_value as varchar) || ' ' || airport_heliport.runwaydirection_ts.elevationtdz_uom, '(' || airport_heliport.runwaydirection_ts.elevationtdz_nilreason || ')') as elevationtdz,
-    coalesce(cast(airport_heliport.runwaydirection_ts.elevationtdzaccuracy_value as varchar) || ' ' || airport_heliport.runwaydirection_ts.elevationtdzaccuracy_uom, '(' || airport_heliport.runwaydirection_ts.elevationtdzaccuracy_nilreason || ')') as elevationtdzaccuracy,
-    coalesce(cast(airport_heliport.runway_pt.title as varchar), '(' || airport_heliport.runway_pt.nilreason[1] || ')') AS usedrunway,
-    airport_heliport.runway_pt.href AS usedrunway_href,
-    coalesce(cast(airport_heliport.runwayelement_pt.title as varchar), '(' || airport_heliport.runwayelement_pt.nilreason[1] || ')') AS startingelement,
-    airport_heliport.runwayelement_pt.href AS startingelement_href
-from airport_heliport.runwaydirection 
-inner join master_join mj2 on airport_heliport.runwaydirection.id = mj2.source_id
-inner join airport_heliport.runwaydirection_tsp on mj2.target_id = airport_heliport.runwaydirection_tsp.id
-inner join airport_heliport.runwaydirection_ts on airport_heliport.runwaydirection_tsp.runwaydirectiontimeslice_id = airport_heliport.runwaydirection_ts.id
-left join airport_heliport.runway_pt on airport_heliport.runwaydirection_ts.usedrunway_id = airport_heliport.runway_pt.id
-left join airport_heliport.runwayelement_pt on airport_heliport.runwaydirection_ts.startingelement_id = airport_heliport.runwayelement_pt.id
-where runwaydirection_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwaydirection.id,
-    airport_heliport.runwaydirection_ts.id,
-    airport_heliport.runwaydirection_tsp.id,
-    airport_heliport.runwaydirection.identifier,
-    airport_heliport.runwaydirection_ts.interpretation,
-    airport_heliport.runwaydirection_ts.sequence_number,
-    airport_heliport.runwaydirection_ts.correction_number,
-    airport_heliport.runwaydirection_ts.valid_time_begin,
-    airport_heliport.runwaydirection_ts.valid_time_end,
-    airport_heliport.runwaydirection_ts.feature_lifetime_begin,
-    airport_heliport.runwaydirection_ts.feature_lifetime_end,
-    airport_heliport.runwaydirection_ts.designator_value,
-    airport_heliport.runwaydirection_ts.designator_nilreason,
-    airport_heliport.runwaydirection_ts.truebearing_value,
-    airport_heliport.runwaydirection_ts.truebearing_nilreason,
-    airport_heliport.runwaydirection_ts.truebearingaccuracy_value,
-    airport_heliport.runwaydirection_ts.truebearingaccuracy_nilreason,
-    airport_heliport.runwaydirection_ts.magneticbearing_value,
-    airport_heliport.runwaydirection_ts.magneticbearing_nilreason,
-    airport_heliport.runwaydirection_ts.patternvfr_value,
-    airport_heliport.runwaydirection_ts.patternvfr_nilreason,
-    airport_heliport.runwaydirection_ts.slopetdz_value,
-    airport_heliport.runwaydirection_ts.slopetdz_nilreason,
-    airport_heliport.runwaydirection_ts.approachmarkingtype_value,
-    airport_heliport.runwaydirection_ts.approachmarkingtype_nilreason,
-    airport_heliport.runwaydirection_ts.approachmarkingcondition_value,
-    airport_heliport.runwaydirection_ts.approachmarkingcondition_nilreason,
-    airport_heliport.runwaydirection_ts.classlightingjar_value,
-    airport_heliport.runwaydirection_ts.classlightingjar_nilreason,
-    airport_heliport.runwaydirection_ts.precisionapproachguidance_value,
-    airport_heliport.runwaydirection_ts.precisionapproachguidance_nilreason,
-    airport_heliport.runwaydirection_ts.elevationtdz_value,
-    airport_heliport.runwaydirection_ts.elevationtdz_uom,
-    airport_heliport.runwaydirection_ts.elevationtdz_nilreason,
-    airport_heliport.runwaydirection_ts.elevationtdzaccuracy_value,
-    airport_heliport.runwaydirection_ts.elevationtdzaccuracy_uom,
-    airport_heliport.runwaydirection_ts.elevationtdzaccuracy_nilreason,
-    airport_heliport.runway_pt.title,
-    airport_heliport.runway_pt.nilreason,
-    airport_heliport.runway_pt.href,
-    airport_heliport.runwayelement_pt.title,
-    airport_heliport.runwayelement_pt.nilreason,
-    airport_heliport.runwayelement_pt.href
-order by runwaydirection.identifier, runwaydirection_ts.sequence_number, runwaydirection_ts.correction_number DESC;
-create or replace view airport_heliport.runwayelement_publisher_view as
-select distinct on (runwayelement.identifier,runwayelement_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwayelement.id,
-    airport_heliport.runwayelement_ts.id as ts_id,
-    airport_heliport.runwayelement_tsp.id as tsp_id,
-    airport_heliport.runwayelement.identifier,
-    airport_heliport.runwayelement_ts.interpretation,
-    airport_heliport.runwayelement_ts.sequence_number,
-    airport_heliport.runwayelement_ts.correction_number,
-    airport_heliport.runwayelement_ts.valid_time_begin,
-    airport_heliport.runwayelement_ts.valid_time_end,
-    airport_heliport.runwayelement_ts.feature_lifetime_begin,
-    airport_heliport.runwayelement_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwayelement_ts.type_value as varchar), '(' || airport_heliport.runwayelement_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.runwayelement_ts.gradeseparation_value as varchar), '(' || airport_heliport.runwayelement_ts.gradeseparation_nilreason || ')') as gradeseparation,
-    coalesce(cast(airport_heliport.runwayelement_ts.length_value as varchar) || ' ' || airport_heliport.runwayelement_ts.length_uom, '(' || airport_heliport.runwayelement_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.runwayelement_ts.width_value as varchar) || ' ' || airport_heliport.runwayelement_ts.width_uom, '(' || airport_heliport.runwayelement_ts.width_nilreason || ')') as width
-from airport_heliport.runwayelement 
-inner join master_join mj2 on airport_heliport.runwayelement.id = mj2.source_id
-inner join airport_heliport.runwayelement_tsp on mj2.target_id = airport_heliport.runwayelement_tsp.id
-inner join airport_heliport.runwayelement_ts on airport_heliport.runwayelement_tsp.runwayelementtimeslice_id = airport_heliport.runwayelement_ts.id
-where runwayelement_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwayelement.id,
-    airport_heliport.runwayelement_ts.id,
-    airport_heliport.runwayelement_tsp.id,
-    airport_heliport.runwayelement.identifier,
-    airport_heliport.runwayelement_ts.interpretation,
-    airport_heliport.runwayelement_ts.sequence_number,
-    airport_heliport.runwayelement_ts.correction_number,
-    airport_heliport.runwayelement_ts.valid_time_begin,
-    airport_heliport.runwayelement_ts.valid_time_end,
-    airport_heliport.runwayelement_ts.feature_lifetime_begin,
-    airport_heliport.runwayelement_ts.feature_lifetime_end,
-    airport_heliport.runwayelement_ts.type_value,
-    airport_heliport.runwayelement_ts.type_nilreason,
-    airport_heliport.runwayelement_ts.gradeseparation_value,
-    airport_heliport.runwayelement_ts.gradeseparation_nilreason,
-    airport_heliport.runwayelement_ts.length_value,
-    airport_heliport.runwayelement_ts.length_uom,
-    airport_heliport.runwayelement_ts.length_nilreason,
-    airport_heliport.runwayelement_ts.width_value,
-    airport_heliport.runwayelement_ts.width_uom,
-    airport_heliport.runwayelement_ts.width_nilreason
-order by runwayelement.identifier, runwayelement_ts.sequence_number, runwayelement_ts.correction_number DESC;
-create or replace view airport_heliport.runwaymarking_publisher_view as
-select distinct on (runwaymarking.identifier,runwaymarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwaymarking.id,
-    airport_heliport.runwaymarking_ts.id as ts_id,
-    airport_heliport.runwaymarking_tsp.id as tsp_id,
-    airport_heliport.runwaymarking.identifier,
-    airport_heliport.runwaymarking_ts.interpretation,
-    airport_heliport.runwaymarking_ts.sequence_number,
-    airport_heliport.runwaymarking_ts.correction_number,
-    airport_heliport.runwaymarking_ts.valid_time_begin,
-    airport_heliport.runwaymarking_ts.valid_time_end,
-    airport_heliport.runwaymarking_ts.feature_lifetime_begin,
-    airport_heliport.runwaymarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwaymarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.runwaymarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.runwaymarking_ts.condition_value as varchar), '(' || airport_heliport.runwaymarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.runwaymarking_ts.markinglocation_value as varchar), '(' || airport_heliport.runwaymarking_ts.markinglocation_nilreason || ')') as markinglocation,
-    coalesce(cast(airport_heliport.runway_pt.title as varchar), '(' || airport_heliport.runway_pt.nilreason[1] || ')') AS markedrunway,
-    airport_heliport.runway_pt.href AS markedrunway_href
-from airport_heliport.runwaymarking 
-inner join master_join mj2 on airport_heliport.runwaymarking.id = mj2.source_id
-inner join airport_heliport.runwaymarking_tsp on mj2.target_id = airport_heliport.runwaymarking_tsp.id
-inner join airport_heliport.runwaymarking_ts on airport_heliport.runwaymarking_tsp.runwaymarkingtimeslice_id = airport_heliport.runwaymarking_ts.id
-left join airport_heliport.runway_pt on airport_heliport.runwaymarking_ts.markedrunway_id = airport_heliport.runway_pt.id
-where runwaymarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwaymarking.id,
-    airport_heliport.runwaymarking_ts.id,
-    airport_heliport.runwaymarking_tsp.id,
-    airport_heliport.runwaymarking.identifier,
-    airport_heliport.runwaymarking_ts.interpretation,
-    airport_heliport.runwaymarking_ts.sequence_number,
-    airport_heliport.runwaymarking_ts.correction_number,
-    airport_heliport.runwaymarking_ts.valid_time_begin,
-    airport_heliport.runwaymarking_ts.valid_time_end,
-    airport_heliport.runwaymarking_ts.feature_lifetime_begin,
-    airport_heliport.runwaymarking_ts.feature_lifetime_end,
-    airport_heliport.runwaymarking_ts.markingicaostandard_value,
-    airport_heliport.runwaymarking_ts.markingicaostandard_nilreason,
-    airport_heliport.runwaymarking_ts.condition_value,
-    airport_heliport.runwaymarking_ts.condition_nilreason,
-    airport_heliport.runwaymarking_ts.markinglocation_value,
-    airport_heliport.runwaymarking_ts.markinglocation_nilreason,
-    airport_heliport.runway_pt.title,
-    airport_heliport.runway_pt.nilreason,
-    airport_heliport.runway_pt.href
-order by runwaymarking.identifier, runwaymarking_ts.sequence_number, runwaymarking_ts.correction_number DESC;
-create or replace view airport_heliport.runwayprotectarealightsystem_publisher_view as
-select distinct on (runwayprotectarealightsystem.identifier,runwayprotectarealightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwayprotectarealightsystem.id,
-    airport_heliport.runwayprotectarealightsystem_ts.id as ts_id,
-    airport_heliport.runwayprotectarealightsystem_tsp.id as tsp_id,
-    airport_heliport.runwayprotectarealightsystem.identifier,
-    airport_heliport.runwayprotectarealightsystem_ts.interpretation,
-    airport_heliport.runwayprotectarealightsystem_ts.sequence_number,
-    airport_heliport.runwayprotectarealightsystem_ts.correction_number,
-    airport_heliport.runwayprotectarealightsystem_ts.valid_time_begin,
-    airport_heliport.runwayprotectarealightsystem_ts.valid_time_end,
-    airport_heliport.runwayprotectarealightsystem_ts.feature_lifetime_begin,
-    airport_heliport.runwayprotectarealightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwayprotectarealightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.runwayprotectarealightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.runwayprotectarealightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.runwayprotectarealightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.runwayprotectarealightsystem_ts.colour_value as varchar), '(' || airport_heliport.runwayprotectarealightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.runwayprotectarealightsystem_ts.position_value as varchar), '(' || airport_heliport.runwayprotectarealightsystem_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.runwayprotectarea_pt.title as varchar), '(' || airport_heliport.runwayprotectarea_pt.nilreason[1] || ')') AS lightedarea,
-    airport_heliport.runwayprotectarea_pt.href AS lightedarea_href
-from airport_heliport.runwayprotectarealightsystem 
-inner join master_join mj2 on airport_heliport.runwayprotectarealightsystem.id = mj2.source_id
-inner join airport_heliport.runwayprotectarealightsystem_tsp on mj2.target_id = airport_heliport.runwayprotectarealightsystem_tsp.id
-inner join airport_heliport.runwayprotectarealightsystem_ts on airport_heliport.runwayprotectarealightsystem_tsp.runwayprotectarealightsystemtimeslice_id = airport_heliport.runwayprotectarealightsystem_ts.id
-left join airport_heliport.runwayprotectarea_pt on airport_heliport.runwayprotectarealightsystem_ts.lightedarea_id = airport_heliport.runwayprotectarea_pt.id
-where runwayprotectarealightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwayprotectarealightsystem.id,
-    airport_heliport.runwayprotectarealightsystem_ts.id,
-    airport_heliport.runwayprotectarealightsystem_tsp.id,
-    airport_heliport.runwayprotectarealightsystem.identifier,
-    airport_heliport.runwayprotectarealightsystem_ts.interpretation,
-    airport_heliport.runwayprotectarealightsystem_ts.sequence_number,
-    airport_heliport.runwayprotectarealightsystem_ts.correction_number,
-    airport_heliport.runwayprotectarealightsystem_ts.valid_time_begin,
-    airport_heliport.runwayprotectarealightsystem_ts.valid_time_end,
-    airport_heliport.runwayprotectarealightsystem_ts.feature_lifetime_begin,
-    airport_heliport.runwayprotectarealightsystem_ts.feature_lifetime_end,
-    airport_heliport.runwayprotectarealightsystem_ts.emergencylighting_value,
-    airport_heliport.runwayprotectarealightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.runwayprotectarealightsystem_ts.intensitylevel_value,
-    airport_heliport.runwayprotectarealightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.runwayprotectarealightsystem_ts.colour_value,
-    airport_heliport.runwayprotectarealightsystem_ts.colour_nilreason,
-    airport_heliport.runwayprotectarealightsystem_ts.position_value,
-    airport_heliport.runwayprotectarealightsystem_ts.position_nilreason,
-    airport_heliport.runwayprotectarea_pt.title,
-    airport_heliport.runwayprotectarea_pt.nilreason,
-    airport_heliport.runwayprotectarea_pt.href
-order by runwayprotectarealightsystem.identifier, runwayprotectarealightsystem_ts.sequence_number, runwayprotectarealightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.runwayprotectarea_publisher_view as
-select distinct on (runwayprotectarea.identifier,runwayprotectarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwayprotectarea.id,
-    airport_heliport.runwayprotectarea_ts.id as ts_id,
-    airport_heliport.runwayprotectarea_tsp.id as tsp_id,
-    airport_heliport.runwayprotectarea.identifier,
-    airport_heliport.runwayprotectarea_ts.interpretation,
-    airport_heliport.runwayprotectarea_ts.sequence_number,
-    airport_heliport.runwayprotectarea_ts.correction_number,
-    airport_heliport.runwayprotectarea_ts.valid_time_begin,
-    airport_heliport.runwayprotectarea_ts.valid_time_end,
-    airport_heliport.runwayprotectarea_ts.feature_lifetime_begin,
-    airport_heliport.runwayprotectarea_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.lighting_value as varchar), '(' || airport_heliport.runwayprotectarea_ts.lighting_nilreason || ')') as lighting,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.obstaclefree_value as varchar), '(' || airport_heliport.runwayprotectarea_ts.obstaclefree_nilreason || ')') as obstaclefree,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.type_value as varchar), '(' || airport_heliport.runwayprotectarea_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.status_value as varchar), '(' || airport_heliport.runwayprotectarea_ts.status_nilreason || ')') as status,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.width_value as varchar) || ' ' || airport_heliport.runwayprotectarea_ts.width_uom, '(' || airport_heliport.runwayprotectarea_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.runwayprotectarea_ts.length_value as varchar) || ' ' || airport_heliport.runwayprotectarea_ts.length_uom, '(' || airport_heliport.runwayprotectarea_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS protectedrunwaydirection,
-    airport_heliport.runwaydirection_pt.href AS protectedrunwaydirection_href
-from airport_heliport.runwayprotectarea 
-inner join master_join mj2 on airport_heliport.runwayprotectarea.id = mj2.source_id
-inner join airport_heliport.runwayprotectarea_tsp on mj2.target_id = airport_heliport.runwayprotectarea_tsp.id
-inner join airport_heliport.runwayprotectarea_ts on airport_heliport.runwayprotectarea_tsp.runwayprotectareatimeslice_id = airport_heliport.runwayprotectarea_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.runwayprotectarea_ts.protectedrunwaydirection_id = airport_heliport.runwaydirection_pt.id
-where runwayprotectarea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwayprotectarea.id,
-    airport_heliport.runwayprotectarea_ts.id,
-    airport_heliport.runwayprotectarea_tsp.id,
-    airport_heliport.runwayprotectarea.identifier,
-    airport_heliport.runwayprotectarea_ts.interpretation,
-    airport_heliport.runwayprotectarea_ts.sequence_number,
-    airport_heliport.runwayprotectarea_ts.correction_number,
-    airport_heliport.runwayprotectarea_ts.valid_time_begin,
-    airport_heliport.runwayprotectarea_ts.valid_time_end,
-    airport_heliport.runwayprotectarea_ts.feature_lifetime_begin,
-    airport_heliport.runwayprotectarea_ts.feature_lifetime_end,
-    airport_heliport.runwayprotectarea_ts.lighting_value,
-    airport_heliport.runwayprotectarea_ts.lighting_nilreason,
-    airport_heliport.runwayprotectarea_ts.obstaclefree_value,
-    airport_heliport.runwayprotectarea_ts.obstaclefree_nilreason,
-    airport_heliport.runwayprotectarea_ts.type_value,
-    airport_heliport.runwayprotectarea_ts.type_nilreason,
-    airport_heliport.runwayprotectarea_ts.status_value,
-    airport_heliport.runwayprotectarea_ts.status_nilreason,
-    airport_heliport.runwayprotectarea_ts.width_value,
-    airport_heliport.runwayprotectarea_ts.width_uom,
-    airport_heliport.runwayprotectarea_ts.width_nilreason,
-    airport_heliport.runwayprotectarea_ts.length_value,
-    airport_heliport.runwayprotectarea_ts.length_uom,
-    airport_heliport.runwayprotectarea_ts.length_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by runwayprotectarea.identifier, runwayprotectarea_ts.sequence_number, runwayprotectarea_ts.correction_number DESC;
-create or replace view airport_heliport.runway_publisher_view as
-select distinct on (runway.identifier,runway_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runway.id,
-    airport_heliport.runway_ts.id as ts_id,
-    airport_heliport.runway_tsp.id as tsp_id,
-    airport_heliport.runway.identifier,
-    airport_heliport.runway_ts.interpretation,
-    airport_heliport.runway_ts.sequence_number,
-    airport_heliport.runway_ts.correction_number,
-    airport_heliport.runway_ts.valid_time_begin,
-    airport_heliport.runway_ts.valid_time_end,
-    airport_heliport.runway_ts.feature_lifetime_begin,
-    airport_heliport.runway_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runway_ts.designator_value as varchar), '(' || airport_heliport.runway_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.runway_ts.type_value as varchar), '(' || airport_heliport.runway_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.runway_ts.abandoned_value as varchar), '(' || airport_heliport.runway_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.runway_ts.nominallength_value as varchar) || ' ' || airport_heliport.runway_ts.nominallength_uom, '(' || airport_heliport.runway_ts.nominallength_nilreason || ')') as nominallength,
-    coalesce(cast(airport_heliport.runway_ts.lengthaccuracy_value as varchar) || ' ' || airport_heliport.runway_ts.lengthaccuracy_uom, '(' || airport_heliport.runway_ts.lengthaccuracy_nilreason || ')') as lengthaccuracy,
-    coalesce(cast(airport_heliport.runway_ts.nominalwidth_value as varchar) || ' ' || airport_heliport.runway_ts.nominalwidth_uom, '(' || airport_heliport.runway_ts.nominalwidth_nilreason || ')') as nominalwidth,
-    coalesce(cast(airport_heliport.runway_ts.widthaccuracy_value as varchar) || ' ' || airport_heliport.runway_ts.widthaccuracy_uom, '(' || airport_heliport.runway_ts.widthaccuracy_nilreason || ')') as widthaccuracy,
-    coalesce(cast(airport_heliport.runway_ts.widthshoulder_value as varchar) || ' ' || airport_heliport.runway_ts.widthshoulder_uom, '(' || airport_heliport.runway_ts.widthshoulder_nilreason || ')') as widthshoulder,
-    coalesce(cast(airport_heliport.runway_ts.lengthstrip_value as varchar) || ' ' || airport_heliport.runway_ts.lengthstrip_uom, '(' || airport_heliport.runway_ts.lengthstrip_nilreason || ')') as lengthstrip,
-    coalesce(cast(airport_heliport.runway_ts.widthstrip_value as varchar) || ' ' || airport_heliport.runway_ts.widthstrip_uom, '(' || airport_heliport.runway_ts.widthstrip_nilreason || ')') as widthstrip,
-    coalesce(cast(airport_heliport.runway_ts.lengthoffset_value as varchar) || ' ' || airport_heliport.runway_ts.lengthoffset_uom, '(' || airport_heliport.runway_ts.lengthoffset_nilreason || ')') as lengthoffset,
-    coalesce(cast(airport_heliport.runway_ts.widthoffset_value as varchar) || ' ' || airport_heliport.runway_ts.widthoffset_uom, '(' || airport_heliport.runway_ts.widthoffset_nilreason || ')') as widthoffset,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.runway 
-inner join master_join mj2 on airport_heliport.runway.id = mj2.source_id
-inner join airport_heliport.runway_tsp on mj2.target_id = airport_heliport.runway_tsp.id
-inner join airport_heliport.runway_ts on airport_heliport.runway_tsp.runwaytimeslice_id = airport_heliport.runway_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.runway_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where runway_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runway.id,
-    airport_heliport.runway_ts.id,
-    airport_heliport.runway_tsp.id,
-    airport_heliport.runway.identifier,
-    airport_heliport.runway_ts.interpretation,
-    airport_heliport.runway_ts.sequence_number,
-    airport_heliport.runway_ts.correction_number,
-    airport_heliport.runway_ts.valid_time_begin,
-    airport_heliport.runway_ts.valid_time_end,
-    airport_heliport.runway_ts.feature_lifetime_begin,
-    airport_heliport.runway_ts.feature_lifetime_end,
-    airport_heliport.runway_ts.designator_value,
-    airport_heliport.runway_ts.designator_nilreason,
-    airport_heliport.runway_ts.type_value,
-    airport_heliport.runway_ts.type_nilreason,
-    airport_heliport.runway_ts.abandoned_value,
-    airport_heliport.runway_ts.abandoned_nilreason,
-    airport_heliport.runway_ts.nominallength_value,
-    airport_heliport.runway_ts.nominallength_uom,
-    airport_heliport.runway_ts.nominallength_nilreason,
-    airport_heliport.runway_ts.lengthaccuracy_value,
-    airport_heliport.runway_ts.lengthaccuracy_uom,
-    airport_heliport.runway_ts.lengthaccuracy_nilreason,
-    airport_heliport.runway_ts.nominalwidth_value,
-    airport_heliport.runway_ts.nominalwidth_uom,
-    airport_heliport.runway_ts.nominalwidth_nilreason,
-    airport_heliport.runway_ts.widthaccuracy_value,
-    airport_heliport.runway_ts.widthaccuracy_uom,
-    airport_heliport.runway_ts.widthaccuracy_nilreason,
-    airport_heliport.runway_ts.widthshoulder_value,
-    airport_heliport.runway_ts.widthshoulder_uom,
-    airport_heliport.runway_ts.widthshoulder_nilreason,
-    airport_heliport.runway_ts.lengthstrip_value,
-    airport_heliport.runway_ts.lengthstrip_uom,
-    airport_heliport.runway_ts.lengthstrip_nilreason,
-    airport_heliport.runway_ts.widthstrip_value,
-    airport_heliport.runway_ts.widthstrip_uom,
-    airport_heliport.runway_ts.widthstrip_nilreason,
-    airport_heliport.runway_ts.lengthoffset_value,
-    airport_heliport.runway_ts.lengthoffset_uom,
-    airport_heliport.runway_ts.lengthoffset_nilreason,
-    airport_heliport.runway_ts.widthoffset_value,
-    airport_heliport.runway_ts.widthoffset_uom,
-    airport_heliport.runway_ts.widthoffset_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by runway.identifier, runway_ts.sequence_number, runway_ts.correction_number DESC;
-create or replace view airport_heliport.runwayvisualrange_publisher_view as
-select distinct on (runwayvisualrange.identifier,runwayvisualrange_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.runwayvisualrange.id,
-    airport_heliport.runwayvisualrange_ts.id as ts_id,
-    airport_heliport.runwayvisualrange_tsp.id as tsp_id,
-    airport_heliport.runwayvisualrange.identifier,
-    airport_heliport.runwayvisualrange_ts.interpretation,
-    airport_heliport.runwayvisualrange_ts.sequence_number,
-    airport_heliport.runwayvisualrange_ts.correction_number,
-    airport_heliport.runwayvisualrange_ts.valid_time_begin,
-    airport_heliport.runwayvisualrange_ts.valid_time_end,
-    airport_heliport.runwayvisualrange_ts.feature_lifetime_begin,
-    airport_heliport.runwayvisualrange_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.runwayvisualrange_ts.readingposition_value as varchar), '(' || airport_heliport.runwayvisualrange_ts.readingposition_nilreason || ')') as readingposition
-from airport_heliport.runwayvisualrange 
-inner join master_join mj2 on airport_heliport.runwayvisualrange.id = mj2.source_id
-inner join airport_heliport.runwayvisualrange_tsp on mj2.target_id = airport_heliport.runwayvisualrange_tsp.id
-inner join airport_heliport.runwayvisualrange_ts on airport_heliport.runwayvisualrange_tsp.runwayvisualrangetimeslice_id = airport_heliport.runwayvisualrange_ts.id
-where runwayvisualrange_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.runwayvisualrange.id,
-    airport_heliport.runwayvisualrange_ts.id,
-    airport_heliport.runwayvisualrange_tsp.id,
-    airport_heliport.runwayvisualrange.identifier,
-    airport_heliport.runwayvisualrange_ts.interpretation,
-    airport_heliport.runwayvisualrange_ts.sequence_number,
-    airport_heliport.runwayvisualrange_ts.correction_number,
-    airport_heliport.runwayvisualrange_ts.valid_time_begin,
-    airport_heliport.runwayvisualrange_ts.valid_time_end,
-    airport_heliport.runwayvisualrange_ts.feature_lifetime_begin,
-    airport_heliport.runwayvisualrange_ts.feature_lifetime_end,
-    airport_heliport.runwayvisualrange_ts.readingposition_value,
-    airport_heliport.runwayvisualrange_ts.readingposition_nilreason
-order by runwayvisualrange.identifier, runwayvisualrange_ts.sequence_number, runwayvisualrange_ts.correction_number DESC;
-create or replace view procedure.safealtitudearea_publisher_view as
-select distinct on (safealtitudearea.identifier,safealtitudearea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.safealtitudearea.id,
-    procedure.safealtitudearea_ts.id as ts_id,
-    procedure.safealtitudearea_tsp.id as tsp_id,
-    procedure.safealtitudearea.identifier,
-    procedure.safealtitudearea_ts.interpretation,
-    procedure.safealtitudearea_ts.sequence_number,
-    procedure.safealtitudearea_ts.correction_number,
-    procedure.safealtitudearea_ts.valid_time_begin,
-    procedure.safealtitudearea_ts.valid_time_end,
-    procedure.safealtitudearea_ts.feature_lifetime_begin,
-    procedure.safealtitudearea_ts.feature_lifetime_end,
-    coalesce(cast(procedure.safealtitudearea_ts.safeareatype_value as varchar), '(' || procedure.safealtitudearea_ts.safeareatype_nilreason || ')') as safeareatype,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS centrepointfixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS centrepointfixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS centrepointnavaidsystem,
-    navaids_points.navaid_pt.href AS centrepointnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS centrepointaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS centrepointaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS centrepointrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS centrepointrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS centrepointairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS centrepointairportreferencepoint_href
-from procedure.safealtitudearea 
-inner join master_join mj2 on procedure.safealtitudearea.id = mj2.source_id
-inner join procedure.safealtitudearea_tsp on mj2.target_id = procedure.safealtitudearea_tsp.id
-inner join procedure.safealtitudearea_ts on procedure.safealtitudearea_tsp.safealtitudeareatimeslice_id = procedure.safealtitudearea_ts.id
-left join navaids_points.designatedpoint_pt on procedure.safealtitudearea_ts.centrepointfixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on procedure.safealtitudearea_ts.centrepointnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on procedure.safealtitudearea_ts.centrepointaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on procedure.safealtitudearea_ts.centrepointrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on procedure.safealtitudearea_ts.centrepointairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where safealtitudearea_ts.feature_status = 'APPROVED'
-group by
-    procedure.safealtitudearea.id,
-    procedure.safealtitudearea_ts.id,
-    procedure.safealtitudearea_tsp.id,
-    procedure.safealtitudearea.identifier,
-    procedure.safealtitudearea_ts.interpretation,
-    procedure.safealtitudearea_ts.sequence_number,
-    procedure.safealtitudearea_ts.correction_number,
-    procedure.safealtitudearea_ts.valid_time_begin,
-    procedure.safealtitudearea_ts.valid_time_end,
-    procedure.safealtitudearea_ts.feature_lifetime_begin,
-    procedure.safealtitudearea_ts.feature_lifetime_end,
-    procedure.safealtitudearea_ts.safeareatype_value,
-    procedure.safealtitudearea_ts.safeareatype_nilreason,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by safealtitudearea.identifier, safealtitudearea_ts.sequence_number, safealtitudearea_ts.correction_number DESC;
-create or replace view navaids_points.sdf_publisher_view as
-select distinct on (sdf.identifier,sdf_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.sdf.id,
-    navaids_points.sdf_ts.id as ts_id,
-    navaids_points.sdf_tsp.id as tsp_id,
-    navaids_points.sdf.identifier,
-    navaids_points.sdf_ts.interpretation,
-    navaids_points.sdf_ts.sequence_number,
-    navaids_points.sdf_ts.correction_number,
-    navaids_points.sdf_ts.valid_time_begin,
-    navaids_points.sdf_ts.valid_time_end,
-    navaids_points.sdf_ts.feature_lifetime_begin,
-    navaids_points.sdf_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.sdf_ts.designator_value as varchar), '(' || navaids_points.sdf_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.sdf_ts.name_value as varchar), '(' || navaids_points.sdf_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.sdf_ts.emissionclass_value as varchar), '(' || navaids_points.sdf_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.sdf_ts.mobile_value as varchar), '(' || navaids_points.sdf_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.sdf_ts.magneticvariation_value as varchar), '(' || navaids_points.sdf_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.sdf_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.sdf_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.sdf_ts.datemagneticvariation_value as varchar), '(' || navaids_points.sdf_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.sdf_ts.flightchecked_value as varchar), '(' || navaids_points.sdf_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.sdf_ts.magneticbearing_value as varchar), '(' || navaids_points.sdf_ts.magneticbearing_nilreason || ')') as magneticbearing,
-    coalesce(cast(navaids_points.sdf_ts.truebearing_value as varchar), '(' || navaids_points.sdf_ts.truebearing_nilreason || ')') as truebearing,
-    coalesce(cast(navaids_points.sdf_ts.frequency_value as varchar) || ' ' || navaids_points.sdf_ts.frequency_uom, '(' || navaids_points.sdf_ts.frequency_nilreason || ')') as frequency
-from navaids_points.sdf 
-inner join master_join mj2 on navaids_points.sdf.id = mj2.source_id
-inner join navaids_points.sdf_tsp on mj2.target_id = navaids_points.sdf_tsp.id
-inner join navaids_points.sdf_ts on navaids_points.sdf_tsp.sdftimeslice_id = navaids_points.sdf_ts.id
-where sdf_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.sdf.id,
-    navaids_points.sdf_ts.id,
-    navaids_points.sdf_tsp.id,
-    navaids_points.sdf.identifier,
-    navaids_points.sdf_ts.interpretation,
-    navaids_points.sdf_ts.sequence_number,
-    navaids_points.sdf_ts.correction_number,
-    navaids_points.sdf_ts.valid_time_begin,
-    navaids_points.sdf_ts.valid_time_end,
-    navaids_points.sdf_ts.feature_lifetime_begin,
-    navaids_points.sdf_ts.feature_lifetime_end,
-    navaids_points.sdf_ts.designator_value,
-    navaids_points.sdf_ts.designator_nilreason,
-    navaids_points.sdf_ts.name_value,
-    navaids_points.sdf_ts.name_nilreason,
-    navaids_points.sdf_ts.emissionclass_value,
-    navaids_points.sdf_ts.emissionclass_nilreason,
-    navaids_points.sdf_ts.mobile_value,
-    navaids_points.sdf_ts.mobile_nilreason,
-    navaids_points.sdf_ts.magneticvariation_value,
-    navaids_points.sdf_ts.magneticvariation_nilreason,
-    navaids_points.sdf_ts.magneticvariationaccuracy_value,
-    navaids_points.sdf_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.sdf_ts.datemagneticvariation_value,
-    navaids_points.sdf_ts.datemagneticvariation_nilreason,
-    navaids_points.sdf_ts.flightchecked_value,
-    navaids_points.sdf_ts.flightchecked_nilreason,
-    navaids_points.sdf_ts.magneticbearing_value,
-    navaids_points.sdf_ts.magneticbearing_nilreason,
-    navaids_points.sdf_ts.truebearing_value,
-    navaids_points.sdf_ts.truebearing_nilreason,
-    navaids_points.sdf_ts.frequency_value,
-    navaids_points.sdf_ts.frequency_uom,
-    navaids_points.sdf_ts.frequency_nilreason
-order by sdf.identifier, sdf_ts.sequence_number, sdf_ts.correction_number DESC;
-create or replace view airport_heliport.seaplanelandingarea_publisher_view as
-select distinct on (seaplanelandingarea.identifier,seaplanelandingarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.seaplanelandingarea.id,
-    airport_heliport.seaplanelandingarea_ts.id as ts_id,
-    airport_heliport.seaplanelandingarea_tsp.id as tsp_id,
-    airport_heliport.seaplanelandingarea.identifier,
-    airport_heliport.seaplanelandingarea_ts.interpretation,
-    airport_heliport.seaplanelandingarea_ts.sequence_number,
-    airport_heliport.seaplanelandingarea_ts.correction_number,
-    airport_heliport.seaplanelandingarea_ts.valid_time_begin,
-    airport_heliport.seaplanelandingarea_ts.valid_time_end,
-    airport_heliport.seaplanelandingarea_ts.feature_lifetime_begin,
-    airport_heliport.seaplanelandingarea_ts.feature_lifetime_end
-from airport_heliport.seaplanelandingarea 
-inner join master_join mj2 on airport_heliport.seaplanelandingarea.id = mj2.source_id
-inner join airport_heliport.seaplanelandingarea_tsp on mj2.target_id = airport_heliport.seaplanelandingarea_tsp.id
-inner join airport_heliport.seaplanelandingarea_ts on airport_heliport.seaplanelandingarea_tsp.seaplanelandingareatimeslice_id = airport_heliport.seaplanelandingarea_ts.id
-where seaplanelandingarea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.seaplanelandingarea.id,
-    airport_heliport.seaplanelandingarea_ts.id,
-    airport_heliport.seaplanelandingarea_tsp.id,
-    airport_heliport.seaplanelandingarea.identifier,
-    airport_heliport.seaplanelandingarea_ts.interpretation,
-    airport_heliport.seaplanelandingarea_ts.sequence_number,
-    airport_heliport.seaplanelandingarea_ts.correction_number,
-    airport_heliport.seaplanelandingarea_ts.valid_time_begin,
-    airport_heliport.seaplanelandingarea_ts.valid_time_end,
-    airport_heliport.seaplanelandingarea_ts.feature_lifetime_begin,
-    airport_heliport.seaplanelandingarea_ts.feature_lifetime_end
-order by seaplanelandingarea.identifier, seaplanelandingarea_ts.sequence_number, seaplanelandingarea_ts.correction_number DESC;
-create or replace view airport_heliport.seaplanerampsite_publisher_view as
-select distinct on (seaplanerampsite.identifier,seaplanerampsite_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.seaplanerampsite.id,
-    airport_heliport.seaplanerampsite_ts.id as ts_id,
-    airport_heliport.seaplanerampsite_tsp.id as tsp_id,
-    airport_heliport.seaplanerampsite.identifier,
-    airport_heliport.seaplanerampsite_ts.interpretation,
-    airport_heliport.seaplanerampsite_ts.sequence_number,
-    airport_heliport.seaplanerampsite_ts.correction_number,
-    airport_heliport.seaplanerampsite_ts.valid_time_begin,
-    airport_heliport.seaplanerampsite_ts.valid_time_end,
-    airport_heliport.seaplanerampsite_ts.feature_lifetime_begin,
-    airport_heliport.seaplanerampsite_ts.feature_lifetime_end
-from airport_heliport.seaplanerampsite 
-inner join master_join mj2 on airport_heliport.seaplanerampsite.id = mj2.source_id
-inner join airport_heliport.seaplanerampsite_tsp on mj2.target_id = airport_heliport.seaplanerampsite_tsp.id
-inner join airport_heliport.seaplanerampsite_ts on airport_heliport.seaplanerampsite_tsp.seaplanerampsitetimeslice_id = airport_heliport.seaplanerampsite_ts.id
-where seaplanerampsite_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.seaplanerampsite.id,
-    airport_heliport.seaplanerampsite_ts.id,
-    airport_heliport.seaplanerampsite_tsp.id,
-    airport_heliport.seaplanerampsite.identifier,
-    airport_heliport.seaplanerampsite_ts.interpretation,
-    airport_heliport.seaplanerampsite_ts.sequence_number,
-    airport_heliport.seaplanerampsite_ts.correction_number,
-    airport_heliport.seaplanerampsite_ts.valid_time_begin,
-    airport_heliport.seaplanerampsite_ts.valid_time_end,
-    airport_heliport.seaplanerampsite_ts.feature_lifetime_begin,
-    airport_heliport.seaplanerampsite_ts.feature_lifetime_end
-order by seaplanerampsite.identifier, seaplanerampsite_ts.sequence_number, seaplanerampsite_ts.correction_number DESC;
-create or replace view service.searchrescueservice_publisher_view as
-select distinct on (searchrescueservice.identifier,searchrescueservice_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    service.searchrescueservice.id,
-    service.searchrescueservice_ts.id as ts_id,
-    service.searchrescueservice_tsp.id as tsp_id,
-    service.searchrescueservice.identifier,
-    service.searchrescueservice_ts.interpretation,
-    service.searchrescueservice_ts.sequence_number,
-    service.searchrescueservice_ts.correction_number,
-    service.searchrescueservice_ts.valid_time_begin,
-    service.searchrescueservice_ts.valid_time_end,
-    service.searchrescueservice_ts.feature_lifetime_begin,
-    service.searchrescueservice_ts.feature_lifetime_end,
-    coalesce(cast(service.searchrescueservice_ts.flightoperations_value as varchar), '(' || service.searchrescueservice_ts.flightoperations_nilreason || ')') as flightoperations,
-    coalesce(cast(service.searchrescueservice_ts.rank_value as varchar), '(' || service.searchrescueservice_ts.rank_nilreason || ')') as rank,
-    coalesce(cast(service.searchrescueservice_ts.complianticao_value as varchar), '(' || service.searchrescueservice_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(service.searchrescueservice_ts.name_value as varchar), '(' || service.searchrescueservice_ts.name_nilreason || ')') as name,
-    coalesce(cast(service.searchrescueservice_ts.type_value as varchar), '(' || service.searchrescueservice_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_pt.title as varchar), '(' || organisation.unit_pt.nilreason[1] || ')') AS serviceprovider,
-    organisation.unit_pt.href AS serviceprovider_href
-from service.searchrescueservice 
-inner join master_join mj2 on service.searchrescueservice.id = mj2.source_id
-inner join service.searchrescueservice_tsp on mj2.target_id = service.searchrescueservice_tsp.id
-inner join service.searchrescueservice_ts on service.searchrescueservice_tsp.searchrescueservicetimeslice_id = service.searchrescueservice_ts.id
-left join organisation.unit_pt on service.searchrescueservice_ts.serviceprovider_id = organisation.unit_pt.id
-where searchrescueservice_ts.feature_status = 'APPROVED'
-group by
-    service.searchrescueservice.id,
-    service.searchrescueservice_ts.id,
-    service.searchrescueservice_tsp.id,
-    service.searchrescueservice.identifier,
-    service.searchrescueservice_ts.interpretation,
-    service.searchrescueservice_ts.sequence_number,
-    service.searchrescueservice_ts.correction_number,
-    service.searchrescueservice_ts.valid_time_begin,
-    service.searchrescueservice_ts.valid_time_end,
-    service.searchrescueservice_ts.feature_lifetime_begin,
-    service.searchrescueservice_ts.feature_lifetime_end,
-    service.searchrescueservice_ts.flightoperations_value,
-    service.searchrescueservice_ts.flightoperations_nilreason,
-    service.searchrescueservice_ts.rank_value,
-    service.searchrescueservice_ts.rank_nilreason,
-    service.searchrescueservice_ts.complianticao_value,
-    service.searchrescueservice_ts.complianticao_nilreason,
-    service.searchrescueservice_ts.name_value,
-    service.searchrescueservice_ts.name_nilreason,
-    service.searchrescueservice_ts.type_value,
-    service.searchrescueservice_ts.type_nilreason,
-    organisation.unit_pt.title,
-    organisation.unit_pt.nilreason,
-    organisation.unit_pt.href
-order by searchrescueservice.identifier, searchrescueservice_ts.sequence_number, searchrescueservice_ts.correction_number DESC;
-create or replace view surveillance.secondarysurveillanceradar_publisher_view as
-select distinct on (secondarysurveillanceradar.identifier,secondarysurveillanceradar_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    surveillance.secondarysurveillanceradar.id,
-    surveillance.secondarysurveillanceradar_ts.id as ts_id,
-    surveillance.secondarysurveillanceradar_tsp.id as tsp_id,
-    surveillance.secondarysurveillanceradar.identifier,
-    surveillance.secondarysurveillanceradar_ts.interpretation,
-    surveillance.secondarysurveillanceradar_ts.sequence_number,
-    surveillance.secondarysurveillanceradar_ts.correction_number,
-    surveillance.secondarysurveillanceradar_ts.valid_time_begin,
-    surveillance.secondarysurveillanceradar_ts.valid_time_end,
-    surveillance.secondarysurveillanceradar_ts.feature_lifetime_begin,
-    surveillance.secondarysurveillanceradar_ts.feature_lifetime_end,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.name_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.name_nilreason || ')') as name,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.serialnumber_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.serialnumber_nilreason || ')') as serialnumber,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.dualchannel_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.dualchannel_nilreason || ')') as dualchannel,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.movingtargetindicator_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.movingtargetindicator_nilreason || ')') as movingtargetindicator,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.standbypower_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.standbypower_nilreason || ')') as standbypower,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.digital_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.digital_nilreason || ')') as digital,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.militaryuseonly_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.militaryuseonly_nilreason || ')') as militaryuseonly,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.specialuseonly_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.specialuseonly_nilreason || ')') as specialuseonly,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.specialaircraftonly_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.specialaircraftonly_nilreason || ')') as specialaircraftonly,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.magneticvariation_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.magneticvariationaccuracy_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.datemagneticvariation_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.verticalcoverageazimuth_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.verticalcoverageazimuth_nilreason || ')') as verticalcoverageazimuth,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.antennatiltfixed_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.antennatiltfixed_nilreason || ')') as antennatiltfixed,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.tiltangle_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.tiltangle_nilreason || ')') as tiltangle,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.automatedradarterminalsystem_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.automatedradarterminalsystem_nilreason || ')') as automatedradarterminalsystem,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.transponder_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.transponder_nilreason || ')') as transponder,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.autonomous_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.autonomous_nilreason || ')') as autonomous,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.monopulse_value as varchar), '(' || surveillance.secondarysurveillanceradar_ts.monopulse_nilreason || ')') as monopulse,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.range_value as varchar) || ' ' || surveillance.secondarysurveillanceradar_ts.range_uom, '(' || surveillance.secondarysurveillanceradar_ts.range_nilreason || ')') as range,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.rangeaccuracy_value as varchar) || ' ' || surveillance.secondarysurveillanceradar_ts.rangeaccuracy_uom, '(' || surveillance.secondarysurveillanceradar_ts.rangeaccuracy_nilreason || ')') as rangeaccuracy,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_value as varchar) || ' ' || surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_uom, '(' || surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_nilreason || ')') as verticalcoveragealtitude,
-    coalesce(cast(surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_value as varchar) || ' ' || surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_uom, '(' || surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_nilreason || ')') as verticalcoveragedistance
-from surveillance.secondarysurveillanceradar 
-inner join master_join mj2 on surveillance.secondarysurveillanceradar.id = mj2.source_id
-inner join surveillance.secondarysurveillanceradar_tsp on mj2.target_id = surveillance.secondarysurveillanceradar_tsp.id
-inner join surveillance.secondarysurveillanceradar_ts on surveillance.secondarysurveillanceradar_tsp.secondarysurveillanceradartimeslice_id = surveillance.secondarysurveillanceradar_ts.id
-where secondarysurveillanceradar_ts.feature_status = 'APPROVED'
-group by
-    surveillance.secondarysurveillanceradar.id,
-    surveillance.secondarysurveillanceradar_ts.id,
-    surveillance.secondarysurveillanceradar_tsp.id,
-    surveillance.secondarysurveillanceradar.identifier,
-    surveillance.secondarysurveillanceradar_ts.interpretation,
-    surveillance.secondarysurveillanceradar_ts.sequence_number,
-    surveillance.secondarysurveillanceradar_ts.correction_number,
-    surveillance.secondarysurveillanceradar_ts.valid_time_begin,
-    surveillance.secondarysurveillanceradar_ts.valid_time_end,
-    surveillance.secondarysurveillanceradar_ts.feature_lifetime_begin,
-    surveillance.secondarysurveillanceradar_ts.feature_lifetime_end,
-    surveillance.secondarysurveillanceradar_ts.name_value,
-    surveillance.secondarysurveillanceradar_ts.name_nilreason,
-    surveillance.secondarysurveillanceradar_ts.serialnumber_value,
-    surveillance.secondarysurveillanceradar_ts.serialnumber_nilreason,
-    surveillance.secondarysurveillanceradar_ts.dualchannel_value,
-    surveillance.secondarysurveillanceradar_ts.dualchannel_nilreason,
-    surveillance.secondarysurveillanceradar_ts.movingtargetindicator_value,
-    surveillance.secondarysurveillanceradar_ts.movingtargetindicator_nilreason,
-    surveillance.secondarysurveillanceradar_ts.standbypower_value,
-    surveillance.secondarysurveillanceradar_ts.standbypower_nilreason,
-    surveillance.secondarysurveillanceradar_ts.digital_value,
-    surveillance.secondarysurveillanceradar_ts.digital_nilreason,
-    surveillance.secondarysurveillanceradar_ts.militaryuseonly_value,
-    surveillance.secondarysurveillanceradar_ts.militaryuseonly_nilreason,
-    surveillance.secondarysurveillanceradar_ts.specialuseonly_value,
-    surveillance.secondarysurveillanceradar_ts.specialuseonly_nilreason,
-    surveillance.secondarysurveillanceradar_ts.specialaircraftonly_value,
-    surveillance.secondarysurveillanceradar_ts.specialaircraftonly_nilreason,
-    surveillance.secondarysurveillanceradar_ts.magneticvariation_value,
-    surveillance.secondarysurveillanceradar_ts.magneticvariation_nilreason,
-    surveillance.secondarysurveillanceradar_ts.magneticvariationaccuracy_value,
-    surveillance.secondarysurveillanceradar_ts.magneticvariationaccuracy_nilreason,
-    surveillance.secondarysurveillanceradar_ts.datemagneticvariation_value,
-    surveillance.secondarysurveillanceradar_ts.datemagneticvariation_nilreason,
-    surveillance.secondarysurveillanceradar_ts.verticalcoverageazimuth_value,
-    surveillance.secondarysurveillanceradar_ts.verticalcoverageazimuth_nilreason,
-    surveillance.secondarysurveillanceradar_ts.antennatiltfixed_value,
-    surveillance.secondarysurveillanceradar_ts.antennatiltfixed_nilreason,
-    surveillance.secondarysurveillanceradar_ts.tiltangle_value,
-    surveillance.secondarysurveillanceradar_ts.tiltangle_nilreason,
-    surveillance.secondarysurveillanceradar_ts.automatedradarterminalsystem_value,
-    surveillance.secondarysurveillanceradar_ts.automatedradarterminalsystem_nilreason,
-    surveillance.secondarysurveillanceradar_ts.transponder_value,
-    surveillance.secondarysurveillanceradar_ts.transponder_nilreason,
-    surveillance.secondarysurveillanceradar_ts.autonomous_value,
-    surveillance.secondarysurveillanceradar_ts.autonomous_nilreason,
-    surveillance.secondarysurveillanceradar_ts.monopulse_value,
-    surveillance.secondarysurveillanceradar_ts.monopulse_nilreason,
-    surveillance.secondarysurveillanceradar_ts.range_value,
-    surveillance.secondarysurveillanceradar_ts.range_uom,
-    surveillance.secondarysurveillanceradar_ts.range_nilreason,
-    surveillance.secondarysurveillanceradar_ts.rangeaccuracy_value,
-    surveillance.secondarysurveillanceradar_ts.rangeaccuracy_uom,
-    surveillance.secondarysurveillanceradar_ts.rangeaccuracy_nilreason,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_value,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_uom,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragealtitude_nilreason,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_value,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_uom,
-    surveillance.secondarysurveillanceradar_ts.verticalcoveragedistance_nilreason
-order by secondarysurveillanceradar.identifier, secondarysurveillanceradar_ts.sequence_number, secondarysurveillanceradar_ts.correction_number DESC;
-create or replace view navaids_points.significantpointinairspace_publisher_view as
-select distinct on (significantpointinairspace.identifier,significantpointinairspace_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.significantpointinairspace.id,
-    navaids_points.significantpointinairspace_ts.id as ts_id,
-    navaids_points.significantpointinairspace_tsp.id as tsp_id,
-    navaids_points.significantpointinairspace.identifier,
-    navaids_points.significantpointinairspace_ts.interpretation,
-    navaids_points.significantpointinairspace_ts.sequence_number,
-    navaids_points.significantpointinairspace_ts.correction_number,
-    navaids_points.significantpointinairspace_ts.valid_time_begin,
-    navaids_points.significantpointinairspace_ts.valid_time_end,
-    navaids_points.significantpointinairspace_ts.feature_lifetime_begin,
-    navaids_points.significantpointinairspace_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.significantpointinairspace_ts.type_value as varchar), '(' || navaids_points.significantpointinairspace_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.significantpointinairspace_ts.relativelocation_value as varchar), '(' || navaids_points.significantpointinairspace_ts.relativelocation_nilreason || ')') as relativelocation,
-    coalesce(cast(airspace.airspace_pt.title as varchar), '(' || airspace.airspace_pt.nilreason[1] || ')') AS containingairspace,
-    airspace.airspace_pt.href AS containingairspace_href,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS locationfixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS locationfixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS locationnavaidsystem,
-    navaids_points.navaid_pt.href AS locationnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS locationaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS locationaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS locationrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS locationrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS locationairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS locationairportreferencepoint_href
-from navaids_points.significantpointinairspace 
-inner join master_join mj2 on navaids_points.significantpointinairspace.id = mj2.source_id
-inner join navaids_points.significantpointinairspace_tsp on mj2.target_id = navaids_points.significantpointinairspace_tsp.id
-inner join navaids_points.significantpointinairspace_ts on navaids_points.significantpointinairspace_tsp.significantpointinairspacetimeslice_id = navaids_points.significantpointinairspace_ts.id
-left join airspace.airspace_pt on navaids_points.significantpointinairspace_ts.containingairspace_id = airspace.airspace_pt.id
-left join navaids_points.designatedpoint_pt on navaids_points.significantpointinairspace_ts.locationfixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on navaids_points.significantpointinairspace_ts.locationnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on navaids_points.significantpointinairspace_ts.locationaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on navaids_points.significantpointinairspace_ts.locationrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on navaids_points.significantpointinairspace_ts.locationairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-where significantpointinairspace_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.significantpointinairspace.id,
-    navaids_points.significantpointinairspace_ts.id,
-    navaids_points.significantpointinairspace_tsp.id,
-    navaids_points.significantpointinairspace.identifier,
-    navaids_points.significantpointinairspace_ts.interpretation,
-    navaids_points.significantpointinairspace_ts.sequence_number,
-    navaids_points.significantpointinairspace_ts.correction_number,
-    navaids_points.significantpointinairspace_ts.valid_time_begin,
-    navaids_points.significantpointinairspace_ts.valid_time_end,
-    navaids_points.significantpointinairspace_ts.feature_lifetime_begin,
-    navaids_points.significantpointinairspace_ts.feature_lifetime_end,
-    navaids_points.significantpointinairspace_ts.type_value,
-    navaids_points.significantpointinairspace_ts.type_nilreason,
-    navaids_points.significantpointinairspace_ts.relativelocation_value,
-    navaids_points.significantpointinairspace_ts.relativelocation_nilreason,
-    airspace.airspace_pt.title,
-    airspace.airspace_pt.nilreason,
-    airspace.airspace_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by significantpointinairspace.identifier, significantpointinairspace_ts.sequence_number, significantpointinairspace_ts.correction_number DESC;
-create or replace view shared.specialdate_publisher_view as
-select distinct on (specialdate.identifier,specialdate_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.specialdate.id,
-    shared.specialdate_ts.id as ts_id,
-    shared.specialdate_tsp.id as tsp_id,
-    shared.specialdate.identifier,
-    shared.specialdate_ts.interpretation,
-    shared.specialdate_ts.sequence_number,
-    shared.specialdate_ts.correction_number,
-    shared.specialdate_ts.valid_time_begin,
-    shared.specialdate_ts.valid_time_end,
-    shared.specialdate_ts.feature_lifetime_begin,
-    shared.specialdate_ts.feature_lifetime_end,
-    coalesce(cast(shared.specialdate_ts.type_value as varchar), '(' || shared.specialdate_ts.type_nilreason || ')') as type,
-    coalesce(cast(shared.specialdate_ts.dateday_value as varchar), '(' || shared.specialdate_ts.dateday_nilreason || ')') as dateday,
-    coalesce(cast(shared.specialdate_ts.dateyear_value as varchar), '(' || shared.specialdate_ts.dateyear_nilreason || ')') as dateyear,
-    coalesce(cast(shared.specialdate_ts.name_value as varchar), '(' || shared.specialdate_ts.name_nilreason || ')') as name,
-    coalesce(cast(organisation.organisationauthority_pt.title as varchar), '(' || organisation.organisationauthority_pt.nilreason[1] || ')') AS authority,
-    organisation.organisationauthority_pt.href AS authority_href
-from shared.specialdate 
-inner join master_join mj2 on shared.specialdate.id = mj2.source_id
-inner join shared.specialdate_tsp on mj2.target_id = shared.specialdate_tsp.id
-inner join shared.specialdate_ts on shared.specialdate_tsp.specialdatetimeslice_id = shared.specialdate_ts.id
-left join organisation.organisationauthority_pt on shared.specialdate_ts.authority_id = organisation.organisationauthority_pt.id
-where specialdate_ts.feature_status = 'APPROVED'
-group by
-    shared.specialdate.id,
-    shared.specialdate_ts.id,
-    shared.specialdate_tsp.id,
-    shared.specialdate.identifier,
-    shared.specialdate_ts.interpretation,
-    shared.specialdate_ts.sequence_number,
-    shared.specialdate_ts.correction_number,
-    shared.specialdate_ts.valid_time_begin,
-    shared.specialdate_ts.valid_time_end,
-    shared.specialdate_ts.feature_lifetime_begin,
-    shared.specialdate_ts.feature_lifetime_end,
-    shared.specialdate_ts.type_value,
-    shared.specialdate_ts.type_nilreason,
-    shared.specialdate_ts.dateday_value,
-    shared.specialdate_ts.dateday_nilreason,
-    shared.specialdate_ts.dateyear_value,
-    shared.specialdate_ts.dateyear_nilreason,
-    shared.specialdate_ts.name_value,
-    shared.specialdate_ts.name_nilreason,
-    organisation.organisationauthority_pt.title,
-    organisation.organisationauthority_pt.nilreason,
-    organisation.organisationauthority_pt.href
-order by specialdate.identifier, specialdate_ts.sequence_number, specialdate_ts.correction_number DESC;
-create or replace view navaids_points.specialnavigationstation_publisher_view as
-select distinct on (specialnavigationstation.identifier,specialnavigationstation_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.specialnavigationstation.id,
-    navaids_points.specialnavigationstation_ts.id as ts_id,
-    navaids_points.specialnavigationstation_tsp.id as tsp_id,
-    navaids_points.specialnavigationstation.identifier,
-    navaids_points.specialnavigationstation_ts.interpretation,
-    navaids_points.specialnavigationstation_ts.sequence_number,
-    navaids_points.specialnavigationstation_ts.correction_number,
-    navaids_points.specialnavigationstation_ts.valid_time_begin,
-    navaids_points.specialnavigationstation_ts.valid_time_end,
-    navaids_points.specialnavigationstation_ts.feature_lifetime_begin,
-    navaids_points.specialnavigationstation_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.specialnavigationstation_ts.name_value as varchar), '(' || navaids_points.specialnavigationstation_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.specialnavigationstation_ts.type_value as varchar), '(' || navaids_points.specialnavigationstation_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.specialnavigationstation_ts.emission_value as varchar), '(' || navaids_points.specialnavigationstation_ts.emission_nilreason || ')') as emission,
-    coalesce(cast(navaids_points.specialnavigationstation_ts.frequency_value as varchar) || ' ' || navaids_points.specialnavigationstation_ts.frequency_uom, '(' || navaids_points.specialnavigationstation_ts.frequency_nilreason || ')') as frequency,
-    coalesce(cast(navaids_points.specialnavigationsystem_pt.title as varchar), '(' || navaids_points.specialnavigationsystem_pt.nilreason[1] || ')') AS systemchain,
-    navaids_points.specialnavigationsystem_pt.href AS systemchain_href
-from navaids_points.specialnavigationstation 
-inner join master_join mj2 on navaids_points.specialnavigationstation.id = mj2.source_id
-inner join navaids_points.specialnavigationstation_tsp on mj2.target_id = navaids_points.specialnavigationstation_tsp.id
-inner join navaids_points.specialnavigationstation_ts on navaids_points.specialnavigationstation_tsp.specialnavigationstationtimeslice_id = navaids_points.specialnavigationstation_ts.id
-left join navaids_points.specialnavigationsystem_pt on navaids_points.specialnavigationstation_ts.systemchain_id = navaids_points.specialnavigationsystem_pt.id
-where specialnavigationstation_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.specialnavigationstation.id,
-    navaids_points.specialnavigationstation_ts.id,
-    navaids_points.specialnavigationstation_tsp.id,
-    navaids_points.specialnavigationstation.identifier,
-    navaids_points.specialnavigationstation_ts.interpretation,
-    navaids_points.specialnavigationstation_ts.sequence_number,
-    navaids_points.specialnavigationstation_ts.correction_number,
-    navaids_points.specialnavigationstation_ts.valid_time_begin,
-    navaids_points.specialnavigationstation_ts.valid_time_end,
-    navaids_points.specialnavigationstation_ts.feature_lifetime_begin,
-    navaids_points.specialnavigationstation_ts.feature_lifetime_end,
-    navaids_points.specialnavigationstation_ts.name_value,
-    navaids_points.specialnavigationstation_ts.name_nilreason,
-    navaids_points.specialnavigationstation_ts.type_value,
-    navaids_points.specialnavigationstation_ts.type_nilreason,
-    navaids_points.specialnavigationstation_ts.emission_value,
-    navaids_points.specialnavigationstation_ts.emission_nilreason,
-    navaids_points.specialnavigationstation_ts.frequency_value,
-    navaids_points.specialnavigationstation_ts.frequency_uom,
-    navaids_points.specialnavigationstation_ts.frequency_nilreason,
-    navaids_points.specialnavigationsystem_pt.title,
-    navaids_points.specialnavigationsystem_pt.nilreason,
-    navaids_points.specialnavigationsystem_pt.href
-order by specialnavigationstation.identifier, specialnavigationstation_ts.sequence_number, specialnavigationstation_ts.correction_number DESC;
-create or replace view navaids_points.specialnavigationsystem_publisher_view as
-select distinct on (specialnavigationsystem.identifier,specialnavigationsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.specialnavigationsystem.id,
-    navaids_points.specialnavigationsystem_ts.id as ts_id,
-    navaids_points.specialnavigationsystem_tsp.id as tsp_id,
-    navaids_points.specialnavigationsystem.identifier,
-    navaids_points.specialnavigationsystem_ts.interpretation,
-    navaids_points.specialnavigationsystem_ts.sequence_number,
-    navaids_points.specialnavigationsystem_ts.correction_number,
-    navaids_points.specialnavigationsystem_ts.valid_time_begin,
-    navaids_points.specialnavigationsystem_ts.valid_time_end,
-    navaids_points.specialnavigationsystem_ts.feature_lifetime_begin,
-    navaids_points.specialnavigationsystem_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.specialnavigationsystem_ts.type_value as varchar), '(' || navaids_points.specialnavigationsystem_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.specialnavigationsystem_ts.designator_value as varchar), '(' || navaids_points.specialnavigationsystem_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.specialnavigationsystem_ts.name_value as varchar), '(' || navaids_points.specialnavigationsystem_ts.name_nilreason || ')') as name
-from navaids_points.specialnavigationsystem 
-inner join master_join mj2 on navaids_points.specialnavigationsystem.id = mj2.source_id
-inner join navaids_points.specialnavigationsystem_tsp on mj2.target_id = navaids_points.specialnavigationsystem_tsp.id
-inner join navaids_points.specialnavigationsystem_ts on navaids_points.specialnavigationsystem_tsp.specialnavigationsystemtimeslice_id = navaids_points.specialnavigationsystem_ts.id
-where specialnavigationsystem_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.specialnavigationsystem.id,
-    navaids_points.specialnavigationsystem_ts.id,
-    navaids_points.specialnavigationsystem_tsp.id,
-    navaids_points.specialnavigationsystem.identifier,
-    navaids_points.specialnavigationsystem_ts.interpretation,
-    navaids_points.specialnavigationsystem_ts.sequence_number,
-    navaids_points.specialnavigationsystem_ts.correction_number,
-    navaids_points.specialnavigationsystem_ts.valid_time_begin,
-    navaids_points.specialnavigationsystem_ts.valid_time_end,
-    navaids_points.specialnavigationsystem_ts.feature_lifetime_begin,
-    navaids_points.specialnavigationsystem_ts.feature_lifetime_end,
-    navaids_points.specialnavigationsystem_ts.type_value,
-    navaids_points.specialnavigationsystem_ts.type_nilreason,
-    navaids_points.specialnavigationsystem_ts.designator_value,
-    navaids_points.specialnavigationsystem_ts.designator_nilreason,
-    navaids_points.specialnavigationsystem_ts.name_value,
-    navaids_points.specialnavigationsystem_ts.name_nilreason
-order by specialnavigationsystem.identifier, specialnavigationsystem_ts.sequence_number, specialnavigationsystem_ts.correction_number DESC;
-create or replace view procedure.standardinstrumentarrival_publisher_view as
-select distinct on (standardinstrumentarrival.identifier,standardinstrumentarrival_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.standardinstrumentarrival.id,
-    procedure.standardinstrumentarrival_ts.id as ts_id,
-    procedure.standardinstrumentarrival_tsp.id as tsp_id,
-    procedure.standardinstrumentarrival.identifier,
-    procedure.standardinstrumentarrival_ts.interpretation,
-    procedure.standardinstrumentarrival_ts.sequence_number,
-    procedure.standardinstrumentarrival_ts.correction_number,
-    procedure.standardinstrumentarrival_ts.valid_time_begin,
-    procedure.standardinstrumentarrival_ts.valid_time_end,
-    procedure.standardinstrumentarrival_ts.feature_lifetime_begin,
-    procedure.standardinstrumentarrival_ts.feature_lifetime_end,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.communicationfailureinstruction_value as varchar), '(' || procedure.standardinstrumentarrival_ts.communicationfailureinstruction_nilreason || ')') as communicationfailureinstruction,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.instruction_value as varchar), '(' || procedure.standardinstrumentarrival_ts.instruction_nilreason || ')') as instruction,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.designcriteria_value as varchar), '(' || procedure.standardinstrumentarrival_ts.designcriteria_nilreason || ')') as designcriteria,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.codingstandard_value as varchar), '(' || procedure.standardinstrumentarrival_ts.codingstandard_nilreason || ')') as codingstandard,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.flightchecked_value as varchar), '(' || procedure.standardinstrumentarrival_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.name_value as varchar), '(' || procedure.standardinstrumentarrival_ts.name_nilreason || ')') as name,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.rnav_value as varchar), '(' || procedure.standardinstrumentarrival_ts.rnav_nilreason || ')') as rnav,
-    coalesce(cast(procedure.standardinstrumentarrival_ts.designator_value as varchar), '(' || procedure.standardinstrumentarrival_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS guidancefacilitynavaid,
-    navaids_points.navaid_pt.href AS guidancefacilitynavaid_href,
-    coalesce(cast(navaids_points.specialnavigationsystem_pt.title as varchar), '(' || navaids_points.specialnavigationsystem_pt.nilreason[1] || ')') AS guidancefacilityspecialnavigationsystem,
-    navaids_points.specialnavigationsystem_pt.href AS guidancefacilityspecialnavigationsystem_href,
-    coalesce(cast(surveillance.radarsystem_pt.title as varchar), '(' || surveillance.radarsystem_pt.nilreason[1] || ')') AS guidancefacilityradar,
-    surveillance.radarsystem_pt.href AS guidancefacilityradar_href,
-    coalesce(cast(procedure.safealtitudearea_pt.title as varchar), '(' || procedure.safealtitudearea_pt.nilreason[1] || ')') AS safealtitude,
-    procedure.safealtitudearea_pt.href AS safealtitude_href
-from procedure.standardinstrumentarrival 
-inner join master_join mj2 on procedure.standardinstrumentarrival.id = mj2.source_id
-inner join procedure.standardinstrumentarrival_tsp on mj2.target_id = procedure.standardinstrumentarrival_tsp.id
-inner join procedure.standardinstrumentarrival_ts on procedure.standardinstrumentarrival_tsp.standardinstrumentarrivaltimeslice_id = procedure.standardinstrumentarrival_ts.id
-left join navaids_points.navaid_pt on procedure.standardinstrumentarrival_ts.guidancefacilitynavaid_id = navaids_points.navaid_pt.id
-left join navaids_points.specialnavigationsystem_pt on procedure.standardinstrumentarrival_ts.guidancefacilityspecialnavigationsystem_id = navaids_points.specialnavigationsystem_pt.id
-left join surveillance.radarsystem_pt on procedure.standardinstrumentarrival_ts.guidancefacilityradar_id = surveillance.radarsystem_pt.id
-left join procedure.safealtitudearea_pt on procedure.standardinstrumentarrival_ts.safealtitude_id = procedure.safealtitudearea_pt.id
-where standardinstrumentarrival_ts.feature_status = 'APPROVED'
-group by
-    procedure.standardinstrumentarrival.id,
-    procedure.standardinstrumentarrival_ts.id,
-    procedure.standardinstrumentarrival_tsp.id,
-    procedure.standardinstrumentarrival.identifier,
-    procedure.standardinstrumentarrival_ts.interpretation,
-    procedure.standardinstrumentarrival_ts.sequence_number,
-    procedure.standardinstrumentarrival_ts.correction_number,
-    procedure.standardinstrumentarrival_ts.valid_time_begin,
-    procedure.standardinstrumentarrival_ts.valid_time_end,
-    procedure.standardinstrumentarrival_ts.feature_lifetime_begin,
-    procedure.standardinstrumentarrival_ts.feature_lifetime_end,
-    procedure.standardinstrumentarrival_ts.communicationfailureinstruction_value,
-    procedure.standardinstrumentarrival_ts.communicationfailureinstruction_nilreason,
-    procedure.standardinstrumentarrival_ts.instruction_value,
-    procedure.standardinstrumentarrival_ts.instruction_nilreason,
-    procedure.standardinstrumentarrival_ts.designcriteria_value,
-    procedure.standardinstrumentarrival_ts.designcriteria_nilreason,
-    procedure.standardinstrumentarrival_ts.codingstandard_value,
-    procedure.standardinstrumentarrival_ts.codingstandard_nilreason,
-    procedure.standardinstrumentarrival_ts.flightchecked_value,
-    procedure.standardinstrumentarrival_ts.flightchecked_nilreason,
-    procedure.standardinstrumentarrival_ts.name_value,
-    procedure.standardinstrumentarrival_ts.name_nilreason,
-    procedure.standardinstrumentarrival_ts.rnav_value,
-    procedure.standardinstrumentarrival_ts.rnav_nilreason,
-    procedure.standardinstrumentarrival_ts.designator_value,
-    procedure.standardinstrumentarrival_ts.designator_nilreason,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    navaids_points.specialnavigationsystem_pt.title,
-    navaids_points.specialnavigationsystem_pt.nilreason,
-    navaids_points.specialnavigationsystem_pt.href,
-    surveillance.radarsystem_pt.title,
-    surveillance.radarsystem_pt.nilreason,
-    surveillance.radarsystem_pt.href,
-    procedure.safealtitudearea_pt.title,
-    procedure.safealtitudearea_pt.nilreason,
-    procedure.safealtitudearea_pt.href
-order by standardinstrumentarrival.identifier, standardinstrumentarrival_ts.sequence_number, standardinstrumentarrival_ts.correction_number DESC;
-create or replace view procedure.standardinstrumentdeparture_publisher_view as
-select distinct on (standardinstrumentdeparture.identifier,standardinstrumentdeparture_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.standardinstrumentdeparture.id,
-    procedure.standardinstrumentdeparture_ts.id as ts_id,
-    procedure.standardinstrumentdeparture_tsp.id as tsp_id,
-    procedure.standardinstrumentdeparture.identifier,
-    procedure.standardinstrumentdeparture_ts.interpretation,
-    procedure.standardinstrumentdeparture_ts.sequence_number,
-    procedure.standardinstrumentdeparture_ts.correction_number,
-    procedure.standardinstrumentdeparture_ts.valid_time_begin,
-    procedure.standardinstrumentdeparture_ts.valid_time_end,
-    procedure.standardinstrumentdeparture_ts.feature_lifetime_begin,
-    procedure.standardinstrumentdeparture_ts.feature_lifetime_end,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.communicationfailureinstruction_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.communicationfailureinstruction_nilreason || ')') as communicationfailureinstruction,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.instruction_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.instruction_nilreason || ')') as instruction,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.designcriteria_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.designcriteria_nilreason || ')') as designcriteria,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.codingstandard_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.codingstandard_nilreason || ')') as codingstandard,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.flightchecked_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.name_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.name_nilreason || ')') as name,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.rnav_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.rnav_nilreason || ')') as rnav,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.designator_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(procedure.standardinstrumentdeparture_ts.contingencyroute_value as varchar), '(' || procedure.standardinstrumentdeparture_ts.contingencyroute_nilreason || ')') as contingencyroute,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS guidancefacilitynavaid,
-    navaids_points.navaid_pt.href AS guidancefacilitynavaid_href,
-    coalesce(cast(navaids_points.specialnavigationsystem_pt.title as varchar), '(' || navaids_points.specialnavigationsystem_pt.nilreason[1] || ')') AS guidancefacilityspecialnavigationsystem,
-    navaids_points.specialnavigationsystem_pt.href AS guidancefacilityspecialnavigationsystem_href,
-    coalesce(cast(surveillance.radarsystem_pt.title as varchar), '(' || surveillance.radarsystem_pt.nilreason[1] || ')') AS guidancefacilityradar,
-    surveillance.radarsystem_pt.href AS guidancefacilityradar_href,
-    coalesce(cast(procedure.safealtitudearea_pt.title as varchar), '(' || procedure.safealtitudearea_pt.nilreason[1] || ')') AS safealtitude,
-    procedure.safealtitudearea_pt.href AS safealtitude_href
-from procedure.standardinstrumentdeparture 
-inner join master_join mj2 on procedure.standardinstrumentdeparture.id = mj2.source_id
-inner join procedure.standardinstrumentdeparture_tsp on mj2.target_id = procedure.standardinstrumentdeparture_tsp.id
-inner join procedure.standardinstrumentdeparture_ts on procedure.standardinstrumentdeparture_tsp.standardinstrumentdeparturetimeslice_id = procedure.standardinstrumentdeparture_ts.id
-left join navaids_points.navaid_pt on procedure.standardinstrumentdeparture_ts.guidancefacilitynavaid_id = navaids_points.navaid_pt.id
-left join navaids_points.specialnavigationsystem_pt on procedure.standardinstrumentdeparture_ts.guidancefacilityspecialnavigationsystem_id = navaids_points.specialnavigationsystem_pt.id
-left join surveillance.radarsystem_pt on procedure.standardinstrumentdeparture_ts.guidancefacilityradar_id = surveillance.radarsystem_pt.id
-left join procedure.safealtitudearea_pt on procedure.standardinstrumentdeparture_ts.safealtitude_id = procedure.safealtitudearea_pt.id
-where standardinstrumentdeparture_ts.feature_status = 'APPROVED'
-group by
-    procedure.standardinstrumentdeparture.id,
-    procedure.standardinstrumentdeparture_ts.id,
-    procedure.standardinstrumentdeparture_tsp.id,
-    procedure.standardinstrumentdeparture.identifier,
-    procedure.standardinstrumentdeparture_ts.interpretation,
-    procedure.standardinstrumentdeparture_ts.sequence_number,
-    procedure.standardinstrumentdeparture_ts.correction_number,
-    procedure.standardinstrumentdeparture_ts.valid_time_begin,
-    procedure.standardinstrumentdeparture_ts.valid_time_end,
-    procedure.standardinstrumentdeparture_ts.feature_lifetime_begin,
-    procedure.standardinstrumentdeparture_ts.feature_lifetime_end,
-    procedure.standardinstrumentdeparture_ts.communicationfailureinstruction_value,
-    procedure.standardinstrumentdeparture_ts.communicationfailureinstruction_nilreason,
-    procedure.standardinstrumentdeparture_ts.instruction_value,
-    procedure.standardinstrumentdeparture_ts.instruction_nilreason,
-    procedure.standardinstrumentdeparture_ts.designcriteria_value,
-    procedure.standardinstrumentdeparture_ts.designcriteria_nilreason,
-    procedure.standardinstrumentdeparture_ts.codingstandard_value,
-    procedure.standardinstrumentdeparture_ts.codingstandard_nilreason,
-    procedure.standardinstrumentdeparture_ts.flightchecked_value,
-    procedure.standardinstrumentdeparture_ts.flightchecked_nilreason,
-    procedure.standardinstrumentdeparture_ts.name_value,
-    procedure.standardinstrumentdeparture_ts.name_nilreason,
-    procedure.standardinstrumentdeparture_ts.rnav_value,
-    procedure.standardinstrumentdeparture_ts.rnav_nilreason,
-    procedure.standardinstrumentdeparture_ts.designator_value,
-    procedure.standardinstrumentdeparture_ts.designator_nilreason,
-    procedure.standardinstrumentdeparture_ts.contingencyroute_value,
-    procedure.standardinstrumentdeparture_ts.contingencyroute_nilreason,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    navaids_points.specialnavigationsystem_pt.title,
-    navaids_points.specialnavigationsystem_pt.nilreason,
-    navaids_points.specialnavigationsystem_pt.href,
-    surveillance.radarsystem_pt.title,
-    surveillance.radarsystem_pt.nilreason,
-    surveillance.radarsystem_pt.href,
-    procedure.safealtitudearea_pt.title,
-    procedure.safealtitudearea_pt.nilreason,
-    procedure.safealtitudearea_pt.href
-order by standardinstrumentdeparture.identifier, standardinstrumentdeparture_ts.sequence_number, standardinstrumentdeparture_ts.correction_number DESC;
-create or replace view shared.standardlevelcolumn_publisher_view as
-select distinct on (standardlevelcolumn.identifier,standardlevelcolumn_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.standardlevelcolumn.id,
-    shared.standardlevelcolumn_ts.id as ts_id,
-    shared.standardlevelcolumn_tsp.id as tsp_id,
-    shared.standardlevelcolumn.identifier,
-    shared.standardlevelcolumn_ts.interpretation,
-    shared.standardlevelcolumn_ts.sequence_number,
-    shared.standardlevelcolumn_ts.correction_number,
-    shared.standardlevelcolumn_ts.valid_time_begin,
-    shared.standardlevelcolumn_ts.valid_time_end,
-    shared.standardlevelcolumn_ts.feature_lifetime_begin,
-    shared.standardlevelcolumn_ts.feature_lifetime_end,
-    coalesce(cast(shared.standardlevelcolumn_ts.series_value as varchar), '(' || shared.standardlevelcolumn_ts.series_nilreason || ')') as series,
-    coalesce(cast(shared.standardlevelcolumn_ts.separation_value as varchar), '(' || shared.standardlevelcolumn_ts.separation_nilreason || ')') as separation,
-    coalesce(cast(shared.standardleveltable_pt.title as varchar), '(' || shared.standardleveltable_pt.nilreason[1] || ')') AS leveltable,
-    shared.standardleveltable_pt.href AS leveltable_href
-from shared.standardlevelcolumn 
-inner join master_join mj2 on shared.standardlevelcolumn.id = mj2.source_id
-inner join shared.standardlevelcolumn_tsp on mj2.target_id = shared.standardlevelcolumn_tsp.id
-inner join shared.standardlevelcolumn_ts on shared.standardlevelcolumn_tsp.standardlevelcolumntimeslice_id = shared.standardlevelcolumn_ts.id
-left join shared.standardleveltable_pt on shared.standardlevelcolumn_ts.leveltable_id = shared.standardleveltable_pt.id
-where standardlevelcolumn_ts.feature_status = 'APPROVED'
-group by
-    shared.standardlevelcolumn.id,
-    shared.standardlevelcolumn_ts.id,
-    shared.standardlevelcolumn_tsp.id,
-    shared.standardlevelcolumn.identifier,
-    shared.standardlevelcolumn_ts.interpretation,
-    shared.standardlevelcolumn_ts.sequence_number,
-    shared.standardlevelcolumn_ts.correction_number,
-    shared.standardlevelcolumn_ts.valid_time_begin,
-    shared.standardlevelcolumn_ts.valid_time_end,
-    shared.standardlevelcolumn_ts.feature_lifetime_begin,
-    shared.standardlevelcolumn_ts.feature_lifetime_end,
-    shared.standardlevelcolumn_ts.series_value,
-    shared.standardlevelcolumn_ts.series_nilreason,
-    shared.standardlevelcolumn_ts.separation_value,
-    shared.standardlevelcolumn_ts.separation_nilreason,
-    shared.standardleveltable_pt.title,
-    shared.standardleveltable_pt.nilreason,
-    shared.standardleveltable_pt.href
-order by standardlevelcolumn.identifier, standardlevelcolumn_ts.sequence_number, standardlevelcolumn_ts.correction_number DESC;
-create or replace view shared.standardlevelsector_publisher_view as
-select distinct on (standardlevelsector.identifier,standardlevelsector_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.standardlevelsector.id,
-    shared.standardlevelsector_ts.id as ts_id,
-    shared.standardlevelsector_tsp.id as tsp_id,
-    shared.standardlevelsector.identifier,
-    shared.standardlevelsector_ts.interpretation,
-    shared.standardlevelsector_ts.sequence_number,
-    shared.standardlevelsector_ts.correction_number,
-    shared.standardlevelsector_ts.valid_time_begin,
-    shared.standardlevelsector_ts.valid_time_end,
-    shared.standardlevelsector_ts.feature_lifetime_begin,
-    shared.standardlevelsector_ts.feature_lifetime_end,
-    coalesce(cast(shared.standardlevelsector_ts.flightrule_value as varchar), '(' || shared.standardlevelsector_ts.flightrule_nilreason || ')') as flightrule,
-    coalesce(cast(shared.standardlevelsector_ts.fromtrack_value as varchar), '(' || shared.standardlevelsector_ts.fromtrack_nilreason || ')') as fromtrack,
-    coalesce(cast(shared.standardlevelsector_ts.totrack_value as varchar), '(' || shared.standardlevelsector_ts.totrack_nilreason || ')') as totrack,
-    coalesce(cast(shared.standardlevelsector_ts.angletype_value as varchar), '(' || shared.standardlevelsector_ts.angletype_nilreason || ')') as angletype,
-    coalesce(cast(shared.standardlevelcolumn_pt.title as varchar), '(' || shared.standardlevelcolumn_pt.nilreason[1] || ')') AS applicablelevelcolumn,
-    shared.standardlevelcolumn_pt.href AS applicablelevelcolumn_href
-from shared.standardlevelsector 
-inner join master_join mj2 on shared.standardlevelsector.id = mj2.source_id
-inner join shared.standardlevelsector_tsp on mj2.target_id = shared.standardlevelsector_tsp.id
-inner join shared.standardlevelsector_ts on shared.standardlevelsector_tsp.standardlevelsectortimeslice_id = shared.standardlevelsector_ts.id
-left join shared.standardlevelcolumn_pt on shared.standardlevelsector_ts.applicablelevelcolumn_id = shared.standardlevelcolumn_pt.id
-where standardlevelsector_ts.feature_status = 'APPROVED'
-group by
-    shared.standardlevelsector.id,
-    shared.standardlevelsector_ts.id,
-    shared.standardlevelsector_tsp.id,
-    shared.standardlevelsector.identifier,
-    shared.standardlevelsector_ts.interpretation,
-    shared.standardlevelsector_ts.sequence_number,
-    shared.standardlevelsector_ts.correction_number,
-    shared.standardlevelsector_ts.valid_time_begin,
-    shared.standardlevelsector_ts.valid_time_end,
-    shared.standardlevelsector_ts.feature_lifetime_begin,
-    shared.standardlevelsector_ts.feature_lifetime_end,
-    shared.standardlevelsector_ts.flightrule_value,
-    shared.standardlevelsector_ts.flightrule_nilreason,
-    shared.standardlevelsector_ts.fromtrack_value,
-    shared.standardlevelsector_ts.fromtrack_nilreason,
-    shared.standardlevelsector_ts.totrack_value,
-    shared.standardlevelsector_ts.totrack_nilreason,
-    shared.standardlevelsector_ts.angletype_value,
-    shared.standardlevelsector_ts.angletype_nilreason,
-    shared.standardlevelcolumn_pt.title,
-    shared.standardlevelcolumn_pt.nilreason,
-    shared.standardlevelcolumn_pt.href
-order by standardlevelsector.identifier, standardlevelsector_ts.sequence_number, standardlevelsector_ts.correction_number DESC;
-create or replace view shared.standardleveltable_publisher_view as
-select distinct on (standardleveltable.identifier,standardleveltable_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    shared.standardleveltable.id,
-    shared.standardleveltable_ts.id as ts_id,
-    shared.standardleveltable_tsp.id as tsp_id,
-    shared.standardleveltable.identifier,
-    shared.standardleveltable_ts.interpretation,
-    shared.standardleveltable_ts.sequence_number,
-    shared.standardleveltable_ts.correction_number,
-    shared.standardleveltable_ts.valid_time_begin,
-    shared.standardleveltable_ts.valid_time_end,
-    shared.standardleveltable_ts.feature_lifetime_begin,
-    shared.standardleveltable_ts.feature_lifetime_end,
-    coalesce(cast(shared.standardleveltable_ts.name_value as varchar), '(' || shared.standardleveltable_ts.name_nilreason || ')') as name,
-    coalesce(cast(shared.standardleveltable_ts.standardicao_value as varchar), '(' || shared.standardleveltable_ts.standardicao_nilreason || ')') as standardicao
-from shared.standardleveltable 
-inner join master_join mj2 on shared.standardleveltable.id = mj2.source_id
-inner join shared.standardleveltable_tsp on mj2.target_id = shared.standardleveltable_tsp.id
-inner join shared.standardleveltable_ts on shared.standardleveltable_tsp.standardleveltabletimeslice_id = shared.standardleveltable_ts.id
-where standardleveltable_ts.feature_status = 'APPROVED'
-group by
-    shared.standardleveltable.id,
-    shared.standardleveltable_ts.id,
-    shared.standardleveltable_tsp.id,
-    shared.standardleveltable.identifier,
-    shared.standardleveltable_ts.interpretation,
-    shared.standardleveltable_ts.sequence_number,
-    shared.standardleveltable_ts.correction_number,
-    shared.standardleveltable_ts.valid_time_begin,
-    shared.standardleveltable_ts.valid_time_end,
-    shared.standardleveltable_ts.feature_lifetime_begin,
-    shared.standardleveltable_ts.feature_lifetime_end,
-    shared.standardleveltable_ts.name_value,
-    shared.standardleveltable_ts.name_nilreason,
-    shared.standardleveltable_ts.standardicao_value,
-    shared.standardleveltable_ts.standardicao_nilreason
-order by standardleveltable.identifier, standardleveltable_ts.sequence_number, standardleveltable_ts.correction_number DESC;
-create or replace view airport_heliport.standmarking_publisher_view as
-select distinct on (standmarking.identifier,standmarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.standmarking.id,
-    airport_heliport.standmarking_ts.id as ts_id,
-    airport_heliport.standmarking_tsp.id as tsp_id,
-    airport_heliport.standmarking.identifier,
-    airport_heliport.standmarking_ts.interpretation,
-    airport_heliport.standmarking_ts.sequence_number,
-    airport_heliport.standmarking_ts.correction_number,
-    airport_heliport.standmarking_ts.valid_time_begin,
-    airport_heliport.standmarking_ts.valid_time_end,
-    airport_heliport.standmarking_ts.feature_lifetime_begin,
-    airport_heliport.standmarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.standmarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.standmarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.standmarking_ts.condition_value as varchar), '(' || airport_heliport.standmarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.aircraftstand_pt.title as varchar), '(' || airport_heliport.aircraftstand_pt.nilreason[1] || ')') AS markedstand,
-    airport_heliport.aircraftstand_pt.href AS markedstand_href
-from airport_heliport.standmarking 
-inner join master_join mj2 on airport_heliport.standmarking.id = mj2.source_id
-inner join airport_heliport.standmarking_tsp on mj2.target_id = airport_heliport.standmarking_tsp.id
-inner join airport_heliport.standmarking_ts on airport_heliport.standmarking_tsp.standmarkingtimeslice_id = airport_heliport.standmarking_ts.id
-left join airport_heliport.aircraftstand_pt on airport_heliport.standmarking_ts.markedstand_id = airport_heliport.aircraftstand_pt.id
-where standmarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.standmarking.id,
-    airport_heliport.standmarking_ts.id,
-    airport_heliport.standmarking_tsp.id,
-    airport_heliport.standmarking.identifier,
-    airport_heliport.standmarking_ts.interpretation,
-    airport_heliport.standmarking_ts.sequence_number,
-    airport_heliport.standmarking_ts.correction_number,
-    airport_heliport.standmarking_ts.valid_time_begin,
-    airport_heliport.standmarking_ts.valid_time_end,
-    airport_heliport.standmarking_ts.feature_lifetime_begin,
-    airport_heliport.standmarking_ts.feature_lifetime_end,
-    airport_heliport.standmarking_ts.markingicaostandard_value,
-    airport_heliport.standmarking_ts.markingicaostandard_nilreason,
-    airport_heliport.standmarking_ts.condition_value,
-    airport_heliport.standmarking_ts.condition_nilreason,
-    airport_heliport.aircraftstand_pt.title,
-    airport_heliport.aircraftstand_pt.nilreason,
-    airport_heliport.aircraftstand_pt.href
-order by standmarking.identifier, standmarking_ts.sequence_number, standmarking_ts.correction_number DESC;
-create or replace view airport_heliport.surveycontrolpoint_publisher_view as
-select distinct on (surveycontrolpoint.identifier,surveycontrolpoint_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.surveycontrolpoint.id,
-    airport_heliport.surveycontrolpoint_ts.id as ts_id,
-    airport_heliport.surveycontrolpoint_tsp.id as tsp_id,
-    airport_heliport.surveycontrolpoint.identifier,
-    airport_heliport.surveycontrolpoint_ts.interpretation,
-    airport_heliport.surveycontrolpoint_ts.sequence_number,
-    airport_heliport.surveycontrolpoint_ts.correction_number,
-    airport_heliport.surveycontrolpoint_ts.valid_time_begin,
-    airport_heliport.surveycontrolpoint_ts.valid_time_end,
-    airport_heliport.surveycontrolpoint_ts.feature_lifetime_begin,
-    airport_heliport.surveycontrolpoint_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.surveycontrolpoint_ts.designator_value as varchar), '(' || airport_heliport.surveycontrolpoint_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.surveycontrolpoint 
-inner join master_join mj2 on airport_heliport.surveycontrolpoint.id = mj2.source_id
-inner join airport_heliport.surveycontrolpoint_tsp on mj2.target_id = airport_heliport.surveycontrolpoint_tsp.id
-inner join airport_heliport.surveycontrolpoint_ts on airport_heliport.surveycontrolpoint_tsp.surveycontrolpointtimeslice_id = airport_heliport.surveycontrolpoint_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.surveycontrolpoint_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where surveycontrolpoint_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.surveycontrolpoint.id,
-    airport_heliport.surveycontrolpoint_ts.id,
-    airport_heliport.surveycontrolpoint_tsp.id,
-    airport_heliport.surveycontrolpoint.identifier,
-    airport_heliport.surveycontrolpoint_ts.interpretation,
-    airport_heliport.surveycontrolpoint_ts.sequence_number,
-    airport_heliport.surveycontrolpoint_ts.correction_number,
-    airport_heliport.surveycontrolpoint_ts.valid_time_begin,
-    airport_heliport.surveycontrolpoint_ts.valid_time_end,
-    airport_heliport.surveycontrolpoint_ts.feature_lifetime_begin,
-    airport_heliport.surveycontrolpoint_ts.feature_lifetime_end,
-    airport_heliport.surveycontrolpoint_ts.designator_value,
-    airport_heliport.surveycontrolpoint_ts.designator_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by surveycontrolpoint.identifier, surveycontrolpoint_ts.sequence_number, surveycontrolpoint_ts.correction_number DESC;
-create or replace view navaids_points.tacan_publisher_view as
-select distinct on (tacan.identifier,tacan_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.tacan.id,
-    navaids_points.tacan_ts.id as ts_id,
-    navaids_points.tacan_tsp.id as tsp_id,
-    navaids_points.tacan.identifier,
-    navaids_points.tacan_ts.interpretation,
-    navaids_points.tacan_ts.sequence_number,
-    navaids_points.tacan_ts.correction_number,
-    navaids_points.tacan_ts.valid_time_begin,
-    navaids_points.tacan_ts.valid_time_end,
-    navaids_points.tacan_ts.feature_lifetime_begin,
-    navaids_points.tacan_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.tacan_ts.designator_value as varchar), '(' || navaids_points.tacan_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.tacan_ts.name_value as varchar), '(' || navaids_points.tacan_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.tacan_ts.emissionclass_value as varchar), '(' || navaids_points.tacan_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.tacan_ts.mobile_value as varchar), '(' || navaids_points.tacan_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.tacan_ts.magneticvariation_value as varchar), '(' || navaids_points.tacan_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.tacan_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.tacan_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.tacan_ts.datemagneticvariation_value as varchar), '(' || navaids_points.tacan_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.tacan_ts.flightchecked_value as varchar), '(' || navaids_points.tacan_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.tacan_ts.channel_value as varchar), '(' || navaids_points.tacan_ts.channel_nilreason || ')') as channel,
-    coalesce(cast(navaids_points.tacan_ts.declination_value as varchar), '(' || navaids_points.tacan_ts.declination_nilreason || ')') as declination
-from navaids_points.tacan 
-inner join master_join mj2 on navaids_points.tacan.id = mj2.source_id
-inner join navaids_points.tacan_tsp on mj2.target_id = navaids_points.tacan_tsp.id
-inner join navaids_points.tacan_ts on navaids_points.tacan_tsp.tacantimeslice_id = navaids_points.tacan_ts.id
-where tacan_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.tacan.id,
-    navaids_points.tacan_ts.id,
-    navaids_points.tacan_tsp.id,
-    navaids_points.tacan.identifier,
-    navaids_points.tacan_ts.interpretation,
-    navaids_points.tacan_ts.sequence_number,
-    navaids_points.tacan_ts.correction_number,
-    navaids_points.tacan_ts.valid_time_begin,
-    navaids_points.tacan_ts.valid_time_end,
-    navaids_points.tacan_ts.feature_lifetime_begin,
-    navaids_points.tacan_ts.feature_lifetime_end,
-    navaids_points.tacan_ts.designator_value,
-    navaids_points.tacan_ts.designator_nilreason,
-    navaids_points.tacan_ts.name_value,
-    navaids_points.tacan_ts.name_nilreason,
-    navaids_points.tacan_ts.emissionclass_value,
-    navaids_points.tacan_ts.emissionclass_nilreason,
-    navaids_points.tacan_ts.mobile_value,
-    navaids_points.tacan_ts.mobile_nilreason,
-    navaids_points.tacan_ts.magneticvariation_value,
-    navaids_points.tacan_ts.magneticvariation_nilreason,
-    navaids_points.tacan_ts.magneticvariationaccuracy_value,
-    navaids_points.tacan_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.tacan_ts.datemagneticvariation_value,
-    navaids_points.tacan_ts.datemagneticvariation_nilreason,
-    navaids_points.tacan_ts.flightchecked_value,
-    navaids_points.tacan_ts.flightchecked_nilreason,
-    navaids_points.tacan_ts.channel_value,
-    navaids_points.tacan_ts.channel_nilreason,
-    navaids_points.tacan_ts.declination_value,
-    navaids_points.tacan_ts.declination_nilreason
-order by tacan.identifier, tacan_ts.sequence_number, tacan_ts.correction_number DESC;
-create or replace view airport_heliport.taxiholdingpositionlightsystem_publisher_view as
-select distinct on (taxiholdingpositionlightsystem.identifier,taxiholdingpositionlightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiholdingpositionlightsystem.id,
-    airport_heliport.taxiholdingpositionlightsystem_ts.id as ts_id,
-    airport_heliport.taxiholdingpositionlightsystem_tsp.id as tsp_id,
-    airport_heliport.taxiholdingpositionlightsystem.identifier,
-    airport_heliport.taxiholdingpositionlightsystem_ts.interpretation,
-    airport_heliport.taxiholdingpositionlightsystem_ts.sequence_number,
-    airport_heliport.taxiholdingpositionlightsystem_ts.correction_number,
-    airport_heliport.taxiholdingpositionlightsystem_ts.valid_time_begin,
-    airport_heliport.taxiholdingpositionlightsystem_ts.valid_time_end,
-    airport_heliport.taxiholdingpositionlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingpositionlightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiholdingpositionlightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.taxiholdingpositionlightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.taxiholdingpositionlightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.taxiholdingpositionlightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.taxiholdingpositionlightsystem_ts.colour_value as varchar), '(' || airport_heliport.taxiholdingpositionlightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.taxiholdingpositionlightsystem_ts.type_value as varchar), '(' || airport_heliport.taxiholdingpositionlightsystem_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.taxiholdingposition_pt.title as varchar), '(' || airport_heliport.taxiholdingposition_pt.nilreason[1] || ')') AS taxiholding,
-    airport_heliport.taxiholdingposition_pt.href AS taxiholding_href
-from airport_heliport.taxiholdingpositionlightsystem 
-inner join master_join mj2 on airport_heliport.taxiholdingpositionlightsystem.id = mj2.source_id
-inner join airport_heliport.taxiholdingpositionlightsystem_tsp on mj2.target_id = airport_heliport.taxiholdingpositionlightsystem_tsp.id
-inner join airport_heliport.taxiholdingpositionlightsystem_ts on airport_heliport.taxiholdingpositionlightsystem_tsp.taxiholdingpositionlightsystemtimeslice_id = airport_heliport.taxiholdingpositionlightsystem_ts.id
-left join airport_heliport.taxiholdingposition_pt on airport_heliport.taxiholdingpositionlightsystem_ts.taxiholding_id = airport_heliport.taxiholdingposition_pt.id
-where taxiholdingpositionlightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiholdingpositionlightsystem.id,
-    airport_heliport.taxiholdingpositionlightsystem_ts.id,
-    airport_heliport.taxiholdingpositionlightsystem_tsp.id,
-    airport_heliport.taxiholdingpositionlightsystem.identifier,
-    airport_heliport.taxiholdingpositionlightsystem_ts.interpretation,
-    airport_heliport.taxiholdingpositionlightsystem_ts.sequence_number,
-    airport_heliport.taxiholdingpositionlightsystem_ts.correction_number,
-    airport_heliport.taxiholdingpositionlightsystem_ts.valid_time_begin,
-    airport_heliport.taxiholdingpositionlightsystem_ts.valid_time_end,
-    airport_heliport.taxiholdingpositionlightsystem_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingpositionlightsystem_ts.feature_lifetime_end,
-    airport_heliport.taxiholdingpositionlightsystem_ts.emergencylighting_value,
-    airport_heliport.taxiholdingpositionlightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.taxiholdingpositionlightsystem_ts.intensitylevel_value,
-    airport_heliport.taxiholdingpositionlightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.taxiholdingpositionlightsystem_ts.colour_value,
-    airport_heliport.taxiholdingpositionlightsystem_ts.colour_nilreason,
-    airport_heliport.taxiholdingpositionlightsystem_ts.type_value,
-    airport_heliport.taxiholdingpositionlightsystem_ts.type_nilreason,
-    airport_heliport.taxiholdingposition_pt.title,
-    airport_heliport.taxiholdingposition_pt.nilreason,
-    airport_heliport.taxiholdingposition_pt.href
-order by taxiholdingpositionlightsystem.identifier, taxiholdingpositionlightsystem_ts.sequence_number, taxiholdingpositionlightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.taxiholdingpositionmarking_publisher_view as
-select distinct on (taxiholdingpositionmarking.identifier,taxiholdingpositionmarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiholdingpositionmarking.id,
-    airport_heliport.taxiholdingpositionmarking_ts.id as ts_id,
-    airport_heliport.taxiholdingpositionmarking_tsp.id as tsp_id,
-    airport_heliport.taxiholdingpositionmarking.identifier,
-    airport_heliport.taxiholdingpositionmarking_ts.interpretation,
-    airport_heliport.taxiholdingpositionmarking_ts.sequence_number,
-    airport_heliport.taxiholdingpositionmarking_ts.correction_number,
-    airport_heliport.taxiholdingpositionmarking_ts.valid_time_begin,
-    airport_heliport.taxiholdingpositionmarking_ts.valid_time_end,
-    airport_heliport.taxiholdingpositionmarking_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingpositionmarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiholdingpositionmarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.taxiholdingpositionmarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.taxiholdingpositionmarking_ts.condition_value as varchar), '(' || airport_heliport.taxiholdingpositionmarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.taxiholdingposition_pt.title as varchar), '(' || airport_heliport.taxiholdingposition_pt.nilreason[1] || ')') AS markedtaxihold,
-    airport_heliport.taxiholdingposition_pt.href AS markedtaxihold_href
-from airport_heliport.taxiholdingpositionmarking 
-inner join master_join mj2 on airport_heliport.taxiholdingpositionmarking.id = mj2.source_id
-inner join airport_heliport.taxiholdingpositionmarking_tsp on mj2.target_id = airport_heliport.taxiholdingpositionmarking_tsp.id
-inner join airport_heliport.taxiholdingpositionmarking_ts on airport_heliport.taxiholdingpositionmarking_tsp.taxiholdingpositionmarkingtimeslice_id = airport_heliport.taxiholdingpositionmarking_ts.id
-left join airport_heliport.taxiholdingposition_pt on airport_heliport.taxiholdingpositionmarking_ts.markedtaxihold_id = airport_heliport.taxiholdingposition_pt.id
-where taxiholdingpositionmarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiholdingpositionmarking.id,
-    airport_heliport.taxiholdingpositionmarking_ts.id,
-    airport_heliport.taxiholdingpositionmarking_tsp.id,
-    airport_heliport.taxiholdingpositionmarking.identifier,
-    airport_heliport.taxiholdingpositionmarking_ts.interpretation,
-    airport_heliport.taxiholdingpositionmarking_ts.sequence_number,
-    airport_heliport.taxiholdingpositionmarking_ts.correction_number,
-    airport_heliport.taxiholdingpositionmarking_ts.valid_time_begin,
-    airport_heliport.taxiholdingpositionmarking_ts.valid_time_end,
-    airport_heliport.taxiholdingpositionmarking_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingpositionmarking_ts.feature_lifetime_end,
-    airport_heliport.taxiholdingpositionmarking_ts.markingicaostandard_value,
-    airport_heliport.taxiholdingpositionmarking_ts.markingicaostandard_nilreason,
-    airport_heliport.taxiholdingpositionmarking_ts.condition_value,
-    airport_heliport.taxiholdingpositionmarking_ts.condition_nilreason,
-    airport_heliport.taxiholdingposition_pt.title,
-    airport_heliport.taxiholdingposition_pt.nilreason,
-    airport_heliport.taxiholdingposition_pt.href
-order by taxiholdingpositionmarking.identifier, taxiholdingpositionmarking_ts.sequence_number, taxiholdingpositionmarking_ts.correction_number DESC;
-create or replace view airport_heliport.taxiholdingposition_publisher_view as
-select distinct on (taxiholdingposition.identifier,taxiholdingposition_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiholdingposition.id,
-    airport_heliport.taxiholdingposition_ts.id as ts_id,
-    airport_heliport.taxiholdingposition_tsp.id as tsp_id,
-    airport_heliport.taxiholdingposition.identifier,
-    airport_heliport.taxiholdingposition_ts.interpretation,
-    airport_heliport.taxiholdingposition_ts.sequence_number,
-    airport_heliport.taxiholdingposition_ts.correction_number,
-    airport_heliport.taxiholdingposition_ts.valid_time_begin,
-    airport_heliport.taxiholdingposition_ts.valid_time_end,
-    airport_heliport.taxiholdingposition_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingposition_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiholdingposition_ts.landingcategory_value as varchar), '(' || airport_heliport.taxiholdingposition_ts.landingcategory_nilreason || ')') as landingcategory,
-    coalesce(cast(airport_heliport.taxiholdingposition_ts.status_value as varchar), '(' || airport_heliport.taxiholdingposition_ts.status_nilreason || ')') as status,
-    coalesce(cast(airport_heliport.guidanceline_pt.title as varchar), '(' || airport_heliport.guidanceline_pt.nilreason[1] || ')') AS associatedguidanceline,
-    airport_heliport.guidanceline_pt.href AS associatedguidanceline_href
-from airport_heliport.taxiholdingposition 
-inner join master_join mj2 on airport_heliport.taxiholdingposition.id = mj2.source_id
-inner join airport_heliport.taxiholdingposition_tsp on mj2.target_id = airport_heliport.taxiholdingposition_tsp.id
-inner join airport_heliport.taxiholdingposition_ts on airport_heliport.taxiholdingposition_tsp.taxiholdingpositiontimeslice_id = airport_heliport.taxiholdingposition_ts.id
-left join airport_heliport.guidanceline_pt on airport_heliport.taxiholdingposition_ts.associatedguidanceline_id = airport_heliport.guidanceline_pt.id
-where taxiholdingposition_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiholdingposition.id,
-    airport_heliport.taxiholdingposition_ts.id,
-    airport_heliport.taxiholdingposition_tsp.id,
-    airport_heliport.taxiholdingposition.identifier,
-    airport_heliport.taxiholdingposition_ts.interpretation,
-    airport_heliport.taxiholdingposition_ts.sequence_number,
-    airport_heliport.taxiholdingposition_ts.correction_number,
-    airport_heliport.taxiholdingposition_ts.valid_time_begin,
-    airport_heliport.taxiholdingposition_ts.valid_time_end,
-    airport_heliport.taxiholdingposition_ts.feature_lifetime_begin,
-    airport_heliport.taxiholdingposition_ts.feature_lifetime_end,
-    airport_heliport.taxiholdingposition_ts.landingcategory_value,
-    airport_heliport.taxiholdingposition_ts.landingcategory_nilreason,
-    airport_heliport.taxiholdingposition_ts.status_value,
-    airport_heliport.taxiholdingposition_ts.status_nilreason,
-    airport_heliport.guidanceline_pt.title,
-    airport_heliport.guidanceline_pt.nilreason,
-    airport_heliport.guidanceline_pt.href
-order by taxiholdingposition.identifier, taxiholdingposition_ts.sequence_number, taxiholdingposition_ts.correction_number DESC;
-create or replace view airport_heliport.taxiwayelement_publisher_view as
-select distinct on (taxiwayelement.identifier,taxiwayelement_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiwayelement.id,
-    airport_heliport.taxiwayelement_ts.id as ts_id,
-    airport_heliport.taxiwayelement_tsp.id as tsp_id,
-    airport_heliport.taxiwayelement.identifier,
-    airport_heliport.taxiwayelement_ts.interpretation,
-    airport_heliport.taxiwayelement_ts.sequence_number,
-    airport_heliport.taxiwayelement_ts.correction_number,
-    airport_heliport.taxiwayelement_ts.valid_time_begin,
-    airport_heliport.taxiwayelement_ts.valid_time_end,
-    airport_heliport.taxiwayelement_ts.feature_lifetime_begin,
-    airport_heliport.taxiwayelement_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiwayelement_ts.type_value as varchar), '(' || airport_heliport.taxiwayelement_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.taxiwayelement_ts.gradeseparation_value as varchar), '(' || airport_heliport.taxiwayelement_ts.gradeseparation_nilreason || ')') as gradeseparation,
-    coalesce(cast(airport_heliport.taxiwayelement_ts.length_value as varchar) || ' ' || airport_heliport.taxiwayelement_ts.length_uom, '(' || airport_heliport.taxiwayelement_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.taxiwayelement_ts.width_value as varchar) || ' ' || airport_heliport.taxiwayelement_ts.width_uom, '(' || airport_heliport.taxiwayelement_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.taxiway_pt.title as varchar), '(' || airport_heliport.taxiway_pt.nilreason[1] || ')') AS associatedtaxiway,
-    airport_heliport.taxiway_pt.href AS associatedtaxiway_href
-from airport_heliport.taxiwayelement 
-inner join master_join mj2 on airport_heliport.taxiwayelement.id = mj2.source_id
-inner join airport_heliport.taxiwayelement_tsp on mj2.target_id = airport_heliport.taxiwayelement_tsp.id
-inner join airport_heliport.taxiwayelement_ts on airport_heliport.taxiwayelement_tsp.taxiwayelementtimeslice_id = airport_heliport.taxiwayelement_ts.id
-left join airport_heliport.taxiway_pt on airport_heliport.taxiwayelement_ts.associatedtaxiway_id = airport_heliport.taxiway_pt.id
-where taxiwayelement_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiwayelement.id,
-    airport_heliport.taxiwayelement_ts.id,
-    airport_heliport.taxiwayelement_tsp.id,
-    airport_heliport.taxiwayelement.identifier,
-    airport_heliport.taxiwayelement_ts.interpretation,
-    airport_heliport.taxiwayelement_ts.sequence_number,
-    airport_heliport.taxiwayelement_ts.correction_number,
-    airport_heliport.taxiwayelement_ts.valid_time_begin,
-    airport_heliport.taxiwayelement_ts.valid_time_end,
-    airport_heliport.taxiwayelement_ts.feature_lifetime_begin,
-    airport_heliport.taxiwayelement_ts.feature_lifetime_end,
-    airport_heliport.taxiwayelement_ts.type_value,
-    airport_heliport.taxiwayelement_ts.type_nilreason,
-    airport_heliport.taxiwayelement_ts.gradeseparation_value,
-    airport_heliport.taxiwayelement_ts.gradeseparation_nilreason,
-    airport_heliport.taxiwayelement_ts.length_value,
-    airport_heliport.taxiwayelement_ts.length_uom,
-    airport_heliport.taxiwayelement_ts.length_nilreason,
-    airport_heliport.taxiwayelement_ts.width_value,
-    airport_heliport.taxiwayelement_ts.width_uom,
-    airport_heliport.taxiwayelement_ts.width_nilreason,
-    airport_heliport.taxiway_pt.title,
-    airport_heliport.taxiway_pt.nilreason,
-    airport_heliport.taxiway_pt.href
-order by taxiwayelement.identifier, taxiwayelement_ts.sequence_number, taxiwayelement_ts.correction_number DESC;
-create or replace view airport_heliport.taxiwaylightsystem_publisher_view as
-select distinct on (taxiwaylightsystem.identifier,taxiwaylightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiwaylightsystem.id,
-    airport_heliport.taxiwaylightsystem_ts.id as ts_id,
-    airport_heliport.taxiwaylightsystem_tsp.id as tsp_id,
-    airport_heliport.taxiwaylightsystem.identifier,
-    airport_heliport.taxiwaylightsystem_ts.interpretation,
-    airport_heliport.taxiwaylightsystem_ts.sequence_number,
-    airport_heliport.taxiwaylightsystem_ts.correction_number,
-    airport_heliport.taxiwaylightsystem_ts.valid_time_begin,
-    airport_heliport.taxiwaylightsystem_ts.valid_time_end,
-    airport_heliport.taxiwaylightsystem_ts.feature_lifetime_begin,
-    airport_heliport.taxiwaylightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiwaylightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.taxiwaylightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.taxiwaylightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.taxiwaylightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.taxiwaylightsystem_ts.colour_value as varchar), '(' || airport_heliport.taxiwaylightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.taxiwaylightsystem_ts.position_value as varchar), '(' || airport_heliport.taxiwaylightsystem_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.taxiway_pt.title as varchar), '(' || airport_heliport.taxiway_pt.nilreason[1] || ')') AS lightedtaxiway,
-    airport_heliport.taxiway_pt.href AS lightedtaxiway_href
-from airport_heliport.taxiwaylightsystem 
-inner join master_join mj2 on airport_heliport.taxiwaylightsystem.id = mj2.source_id
-inner join airport_heliport.taxiwaylightsystem_tsp on mj2.target_id = airport_heliport.taxiwaylightsystem_tsp.id
-inner join airport_heliport.taxiwaylightsystem_ts on airport_heliport.taxiwaylightsystem_tsp.taxiwaylightsystemtimeslice_id = airport_heliport.taxiwaylightsystem_ts.id
-left join airport_heliport.taxiway_pt on airport_heliport.taxiwaylightsystem_ts.lightedtaxiway_id = airport_heliport.taxiway_pt.id
-where taxiwaylightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiwaylightsystem.id,
-    airport_heliport.taxiwaylightsystem_ts.id,
-    airport_heliport.taxiwaylightsystem_tsp.id,
-    airport_heliport.taxiwaylightsystem.identifier,
-    airport_heliport.taxiwaylightsystem_ts.interpretation,
-    airport_heliport.taxiwaylightsystem_ts.sequence_number,
-    airport_heliport.taxiwaylightsystem_ts.correction_number,
-    airport_heliport.taxiwaylightsystem_ts.valid_time_begin,
-    airport_heliport.taxiwaylightsystem_ts.valid_time_end,
-    airport_heliport.taxiwaylightsystem_ts.feature_lifetime_begin,
-    airport_heliport.taxiwaylightsystem_ts.feature_lifetime_end,
-    airport_heliport.taxiwaylightsystem_ts.emergencylighting_value,
-    airport_heliport.taxiwaylightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.taxiwaylightsystem_ts.intensitylevel_value,
-    airport_heliport.taxiwaylightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.taxiwaylightsystem_ts.colour_value,
-    airport_heliport.taxiwaylightsystem_ts.colour_nilreason,
-    airport_heliport.taxiwaylightsystem_ts.position_value,
-    airport_heliport.taxiwaylightsystem_ts.position_nilreason,
-    airport_heliport.taxiway_pt.title,
-    airport_heliport.taxiway_pt.nilreason,
-    airport_heliport.taxiway_pt.href
-order by taxiwaylightsystem.identifier, taxiwaylightsystem_ts.sequence_number, taxiwaylightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.taxiwaymarking_publisher_view as
-select distinct on (taxiwaymarking.identifier,taxiwaymarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiwaymarking.id,
-    airport_heliport.taxiwaymarking_ts.id as ts_id,
-    airport_heliport.taxiwaymarking_tsp.id as tsp_id,
-    airport_heliport.taxiwaymarking.identifier,
-    airport_heliport.taxiwaymarking_ts.interpretation,
-    airport_heliport.taxiwaymarking_ts.sequence_number,
-    airport_heliport.taxiwaymarking_ts.correction_number,
-    airport_heliport.taxiwaymarking_ts.valid_time_begin,
-    airport_heliport.taxiwaymarking_ts.valid_time_end,
-    airport_heliport.taxiwaymarking_ts.feature_lifetime_begin,
-    airport_heliport.taxiwaymarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiwaymarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.taxiwaymarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.taxiwaymarking_ts.condition_value as varchar), '(' || airport_heliport.taxiwaymarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.taxiwaymarking_ts.markinglocation_value as varchar), '(' || airport_heliport.taxiwaymarking_ts.markinglocation_nilreason || ')') as markinglocation,
-    coalesce(cast(airport_heliport.taxiway_pt.title as varchar), '(' || airport_heliport.taxiway_pt.nilreason[1] || ')') AS markedtaxiway,
-    airport_heliport.taxiway_pt.href AS markedtaxiway_href,
-    coalesce(cast(airport_heliport.taxiwayelement_pt.title as varchar), '(' || airport_heliport.taxiwayelement_pt.nilreason[1] || ')') AS markedelement,
-    airport_heliport.taxiwayelement_pt.href AS markedelement_href
-from airport_heliport.taxiwaymarking 
-inner join master_join mj2 on airport_heliport.taxiwaymarking.id = mj2.source_id
-inner join airport_heliport.taxiwaymarking_tsp on mj2.target_id = airport_heliport.taxiwaymarking_tsp.id
-inner join airport_heliport.taxiwaymarking_ts on airport_heliport.taxiwaymarking_tsp.taxiwaymarkingtimeslice_id = airport_heliport.taxiwaymarking_ts.id
-left join airport_heliport.taxiway_pt on airport_heliport.taxiwaymarking_ts.markedtaxiway_id = airport_heliport.taxiway_pt.id
-left join airport_heliport.taxiwayelement_pt on airport_heliport.taxiwaymarking_ts.markedelement_id = airport_heliport.taxiwayelement_pt.id
-where taxiwaymarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiwaymarking.id,
-    airport_heliport.taxiwaymarking_ts.id,
-    airport_heliport.taxiwaymarking_tsp.id,
-    airport_heliport.taxiwaymarking.identifier,
-    airport_heliport.taxiwaymarking_ts.interpretation,
-    airport_heliport.taxiwaymarking_ts.sequence_number,
-    airport_heliport.taxiwaymarking_ts.correction_number,
-    airport_heliport.taxiwaymarking_ts.valid_time_begin,
-    airport_heliport.taxiwaymarking_ts.valid_time_end,
-    airport_heliport.taxiwaymarking_ts.feature_lifetime_begin,
-    airport_heliport.taxiwaymarking_ts.feature_lifetime_end,
-    airport_heliport.taxiwaymarking_ts.markingicaostandard_value,
-    airport_heliport.taxiwaymarking_ts.markingicaostandard_nilreason,
-    airport_heliport.taxiwaymarking_ts.condition_value,
-    airport_heliport.taxiwaymarking_ts.condition_nilreason,
-    airport_heliport.taxiwaymarking_ts.markinglocation_value,
-    airport_heliport.taxiwaymarking_ts.markinglocation_nilreason,
-    airport_heliport.taxiway_pt.title,
-    airport_heliport.taxiway_pt.nilreason,
-    airport_heliport.taxiway_pt.href,
-    airport_heliport.taxiwayelement_pt.title,
-    airport_heliport.taxiwayelement_pt.nilreason,
-    airport_heliport.taxiwayelement_pt.href
-order by taxiwaymarking.identifier, taxiwaymarking_ts.sequence_number, taxiwaymarking_ts.correction_number DESC;
-create or replace view airport_heliport.taxiway_publisher_view as
-select distinct on (taxiway.identifier,taxiway_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.taxiway.id,
-    airport_heliport.taxiway_ts.id as ts_id,
-    airport_heliport.taxiway_tsp.id as tsp_id,
-    airport_heliport.taxiway.identifier,
-    airport_heliport.taxiway_ts.interpretation,
-    airport_heliport.taxiway_ts.sequence_number,
-    airport_heliport.taxiway_ts.correction_number,
-    airport_heliport.taxiway_ts.valid_time_begin,
-    airport_heliport.taxiway_ts.valid_time_end,
-    airport_heliport.taxiway_ts.feature_lifetime_begin,
-    airport_heliport.taxiway_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.taxiway_ts.designator_value as varchar), '(' || airport_heliport.taxiway_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.taxiway_ts.type_value as varchar), '(' || airport_heliport.taxiway_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.taxiway_ts.abandoned_value as varchar), '(' || airport_heliport.taxiway_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.taxiway_ts.width_value as varchar) || ' ' || airport_heliport.taxiway_ts.width_uom, '(' || airport_heliport.taxiway_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.taxiway_ts.widthshoulder_value as varchar) || ' ' || airport_heliport.taxiway_ts.widthshoulder_uom, '(' || airport_heliport.taxiway_ts.widthshoulder_nilreason || ')') as widthshoulder,
-    coalesce(cast(airport_heliport.taxiway_ts.length_value as varchar) || ' ' || airport_heliport.taxiway_ts.length_uom, '(' || airport_heliport.taxiway_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.taxiway 
-inner join master_join mj2 on airport_heliport.taxiway.id = mj2.source_id
-inner join airport_heliport.taxiway_tsp on mj2.target_id = airport_heliport.taxiway_tsp.id
-inner join airport_heliport.taxiway_ts on airport_heliport.taxiway_tsp.taxiwaytimeslice_id = airport_heliport.taxiway_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.taxiway_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where taxiway_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.taxiway.id,
-    airport_heliport.taxiway_ts.id,
-    airport_heliport.taxiway_tsp.id,
-    airport_heliport.taxiway.identifier,
-    airport_heliport.taxiway_ts.interpretation,
-    airport_heliport.taxiway_ts.sequence_number,
-    airport_heliport.taxiway_ts.correction_number,
-    airport_heliport.taxiway_ts.valid_time_begin,
-    airport_heliport.taxiway_ts.valid_time_end,
-    airport_heliport.taxiway_ts.feature_lifetime_begin,
-    airport_heliport.taxiway_ts.feature_lifetime_end,
-    airport_heliport.taxiway_ts.designator_value,
-    airport_heliport.taxiway_ts.designator_nilreason,
-    airport_heliport.taxiway_ts.type_value,
-    airport_heliport.taxiway_ts.type_nilreason,
-    airport_heliport.taxiway_ts.abandoned_value,
-    airport_heliport.taxiway_ts.abandoned_nilreason,
-    airport_heliport.taxiway_ts.width_value,
-    airport_heliport.taxiway_ts.width_uom,
-    airport_heliport.taxiway_ts.width_nilreason,
-    airport_heliport.taxiway_ts.widthshoulder_value,
-    airport_heliport.taxiway_ts.widthshoulder_uom,
-    airport_heliport.taxiway_ts.widthshoulder_nilreason,
-    airport_heliport.taxiway_ts.length_value,
-    airport_heliport.taxiway_ts.length_uom,
-    airport_heliport.taxiway_ts.length_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by taxiway.identifier, taxiway_ts.sequence_number, taxiway_ts.correction_number DESC;
-create or replace view procedure.terminalarrivalarea_publisher_view as
-select distinct on (terminalarrivalarea.identifier,terminalarrivalarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    procedure.terminalarrivalarea.id,
-    procedure.terminalarrivalarea_ts.id as ts_id,
-    procedure.terminalarrivalarea_tsp.id as tsp_id,
-    procedure.terminalarrivalarea.identifier,
-    procedure.terminalarrivalarea_ts.interpretation,
-    procedure.terminalarrivalarea_ts.sequence_number,
-    procedure.terminalarrivalarea_ts.correction_number,
-    procedure.terminalarrivalarea_ts.valid_time_begin,
-    procedure.terminalarrivalarea_ts.valid_time_end,
-    procedure.terminalarrivalarea_ts.feature_lifetime_begin,
-    procedure.terminalarrivalarea_ts.feature_lifetime_end,
-    coalesce(cast(procedure.terminalarrivalarea_ts.arrivalareatype_value as varchar), '(' || procedure.terminalarrivalarea_ts.arrivalareatype_nilreason || ')') as arrivalareatype,
-    coalesce(cast(procedure.terminalarrivalarea_ts.outerbufferwidth_value as varchar) || ' ' || procedure.terminalarrivalarea_ts.outerbufferwidth_uom, '(' || procedure.terminalarrivalarea_ts.outerbufferwidth_nilreason || ')') as outerbufferwidth,
-    coalesce(cast(procedure.terminalarrivalarea_ts.lateralbufferwidth_value as varchar) || ' ' || procedure.terminalarrivalarea_ts.lateralbufferwidth_uom, '(' || procedure.terminalarrivalarea_ts.lateralbufferwidth_nilreason || ')') as lateralbufferwidth,
-    coalesce(cast(navaids_points.designatedpoint_pt.title as varchar), '(' || navaids_points.designatedpoint_pt.nilreason[1] || ')') AS iaffixdesignatedpoint,
-    navaids_points.designatedpoint_pt.href AS iaffixdesignatedpoint_href,
-    coalesce(cast(navaids_points.navaid_pt.title as varchar), '(' || navaids_points.navaid_pt.nilreason[1] || ')') AS iafnavaidsystem,
-    navaids_points.navaid_pt.href AS iafnavaidsystem_href,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS iafaimingpoint,
-    airport_heliport.touchdownliftoff_pt.href AS iafaimingpoint_href,
-    coalesce(cast(airport_heliport.runwaycentrelinepoint_pt.title as varchar), '(' || airport_heliport.runwaycentrelinepoint_pt.nilreason[1] || ')') AS iafrunwaypoint,
-    airport_heliport.runwaycentrelinepoint_pt.href AS iafrunwaypoint_href,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS iafairportreferencepoint,
-    airport_heliport.airportheliport_pt.href AS iafairportreferencepoint_href,
-    coalesce(cast(procedure.instrumentapproachprocedure_pt.title as varchar), '(' || procedure.instrumentapproachprocedure_pt.nilreason[1] || ')') AS approachrnav,
-    procedure.instrumentapproachprocedure_pt.href AS approachrnav_href
-from procedure.terminalarrivalarea 
-inner join master_join mj2 on procedure.terminalarrivalarea.id = mj2.source_id
-inner join procedure.terminalarrivalarea_tsp on mj2.target_id = procedure.terminalarrivalarea_tsp.id
-inner join procedure.terminalarrivalarea_ts on procedure.terminalarrivalarea_tsp.terminalarrivalareatimeslice_id = procedure.terminalarrivalarea_ts.id
-left join navaids_points.designatedpoint_pt on procedure.terminalarrivalarea_ts.iffixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on procedure.terminalarrivalarea_ts.ifnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on procedure.terminalarrivalarea_ts.ifaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on procedure.terminalarrivalarea_ts.ifrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on procedure.terminalarrivalarea_ts.ifairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-left join navaids_points.designatedpoint_pt on procedure.terminalarrivalarea_ts.iaffixdesignatedpoint_id = navaids_points.designatedpoint_pt.id
-left join navaids_points.navaid_pt on procedure.terminalarrivalarea_ts.iafnavaidsystem_id = navaids_points.navaid_pt.id
-left join airport_heliport.touchdownliftoff_pt on procedure.terminalarrivalarea_ts.iafaimingpoint_id = airport_heliport.touchdownliftoff_pt.id
-left join airport_heliport.runwaycentrelinepoint_pt on procedure.terminalarrivalarea_ts.iafrunwaypoint_id = airport_heliport.runwaycentrelinepoint_pt.id
-left join airport_heliport.airportheliport_pt on procedure.terminalarrivalarea_ts.iafairportreferencepoint_id = airport_heliport.airportheliport_pt.id
-left join procedure.instrumentapproachprocedure_pt on procedure.terminalarrivalarea_ts.approachrnav_id = procedure.instrumentapproachprocedure_pt.id
-where terminalarrivalarea_ts.feature_status = 'APPROVED'
-group by
-    procedure.terminalarrivalarea.id,
-    procedure.terminalarrivalarea_ts.id,
-    procedure.terminalarrivalarea_tsp.id,
-    procedure.terminalarrivalarea.identifier,
-    procedure.terminalarrivalarea_ts.interpretation,
-    procedure.terminalarrivalarea_ts.sequence_number,
-    procedure.terminalarrivalarea_ts.correction_number,
-    procedure.terminalarrivalarea_ts.valid_time_begin,
-    procedure.terminalarrivalarea_ts.valid_time_end,
-    procedure.terminalarrivalarea_ts.feature_lifetime_begin,
-    procedure.terminalarrivalarea_ts.feature_lifetime_end,
-    procedure.terminalarrivalarea_ts.arrivalareatype_value,
-    procedure.terminalarrivalarea_ts.arrivalareatype_nilreason,
-    procedure.terminalarrivalarea_ts.outerbufferwidth_value,
-    procedure.terminalarrivalarea_ts.outerbufferwidth_uom,
-    procedure.terminalarrivalarea_ts.outerbufferwidth_nilreason,
-    procedure.terminalarrivalarea_ts.lateralbufferwidth_value,
-    procedure.terminalarrivalarea_ts.lateralbufferwidth_uom,
-    procedure.terminalarrivalarea_ts.lateralbufferwidth_nilreason,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    navaids_points.designatedpoint_pt.title,
-    navaids_points.designatedpoint_pt.nilreason,
-    navaids_points.designatedpoint_pt.href,
-    navaids_points.navaid_pt.title,
-    navaids_points.navaid_pt.nilreason,
-    navaids_points.navaid_pt.href,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href,
-    airport_heliport.runwaycentrelinepoint_pt.title,
-    airport_heliport.runwaycentrelinepoint_pt.nilreason,
-    airport_heliport.runwaycentrelinepoint_pt.href,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    procedure.instrumentapproachprocedure_pt.title,
-    procedure.instrumentapproachprocedure_pt.nilreason,
-    procedure.instrumentapproachprocedure_pt.href
-order by terminalarrivalarea.identifier, terminalarrivalarea_ts.sequence_number, terminalarrivalarea_ts.correction_number DESC;
-create or replace view airport_heliport.touchdownliftofflightsystem_publisher_view as
-select distinct on (touchdownliftofflightsystem.identifier,touchdownliftofflightsystem_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.touchdownliftofflightsystem.id,
-    airport_heliport.touchdownliftofflightsystem_ts.id as ts_id,
-    airport_heliport.touchdownliftofflightsystem_tsp.id as tsp_id,
-    airport_heliport.touchdownliftofflightsystem.identifier,
-    airport_heliport.touchdownliftofflightsystem_ts.interpretation,
-    airport_heliport.touchdownliftofflightsystem_ts.sequence_number,
-    airport_heliport.touchdownliftofflightsystem_ts.correction_number,
-    airport_heliport.touchdownliftofflightsystem_ts.valid_time_begin,
-    airport_heliport.touchdownliftofflightsystem_ts.valid_time_end,
-    airport_heliport.touchdownliftofflightsystem_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftofflightsystem_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.touchdownliftofflightsystem_ts.emergencylighting_value as varchar), '(' || airport_heliport.touchdownliftofflightsystem_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.touchdownliftofflightsystem_ts.intensitylevel_value as varchar), '(' || airport_heliport.touchdownliftofflightsystem_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.touchdownliftofflightsystem_ts.colour_value as varchar), '(' || airport_heliport.touchdownliftofflightsystem_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.touchdownliftofflightsystem_ts.position_value as varchar), '(' || airport_heliport.touchdownliftofflightsystem_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS lightedtouchdownliftoff,
-    airport_heliport.touchdownliftoff_pt.href AS lightedtouchdownliftoff_href
-from airport_heliport.touchdownliftofflightsystem 
-inner join master_join mj2 on airport_heliport.touchdownliftofflightsystem.id = mj2.source_id
-inner join airport_heliport.touchdownliftofflightsystem_tsp on mj2.target_id = airport_heliport.touchdownliftofflightsystem_tsp.id
-inner join airport_heliport.touchdownliftofflightsystem_ts on airport_heliport.touchdownliftofflightsystem_tsp.touchdownliftofflightsystemtimeslice_id = airport_heliport.touchdownliftofflightsystem_ts.id
-left join airport_heliport.touchdownliftoff_pt on airport_heliport.touchdownliftofflightsystem_ts.lightedtouchdownliftoff_id = airport_heliport.touchdownliftoff_pt.id
-where touchdownliftofflightsystem_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.touchdownliftofflightsystem.id,
-    airport_heliport.touchdownliftofflightsystem_ts.id,
-    airport_heliport.touchdownliftofflightsystem_tsp.id,
-    airport_heliport.touchdownliftofflightsystem.identifier,
-    airport_heliport.touchdownliftofflightsystem_ts.interpretation,
-    airport_heliport.touchdownliftofflightsystem_ts.sequence_number,
-    airport_heliport.touchdownliftofflightsystem_ts.correction_number,
-    airport_heliport.touchdownliftofflightsystem_ts.valid_time_begin,
-    airport_heliport.touchdownliftofflightsystem_ts.valid_time_end,
-    airport_heliport.touchdownliftofflightsystem_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftofflightsystem_ts.feature_lifetime_end,
-    airport_heliport.touchdownliftofflightsystem_ts.emergencylighting_value,
-    airport_heliport.touchdownliftofflightsystem_ts.emergencylighting_nilreason,
-    airport_heliport.touchdownliftofflightsystem_ts.intensitylevel_value,
-    airport_heliport.touchdownliftofflightsystem_ts.intensitylevel_nilreason,
-    airport_heliport.touchdownliftofflightsystem_ts.colour_value,
-    airport_heliport.touchdownliftofflightsystem_ts.colour_nilreason,
-    airport_heliport.touchdownliftofflightsystem_ts.position_value,
-    airport_heliport.touchdownliftofflightsystem_ts.position_nilreason,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href
-order by touchdownliftofflightsystem.identifier, touchdownliftofflightsystem_ts.sequence_number, touchdownliftofflightsystem_ts.correction_number DESC;
-create or replace view airport_heliport.touchdownliftoffmarking_publisher_view as
-select distinct on (touchdownliftoffmarking.identifier,touchdownliftoffmarking_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.touchdownliftoffmarking.id,
-    airport_heliport.touchdownliftoffmarking_ts.id as ts_id,
-    airport_heliport.touchdownliftoffmarking_tsp.id as tsp_id,
-    airport_heliport.touchdownliftoffmarking.identifier,
-    airport_heliport.touchdownliftoffmarking_ts.interpretation,
-    airport_heliport.touchdownliftoffmarking_ts.sequence_number,
-    airport_heliport.touchdownliftoffmarking_ts.correction_number,
-    airport_heliport.touchdownliftoffmarking_ts.valid_time_begin,
-    airport_heliport.touchdownliftoffmarking_ts.valid_time_end,
-    airport_heliport.touchdownliftoffmarking_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoffmarking_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.touchdownliftoffmarking_ts.markingicaostandard_value as varchar), '(' || airport_heliport.touchdownliftoffmarking_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(airport_heliport.touchdownliftoffmarking_ts.condition_value as varchar), '(' || airport_heliport.touchdownliftoffmarking_ts.condition_nilreason || ')') as condition,
-    coalesce(cast(airport_heliport.touchdownliftoffmarking_ts.markinglocation_value as varchar), '(' || airport_heliport.touchdownliftoffmarking_ts.markinglocation_nilreason || ')') as markinglocation,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS markedtouchdownliftoff,
-    airport_heliport.touchdownliftoff_pt.href AS markedtouchdownliftoff_href
-from airport_heliport.touchdownliftoffmarking 
-inner join master_join mj2 on airport_heliport.touchdownliftoffmarking.id = mj2.source_id
-inner join airport_heliport.touchdownliftoffmarking_tsp on mj2.target_id = airport_heliport.touchdownliftoffmarking_tsp.id
-inner join airport_heliport.touchdownliftoffmarking_ts on airport_heliport.touchdownliftoffmarking_tsp.touchdownliftoffmarkingtimeslice_id = airport_heliport.touchdownliftoffmarking_ts.id
-left join airport_heliport.touchdownliftoff_pt on airport_heliport.touchdownliftoffmarking_ts.markedtouchdownliftoff_id = airport_heliport.touchdownliftoff_pt.id
-where touchdownliftoffmarking_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.touchdownliftoffmarking.id,
-    airport_heliport.touchdownliftoffmarking_ts.id,
-    airport_heliport.touchdownliftoffmarking_tsp.id,
-    airport_heliport.touchdownliftoffmarking.identifier,
-    airport_heliport.touchdownliftoffmarking_ts.interpretation,
-    airport_heliport.touchdownliftoffmarking_ts.sequence_number,
-    airport_heliport.touchdownliftoffmarking_ts.correction_number,
-    airport_heliport.touchdownliftoffmarking_ts.valid_time_begin,
-    airport_heliport.touchdownliftoffmarking_ts.valid_time_end,
-    airport_heliport.touchdownliftoffmarking_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoffmarking_ts.feature_lifetime_end,
-    airport_heliport.touchdownliftoffmarking_ts.markingicaostandard_value,
-    airport_heliport.touchdownliftoffmarking_ts.markingicaostandard_nilreason,
-    airport_heliport.touchdownliftoffmarking_ts.condition_value,
-    airport_heliport.touchdownliftoffmarking_ts.condition_nilreason,
-    airport_heliport.touchdownliftoffmarking_ts.markinglocation_value,
-    airport_heliport.touchdownliftoffmarking_ts.markinglocation_nilreason,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href
-order by touchdownliftoffmarking.identifier, touchdownliftoffmarking_ts.sequence_number, touchdownliftoffmarking_ts.correction_number DESC;
-create or replace view airport_heliport.touchdownliftoffsafearea_publisher_view as
-select distinct on (touchdownliftoffsafearea.identifier,touchdownliftoffsafearea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.touchdownliftoffsafearea.id,
-    airport_heliport.touchdownliftoffsafearea_ts.id as ts_id,
-    airport_heliport.touchdownliftoffsafearea_tsp.id as tsp_id,
-    airport_heliport.touchdownliftoffsafearea.identifier,
-    airport_heliport.touchdownliftoffsafearea_ts.interpretation,
-    airport_heliport.touchdownliftoffsafearea_ts.sequence_number,
-    airport_heliport.touchdownliftoffsafearea_ts.correction_number,
-    airport_heliport.touchdownliftoffsafearea_ts.valid_time_begin,
-    airport_heliport.touchdownliftoffsafearea_ts.valid_time_end,
-    airport_heliport.touchdownliftoffsafearea_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoffsafearea_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.touchdownliftoffsafearea_ts.lighting_value as varchar), '(' || airport_heliport.touchdownliftoffsafearea_ts.lighting_nilreason || ')') as lighting,
-    coalesce(cast(airport_heliport.touchdownliftoffsafearea_ts.obstaclefree_value as varchar), '(' || airport_heliport.touchdownliftoffsafearea_ts.obstaclefree_nilreason || ')') as obstaclefree,
-    coalesce(cast(airport_heliport.touchdownliftoffsafearea_ts.width_value as varchar) || ' ' || airport_heliport.touchdownliftoffsafearea_ts.width_uom, '(' || airport_heliport.touchdownliftoffsafearea_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.touchdownliftoffsafearea_ts.length_value as varchar) || ' ' || airport_heliport.touchdownliftoffsafearea_ts.length_uom, '(' || airport_heliport.touchdownliftoffsafearea_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.touchdownliftoff_pt.title as varchar), '(' || airport_heliport.touchdownliftoff_pt.nilreason[1] || ')') AS protectedtouchdownliftoff,
-    airport_heliport.touchdownliftoff_pt.href AS protectedtouchdownliftoff_href
-from airport_heliport.touchdownliftoffsafearea 
-inner join master_join mj2 on airport_heliport.touchdownliftoffsafearea.id = mj2.source_id
-inner join airport_heliport.touchdownliftoffsafearea_tsp on mj2.target_id = airport_heliport.touchdownliftoffsafearea_tsp.id
-inner join airport_heliport.touchdownliftoffsafearea_ts on airport_heliport.touchdownliftoffsafearea_tsp.touchdownliftoffsafeareatimeslice_id = airport_heliport.touchdownliftoffsafearea_ts.id
-left join airport_heliport.touchdownliftoff_pt on airport_heliport.touchdownliftoffsafearea_ts.protectedtouchdownliftoff_id = airport_heliport.touchdownliftoff_pt.id
-where touchdownliftoffsafearea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.touchdownliftoffsafearea.id,
-    airport_heliport.touchdownliftoffsafearea_ts.id,
-    airport_heliport.touchdownliftoffsafearea_tsp.id,
-    airport_heliport.touchdownliftoffsafearea.identifier,
-    airport_heliport.touchdownliftoffsafearea_ts.interpretation,
-    airport_heliport.touchdownliftoffsafearea_ts.sequence_number,
-    airport_heliport.touchdownliftoffsafearea_ts.correction_number,
-    airport_heliport.touchdownliftoffsafearea_ts.valid_time_begin,
-    airport_heliport.touchdownliftoffsafearea_ts.valid_time_end,
-    airport_heliport.touchdownliftoffsafearea_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoffsafearea_ts.feature_lifetime_end,
-    airport_heliport.touchdownliftoffsafearea_ts.lighting_value,
-    airport_heliport.touchdownliftoffsafearea_ts.lighting_nilreason,
-    airport_heliport.touchdownliftoffsafearea_ts.obstaclefree_value,
-    airport_heliport.touchdownliftoffsafearea_ts.obstaclefree_nilreason,
-    airport_heliport.touchdownliftoffsafearea_ts.width_value,
-    airport_heliport.touchdownliftoffsafearea_ts.width_uom,
-    airport_heliport.touchdownliftoffsafearea_ts.width_nilreason,
-    airport_heliport.touchdownliftoffsafearea_ts.length_value,
-    airport_heliport.touchdownliftoffsafearea_ts.length_uom,
-    airport_heliport.touchdownliftoffsafearea_ts.length_nilreason,
-    airport_heliport.touchdownliftoff_pt.title,
-    airport_heliport.touchdownliftoff_pt.nilreason,
-    airport_heliport.touchdownliftoff_pt.href
-order by touchdownliftoffsafearea.identifier, touchdownliftoffsafearea_ts.sequence_number, touchdownliftoffsafearea_ts.correction_number DESC;
-create or replace view airport_heliport.touchdownliftoff_publisher_view as
-select distinct on (touchdownliftoff.identifier,touchdownliftoff_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.touchdownliftoff.id,
-    airport_heliport.touchdownliftoff_ts.id as ts_id,
-    airport_heliport.touchdownliftoff_tsp.id as tsp_id,
-    airport_heliport.touchdownliftoff.identifier,
-    airport_heliport.touchdownliftoff_ts.interpretation,
-    airport_heliport.touchdownliftoff_ts.sequence_number,
-    airport_heliport.touchdownliftoff_ts.correction_number,
-    airport_heliport.touchdownliftoff_ts.valid_time_begin,
-    airport_heliport.touchdownliftoff_ts.valid_time_end,
-    airport_heliport.touchdownliftoff_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoff_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.designator_value as varchar), '(' || airport_heliport.touchdownliftoff_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.slope_value as varchar), '(' || airport_heliport.touchdownliftoff_ts.slope_nilreason || ')') as slope,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.helicopterclass_value as varchar), '(' || airport_heliport.touchdownliftoff_ts.helicopterclass_nilreason || ')') as helicopterclass,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.abandoned_value as varchar), '(' || airport_heliport.touchdownliftoff_ts.abandoned_nilreason || ')') as abandoned,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.length_value as varchar) || ' ' || airport_heliport.touchdownliftoff_ts.length_uom, '(' || airport_heliport.touchdownliftoff_ts.length_nilreason || ')') as length,
-    coalesce(cast(airport_heliport.touchdownliftoff_ts.width_value as varchar) || ' ' || airport_heliport.touchdownliftoff_ts.width_uom, '(' || airport_heliport.touchdownliftoff_ts.width_nilreason || ')') as width,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href,
-    coalesce(cast(airport_heliport.runway_pt.title as varchar), '(' || airport_heliport.runway_pt.nilreason[1] || ')') AS approachtakeoffarea,
-    airport_heliport.runway_pt.href AS approachtakeoffarea_href
-from airport_heliport.touchdownliftoff 
-inner join master_join mj2 on airport_heliport.touchdownliftoff.id = mj2.source_id
-inner join airport_heliport.touchdownliftoff_tsp on mj2.target_id = airport_heliport.touchdownliftoff_tsp.id
-inner join airport_heliport.touchdownliftoff_ts on airport_heliport.touchdownliftoff_tsp.touchdownliftofftimeslice_id = airport_heliport.touchdownliftoff_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.touchdownliftoff_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-left join airport_heliport.runway_pt on airport_heliport.touchdownliftoff_ts.approachtakeoffarea_id = airport_heliport.runway_pt.id
-where touchdownliftoff_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.touchdownliftoff.id,
-    airport_heliport.touchdownliftoff_ts.id,
-    airport_heliport.touchdownliftoff_tsp.id,
-    airport_heliport.touchdownliftoff.identifier,
-    airport_heliport.touchdownliftoff_ts.interpretation,
-    airport_heliport.touchdownliftoff_ts.sequence_number,
-    airport_heliport.touchdownliftoff_ts.correction_number,
-    airport_heliport.touchdownliftoff_ts.valid_time_begin,
-    airport_heliport.touchdownliftoff_ts.valid_time_end,
-    airport_heliport.touchdownliftoff_ts.feature_lifetime_begin,
-    airport_heliport.touchdownliftoff_ts.feature_lifetime_end,
-    airport_heliport.touchdownliftoff_ts.designator_value,
-    airport_heliport.touchdownliftoff_ts.designator_nilreason,
-    airport_heliport.touchdownliftoff_ts.slope_value,
-    airport_heliport.touchdownliftoff_ts.slope_nilreason,
-    airport_heliport.touchdownliftoff_ts.helicopterclass_value,
-    airport_heliport.touchdownliftoff_ts.helicopterclass_nilreason,
-    airport_heliport.touchdownliftoff_ts.abandoned_value,
-    airport_heliport.touchdownliftoff_ts.abandoned_nilreason,
-    airport_heliport.touchdownliftoff_ts.length_value,
-    airport_heliport.touchdownliftoff_ts.length_uom,
-    airport_heliport.touchdownliftoff_ts.length_nilreason,
-    airport_heliport.touchdownliftoff_ts.width_value,
-    airport_heliport.touchdownliftoff_ts.width_uom,
-    airport_heliport.touchdownliftoff_ts.width_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    airport_heliport.runway_pt.title,
-    airport_heliport.runway_pt.nilreason,
-    airport_heliport.runway_pt.href
-order by touchdownliftoff.identifier, touchdownliftoff_ts.sequence_number, touchdownliftoff_ts.correction_number DESC;
-create or replace view organisation.unit_publisher_view as
-select distinct on (unit.identifier,unit_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    organisation.unit.id,
-    organisation.unit_ts.id as ts_id,
-    organisation.unit_tsp.id as tsp_id,
-    organisation.unit.identifier,
-    organisation.unit_ts.interpretation,
-    organisation.unit_ts.sequence_number,
-    organisation.unit_ts.correction_number,
-    organisation.unit_ts.valid_time_begin,
-    organisation.unit_ts.valid_time_end,
-    organisation.unit_ts.feature_lifetime_begin,
-    organisation.unit_ts.feature_lifetime_end,
-    coalesce(cast(organisation.unit_ts.name_value as varchar), '(' || organisation.unit_ts.name_nilreason || ')') as name,
-    coalesce(cast(organisation.unit_ts.type_value as varchar), '(' || organisation.unit_ts.type_nilreason || ')') as type,
-    coalesce(cast(organisation.unit_ts.complianticao_value as varchar), '(' || organisation.unit_ts.complianticao_nilreason || ')') as complianticao,
-    coalesce(cast(organisation.unit_ts.designator_value as varchar), '(' || organisation.unit_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(organisation.unit_ts.military_value as varchar), '(' || organisation.unit_ts.military_nilreason || ')') as military,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS airportlocation,
-    airport_heliport.airportheliport_pt.href AS airportlocation_href,
-    coalesce(cast(organisation.organisationauthority_pt.title as varchar), '(' || organisation.organisationauthority_pt.nilreason[1] || ')') AS ownerorganisation,
-    organisation.organisationauthority_pt.href AS ownerorganisation_href
-from organisation.unit 
-inner join master_join mj2 on organisation.unit.id = mj2.source_id
-inner join organisation.unit_tsp on mj2.target_id = organisation.unit_tsp.id
-inner join organisation.unit_ts on organisation.unit_tsp.unittimeslice_id = organisation.unit_ts.id
-left join airport_heliport.airportheliport_pt on organisation.unit_ts.airportlocation_id = airport_heliport.airportheliport_pt.id
-left join organisation.organisationauthority_pt on organisation.unit_ts.ownerorganisation_id = organisation.organisationauthority_pt.id
-where unit_ts.feature_status = 'APPROVED'
-group by
-    organisation.unit.id,
-    organisation.unit_ts.id,
-    organisation.unit_tsp.id,
-    organisation.unit.identifier,
-    organisation.unit_ts.interpretation,
-    organisation.unit_ts.sequence_number,
-    organisation.unit_ts.correction_number,
-    organisation.unit_ts.valid_time_begin,
-    organisation.unit_ts.valid_time_end,
-    organisation.unit_ts.feature_lifetime_begin,
-    organisation.unit_ts.feature_lifetime_end,
-    organisation.unit_ts.name_value,
-    organisation.unit_ts.name_nilreason,
-    organisation.unit_ts.type_value,
-    organisation.unit_ts.type_nilreason,
-    organisation.unit_ts.complianticao_value,
-    organisation.unit_ts.complianticao_nilreason,
-    organisation.unit_ts.designator_value,
-    organisation.unit_ts.designator_nilreason,
-    organisation.unit_ts.military_value,
-    organisation.unit_ts.military_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href,
-    organisation.organisationauthority_pt.title,
-    organisation.organisationauthority_pt.nilreason,
-    organisation.organisationauthority_pt.href
-order by unit.identifier, unit_ts.sequence_number, unit_ts.correction_number DESC;
-create or replace view holding.unplannedholding_publisher_view as
-select distinct on (unplannedholding.identifier,unplannedholding_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    holding.unplannedholding.id,
-    holding.unplannedholding_ts.id as ts_id,
-    holding.unplannedholding_tsp.id as tsp_id,
-    holding.unplannedholding.identifier,
-    holding.unplannedholding_ts.interpretation,
-    holding.unplannedholding_ts.sequence_number,
-    holding.unplannedholding_ts.correction_number,
-    holding.unplannedholding_ts.valid_time_begin,
-    holding.unplannedholding_ts.valid_time_end,
-    holding.unplannedholding_ts.feature_lifetime_begin,
-    holding.unplannedholding_ts.feature_lifetime_end,
-    coalesce(cast(holding.unplannedholding_ts.unplannedholding_value as varchar), '(' || holding.unplannedholding_ts.unplannedholding_nilreason || ')') as unplannedholding,
-    coalesce(cast(holding.unplannedholding_ts.altitudereference_value as varchar), '(' || holding.unplannedholding_ts.altitudereference_nilreason || ')') as altitudereference,
-    coalesce(cast(holding.unplannedholding_ts.controlledairspace_value as varchar), '(' || holding.unplannedholding_ts.controlledairspace_nilreason || ')') as controlledairspace,
-    coalesce(cast(holding.unplannedholding_ts.authorizedaltitude_value as varchar) || ' ' || holding.unplannedholding_ts.authorizedaltitude_uom, '(' || holding.unplannedholding_ts.authorizedaltitude_nilreason || ')') as authorizedaltitude
-from holding.unplannedholding 
-inner join master_join mj2 on holding.unplannedholding.id = mj2.source_id
-inner join holding.unplannedholding_tsp on mj2.target_id = holding.unplannedholding_tsp.id
-inner join holding.unplannedholding_ts on holding.unplannedholding_tsp.unplannedholdingtimeslice_id = holding.unplannedholding_ts.id
-where unplannedholding_ts.feature_status = 'APPROVED'
-group by
-    holding.unplannedholding.id,
-    holding.unplannedholding_ts.id,
-    holding.unplannedholding_tsp.id,
-    holding.unplannedholding.identifier,
-    holding.unplannedholding_ts.interpretation,
-    holding.unplannedholding_ts.sequence_number,
-    holding.unplannedholding_ts.correction_number,
-    holding.unplannedholding_ts.valid_time_begin,
-    holding.unplannedholding_ts.valid_time_end,
-    holding.unplannedholding_ts.feature_lifetime_begin,
-    holding.unplannedholding_ts.feature_lifetime_end,
-    holding.unplannedholding_ts.unplannedholding_value,
-    holding.unplannedholding_ts.unplannedholding_nilreason,
-    holding.unplannedholding_ts.altitudereference_value,
-    holding.unplannedholding_ts.altitudereference_nilreason,
-    holding.unplannedholding_ts.controlledairspace_value,
-    holding.unplannedholding_ts.controlledairspace_nilreason,
-    holding.unplannedholding_ts.authorizedaltitude_value,
-    holding.unplannedholding_ts.authorizedaltitude_uom,
-    holding.unplannedholding_ts.authorizedaltitude_nilreason
-order by unplannedholding.identifier, unplannedholding_ts.sequence_number, unplannedholding_ts.correction_number DESC;
-create or replace view obstacles.verticalstructure_publisher_view as
-select distinct on (verticalstructure.identifier,verticalstructure_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    obstacles.verticalstructure.id,
-    obstacles.verticalstructure_ts.id as ts_id,
-    obstacles.verticalstructure_tsp.id as tsp_id,
-    obstacles.verticalstructure.identifier,
-    obstacles.verticalstructure_ts.interpretation,
-    obstacles.verticalstructure_ts.sequence_number,
-    obstacles.verticalstructure_ts.correction_number,
-    obstacles.verticalstructure_ts.valid_time_begin,
-    obstacles.verticalstructure_ts.valid_time_end,
-    obstacles.verticalstructure_ts.feature_lifetime_begin,
-    obstacles.verticalstructure_ts.feature_lifetime_end,
-    coalesce(cast(obstacles.verticalstructure_ts.name_value as varchar), '(' || obstacles.verticalstructure_ts.name_nilreason || ')') as name,
-    coalesce(cast(obstacles.verticalstructure_ts.type_value as varchar), '(' || obstacles.verticalstructure_ts.type_nilreason || ')') as type,
-    coalesce(cast(obstacles.verticalstructure_ts.lighted_value as varchar), '(' || obstacles.verticalstructure_ts.lighted_nilreason || ')') as lighted,
-    coalesce(cast(obstacles.verticalstructure_ts.markingicaostandard_value as varchar), '(' || obstacles.verticalstructure_ts.markingicaostandard_nilreason || ')') as markingicaostandard,
-    coalesce(cast(obstacles.verticalstructure_ts.group_value as varchar), '(' || obstacles.verticalstructure_ts.group_nilreason || ')') as group,
-    coalesce(cast(obstacles.verticalstructure_ts.lightingicaostandard_value as varchar), '(' || obstacles.verticalstructure_ts.lightingicaostandard_nilreason || ')') as lightingicaostandard,
-    coalesce(cast(obstacles.verticalstructure_ts.synchronisedlighting_value as varchar), '(' || obstacles.verticalstructure_ts.synchronisedlighting_nilreason || ')') as synchronisedlighting,
-    coalesce(cast(obstacles.verticalstructure_ts.length_value as varchar) || ' ' || obstacles.verticalstructure_ts.length_uom, '(' || obstacles.verticalstructure_ts.length_nilreason || ')') as length,
-    coalesce(cast(obstacles.verticalstructure_ts.width_value as varchar) || ' ' || obstacles.verticalstructure_ts.width_uom, '(' || obstacles.verticalstructure_ts.width_nilreason || ')') as width,
-    coalesce(cast(obstacles.verticalstructure_ts.radius_value as varchar) || ' ' || obstacles.verticalstructure_ts.radius_uom, '(' || obstacles.verticalstructure_ts.radius_nilreason || ')') as radius,
-    coalesce(cast(navaids_points.markerbeacon_pt.title as varchar), '(' || navaids_points.markerbeacon_pt.nilreason[1] || ')') AS marker,
-    navaids_points.markerbeacon_pt.href AS marker_href
-from obstacles.verticalstructure 
-inner join master_join mj2 on obstacles.verticalstructure.id = mj2.source_id
-inner join obstacles.verticalstructure_tsp on mj2.target_id = obstacles.verticalstructure_tsp.id
-inner join obstacles.verticalstructure_ts on obstacles.verticalstructure_tsp.verticalstructuretimeslice_id = obstacles.verticalstructure_ts.id
-left join navaids_points.markerbeacon_pt on obstacles.verticalstructure_ts.marker_id = navaids_points.markerbeacon_pt.id
-where verticalstructure_ts.feature_status = 'APPROVED'
-group by
-    obstacles.verticalstructure.id,
-    obstacles.verticalstructure_ts.id,
-    obstacles.verticalstructure_tsp.id,
-    obstacles.verticalstructure.identifier,
-    obstacles.verticalstructure_ts.interpretation,
-    obstacles.verticalstructure_ts.sequence_number,
-    obstacles.verticalstructure_ts.correction_number,
-    obstacles.verticalstructure_ts.valid_time_begin,
-    obstacles.verticalstructure_ts.valid_time_end,
-    obstacles.verticalstructure_ts.feature_lifetime_begin,
-    obstacles.verticalstructure_ts.feature_lifetime_end,
-    obstacles.verticalstructure_ts.name_value,
-    obstacles.verticalstructure_ts.name_nilreason,
-    obstacles.verticalstructure_ts.type_value,
-    obstacles.verticalstructure_ts.type_nilreason,
-    obstacles.verticalstructure_ts.lighted_value,
-    obstacles.verticalstructure_ts.lighted_nilreason,
-    obstacles.verticalstructure_ts.markingicaostandard_value,
-    obstacles.verticalstructure_ts.markingicaostandard_nilreason,
-    obstacles.verticalstructure_ts.group_value,
-    obstacles.verticalstructure_ts.group_nilreason,
-    obstacles.verticalstructure_ts.lightingicaostandard_value,
-    obstacles.verticalstructure_ts.lightingicaostandard_nilreason,
-    obstacles.verticalstructure_ts.synchronisedlighting_value,
-    obstacles.verticalstructure_ts.synchronisedlighting_nilreason,
-    obstacles.verticalstructure_ts.length_value,
-    obstacles.verticalstructure_ts.length_uom,
-    obstacles.verticalstructure_ts.length_nilreason,
-    obstacles.verticalstructure_ts.width_value,
-    obstacles.verticalstructure_ts.width_uom,
-    obstacles.verticalstructure_ts.width_nilreason,
-    obstacles.verticalstructure_ts.radius_value,
-    obstacles.verticalstructure_ts.radius_uom,
-    obstacles.verticalstructure_ts.radius_nilreason,
-    navaids_points.markerbeacon_pt.title,
-    navaids_points.markerbeacon_pt.nilreason,
-    navaids_points.markerbeacon_pt.href
-order by verticalstructure.identifier, verticalstructure_ts.sequence_number, verticalstructure_ts.correction_number DESC;
-create or replace view airport_heliport.visualglideslopeindicator_publisher_view as
-select distinct on (visualglideslopeindicator.identifier,visualglideslopeindicator_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.visualglideslopeindicator.id,
-    airport_heliport.visualglideslopeindicator_ts.id as ts_id,
-    airport_heliport.visualglideslopeindicator_tsp.id as tsp_id,
-    airport_heliport.visualglideslopeindicator.identifier,
-    airport_heliport.visualglideslopeindicator_ts.interpretation,
-    airport_heliport.visualglideslopeindicator_ts.sequence_number,
-    airport_heliport.visualglideslopeindicator_ts.correction_number,
-    airport_heliport.visualglideslopeindicator_ts.valid_time_begin,
-    airport_heliport.visualglideslopeindicator_ts.valid_time_end,
-    airport_heliport.visualglideslopeindicator_ts.feature_lifetime_begin,
-    airport_heliport.visualglideslopeindicator_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.emergencylighting_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.emergencylighting_nilreason || ')') as emergencylighting,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.intensitylevel_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.intensitylevel_nilreason || ')') as intensitylevel,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.colour_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.colour_nilreason || ')') as colour,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.type_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.position_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.position_nilreason || ')') as position,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.numberbox_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.numberbox_nilreason || ')') as numberbox,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.portable_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.portable_nilreason || ')') as portable,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.slopeangle_value as varchar), '(' || airport_heliport.visualglideslopeindicator_ts.slopeangle_nilreason || ')') as slopeangle,
-    coalesce(cast(airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_value as varchar) || ' ' || airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_uom, '(' || airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_nilreason || ')') as minimumeyeheightoverthreshold,
-    coalesce(cast(airport_heliport.runwaydirection_pt.title as varchar), '(' || airport_heliport.runwaydirection_pt.nilreason[1] || ')') AS runwaydirection,
-    airport_heliport.runwaydirection_pt.href AS runwaydirection_href
-from airport_heliport.visualglideslopeindicator 
-inner join master_join mj2 on airport_heliport.visualglideslopeindicator.id = mj2.source_id
-inner join airport_heliport.visualglideslopeindicator_tsp on mj2.target_id = airport_heliport.visualglideslopeindicator_tsp.id
-inner join airport_heliport.visualglideslopeindicator_ts on airport_heliport.visualglideslopeindicator_tsp.visualglideslopeindicatortimeslice_id = airport_heliport.visualglideslopeindicator_ts.id
-left join airport_heliport.runwaydirection_pt on airport_heliport.visualglideslopeindicator_ts.runwaydirection_id = airport_heliport.runwaydirection_pt.id
-where visualglideslopeindicator_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.visualglideslopeindicator.id,
-    airport_heliport.visualglideslopeindicator_ts.id,
-    airport_heliport.visualglideslopeindicator_tsp.id,
-    airport_heliport.visualglideslopeindicator.identifier,
-    airport_heliport.visualglideslopeindicator_ts.interpretation,
-    airport_heliport.visualglideslopeindicator_ts.sequence_number,
-    airport_heliport.visualglideslopeindicator_ts.correction_number,
-    airport_heliport.visualglideslopeindicator_ts.valid_time_begin,
-    airport_heliport.visualglideslopeindicator_ts.valid_time_end,
-    airport_heliport.visualglideslopeindicator_ts.feature_lifetime_begin,
-    airport_heliport.visualglideslopeindicator_ts.feature_lifetime_end,
-    airport_heliport.visualglideslopeindicator_ts.emergencylighting_value,
-    airport_heliport.visualglideslopeindicator_ts.emergencylighting_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.intensitylevel_value,
-    airport_heliport.visualglideslopeindicator_ts.intensitylevel_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.colour_value,
-    airport_heliport.visualglideslopeindicator_ts.colour_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.type_value,
-    airport_heliport.visualglideslopeindicator_ts.type_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.position_value,
-    airport_heliport.visualglideslopeindicator_ts.position_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.numberbox_value,
-    airport_heliport.visualglideslopeindicator_ts.numberbox_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.portable_value,
-    airport_heliport.visualglideslopeindicator_ts.portable_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.slopeangle_value,
-    airport_heliport.visualglideslopeindicator_ts.slopeangle_nilreason,
-    airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_value,
-    airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_uom,
-    airport_heliport.visualglideslopeindicator_ts.minimumeyeheightoverthreshold_nilreason,
-    airport_heliport.runwaydirection_pt.title,
-    airport_heliport.runwaydirection_pt.nilreason,
-    airport_heliport.runwaydirection_pt.href
-order by visualglideslopeindicator.identifier, visualglideslopeindicator_ts.sequence_number, visualglideslopeindicator_ts.correction_number DESC;
-create or replace view navaids_points.vor_publisher_view as
-select distinct on (vor.identifier,vor_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    navaids_points.vor.id,
-    navaids_points.vor_ts.id as ts_id,
-    navaids_points.vor_tsp.id as tsp_id,
-    navaids_points.vor.identifier,
-    navaids_points.vor_ts.interpretation,
-    navaids_points.vor_ts.sequence_number,
-    navaids_points.vor_ts.correction_number,
-    navaids_points.vor_ts.valid_time_begin,
-    navaids_points.vor_ts.valid_time_end,
-    navaids_points.vor_ts.feature_lifetime_begin,
-    navaids_points.vor_ts.feature_lifetime_end,
-    coalesce(cast(navaids_points.vor_ts.designator_value as varchar), '(' || navaids_points.vor_ts.designator_nilreason || ')') as designator,
-    coalesce(cast(navaids_points.vor_ts.name_value as varchar), '(' || navaids_points.vor_ts.name_nilreason || ')') as name,
-    coalesce(cast(navaids_points.vor_ts.emissionclass_value as varchar), '(' || navaids_points.vor_ts.emissionclass_nilreason || ')') as emissionclass,
-    coalesce(cast(navaids_points.vor_ts.mobile_value as varchar), '(' || navaids_points.vor_ts.mobile_nilreason || ')') as mobile,
-    coalesce(cast(navaids_points.vor_ts.magneticvariation_value as varchar), '(' || navaids_points.vor_ts.magneticvariation_nilreason || ')') as magneticvariation,
-    coalesce(cast(navaids_points.vor_ts.magneticvariationaccuracy_value as varchar), '(' || navaids_points.vor_ts.magneticvariationaccuracy_nilreason || ')') as magneticvariationaccuracy,
-    coalesce(cast(navaids_points.vor_ts.datemagneticvariation_value as varchar), '(' || navaids_points.vor_ts.datemagneticvariation_nilreason || ')') as datemagneticvariation,
-    coalesce(cast(navaids_points.vor_ts.flightchecked_value as varchar), '(' || navaids_points.vor_ts.flightchecked_nilreason || ')') as flightchecked,
-    coalesce(cast(navaids_points.vor_ts.type_value as varchar), '(' || navaids_points.vor_ts.type_nilreason || ')') as type,
-    coalesce(cast(navaids_points.vor_ts.zerobearingdirection_value as varchar), '(' || navaids_points.vor_ts.zerobearingdirection_nilreason || ')') as zerobearingdirection,
-    coalesce(cast(navaids_points.vor_ts.declination_value as varchar), '(' || navaids_points.vor_ts.declination_nilreason || ')') as declination,
-    coalesce(cast(navaids_points.vor_ts.frequency_value as varchar) || ' ' || navaids_points.vor_ts.frequency_uom, '(' || navaids_points.vor_ts.frequency_nilreason || ')') as frequency
-from navaids_points.vor 
-inner join master_join mj2 on navaids_points.vor.id = mj2.source_id
-inner join navaids_points.vor_tsp on mj2.target_id = navaids_points.vor_tsp.id
-inner join navaids_points.vor_ts on navaids_points.vor_tsp.vortimeslice_id = navaids_points.vor_ts.id
-where vor_ts.feature_status = 'APPROVED'
-group by
-    navaids_points.vor.id,
-    navaids_points.vor_ts.id,
-    navaids_points.vor_tsp.id,
-    navaids_points.vor.identifier,
-    navaids_points.vor_ts.interpretation,
-    navaids_points.vor_ts.sequence_number,
-    navaids_points.vor_ts.correction_number,
-    navaids_points.vor_ts.valid_time_begin,
-    navaids_points.vor_ts.valid_time_end,
-    navaids_points.vor_ts.feature_lifetime_begin,
-    navaids_points.vor_ts.feature_lifetime_end,
-    navaids_points.vor_ts.designator_value,
-    navaids_points.vor_ts.designator_nilreason,
-    navaids_points.vor_ts.name_value,
-    navaids_points.vor_ts.name_nilreason,
-    navaids_points.vor_ts.emissionclass_value,
-    navaids_points.vor_ts.emissionclass_nilreason,
-    navaids_points.vor_ts.mobile_value,
-    navaids_points.vor_ts.mobile_nilreason,
-    navaids_points.vor_ts.magneticvariation_value,
-    navaids_points.vor_ts.magneticvariation_nilreason,
-    navaids_points.vor_ts.magneticvariationaccuracy_value,
-    navaids_points.vor_ts.magneticvariationaccuracy_nilreason,
-    navaids_points.vor_ts.datemagneticvariation_value,
-    navaids_points.vor_ts.datemagneticvariation_nilreason,
-    navaids_points.vor_ts.flightchecked_value,
-    navaids_points.vor_ts.flightchecked_nilreason,
-    navaids_points.vor_ts.type_value,
-    navaids_points.vor_ts.type_nilreason,
-    navaids_points.vor_ts.zerobearingdirection_value,
-    navaids_points.vor_ts.zerobearingdirection_nilreason,
-    navaids_points.vor_ts.declination_value,
-    navaids_points.vor_ts.declination_nilreason,
-    navaids_points.vor_ts.frequency_value,
-    navaids_points.vor_ts.frequency_uom,
-    navaids_points.vor_ts.frequency_nilreason
-order by vor.identifier, vor_ts.sequence_number, vor_ts.correction_number DESC;
-create or replace view airport_heliport.workarea_publisher_view as
-select distinct on (workarea.identifier,workarea_ts.sequence_number)
-    (row_number() OVER ())::integer AS row,
-    airport_heliport.workarea.id,
-    airport_heliport.workarea_ts.id as ts_id,
-    airport_heliport.workarea_tsp.id as tsp_id,
-    airport_heliport.workarea.identifier,
-    airport_heliport.workarea_ts.interpretation,
-    airport_heliport.workarea_ts.sequence_number,
-    airport_heliport.workarea_ts.correction_number,
-    airport_heliport.workarea_ts.valid_time_begin,
-    airport_heliport.workarea_ts.valid_time_end,
-    airport_heliport.workarea_ts.feature_lifetime_begin,
-    airport_heliport.workarea_ts.feature_lifetime_end,
-    coalesce(cast(airport_heliport.workarea_ts.plannedOperational_value as varchar), '(' || airport_heliport.workarea_ts.plannedOperational_nilreason || ')') as plannedOperational,
-    coalesce(cast(airport_heliport.workarea_ts.type_value as varchar), '(' || airport_heliport.workarea_ts.type_nilreason || ')') as type,
-    coalesce(cast(airport_heliport.airportheliport_pt.title as varchar), '(' || airport_heliport.airportheliport_pt.nilreason[1] || ')') AS associatedairportheliport,
-    airport_heliport.airportheliport_pt.href AS associatedairportheliport_href
-from airport_heliport.workarea 
-inner join master_join mj2 on airport_heliport.workarea.id = mj2.source_id
-inner join airport_heliport.workarea_tsp on mj2.target_id = airport_heliport.workarea_tsp.id
-inner join airport_heliport.workarea_ts on airport_heliport.workarea_tsp.workareatimeslice_id = airport_heliport.workarea_ts.id
-left join airport_heliport.airportheliport_pt on airport_heliport.workarea_ts.associatedairportheliport_id = airport_heliport.airportheliport_pt.id
-where workarea_ts.feature_status = 'APPROVED'
-group by
-    airport_heliport.workarea.id,
-    airport_heliport.workarea_ts.id,
-    airport_heliport.workarea_tsp.id,
-    airport_heliport.workarea.identifier,
-    airport_heliport.workarea_ts.interpretation,
-    airport_heliport.workarea_ts.sequence_number,
-    airport_heliport.workarea_ts.correction_number,
-    airport_heliport.workarea_ts.valid_time_begin,
-    airport_heliport.workarea_ts.valid_time_end,
-    airport_heliport.workarea_ts.feature_lifetime_begin,
-    airport_heliport.workarea_ts.feature_lifetime_end,
-    airport_heliport.workarea_ts.plannedOperational_value,
-    airport_heliport.workarea_ts.plannedOperational_nilreason,
-    airport_heliport.workarea_ts.type_value,
-    airport_heliport.workarea_ts.type_nilreason,
-    airport_heliport.airportheliport_pt.title,
-    airport_heliport.airportheliport_pt.nilreason,
-    airport_heliport.airportheliport_pt.href
-order by workarea.identifier, workarea_ts.sequence_number, workarea_ts.correction_number DESC;
+create or replace view aerial_refuelling.aerialrefuellinganchor_view as
+select
+    aerial_refuelling.aerialrefuellinganchor.id,
+    aerial_refuelling.aerialrefuellinganchor.nilreason,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.outboundcourse_value as varchar), '(' || aerial_refuelling.aerialrefuellinganchor_ts.outboundcourse_nilreason || ')') as outboundcourse,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.outboundcoursetype_value as varchar), '(' || aerial_refuelling.aerialrefuellinganchor_ts.outboundcoursetype_nilreason || ')') as outboundcoursetype,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.inboundcourse_value as varchar), '(' || aerial_refuelling.aerialrefuellinganchor_ts.inboundcourse_nilreason || ')') as inboundcourse,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.turndirection_value as varchar), '(' || aerial_refuelling.aerialrefuellinganchor_ts.turndirection_nilreason || ')') as turndirection,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.refuellingbaselevelreference_value as varchar), '(' || aerial_refuelling.aerialrefuellinganchor_ts.refuellingbaselevelreference_nilreason || ')') as refuellingbaselevelreference,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.speedlimit_value as varchar) || ' ' || aerial_refuelling.aerialrefuellinganchor_ts.speedlimit_uom, '(' || aerial_refuelling.aerialrefuellinganchor_ts.speedlimit_nilreason || ')') as speedlimit,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.legseparation_value as varchar) || ' ' || aerial_refuelling.aerialrefuellinganchor_ts.legseparation_uom, '(' || aerial_refuelling.aerialrefuellinganchor_ts.legseparation_nilreason || ')') as legseparation,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.leglength_value as varchar) || ' ' || aerial_refuelling.aerialrefuellinganchor_ts.leglength_uom, '(' || aerial_refuelling.aerialrefuellinganchor_ts.leglength_nilreason || ')') as leglength,
+    coalesce(cast(aerial_refuelling.aerialrefuellinganchor_ts.refuellingbaselevel_value as varchar) || ' ' || aerial_refuelling.aerialrefuellinganchor_ts.refuellingbaselevel_uom, '(' || aerial_refuelling.aerialrefuellinganchor_ts.refuellingbaselevel_nilreason || ')') as refuellingbaselevel
+from aerial_refuelling.aerialrefuellinganchor 
+create or replace view aerial_refuelling.aerialrefuellingpoint_view as
+select
+    aerial_refuelling.aerialrefuellingpoint.id,
+    aerial_refuelling.aerialrefuellingpoint.nilreason,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.reportingatc_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.reportingatc_nilreason || ')') as reportingatc,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.flyover_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.flyover_nilreason || ')') as flyover,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.waypoint_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.waypoint_nilreason || ')') as waypoint,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.radarguidance_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.radarguidance_nilreason || ')') as radarguidance,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.sequence_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.sequence_nilreason || ')') as sequence,
+    coalesce(cast(aerial_refuelling.aerialrefuellingpoint_ts.usagetype_value as varchar), '(' || aerial_refuelling.aerialrefuellingpoint_ts.usagetype_nilreason || ')') as usagetype
+from aerial_refuelling.aerialrefuellingpoint 
+create or replace view aerial_refuelling.aerialrefuellingtrack_view as
+select
+    aerial_refuelling.aerialrefuellingtrack.id,
+    aerial_refuelling.aerialrefuellingtrack.nilreason
+from aerial_refuelling.aerialrefuellingtrack 
+create or replace view shared.aircraftcharacteristic_view as
+select
+    shared.aircraftcharacteristic.id,
+    shared.aircraftcharacteristic.nilreason,
+    coalesce(cast(shared.aircraftcharacteristic_ts.type_value as varchar), '(' || shared.aircraftcharacteristic_ts.type_nilreason || ')') as type,
+    coalesce(cast(shared.aircraftcharacteristic_ts.engine_value as varchar), '(' || shared.aircraftcharacteristic_ts.engine_nilreason || ')') as engine,
+    coalesce(cast(shared.aircraftcharacteristic_ts.numberengine_value as varchar), '(' || shared.aircraftcharacteristic_ts.numberengine_nilreason || ')') as numberengine,
+    coalesce(cast(shared.aircraftcharacteristic_ts.typeaircrafticao_value as varchar), '(' || shared.aircraftcharacteristic_ts.typeaircrafticao_nilreason || ')') as typeaircrafticao,
+    coalesce(cast(shared.aircraftcharacteristic_ts.aircraftlandingcategory_value as varchar), '(' || shared.aircraftcharacteristic_ts.aircraftlandingcategory_nilreason || ')') as aircraftlandingcategory,
+    coalesce(cast(shared.aircraftcharacteristic_ts.wingspaninterpretation_value as varchar), '(' || shared.aircraftcharacteristic_ts.wingspaninterpretation_nilreason || ')') as wingspaninterpretation,
+    coalesce(cast(shared.aircraftcharacteristic_ts.classwingspan_value as varchar), '(' || shared.aircraftcharacteristic_ts.classwingspan_nilreason || ')') as classwingspan,
+    coalesce(cast(shared.aircraftcharacteristic_ts.weightinterpretation_value as varchar), '(' || shared.aircraftcharacteristic_ts.weightinterpretation_nilreason || ')') as weightinterpretation,
+    coalesce(cast(shared.aircraftcharacteristic_ts.passengers_value as varchar), '(' || shared.aircraftcharacteristic_ts.passengers_nilreason || ')') as passengers,
+    coalesce(cast(shared.aircraftcharacteristic_ts.passengersinterpretation_value as varchar), '(' || shared.aircraftcharacteristic_ts.passengersinterpretation_nilreason || ')') as passengersinterpretation,
+    coalesce(cast(shared.aircraftcharacteristic_ts.speedinterpretation_value as varchar), '(' || shared.aircraftcharacteristic_ts.speedinterpretation_nilreason || ')') as speedinterpretation,
+    coalesce(cast(shared.aircraftcharacteristic_ts.waketurbulence_value as varchar), '(' || shared.aircraftcharacteristic_ts.waketurbulence_nilreason || ')') as waketurbulence,
+    coalesce(cast(shared.aircraftcharacteristic_ts.navigationequipment_value as varchar), '(' || shared.aircraftcharacteristic_ts.navigationequipment_nilreason || ')') as navigationequipment,
+    coalesce(cast(shared.aircraftcharacteristic_ts.navigationspecification_value as varchar), '(' || shared.aircraftcharacteristic_ts.navigationspecification_nilreason || ')') as navigationspecification,
+    coalesce(cast(shared.aircraftcharacteristic_ts.verticalseparationcapability_value as varchar), '(' || shared.aircraftcharacteristic_ts.verticalseparationcapability_nilreason || ')') as verticalseparationcapability,
+    coalesce(cast(shared.aircraftcharacteristic_ts.anticollisionandseparationequipment_value as varchar), '(' || shared.aircraftcharacteristic_ts.anticollisionandseparationequipment_nilreason || ')') as anticollisionandseparationequipment,
+    coalesce(cast(shared.aircraftcharacteristic_ts.communicationequipment_value as varchar), '(' || shared.aircraftcharacteristic_ts.communicationequipment_nilreason || ')') as communicationequipment,
+    coalesce(cast(shared.aircraftcharacteristic_ts.surveillanceequipment_value as varchar), '(' || shared.aircraftcharacteristic_ts.surveillanceequipment_nilreason || ')') as surveillanceequipment,
+    coalesce(cast(shared.aircraftcharacteristic_ts.wingspan_value as varchar) || ' ' || shared.aircraftcharacteristic_ts.wingspan_uom, '(' || shared.aircraftcharacteristic_ts.wingspan_nilreason || ')') as wingspan,
+    coalesce(cast(shared.aircraftcharacteristic_ts.weight_value as varchar) || ' ' || shared.aircraftcharacteristic_ts.weight_uom, '(' || shared.aircraftcharacteristic_ts.weight_nilreason || ')') as weight,
+    coalesce(cast(shared.aircraftcharacteristic_ts.speed_value as varchar) || ' ' || shared.aircraftcharacteristic_ts.speed_uom, '(' || shared.aircraftcharacteristic_ts.speed_nilreason || ')') as speed
+from shared.aircraftcharacteristic 
+create or replace view airport_heliport.aircraftstandcontamination_view as
+select
+    airport_heliport.aircraftstandcontamination.id,
+    airport_heliport.aircraftstandcontamination.nilreason,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.observationTime_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.proportion_value as varchar), '(' || airport_heliport.aircraftstandcontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.aircraftstandcontamination_ts.depth_value as varchar) || ' ' || airport_heliport.aircraftstandcontamination_ts.depth_uom, '(' || airport_heliport.aircraftstandcontamination_ts.depth_nilreason || ')') as depth
+from airport_heliport.aircraftstandcontamination 
+create or replace view airport_heliport.airportheliportavailability_view as
+select
+    airport_heliport.airportheliportavailability.id,
+    airport_heliport.airportheliportavailability.nilreason,
+    coalesce(cast(airport_heliport.airportheliportavailability_ts.operationalstatus_value as varchar), '(' || airport_heliport.airportheliportavailability_ts.operationalstatus_nilreason || ')') as operationalstatus,
+    coalesce(cast(airport_heliport.airportheliportavailability_ts.warning_value as varchar), '(' || airport_heliport.airportheliportavailability_ts.warning_nilreason || ')') as warning
+from airport_heliport.airportheliportavailability 
+create or replace view airport_heliport.airportheliportcontamination_view as
+select
+    airport_heliport.airportheliportcontamination.id,
+    airport_heliport.airportheliportcontamination.nilreason,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.observationTime_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.proportion_value as varchar), '(' || airport_heliport.airportheliportcontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.airportheliportcontamination_ts.depth_value as varchar) || ' ' || airport_heliport.airportheliportcontamination_ts.depth_uom, '(' || airport_heliport.airportheliportcontamination_ts.depth_nilreason || ')') as depth
+from airport_heliport.airportheliportcontamination 
+create or replace view airport_heliport.airportheliportresponsibilityorganisation_view as
+select
+    airport_heliport.airportheliportresponsibilityorganisation.id,
+    airport_heliport.airportheliportresponsibilityorganisation.nilreason,
+    coalesce(cast(airport_heliport.airportheliportresponsibilityorganisation_ts.role_value as varchar), '(' || airport_heliport.airportheliportresponsibilityorganisation_ts.role_nilreason || ')') as role
+from airport_heliport.airportheliportresponsibilityorganisation 
+create or replace view airport_heliport.airportheliportusage_view as
+select
+    airport_heliport.airportheliportusage.id,
+    airport_heliport.airportheliportusage.nilreason,
+    coalesce(cast(airport_heliport.airportheliportusage_ts.type_value as varchar), '(' || airport_heliport.airportheliportusage_ts.type_nilreason || ')') as type,
+    coalesce(cast(airport_heliport.airportheliportusage_ts.operation_value as varchar), '(' || airport_heliport.airportheliportusage_ts.operation_nilreason || ')') as operation,
+    coalesce(cast(airport_heliport.airportheliportusage_ts.priorpermission_value as varchar) || ' ' || airport_heliport.airportheliportusage_ts.priorpermission_uom, '(' || airport_heliport.airportheliportusage_ts.priorpermission_nilreason || ')') as priorpermission,
+    coalesce(cast(airport_heliport_conditioncombination_pt_auodem.title as varchar), '(' || airport_heliport_conditioncombination_pt_auodem.nilreason[1] || ')') AS selection,
+    airport_heliport_conditioncombination_pt_auodem.href AS selection_href
+from airport_heliport.airportheliportusage 
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_auodem on airport_heliport.airportheliportusage_ts.selection_id = airport_heliport_conditioncombination_pt_auodem.id
+create or replace view airspace.airspaceactivation_view as
+select
+    airspace.airspaceactivation.id,
+    airspace.airspaceactivation.nilreason,
+    coalesce(cast(airspace.airspaceactivation_ts.activity_value as varchar), '(' || airspace.airspaceactivation_ts.activity_nilreason || ')') as activity,
+    coalesce(cast(airspace.airspaceactivation_ts.status_value as varchar), '(' || airspace.airspaceactivation_ts.status_nilreason || ')') as status
+from airspace.airspaceactivation 
+create or replace view airspace.airspacegeometrycomponent_view as
+select
+    airspace.airspacegeometrycomponent.id,
+    airspace.airspacegeometrycomponent.nilreason,
+    coalesce(cast(airspace.airspacegeometrycomponent_ts.operation_value as varchar), '(' || airspace.airspacegeometrycomponent_ts.operation_nilreason || ')') as operation,
+    coalesce(cast(airspace.airspacegeometrycomponent_ts.operationsequence_value as varchar), '(' || airspace.airspacegeometrycomponent_ts.operationsequence_nilreason || ')') as operationsequence,
+    coalesce(cast(airspace_airspacevolume_pt_iyvudk.title as varchar), '(' || airspace_airspacevolume_pt_iyvudk.nilreason[1] || ')') AS theairspacevolume,
+    airspace_airspacevolume_pt_iyvudk.href AS theairspacevolume_href
+from airspace.airspacegeometrycomponent 
+left join airspace.airspacevolume_pt airspace_airspacevolume_pt_iyvudk on airspace.airspacegeometrycomponent_ts.theairspacevolume_id = airspace_airspacevolume_pt_iyvudk.id
+create or replace view airspace.airspacelayerclass_view as
+select
+    airspace.airspacelayerclass.id,
+    airspace.airspacelayerclass.nilreason,
+    coalesce(cast(airspace.airspacelayerclass_ts.classification_value as varchar), '(' || airspace.airspacelayerclass_ts.classification_nilreason || ')') as classification
+from airspace.airspacelayerclass 
+create or replace view shared.airspacelayer_view as
+select
+    shared.airspacelayer.id,
+    shared.airspacelayer.nilreason,
+    coalesce(cast(shared.airspacelayer_ts.upperlimitreference_value as varchar), '(' || shared.airspacelayer_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
+    coalesce(cast(shared.airspacelayer_ts.lowerlimitreference_value as varchar), '(' || shared.airspacelayer_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
+    coalesce(cast(shared.airspacelayer_ts.altitudeinterpretation_value as varchar), '(' || shared.airspacelayer_ts.altitudeinterpretation_nilreason || ')') as altitudeinterpretation,
+    coalesce(cast(shared.airspacelayer_ts.upperlimit_value as varchar) || ' ' || shared.airspacelayer_ts.upperlimit_uom, '(' || shared.airspacelayer_ts.upperlimit_nilreason || ')') as upperlimit,
+    coalesce(cast(shared.airspacelayer_ts.lowerlimit_value as varchar) || ' ' || shared.airspacelayer_ts.lowerlimit_uom, '(' || shared.airspacelayer_ts.lowerlimit_nilreason || ')') as lowerlimit
+from shared.airspacelayer 
+create or replace view airspace.airspacevolumedependency_view as
+select
+    airspace.airspacevolumedependency.id,
+    airspace.airspacevolumedependency.nilreason,
+    coalesce(cast(airspace.airspacevolumedependency_ts.dependency_value as varchar), '(' || airspace.airspacevolumedependency_ts.dependency_nilreason || ')') as dependency
+from airspace.airspacevolumedependency 
+create or replace view airspace.airspacevolume_view as
+select
+    airspace.airspacevolume.id,
+    airspace.airspacevolume.nilreason,
+    coalesce(cast(airspace.airspacevolume_ts.upperlimitreference_value as varchar), '(' || airspace.airspacevolume_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
+    coalesce(cast(airspace.airspacevolume_ts.maximumlimitreference_value as varchar), '(' || airspace.airspacevolume_ts.maximumlimitreference_nilreason || ')') as maximumlimitreference,
+    coalesce(cast(airspace.airspacevolume_ts.lowerlimitreference_value as varchar), '(' || airspace.airspacevolume_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
+    coalesce(cast(airspace.airspacevolume_ts.minimumlimitreference_value as varchar), '(' || airspace.airspacevolume_ts.minimumlimitreference_nilreason || ')') as minimumlimitreference,
+    coalesce(cast(airspace.airspacevolume_ts.upperlimit_value as varchar) || ' ' || airspace.airspacevolume_ts.upperlimit_uom, '(' || airspace.airspacevolume_ts.upperlimit_nilreason || ')') as upperlimit,
+    coalesce(cast(airspace.airspacevolume_ts.maximumlimit_value as varchar) || ' ' || airspace.airspacevolume_ts.maximumlimit_uom, '(' || airspace.airspacevolume_ts.maximumlimit_nilreason || ')') as maximumlimit,
+    coalesce(cast(airspace.airspacevolume_ts.lowerlimit_value as varchar) || ' ' || airspace.airspacevolume_ts.lowerlimit_uom, '(' || airspace.airspacevolume_ts.lowerlimit_nilreason || ')') as lowerlimit,
+    coalesce(cast(airspace.airspacevolume_ts.minimumlimit_value as varchar) || ' ' || airspace.airspacevolume_ts.minimumlimit_uom, '(' || airspace.airspacevolume_ts.minimumlimit_nilreason || ')') as minimumlimit,
+    coalesce(cast(airspace.airspacevolume_ts.width_value as varchar) || ' ' || airspace.airspacevolume_ts.width_uom, '(' || airspace.airspacevolume_ts.width_nilreason || ')') as width,
+    coalesce(cast(airspace_airspacevolumedependency_pt_kgcpyt.title as varchar), '(' || airspace_airspacevolumedependency_pt_kgcpyt.nilreason[1] || ')') AS contributorairspace,
+    airspace_airspacevolumedependency_pt_kgcpyt.href AS contributorairspace_href
+from airspace.airspacevolume 
+left join airspace.airspacevolumedependency_pt airspace_airspacevolumedependency_pt_kgcpyt on airspace.airspacevolume_ts.contributorairspace_id = airspace_airspacevolumedependency_pt_kgcpyt.id
+create or replace view airport_heliport.altimetersourcestatus_view as
+select
+    airport_heliport.altimetersourcestatus.id,
+    airport_heliport.altimetersourcestatus.nilreason,
+    coalesce(cast(airport_heliport.altimetersourcestatus_ts.operationalstatus_value as varchar), '(' || airport_heliport.altimetersourcestatus_ts.operationalstatus_nilreason || ')') as operationalstatus
+from airport_heliport.altimetersourcestatus 
+create or replace view shared.altitudeadjustment_view as
+select
+    shared.altitudeadjustment.id,
+    shared.altitudeadjustment.nilreason,
+    coalesce(cast(shared.altitudeadjustment_ts.altitudeadjustmenttype_value as varchar), '(' || shared.altitudeadjustment_ts.altitudeadjustmenttype_nilreason || ')') as altitudeadjustmenttype,
+    coalesce(cast(shared.altitudeadjustment_ts.primaryalternateminimum_value as varchar), '(' || shared.altitudeadjustment_ts.primaryalternateminimum_nilreason || ')') as primaryalternateminimum,
+    coalesce(cast(shared.altitudeadjustment_ts.localremotecode_value as varchar), '(' || shared.altitudeadjustment_ts.localremotecode_nilreason || ')') as localremotecode,
+    coalesce(cast(shared.altitudeadjustment_ts.altitudeadjustment_value as varchar) || ' ' || shared.altitudeadjustment_ts.altitudeadjustment_uom, '(' || shared.altitudeadjustment_ts.altitudeadjustment_nilreason || ')') as altitudeadjustment
+from shared.altitudeadjustment 
+create or replace view navaids_points.angleuse_view as
+select
+    navaids_points.angleuse.id,
+    navaids_points.angleuse.nilreason,
+    coalesce(cast(navaids_points.angleuse_ts.alongcourseguidance_value as varchar), '(' || navaids_points.angleuse_ts.alongcourseguidance_nilreason || ')') as alongcourseguidance
+from navaids_points.angleuse 
+create or replace view procedure.approachaltitudetable_view as
+select
+    procedure.approachaltitudetable.id,
+    procedure.approachaltitudetable.nilreason,
+    coalesce(cast(procedure.approachaltitudetable_ts.measurementpoint_value as varchar), '(' || procedure.approachaltitudetable_ts.measurementpoint_nilreason || ')') as measurementpoint,
+    coalesce(cast(procedure.approachaltitudetable_ts.altitudereference_value as varchar), '(' || procedure.approachaltitudetable_ts.altitudereference_nilreason || ')') as altitudereference,
+    coalesce(cast(procedure.approachaltitudetable_ts.altitude_value as varchar) || ' ' || procedure.approachaltitudetable_ts.altitude_uom, '(' || procedure.approachaltitudetable_ts.altitude_nilreason || ')') as altitude
+from procedure.approachaltitudetable 
+create or replace view procedure.approachcondition_view as
+select
+    procedure.approachcondition.id,
+    procedure.approachcondition.nilreason,
+    coalesce(cast(procedure.approachcondition_ts.finalapproachpath_value as varchar), '(' || procedure.approachcondition_ts.finalapproachpath_nilreason || ')') as finalapproachpath,
+    coalesce(cast(procedure.approachcondition_ts.requirednavigationperformance_value as varchar), '(' || procedure.approachcondition_ts.requirednavigationperformance_nilreason || ')') as requirednavigationperformance,
+    coalesce(cast(procedure.approachcondition_ts.climbgradient_value as varchar), '(' || procedure.approachcondition_ts.climbgradient_nilreason || ')') as climbgradient,
+    coalesce(cast(procedure_minima_pt_eorcnh.title as varchar), '(' || procedure_minima_pt_eorcnh.nilreason[1] || ')') AS minimumset,
+    procedure_minima_pt_eorcnh.href AS minimumset_href
+from procedure.approachcondition 
+left join procedure.minima_pt procedure_minima_pt_eorcnh on procedure.approachcondition_ts.minimumset_id = procedure_minima_pt_eorcnh.id
+create or replace view procedure.approachdistancetable_view as
+select
+    procedure.approachdistancetable.id,
+    procedure.approachdistancetable.nilreason,
+    coalesce(cast(procedure.approachdistancetable_ts.startingmeasurementpoint_value as varchar), '(' || procedure.approachdistancetable_ts.startingmeasurementpoint_nilreason || ')') as startingmeasurementpoint,
+    coalesce(cast(procedure.approachdistancetable_ts.endingmeasurementpoint_value as varchar), '(' || procedure.approachdistancetable_ts.endingmeasurementpoint_nilreason || ')') as endingmeasurementpoint,
+    coalesce(cast(procedure.approachdistancetable_ts.valuehat_value as varchar) || ' ' || procedure.approachdistancetable_ts.valuehat_uom, '(' || procedure.approachdistancetable_ts.valuehat_nilreason || ')') as valuehat,
+    coalesce(cast(procedure.approachdistancetable_ts.distance_value as varchar) || ' ' || procedure.approachdistancetable_ts.distance_uom, '(' || procedure.approachdistancetable_ts.distance_nilreason || ')') as distance
+from procedure.approachdistancetable 
+create or replace view procedure.approachtimingtable_view as
+select
+    procedure.approachtimingtable.id,
+    procedure.approachtimingtable.nilreason,
+    coalesce(cast(procedure.approachtimingtable_ts.startingmeasurementpoint_value as varchar), '(' || procedure.approachtimingtable_ts.startingmeasurementpoint_nilreason || ')') as startingmeasurementpoint,
+    coalesce(cast(procedure.approachtimingtable_ts.endingmeasurementpoint_value as varchar), '(' || procedure.approachtimingtable_ts.endingmeasurementpoint_nilreason || ')') as endingmeasurementpoint,
+    coalesce(cast(procedure.approachtimingtable_ts.time_value as varchar) || ' ' || procedure.approachtimingtable_ts.time_uom, '(' || procedure.approachtimingtable_ts.time_nilreason || ')') as time,
+    coalesce(cast(procedure.approachtimingtable_ts.speed_value as varchar) || ' ' || procedure.approachtimingtable_ts.speed_uom, '(' || procedure.approachtimingtable_ts.speed_nilreason || ')') as speed
+from procedure.approachtimingtable 
+create or replace view airport_heliport.apronareaavailability_view as
+select
+    airport_heliport.apronareaavailability.id,
+    airport_heliport.apronareaavailability.nilreason,
+    coalesce(cast(airport_heliport.apronareaavailability_ts.operationalstatus_value as varchar), '(' || airport_heliport.apronareaavailability_ts.operationalstatus_nilreason || ')') as operationalstatus,
+    coalesce(cast(airport_heliport.apronareaavailability_ts.warning_value as varchar), '(' || airport_heliport.apronareaavailability_ts.warning_nilreason || ')') as warning
+from airport_heliport.apronareaavailability 
+create or replace view airport_heliport.apronareausage_view as
+select
+    airport_heliport.apronareausage.id,
+    airport_heliport.apronareausage.nilreason,
+    coalesce(cast(airport_heliport.apronareausage_ts.type_value as varchar), '(' || airport_heliport.apronareausage_ts.type_nilreason || ')') as type,
+    coalesce(cast(airport_heliport.apronareausage_ts.priorpermission_value as varchar) || ' ' || airport_heliport.apronareausage_ts.priorpermission_uom, '(' || airport_heliport.apronareausage_ts.priorpermission_nilreason || ')') as priorpermission,
+    coalesce(cast(airport_heliport_conditioncombination_pt_zfjqjv.title as varchar), '(' || airport_heliport_conditioncombination_pt_zfjqjv.nilreason[1] || ')') AS selection,
+    airport_heliport_conditioncombination_pt_zfjqjv.href AS selection_href
+from airport_heliport.apronareausage 
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_zfjqjv on airport_heliport.apronareausage_ts.selection_id = airport_heliport_conditioncombination_pt_zfjqjv.id
+create or replace view airport_heliport.aproncontamination_view as
+select
+    airport_heliport.aproncontamination.id,
+    airport_heliport.aproncontamination.nilreason,
+    coalesce(cast(airport_heliport.aproncontamination_ts.observationTime_value as varchar), '(' || airport_heliport.aproncontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.aproncontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.aproncontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.aproncontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.aproncontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.aproncontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.aproncontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.aproncontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.aproncontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.aproncontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.aproncontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.aproncontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.aproncontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.aproncontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.aproncontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.aproncontamination_ts.proportion_value as varchar), '(' || airport_heliport.aproncontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.aproncontamination_ts.depth_value as varchar) || ' ' || airport_heliport.aproncontamination_ts.depth_uom, '(' || airport_heliport.aproncontamination_ts.depth_nilreason || ')') as depth
+from airport_heliport.aproncontamination 
+create or replace view aerial_refuelling.authorityforaerialrefuelling_view as
+select
+    aerial_refuelling.authorityforaerialrefuelling.id,
+    aerial_refuelling.authorityforaerialrefuelling.nilreason,
+    coalesce(cast(aerial_refuelling.authorityforaerialrefuelling_ts.type_value as varchar), '(' || aerial_refuelling.authorityforaerialrefuelling_ts.type_nilreason || ')') as type
+from aerial_refuelling.authorityforaerialrefuelling 
+create or replace view navaids_points.authorityfornavaidequipment_view as
+select
+    navaids_points.authorityfornavaidequipment.id,
+    navaids_points.authorityfornavaidequipment.nilreason,
+    coalesce(cast(navaids_points.authorityfornavaidequipment_ts.type_value as varchar), '(' || navaids_points.authorityfornavaidequipment_ts.type_nilreason || ')') as type
+from navaids_points.authorityfornavaidequipment 
+create or replace view navaids_points.authorityforspecialnavigationstation_view as
+select
+    navaids_points.authorityforspecialnavigationstation.id,
+    navaids_points.authorityforspecialnavigationstation.nilreason,
+    coalesce(cast(navaids_points.authorityforspecialnavigationstation_ts.type_value as varchar), '(' || navaids_points.authorityforspecialnavigationstation_ts.type_nilreason || ')') as type
+from navaids_points.authorityforspecialnavigationstation 
+create or replace view navaids_points.authorityforspecialnavigationsystem_view as
+select
+    navaids_points.authorityforspecialnavigationsystem.id,
+    navaids_points.authorityforspecialnavigationsystem.nilreason,
+    coalesce(cast(navaids_points.authorityforspecialnavigationsystem_ts.type_value as varchar), '(' || navaids_points.authorityforspecialnavigationsystem_ts.type_nilreason || ')') as type
+from navaids_points.authorityforspecialnavigationsystem 
+create or replace view service.callsigndetail_view as
+select
+    service.callsigndetail.id,
+    service.callsigndetail.nilreason,
+    coalesce(cast(service.callsigndetail_ts.callsign_value as varchar), '(' || service.callsigndetail_ts.callsign_nilreason || ')') as callsign,
+    coalesce(cast(service.callsigndetail_ts.language_value as varchar), '(' || service.callsigndetail_ts.language_nilreason || ')') as language
+from service.callsigndetail 
+create or replace view shared.circlesector_view as
+select
+    shared.circlesector.id,
+    shared.circlesector.nilreason,
+    coalesce(cast(shared.circlesector_ts.arcdirection_value as varchar), '(' || shared.circlesector_ts.arcdirection_nilreason || ')') as arcdirection,
+    coalesce(cast(shared.circlesector_ts.fromangle_value as varchar), '(' || shared.circlesector_ts.fromangle_nilreason || ')') as fromangle,
+    coalesce(cast(shared.circlesector_ts.toangle_value as varchar), '(' || shared.circlesector_ts.toangle_nilreason || ')') as toangle,
+    coalesce(cast(shared.circlesector_ts.angletype_value as varchar), '(' || shared.circlesector_ts.angletype_nilreason || ')') as angletype,
+    coalesce(cast(shared.circlesector_ts.angledirectionreference_value as varchar), '(' || shared.circlesector_ts.angledirectionreference_nilreason || ')') as angledirectionreference,
+    coalesce(cast(shared.circlesector_ts.upperlimitreference_value as varchar), '(' || shared.circlesector_ts.upperlimitreference_nilreason || ')') as upperlimitreference,
+    coalesce(cast(shared.circlesector_ts.lowerlimitreference_value as varchar), '(' || shared.circlesector_ts.lowerlimitreference_nilreason || ')') as lowerlimitreference,
+    coalesce(cast(shared.circlesector_ts.innerdistance_value as varchar) || ' ' || shared.circlesector_ts.innerdistance_uom, '(' || shared.circlesector_ts.innerdistance_nilreason || ')') as innerdistance,
+    coalesce(cast(shared.circlesector_ts.outerdistance_value as varchar) || ' ' || shared.circlesector_ts.outerdistance_uom, '(' || shared.circlesector_ts.outerdistance_nilreason || ')') as outerdistance,
+    coalesce(cast(shared.circlesector_ts.upperlimit_value as varchar) || ' ' || shared.circlesector_ts.upperlimit_uom, '(' || shared.circlesector_ts.upperlimit_nilreason || ')') as upperlimit,
+    coalesce(cast(shared.circlesector_ts.lowerlimit_value as varchar) || ' ' || shared.circlesector_ts.lowerlimit_uom, '(' || shared.circlesector_ts.lowerlimit_nilreason || ')') as lowerlimit
+from shared.circlesector 
+create or replace view procedure.circlingrestriction_view as
+select
+    procedure.circlingrestriction.id,
+    procedure.circlingrestriction.nilreason,
+    coalesce(cast(shared_circlesector_pt_lovywh.title as varchar), '(' || shared_circlesector_pt_lovywh.nilreason[1] || ')') AS sectordescription,
+    shared_circlesector_pt_lovywh.href AS sectordescription_href
+from procedure.circlingrestriction 
+left join shared.circlesector_pt shared_circlesector_pt_lovywh on procedure.circlingrestriction_ts.sectordescription_id = shared_circlesector_pt_lovywh.id
+create or replace view airport_heliport.city_view as
+select
+    airport_heliport.city.id,
+    airport_heliport.city.nilreason,
+    coalesce(cast(airport_heliport.city_ts.name_value as varchar), '(' || airport_heliport.city_ts.name_nilreason || ')') as name
+from airport_heliport.city 
+create or replace view airport_heliport.conditioncombination_view as
+select
+    airport_heliport.conditioncombination.id,
+    airport_heliport.conditioncombination.nilreason,
+    coalesce(cast(airport_heliport.conditioncombination_ts.logicaloperator_value as varchar), '(' || airport_heliport.conditioncombination_ts.logicaloperator_nilreason || ')') as logicaloperator
+from airport_heliport.conditioncombination 
+create or replace view shared.contactinformation_view as
+select
+    shared.contactinformation.id,
+    shared.contactinformation.nilreason,
+    coalesce(cast(shared.contactinformation_ts.name_value as varchar), '(' || shared.contactinformation_ts.name_nilreason || ')') as name,
+    coalesce(cast(shared.contactinformation_ts.title_value as varchar), '(' || shared.contactinformation_ts.title_nilreason || ')') as title
+from shared.contactinformation 
+create or replace view procedure.departurearrivalcondition_view as
+select
+    procedure.departurearrivalcondition.id,
+    procedure.departurearrivalcondition.nilreason,
+    coalesce(cast(procedure.departurearrivalcondition_ts.minimumcrossingatendreference_value as varchar), '(' || procedure.departurearrivalcondition_ts.minimumcrossingatendreference_nilreason || ')') as minimumcrossingatendreference,
+    coalesce(cast(procedure.departurearrivalcondition_ts.maximumcrossingatendreference_value as varchar), '(' || procedure.departurearrivalcondition_ts.maximumcrossingatendreference_nilreason || ')') as maximumcrossingatendreference,
+    coalesce(cast(procedure.departurearrivalcondition_ts.minimumenroutealtitude_value as varchar) || ' ' || procedure.departurearrivalcondition_ts.minimumenroutealtitude_uom, '(' || procedure.departurearrivalcondition_ts.minimumenroutealtitude_nilreason || ')') as minimumenroutealtitude,
+    coalesce(cast(procedure.departurearrivalcondition_ts.minimumcrossingatend_value as varchar) || ' ' || procedure.departurearrivalcondition_ts.minimumcrossingatend_uom, '(' || procedure.departurearrivalcondition_ts.minimumcrossingatend_nilreason || ')') as minimumcrossingatend,
+    coalesce(cast(procedure.departurearrivalcondition_ts.maximumcrossingatend_value as varchar) || ' ' || procedure.departurearrivalcondition_ts.maximumcrossingatend_uom, '(' || procedure.departurearrivalcondition_ts.maximumcrossingatend_nilreason || ')') as maximumcrossingatend,
+    coalesce(cast(shared_aircraftcharacteristic_pt_kfrual.title as varchar), '(' || shared_aircraftcharacteristic_pt_kfrual.nilreason[1] || ')') AS enginetype,
+    shared_aircraftcharacteristic_pt_kfrual.href AS enginetype_href
+from procedure.departurearrivalcondition 
+left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_kfrual on procedure.departurearrivalcondition_ts.engine_id = shared_aircraftcharacteristic_pt_kfrual.id
+create or replace view routes.directflightclass_view as
+select
+    routes.directflightclass.id,
+    routes.directflightclass.nilreason,
+    coalesce(cast(routes.directflightclass_ts.exceedlength_value as varchar) || ' ' || routes.directflightclass_ts.exceedlength_uom, '(' || routes.directflightclass_ts.exceedlength_nilreason || ')') as exceedlength
+from routes.directflightclass 
+create or replace view routes.directflight_view as
+select
+    routes.directflight.id,
+    routes.directflight.nilreason
+from routes.directflight 
+create or replace view routes.directflightsegment_view as
+select
+    routes.directflightsegment.id,
+    routes.directflightsegment.nilreason
+from routes.directflightsegment 
+create or replace view navaids_points.enroutesegmentpoint_view as
+select
+    navaids_points.enroutesegmentpoint.id,
+    navaids_points.enroutesegmentpoint.nilreason,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.reportingatc_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.reportingatc_nilreason || ')') as reportingatc,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.flyover_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.flyover_nilreason || ')') as flyover,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.waypoint_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.waypoint_nilreason || ')') as waypoint,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.radarguidance_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.radarguidance_nilreason || ')') as radarguidance,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.rolefreeflight_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.rolefreeflight_nilreason || ')') as rolefreeflight,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.rolervsm_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.rolervsm_nilreason || ')') as rolervsm,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.rolemilitarytraining_value as varchar), '(' || navaids_points.enroutesegmentpoint_ts.rolemilitarytraining_nilreason || ')') as rolemilitarytraining,
+    coalesce(cast(navaids_points.enroutesegmentpoint_ts.turnradius_value as varchar) || ' ' || navaids_points.enroutesegmentpoint_ts.turnradius_uom, '(' || navaids_points.enroutesegmentpoint_ts.turnradius_nilreason || ')') as turnradius
+from navaids_points.enroutesegmentpoint 
+create or replace view procedure.equipmentunavailableadjustmentcolumn_view as
+select
+    procedure.equipmentunavailableadjustmentcolumn.id,
+    procedure.equipmentunavailableadjustmentcolumn.nilreason,
+    coalesce(cast(procedure.equipmentunavailableadjustmentcolumn_ts.guidanceequipment_value as varchar), '(' || procedure.equipmentunavailableadjustmentcolumn_ts.guidanceequipment_nilreason || ')') as guidanceequipment,
+    coalesce(cast(procedure.equipmentunavailableadjustmentcolumn_ts.landingsystemlights_value as varchar), '(' || procedure.equipmentunavailableadjustmentcolumn_ts.landingsystemlights_nilreason || ')') as landingsystemlights,
+    coalesce(cast(procedure.equipmentunavailableadjustmentcolumn_ts.equipmentrvr_value as varchar), '(' || procedure.equipmentunavailableadjustmentcolumn_ts.equipmentrvr_nilreason || ')') as equipmentrvr,
+    coalesce(cast(procedure.equipmentunavailableadjustmentcolumn_ts.approachlightinginoperative_value as varchar), '(' || procedure.equipmentunavailableadjustmentcolumn_ts.approachlightinginoperative_nilreason || ')') as approachlightinginoperative,
+    coalesce(cast(procedure.equipmentunavailableadjustmentcolumn_ts.visibilityadjustment_value as varchar) || ' ' || procedure.equipmentunavailableadjustmentcolumn_ts.visibilityadjustment_uom, '(' || procedure.equipmentunavailableadjustmentcolumn_ts.visibilityadjustment_nilreason || ')') as visibilityadjustment
+from procedure.equipmentunavailableadjustmentcolumn 
+create or replace view procedure.equipmentunavailableadjustment_view as
+select
+    procedure.equipmentunavailableadjustment.id,
+    procedure.equipmentunavailableadjustment.nilreason,
+    coalesce(cast(procedure.equipmentunavailableadjustment_ts.type_value as varchar), '(' || procedure.equipmentunavailableadjustment_ts.type_nilreason || ')') as type,
+    coalesce(cast(procedure.equipmentunavailableadjustment_ts.approachlightinginoperative_value as varchar), '(' || procedure.equipmentunavailableadjustment_ts.approachlightinginoperative_nilreason || ')') as approachlightinginoperative
+from procedure.equipmentunavailableadjustment 
+create or replace view public.fasdatablock_view as
+select
+    public.fasdatablock.id,
+    public.fasdatablock.nilreason,
+    coalesce(cast(public.fasdatablock_ts.horizontalalarmlimit_value as varchar), '(' || public.fasdatablock_ts.horizontalalarmlimit_nilreason || ')') as horizontalalarmlimit,
+    coalesce(cast(public.fasdatablock_ts.verticalalarmlimit_value as varchar), '(' || public.fasdatablock_ts.verticalalarmlimit_nilreason || ')') as verticalalarmlimit,
+    coalesce(cast(public.fasdatablock_ts.crcremainder_value as varchar), '(' || public.fasdatablock_ts.crcremainder_nilreason || ')') as crcremainder,
+    coalesce(cast(public.fasdatablock_ts.operationtype_value as varchar), '(' || public.fasdatablock_ts.operationtype_nilreason || ')') as operationtype,
+    coalesce(cast(public.fasdatablock_ts.serviceprovidersbas_value as varchar), '(' || public.fasdatablock_ts.serviceprovidersbas_nilreason || ')') as serviceprovidersbas,
+    coalesce(cast(public.fasdatablock_ts.approachperformancedesignator_value as varchar), '(' || public.fasdatablock_ts.approachperformancedesignator_nilreason || ')') as approachperformancedesignator,
+    coalesce(cast(public.fasdatablock_ts.referencepathdataselector_value as varchar), '(' || public.fasdatablock_ts.referencepathdataselector_nilreason || ')') as referencepathdataselector,
+    coalesce(cast(public.fasdatablock_ts.thresholdcoursewidth_value as varchar) || ' ' || public.fasdatablock_ts.thresholdcoursewidth_uom, '(' || public.fasdatablock_ts.thresholdcoursewidth_nilreason || ')') as thresholdcoursewidth,
+    coalesce(cast(public.fasdatablock_ts.lengthoffset_value as varchar) || ' ' || public.fasdatablock_ts.lengthoffset_uom, '(' || public.fasdatablock_ts.lengthoffset_nilreason || ')') as lengthoffset
+from public.fasdatablock 
+create or replace view procedure.finalprofile_view as
+select
+    procedure.finalprofile.id,
+    procedure.finalprofile.nilreason
+from procedure.finalprofile 
+create or replace view shared.flightcharacteristic_view as
+select
+    shared.flightcharacteristic.id,
+    shared.flightcharacteristic.nilreason,
+    coalesce(cast(shared.flightcharacteristic_ts.type_value as varchar), '(' || shared.flightcharacteristic_ts.type_nilreason || ')') as type,
+    coalesce(cast(shared.flightcharacteristic_ts.rule_value as varchar), '(' || shared.flightcharacteristic_ts.rule_nilreason || ')') as rule,
+    coalesce(cast(shared.flightcharacteristic_ts.status_value as varchar), '(' || shared.flightcharacteristic_ts.status_nilreason || ')') as status,
+    coalesce(cast(shared.flightcharacteristic_ts.military_value as varchar), '(' || shared.flightcharacteristic_ts.military_nilreason || ')') as military,
+    coalesce(cast(shared.flightcharacteristic_ts.origin_value as varchar), '(' || shared.flightcharacteristic_ts.origin_nilreason || ')') as origin,
+    coalesce(cast(shared.flightcharacteristic_ts.purpose_value as varchar), '(' || shared.flightcharacteristic_ts.purpose_nilreason || ')') as purpose
+from shared.flightcharacteristic 
+create or replace view routes.flightconditioncircumstance_view as
+select
+    routes.flightconditioncircumstance.id,
+    routes.flightconditioncircumstance.nilreason,
+    coalesce(cast(routes.flightconditioncircumstance_ts.referencelocation_value as varchar), '(' || routes.flightconditioncircumstance_ts.referencelocation_nilreason || ')') as referencelocation,
+    coalesce(cast(routes.flightconditioncircumstance_ts.relationwithlocation_value as varchar), '(' || routes.flightconditioncircumstance_ts.relationwithlocation_nilreason || ')') as relationwithlocation
+from routes.flightconditioncircumstance 
+create or replace view routes.flightconditioncombination_view as
+select
+    routes.flightconditioncombination.id,
+    routes.flightconditioncombination.nilreason,
+    coalesce(cast(routes.flightconditioncombination_ts.logicaloperator_value as varchar), '(' || routes.flightconditioncombination_ts.logicaloperator_nilreason || ')') as logicaloperator
+from routes.flightconditioncombination 
+create or replace view routes.flightconditionelement_view as
+select
+    routes.flightconditionelement.id,
+    routes.flightconditionelement.nilreason,
+    coalesce(cast(routes.flightconditionelement_ts.index_value as varchar), '(' || routes.flightconditionelement_ts.index_nilreason || ')') as index,
+    coalesce(cast(routes_routeportion_pt_tkcnwc.title as varchar), '(' || routes_routeportion_pt_tkcnwc.nilreason[1] || ')') AS flightconditionrouteportioncondition,
+    routes_routeportion_pt_tkcnwc.href AS flightconditionrouteportioncondition_href,
+    coalesce(cast(routes_directflight_pt_xobymx.title as varchar), '(' || routes_directflight_pt_xobymx.nilreason[1] || ')') AS flightconditiondirectflightcondition,
+    routes_directflight_pt_xobymx.href AS flightconditiondirectflightcondition_href,
+    coalesce(cast(shared_aircraftcharacteristic_pt_acknuv.title as varchar), '(' || shared_aircraftcharacteristic_pt_acknuv.nilreason[1] || ')') AS flightconditionaircraft,
+    shared_aircraftcharacteristic_pt_acknuv.href AS flightconditionaircraft_href,
+    coalesce(cast(shared_flightcharacteristic_pt_foltay.title as varchar), '(' || shared_flightcharacteristic_pt_foltay.nilreason[1] || ')') AS flightconditionflight,
+    shared_flightcharacteristic_pt_foltay.href AS flightconditionflight_href,
+    coalesce(cast(routes_flightconditioncombination_pt_jzvlfn.title as varchar), '(' || routes_flightconditioncombination_pt_jzvlfn.nilreason[1] || ')') AS flightconditionoperand,
+    routes_flightconditioncombination_pt_jzvlfn.href AS flightconditionoperand_href,
+    coalesce(cast(shared_meteorology_pt_wrdqed.title as varchar), '(' || shared_meteorology_pt_wrdqed.nilreason[1] || ')') AS flightconditionweather,
+    shared_meteorology_pt_wrdqed.href AS flightconditionweather_href,
+    coalesce(cast(routes_flightconditioncircumstance_pt_mhcxxi.title as varchar), '(' || routes_flightconditioncircumstance_pt_mhcxxi.nilreason[1] || ')') AS operationalcondition,
+    routes_flightconditioncircumstance_pt_mhcxxi.href AS operationalcondition_href
+from routes.flightconditionelement 
+left join routes.routeportion_pt routes_routeportion_pt_tkcnwc on routes.flightconditionelement_ts.flightcondition_routeportioncondition_id = routes_routeportion_pt_tkcnwc.id
+left join routes.directflight_pt routes_directflight_pt_xobymx on routes.flightconditionelement_ts.flightcondition_directflightcondition_id = routes_directflight_pt_xobymx.id
+left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_acknuv on routes.flightconditionelement_ts.flightcondition_aircraft_id = shared_aircraftcharacteristic_pt_acknuv.id
+left join shared.flightcharacteristic_pt shared_flightcharacteristic_pt_foltay on routes.flightconditionelement_ts.flightcondition_flight_id = shared_flightcharacteristic_pt_foltay.id
+left join routes.flightconditioncombination_pt routes_flightconditioncombination_pt_jzvlfn on routes.flightconditionelement_ts.flightcondition_operand_id = routes_flightconditioncombination_pt_jzvlfn.id
+left join shared.meteorology_pt shared_meteorology_pt_wrdqed on routes.flightconditionelement_ts.flightcondition_weather_id = shared_meteorology_pt_wrdqed.id
+left join routes.flightconditioncircumstance_pt routes_flightconditioncircumstance_pt_mhcxxi on routes.flightconditionelement_ts.operationalcondition_id = routes_flightconditioncircumstance_pt_mhcxxi.id
+create or replace view routes.flightrestrictionlevel_view as
+select
+    routes.flightrestrictionlevel.id,
+    routes.flightrestrictionlevel.nilreason,
+    coalesce(cast(routes.flightrestrictionlevel_ts.upperlevelreference_value as varchar), '(' || routes.flightrestrictionlevel_ts.upperlevelreference_nilreason || ')') as upperlevelreference,
+    coalesce(cast(routes.flightrestrictionlevel_ts.lowerlevelreference_value as varchar), '(' || routes.flightrestrictionlevel_ts.lowerlevelreference_nilreason || ')') as lowerlevelreference,
+    coalesce(cast(routes.flightrestrictionlevel_ts.upperlevel_value as varchar) || ' ' || routes.flightrestrictionlevel_ts.upperlevel_uom, '(' || routes.flightrestrictionlevel_ts.upperlevel_nilreason || ')') as upperlevel,
+    coalesce(cast(routes.flightrestrictionlevel_ts.lowerlevel_value as varchar) || ' ' || routes.flightrestrictionlevel_ts.lowerlevel_uom, '(' || routes.flightrestrictionlevel_ts.lowerlevel_nilreason || ')') as lowerlevel
+from routes.flightrestrictionlevel 
+create or replace view routes.flightrestrictionroute_view as
+select
+    routes.flightrestrictionroute.id,
+    routes.flightrestrictionroute.nilreason,
+    coalesce(cast(routes.flightrestrictionroute_ts.priorpermission_value as varchar), '(' || routes.flightrestrictionroute_ts.priorpermission_nilreason || ')') as priorpermission
+from routes.flightrestrictionroute 
+create or replace view routes.flightroutingelement_view as
+select
+    routes.flightroutingelement.id,
+    routes.flightroutingelement.nilreason,
+    coalesce(cast(routes.flightroutingelement_ts.ordernumber_value as varchar), '(' || routes.flightroutingelement_ts.ordernumber_nilreason || ')') as ordernumber,
+    coalesce(cast(routes.flightroutingelement_ts.speedreference_value as varchar), '(' || routes.flightroutingelement_ts.speedreference_nilreason || ')') as speedreference,
+    coalesce(cast(routes.flightroutingelement_ts.speedcriteria_value as varchar), '(' || routes.flightroutingelement_ts.speedcriteria_nilreason || ')') as speedcriteria,
+    coalesce(cast(routes.flightroutingelement_ts.speed_value as varchar) || ' ' || routes.flightroutingelement_ts.speed_uom, '(' || routes.flightroutingelement_ts.speed_nilreason || ')') as speed,
+    coalesce(cast(routes_directflightsegment_pt_vaqlxc.title as varchar), '(' || routes_directflightsegment_pt_vaqlxc.nilreason[1] || ')') AS elementdirectflightelement,
+    routes_directflightsegment_pt_vaqlxc.href AS elementdirectflightelement_href,
+    coalesce(cast(routes_routeportion_pt_dkpggh.title as varchar), '(' || routes_routeportion_pt_dkpggh.nilreason[1] || ')') AS elementrouteportionelement,
+    routes_routeportion_pt_dkpggh.href AS elementrouteportionelement_href
+from routes.flightroutingelement 
+left join routes.directflightsegment_pt routes_directflightsegment_pt_vaqlxc on routes.flightroutingelement_ts.element_directflightelement_id = routes_directflightsegment_pt_vaqlxc.id
+left join routes.routeportion_pt routes_routeportion_pt_dkpggh on routes.flightroutingelement_ts.element_routeportionelement_id = routes_routeportion_pt_dkpggh.id
+create or replace view service.fuel_view as
+select
+    service.fuel.id,
+    service.fuel.nilreason,
+    coalesce(cast(service.fuel_ts.category_value as varchar), '(' || service.fuel_ts.category_nilreason || ')') as category
+from service.fuel 
+create or replace view airport_heliport.groundlightingavailability_view as
+select
+    airport_heliport.groundlightingavailability.id,
+    airport_heliport.groundlightingavailability.nilreason,
+    coalesce(cast(airport_heliport.groundlightingavailability_ts.operationalstatus_value as varchar), '(' || airport_heliport.groundlightingavailability_ts.operationalstatus_nilreason || ')') as operationalstatus
+from airport_heliport.groundlightingavailability 
+create or replace view holding.holdingpatterndistance_view as
+select
+    holding.holdingpatterndistance.id,
+    holding.holdingpatterndistance.nilreason,
+    coalesce(cast(holding.holdingpatterndistance_ts.length_value as varchar) || ' ' || holding.holdingpatterndistance_ts.length_uom, '(' || holding.holdingpatterndistance_ts.length_nilreason || ')') as length
+from holding.holdingpatterndistance 
+create or replace view holding.holdingpatternduration_view as
+select
+    holding.holdingpatternduration.id,
+    holding.holdingpatternduration.nilreason,
+    coalesce(cast(holding.holdingpatternduration_ts.duration_value as varchar) || ' ' || holding.holdingpatternduration_ts.duration_uom, '(' || holding.holdingpatternduration_ts.duration_nilreason || ')') as duration
+from holding.holdingpatternduration 
+create or replace view procedure.holdinguse_view as
+select
+    procedure.holdinguse.id,
+    procedure.holdinguse.nilreason,
+    coalesce(cast(procedure.holdinguse_ts.holdinguse_value as varchar), '(' || procedure.holdinguse_ts.holdinguse_nilreason || ')') as holdinguse,
+    coalesce(cast(procedure.holdinguse_ts.instruction_value as varchar), '(' || procedure.holdinguse_ts.instruction_nilreason || ')') as instruction,
+    coalesce(cast(procedure.holdinguse_ts.instructionaltitudereference_value as varchar), '(' || procedure.holdinguse_ts.instructionaltitudereference_nilreason || ')') as instructionaltitudereference,
+    coalesce(cast(procedure.holdinguse_ts.instructedaltitude_value as varchar) || ' ' || procedure.holdinguse_ts.instructedaltitude_uom, '(' || procedure.holdinguse_ts.instructedaltitude_nilreason || ')') as instructedaltitude
+from procedure.holdinguse 
+create or replace view procedure.landingtakeoffareacollection_view as
+select
+    procedure.landingtakeoffareacollection.id,
+    procedure.landingtakeoffareacollection.nilreason
+from procedure.landingtakeoffareacollection 
+create or replace view airport_heliport.lightactivation_view as
+select
+    airport_heliport.lightactivation.id,
+    airport_heliport.lightactivation.nilreason,
+    coalesce(cast(airport_heliport.lightactivation_ts.clicks_value as varchar), '(' || airport_heliport.lightactivation_ts.clicks_nilreason || ')') as clicks,
+    coalesce(cast(airport_heliport.lightactivation_ts.intensitylevel_value as varchar), '(' || airport_heliport.lightactivation_ts.intensitylevel_nilreason || ')') as intensitylevel,
+    coalesce(cast(airport_heliport.lightactivation_ts.activation_value as varchar), '(' || airport_heliport.lightactivation_ts.activation_nilreason || ')') as activation
+from airport_heliport.lightactivation 
+create or replace view shared.lightelement_view as
+select
+    shared.lightelement.id,
+    shared.lightelement.nilreason,
+    coalesce(cast(shared.lightelement_ts.colour_value as varchar), '(' || shared.lightelement_ts.colour_nilreason || ')') as colour,
+    coalesce(cast(shared.lightelement_ts.intensitylevel_value as varchar), '(' || shared.lightelement_ts.intensitylevel_nilreason || ')') as intensitylevel,
+    coalesce(cast(shared.lightelement_ts.type_value as varchar), '(' || shared.lightelement_ts.type_nilreason || ')') as type,
+    coalesce(cast(shared.lightelement_ts.intensity_value as varchar) || ' ' || shared.lightelement_ts.intensity_uom, '(' || shared.lightelement_ts.intensity_nilreason || ')') as intensity
+from shared.lightelement 
+create or replace view shared.lightelementstatus_view as
+select
+    shared.lightelementstatus.id,
+    shared.lightelementstatus.nilreason,
+    coalesce(cast(shared.lightelementstatus_ts.status_value as varchar), '(' || shared.lightelementstatus_ts.status_nilreason || ')') as status
+from shared.lightelementstatus 
+create or replace view notes.linguisticnote_view as
+select
+    notes.linguisticnote.id,
+    notes.linguisticnote.nilreason,
+    coalesce(cast(notes.linguisticnote_ts.note_value as varchar) || ' ' || notes.linguisticnote_ts.note_nilreason, '(' || notes.linguisticnote_ts.note_lang || ')') as note
+from notes.linguisticnote 
+create or replace view airport_heliport.manoeuvringareaavailability_view as
+select
+    airport_heliport.manoeuvringareaavailability.id,
+    airport_heliport.manoeuvringareaavailability.nilreason,
+    coalesce(cast(airport_heliport.manoeuvringareaavailability_ts.operationalstatus_value as varchar), '(' || airport_heliport.manoeuvringareaavailability_ts.operationalstatus_nilreason || ')') as operationalstatus,
+    coalesce(cast(airport_heliport.manoeuvringareaavailability_ts.warning_value as varchar), '(' || airport_heliport.manoeuvringareaavailability_ts.warning_nilreason || ')') as warning
+from airport_heliport.manoeuvringareaavailability 
+create or replace view airport_heliport.manoeuvringareausage_view as
+select
+    airport_heliport.manoeuvringareausage.id,
+    airport_heliport.manoeuvringareausage.nilreason,
+    coalesce(cast(airport_heliport.manoeuvringareausage_ts.type_value as varchar), '(' || airport_heliport.manoeuvringareausage_ts.type_nilreason || ')') as type,
+    coalesce(cast(airport_heliport.manoeuvringareausage_ts.operation_value as varchar), '(' || airport_heliport.manoeuvringareausage_ts.operation_nilreason || ')') as operation,
+    coalesce(cast(airport_heliport.manoeuvringareausage_ts.priorpermission_value as varchar) || ' ' || airport_heliport.manoeuvringareausage_ts.priorpermission_uom, '(' || airport_heliport.manoeuvringareausage_ts.priorpermission_nilreason || ')') as priorpermission,
+    coalesce(cast(airport_heliport_conditioncombination_pt_prpnej.title as varchar), '(' || airport_heliport_conditioncombination_pt_prpnej.nilreason[1] || ')') AS selection,
+    airport_heliport_conditioncombination_pt_prpnej.href AS selection_href
+from airport_heliport.manoeuvringareausage 
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_prpnej on airport_heliport.manoeuvringareausage_ts.selection_id = airport_heliport_conditioncombination_pt_prpnej.id
+create or replace view airport_heliport.markingelement_view as
+select
+    airport_heliport.markingelement.id,
+    airport_heliport.markingelement.nilreason,
+    coalesce(cast(airport_heliport.markingelement_ts.colour_value as varchar), '(' || airport_heliport.markingelement_ts.colour_nilreason || ')') as colour,
+    coalesce(cast(airport_heliport.markingelement_ts.style_value as varchar), '(' || airport_heliport.markingelement_ts.style_nilreason || ')') as style
+from airport_heliport.markingelement 
+create or replace view shared.meteorology_view as
+select
+    shared.meteorology.id,
+    shared.meteorology.nilreason,
+    coalesce(cast(shared.meteorology_ts.flightconditions_value as varchar), '(' || shared.meteorology_ts.flightconditions_nilreason || ')') as flightconditions,
+    coalesce(cast(shared.meteorology_ts.visibilityinterpretation_value as varchar), '(' || shared.meteorology_ts.visibilityinterpretation_nilreason || ')') as visibilityinterpretation,
+    coalesce(cast(shared.meteorology_ts.runwayvisualrangeinterpretation_value as varchar), '(' || shared.meteorology_ts.runwayvisualrangeinterpretation_nilreason || ')') as runwayvisualrangeinterpretation,
+    coalesce(cast(shared.meteorology_ts.visibility_value as varchar) || ' ' || shared.meteorology_ts.visibility_uom, '(' || shared.meteorology_ts.visibility_nilreason || ')') as visibility,
+    coalesce(cast(shared.meteorology_ts.runwayvisualrange_value as varchar) || ' ' || shared.meteorology_ts.runwayvisualrange_uom, '(' || shared.meteorology_ts.runwayvisualrange_nilreason || ')') as runwayvisualrange
+from shared.meteorology 
+create or replace view procedure.minima_view as
+select
+    procedure.minima.id,
+    procedure.minima.nilreason,
+    coalesce(cast(procedure.minima_ts.altitudecode_value as varchar), '(' || procedure.minima_ts.altitudecode_nilreason || ')') as altitudecode,
+    coalesce(cast(procedure.minima_ts.altitudereference_value as varchar), '(' || procedure.minima_ts.altitudereference_nilreason || ')') as altitudereference,
+    coalesce(cast(procedure.minima_ts.heightcode_value as varchar), '(' || procedure.minima_ts.heightcode_nilreason || ')') as heightcode,
+    coalesce(cast(procedure.minima_ts.heightreference_value as varchar), '(' || procedure.minima_ts.heightreference_nilreason || ')') as heightreference,
+    coalesce(cast(procedure.minima_ts.mandatoryrvr_value as varchar), '(' || procedure.minima_ts.mandatoryrvr_nilreason || ')') as mandatoryrvr,
+    coalesce(cast(procedure.minima_ts.remotealtimeterminima_value as varchar), '(' || procedure.minima_ts.remotealtimeterminima_nilreason || ')') as remotealtimeterminima,
+    coalesce(cast(procedure.minima_ts.altitude_value as varchar) || ' ' || procedure.minima_ts.altitude_uom, '(' || procedure.minima_ts.altitude_nilreason || ')') as altitude,
+    coalesce(cast(procedure.minima_ts.height_value as varchar) || ' ' || procedure.minima_ts.height_uom, '(' || procedure.minima_ts.height_nilreason || ')') as height,
+    coalesce(cast(procedure.minima_ts.militaryheight_value as varchar) || ' ' || procedure.minima_ts.militaryheight_uom, '(' || procedure.minima_ts.militaryheight_nilreason || ')') as militaryheight,
+    coalesce(cast(procedure.minima_ts.radioheight_value as varchar) || ' ' || procedure.minima_ts.radioheight_uom, '(' || procedure.minima_ts.radioheight_nilreason || ')') as radioheight,
+    coalesce(cast(procedure.minima_ts.visibility_value as varchar) || ' ' || procedure.minima_ts.visibility_uom, '(' || procedure.minima_ts.visibility_nilreason || ')') as visibility,
+    coalesce(cast(procedure.minima_ts.militaryvisibility_value as varchar) || ' ' || procedure.minima_ts.militaryvisibility_uom, '(' || procedure.minima_ts.militaryvisibility_nilreason || ')') as militaryvisibility
+from procedure.minima 
+create or replace view procedure.missedapproachgroup_view as
+select
+    procedure.missedapproachgroup.id,
+    procedure.missedapproachgroup.nilreason,
+    coalesce(cast(procedure.missedapproachgroup_ts.instruction_value as varchar), '(' || procedure.missedapproachgroup_ts.instruction_nilreason || ')') as instruction,
+    coalesce(cast(procedure.missedapproachgroup_ts.alternateclimbinstruction_value as varchar), '(' || procedure.missedapproachgroup_ts.alternateclimbinstruction_nilreason || ')') as alternateclimbinstruction,
+    coalesce(cast(procedure.missedapproachgroup_ts.alternateclimbaltitude_value as varchar) || ' ' || procedure.missedapproachgroup_ts.alternateclimbaltitude_uom, '(' || procedure.missedapproachgroup_ts.alternateclimbaltitude_nilreason || ')') as alternateclimbaltitude
+from procedure.missedapproachgroup 
+create or replace view navaids_points.navaidcomponent_view as
+select
+    navaids_points.navaidcomponent.id,
+    navaids_points.navaidcomponent.nilreason,
+    coalesce(cast(navaids_points.navaidcomponent_ts.collocationgroup_value as varchar), '(' || navaids_points.navaidcomponent_ts.collocationgroup_nilreason || ')') as collocationgroup,
+    coalesce(cast(navaids_points.navaidcomponent_ts.markerposition_value as varchar), '(' || navaids_points.navaidcomponent_ts.markerposition_nilreason || ')') as markerposition,
+    coalesce(cast(navaids_points.navaidcomponent_ts.providesnavigablelocation_value as varchar), '(' || navaids_points.navaidcomponent_ts.providesnavigablelocation_nilreason || ')') as providesnavigablelocation
+from navaids_points.navaidcomponent 
+create or replace view airport_heliport.navaidequipmentdistance_view as
+select
+    airport_heliport.navaidequipmentdistance.id,
+    airport_heliport.navaidequipmentdistance.nilreason,
+    coalesce(cast(airport_heliport.navaidequipmentdistance_ts.distance_value as varchar) || ' ' || airport_heliport.navaidequipmentdistance_ts.distance_uom, '(' || airport_heliport.navaidequipmentdistance_ts.distance_nilreason || ')') as distance,
+    coalesce(cast(airport_heliport.navaidequipmentdistance_ts.distanceaccuracy_value as varchar) || ' ' || airport_heliport.navaidequipmentdistance_ts.distanceaccuracy_uom, '(' || airport_heliport.navaidequipmentdistance_ts.distanceaccuracy_nilreason || ')') as distanceaccuracy
+from airport_heliport.navaidequipmentdistance 
+create or replace view navaids_points.navaidequipmentmonitoring_view as
+select
+    navaids_points.navaidequipmentmonitoring.id,
+    navaids_points.navaidequipmentmonitoring.nilreason,
+    coalesce(cast(navaids_points.navaidequipmentmonitoring_ts.monitored_value as varchar), '(' || navaids_points.navaidequipmentmonitoring_ts.monitored_nilreason || ')') as monitored
+from navaids_points.navaidequipmentmonitoring 
+create or replace view navaids_points.navaidoperationalstatus_view as
+select
+    navaids_points.navaidoperationalstatus.id,
+    navaids_points.navaidoperationalstatus.nilreason,
+    coalesce(cast(navaids_points.navaidoperationalstatus_ts.operationalstatus_value as varchar), '(' || navaids_points.navaidoperationalstatus_ts.operationalstatus_nilreason || ')') as operationalstatus,
+    coalesce(cast(navaids_points.navaidoperationalstatus_ts.signaltype_value as varchar), '(' || navaids_points.navaidoperationalstatus_ts.signaltype_nilreason || ')') as signaltype
+from navaids_points.navaidoperationalstatus 
+create or replace view procedure.navigationareasector_view as
+select
+    procedure.navigationareasector.id,
+    procedure.navigationareasector.nilreason,
+    coalesce(cast(shared_circlesector_pt_aotjuq.title as varchar), '(' || shared_circlesector_pt_aotjuq.nilreason[1] || ')') AS sectordefinition,
+    shared_circlesector_pt_aotjuq.href AS sectordefinition_href
+from procedure.navigationareasector 
+left join shared.circlesector_pt shared_circlesector_pt_aotjuq on procedure.navigationareasector_ts.sectordefinition_id = shared_circlesector_pt_aotjuq.id
+create or replace view service.nitrogen_view as
+select
+    service.nitrogen.id,
+    service.nitrogen.nilreason,
+    coalesce(cast(service.nitrogen_ts.type_value as varchar), '(' || service.nitrogen_ts.type_nilreason || ')') as type
+from service.nitrogen 
+create or replace view notes.note_view as
+select
+    notes.note.id,
+    notes.note.nilreason,
+    coalesce(cast(notes.note_ts.propertyname_value as varchar), '(' || notes.note_ts.propertyname_nilreason || ')') as propertyname,
+    coalesce(cast(notes.note_ts.purpose_value as varchar), '(' || notes.note_ts.purpose_nilreason || ')') as purpose
+from notes.note 
+create or replace view shared.obstacleassessmentarea_view as
+select
+    shared.obstacleassessmentarea.id,
+    shared.obstacleassessmentarea.nilreason,
+    coalesce(cast(shared.obstacleassessmentarea_ts.type_value as varchar), '(' || shared.obstacleassessmentarea_ts.type_nilreason || ')') as type,
+    coalesce(cast(shared.obstacleassessmentarea_ts.sectionnumber_value as varchar), '(' || shared.obstacleassessmentarea_ts.sectionnumber_nilreason || ')') as sectionnumber,
+    coalesce(cast(shared.obstacleassessmentarea_ts.slope_value as varchar), '(' || shared.obstacleassessmentarea_ts.slope_nilreason || ')') as slope,
+    coalesce(cast(shared.obstacleassessmentarea_ts.gradientlowhigh_value as varchar), '(' || shared.obstacleassessmentarea_ts.gradientlowhigh_nilreason || ')') as gradientlowhigh,
+    coalesce(cast(shared.obstacleassessmentarea_ts.surfacezone_value as varchar), '(' || shared.obstacleassessmentarea_ts.surfacezone_nilreason || ')') as surfacezone,
+    coalesce(cast(shared.obstacleassessmentarea_ts.safetyregulation_value as varchar), '(' || shared.obstacleassessmentarea_ts.safetyregulation_nilreason || ')') as safetyregulation,
+    coalesce(cast(shared.obstacleassessmentarea_ts.assessedaltitude_value as varchar) || ' ' || shared.obstacleassessmentarea_ts.assessedaltitude_uom, '(' || shared.obstacleassessmentarea_ts.assessedaltitude_nilreason || ')') as assessedaltitude,
+    coalesce(cast(shared.obstacleassessmentarea_ts.slopeloweraltitude_value as varchar) || ' ' || shared.obstacleassessmentarea_ts.slopeloweraltitude_uom, '(' || shared.obstacleassessmentarea_ts.slopeloweraltitude_nilreason || ')') as slopeloweraltitude
+from shared.obstacleassessmentarea 
+create or replace view shared.obstacleplacement_view as
+select
+    shared.obstacleplacement.id,
+    shared.obstacleplacement.nilreason,
+    coalesce(cast(shared.obstacleplacement_ts.obstaclebearing_value as varchar), '(' || shared.obstacleplacement_ts.obstaclebearing_nilreason || ')') as obstaclebearing,
+    coalesce(cast(shared.obstacleplacement_ts.pointtype_value as varchar), '(' || shared.obstacleplacement_ts.pointtype_nilreason || ')') as pointtype,
+    coalesce(cast(shared.obstacleplacement_ts.obstacleplacement_value as varchar), '(' || shared.obstacleplacement_ts.obstacleplacement_nilreason || ')') as obstacleplacement,
+    coalesce(cast(shared.obstacleplacement_ts.obstacledistance_value as varchar) || ' ' || shared.obstacleplacement_ts.obstacledistance_uom, '(' || shared.obstacleplacement_ts.obstacledistance_nilreason || ')') as obstacledistance
+from shared.obstacleplacement 
+create or replace view shared.obstruction_view as
+select
+    shared.obstruction.id,
+    shared.obstruction.nilreason,
+    coalesce(cast(shared.obstruction_ts.surfacepenetration_value as varchar), '(' || shared.obstruction_ts.surfacepenetration_nilreason || ')') as surfacepenetration,
+    coalesce(cast(shared.obstruction_ts.slopepenetration_value as varchar), '(' || shared.obstruction_ts.slopepenetration_nilreason || ')') as slopepenetration,
+    coalesce(cast(shared.obstruction_ts.controlling_value as varchar), '(' || shared.obstruction_ts.controlling_nilreason || ')') as controlling,
+    coalesce(cast(shared.obstruction_ts.closein_value as varchar), '(' || shared.obstruction_ts.closein_nilreason || ')') as closein,
+    coalesce(cast(shared.obstruction_ts.requiredclearance_value as varchar) || ' ' || shared.obstruction_ts.requiredclearance_uom, '(' || shared.obstruction_ts.requiredclearance_nilreason || ')') as requiredclearance,
+    coalesce(cast(shared.obstruction_ts.minimumaltitude_value as varchar) || ' ' || shared.obstruction_ts.minimumaltitude_uom, '(' || shared.obstruction_ts.minimumaltitude_nilreason || ')') as minimumaltitude
+from shared.obstruction 
+create or replace view service.oil_view as
+select
+    service.oil.id,
+    service.oil.nilreason,
+    coalesce(cast(service.oil_ts.category_value as varchar), '(' || service.oil_ts.category_nilreason || ')') as category
+from service.oil 
+create or replace view shared.onlinecontact_view as
+select
+    shared.onlinecontact.id,
+    shared.onlinecontact.nilreason,
+    coalesce(cast(shared.onlinecontact_ts.network_value as varchar), '(' || shared.onlinecontact_ts.network_nilreason || ')') as network,
+    coalesce(cast(shared.onlinecontact_ts.linkage_value as varchar), '(' || shared.onlinecontact_ts.linkage_nilreason || ')') as linkage,
+    coalesce(cast(shared.onlinecontact_ts.protocol_value as varchar), '(' || shared.onlinecontact_ts.protocol_nilreason || ')') as protocol,
+    coalesce(cast(shared.onlinecontact_ts.email_value as varchar), '(' || shared.onlinecontact_ts.email_nilreason || ')') as email
+from shared.onlinecontact 
+create or replace view organisation.organisationauthorityassociation_view as
+select
+    organisation.organisationauthorityassociation.id,
+    organisation.organisationauthorityassociation.nilreason,
+    coalesce(cast(organisation.organisationauthorityassociation_ts.type_value as varchar), '(' || organisation.organisationauthorityassociation_ts.type_nilreason || ')') as type
+from organisation.organisationauthorityassociation 
+create or replace view service.oxygen_view as
+select
+    service.oxygen.id,
+    service.oxygen.nilreason,
+    coalesce(cast(service.oxygen_ts.type_value as varchar), '(' || service.oxygen_ts.type_nilreason || ')') as type
+from service.oxygen 
+create or replace view navaids_points.pointreference_view as
+select
+    navaids_points.pointreference.id,
+    navaids_points.pointreference.nilreason,
+    coalesce(cast(navaids_points.pointreference_ts.role_value as varchar), '(' || navaids_points.pointreference_ts.role_nilreason || ')') as role,
+    coalesce(cast(navaids_points.pointreference_ts.priorfixtolerance_value as varchar) || ' ' || navaids_points.pointreference_ts.priorfixtolerance_uom, '(' || navaids_points.pointreference_ts.priorfixtolerance_nilreason || ')') as priorfixtolerance,
+    coalesce(cast(navaids_points.pointreference_ts.postfixtolerance_value as varchar) || ' ' || navaids_points.pointreference_ts.postfixtolerance_uom, '(' || navaids_points.pointreference_ts.postfixtolerance_nilreason || ')') as postfixtolerance
+from navaids_points.pointreference 
+create or replace view shared.postaladdress_view as
+select
+    shared.postaladdress.id,
+    shared.postaladdress.nilreason,
+    coalesce(cast(shared.postaladdress_ts.deliverypoint_value as varchar), '(' || shared.postaladdress_ts.deliverypoint_nilreason || ')') as deliverypoint,
+    coalesce(cast(shared.postaladdress_ts.city_value as varchar), '(' || shared.postaladdress_ts.city_nilreason || ')') as city,
+    coalesce(cast(shared.postaladdress_ts.administrativearea_value as varchar), '(' || shared.postaladdress_ts.administrativearea_nilreason || ')') as administrativearea,
+    coalesce(cast(shared.postaladdress_ts.postalcode_value as varchar), '(' || shared.postaladdress_ts.postalcode_nilreason || ')') as postalcode,
+    coalesce(cast(shared.postaladdress_ts.country_value as varchar), '(' || shared.postaladdress_ts.country_nilreason || ')') as country
+from shared.postaladdress 
+create or replace view procedure.procedureavailability_view as
+select
+    procedure.procedureavailability.id,
+    procedure.procedureavailability.nilreason,
+    coalesce(cast(procedure.procedureavailability_ts.status_value as varchar), '(' || procedure.procedureavailability_ts.status_nilreason || ')') as status
+from procedure.procedureavailability 
+create or replace view procedure.proceduretransitionleg_view as
+select
+    procedure.proceduretransitionleg.id,
+    procedure.proceduretransitionleg.nilreason,
+    coalesce(cast(procedure.proceduretransitionleg_ts.seqnumberarinc_value as varchar), '(' || procedure.proceduretransitionleg_ts.seqnumberarinc_nilreason || ')') as seqnumberarinc
+from procedure.proceduretransitionleg 
+create or replace view procedure.proceduretransition_view as
+select
+    procedure.proceduretransition.id,
+    procedure.proceduretransition.nilreason,
+    coalesce(cast(procedure.proceduretransition_ts.transitionid_value as varchar), '(' || procedure.proceduretransition_ts.transitionid_nilreason || ')') as transitionid,
+    coalesce(cast(procedure.proceduretransition_ts.type_value as varchar), '(' || procedure.proceduretransition_ts.type_nilreason || ')') as type,
+    coalesce(cast(procedure.proceduretransition_ts.instruction_value as varchar), '(' || procedure.proceduretransition_ts.instruction_nilreason || ')') as instruction,
+    coalesce(cast(procedure.proceduretransition_ts.vectorheading_value as varchar), '(' || procedure.proceduretransition_ts.vectorheading_nilreason || ')') as vectorheading,
+    coalesce(cast(procedure_landingtakeoffareacollection_pt_cozcvz.title as varchar), '(' || procedure_landingtakeoffareacollection_pt_cozcvz.nilreason[1] || ')') AS departurerunwaytransition,
+    procedure_landingtakeoffareacollection_pt_cozcvz.href AS departurerunwaytransition_href
+from procedure.proceduretransition 
+left join procedure.landingtakeoffareacollection_pt procedure_landingtakeoffareacollection_pt_cozcvz on procedure.proceduretransition_ts.departurerunwaytransition_id = procedure_landingtakeoffareacollection_pt_cozcvz.id
+create or replace view shared.propertieswithschedule_view as
+select
+    shared.propertieswithschedule.id,
+    shared.propertieswithschedule.nilreason
+from shared.propertieswithschedule 
+create or replace view surveillance.radarcomponent_view as
+select
+    surveillance.radarcomponent.id,
+    surveillance.radarcomponent.nilreason,
+    coalesce(cast(surveillance.radarcomponent_ts.collocationgroup_value as varchar), '(' || surveillance.radarcomponent_ts.collocationgroup_nilreason || ')') as collocationgroup
+from surveillance.radarcomponent 
+create or replace view service.radiocommunicationoperationalstatus_view as
+select
+    service.radiocommunicationoperationalstatus.id,
+    service.radiocommunicationoperationalstatus.nilreason,
+    coalesce(cast(service.radiocommunicationoperationalstatus_ts.operationalstatus_value as varchar), '(' || service.radiocommunicationoperationalstatus_ts.operationalstatus_nilreason || ')') as operationalstatus
+from service.radiocommunicationoperationalstatus 
+create or replace view surveillance.reflector_view as
+select
+    surveillance.reflector.id,
+    surveillance.reflector.nilreason,
+    coalesce(cast(surveillance.reflector_ts.type_value as varchar), '(' || surveillance.reflector_ts.type_nilreason || ')') as type
+from surveillance.reflector 
+create or replace view airport_heliport.ridge_view as
+select
+    airport_heliport.ridge.id,
+    airport_heliport.ridge.nilreason,
+    coalesce(cast(airport_heliport.ridge_ts.side_value as varchar), '(' || airport_heliport.ridge_ts.side_nilreason || ')') as side,
+    coalesce(cast(airport_heliport.ridge_ts.distance_value as varchar) || ' ' || airport_heliport.ridge_ts.distance_uom, '(' || airport_heliport.ridge_ts.distance_nilreason || ')') as distance,
+    coalesce(cast(airport_heliport.ridge_ts.depth_value as varchar) || ' ' || airport_heliport.ridge_ts.depth_uom, '(' || airport_heliport.ridge_ts.depth_nilreason || ')') as depth
+from airport_heliport.ridge 
+create or replace view routes.routeavailability_view as
+select
+    routes.routeavailability.id,
+    routes.routeavailability.nilreason,
+    coalesce(cast(routes.routeavailability_ts.direction_value as varchar), '(' || routes.routeavailability_ts.direction_nilreason || ')') as direction,
+    coalesce(cast(routes.routeavailability_ts.cardinaldirection_value as varchar), '(' || routes.routeavailability_ts.cardinaldirection_nilreason || ')') as cardinaldirection,
+    coalesce(cast(routes.routeavailability_ts.status_value as varchar), '(' || routes.routeavailability_ts.status_nilreason || ')') as status
+from routes.routeavailability 
+create or replace view routes.routeportion_view as
+select
+    routes.routeportion.id,
+    routes.routeportion.nilreason
+from routes.routeportion 
+create or replace view airport_heliport.runwaycontamination_view as
+select
+    airport_heliport.runwaycontamination.id,
+    airport_heliport.runwaycontamination.nilreason,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.observationTime_value as varchar), '(' || airport_heliport.runwaycontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.runwaycontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.runwaycontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.runwaycontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.runwaycontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.runwaycontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.runwaycontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.runwaycontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.proportion_value as varchar), '(' || airport_heliport.runwaycontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.clearedside_value as varchar), '(' || airport_heliport.runwaycontamination_ts.clearedside_nilreason || ')') as clearedside,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.obscuredlightsside_value as varchar), '(' || airport_heliport.runwaycontamination_ts.obscuredlightsside_nilreason || ')') as obscuredlightsside,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.taxiwayavailable_value as varchar), '(' || airport_heliport.runwaycontamination_ts.taxiwayavailable_nilreason || ')') as taxiwayavailable,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.apronavailable_value as varchar), '(' || airport_heliport.runwaycontamination_ts.apronavailable_nilreason || ')') as apronavailable,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.depth_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.depth_uom, '(' || airport_heliport.runwaycontamination_ts.depth_nilreason || ')') as depth,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.clearedlength_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.clearedlength_uom, '(' || airport_heliport.runwaycontamination_ts.clearedlength_nilreason || ')') as clearedlength,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.clearedwidth_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.clearedwidth_uom, '(' || airport_heliport.runwaycontamination_ts.clearedwidth_nilreason || ')') as clearedwidth,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.furtherclearancelength_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.furtherclearancelength_uom, '(' || airport_heliport.runwaycontamination_ts.furtherclearancelength_nilreason || ')') as furtherclearancelength,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.furtherclearancewidth_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.furtherclearancewidth_uom, '(' || airport_heliport.runwaycontamination_ts.furtherclearancewidth_nilreason || ')') as furtherclearancewidth,
+    coalesce(cast(airport_heliport.runwaycontamination_ts.clearedlengthbegin_value as varchar) || ' ' || airport_heliport.runwaycontamination_ts.clearedlengthbegin_uom, '(' || airport_heliport.runwaycontamination_ts.clearedlengthbegin_nilreason || ')') as clearedlengthbegin
+from airport_heliport.runwaycontamination 
+create or replace view airport_heliport.runwaydeclareddistance_view as
+select
+    airport_heliport.runwaydeclareddistance.id,
+    airport_heliport.runwaydeclareddistance.nilreason,
+    coalesce(cast(airport_heliport.runwaydeclareddistance_ts.type_value as varchar), '(' || airport_heliport.runwaydeclareddistance_ts.type_nilreason || ')') as type
+from airport_heliport.runwaydeclareddistance 
+create or replace view airport_heliport.runwaydeclareddistancevalue_view as
+select
+    airport_heliport.runwaydeclareddistancevalue.id,
+    airport_heliport.runwaydeclareddistancevalue.nilreason,
+    coalesce(cast(airport_heliport.runwaydeclareddistancevalue_ts.distance_value as varchar) || ' ' || airport_heliport.runwaydeclareddistancevalue_ts.distance_uom, '(' || airport_heliport.runwaydeclareddistancevalue_ts.distance_nilreason || ')') as distance,
+    coalesce(cast(airport_heliport.runwaydeclareddistancevalue_ts.distanceaccuracy_value as varchar) || ' ' || airport_heliport.runwaydeclareddistancevalue_ts.distanceaccuracy_uom, '(' || airport_heliport.runwaydeclareddistancevalue_ts.distanceaccuracy_nilreason || ')') as distanceaccuracy
+from airport_heliport.runwaydeclareddistancevalue 
+create or replace view airport_heliport.runwaysectioncontamination_view as
+select
+    airport_heliport.runwaysectioncontamination.id,
+    airport_heliport.runwaysectioncontamination.nilreason,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.observationTime_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.proportion_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.section_value as varchar), '(' || airport_heliport.runwaysectioncontamination_ts.section_nilreason || ')') as section,
+    coalesce(cast(airport_heliport.runwaysectioncontamination_ts.depth_value as varchar) || ' ' || airport_heliport.runwaysectioncontamination_ts.depth_uom, '(' || airport_heliport.runwaysectioncontamination_ts.depth_nilreason || ')') as depth
+from airport_heliport.runwaysectioncontamination 
+create or replace view procedure.safealtitudeareasector_view as
+select
+    procedure.safealtitudeareasector.id,
+    procedure.safealtitudeareasector.nilreason,
+    coalesce(cast(procedure.safealtitudeareasector_ts.bufferwidth_value as varchar) || ' ' || procedure.safealtitudeareasector_ts.bufferwidth_uom, '(' || procedure.safealtitudeareasector_ts.bufferwidth_nilreason || ')') as bufferwidth,
+    coalesce(cast(shared_circlesector_pt_xblotq.title as varchar), '(' || shared_circlesector_pt_xblotq.nilreason[1] || ')') AS sectordefinition,
+    shared_circlesector_pt_xblotq.href AS sectordefinition_href
+from procedure.safealtitudeareasector 
+left join shared.circlesector_pt shared_circlesector_pt_xblotq on procedure.safealtitudeareasector_ts.sectordefinition_id = shared_circlesector_pt_xblotq.id
+create or replace view procedure.sectordesign_view as
+select
+    procedure.sectordesign.id,
+    procedure.sectordesign.nilreason,
+    coalesce(cast(procedure.sectordesign_ts.turndirection_value as varchar), '(' || procedure.sectordesign_ts.turndirection_nilreason || ')') as turndirection,
+    coalesce(cast(procedure.sectordesign_ts.designgradient_value as varchar), '(' || procedure.sectordesign_ts.designgradient_nilreason || ')') as designgradient,
+    coalesce(cast(procedure.sectordesign_ts.turnpermitted_value as varchar), '(' || procedure.sectordesign_ts.turnpermitted_nilreason || ')') as turnpermitted,
+    coalesce(cast(procedure.sectordesign_ts.terminationaltitude_value as varchar) || ' ' || procedure.sectordesign_ts.terminationaltitude_uom, '(' || procedure.sectordesign_ts.terminationaltitude_nilreason || ')') as terminationaltitude
+from procedure.sectordesign 
+create or replace view navaids_points.segmentpoint_view as
+select
+    navaids_points.segmentpoint.id,
+    navaids_points.segmentpoint.nilreason
+from navaids_points.segmentpoint 
+create or replace view service.serviceoperationalstatus_view as
+select
+    service.serviceoperationalstatus.id,
+    service.serviceoperationalstatus.nilreason,
+    coalesce(cast(service.serviceoperationalstatus_ts.operationalstatus_value as varchar), '(' || service.serviceoperationalstatus_ts.operationalstatus_nilreason || ')') as operationalstatus
+from service.serviceoperationalstatus 
+create or replace view navaids_points.specialnavigationstationstatus_view as
+select
+    navaids_points.specialnavigationstationstatus.id,
+    navaids_points.specialnavigationstationstatus.nilreason,
+    coalesce(cast(navaids_points.specialnavigationstationstatus_ts.operationalstatus_value as varchar), '(' || navaids_points.specialnavigationstationstatus_ts.operationalstatus_nilreason || ')') as operationalstatus
+from navaids_points.specialnavigationstationstatus 
+create or replace view shared.standardlevel_view as
+select
+    shared.standardlevel.id,
+    shared.standardlevel.nilreason,
+    coalesce(cast(shared.standardlevel_ts.verticaldistance_value as varchar) || ' ' || shared.standardlevel_ts.verticaldistance_uom, '(' || shared.standardlevel_ts.verticaldistance_nilreason || ')') as verticaldistance
+from shared.standardlevel 
+create or replace view airport_heliport.surfacecharacteristics_view as
+select
+    airport_heliport.surfacecharacteristics.id,
+    airport_heliport.surfacecharacteristics.nilreason,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.composition_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.composition_nilreason || ')') as composition,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.preparation_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.preparation_nilreason || ')') as preparation,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.surfacecondition_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.surfacecondition_nilreason || ')') as surfacecondition,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.classpcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.classpcn_nilreason || ')') as classpcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.pavementtypepcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.pavementtypepcn_nilreason || ')') as pavementtypepcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.pavementsubgradepcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.pavementsubgradepcn_nilreason || ')') as pavementsubgradepcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.maxtyrepressurepcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.maxtyrepressurepcn_nilreason || ')') as maxtyrepressurepcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.evaluationmethodpcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.evaluationmethodpcn_nilreason || ')') as evaluationmethodpcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.classlcn_value as varchar), '(' || airport_heliport.surfacecharacteristics_ts.classlcn_nilreason || ')') as classlcn,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.weightsiwl_value as varchar) || ' ' || airport_heliport.surfacecharacteristics_ts.weightsiwl_uom, '(' || airport_heliport.surfacecharacteristics_ts.weightsiwl_nilreason || ')') as weightsiwl,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.tyrepressuresiwl_value as varchar) || ' ' || airport_heliport.surfacecharacteristics_ts.tyrepressuresiwl_uom, '(' || airport_heliport.surfacecharacteristics_ts.tyrepressuresiwl_nilreason || ')') as tyrepressuresiwl,
+    coalesce(cast(airport_heliport.surfacecharacteristics_ts.weightauw_value as varchar) || ' ' || airport_heliport.surfacecharacteristics_ts.weightauw_uom, '(' || airport_heliport.surfacecharacteristics_ts.weightauw_nilreason || ')') as weightauw
+from airport_heliport.surfacecharacteristics 
+create or replace view airport_heliport.surfacecontaminationlayer_view as
+select
+    airport_heliport.surfacecontaminationlayer.id,
+    airport_heliport.surfacecontaminationlayer.nilreason,
+    coalesce(cast(airport_heliport.surfacecontaminationlayer_ts.layerorder_value as varchar), '(' || airport_heliport.surfacecontaminationlayer_ts.layerorder_nilreason || ')') as layerorder,
+    coalesce(cast(airport_heliport.surfacecontaminationlayer_ts.type_value as varchar), '(' || airport_heliport.surfacecontaminationlayer_ts.type_nilreason || ')') as type
+from airport_heliport.surfacecontaminationlayer 
+create or replace view airport_heliport.surfacecontamination_view as
+select
+    airport_heliport.surfacecontamination.id,
+    airport_heliport.surfacecontamination.nilreason
+from airport_heliport.surfacecontamination 
+create or replace view surveillance.surveillancegroundstation_view as
+select
+    surveillance.surveillancegroundstation.id,
+    surveillance.surveillancegroundstation.nilreason,
+    coalesce(cast(surveillance.surveillancegroundstation_ts.videomap_value as varchar), '(' || surveillance.surveillancegroundstation_ts.videomap_nilreason || ')') as videomap
+from surveillance.surveillancegroundstation 
+create or replace view airport_heliport.taxiwaycontamination_view as
+select
+    airport_heliport.taxiwaycontamination.id,
+    airport_heliport.taxiwaycontamination.nilreason,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.observationTime_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.proportion_value as varchar), '(' || airport_heliport.taxiwaycontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.depth_value as varchar) || ' ' || airport_heliport.taxiwaycontamination_ts.depth_uom, '(' || airport_heliport.taxiwaycontamination_ts.depth_nilreason || ')') as depth,
+    coalesce(cast(airport_heliport.taxiwaycontamination_ts.clearedwidth_value as varchar) || ' ' || airport_heliport.taxiwaycontamination_ts.clearedwidth_uom, '(' || airport_heliport.taxiwaycontamination_ts.clearedwidth_nilreason || ')') as clearedwidth
+from airport_heliport.taxiwaycontamination 
+create or replace view shared.telephonecontact_view as
+select
+    shared.telephonecontact.id,
+    shared.telephonecontact.nilreason,
+    coalesce(cast(shared.telephonecontact_ts.voice_value as varchar), '(' || shared.telephonecontact_ts.voice_nilreason || ')') as voice,
+    coalesce(cast(shared.telephonecontact_ts.facsimile_value as varchar), '(' || shared.telephonecontact_ts.facsimile_nilreason || ')') as facsimile
+from shared.telephonecontact 
+create or replace view procedure.terminalarrivalareasector_view as
+select
+    procedure.terminalarrivalareasector.id,
+    procedure.terminalarrivalareasector.nilreason,
+    coalesce(cast(procedure.terminalarrivalareasector_ts.flybycode_value as varchar), '(' || procedure.terminalarrivalareasector_ts.flybycode_nilreason || ')') as flybycode,
+    coalesce(cast(procedure.terminalarrivalareasector_ts.procedureturnrequired_value as varchar), '(' || procedure.terminalarrivalareasector_ts.procedureturnrequired_nilreason || ')') as procedureturnrequired,
+    coalesce(cast(procedure.terminalarrivalareasector_ts.altitudedescription_value as varchar), '(' || procedure.terminalarrivalareasector_ts.altitudedescription_nilreason || ')') as altitudedescription,
+    coalesce(cast(shared_circlesector_pt_wicawq.title as varchar), '(' || shared_circlesector_pt_wicawq.nilreason[1] || ')') AS sectordefinition,
+    shared_circlesector_pt_wicawq.href AS sectordefinition_href
+from procedure.terminalarrivalareasector 
+left join shared.circlesector_pt shared_circlesector_pt_wicawq on procedure.terminalarrivalareasector_ts.sectordefinition_id = shared_circlesector_pt_wicawq.id
+create or replace view navaids_points.terminalsegmentpoint_view as
+select
+    navaids_points.terminalsegmentpoint.id,
+    navaids_points.terminalsegmentpoint.nilreason,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.reportingatc_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.reportingatc_nilreason || ')') as reportingatc,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.flyover_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.flyover_nilreason || ')') as flyover,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.waypoint_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.waypoint_nilreason || ')') as waypoint,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.radarguidance_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.radarguidance_nilreason || ')') as radarguidance,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.role_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.role_nilreason || ')') as role,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.leadradial_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.leadradial_nilreason || ')') as leadradial,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.indicatorfacf_value as varchar), '(' || navaids_points.terminalsegmentpoint_ts.indicatorfacf_nilreason || ')') as indicatorfacf,
+    coalesce(cast(navaids_points.terminalsegmentpoint_ts.leaddme_value as varchar) || ' ' || navaids_points.terminalsegmentpoint_ts.leaddme_uom, '(' || navaids_points.terminalsegmentpoint_ts.leaddme_nilreason || ')') as leaddme
+from navaids_points.terminalsegmentpoint 
+create or replace view shared.timesheet_view as
+select
+    shared.timesheet.id,
+    shared.timesheet.nilreason,
+    coalesce(cast(shared.timesheet_ts.timereference_value as varchar), '(' || shared.timesheet_ts.timereference_nilreason || ')') as timereference,
+    coalesce(cast(shared.timesheet_ts.startdate_value as varchar), '(' || shared.timesheet_ts.startdate_nilreason || ')') as startdate,
+    coalesce(cast(shared.timesheet_ts.enddate_value as varchar), '(' || shared.timesheet_ts.enddate_nilreason || ')') as enddate,
+    coalesce(cast(shared.timesheet_ts.day_value as varchar), '(' || shared.timesheet_ts.day_nilreason || ')') as day,
+    coalesce(cast(shared.timesheet_ts.daytil_value as varchar), '(' || shared.timesheet_ts.daytil_nilreason || ')') as daytil,
+    coalesce(cast(shared.timesheet_ts.starttime_value as varchar), '(' || shared.timesheet_ts.starttime_nilreason || ')') as starttime,
+    coalesce(cast(shared.timesheet_ts.startevent_value as varchar), '(' || shared.timesheet_ts.startevent_nilreason || ')') as startevent,
+    coalesce(cast(shared.timesheet_ts.starteventinterpretation_value as varchar), '(' || shared.timesheet_ts.starteventinterpretation_nilreason || ')') as starteventinterpretation,
+    coalesce(cast(shared.timesheet_ts.endtime_value as varchar), '(' || shared.timesheet_ts.endtime_nilreason || ')') as endtime,
+    coalesce(cast(shared.timesheet_ts.endevent_value as varchar), '(' || shared.timesheet_ts.endevent_nilreason || ')') as endevent,
+    coalesce(cast(shared.timesheet_ts.endeventinterpretation_value as varchar), '(' || shared.timesheet_ts.endeventinterpretation_nilreason || ')') as endeventinterpretation,
+    coalesce(cast(shared.timesheet_ts.daylightsavingadjust_value as varchar), '(' || shared.timesheet_ts.daylightsavingadjust_nilreason || ')') as daylightsavingadjust,
+    coalesce(cast(shared.timesheet_ts.excluded_value as varchar), '(' || shared.timesheet_ts.excluded_nilreason || ')') as excluded,
+    coalesce(cast(shared.timesheet_ts.starttimerelativeevent_value as varchar) || ' ' || shared.timesheet_ts.starttimerelativeevent_uom, '(' || shared.timesheet_ts.starttimerelativeevent_nilreason || ')') as starttimerelativeevent,
+    coalesce(cast(shared.timesheet_ts.endtimerelativeevent_value as varchar) || ' ' || shared.timesheet_ts.endtimerelativeevent_uom, '(' || shared.timesheet_ts.endtimerelativeevent_nilreason || ')') as endtimerelativeevent
+from shared.timesheet 
+create or replace view airport_heliport.touchdownliftoffcontamination_view as
+select
+    airport_heliport.touchdownliftoffcontamination.id,
+    airport_heliport.touchdownliftoffcontamination.nilreason,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.observationTime_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.observationTime_nilreason || ')') as observationTime,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.nextObservationTime_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.nextObservationTime_nilreason || ')') as nextObservationTime,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.frictioncoefficient_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.frictioncoefficient_nilreason || ')') as frictioncoefficient,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.frictionestimation_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.frictionestimation_nilreason || ')') as frictionestimation,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.frictiondevice_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.frictiondevice_nilreason || ')') as frictiondevice,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.obscuredlights_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.obscuredlights_nilreason || ')') as obscuredlights,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.furtherclearancetime_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.furtherclearancetime_nilreason || ')') as furtherclearancetime,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.furthertotalclearance_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.furthertotalclearance_nilreason || ')') as furthertotalclearance,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.proportion_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination_ts.proportion_nilreason || ')') as proportion,
+    coalesce(cast(airport_heliport.touchdownliftoffcontamination_ts.depth_value as varchar) || ' ' || airport_heliport.touchdownliftoffcontamination_ts.depth_uom, '(' || airport_heliport.touchdownliftoffcontamination_ts.depth_nilreason || ')') as depth
+from airport_heliport.touchdownliftoffcontamination 
+create or replace view organisation.unitavailability_view as
+select
+    organisation.unitavailability.id,
+    organisation.unitavailability.nilreason,
+    coalesce(cast(organisation.unitavailability_ts.operationalstatus_value as varchar), '(' || organisation.unitavailability_ts.operationalstatus_nilreason || ')') as operationalstatus
+from organisation.unitavailability 
+create or replace view organisation.unitdependency_view as
+select
+    organisation.unitdependency.id,
+    organisation.unitdependency.nilreason,
+    coalesce(cast(organisation.unitdependency_ts.type_value as varchar), '(' || organisation.unitdependency_ts.type_nilreason || ')') as type
+from organisation.unitdependency 
+create or replace view airport_heliport.usagecondition_view as
+select
+    airport_heliport.usagecondition.id,
+    airport_heliport.usagecondition.nilreason
+from airport_heliport.usagecondition 
+create or replace view obstacles.verticalstructurelightingstatus_view as
+select
+    obstacles.verticalstructurelightingstatus.id,
+    obstacles.verticalstructurelightingstatus.nilreason,
+    coalesce(cast(obstacles.verticalstructurelightingstatus_ts.status_value as varchar), '(' || obstacles.verticalstructurelightingstatus_ts.status_nilreason || ')') as status
+from obstacles.verticalstructurelightingstatus 
+create or replace view obstacles.verticalstructurepart_view as
+select
+    obstacles.verticalstructurepart.id,
+    obstacles.verticalstructurepart.nilreason,
+    coalesce(cast(obstacles.verticalstructurepart_ts.type_value as varchar), '(' || obstacles.verticalstructurepart_ts.type_nilreason || ')') as type,
+    coalesce(cast(obstacles.verticalstructurepart_ts.constructionstatus_value as varchar), '(' || obstacles.verticalstructurepart_ts.constructionstatus_nilreason || ')') as constructionstatus,
+    coalesce(cast(obstacles.verticalstructurepart_ts.markingpattern_value as varchar), '(' || obstacles.verticalstructurepart_ts.markingpattern_nilreason || ')') as markingpattern,
+    coalesce(cast(obstacles.verticalstructurepart_ts.markingfirstcolour_value as varchar), '(' || obstacles.verticalstructurepart_ts.markingfirstcolour_nilreason || ')') as markingfirstcolour,
+    coalesce(cast(obstacles.verticalstructurepart_ts.markingsecondcolour_value as varchar), '(' || obstacles.verticalstructurepart_ts.markingsecondcolour_nilreason || ')') as markingsecondcolour,
+    coalesce(cast(obstacles.verticalstructurepart_ts.mobile_value as varchar), '(' || obstacles.verticalstructurepart_ts.mobile_nilreason || ')') as mobile,
+    coalesce(cast(obstacles.verticalstructurepart_ts.frangible_value as varchar), '(' || obstacles.verticalstructurepart_ts.frangible_nilreason || ')') as frangible,
+    coalesce(cast(obstacles.verticalstructurepart_ts.visiblematerial_value as varchar), '(' || obstacles.verticalstructurepart_ts.visiblematerial_nilreason || ')') as visiblematerial,
+    coalesce(cast(obstacles.verticalstructurepart_ts.designator_value as varchar), '(' || obstacles.verticalstructurepart_ts.designator_nilreason || ')') as designator,
+    coalesce(cast(obstacles.verticalstructurepart_ts.verticalextent_value as varchar) || ' ' || obstacles.verticalstructurepart_ts.verticalextent_uom, '(' || obstacles.verticalstructurepart_ts.verticalextent_nilreason || ')') as verticalextent,
+    coalesce(cast(obstacles.verticalstructurepart_ts.verticalextentaccuracy_value as varchar) || ' ' || obstacles.verticalstructurepart_ts.verticalextentaccuracy_uom, '(' || obstacles.verticalstructurepart_ts.verticalextentaccuracy_nilreason || ')') as verticalextentaccuracy
+from obstacles.verticalstructurepart 
+create or replace view airport_heliport.workareaactivity_view as
+select
+    airport_heliport.workareaactivity.id,
+    airport_heliport.workareaactivity.nilreason,
+    coalesce(cast(airport_heliport.workareaactivity_ts.isactive_value as varchar), '(' || airport_heliport.workareaactivity_ts.isactive_nilreason || ')') as isactive
+from airport_heliport.workareaactivity 

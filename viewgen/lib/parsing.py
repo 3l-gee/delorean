@@ -1,6 +1,7 @@
 import re
 
-from lib.publisher_layer import FeatureLayer
+from lib.feature import Feature
+from lib.property import Property
 
 class Parsing :
     def __init__(self, parsing, attribute):
@@ -9,7 +10,7 @@ class Parsing :
         self.feature_parent_set = set(attribute["feature_parents"])
         self.timeslice_parent_set = set(attribute["timeslice_parents"])
         self.object_parent_set = set(attribute["object_parents"])
-        self.property_paremt_set = set(attribute["property_parents"])
+        self.property_parent_set = set(attribute["property_parents"])
 
         self.suffix = {
             "TimeSlicePropertyType": "",
@@ -20,11 +21,13 @@ class Parsing :
         }
         
         self.feature = {}
+        self.property = {}
         self.datatype = {}
 
     def get_layer(self):
-        return list(self.feature.values())
-
+        # return list(self.feature.values()).extend(list(self.property.values()))
+        return list(self.property.values())
+    
     def _load_content(self, path):
         with open(path, 'r', encoding='utf-8') as file:
             content = file.read()
@@ -51,31 +54,34 @@ class Parsing :
         if class_name[0] in self.ignore_set:
             return  # Ignore specific classes
         
-        if parent_name and parent_name[0] in self.feature_parent_set:
+        if parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
+            pass
+            # name = class_name[0]
+            # for suffix, replacement in self.suffix.items():
+            #     name = name.replace(suffix, replacement)
+
+            # name = name.lower()
+            
+            # if name not in self.feature.keys() : 
+            #     self.feature[name] = Feature(name, table_schema)
+        
+        if parent_name and parent_name[0] in self.property_parent_set:
             name = class_name[0]
             for suffix, replacement in self.suffix.items():
                 name = name.replace(suffix, replacement)
 
             name = name.lower()
-            
-            if name not in self.feature.keys() : 
-                self.feature[name] = FeatureLayer(name, table_schema)
-
-        if parent_name and parent_name[0] in self.timeslice_parent_set:
-            name = class_name[0]
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
-
-            name = name.lower()
-            
-            if name not in self.feature.keys() : 
-                self.feature[name] = FeatureLayer(name, table_schema)
-
-        if parent_name and parent_name[0] in self.property_paremt_set:
-            return
+            if name not in self.property.keys() : 
+                self.property[name] = Property(name, table_schema)
 
         if parent_name and parent_name[0] in self.object_parent_set:
-            return
+            name = class_name[0]
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+            if name not in self.property.keys() : 
+                self.property[name] = Property(name, table_schema)
         
     def _process_file(self, path):
         content = self._load_content(path)   
@@ -88,12 +94,16 @@ class Parsing :
         name = name.lower()
 
         if name in self.feature.keys():
-            print(name)
             if parent_name and parent_name[0] in self.feature_parent_set:
                 pass
 
             if parent_name and parent_name[0] in self.timeslice_parent_set:
                 self._process_time_slice(self.feature[name], content)
+
+        if name in self.property.keys():
+            if parent_name and parent_name[0] in self.object_parent_set:
+                self._process_object(self.property[name], content)
+            
 
     def _process_time_slice(self, layer, content):
         for item in self.extract_embedded_columns_two(content):
@@ -111,9 +121,44 @@ class Parsing :
 
             if name in self.feature.keys():
                 group = self.feature[name].get_group()
-                layer.add_association_feature_one(group, name, item.get("role"))
-            
-    
+                layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+
+    def _process_property(self, property, content):
+        for item in self.extract_embedded_columns_two(content):
+            property.add_attributes_two(item.get("value"), item.get("nil"))
+
+        for item in self.extract_embedded_columns_three(content):
+            property.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
+
+        for item in self.extract_one_to_one(content):
+            name = item.get("type")
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if name in self.property.keys():
+                group = self.property[name].get_group()
+                property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+
+    def _process_object(self, property, content):
+        for item in self.extract_embedded_columns_two(content):
+            property.add_attributes_two(item.get("value"), item.get("nil"))
+
+        for item in self.extract_embedded_columns_three(content):
+            property.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
+
+        for item in self.extract_one_to_one(content):
+            name = item.get("type")
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if name in self.property.keys():
+                group = self.property[name].get_group()
+                property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+
     def process_file_old(self, path):
         """Extract table, class, and column information from a Java file."""
 
@@ -147,8 +192,6 @@ class Parsing :
         one_to_many = self.extract_one_to_many(schema, table_name, content)
 
         self.update_views(feature_name, class_name, parent_name, columns, parent_columns, embedded_columns, one_to_one, one_to_many)
-
-        
 
     def extract_columns(self, schema, table, content):
         """Extract simple column definitions."""
