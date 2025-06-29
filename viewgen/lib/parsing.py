@@ -101,6 +101,7 @@ class Parsing :
                 self._process_time_slice(self.feature[name], content)
 
         if name in self.property.keys():
+            pass
             if parent_name and parent_name[0] in self.object_parent_set:
                 self._process_object(self.property[name], content)
             

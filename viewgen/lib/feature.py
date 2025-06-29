@@ -50,7 +50,7 @@ class Feature :
             order_clause
         ]
 
-        full_sql = "\n".join(part for part in sql_parts if part.strip())
+        full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
         return full_sql
 
     def generate_view(self, name, group) :
@@ -113,7 +113,7 @@ class Feature :
         return [
             f"order by {name}.identifier",
             f"{name}_ts.sequence_number",
-            f"{name}_ts.correction_number DESC;"
+            f"{name}_ts.correction_number DESC"
         ]
     
     def generate_group(self, name, group) :

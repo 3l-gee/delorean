@@ -31,7 +31,7 @@ class Property :
         # Join SQL fragments with appropriate formatting
         view_sql = "\n".join(self.sql["view"])
         select_sql = "\n".join(self.sql["select"])
-        attributes_sql = ",\n    ".join(attributes)
+        attributes_sql = ",\n    ".join(attributes) + "  ) AS json_data"
         inner_sql = "\n".join(self.sql["inner"])
         left_sql = "\n".join(self.sql["left"])
         where_clause = "where " + "\n  and ".join(self.sql["where"]) if self.sql["where"] else ""
@@ -50,7 +50,7 @@ class Property :
             order_clause
         ]
 
-        full_sql = "\n".join(part for part in sql_parts if part.strip())
+        full_sql = "\n".join(part for part in sql_parts if part.strip())  + ";"
         return full_sql
 
     def generate_view(self, name, group) :
@@ -64,18 +64,23 @@ class Property :
     
     def generate_attributes(self, name, group) : 
         return [
-            f"{group}.{name}.id",
-            f"{group}.{name}.nilreason"
+            f"{group}.{name}_pt.id",
+            f"jsonb_agg(notes.note_view.note) AS {name}_annotation",
+            f"jsonb_build_object("
+            f"'nilreason', {group}.{name}_pt.nilreason",
         ]
         
     def generate_inner(self, name, group) : 
         return [
             f"from {group}.{name}_pt ",
-            f"inner join {group}.{name} on {group}.{name}_pt"
+            f"inner join {group}.{name} on {group}.{name}_pt.{name}_id = {group}.{name}.id"
         ]
 
     def generate_left(self, name, group) :
-        return []
+        return [
+            f"left join master_join mj1 on {group}.{name}.id = mj1.source_id",
+            f"left join notes.note_view on mj1.target_id = notes.note_view.id"
+        ]
 
     def generate_where(self, name, group) : 
         return []
@@ -84,20 +89,31 @@ class Property :
         return []
     
     def generate_group(self, name, group) :
-        return []
+        return [
+            f"{group}.{name}_pt.id",
+            f"{group}.{name}_pt.nilreason"
+        ]
+    
+    def add_group(self, name, column, group=None):
+        if group:
+            self.sql["group"].append(f"{group}.{name}.{column}")
+        else:
+            self.sql["group"].append(f"{name}.{column}")
     
     def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
-        self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar), '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        # self.add_group(str(self.name + "_ts"), value, self.group)
-        # self.add_group(str(self.name + "_ts"), nil, self.group)
+        # self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}.{value} as varchar), '(' || {self.group}.{self.name}.{nil} || ')') as {name}")
+        self.sql["attributes"]["feature"].append(f"'{name}', coalesce(cast({self.group}.{self.name}.{value} as varchar), '(' || {self.group}.{self.name}.{nil} || ')')")
+        self.add_group(str(self.name), value, self.group)
+        self.add_group(str(self.name), nil, self.group)
     
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
-        self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}_ts.{value} as varchar) || ' ' || {self.group}.{self.name}_ts.{uom}, '(' || {self.group}.{self.name}_ts.{nil} || ')') as {name}")
-        # self.add_group(str(self.name + "_ts"), value, self.group)
-        # self.add_group(str(self.name + "_ts"), uom, self.group)
-        # self.add_group(str(self.name + "_ts"), nil, self.group)
+        # self.sql["attributes"]["feature"].append(f"coalesce(cast({self.group}.{self.name}.{value} as varchar) || ' ' || {self.group}.{self.name}.{uom}, '(' || {self.group}.{self.name}.{nil} || ')') as {name}")
+        self.sql["attributes"]["feature"].append(f"'{name}', coalesce(cast({self.group}.{self.name}.{value} as varchar) || ' ' || {self.group}.{self.name}.{uom}, '(' || {self.group}.{self.name}.{nil} || ')')")
+        self.add_group(str(self.name), value, self.group)
+        self.add_group(str(self.name), uom, self.group)
+        self.add_group(str(self.name), nil, self.group)
 
     def add_association_feature_one(self, group, name, role, col):
         if not self.sql["attributes"].get(name):
@@ -106,13 +122,12 @@ class Property :
         hash = self.generate_letter_hash(str(group + "_" + name + "_pt"))
 
         self.sql["attributes"][name].extend([
-            f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
-            f"{hash}.href AS {role}_href"
+            f"'{role}', {group}.{name}_view"
         ])
         
         # self.add_group(hash, "title")
         # self.add_group(hash, "nilreason")
         # self.add_group(hash, "href")
 
-        self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}_ts.{col} = {hash}.id")
+        self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}.{col} = {hash}.id")
 
