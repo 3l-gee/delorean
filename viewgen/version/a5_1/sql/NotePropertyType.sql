@@ -1,12 +1,4 @@
 -- NotePropertyType annotation 
---[
---   propertyName    : str
---   purpose         : str
---   notes           : [
---                       lang
---                        note
---                      ]
---]
 
 CREATE OR REPLACE VIEW notes.linguisticnote_view AS
 SELECT 

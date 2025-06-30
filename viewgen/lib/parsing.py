@@ -6,11 +6,12 @@ from lib.property import Property
 class Parsing :
     def __init__(self, parsing, attribute):
         self.parsing = parsing
+        self.snowflake = attribute["snowflake"]
         self.ignore_set = set(attribute["ignore"])
-        self.feature_parent_set = set(attribute["feature_parents"])
-        self.timeslice_parent_set = set(attribute["timeslice_parents"])
-        self.object_parent_set = set(attribute["object_parents"])
-        self.property_parent_set = set(attribute["property_parents"])
+        self.feature_parent_set = set(attribute["feature_parent"])
+        self.timeslice_parent_set = set(attribute["timeslice_parent"])
+        self.object_parent_set = set(attribute["object_parent"])
+        self.property_parent_set = set(attribute["property_parent"])
 
         self.suffix = {
             "TimeSlicePropertyType": "",
@@ -139,8 +140,13 @@ class Parsing :
                 name = name.replace(suffix, replacement)
 
             name = name.lower()
+            
 
-            if name in self.property.keys():
+            if name in self.snowflake.keys():
+                attribute = self.snowflake[name].get("one")
+            
+            
+            elif name in self.property.keys():
                 group = self.property[name].get_group()
                 property.add_association_object_one(group, name, item.get("role"),item.get("col"))
             

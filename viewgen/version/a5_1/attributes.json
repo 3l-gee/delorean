@@ -1,5 +1,54 @@
 { 
-    "feature_parents": [
+    "snowflake" : {
+        "note" : {   
+            "path" : "viewgen/version/a5_1/sql/NotePropertyType.sql",
+            "attribute" : [
+
+            ]
+        },
+        "point" : {
+            "path" : "viewgen/version/a5_1/sql/PointPropertyType.sql",
+            "one" : {
+                "attribute" : [
+                    "geometry.point_view.geom AS geom",
+                    "ST_X(geometry.point_view.geom) AS longitude",
+                    "ST_Y(geometry.point_view.geom) AS latitude",
+                    "geometry.point_view.horizontalAccuracy"
+                ]
+            }
+        },
+        "curve" : {
+            "path" : "viewgen/version/a5_1/sql/CurvePropertyType.sql",
+            "attribute" : [
+                
+            ]
+        },
+        "surface" : {
+            "path" : "viewgen/version/a5_1/sql/SurfacePropertyType.sql",
+            "attribute" : [
+                
+            ]
+        },
+        "elevatedpoint" : {
+            "path" : "viewgen/version/a5_1/sql/ElevatedPointPropertyType.sql",
+            "attribute" : [
+                
+            ]
+        },
+        "elevatedcurve" : {
+            "path" : "viewgen/version/a5_1/sql/ElevatedCurvePropertyType.sql",
+            "attribute" : [
+                
+            ]
+        },
+        "elevatedsurface" : {
+            "path" : "viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
+            "attribute" : [
+                
+            ]
+        }
+    },
+    "feature_parent": [
         "AbstractAIXMFeatureType",
         "AbstractAirportHeliportProtectionAreaType",
         "AbstractGroundLightSystemType",
@@ -11,7 +60,7 @@
         "AbstractProcedureType",
         "AbstractSegmentLegType"
     ],
-    "timeslice_parents": {
+    "timeslice_parent": {
         "AbstractAIXMTimeSliceType": [
             "id",
             "feature_status",
@@ -24,7 +73,7 @@
             "feature_lifetime_end"
         ]
     },
-    "object_parents": {
+    "object_parent": {
         "AbstractAIXMObjectType": [
             "id",
             "identifier",
@@ -56,12 +105,12 @@
             "identifier_code_space"
         ]
     },
-    "property_parents" :{
+    "property_parent" :{
         "AbstractAIXMPropertyType": [
             "id"
         ]
     },
-    "parents_attributes": {
+    "parents_attribute": {
 
         "AbstractAIXMFeatureType": [
             "id",
@@ -148,7 +197,7 @@
             "identifier_code_space"
         ]
     },
-    "snowflake_attributes": {
+    "snowflake_attribute": {
         "PointPropertyType": "geom",
         "CurvePropertyType": "geom",
         "SurfacePropertyType": "geom",
