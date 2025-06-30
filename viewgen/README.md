@@ -28,6 +28,82 @@ To visualise AIXM data, we must address a set of core functionalities.
 
 To address these issues, the technical solution implemented in delorean relies on a combination of sql views and qgis layer management, which are described in detail here. We must keep in mind that, although we are used to seeing AIXM in its message form, we are dealing here with a more abstract representation of it. In our database, we have a set of features and a set of messages (datasets). We don't just want to display all our features; we want to display the right feature for the right dataset. This is necessary because a feature can be in different datasets, each of which serves a specific purpose.
 
+
+```mermaid
+classDiagram
+
+    note "AIXM data structure"
+   
+    Feature *-- TimeSliceProperty : temporality
+    TimeSliceProperty *-- TimeSlice : temporality
+
+    TimeSlice *-- FeatureProperty : Association
+    TimeSlice *-- Property : Association
+    TimeSlice *-- Geometry : Association
+
+
+    Property *--  Object : 
+    OtherProperty *-- OtherObject
+
+
+    FeatureProperty o-- OtherFeature : href
+
+
+    Object *-- OtherProperty
+
+
+    class Feature
+    Feature : id*
+    Feature : identifier*
+    <<AbstractAIXMFeatureType>> Feature
+
+    class TimeSliceProperty 
+    TimeSliceProperty : id*
+
+    class TimeSlice
+    TimeSlice : interpretation*
+    TimeSlice : sequence_number*
+    TimeSlice : correction_number*
+    TimeSlice : valid_time*
+    TimeSlice : feature_lifetime*
+    TimeSlice : Attribute[]
+    TimeSlice : Association[]
+    <<AbstractAIXMTimeSliceType>> TimeSlice
+
+    class Property
+    Property : id*
+    <<AbstractAIXMPropertyType>> Property
+
+    class Object
+    Object : Attribute[]
+    Object : Association[]
+    <<AbstractAIXMObjectType>> Object   
+
+    class OtherProperty
+    OtherProperty : Attribute*
+    <<AbstractAIXMPropertyType>> OtherProperty
+
+    class OtherObject
+    OtherObject : Attribute[]
+    OtherObject : Association[]
+    <<AbstractAIXMObjectType>> OtherObject   
+
+    class FeatureProperty
+    FeatureProperty : title*
+    FeatureProperty : nilreason*
+    FeatureProperty : href*
+    
+    class OtherFeature
+    OtherFeature : id*
+    OtherFeature : identifier*
+    <<AbstractAIXMFeatureType>> OtherFeature
+
+    class Geometry
+    Geometry : pos
+    Geometry : height 
+
+```
+
 ### Temporal Validity
 Going top to bottom we must first Select the right data set ```AIXMBasicMessageType``` which contains a list of ```BasicMessageMemberAIXMPropertyType``` which contain ```AbstractAIXMFeatureType``` . This ```AbstractAIXMFeatureType``` is implemented as ```Feature``` which has a list of ```FeatureTimeSlicePropertyType``` which contain ```FeatureTimeSliceType```. However, this is not enough. We must also ignore the stale and unapproved correction timeslices (delorean attribute supports incremental edits).
 

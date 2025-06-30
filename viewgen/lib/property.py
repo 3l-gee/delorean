@@ -115,7 +115,7 @@ class Property :
         self.add_group(str(self.name), uom, self.group)
         self.add_group(str(self.name), nil, self.group)
 
-    def add_association_feature_one(self, group, name, role, col):
+    def add_association_object_one(self, group, name, role, col):
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
@@ -130,4 +130,50 @@ class Property :
         # self.add_group(hash, "href")
 
         self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}.{col} = {hash}.id")
+
+    def add_association_feature_one(self, group, name, role, col):
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+
+        hash = self.generate_letter_hash(str(group + "_" + name + "_pt"))
+
+        self.sql["attributes"][name].extend([
+            f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
+            f"{hash}.href AS {role}_href"
+        ])
+        
+        self.add_group(hash, "title")
+        self.add_group(hash, "nilreason")
+        self.add_group(hash, "href")
+
+        self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}_ts.{col} = {hash}.id")
+
+    def add_association_object_many(self, group, name, role):
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+
+        hash_one = self.generate_letter_hash(str("master_join"))
+        hash_two = self.generate_letter_hash(str(group + "_" + name + "_pt"))
+
+        # return [
+        #     f"left join master_join {hash_one} on {self.group}.{self.name}.id = {hash_one}.source_id",
+        #     f"left join {group}.{name}_view on {hash_one}.target_id = {group}.{name}_view.id"
+        # ]
+
+        self.sql["left"].append(f"--object {group}.{name}.{role}")
+
+    def add_association_feature_many(self, group, name, role):
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+
+        hash_one = self.generate_letter_hash(str("master_join"))
+        hash_two = self.generate_letter_hash(str(group + "_" + name + "_pt"))
+
+        # return [
+        #     f"left join master_join {hash_one} on {self.group}.{self.name}.id = {hash_one}.source_id",
+        #     f"left join {group}.{name}_view on {hash_one}.target_id = {group}.{name}_view.id"
+        # ]
+
+        self.sql["left"].append(f"--feature {group}.{name}.{role}")
+
 

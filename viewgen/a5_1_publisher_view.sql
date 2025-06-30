@@ -17,6 +17,9 @@ from aerial_refuelling.aerialrefuellinganchor_pt
 inner join aerial_refuelling.aerialrefuellinganchor on aerial_refuelling.aerialrefuellinganchor_pt.aerialrefuellinganchor_id = aerial_refuelling.aerialrefuellinganchor.id
 left join master_join mj1 on aerial_refuelling.aerialrefuellinganchor.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.airspacelayer.verticalextent
+--object aerial_refuelling.aerialrefuellingpoint.point
+--object notes.note.annotation
 group by
     aerial_refuelling.aerialrefuellinganchor_pt.id,
     aerial_refuelling.aerialrefuellinganchor_pt.nilreason,
@@ -57,6 +60,8 @@ from aerial_refuelling.aerialrefuellingpoint_pt
 inner join aerial_refuelling.aerialrefuellingpoint on aerial_refuelling.aerialrefuellingpoint_pt.aerialrefuellingpoint_id = aerial_refuelling.aerialrefuellingpoint.id
 left join master_join mj1 on aerial_refuelling.aerialrefuellingpoint.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object navaids_points.pointreference.facilitymakeup
+--object notes.note.annotation
 group by
     aerial_refuelling.aerialrefuellingpoint_pt.id,
     aerial_refuelling.aerialrefuellingpoint_pt.nilreason,
@@ -81,6 +86,9 @@ from aerial_refuelling.aerialrefuellingtrack_pt
 inner join aerial_refuelling.aerialrefuellingtrack on aerial_refuelling.aerialrefuellingtrack_pt.aerialrefuellingtrack_id = aerial_refuelling.aerialrefuellingtrack.id
 left join master_join mj1 on aerial_refuelling.aerialrefuellingtrack.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object aerial_refuelling.aerialrefuellingpoint.point
+--object shared.airspacelayer.verticalextent
+--object notes.note.annotation
 group by
     aerial_refuelling.aerialrefuellingtrack_pt.id,
     aerial_refuelling.aerialrefuellingtrack_pt.nilreason;
@@ -114,6 +122,7 @@ from shared.aircraftcharacteristic_pt
 inner join shared.aircraftcharacteristic on shared.aircraftcharacteristic_pt.aircraftcharacteristic_id = shared.aircraftcharacteristic.id
 left join master_join mj1 on shared.aircraftcharacteristic.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.aircraftcharacteristic_pt.id,
     shared.aircraftcharacteristic_pt.nilreason,
@@ -167,8 +176,6 @@ select
     airport_heliport.aircraftstandcontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS aircraftstandcontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.aircraftstandcontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.aircraftstandcontamination.observationTime_value as varchar), '(' || airport_heliport.aircraftstandcontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.aircraftstandcontamination.nextObservationTime_value as varchar), '(' || airport_heliport.aircraftstandcontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.aircraftstandcontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.aircraftstandcontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.aircraftstandcontamination.frictionestimation_value as varchar), '(' || airport_heliport.aircraftstandcontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.aircraftstandcontamination.frictiondevice_value as varchar), '(' || airport_heliport.aircraftstandcontamination.frictiondevice_nilreason || ')'),
@@ -181,13 +188,12 @@ from airport_heliport.aircraftstandcontamination_pt
 inner join airport_heliport.aircraftstandcontamination on airport_heliport.aircraftstandcontamination_pt.aircraftstandcontamination_id = airport_heliport.aircraftstandcontamination.id
 left join master_join mj1 on airport_heliport.aircraftstandcontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.aircraftstandcontamination_pt.id,
     airport_heliport.aircraftstandcontamination_pt.nilreason,
-    airport_heliport.aircraftstandcontamination.observationTime_value,
-    airport_heliport.aircraftstandcontamination.observationTime_nilreason,
-    airport_heliport.aircraftstandcontamination.nextObservationTime_value,
-    airport_heliport.aircraftstandcontamination.nextObservationTime_nilreason,
     airport_heliport.aircraftstandcontamination.frictioncoefficient_value,
     airport_heliport.aircraftstandcontamination.frictioncoefficient_nilreason,
     airport_heliport.aircraftstandcontamination.frictionestimation_value,
@@ -216,6 +222,9 @@ from airport_heliport.airportheliportavailability_pt
 inner join airport_heliport.airportheliportavailability on airport_heliport.airportheliportavailability_pt.airportheliportavailability_id = airport_heliport.airportheliportavailability.id
 left join master_join mj1 on airport_heliport.airportheliportavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object airport_heliport.airportheliportusage.usage
 group by
     airport_heliport.airportheliportavailability_pt.id,
     airport_heliport.airportheliportavailability_pt.nilreason,
@@ -228,8 +237,6 @@ select
     airport_heliport.airportheliportcontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS airportheliportcontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.airportheliportcontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.airportheliportcontamination.observationTime_value as varchar), '(' || airport_heliport.airportheliportcontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.airportheliportcontamination.nextObservationTime_value as varchar), '(' || airport_heliport.airportheliportcontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.airportheliportcontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.airportheliportcontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.airportheliportcontamination.frictionestimation_value as varchar), '(' || airport_heliport.airportheliportcontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.airportheliportcontamination.frictiondevice_value as varchar), '(' || airport_heliport.airportheliportcontamination.frictiondevice_nilreason || ')'),
@@ -242,13 +249,12 @@ from airport_heliport.airportheliportcontamination_pt
 inner join airport_heliport.airportheliportcontamination on airport_heliport.airportheliportcontamination_pt.airportheliportcontamination_id = airport_heliport.airportheliportcontamination.id
 left join master_join mj1 on airport_heliport.airportheliportcontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.airportheliportcontamination_pt.id,
     airport_heliport.airportheliportcontamination_pt.nilreason,
-    airport_heliport.airportheliportcontamination.observationTime_value,
-    airport_heliport.airportheliportcontamination.observationTime_nilreason,
-    airport_heliport.airportheliportcontamination.nextObservationTime_value,
-    airport_heliport.airportheliportcontamination.nextObservationTime_nilreason,
     airport_heliport.airportheliportcontamination.frictioncoefficient_value,
     airport_heliport.airportheliportcontamination.frictioncoefficient_nilreason,
     airport_heliport.airportheliportcontamination.frictionestimation_value,
@@ -276,6 +282,8 @@ from airport_heliport.airportheliportresponsibilityorganisation_pt
 inner join airport_heliport.airportheliportresponsibilityorganisation on airport_heliport.airportheliportresponsibilityorganisation_pt.airportheliportresponsibilityorganisation_id = airport_heliport.airportheliportresponsibilityorganisation.id
 left join master_join mj1 on airport_heliport.airportheliportresponsibilityorganisation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     airport_heliport.airportheliportresponsibilityorganisation_pt.id,
     airport_heliport.airportheliportresponsibilityorganisation_pt.nilreason,
@@ -294,7 +302,9 @@ from airport_heliport.airportheliportusage_pt
 inner join airport_heliport.airportheliportusage on airport_heliport.airportheliportusage_pt.airportheliportusage_id = airport_heliport.airportheliportusage.id
 left join master_join mj1 on airport_heliport.airportheliportusage.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_vyqaxw on airport_heliport.airportheliportusage.selection_id = airport_heliport_conditioncombination_pt_vyqaxw.id
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_ywcgem on airport_heliport.airportheliportusage.selection_id = airport_heliport_conditioncombination_pt_ywcgem.id
+--object shared.contactinformation.contact
+--object notes.note.annotation
 group by
     airport_heliport.airportheliportusage_pt.id,
     airport_heliport.airportheliportusage_pt.nilreason,
@@ -316,6 +326,10 @@ from airspace.airspaceactivation_pt
 inner join airspace.airspaceactivation on airspace.airspaceactivation_pt.airspaceactivation_id = airspace.airspaceactivation.id
 left join master_join mj1 on airspace.airspaceactivation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object shared.airspacelayer.levels
+--object shared.aircraftcharacteristic.aircraft
 group by
     airspace.airspaceactivation_pt.id,
     airspace.airspaceactivation_pt.nilreason,
@@ -335,7 +349,8 @@ from airspace.airspacegeometrycomponent_pt
 inner join airspace.airspacegeometrycomponent on airspace.airspacegeometrycomponent_pt.airspacegeometrycomponent_id = airspace.airspacegeometrycomponent.id
 left join master_join mj1 on airspace.airspacegeometrycomponent.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join airspace.airspacevolume_pt airspace_airspacevolume_pt_alrjsp on airspace.airspacegeometrycomponent.theairspacevolume_id = airspace_airspacevolume_pt_alrjsp.id
+left join airspace.airspacevolume_pt airspace_airspacevolume_pt_woubzz on airspace.airspacegeometrycomponent.theairspacevolume_id = airspace_airspacevolume_pt_woubzz.id
+--object notes.note.annotation
 group by
     airspace.airspacegeometrycomponent_pt.id,
     airspace.airspacegeometrycomponent_pt.nilreason,
@@ -353,6 +368,9 @@ from airspace.airspacelayerclass_pt
 inner join airspace.airspacelayerclass on airspace.airspacelayerclass_pt.airspacelayerclass_id = airspace.airspacelayerclass.id
 left join master_join mj1 on airspace.airspacelayerclass.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object shared.airspacelayer.associatedlevels
 group by
     airspace.airspacelayerclass_pt.id,
     airspace.airspacelayerclass_pt.nilreason,
@@ -372,6 +390,7 @@ from shared.airspacelayer_pt
 inner join shared.airspacelayer on shared.airspacelayer_pt.airspacelayer_id = shared.airspacelayer.id
 left join master_join mj1 on shared.airspacelayer.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.airspacelayer_pt.id,
     shared.airspacelayer_pt.nilreason,
@@ -397,6 +416,7 @@ from airspace.airspacevolumedependency_pt
 inner join airspace.airspacevolumedependency on airspace.airspacevolumedependency_pt.airspacevolumedependency_id = airspace.airspacevolumedependency.id
 left join master_join mj1 on airspace.airspacevolumedependency.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airspace.airspacevolumedependency_pt.id,
     airspace.airspacevolumedependency_pt.nilreason,
@@ -421,7 +441,8 @@ from airspace.airspacevolume_pt
 inner join airspace.airspacevolume on airspace.airspacevolume_pt.airspacevolume_id = airspace.airspacevolume.id
 left join master_join mj1 on airspace.airspacevolume.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join airspace.airspacevolumedependency_pt airspace_airspacevolumedependency_pt_gujceb on airspace.airspacevolume.contributorairspace_id = airspace_airspacevolumedependency_pt_gujceb.id
+left join airspace.airspacevolumedependency_pt airspace_airspacevolumedependency_pt_gbpokq on airspace.airspacevolume.contributorairspace_id = airspace_airspacevolumedependency_pt_gbpokq.id
+--object notes.note.annotation
 group by
     airspace.airspacevolume_pt.id,
     airspace.airspacevolume_pt.nilreason,
@@ -458,6 +479,8 @@ from airport_heliport.altimetersourcestatus_pt
 inner join airport_heliport.altimetersourcestatus on airport_heliport.altimetersourcestatus_pt.altimetersourcestatus_id = airport_heliport.altimetersourcestatus.id
 left join master_join mj1 on airport_heliport.altimetersourcestatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     airport_heliport.altimetersourcestatus_pt.id,
     airport_heliport.altimetersourcestatus_pt.nilreason,
@@ -476,6 +499,7 @@ from shared.altitudeadjustment_pt
 inner join shared.altitudeadjustment on shared.altitudeadjustment_pt.altitudeadjustment_id = shared.altitudeadjustment.id
 left join master_join mj1 on shared.altitudeadjustment.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.altitudeadjustment_pt.id,
     shared.altitudeadjustment_pt.nilreason,
@@ -498,6 +522,7 @@ from navaids_points.angleuse_pt
 inner join navaids_points.angleuse on navaids_points.angleuse_pt.angleuse_id = navaids_points.angleuse.id
 left join master_join mj1 on navaids_points.angleuse.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     navaids_points.angleuse_pt.id,
     navaids_points.angleuse_pt.nilreason,
@@ -515,6 +540,7 @@ from procedure.approachaltitudetable_pt
 inner join procedure.approachaltitudetable on procedure.approachaltitudetable_pt.approachaltitudetable_id = procedure.approachaltitudetable.id
 left join master_join mj1 on procedure.approachaltitudetable.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.approachaltitudetable_pt.id,
     procedure.approachaltitudetable_pt.nilreason,
@@ -538,7 +564,12 @@ from procedure.approachcondition_pt
 inner join procedure.approachcondition on procedure.approachcondition_pt.approachcondition_id = procedure.approachcondition.id
 left join master_join mj1 on procedure.approachcondition.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join procedure.minima_pt procedure_minima_pt_cbtviq on procedure.approachcondition.minimumset_id = procedure_minima_pt_cbtviq.id
+left join procedure.minima_pt procedure_minima_pt_rybutr on procedure.approachcondition.minimumset_id = procedure_minima_pt_rybutr.id
+--object procedure.circlingrestriction.circlingrestriction
+--object shared.aircraftcharacteristic.aircraftcategory
+--object procedure.landingtakeoffareacollection.landingarea
+--object shared.obstacleassessmentarea.designsurface
+--object notes.note.annotation
 group by
     procedure.approachcondition_pt.id,
     procedure.approachcondition_pt.nilreason,
@@ -561,6 +592,7 @@ from procedure.approachdistancetable_pt
 inner join procedure.approachdistancetable on procedure.approachdistancetable_pt.approachdistancetable_id = procedure.approachdistancetable.id
 left join master_join mj1 on procedure.approachdistancetable.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.approachdistancetable_pt.id,
     procedure.approachdistancetable_pt.nilreason,
@@ -587,6 +619,7 @@ from procedure.approachtimingtable_pt
 inner join procedure.approachtimingtable on procedure.approachtimingtable_pt.approachtimingtable_id = procedure.approachtimingtable.id
 left join master_join mj1 on procedure.approachtimingtable.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.approachtimingtable_pt.id,
     procedure.approachtimingtable_pt.nilreason,
@@ -611,6 +644,9 @@ from airport_heliport.apronareaavailability_pt
 inner join airport_heliport.apronareaavailability on airport_heliport.apronareaavailability_pt.apronareaavailability_id = airport_heliport.apronareaavailability.id
 left join master_join mj1 on airport_heliport.apronareaavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object airport_heliport.apronareausage.usage
 group by
     airport_heliport.apronareaavailability_pt.id,
     airport_heliport.apronareaavailability_pt.nilreason,
@@ -630,7 +666,9 @@ from airport_heliport.apronareausage_pt
 inner join airport_heliport.apronareausage on airport_heliport.apronareausage_pt.apronareausage_id = airport_heliport.apronareausage.id
 left join master_join mj1 on airport_heliport.apronareausage.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_iahkpr on airport_heliport.apronareausage.selection_id = airport_heliport_conditioncombination_pt_iahkpr.id
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_cjjglj on airport_heliport.apronareausage.selection_id = airport_heliport_conditioncombination_pt_cjjglj.id
+--object shared.contactinformation.contact
+--object notes.note.annotation
 group by
     airport_heliport.apronareausage_pt.id,
     airport_heliport.apronareausage_pt.nilreason,
@@ -644,8 +682,6 @@ select
     airport_heliport.aproncontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS aproncontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.aproncontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.aproncontamination.observationTime_value as varchar), '(' || airport_heliport.aproncontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.aproncontamination.nextObservationTime_value as varchar), '(' || airport_heliport.aproncontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.aproncontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.aproncontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.aproncontamination.frictionestimation_value as varchar), '(' || airport_heliport.aproncontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.aproncontamination.frictiondevice_value as varchar), '(' || airport_heliport.aproncontamination.frictiondevice_nilreason || ')'),
@@ -658,13 +694,12 @@ from airport_heliport.aproncontamination_pt
 inner join airport_heliport.aproncontamination on airport_heliport.aproncontamination_pt.aproncontamination_id = airport_heliport.aproncontamination.id
 left join master_join mj1 on airport_heliport.aproncontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.aproncontamination_pt.id,
     airport_heliport.aproncontamination_pt.nilreason,
-    airport_heliport.aproncontamination.observationTime_value,
-    airport_heliport.aproncontamination.observationTime_nilreason,
-    airport_heliport.aproncontamination.nextObservationTime_value,
-    airport_heliport.aproncontamination.nextObservationTime_nilreason,
     airport_heliport.aproncontamination.frictioncoefficient_value,
     airport_heliport.aproncontamination.frictioncoefficient_nilreason,
     airport_heliport.aproncontamination.frictionestimation_value,
@@ -692,6 +727,7 @@ from aerial_refuelling.authorityforaerialrefuelling_pt
 inner join aerial_refuelling.authorityforaerialrefuelling on aerial_refuelling.authorityforaerialrefuelling_pt.authorityforaerialrefuelling_id = aerial_refuelling.authorityforaerialrefuelling.id
 left join master_join mj1 on aerial_refuelling.authorityforaerialrefuelling.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     aerial_refuelling.authorityforaerialrefuelling_pt.id,
     aerial_refuelling.authorityforaerialrefuelling_pt.nilreason,
@@ -707,6 +743,7 @@ from navaids_points.authorityfornavaidequipment_pt
 inner join navaids_points.authorityfornavaidequipment on navaids_points.authorityfornavaidequipment_pt.authorityfornavaidequipment_id = navaids_points.authorityfornavaidequipment.id
 left join master_join mj1 on navaids_points.authorityfornavaidequipment.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     navaids_points.authorityfornavaidequipment_pt.id,
     navaids_points.authorityfornavaidequipment_pt.nilreason,
@@ -722,6 +759,7 @@ from navaids_points.authorityforspecialnavigationstation_pt
 inner join navaids_points.authorityforspecialnavigationstation on navaids_points.authorityforspecialnavigationstation_pt.authorityforspecialnavigationstation_id = navaids_points.authorityforspecialnavigationstation.id
 left join master_join mj1 on navaids_points.authorityforspecialnavigationstation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     navaids_points.authorityforspecialnavigationstation_pt.id,
     navaids_points.authorityforspecialnavigationstation_pt.nilreason,
@@ -737,6 +775,7 @@ from navaids_points.authorityforspecialnavigationsystem_pt
 inner join navaids_points.authorityforspecialnavigationsystem on navaids_points.authorityforspecialnavigationsystem_pt.authorityforspecialnavigationsystem_id = navaids_points.authorityforspecialnavigationsystem.id
 left join master_join mj1 on navaids_points.authorityforspecialnavigationsystem.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     navaids_points.authorityforspecialnavigationsystem_pt.id,
     navaids_points.authorityforspecialnavigationsystem_pt.nilreason,
@@ -753,6 +792,7 @@ from service.callsigndetail_pt
 inner join service.callsigndetail on service.callsigndetail_pt.callsigndetail_id = service.callsigndetail.id
 left join master_join mj1 on service.callsigndetail.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     service.callsigndetail_pt.id,
     service.callsigndetail_pt.nilreason,
@@ -780,6 +820,7 @@ from shared.circlesector_pt
 inner join shared.circlesector on shared.circlesector_pt.circlesector_id = shared.circlesector.id
 left join master_join mj1 on shared.circlesector.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.circlesector_pt.id,
     shared.circlesector_pt.nilreason,
@@ -819,7 +860,9 @@ from procedure.circlingrestriction_pt
 inner join procedure.circlingrestriction on procedure.circlingrestriction_pt.circlingrestriction_id = procedure.circlingrestriction.id
 left join master_join mj1 on procedure.circlingrestriction.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join shared.circlesector_pt shared_circlesector_pt_yqsytj on procedure.circlingrestriction.sectordescription_id = shared_circlesector_pt_yqsytj.id
+left join shared.circlesector_pt shared_circlesector_pt_ygzdwh on procedure.circlingrestriction.sectordescription_id = shared_circlesector_pt_ygzdwh.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     procedure.circlingrestriction_pt.id,
     procedure.circlingrestriction_pt.nilreason;
@@ -833,6 +876,7 @@ from airport_heliport.city_pt
 inner join airport_heliport.city on airport_heliport.city_pt.city_id = airport_heliport.city.id
 left join master_join mj1 on airport_heliport.city.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.city_pt.id,
     airport_heliport.city_pt.nilreason,
@@ -848,6 +892,12 @@ from airport_heliport.conditioncombination_pt
 inner join airport_heliport.conditioncombination on airport_heliport.conditioncombination_pt.conditioncombination_id = airport_heliport.conditioncombination.id
 left join master_join mj1 on airport_heliport.conditioncombination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object shared.meteorology.weather
+--object shared.aircraftcharacteristic.aircraft
+--object shared.flightcharacteristic.flight
+--object airport_heliport.conditioncombination.subcondition
 group by
     airport_heliport.conditioncombination_pt.id,
     airport_heliport.conditioncombination_pt.nilreason,
@@ -864,6 +914,10 @@ from shared.contactinformation_pt
 inner join shared.contactinformation on shared.contactinformation_pt.contactinformation_id = shared.contactinformation.id
 left join master_join mj1 on shared.contactinformation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.postaladdress.address
+--object shared.onlinecontact.networknode
+--object shared.telephonecontact.phonefax
+--object notes.note.annotation
 group by
     shared.contactinformation_pt.id,
     shared.contactinformation_pt.nilreason,
@@ -886,7 +940,8 @@ from procedure.departurearrivalcondition_pt
 inner join procedure.departurearrivalcondition on procedure.departurearrivalcondition_pt.departurearrivalcondition_id = procedure.departurearrivalcondition.id
 left join master_join mj1 on procedure.departurearrivalcondition.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_fswoql on procedure.departurearrivalcondition.engine_id = shared_aircraftcharacteristic_pt_fswoql.id
+left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_ofqjmk on procedure.departurearrivalcondition.engine_id = shared_aircraftcharacteristic_pt_ofqjmk.id
+--object notes.note.annotation
 group by
     procedure.departurearrivalcondition_pt.id,
     procedure.departurearrivalcondition_pt.nilreason,
@@ -913,6 +968,7 @@ from routes.directflightclass_pt
 inner join routes.directflightclass on routes.directflightclass_pt.directflightclass_id = routes.directflightclass.id
 left join master_join mj1 on routes.directflightclass.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     routes.directflightclass_pt.id,
     routes.directflightclass_pt.nilreason,
@@ -940,6 +996,7 @@ from routes.directflightsegment_pt
 inner join routes.directflightsegment on routes.directflightsegment_pt.directflightsegment_id = routes.directflightsegment.id
 left join master_join mj1 on routes.directflightsegment.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     routes.directflightsegment_pt.id,
     routes.directflightsegment_pt.nilreason;
@@ -960,6 +1017,8 @@ from navaids_points.enroutesegmentpoint_pt
 inner join navaids_points.enroutesegmentpoint on navaids_points.enroutesegmentpoint_pt.enroutesegmentpoint_id = navaids_points.enroutesegmentpoint.id
 left join master_join mj1 on navaids_points.enroutesegmentpoint.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object navaids_points.pointreference.facilitymakeup
+--object notes.note.annotation
 group by
     navaids_points.enroutesegmentpoint_pt.id,
     navaids_points.enroutesegmentpoint_pt.nilreason,
@@ -994,6 +1053,7 @@ from procedure.equipmentunavailableadjustmentcolumn_pt
 inner join procedure.equipmentunavailableadjustmentcolumn on procedure.equipmentunavailableadjustmentcolumn_pt.equipmentunavailableadjustmentcolumn_id = procedure.equipmentunavailableadjustmentcolumn.id
 left join master_join mj1 on procedure.equipmentunavailableadjustmentcolumn.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.equipmentunavailableadjustmentcolumn_pt.id,
     procedure.equipmentunavailableadjustmentcolumn_pt.nilreason,
@@ -1019,6 +1079,8 @@ from procedure.equipmentunavailableadjustment_pt
 inner join procedure.equipmentunavailableadjustment on procedure.equipmentunavailableadjustment_pt.equipmentunavailableadjustment_id = procedure.equipmentunavailableadjustment.id
 left join master_join mj1 on procedure.equipmentunavailableadjustment.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object procedure.equipmentunavailableadjustmentcolumn.adjustmentinopcol
+--object notes.note.annotation
 group by
     procedure.equipmentunavailableadjustment_pt.id,
     procedure.equipmentunavailableadjustment_pt.nilreason,
@@ -1044,6 +1106,7 @@ from public.fasdatablock_pt
 inner join public.fasdatablock on public.fasdatablock_pt.fasdatablock_id = public.fasdatablock.id
 left join master_join mj1 on public.fasdatablock.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     public.fasdatablock_pt.id,
     public.fasdatablock_pt.nilreason,
@@ -1076,6 +1139,10 @@ from procedure.finalprofile_pt
 inner join procedure.finalprofile on procedure.finalprofile_pt.finalprofile_id = procedure.finalprofile.id
 left join master_join mj1 on procedure.finalprofile.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object procedure.approachaltitudetable.altitude
+--object procedure.approachdistancetable.distance
+--object procedure.approachtimingtable.timing
+--object notes.note.annotation
 group by
     procedure.finalprofile_pt.id,
     procedure.finalprofile_pt.nilreason;
@@ -1094,6 +1161,7 @@ from shared.flightcharacteristic_pt
 inner join shared.flightcharacteristic on shared.flightcharacteristic_pt.flightcharacteristic_id = shared.flightcharacteristic.id
 left join master_join mj1 on shared.flightcharacteristic.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.flightcharacteristic_pt.id,
     shared.flightcharacteristic_pt.nilreason,
@@ -1120,6 +1188,7 @@ from routes.flightconditioncircumstance_pt
 inner join routes.flightconditioncircumstance on routes.flightconditioncircumstance_pt.flightconditioncircumstance_id = routes.flightconditioncircumstance.id
 left join master_join mj1 on routes.flightconditioncircumstance.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     routes.flightconditioncircumstance_pt.id,
     routes.flightconditioncircumstance_pt.nilreason,
@@ -1137,6 +1206,9 @@ from routes.flightconditioncombination_pt
 inner join routes.flightconditioncombination on routes.flightconditioncombination_pt.flightconditioncombination_id = routes.flightconditioncombination.id
 left join master_join mj1 on routes.flightconditioncombination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object routes.flightconditionelement.element
 group by
     routes.flightconditioncombination_pt.id,
     routes.flightconditioncombination_pt.nilreason,
@@ -1159,13 +1231,15 @@ from routes.flightconditionelement_pt
 inner join routes.flightconditionelement on routes.flightconditionelement_pt.flightconditionelement_id = routes.flightconditionelement.id
 left join master_join mj1 on routes.flightconditionelement.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join routes.routeportion_pt routes_routeportion_pt_zqvkqf on routes.flightconditionelement.flightcondition_routeportioncondition_id = routes_routeportion_pt_zqvkqf.id
-left join routes.directflight_pt routes_directflight_pt_bstwgo on routes.flightconditionelement.flightcondition_directflightcondition_id = routes_directflight_pt_bstwgo.id
-left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_ihunlw on routes.flightconditionelement.flightcondition_aircraft_id = shared_aircraftcharacteristic_pt_ihunlw.id
-left join shared.flightcharacteristic_pt shared_flightcharacteristic_pt_xlgjdw on routes.flightconditionelement.flightcondition_flight_id = shared_flightcharacteristic_pt_xlgjdw.id
-left join routes.flightconditioncombination_pt routes_flightconditioncombination_pt_kawuhk on routes.flightconditionelement.flightcondition_operand_id = routes_flightconditioncombination_pt_kawuhk.id
-left join shared.meteorology_pt shared_meteorology_pt_mkyghr on routes.flightconditionelement.flightcondition_weather_id = shared_meteorology_pt_mkyghr.id
-left join routes.flightconditioncircumstance_pt routes_flightconditioncircumstance_pt_ilktqd on routes.flightconditionelement.operationalcondition_id = routes_flightconditioncircumstance_pt_ilktqd.id
+left join routes.routeportion_pt routes_routeportion_pt_brtygf on routes.flightconditionelement.flightcondition_routeportioncondition_id = routes_routeportion_pt_brtygf.id
+left join routes.directflight_pt routes_directflight_pt_ckueua on routes.flightconditionelement.flightcondition_directflightcondition_id = routes_directflight_pt_ckueua.id
+left join shared.aircraftcharacteristic_pt shared_aircraftcharacteristic_pt_hnbfbo on routes.flightconditionelement.flightcondition_aircraft_id = shared_aircraftcharacteristic_pt_hnbfbo.id
+left join shared.flightcharacteristic_pt shared_flightcharacteristic_pt_eovdva on routes.flightconditionelement.flightcondition_flight_id = shared_flightcharacteristic_pt_eovdva.id
+left join routes.flightconditioncombination_pt routes_flightconditioncombination_pt_jtktiv on routes.flightconditionelement.flightcondition_operand_id = routes_flightconditioncombination_pt_jtktiv.id
+left join shared.meteorology_pt shared_meteorology_pt_ezmxmm on routes.flightconditionelement.flightcondition_weather_id = shared_meteorology_pt_ezmxmm.id
+left join routes.flightconditioncircumstance_pt routes_flightconditioncircumstance_pt_mummvp on routes.flightconditionelement.operationalcondition_id = routes_flightconditioncircumstance_pt_mummvp.id
+--object routes.flightrestrictionlevel.flightlevel
+--object notes.note.annotation
 group by
     routes.flightconditionelement_pt.id,
     routes.flightconditionelement_pt.nilreason,
@@ -1184,6 +1258,7 @@ from routes.flightrestrictionlevel_pt
 inner join routes.flightrestrictionlevel on routes.flightrestrictionlevel_pt.flightrestrictionlevel_id = routes.flightrestrictionlevel.id
 left join master_join mj1 on routes.flightrestrictionlevel.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     routes.flightrestrictionlevel_pt.id,
     routes.flightrestrictionlevel_pt.nilreason,
@@ -1207,6 +1282,9 @@ from routes.flightrestrictionroute_pt
 inner join routes.flightrestrictionroute on routes.flightrestrictionroute_pt.flightrestrictionroute_id = routes.flightrestrictionroute.id
 left join master_join mj1 on routes.flightrestrictionroute.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object routes.flightroutingelement.routeelement
+--object shared.contactinformation.contact
+--object notes.note.annotation
 group by
     routes.flightrestrictionroute_pt.id,
     routes.flightrestrictionroute_pt.nilreason,
@@ -1227,8 +1305,10 @@ from routes.flightroutingelement_pt
 inner join routes.flightroutingelement on routes.flightroutingelement_pt.flightroutingelement_id = routes.flightroutingelement.id
 left join master_join mj1 on routes.flightroutingelement.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join routes.directflightsegment_pt routes_directflightsegment_pt_igsbgf on routes.flightroutingelement.element_directflightelement_id = routes_directflightsegment_pt_igsbgf.id
-left join routes.routeportion_pt routes_routeportion_pt_keycwn on routes.flightroutingelement.element_routeportionelement_id = routes_routeportion_pt_keycwn.id
+left join routes.directflightsegment_pt routes_directflightsegment_pt_dpmzeh on routes.flightroutingelement.element_directflightelement_id = routes_directflightsegment_pt_dpmzeh.id
+left join routes.routeportion_pt routes_routeportion_pt_iupfgq on routes.flightroutingelement.element_routeportionelement_id = routes_routeportion_pt_iupfgq.id
+--object routes.flightrestrictionlevel.flightlevel
+--object notes.note.annotation
 group by
     routes.flightroutingelement_pt.id,
     routes.flightroutingelement_pt.nilreason,
@@ -1251,6 +1331,7 @@ from service.fuel_pt
 inner join service.fuel on service.fuel_pt.fuel_id = service.fuel.id
 left join master_join mj1 on service.fuel.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     service.fuel_pt.id,
     service.fuel_pt.nilreason,
@@ -1266,6 +1347,8 @@ from airport_heliport.groundlightingavailability_pt
 inner join airport_heliport.groundlightingavailability on airport_heliport.groundlightingavailability_pt.groundlightingavailability_id = airport_heliport.groundlightingavailability.id
 left join master_join mj1 on airport_heliport.groundlightingavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     airport_heliport.groundlightingavailability_pt.id,
     airport_heliport.groundlightingavailability_pt.nilreason,
@@ -1281,6 +1364,7 @@ from holding.holdingpatterndistance_pt
 inner join holding.holdingpatterndistance on holding.holdingpatterndistance_pt.holdingpatterndistance_id = holding.holdingpatterndistance.id
 left join master_join mj1 on holding.holdingpatterndistance.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     holding.holdingpatterndistance_pt.id,
     holding.holdingpatterndistance_pt.nilreason,
@@ -1297,6 +1381,7 @@ from holding.holdingpatternduration_pt
 inner join holding.holdingpatternduration on holding.holdingpatternduration_pt.holdingpatternduration_id = holding.holdingpatternduration.id
 left join master_join mj1 on holding.holdingpatternduration.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     holding.holdingpatternduration_pt.id,
     holding.holdingpatternduration_pt.nilreason,
@@ -1316,6 +1401,7 @@ from procedure.holdinguse_pt
 inner join procedure.holdinguse on procedure.holdinguse_pt.holdinguse_id = procedure.holdinguse.id
 left join master_join mj1 on procedure.holdinguse.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.holdinguse_pt.id,
     procedure.holdinguse_pt.nilreason,
@@ -1337,6 +1423,7 @@ from procedure.landingtakeoffareacollection_pt
 inner join procedure.landingtakeoffareacollection on procedure.landingtakeoffareacollection_pt.landingtakeoffareacollection_id = procedure.landingtakeoffareacollection.id
 left join master_join mj1 on procedure.landingtakeoffareacollection.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.landingtakeoffareacollection_pt.id,
     procedure.landingtakeoffareacollection_pt.nilreason;
@@ -1352,6 +1439,7 @@ from airport_heliport.lightactivation_pt
 inner join airport_heliport.lightactivation on airport_heliport.lightactivation_pt.lightactivation_id = airport_heliport.lightactivation.id
 left join master_join mj1 on airport_heliport.lightactivation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.lightactivation_pt.id,
     airport_heliport.lightactivation_pt.nilreason,
@@ -1374,6 +1462,8 @@ from shared.lightelement_pt
 inner join shared.lightelement on shared.lightelement_pt.lightelement_id = shared.lightelement.id
 left join master_join mj1 on shared.lightelement.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
+--object shared.lightelementstatus.availability
 group by
     shared.lightelement_pt.id,
     shared.lightelement_pt.nilreason,
@@ -1396,6 +1486,8 @@ from shared.lightelementstatus_pt
 inner join shared.lightelementstatus on shared.lightelementstatus_pt.lightelementstatus_id = shared.lightelementstatus.id
 left join master_join mj1 on shared.lightelementstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     shared.lightelementstatus_pt.id,
     shared.lightelementstatus_pt.nilreason,
@@ -1428,6 +1520,9 @@ from airport_heliport.manoeuvringareaavailability_pt
 inner join airport_heliport.manoeuvringareaavailability on airport_heliport.manoeuvringareaavailability_pt.manoeuvringareaavailability_id = airport_heliport.manoeuvringareaavailability.id
 left join master_join mj1 on airport_heliport.manoeuvringareaavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object airport_heliport.manoeuvringareausage.usage
 group by
     airport_heliport.manoeuvringareaavailability_pt.id,
     airport_heliport.manoeuvringareaavailability_pt.nilreason,
@@ -1448,7 +1543,9 @@ from airport_heliport.manoeuvringareausage_pt
 inner join airport_heliport.manoeuvringareausage on airport_heliport.manoeuvringareausage_pt.manoeuvringareausage_id = airport_heliport.manoeuvringareausage.id
 left join master_join mj1 on airport_heliport.manoeuvringareausage.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_gxroxq on airport_heliport.manoeuvringareausage.selection_id = airport_heliport_conditioncombination_pt_gxroxq.id
+left join airport_heliport.conditioncombination_pt airport_heliport_conditioncombination_pt_nfxoxx on airport_heliport.manoeuvringareausage.selection_id = airport_heliport_conditioncombination_pt_nfxoxx.id
+--object shared.contactinformation.contact
+--object notes.note.annotation
 group by
     airport_heliport.manoeuvringareausage_pt.id,
     airport_heliport.manoeuvringareausage_pt.nilreason,
@@ -1470,6 +1567,7 @@ from airport_heliport.markingelement_pt
 inner join airport_heliport.markingelement on airport_heliport.markingelement_pt.markingelement_id = airport_heliport.markingelement.id
 left join master_join mj1 on airport_heliport.markingelement.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.markingelement_pt.id,
     airport_heliport.markingelement_pt.nilreason,
@@ -1491,6 +1589,7 @@ from shared.meteorology_pt
 inner join shared.meteorology on shared.meteorology_pt.meteorology_id = shared.meteorology.id
 left join master_join mj1 on shared.meteorology.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.meteorology_pt.id,
     shared.meteorology_pt.nilreason,
@@ -1527,6 +1626,8 @@ from procedure.minima_pt
 inner join procedure.minima on procedure.minima_pt.minima_id = procedure.minima.id
 left join master_join mj1 on procedure.minima.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object procedure.equipmentunavailableadjustment.adjustmentinop
+--object notes.note.annotation
 group by
     procedure.minima_pt.id,
     procedure.minima_pt.nilreason,
@@ -1572,6 +1673,7 @@ from procedure.missedapproachgroup_pt
 inner join procedure.missedapproachgroup on procedure.missedapproachgroup_pt.missedapproachgroup_id = procedure.missedapproachgroup.id
 left join master_join mj1 on procedure.missedapproachgroup.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.missedapproachgroup_pt.id,
     procedure.missedapproachgroup_pt.nilreason,
@@ -1594,6 +1696,7 @@ from navaids_points.navaidcomponent_pt
 inner join navaids_points.navaidcomponent on navaids_points.navaidcomponent_pt.navaidcomponent_id = navaids_points.navaidcomponent.id
 left join master_join mj1 on navaids_points.navaidcomponent.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     navaids_points.navaidcomponent_pt.id,
     navaids_points.navaidcomponent_pt.nilreason,
@@ -1614,6 +1717,7 @@ from airport_heliport.navaidequipmentdistance_pt
 inner join airport_heliport.navaidequipmentdistance on airport_heliport.navaidequipmentdistance_pt.navaidequipmentdistance_id = airport_heliport.navaidequipmentdistance.id
 left join master_join mj1 on airport_heliport.navaidequipmentdistance.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.navaidequipmentdistance_pt.id,
     airport_heliport.navaidequipmentdistance_pt.nilreason,
@@ -1633,6 +1737,8 @@ from navaids_points.navaidequipmentmonitoring_pt
 inner join navaids_points.navaidequipmentmonitoring on navaids_points.navaidequipmentmonitoring_pt.navaidequipmentmonitoring_id = navaids_points.navaidequipmentmonitoring.id
 left join master_join mj1 on navaids_points.navaidequipmentmonitoring.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     navaids_points.navaidequipmentmonitoring_pt.id,
     navaids_points.navaidequipmentmonitoring_pt.nilreason,
@@ -1649,6 +1755,8 @@ from navaids_points.navaidoperationalstatus_pt
 inner join navaids_points.navaidoperationalstatus on navaids_points.navaidoperationalstatus_pt.navaidoperationalstatus_id = navaids_points.navaidoperationalstatus.id
 left join master_join mj1 on navaids_points.navaidoperationalstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     navaids_points.navaidoperationalstatus_pt.id,
     navaids_points.navaidoperationalstatus_pt.nilreason,
@@ -1666,7 +1774,10 @@ from procedure.navigationareasector_pt
 inner join procedure.navigationareasector on procedure.navigationareasector_pt.navigationareasector_id = procedure.navigationareasector.id
 left join master_join mj1 on procedure.navigationareasector.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join shared.circlesector_pt shared_circlesector_pt_enzdqz on procedure.navigationareasector.sectordefinition_id = shared_circlesector_pt_enzdqz.id
+left join shared.circlesector_pt shared_circlesector_pt_lpuxdl on procedure.navigationareasector.sectordefinition_id = shared_circlesector_pt_lpuxdl.id
+--object shared.obstruction.significantobstacle
+--object procedure.sectordesign.sectorcriteria
+--object notes.note.annotation
 group by
     procedure.navigationareasector_pt.id,
     procedure.navigationareasector_pt.nilreason;
@@ -1680,6 +1791,7 @@ from service.nitrogen_pt
 inner join service.nitrogen on service.nitrogen_pt.nitrogen_id = service.nitrogen.id
 left join master_join mj1 on service.nitrogen.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     service.nitrogen_pt.id,
     service.nitrogen_pt.nilreason,
@@ -1696,6 +1808,7 @@ from notes.note_pt
 inner join notes.note on notes.note_pt.note_id = notes.note.id
 left join master_join mj1 on notes.note.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.linguisticnote.translatednote
 group by
     notes.note_pt.id,
     notes.note_pt.nilreason,
@@ -1720,6 +1833,9 @@ from shared.obstacleassessmentarea_pt
 inner join shared.obstacleassessmentarea on shared.obstacleassessmentarea_pt.obstacleassessmentarea_id = shared.obstacleassessmentarea.id
 left join master_join mj1 on shared.obstacleassessmentarea.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.aircraftcharacteristic.aircraftcategory
+--object shared.obstruction.significantobstacle
+--object notes.note.annotation
 group by
     shared.obstacleassessmentarea_pt.id,
     shared.obstacleassessmentarea_pt.nilreason,
@@ -1754,6 +1870,7 @@ from shared.obstacleplacement_pt
 inner join shared.obstacleplacement on shared.obstacleplacement_pt.obstacleplacement_id = shared.obstacleplacement.id
 left join master_join mj1 on shared.obstacleplacement.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.obstacleplacement_pt.id,
     shared.obstacleplacement_pt.nilreason,
@@ -1781,6 +1898,9 @@ from shared.obstruction_pt
 inner join shared.obstruction on shared.obstruction_pt.obstruction_id = shared.obstruction.id
 left join master_join mj1 on shared.obstruction.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.altitudeadjustment.adjustment
+--object shared.obstacleplacement.obstacleplacement
+--object notes.note.annotation
 group by
     shared.obstruction_pt.id,
     shared.obstruction_pt.nilreason,
@@ -1808,6 +1928,7 @@ from service.oil_pt
 inner join service.oil on service.oil_pt.oil_id = service.oil.id
 left join master_join mj1 on service.oil.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     service.oil_pt.id,
     service.oil_pt.nilreason,
@@ -1826,6 +1947,8 @@ from shared.onlinecontact_pt
 inner join shared.onlinecontact on shared.onlinecontact_pt.onlinecontact_id = shared.onlinecontact.id
 left join master_join mj1 on shared.onlinecontact.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     shared.onlinecontact_pt.id,
     shared.onlinecontact_pt.nilreason,
@@ -1847,6 +1970,7 @@ from organisation.organisationauthorityassociation_pt
 inner join organisation.organisationauthorityassociation on organisation.organisationauthorityassociation_pt.organisationauthorityassociation_id = organisation.organisationauthorityassociation.id
 left join master_join mj1 on organisation.organisationauthorityassociation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     organisation.organisationauthorityassociation_pt.id,
     organisation.organisationauthorityassociation_pt.nilreason,
@@ -1862,6 +1986,7 @@ from service.oxygen_pt
 inner join service.oxygen on service.oxygen_pt.oxygen_id = service.oxygen.id
 left join master_join mj1 on service.oxygen.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     service.oxygen_pt.id,
     service.oxygen_pt.nilreason,
@@ -1879,6 +2004,8 @@ from navaids_points.pointreference_pt
 inner join navaids_points.pointreference on navaids_points.pointreference_pt.pointreference_id = navaids_points.pointreference.id
 left join master_join mj1 on navaids_points.pointreference.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object navaids_points.angleuse.facilityangle
+--object notes.note.annotation
 group by
     navaids_points.pointreference_pt.id,
     navaids_points.pointreference_pt.nilreason,
@@ -1904,6 +2031,8 @@ from shared.postaladdress_pt
 inner join shared.postaladdress on shared.postaladdress_pt.postaladdress_id = shared.postaladdress.id
 left join master_join mj1 on shared.postaladdress.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     shared.postaladdress_pt.id,
     shared.postaladdress_pt.nilreason,
@@ -1927,6 +2056,8 @@ from procedure.procedureavailability_pt
 inner join procedure.procedureavailability on procedure.procedureavailability_pt.procedureavailability_id = procedure.procedureavailability.id
 left join master_join mj1 on procedure.procedureavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     procedure.procedureavailability_pt.id,
     procedure.procedureavailability_pt.nilreason,
@@ -1942,6 +2073,7 @@ from procedure.proceduretransitionleg_pt
 inner join procedure.proceduretransitionleg on procedure.proceduretransitionleg_pt.proceduretransitionleg_id = procedure.proceduretransitionleg.id
 left join master_join mj1 on procedure.proceduretransitionleg.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.proceduretransitionleg_pt.id,
     procedure.proceduretransitionleg_pt.nilreason,
@@ -1961,7 +2093,9 @@ from procedure.proceduretransition_pt
 inner join procedure.proceduretransition on procedure.proceduretransition_pt.proceduretransition_id = procedure.proceduretransition.id
 left join master_join mj1 on procedure.proceduretransition.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join procedure.landingtakeoffareacollection_pt procedure_landingtakeoffareacollection_pt_tagyst on procedure.proceduretransition.departurerunwaytransition_id = procedure_landingtakeoffareacollection_pt_tagyst.id
+left join procedure.landingtakeoffareacollection_pt procedure_landingtakeoffareacollection_pt_yfqett on procedure.proceduretransition.departurerunwaytransition_id = procedure_landingtakeoffareacollection_pt_yfqett.id
+--object procedure.proceduretransitionleg.transitionleg
+--object notes.note.annotation
 group by
     procedure.proceduretransition_pt.id,
     procedure.proceduretransition_pt.nilreason,
@@ -1995,6 +2129,7 @@ from surveillance.radarcomponent_pt
 inner join surveillance.radarcomponent on surveillance.radarcomponent_pt.radarcomponent_id = surveillance.radarcomponent.id
 left join master_join mj1 on surveillance.radarcomponent.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     surveillance.radarcomponent_pt.id,
     surveillance.radarcomponent_pt.nilreason,
@@ -2010,6 +2145,8 @@ from service.radiocommunicationoperationalstatus_pt
 inner join service.radiocommunicationoperationalstatus on service.radiocommunicationoperationalstatus_pt.radiocommunicationoperationalstatus_id = service.radiocommunicationoperationalstatus.id
 left join master_join mj1 on service.radiocommunicationoperationalstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     service.radiocommunicationoperationalstatus_pt.id,
     service.radiocommunicationoperationalstatus_pt.nilreason,
@@ -2025,6 +2162,7 @@ from surveillance.reflector_pt
 inner join surveillance.reflector on surveillance.reflector_pt.reflector_id = surveillance.reflector.id
 left join master_join mj1 on surveillance.reflector.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     surveillance.reflector_pt.id,
     surveillance.reflector_pt.nilreason,
@@ -2042,6 +2180,7 @@ from airport_heliport.ridge_pt
 inner join airport_heliport.ridge on airport_heliport.ridge_pt.ridge_id = airport_heliport.ridge.id
 left join master_join mj1 on airport_heliport.ridge.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.ridge_pt.id,
     airport_heliport.ridge_pt.nilreason,
@@ -2065,6 +2204,9 @@ from routes.routeavailability_pt
 inner join routes.routeavailability on routes.routeavailability_pt.routeavailability_id = routes.routeavailability.id
 left join master_join mj1 on routes.routeavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object shared.airspacelayer.levels
 group by
     routes.routeavailability_pt.id,
     routes.routeavailability_pt.nilreason,
@@ -2083,6 +2225,7 @@ from routes.routeportion_pt
 inner join routes.routeportion on routes.routeportion_pt.routeportion_id = routes.routeportion.id
 left join master_join mj1 on routes.routeportion.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     routes.routeportion_pt.id,
     routes.routeportion_pt.nilreason;
@@ -2091,8 +2234,6 @@ select
     airport_heliport.runwaycontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS runwaycontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.runwaycontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.runwaycontamination.observationTime_value as varchar), '(' || airport_heliport.runwaycontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.runwaycontamination.nextObservationTime_value as varchar), '(' || airport_heliport.runwaycontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.runwaycontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.runwaycontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.runwaycontamination.frictionestimation_value as varchar), '(' || airport_heliport.runwaycontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.runwaycontamination.frictiondevice_value as varchar), '(' || airport_heliport.runwaycontamination.frictiondevice_nilreason || ')'),
@@ -2114,13 +2255,12 @@ from airport_heliport.runwaycontamination_pt
 inner join airport_heliport.runwaycontamination on airport_heliport.runwaycontamination_pt.runwaycontamination_id = airport_heliport.runwaycontamination.id
 left join master_join mj1 on airport_heliport.runwaycontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.runwaycontamination_pt.id,
     airport_heliport.runwaycontamination_pt.nilreason,
-    airport_heliport.runwaycontamination.observationTime_value,
-    airport_heliport.runwaycontamination.observationTime_nilreason,
-    airport_heliport.runwaycontamination.nextObservationTime_value,
-    airport_heliport.runwaycontamination.nextObservationTime_nilreason,
     airport_heliport.runwaycontamination.frictioncoefficient_value,
     airport_heliport.runwaycontamination.frictioncoefficient_nilreason,
     airport_heliport.runwaycontamination.frictionestimation_value,
@@ -2171,6 +2311,8 @@ from airport_heliport.runwaydeclareddistance_pt
 inner join airport_heliport.runwaydeclareddistance on airport_heliport.runwaydeclareddistance_pt.runwaydeclareddistance_id = airport_heliport.runwaydeclareddistance.id
 left join master_join mj1 on airport_heliport.runwaydeclareddistance.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.runwaydeclareddistancevalue.declaredvalue
+--object notes.note.annotation
 group by
     airport_heliport.runwaydeclareddistance_pt.id,
     airport_heliport.runwaydeclareddistance_pt.nilreason,
@@ -2187,6 +2329,8 @@ from airport_heliport.runwaydeclareddistancevalue_pt
 inner join airport_heliport.runwaydeclareddistancevalue on airport_heliport.runwaydeclareddistancevalue_pt.runwaydeclareddistancevalue_id = airport_heliport.runwaydeclareddistancevalue.id
 left join master_join mj1 on airport_heliport.runwaydeclareddistancevalue.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     airport_heliport.runwaydeclareddistancevalue_pt.id,
     airport_heliport.runwaydeclareddistancevalue_pt.nilreason,
@@ -2201,8 +2345,6 @@ select
     airport_heliport.runwaysectioncontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS runwaysectioncontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.runwaysectioncontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.runwaysectioncontamination.observationTime_value as varchar), '(' || airport_heliport.runwaysectioncontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.runwaysectioncontamination.nextObservationTime_value as varchar), '(' || airport_heliport.runwaysectioncontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.runwaysectioncontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.runwaysectioncontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.runwaysectioncontamination.frictionestimation_value as varchar), '(' || airport_heliport.runwaysectioncontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.runwaysectioncontamination.frictiondevice_value as varchar), '(' || airport_heliport.runwaysectioncontamination.frictiondevice_nilreason || ')'),
@@ -2216,13 +2358,12 @@ from airport_heliport.runwaysectioncontamination_pt
 inner join airport_heliport.runwaysectioncontamination on airport_heliport.runwaysectioncontamination_pt.runwaysectioncontamination_id = airport_heliport.runwaysectioncontamination.id
 left join master_join mj1 on airport_heliport.runwaysectioncontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.runwaysectioncontamination_pt.id,
     airport_heliport.runwaysectioncontamination_pt.nilreason,
-    airport_heliport.runwaysectioncontamination.observationTime_value,
-    airport_heliport.runwaysectioncontamination.observationTime_nilreason,
-    airport_heliport.runwaysectioncontamination.nextObservationTime_value,
-    airport_heliport.runwaysectioncontamination.nextObservationTime_nilreason,
     airport_heliport.runwaysectioncontamination.frictioncoefficient_value,
     airport_heliport.runwaysectioncontamination.frictioncoefficient_nilreason,
     airport_heliport.runwaysectioncontamination.frictionestimation_value,
@@ -2253,7 +2394,9 @@ from procedure.safealtitudeareasector_pt
 inner join procedure.safealtitudeareasector on procedure.safealtitudeareasector_pt.safealtitudeareasector_id = procedure.safealtitudeareasector.id
 left join master_join mj1 on procedure.safealtitudeareasector.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join shared.circlesector_pt shared_circlesector_pt_cnctil on procedure.safealtitudeareasector.sectordefinition_id = shared_circlesector_pt_cnctil.id
+left join shared.circlesector_pt shared_circlesector_pt_wuimzz on procedure.safealtitudeareasector.sectordefinition_id = shared_circlesector_pt_wuimzz.id
+--object shared.obstruction.significantobstacle
+--object notes.note.annotation
 group by
     procedure.safealtitudeareasector_pt.id,
     procedure.safealtitudeareasector_pt.nilreason,
@@ -2273,6 +2416,7 @@ from procedure.sectordesign_pt
 inner join procedure.sectordesign on procedure.sectordesign_pt.sectordesign_id = procedure.sectordesign.id
 left join master_join mj1 on procedure.sectordesign.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     procedure.sectordesign_pt.id,
     procedure.sectordesign_pt.nilreason,
@@ -2307,6 +2451,8 @@ from service.serviceoperationalstatus_pt
 inner join service.serviceoperationalstatus on service.serviceoperationalstatus_pt.serviceoperationalstatus_id = service.serviceoperationalstatus.id
 left join master_join mj1 on service.serviceoperationalstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     service.serviceoperationalstatus_pt.id,
     service.serviceoperationalstatus_pt.nilreason,
@@ -2322,6 +2468,8 @@ from navaids_points.specialnavigationstationstatus_pt
 inner join navaids_points.specialnavigationstationstatus on navaids_points.specialnavigationstationstatus_pt.specialnavigationstationstatus_id = navaids_points.specialnavigationstationstatus.id
 left join master_join mj1 on navaids_points.specialnavigationstationstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     navaids_points.specialnavigationstationstatus_pt.id,
     navaids_points.specialnavigationstationstatus_pt.nilreason,
@@ -2337,6 +2485,7 @@ from shared.standardlevel_pt
 inner join shared.standardlevel on shared.standardlevel_pt.standardlevel_id = shared.standardlevel.id
 left join master_join mj1 on shared.standardlevel.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.standardlevel_pt.id,
     shared.standardlevel_pt.nilreason,
@@ -2364,6 +2513,7 @@ from airport_heliport.surfacecharacteristics_pt
 inner join airport_heliport.surfacecharacteristics on airport_heliport.surfacecharacteristics_pt.surfacecharacteristics_id = airport_heliport.surfacecharacteristics.id
 left join master_join mj1 on airport_heliport.surfacecharacteristics.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.surfacecharacteristics_pt.id,
     airport_heliport.surfacecharacteristics_pt.nilreason,
@@ -2405,6 +2555,7 @@ from airport_heliport.surfacecontaminationlayer_pt
 inner join airport_heliport.surfacecontaminationlayer on airport_heliport.surfacecontaminationlayer_pt.surfacecontaminationlayer_id = airport_heliport.surfacecontaminationlayer.id
 left join master_join mj1 on airport_heliport.surfacecontaminationlayer.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     airport_heliport.surfacecontaminationlayer_pt.id,
     airport_heliport.surfacecontaminationlayer_pt.nilreason,
@@ -2434,6 +2585,7 @@ from surveillance.surveillancegroundstation_pt
 inner join surveillance.surveillancegroundstation on surveillance.surveillancegroundstation_pt.surveillancegroundstation_id = surveillance.surveillancegroundstation.id
 left join master_join mj1 on surveillance.surveillancegroundstation.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     surveillance.surveillancegroundstation_pt.id,
     surveillance.surveillancegroundstation_pt.nilreason,
@@ -2444,8 +2596,6 @@ select
     airport_heliport.taxiwaycontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS taxiwaycontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.taxiwaycontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.taxiwaycontamination.observationTime_value as varchar), '(' || airport_heliport.taxiwaycontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.taxiwaycontamination.nextObservationTime_value as varchar), '(' || airport_heliport.taxiwaycontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.taxiwaycontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.taxiwaycontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.taxiwaycontamination.frictionestimation_value as varchar), '(' || airport_heliport.taxiwaycontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.taxiwaycontamination.frictiondevice_value as varchar), '(' || airport_heliport.taxiwaycontamination.frictiondevice_nilreason || ')'),
@@ -2459,13 +2609,12 @@ from airport_heliport.taxiwaycontamination_pt
 inner join airport_heliport.taxiwaycontamination on airport_heliport.taxiwaycontamination_pt.taxiwaycontamination_id = airport_heliport.taxiwaycontamination.id
 left join master_join mj1 on airport_heliport.taxiwaycontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.taxiwaycontamination_pt.id,
     airport_heliport.taxiwaycontamination_pt.nilreason,
-    airport_heliport.taxiwaycontamination.observationTime_value,
-    airport_heliport.taxiwaycontamination.observationTime_nilreason,
-    airport_heliport.taxiwaycontamination.nextObservationTime_value,
-    airport_heliport.taxiwaycontamination.nextObservationTime_nilreason,
     airport_heliport.taxiwaycontamination.frictioncoefficient_value,
     airport_heliport.taxiwaycontamination.frictioncoefficient_nilreason,
     airport_heliport.taxiwaycontamination.frictionestimation_value,
@@ -2497,6 +2646,8 @@ from shared.telephonecontact_pt
 inner join shared.telephonecontact on shared.telephonecontact_pt.telephonecontact_id = shared.telephonecontact.id
 left join master_join mj1 on shared.telephonecontact.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     shared.telephonecontact_pt.id,
     shared.telephonecontact_pt.nilreason,
@@ -2517,7 +2668,9 @@ from procedure.terminalarrivalareasector_pt
 inner join procedure.terminalarrivalareasector on procedure.terminalarrivalareasector_pt.terminalarrivalareasector_id = procedure.terminalarrivalareasector.id
 left join master_join mj1 on procedure.terminalarrivalareasector.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
-left join shared.circlesector_pt shared_circlesector_pt_vhwbug on procedure.terminalarrivalareasector.sectordefinition_id = shared_circlesector_pt_vhwbug.id
+left join shared.circlesector_pt shared_circlesector_pt_fodjgy on procedure.terminalarrivalareasector.sectordefinition_id = shared_circlesector_pt_fodjgy.id
+--object shared.obstruction.significantobstacle
+--object notes.note.annotation
 group by
     procedure.terminalarrivalareasector_pt.id,
     procedure.terminalarrivalareasector_pt.nilreason,
@@ -2544,6 +2697,8 @@ from navaids_points.terminalsegmentpoint_pt
 inner join navaids_points.terminalsegmentpoint on navaids_points.terminalsegmentpoint_pt.terminalsegmentpoint_id = navaids_points.terminalsegmentpoint.id
 left join master_join mj1 on navaids_points.terminalsegmentpoint.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object navaids_points.pointreference.facilitymakeup
+--object notes.note.annotation
 group by
     navaids_points.terminalsegmentpoint_pt.id,
     navaids_points.terminalsegmentpoint_pt.nilreason,
@@ -2588,6 +2743,7 @@ from shared.timesheet_pt
 inner join shared.timesheet on shared.timesheet_pt.timesheet_id = shared.timesheet.id
 left join master_join mj1 on shared.timesheet.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     shared.timesheet_pt.id,
     shared.timesheet_pt.nilreason,
@@ -2628,8 +2784,6 @@ select
     airport_heliport.touchdownliftoffcontamination_pt.id,
     jsonb_agg(notes.note_view.note) AS touchdownliftoffcontamination_annotation,
     jsonb_build_object('nilreason', airport_heliport.touchdownliftoffcontamination_pt.nilreason,
-    'observationTime', coalesce(cast(airport_heliport.touchdownliftoffcontamination.observationTime_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination.observationTime_nilreason || ')'),
-    'nextObservationTime', coalesce(cast(airport_heliport.touchdownliftoffcontamination.nextObservationTime_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination.nextObservationTime_nilreason || ')'),
     'frictioncoefficient', coalesce(cast(airport_heliport.touchdownliftoffcontamination.frictioncoefficient_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination.frictioncoefficient_nilreason || ')'),
     'frictionestimation', coalesce(cast(airport_heliport.touchdownliftoffcontamination.frictionestimation_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination.frictionestimation_nilreason || ')'),
     'frictiondevice', coalesce(cast(airport_heliport.touchdownliftoffcontamination.frictiondevice_value as varchar), '(' || airport_heliport.touchdownliftoffcontamination.frictiondevice_nilreason || ')'),
@@ -2642,13 +2796,12 @@ from airport_heliport.touchdownliftoffcontamination_pt
 inner join airport_heliport.touchdownliftoffcontamination on airport_heliport.touchdownliftoffcontamination_pt.touchdownliftoffcontamination_id = airport_heliport.touchdownliftoffcontamination.id
 left join master_join mj1 on airport_heliport.touchdownliftoffcontamination.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object airport_heliport.ridge.criticalridge
+--object airport_heliport.surfacecontaminationlayer.layer
+--object notes.note.annotation
 group by
     airport_heliport.touchdownliftoffcontamination_pt.id,
     airport_heliport.touchdownliftoffcontamination_pt.nilreason,
-    airport_heliport.touchdownliftoffcontamination.observationTime_value,
-    airport_heliport.touchdownliftoffcontamination.observationTime_nilreason,
-    airport_heliport.touchdownliftoffcontamination.nextObservationTime_value,
-    airport_heliport.touchdownliftoffcontamination.nextObservationTime_nilreason,
     airport_heliport.touchdownliftoffcontamination.frictioncoefficient_value,
     airport_heliport.touchdownliftoffcontamination.frictioncoefficient_nilreason,
     airport_heliport.touchdownliftoffcontamination.frictionestimation_value,
@@ -2676,6 +2829,8 @@ from organisation.unitavailability_pt
 inner join organisation.unitavailability on organisation.unitavailability_pt.unitavailability_id = organisation.unitavailability.id
 left join master_join mj1 on organisation.unitavailability.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     organisation.unitavailability_pt.id,
     organisation.unitavailability_pt.nilreason,
@@ -2691,6 +2846,7 @@ from organisation.unitdependency_pt
 inner join organisation.unitdependency on organisation.unitdependency_pt.unitdependency_id = organisation.unitdependency.id
 left join master_join mj1 on organisation.unitdependency.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object notes.note.annotation
 group by
     organisation.unitdependency_pt.id,
     organisation.unitdependency_pt.nilreason,
@@ -2718,6 +2874,8 @@ from obstacles.verticalstructurelightingstatus_pt
 inner join obstacles.verticalstructurelightingstatus on obstacles.verticalstructurelightingstatus_pt.verticalstructurelightingstatus_id = obstacles.verticalstructurelightingstatus.id
 left join master_join mj1 on obstacles.verticalstructurelightingstatus.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     obstacles.verticalstructurelightingstatus_pt.id,
     obstacles.verticalstructurelightingstatus_pt.nilreason,
@@ -2743,6 +2901,9 @@ from obstacles.verticalstructurepart_pt
 inner join obstacles.verticalstructurepart on obstacles.verticalstructurepart_pt.verticalstructurepart_id = obstacles.verticalstructurepart.id
 left join master_join mj1 on obstacles.verticalstructurepart.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
+--object shared.lightelement.lighting
 group by
     obstacles.verticalstructurepart_pt.id,
     obstacles.verticalstructurepart_pt.nilreason,
@@ -2780,6 +2941,8 @@ from airport_heliport.workareaactivity_pt
 inner join airport_heliport.workareaactivity on airport_heliport.workareaactivity_pt.workareaactivity_id = airport_heliport.workareaactivity.id
 left join master_join mj1 on airport_heliport.workareaactivity.id = mj1.source_id
 left join notes.note_view on mj1.target_id = notes.note_view.id
+--object shared.timesheet.timeinterval
+--object notes.note.annotation
 group by
     airport_heliport.workareaactivity_pt.id,
     airport_heliport.workareaactivity_pt.nilreason,

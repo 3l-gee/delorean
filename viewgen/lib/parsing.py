@@ -123,24 +123,8 @@ class Parsing :
             if name in self.feature.keys():
                 group = self.feature[name].get_group()
                 layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
-
-    def _process_property(self, property, content):
-        for item in self.extract_embedded_columns_two(content):
-            property.add_attributes_two(item.get("value"), item.get("nil"))
-
-        for item in self.extract_embedded_columns_three(content):
-            property.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
-
-        for item in self.extract_one_to_one(content):
-            name = item.get("type")
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
-
-            name = name.lower()
-
-            if name in self.property.keys():
-                group = self.property[name].get_group()
-                property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+            else : 
+                print("not in self.feature.keys():", name)
 
     def _process_object(self, property, content):
         for item in self.extract_embedded_columns_two(content):
@@ -158,7 +142,33 @@ class Parsing :
 
             if name in self.property.keys():
                 group = self.property[name].get_group()
+                property.add_association_object_one(group, name, item.get("role"),item.get("col"))
+            
+            elif name in self.feature.keys():
+                group = self.feature[name].get_group()
                 property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+            
+            else : 
+                print("not in property or in feature:", name)
+
+        for item in self.extract_one_to_many(content):
+            name = item.get("type")
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if name in self.property.keys():
+                group = self.property[name].get_group()
+                property.add_association_object_many(group, name, item.get("role"))
+
+            elif name in self.feature.keys():
+                group = self.feature[name].get_group()
+                property.add_association_feature_many(group, name, item.get("role"))
+
+            else : 
+                print("not in property or in feature:", name)
+
 
     def process_file_old(self, path):
         """Extract table, class, and column information from a Java file."""
@@ -209,11 +219,12 @@ class Parsing :
         embedded_columns = []
         raw_embedded_two = re.findall(self.parsing["embedded_two"]["method"], content)
         for column in raw_embedded_two:
-            value, nil, type = column[0], column[1], column[2]
+            value, nil, type, role = column[0], column[1], column[2], column[3]
             embedded_columns.append({
                 "value" : value,
                 "nil" : nil,
-                "type" : type
+                "type" : type,
+                "role" : role.lower()
             })
 
         return embedded_columns
@@ -223,12 +234,13 @@ class Parsing :
         embedded_columns = []
         raw_embedded_three = re.findall(self.parsing["embedded_three"]["method"], content)
         for column in raw_embedded_three:
-            value, uom, nil, type = column[0], column[1], column[2], column[3]
+            value, uom, nil, type, role = column[0], column[1], column[2], column[3], column[4]
             embedded_columns.append({
                 "value" : value,
                 "uom" : uom,
                 "nil" : nil,
-                "type" : type
+                "type" : type,
+                "role" : role.lower()
             })
  
         return embedded_columns
@@ -248,16 +260,17 @@ class Parsing :
 
         return res
 
-    def extract_one_to_many(self, schema, table, content):
+    def extract_one_to_many(self, content):
         """Extract one-to-many relationships."""
         res = []
         raw_one_to_many = re.findall(self.parsing["one_to_many"]["method"], content)
-        for col in raw_one_to_many:
+        for column in raw_one_to_many:
+            join, ref_in, ref_out, type, role = column[0], column[1], column[2], column[3], column[4]
             res.append({
-                "source": f"{schema}.{table}",
-                "alias": col[3],
-                "join_table": f"{schema}.{col[0]}",
-                "first_join": f"{schema}.{table}.id = {col[0]}.{col[1]}",
-                "second_join" : f"{col[0]}.{col[2]} = {col[3]}.id"
+                "col" : join,
+                "ref_in" : ref_in,
+                "ref_out" : ref_out,
+                "type" : type,
+                "role" : role.lower()
             })
         return res
