@@ -1,13 +1,51 @@
 { 
     "snowflake" : {
+        "organisationauthority" : {
+            "path" : "",
+            "type" : "OrganisationAuthorityPropertyType",
+            "group" : "",
+            "one" : {
+                "attribute" : [
+
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
+        },
+        "contactinformation" : {
+            "path" : "",
+            "type" : "ContactInformationPropertyType",
+            "group" : "",
+            "one" : {
+                "attribute" : [
+
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
+        },
         "note" : {   
             "path" : "viewgen/version/a5_1/sql/NotePropertyType.sql",
-            "attribute" : [
+            "type" : "NotePropertyType",
+            "group" : "notes",
+            "one" : {
+                "attribute" : [
 
-            ]
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         },
         "point" : {
             "path" : "viewgen/version/a5_1/sql/PointPropertyType.sql",
+            "type" : "PointPropertyType",
+            "group" : "geometry",
             "one" : {
                 "attribute" : [
                     "geometry.point_view.geom AS geom",
@@ -15,37 +53,78 @@
                     "ST_Y(geometry.point_view.geom) AS latitude",
                     "geometry.point_view.horizontalAccuracy"
                 ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
             }
         },
         "curve" : {
             "path" : "viewgen/version/a5_1/sql/CurvePropertyType.sql",
-            "attribute" : [
-                
-            ]
+            "type" : "CurvePropertyType",
+            "group" : "geometry",
+            "one" : {
+                "attribute" : [
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         },
         "surface" : {
             "path" : "viewgen/version/a5_1/sql/SurfacePropertyType.sql",
-            "attribute" : [
-                
-            ]
+            "type" : "SurfacePropertyType",
+            "group" : "geometry",
+            "one" : {
+                "attribute" : [
+
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         },
         "elevatedpoint" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedPointPropertyType.sql",
-            "attribute" : [
-                
-            ]
+            "type" : "ElevatedPointPropertyType",
+            "group" : "geometry",
+            "one" : {
+                "attribute" : [
+
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         },
         "elevatedcurve" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedCurvePropertyType.sql",
-            "attribute" : [
-                
-            ]
+            "type" : "ElevatedCurvePropertyType",
+            "group" : "geometry",            
+            "one" : {
+                "attribute" : [
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         },
         "elevatedsurface" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
-            "attribute" : [
-                
-            ]
+            "type" : "ElevatedSurfacePropertyType",
+            "group" : "geometry",
+            "one" : {
+                "attribute" : [
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ]
+            }
         }
     },
     "feature_parent": [
@@ -55,10 +134,13 @@
         "AbstractMarkingType",
         "AbstractRadarEquipmentType",
         "AbstractServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractApproachLegType",
         "AbstractNavigationSystemCheckpointType",
         "AbstractNavaidEquipmentType",
         "AbstractProcedureType",
-        "AbstractSegmentLegType"
+        "AbstractSegmentLegType",
+        "AbstractTrafficSeparationServiceType"
     ],
     "timeslice_parent": {
         "AbstractAIXMTimeSliceType": [
@@ -111,7 +193,6 @@
         ]
     },
     "parents_attribute": {
-
         "AbstractAIXMFeatureType": [
             "id",
             "feature_status",
@@ -206,19 +287,8 @@
         "ElevatedSurfacePropertyType": "geom"
     },
     "ignore": [
+        "AbstractExtensionType",
         "package-info.java",
-        "PointPropertyType",
-        "PointType",
-        "CurvePropertyType",
-        "CurveType",
-        "SurfacePropertyType",
-        "SurfaceType",
-        "ElevatedPointPropertyType",
-        "ElevatedPointType",
-        "ElevatedCurvePropertyType",
-        "ElevatedCurveType",
-        "ElevatedSurfacePropertyType",
-        "ElevatedSurfaceType",
         "AbstractAIXMPropertyType",
         "AbstractAIXMObjectType",
         "AbstractSurfaceContaminationType",

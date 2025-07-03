@@ -1,68 +1,15 @@
 import random
 import string
+from lib.layer import Layer
 
-class Feature :
-
-    def __init__ (self, name, group) : 
-        self.name = name
-        self.group = group
-        self.sql = {
-            "attributes": {
-                "feature": self.generate_attributes(name, group)
-            },
-            "view": self.generate_view(name, group),      # List[str]
-            "select": self.generate_select(name, group),  # List[str]
-            "inner": self.generate_inner(name, group),    # List[str]
-            "left": self.generate_left(name, group),      # List[str]
-            "where": self.generate_where(name, group),    # List[str]
-            "group": self.generate_group(name, group),    # List[str]
-            "order": self.genrate_order(name, group)      # List[str]
-        }
-
-    def get_group(self):
-        return self.group
-
-    def generate_sql(self):
-        # Combine attributes from all attribute types
-        attributes = []
-        for attr_list in self.sql["attributes"].values():
-            attributes.extend(attr_list)
-
-        # Join SQL fragments with appropriate formatting
-        view_sql = "\n".join(self.sql["view"])
-        select_sql = "\n".join(self.sql["select"])
-        attributes_sql = ",\n    ".join(attributes)
-        inner_sql = "\n".join(self.sql["inner"])
-        left_sql = "\n".join(self.sql["left"])
-        where_clause = "where " + "\n  and ".join(self.sql["where"]) if self.sql["where"] else ""
-        group_clause = "group by\n    " + ",\n    ".join(self.sql["group"]) if self.sql["group"] else ""
-        order_clause = ", ".join(self.sql["order"])
-
-        # Assemble final SQL
-        sql_parts = [
-            view_sql,
-            select_sql,
-            f"    {attributes_sql}" if attributes_sql else "",
-            inner_sql,
-            left_sql,
-            where_clause,
-            group_clause,
-            order_clause
-        ]
-
-        full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
-        return full_sql
+class Feature(Layer) :
 
     def generate_view(self, name, group) :
         return [f"create or replace view {group}.{name}_publisher_view as"]
 
     def generate_select(self, name, group) :
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
-    
-    def generate_letter_hash(self, prefix, length=6):
-        return prefix + '_' + ''.join(random.choices(string.ascii_lowercase, k=length))
-    
-
+   
     def generate_attributes(self, name, group) : 
         res = ["(row_number() OVER ())::integer AS row"]
         res.append(f"{group}.{name}.id")
@@ -109,7 +56,7 @@ class Feature :
             f"{group}.{name}_ts.feature_status = 'APPROVED'"
         ]
     
-    def genrate_order(self, name, group) : 
+    def generate_order(self, name, group) : 
         return [
             f"order by {name}.identifier",
             f"{name}_ts.sequence_number",
@@ -129,12 +76,6 @@ class Feature :
         res.append(f"{group}.{name}_ts.feature_lifetime_begin")
         res.append(f"{group}.{name}_ts.feature_lifetime_end")
         return res 
-
-    def add_group(self, name, column, group=None):
-        if group:
-            self.sql["group"].append(f"{group}.{name}.{column}")
-        else:
-            self.sql["group"].append(f"{name}.{column}")
 
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
@@ -165,6 +106,36 @@ class Feature :
         self.add_group(hash, "href")
 
         self.sql["left"].append(f"left join {group}.{name}_pt {hash} on {self.group}.{self.name}_ts.{col} = {hash}.id")
+    
+    def add_association_object_one(self, group, name, role, type):
+        self.dependecy += 1
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
 
-    def add_association_object_one(self):
-        pass
+        self.sql["left"].append(f"--object one {group}.{name}.{role}" + " - " + type)
+
+    def add_association_feature_many(self, group, name, role, type):
+        self.dependecy += 1
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+
+        self.sql["left"].append(f"--feature many {group}.{name}.{role}" + " - " + type)
+
+    def add_association_object_many(self, group, name, role, type):
+        self.dependecy += 1
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+
+        self.sql["left"].append(f"--object many {group}.{name}.{role}" + " - " + type)
+
+    def add_association_snowflake_one(self, group, name, role, type):
+        self.dependecy += 1
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+        self.sql["left"].append(f"--snowflake one {group}.{name}.{role}" + " - " + type)
+
+    def add_association_snowflake_many(self, group, name, role, type):
+        self.dependecy += 1
+        if not self.sql["attributes"].get(name):
+            self.sql["attributes"][name] = []
+        self.sql["left"].append(f"--snowflake many {group}.{name}.{role}" + " - " + type)

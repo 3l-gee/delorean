@@ -6,7 +6,7 @@ from lib.property import Property
 class Parsing :
     def __init__(self, parsing, attribute):
         self.parsing = parsing
-        self.snowflake = attribute["snowflake"]
+        self.snowflake_set = attribute["snowflake"]
         self.ignore_set = set(attribute["ignore"])
         self.feature_parent_set = set(attribute["feature_parent"])
         self.timeslice_parent_set = set(attribute["timeslice_parent"])
@@ -26,8 +26,16 @@ class Parsing :
         self.datatype = {}
 
     def get_layer(self):
-        # return list(self.feature.values()).extend(list(self.property.values()))
-        return list(self.property.values())
+        layers = list(self.property.values()) + list(self.feature.values())
+        
+        # Generate SQL for each layer first
+        for item in layers:
+            item.generate_sql()
+        
+        # Sort by dependency value (ascending)
+        layers_sorted = sorted(layers, key=lambda x: x.get_dependecy())
+
+        return layers_sorted
     
     def _load_content(self, path):
         with open(path, 'r', encoding='utf-8') as file:
@@ -52,35 +60,29 @@ class Parsing :
         class_name = re.findall(self.parsing["class"]["method"], content)
         parent_name = re.findall(self.parsing["extends"]["method"], content)
 
+        name = class_name[0]
+        for suffix, replacement in self.suffix.items():
+            name = name.replace(suffix, replacement)
+
+        name = name.lower()
+
+        
+        # files are either in: 
+        # - Ignored 
+        # - Feature
+        # - Property
         if class_name[0] in self.ignore_set:
             return  # Ignore specific classes
-        
-        if parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
-            pass
-            # name = class_name[0]
-            # for suffix, replacement in self.suffix.items():
-            #     name = name.replace(suffix, replacement)
-
-            # name = name.lower()
             
-            # if name not in self.feature.keys() : 
-            #     self.feature[name] = Feature(name, table_schema)
+        if  parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
+            if name not in self.feature.keys() : 
+                self.feature[name] = Feature(name, table_schema)
         
-        if parent_name and parent_name[0] in self.property_parent_set:
-            name = class_name[0]
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
+        elif parent_name and parent_name[0] in self.property_parent_set:
+            if name in self.snowflake_set:
+                self.property[name] = Property(name, table_schema, True)  
+                self.property[name].load_sql(self.snowflake_set[name].get("path"))
 
-            name = name.lower()
-            if name not in self.property.keys() : 
-                self.property[name] = Property(name, table_schema)
-
-        if parent_name and parent_name[0] in self.object_parent_set:
-            name = class_name[0]
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
-
-            name = name.lower()
             if name not in self.property.keys() : 
                 self.property[name] = Property(name, table_schema)
         
@@ -94,17 +96,41 @@ class Parsing :
 
         name = name.lower()
 
-        if name in self.feature.keys():
-            if parent_name and parent_name[0] in self.feature_parent_set:
+        # files are either in: 
+        # - Ignored 
+        # - Feature
+        # - Property
+
+        if class_name[0] in self.ignore_set:
+            return  # Ignore specific classes
+
+        elif name in self.feature.keys():
+
+            if not parent_name:
                 pass
 
-            if parent_name and parent_name[0] in self.timeslice_parent_set:
+            elif parent_name[0] in self.feature_parent_set:
+                pass
+
+            elif parent_name[0] in self.timeslice_parent_set:
                 self._process_time_slice(self.feature[name], content)
 
-        if name in self.property.keys():
-            pass
-            if parent_name and parent_name[0] in self.object_parent_set:
+            else : 
+                print("in self.feature but not in feature_parent_set or timeslice_parent_set :" + name + " / " + class_name[0])
+
+        elif name in self.property.keys():
+
+            if not parent_name:
+                pass
+
+            elif parent_name[0] in self.property_parent_set:
+                pass
+
+            elif parent_name[0] in self.object_parent_set:
                 self._process_object(self.property[name], content)
+
+            else : 
+                print("in self.property but not in property_parent_set or object_parent_set :" + name + " / " + class_name[0])
             
 
     def _process_time_slice(self, layer, content):
@@ -121,11 +147,49 @@ class Parsing :
 
             name = name.lower()
 
-            if name in self.feature.keys():
+            if item.get("type") in self.ignore_set:
+                pass
+            
+            elif name in self.snowflake_set.keys():
+                group = self.snowflake_set[name].get("group")
+                layer.add_association_snowflake_one(group, name, item.get("role"), item.get("type"))
+                        
+            elif name in self.property.keys():
+                group = self.property[name].get_group()
+                layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+            
+            elif name in self.feature.keys():
                 group = self.feature[name].get_group()
                 layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+            
             else : 
-                print("not in self.feature.keys():", name)
+                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+
+        for item in self.extract_one_to_many(content):
+            name = item.get("type")
+            for suffix, replacement in self.suffix.items():
+                name = name.replace(suffix, replacement)
+
+            name = name.lower()
+
+            if item.get("type") in self.ignore_set:
+                pass
+            
+            elif name in self.snowflake_set.keys():
+                group = self.snowflake_set[name].get("group")
+                layer.add_association_snowflake_many(group, name, item.get("role"), item.get("type"))
+                        
+            elif name in self.property.keys():
+                group = self.property[name].get_group()
+                layer.add_association_object_many(group, name, item.get("role"),item.get("col"))
+            
+            elif name in self.feature.keys():
+                group = self.feature[name].get_group()
+                layer.add_association_feature_many(group, name, item.get("role"),item.get("col"))
+            
+            else : 
+                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+
 
     def _process_object(self, property, content):
         for item in self.extract_embedded_columns_two(content):
@@ -140,12 +204,14 @@ class Parsing :
                 name = name.replace(suffix, replacement)
 
             name = name.lower()
-            
 
-            if name in self.snowflake.keys():
-                attribute = self.snowflake[name].get("one")
+            if item.get("type") in self.ignore_set:
+                pass
             
-            
+            elif name in self.snowflake_set.keys():
+                group = self.snowflake_set[name].get("group")
+                property.add_association_snowflake_one(group, name, item.get("role"), item.get("type"))
+                        
             elif name in self.property.keys():
                 group = self.property[name].get_group()
                 property.add_association_object_one(group, name, item.get("role"),item.get("col"))
@@ -155,7 +221,7 @@ class Parsing :
                 property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
             
             else : 
-                print("not in property or in feature:", name)
+                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
 
         for item in self.extract_one_to_many(content):
             name = item.get("type")
@@ -164,24 +230,28 @@ class Parsing :
 
             name = name.lower()
 
-            if name in self.property.keys():
+            if item.get("type") in self.ignore_set:
+                pass
+
+            elif name in self.snowflake_set.keys():
+                group = self.snowflake_set[name].get("group")
+                property.add_association_snowflake_many(group, name, item.get("role"), item.get("type"))
+
+            elif name in self.property.keys():
                 group = self.property[name].get_group()
-                property.add_association_object_many(group, name, item.get("role"))
+                property.add_association_object_many(group, name, item.get("role"), item.get("type"))
 
             elif name in self.feature.keys():
                 group = self.feature[name].get_group()
-                property.add_association_feature_many(group, name, item.get("role"))
+                property.add_association_feature_many(group, name, item.get("role"), item.get("type"))
 
             else : 
-                print("not in property or in feature:", name)
-
+                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
 
     def process_file_old(self, path):
         """Extract table, class, and column information from a Java file."""
 
         content = self._load_content(path)
-
-
 
         table_name, schema = table_match.groups()
         full_table_name = str(schema + "." + table_name)

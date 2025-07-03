@@ -1,3 +1,5 @@
+-- Snowflake SQL : ElevatedPointPropertyType
+
 CREATE MATERIALIZED VIEW geometry.elevated_point_view AS
 SELECT 
     id, 

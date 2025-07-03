@@ -34,33 +34,34 @@ classDiagram
 
     note "AIXM data structure"
    
-    Feature *-- TimeSliceProperty : temporality
-    TimeSliceProperty *-- TimeSlice : temporality
+    Feature "1" *-- "1..*" TimeSliceProperty : temporality
+    TimeSliceProperty "1" *-- "1" TimeSlice : temporality
 
-    TimeSlice *-- FeatureProperty : Association
-    TimeSlice *-- Property : Association
-    TimeSlice *-- Geometry : Association
+    TimeSlice "1" *-- "1..*" FeatureProperty : Association
+    TimeSlice "1" *-- "1..*" Property : Association
+    TimeSlice "1" *-- "1..*" Geometry : Association
 
+    Property "1" *-- "1"  Object : 
+    OtherProperty "1" *-- "1..*" OtherObject
 
-    Property *--  Object : 
-    OtherProperty *-- OtherObject
+    FeatureProperty o-- "1" OtherFeature : href
 
-
-    FeatureProperty o-- OtherFeature : href
-
-
-    Object *-- OtherProperty
+    Object "1" *-- "1..*" OtherProperty
+    Object "1" *-- "1..*" OtherGeometry
 
 
     class Feature
+    style Feature fill:#003300
     Feature : id*
     Feature : identifier*
     <<AbstractAIXMFeatureType>> Feature
 
-    class TimeSliceProperty 
+    class TimeSliceProperty
+    style TimeSliceProperty fill:#003300
     TimeSliceProperty : id*
 
     class TimeSlice
+    style TimeSlice fill:#003300
     TimeSlice : interpretation*
     TimeSlice : sequence_number*
     TimeSlice : correction_number*
@@ -71,10 +72,12 @@ classDiagram
     <<AbstractAIXMTimeSliceType>> TimeSlice
 
     class Property
+    style Property fill:#003300
     Property : id*
     <<AbstractAIXMPropertyType>> Property
 
     class Object
+    style Object fill:#003300
     Object : Attribute[]
     Object : Association[]
     <<AbstractAIXMObjectType>> Object   
@@ -89,6 +92,7 @@ classDiagram
     <<AbstractAIXMObjectType>> OtherObject   
 
     class FeatureProperty
+    style FeatureProperty fill:#003300
     FeatureProperty : title*
     FeatureProperty : nilreason*
     FeatureProperty : href*
@@ -99,8 +103,14 @@ classDiagram
     <<AbstractAIXMFeatureType>> OtherFeature
 
     class Geometry
+    style Geometry fill:#003300
     Geometry : pos
     Geometry : height 
+
+    class OtherGeometry
+    style FeatureProperty fill:#003300
+    OtherGeometry : pos
+    OtherGeometry : height 
 
 ```
 

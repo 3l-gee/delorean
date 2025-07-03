@@ -1,3 +1,5 @@
+-- Snowflake SQL : PointPropertyType
+
 CREATE MATERIALIZED VIEW geometry.point_view AS
 SELECT
     id, 

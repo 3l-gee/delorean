@@ -1,3 +1,5 @@
+-- Snowflake SQL : ElevatedCurvePropertyType 
+
 CREATE MATERIALIZED VIEW geometry.elevated_curve_view AS
 WITH 
 center AS (

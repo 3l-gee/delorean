@@ -1,3 +1,5 @@
+-- Snowflake SQL : SurfacePropertyType
+
 CREATE MATERIALIZED VIEW partial_surface_view AS
 WITH  
 segment_ref AS(

@@ -1,4 +1,4 @@
--- NotePropertyType annotation 
+-- Snowflake SQL : NotePropertyType 
 
 CREATE OR REPLACE VIEW notes.linguisticnote_view AS
 SELECT 
