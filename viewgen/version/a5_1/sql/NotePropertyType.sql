@@ -1,14 +1,9 @@
 -- Snowflake SQL : NotePropertyType 
 
-CREATE OR REPLACE VIEW notes.linguisticnote_view AS
-SELECT 
-    notes.linguisticnote_pt.id,
-    notes.linguisticnote.note_lang AS lang,
-    COALESCE(notes.linguisticnote.note_value, '('|| notes.linguisticnote.note_nilreason ||')') AS note
-FROM notes.linguisticnote_pt
-INNER JOIN notes.linguisticnote ON notes.linguisticnote_pt.linguisticnote_id = notes.linguisticnote.id;
+CREATE INDEX ON notes.note_pt (note_id);
+CREATE INDEX ON notes.note (id);
 
-CREATE OR REPLACE VIEW notes.note_view AS
+CREATE MATERIALIZED VIEW notes.note_view AS
 SELECT
     notes.note_pt.id,
     jsonb_build_object(
@@ -30,3 +25,5 @@ LEFT JOIN LATERAL (
     JOIN notes.linguisticnote_view ON master_join.target_id = notes.linguisticnote_view.id
     WHERE master_join.source_id = notes.note.id
 ) AS translated_notes ON true;
+
+CREATE INDEX ON notes.note_view (id);

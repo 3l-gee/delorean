@@ -69,21 +69,21 @@ td.title {
 
 <script>
   try {
-    let raw = expression.evaluate("to_json(note)");
-    let notes = JSON.parse(raw);
+    let raw = expression.evaluate("to_json(annotation)");
+    let annotation = JSON.parse(raw);
 
-    if (!Array.isArray(notes)) {
-      notes = [notes];
+    if (!Array.isArray(annotation)) {
+      annotation = [annotation];
     }
-    notes = notes.filter(n => n !== null && typeof n === 'object');
+    annotation = annotation.filter(n => n !== null && typeof n === 'object');
 
     const container = document.getElementById('notes-container');
     container.innerHTML = '';
 
-    if (notes.length === 0) {
+    if (annotation.length === 0) {
       container.textContent = '';
     } else {
-      notes.forEach(note => {
+      annotation.forEach(annotation => {
         const div = document.createElement('div');
         div.className = 'note';
 
@@ -92,17 +92,17 @@ td.title {
             <table>
               <tr>
                 <td class="title">Purpose</td>
-                <td><div class="value">${note.purpose}</div></td>
+                <td><div class="value">${annotation.note.purpose}</div></td>
               </tr>
               <tr>
                 <td class="title">Property Name</td>
-                <td><div class="value">${note.propertyName}</div></td>
+                <td><div class="value">${annotation.note.propertyName}</div></td>
               </tr>
             </table>
             <div class="translated">
               ${
-                Array.isArray(note.notes) && note.notes.length > 0
-                  ? note.notes.map(n =>
+                Array.isArray(annotation.note.notes) && annotation.note.notes.length > 0
+                  ? annotation.note.notes.map(n =>
                       `<div class="translated-text">
                         <span>[${n.lang}]</span><br> ${n.note.replace(/\n/g, '<br>')}
                       </div>`).join('')

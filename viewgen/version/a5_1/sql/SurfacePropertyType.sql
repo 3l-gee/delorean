@@ -1273,3 +1273,5 @@ SELECT
 	COALESCE(outer_shells.horizontalaccuracy || ' ' ||outer_shells. horizontalaccuracy_uom, '(' || outer_shells.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM 
 outer_shells;
+
+CREATE INDEX ON geometry.surface_view (id);

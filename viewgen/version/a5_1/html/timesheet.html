@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timesheet Calendar</title>
+  <style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #323232;
+  color: #e0e0e0;
+  margin: 12px;
+}
+
+.annotation-block {
+  border: 1px solid #bbbbbb;
+  box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td.title {
+  white-space: nowrap;
+  padding: 2px 10px 2px 0;
+  color: #cccccc;
+  font-size: 0.8em;
+  vertical-align: top;
+  width: 160px;
+}
+
+.value {
+  color: #bbbbbb;
+  background-color: #1e1e1e;
+  font-size: 0.8em;
+  vertical-align: top;
+  padding: 3px;
+  margin: 3px;
+}
+
+.translated {
+  margin-top: 8px;
+}
+
+.translated span {
+  font-weight: bold;
+  color: #87cefa;
+}
+
+.translated-text {
+  color: #dddddd;
+  font-size: 0.8em;
+  background-color: #1e1e1e;
+  border-left: 4px solid #3a9aed; 
+  padding: 3px;
+  margin: 3px;
+  padding-left: 6px;
+  margin-bottom: 6px;
+}
+  </style>
+</head>
+<body>
+  <h1>Timesheet Calendar</h1>
+  <div id="timesheet-container">Loading...</div>
+
+<script>
+const timesheetData = [
+  { id: 157, timeReference: "UTC", startDate: "01-03", endDate: "31-10", day: "ANY", startEvent: "SR", endEvent: "SS", daylightSavingAdjust: "NO", excluded: "NO" },
+  { id: 310, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "04:45", endTime: "22:30", daylightSavingAdjust: "YES", excluded: "NO" },
+  { id: 1210, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "00:00", endTime: "23:59", daylightSavingAdjust: "NO", excluded: "NO" },
+  { id: 2154, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "WORK_DAY", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
+  { id: 2156, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SAT", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
+  { id: 2158, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SUN", startTime: "09:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" }
+];
+
+// Group timesheets by day
+const grouped = {};
+timesheetData.forEach(entry => {
+  if (!grouped[entry.day]) grouped[entry.day] = [];
+  grouped[entry.day].push(entry);
+});
+
+const container = document.getElementById('timesheet-container');
+container.innerHTML = '';
+
+for (const day in grouped) {
+  grouped[day].forEach(entry => {
+    const block = document.createElement('div');
+    block.className = 'annotation-block';
+
+    let timeRange = '';
+    if (entry.startTime || entry.endTime) {
+      timeRange = `${entry.startTime ?? '??'} → ${entry.endTime ?? '??'}`;
+    } else if (entry.startEvent || entry.endEvent) {
+      timeRange = `${entry.startEvent ?? '??'} → ${entry.endEvent ?? '??'}`;
+    } else {
+      timeRange = 'Unknown';
+    }
+
+    block.innerHTML = `
+      <table>
+        <tr>
+          <td class="title">Day</td>
+          <td><div class="value">${entry.day}</div></td>
+        </tr>
+        <tr>
+          <td class="title">Valid From</td>
+          <td><div class="value">${entry.startDate} to ${entry.endDate}</div></td>
+        </tr>
+        <tr>
+          <td class="title">Time Reference</td>
+          <td><div class="value">${entry.timeReference}</div></td>
+        </tr>
+        <tr>
+          <td class="title">Time Range</td>
+          <td><div class="value">${timeRange}</div></td>
+        </tr>
+        <tr>
+          <td class="title">DST Adjustment</td>
+          <td><div class="value">${entry.daylightSavingAdjust}</div></td>
+        </tr>
+        <tr>
+          <td class="title">Excluded</td>
+          <td><div class="value">${entry.excluded}</div></td>
+        </tr>
+      </table>
+    `;
+
+    container.appendChild(block);
+  });
+}
+</script>
+
+</body>
+</html>

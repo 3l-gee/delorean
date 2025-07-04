@@ -1,5 +1,5 @@
 import re
-
+from collections import defaultdict, deque
 from lib.feature import Feature
 from lib.property import Property
 
@@ -26,16 +26,49 @@ class Parsing :
         self.datatype = {}
 
     def get_layer(self):
-        layers = list(self.property.values()) + list(self.feature.values())
-        
+        layers = list(self.property.values())
+
         # Generate SQL for each layer first
         for item in layers:
             item.generate_sql()
-        
-        # Sort by dependency value (ascending)
-        layers_sorted = sorted(layers, key=lambda x: x.get_dependecy())
 
-        return layers_sorted
+        # Create a mapping from view name to the view object
+        view_map = {layer.get_name(): layer for layer in layers}
+
+        in_degree = defaultdict(int)
+        graph = defaultdict(list)
+
+        for layer in layers:
+            for dep in layer.get_dependecy():
+                if dep in view_map:
+                    graph[dep].append(layer.get_name())
+                    in_degree[layer.get_name()] += 1
+
+        # Queue for views with no dependencies
+        queue = deque([name for name in view_map if in_degree[name] == 0])
+        sorted_layers = []
+
+        while queue:
+            name = queue.popleft()
+            layer = view_map[name]
+            dependencies = layer.get_dependecy()
+
+            sorted_layers.append((layer, dependencies))
+
+            for neighbor in graph[name]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+
+        
+        # If not all views are sorted, there’s a circular dependency
+        # if len(sorted_layers) != len(layers):
+        #     raise ValueError("Circular dependency detected among layers.")
+        
+        # sorted_layers.extend(list(self.feature.values()))
+
+        return sorted_layers
+
     
     def _load_content(self, path):
         with open(path, 'r', encoding='utf-8') as file:
@@ -151,16 +184,16 @@ class Parsing :
                 pass
             
             elif name in self.snowflake_set.keys():
-                group = self.snowflake_set[name].get("group")
-                layer.add_association_snowflake_one(group, name, item.get("role"), item.get("type"))
+                schema = self.snowflake_set[name].get("schema")
+                layer.add_association_snowflake_one(schema, name, item.get("role"), item.get("type"))
                         
             elif name in self.property.keys():
-                group = self.property[name].get_group()
-                layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+                schema = self.property[name].get_schema()
+                layer.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
             
             elif name in self.feature.keys():
-                group = self.feature[name].get_group()
-                layer.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+                schema = self.feature[name].get_schema()
+                layer.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
             
             else : 
                 print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
@@ -176,16 +209,16 @@ class Parsing :
                 pass
             
             elif name in self.snowflake_set.keys():
-                group = self.snowflake_set[name].get("group")
-                layer.add_association_snowflake_many(group, name, item.get("role"), item.get("type"))
+                schema = self.snowflake_set[name].get("schema")
+                layer.add_association_snowflake_many(schema, name, item.get("role"), item.get("type"))
                         
             elif name in self.property.keys():
-                group = self.property[name].get_group()
-                layer.add_association_object_many(group, name, item.get("role"),item.get("col"))
+                schema = self.property[name].get_schema()
+                layer.add_association_object_many(schema, name, item.get("role"),item.get("col"))
             
             elif name in self.feature.keys():
-                group = self.feature[name].get_group()
-                layer.add_association_feature_many(group, name, item.get("role"),item.get("col"))
+                schema = self.feature[name].get_schema()
+                layer.add_association_feature_many(schema, name, item.get("role"),item.get("col"))
             
             else : 
                 print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
@@ -209,16 +242,18 @@ class Parsing :
                 pass
             
             elif name in self.snowflake_set.keys():
-                group = self.snowflake_set[name].get("group")
-                property.add_association_snowflake_one(group, name, item.get("role"), item.get("type"))
+                schema = self.snowflake_set[name].get("schema")
+                attribute = self.snowflake_set[name].get("one").get("attribute")
+                group = self.snowflake_set[name].get("one").get("group")
+                property.add_association_snowflake_one(schema, name, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
-                group = self.property[name].get_group()
-                property.add_association_object_one(group, name, item.get("role"),item.get("col"))
+                schema = self.property[name].get_schema()
+                property.add_association_object_one(schema, name, item.get("role"),item.get("col"))
             
             elif name in self.feature.keys():
-                group = self.feature[name].get_group()
-                property.add_association_feature_one(group, name, item.get("role"),item.get("col"))
+                schema = self.feature[name].get_schema()
+                property.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
             
             else : 
                 print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
@@ -234,16 +269,17 @@ class Parsing :
                 pass
 
             elif name in self.snowflake_set.keys():
-                group = self.snowflake_set[name].get("group")
-                property.add_association_snowflake_many(group, name, item.get("role"), item.get("type"))
+                schema = self.snowflake_set[name].get("schema")
+                attribute = self.snowflake_set[name].get("many").get("attribute")
+                property.add_association_snowflake_many(schema, name, attribute,item.get("col"), item.get("role"))
 
             elif name in self.property.keys():
-                group = self.property[name].get_group()
-                property.add_association_object_many(group, name, item.get("role"), item.get("type"))
+                schema = self.property[name].get_schema()
+                property.add_association_object_many(schema, name, item.get("role"), item.get("type"))
 
             elif name in self.feature.keys():
-                group = self.feature[name].get_group()
-                property.add_association_feature_many(group, name, item.get("role"), item.get("type"))
+                schema = self.feature[name].get_schema()
+                property.add_association_feature_many(schema, name, item.get("role"), item.get("type"))
 
             else : 
                 print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))

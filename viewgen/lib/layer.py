@@ -3,33 +3,36 @@ import string
 
 class Layer:
 
-    def __init__(self, name, group, snowflake=False):
-        self.dependecy = 0
+    def __init__(self, name, schema, snowflake=False):
+        self.dependecy = set()
         self.name = name
-        self.group = group
+        self.schema = schema
         self.snowflake = snowflake
-        self.full_sql = None
+        self.full_sql = ""
         self.sql = {
             "attributes": {
-                "feature": self.generate_attributes(name, group)
+                "feature": self.generate_attributes(name, schema)
             },
-            "view": self.generate_view(name, group),
-            "select": self.generate_select(name, group),
-            "inner": self.generate_inner(name, group),
-            "left": self.generate_left(name, group),
-            "where": self.generate_where(name, group),
-            "group": self.generate_group(name, group),
-            "order": self.generate_order(name, group)
+            "view": self.generate_view(name, schema),
+            "select": self.generate_select(name, schema),
+            "inner": self.generate_inner(name, schema),
+            "left": self.generate_left(name, schema),
+            "where": self.generate_where(name, schema),
+            "group": self.generate_group(name, schema),
+            "order": self.generate_order(name, schema)
         }
 
-    def get_group(self):
-        return self.group
+    def get_name(self):
+        return f"{self.schema}.{self.name}_view"
+
+    def get_schema(self):
+        return self.schema
     
     def get_sql(self):
         return self.full_sql
     
     def get_dependecy(self): 
-        return self.dependecy
+        return list(self.dependecy)
 
     def generate_sql(self):
         if self.snowflake :
@@ -75,17 +78,17 @@ class Layer:
             self.full_sql = ""
 
 
-    def generate_view(self, name, group) : return []
-    def generate_select(self, name, group) : return []
+    def generate_view(self, name, schema) : return []
+    def generate_select(self, name, schema) : return []
     def generate_letter_hash(self, prefix, length=6):
         return prefix + '_' + ''.join(random.choices(string.ascii_lowercase, k=length))
 
-    def generate_attributes(self, name, group) : return []
-    def generate_inner(self, name, group) : return []
-    def generate_left(self, name, group) : return []
-    def generate_where(self, name, group) : return []
-    def generate_order(self, name, group) : return []
-    def generate_group(self, name, group) : return []
+    def generate_attributes(self, name, schema) : return []
+    def generate_inner(self, name, schema) : return []
+    def generate_left(self, name, schema) : return []
+    def generate_where(self, name, schema) : return []
+    def generate_order(self, name, schema) : return []
+    def generate_group(self, name, schema) : return []
     def add_group(self, name, column, group=None):
         if group:
             self.sql["group"].append(f"{group}.{name}.{column}")
@@ -94,9 +97,9 @@ class Layer:
 
     def add_attributes_three(self, value, uom, nil) : pass
     def add_attributes_two(self, value, nil) : pass
-    def add_association_feature_one(self, group, name, role, col) : pass
-    def add_association_object_one(self, group, name, role, type) : pass
-    def add_association_feature_many(self, group, name, role, type) : pass
-    def add_association_object_many(self, group, name, role, type) : pass
-    def add_association_snowflake_one(self, group, name, role, type) : pass
-    def add_association_snowflake_many(self, group, name, role, type) : pass
+    def add_association_feature_one(self, schema, name, role, col) : pass
+    def add_association_object_one(self, schema, name, role, type) : pass
+    def add_association_feature_many(self, schema, name, role, type) : pass
+    def add_association_object_many(self, schema, name, role, type) : pass
+    def add_association_snowflake_one(self, schema, name, role, type) : pass
+    def add_association_snowflake_many(self, schema, name, role, type) : pass

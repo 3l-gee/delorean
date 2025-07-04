@@ -1,6 +1,6 @@
 -- Snowflake SQL : ElevatedSurfacePropertyType
 
-CREATE MATERIALIZED VIEW partial_elevated_surface_view AS
+CREATE MATERIALIZED VIEW partial_elevatedsurface_view AS
 WITH  
 segment_ref AS(
 	SELECT 
@@ -587,7 +587,7 @@ output;
 -- R2 : Simple feature, unclosed
 -- G1 : Complex feature wiht a single geoborder, 
 -- G2 : Complex feature with multiple geoborder,
-CREATE MATERIALIZED VIEW geometry.elevated_surface_view AS
+CREATE MATERIALIZED VIEW geometry.elevatedsurface_view AS
 WITH 
 g1_segment AS (
 	SELECT
@@ -1728,3 +1728,5 @@ SELECT
 	COALESCE(outer_shells.horizontalaccuracy || ' ' || outer_shells.horizontalaccuracy_uom, '(' || outer_shells.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM 
 outer_shells;
+
+CREATE INDEX ON geometry.elevatedsurface_view (id);

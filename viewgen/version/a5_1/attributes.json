@@ -3,21 +3,27 @@
         "organisationauthority" : {
             "path" : "",
             "type" : "OrganisationAuthorityPropertyType",
-            "group" : "",
+            "schema" : "organisation",
             "one" : {
                 "attribute" : [
+
+                ], 
+                "group" : [
 
                 ]
             },
             "many" : {
                 "attribute" : [
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "contactinformation" : {
             "path" : "",
             "type" : "ContactInformationPropertyType",
-            "group" : "",
+            "schema" : "shared",
             "one" : {
                 "attribute" : [
 
@@ -25,104 +31,212 @@
             },
             "many" : {
                 "attribute" : [
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "note" : {   
             "path" : "viewgen/version/a5_1/sql/NotePropertyType.sql",
             "type" : "NotePropertyType",
-            "group" : "notes",
+            "schema" : "notes",
             "one" : {
                 "attribute" : [
 
+                ], 
+                "group" : [
+                    
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "jsonb_agg({alias}.*) AS {role}"
+                ], 
+                "group" : [
+                    
+                ]
+            }
+        },
+        "linguisticnote" : {   
+            "path" : "viewgen/version/a5_1/sql/LinguisticNotePropertyType.sql",
+            "type" : "LinguisticNotePropertyType",
+            "schema" : "notes",
+            "one" : {
+                "attribute" : [
+
+                ], 
+                "group" : [
+                    
+                ]
+            },
+            "many" : {
+                "attribute" : [
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "point" : {
             "path" : "viewgen/version/a5_1/sql/PointPropertyType.sql",
             "type" : "PointPropertyType",
-            "group" : "geometry",
+            "schema" : "geometry",
             "one" : {
                 "attribute" : [
-                    "geometry.point_view.geom AS geom",
-                    "ST_X(geometry.point_view.geom) AS longitude",
-                    "ST_Y(geometry.point_view.geom) AS latitude",
-                    "geometry.point_view.horizontalAccuracy"
+                    "{alias}.geom AS geom",
+                    "ST_X({alias}.geom) AS longitude",
+                    "ST_Y({alias}.geom) AS latitude",
+                    "{alias}.horizontalAccuracy"
+                ], 
+                "group" : [
+                    "{alias}.geom",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "curve" : {
             "path" : "viewgen/version/a5_1/sql/CurvePropertyType.sql",
             "type" : "CurvePropertyType",
-            "group" : "geometry",
+            "schema" : "geometry",
             "one" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    "{alias}.geom"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "surface" : {
             "path" : "viewgen/version/a5_1/sql/SurfacePropertyType.sql",
             "type" : "SurfacePropertyType",
-            "group" : "geometry",
+            "schema" : "geometry",
             "one" : {
                 "attribute" : [
-
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    "{alias}.geom"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "elevatedpoint" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedPointPropertyType.sql",
             "type" : "ElevatedPointPropertyType",
-            "group" : "geometry",
+            "schema" : "geometry",
             "one" : {
                 "attribute" : [
-
+                    "{alias}.geom AS geom",
+                    "ST_X({alias}.geom) AS longitude",
+                    "ST_Y({alias}.geom) AS latitude",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
+                ], 
+                "group" : [
+                    "{alias}.geom",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "elevatedcurve" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedCurvePropertyType.sql",
             "type" : "ElevatedCurvePropertyType",
-            "group" : "geometry",            
+            "schema" : "geometry",            
             "one" : {
                 "attribute" : [
+                    "{alias}.geom AS geom",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
+                ], 
+                "group" : [
+                    "{alias}.geom",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         },
         "elevatedsurface" : {
             "path" : "viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
             "type" : "ElevatedSurfacePropertyType",
-            "group" : "geometry",
+            "schema" : "geometry",
             "one" : {
                 "attribute" : [
+                    "{alias}.geom AS geom",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
+                ], 
+                "group" : [
+                    "{alias}.geom",
+                    "{alias}.elevation",
+                    "{alias}.geoidUndulation",
+                    "{alias}.verticalDatum",
+                    "{alias}.verticalAccuracy",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
+                    "{alias}.geom AS geom"
+                ], 
+                "group" : [
+                    
                 ]
             }
         }

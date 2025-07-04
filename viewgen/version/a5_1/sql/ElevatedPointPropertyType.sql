@@ -1,6 +1,6 @@
 -- Snowflake SQL : ElevatedPointPropertyType
 
-CREATE MATERIALIZED VIEW geometry.elevated_point_view AS
+CREATE MATERIALIZED VIEW geometry.elevatedpoint_view AS
 SELECT 
     id, 
     point as geom,
@@ -10,3 +10,5 @@ SELECT
 	COALESCE(verticalaccuracy || ' ' || horizontalaccuracy_uom, '(' || verticaldatum_nilreason || ')') AS verticalAccuracy,
 	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM elevated_point_pt;
+
+CREATE INDEX ON geometry.elevatedpoint_view (id);

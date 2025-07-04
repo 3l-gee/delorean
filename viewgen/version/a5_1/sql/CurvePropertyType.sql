@@ -82,3 +82,5 @@ SELECT
 	merged_geom as geom,
 	COALESCE(merged_segments.horizontalaccuracy || ' ' || merged_segments.horizontalaccuracy_uom, '(' || merged_segments.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM merged_segments;
+
+CREATE INDEX ON geometry.curve_view (id);

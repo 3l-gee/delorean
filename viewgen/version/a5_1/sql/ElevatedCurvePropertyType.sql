@@ -1,6 +1,6 @@
 -- Snowflake SQL : ElevatedCurvePropertyType 
 
-CREATE MATERIALIZED VIEW geometry.elevated_curve_view AS
+CREATE MATERIALIZED VIEW geometry.elevatedcurve_view AS
 WITH 
 center AS (
     SELECT 
@@ -97,3 +97,5 @@ SELECT
 	COALESCE(CAST(merged_segments.verticalaccuracy AS varchar), '(' || merged_segments.verticaldatum_nilreason || ')') AS verticalAccuracy,
 	COALESCE(merged_segments.horizontalaccuracy || ' ' || merged_segments.horizontalaccuracy_uom, '(' || merged_segments.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM merged_segments;
+
+CREATE INDEX ON geometry.elevatedcurve_view (id);
