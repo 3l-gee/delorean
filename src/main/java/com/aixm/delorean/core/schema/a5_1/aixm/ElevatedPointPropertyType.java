@@ -44,7 +44,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "elevatedPoint"
 })
 @Entity
-@Table(name = "elevated_point_pt", schema = "public")
+@Table(name = "elevated_point_pt", schema = "geometry")
 public class ElevatedPointPropertyType
     extends AbstractAIXMPropertyType
 {

@@ -26,21 +26,25 @@ class Parsing :
         self.datatype = {}
 
     def get_layer(self):
-        layers = list(self.property.values())
-
+        propeties_layers = self.property.values()
+    
         # Generate SQL for each layer first
-        for item in layers:
+        for item in propeties_layers:
             item.generate_sql()
 
         # Create a mapping from view name to the view object
-        view_map = {layer.get_name(): layer for layer in layers}
+        view_map = {layer.get_name(): layer for layer in propeties_layers}
+
 
         in_degree = defaultdict(int)
         graph = defaultdict(list)
 
-        for layer in layers:
+        for layer in propeties_layers:
             for dep in layer.get_dependecy():
-                if dep in view_map:
+                if dep not in view_map:
+                    print(f"⚠️ Missing dependency: {dep} (required by {layer.get_name()})")
+
+                else :
                     graph[dep].append(layer.get_name())
                     in_degree[layer.get_name()] += 1
 
@@ -49,6 +53,7 @@ class Parsing :
         sorted_layers = []
 
         while queue:
+
             name = queue.popleft()
             layer = view_map[name]
             dependencies = layer.get_dependecy()
@@ -59,13 +64,13 @@ class Parsing :
                 in_degree[neighbor] -= 1
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
-
-        
-        # If not all views are sorted, there’s a circular dependency
-        # if len(sorted_layers) != len(layers):
-        #     raise ValueError("Circular dependency detected among layers.")
-        
-        # sorted_layers.extend(list(self.feature.values()))
+   
+        # Merge with features
+        feaures_layers = list(self.feature.values())
+        for item in feaures_layers:
+            item.generate_sql()
+            dependencies = item.get_dependecy()
+            sorted_layers.append((item, dependencies))
 
         return sorted_layers
 
@@ -109,15 +114,16 @@ class Parsing :
             
         if  parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
             if name not in self.feature.keys() : 
-                self.feature[name] = Feature(name, table_schema)
+                self.feature[name] = Feature(class_name[0], name, table_schema)
         
         elif parent_name and parent_name[0] in self.property_parent_set:
             if name in self.snowflake_set:
-                self.property[name] = Property(name, table_schema, True)  
+                self.property[name] = Property(class_name[0], name, table_schema, True)  
                 self.property[name].load_sql(self.snowflake_set[name].get("path"))
+                self.property[name].load_dependecy(self.snowflake_set[name].get("dependency"))
 
             if name not in self.property.keys() : 
-                self.property[name] = Property(name, table_schema)
+                self.property[name] = Property(class_name[0], name, table_schema)
         
     def _process_file(self, path):
         content = self._load_content(path)   
@@ -185,7 +191,9 @@ class Parsing :
             
             elif name in self.snowflake_set.keys():
                 schema = self.snowflake_set[name].get("schema")
-                layer.add_association_snowflake_one(schema, name, item.get("role"), item.get("type"))
+                attribute = self.snowflake_set[name].get("one").get("attribute")
+                group = self.snowflake_set[name].get("one").get("group")
+                layer.add_association_snowflake_one(schema, name, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -210,7 +218,8 @@ class Parsing :
             
             elif name in self.snowflake_set.keys():
                 schema = self.snowflake_set[name].get("schema")
-                layer.add_association_snowflake_many(schema, name, item.get("role"), item.get("type"))
+                attribute = self.snowflake_set[name].get("many").get("attribute")
+                layer.add_association_snowflake_many(schema, name, attribute,item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -283,38 +292,6 @@ class Parsing :
 
             else : 
                 print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
-
-    def process_file_old(self, path):
-        """Extract table, class, and column information from a Java file."""
-
-        content = self._load_content(path)
-
-        table_name, schema = table_match.groups()
-        full_table_name = str(schema + "." + table_name)
-        class_name = re.findall(self.parsing["class"]["method"], content)
-        if class_name and class_name[0] in  self.ignore_set:
-            return
-    
-        self.views["table_name"][class_name[0]] = full_table_name
-
-        feature_name = class_name[0]
-        class_name = {
-            "info": class_name[0],
-            "table": full_table_name
-        }
-        parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
-        
-        if parent_name[0] in self.attributes["feature_parents"] :
-            self.views["top_timeslice_selection"].append(full_table_name)
-
-
-        columns = self.extract_columns(schema, table_name, content)
-        parent_columns = self.extract_parent_columns(schema, table_name, parent_name)
-        embedded_columns = self.extract_embedded_columns(schema, table_name, content)
-        one_to_one = self.extract_one_to_one(schema, table_name, content)
-        one_to_many = self.extract_one_to_many(schema, table_name, content)
-
-        self.update_views(feature_name, class_name, parent_name, columns, parent_columns, embedded_columns, one_to_one, one_to_many)
 
     def extract_columns(self, schema, table, content):
         """Extract simple column definitions."""

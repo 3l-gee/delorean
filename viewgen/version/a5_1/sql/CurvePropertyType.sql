@@ -63,19 +63,19 @@ segment_union AS (
 ),
 merged_segments AS (
     SELECT 
-        public.curve_pt.id,
+        geometry.curve_pt.id,
         ST_LineMerge(ST_Collect(segment_union.geom)) AS merged_geom,
 		horizontalaccuracy,
 		horizontalaccuracy_uom,
 		horizontalaccuracy_nilreason,
 		nilreason
     FROM 
-        public.curve_pt
+        geometry.curve_pt
     INNER JOIN 
-        public.curve_pt_linestring_segment ON public.curve_pt.id = public.curve_pt_linestring_segment.curvepropertytype_id
+        public.elevated_curve_pt ON geometry.curve_pt.id = public.elevated_curve_pt.curvepropertytype_id
     INNER JOIN 
-        segment_union ON public.curve_pt_linestring_segment.segments_id = segment_union.id
-    GROUP BY public.curve_pt.id
+        segment_union ON public.elevated_curve_pt.segments_id = segment_union.id
+    GROUP BY geometry.curve_pt.id
 )
 SELECT 
     merged_segments.id, 

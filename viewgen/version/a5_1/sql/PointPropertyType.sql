@@ -5,6 +5,6 @@ SELECT
     id, 
 	point as geom,
 	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
-FROM point_pt;
+FROM geometry.point_pt;
 
 CREATE INDEX ON geometry.point_view (id);

@@ -43,7 +43,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "surface"
 })
 @Entity
-@Table(name = "surface_pt", schema = "public")
+@Table(name = "surface_pt", schema = "geometry")
 public class SurfacePropertyType
     extends AbstractAIXMPropertyType
 {

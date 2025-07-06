@@ -4,6 +4,9 @@ from lib.layer import Layer
 
 class Property(Layer) :
 
+    def get_name(self):
+        return f"{self.schema}.{self.name}_view"
+
     def generate_view(self, name, schema) :
         return [f"create or replace view {schema}.{name}_view as"]
 
@@ -13,7 +16,7 @@ class Property(Layer) :
     def generate_attributes(self, name, schema) : 
         return [
             f"{schema}.{name}_pt.id",
-            f"{schema}.{name}_pt.nilreason AS {self.name}_annotation",
+            f"{schema}.{name}_pt.nilreason AS {self.name}_nilreason",
         ]
         
     def generate_inner(self, name, schema) : 
@@ -69,11 +72,10 @@ class Property(Layer) :
         self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
 
     def add_association_feature_one(self, schema, name, role, col):
-        self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
-        hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+        hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.sql["attributes"][name].extend([
             f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
@@ -84,7 +86,7 @@ class Property(Layer) :
         self.add_group(hash, "nilreason[1]")
         self.add_group(hash, "href")
 
-        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
+        self.sql["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
 
     def add_association_object_many(self, schema, name, role, type):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -104,12 +106,11 @@ class Property(Layer) :
         ])
 
     def add_association_feature_many(self, schema, name, role, type):
-        self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
-        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.sql["left"].extend([
             f"left join master_join {hash_one} on {self.schema}.{self.name}.id = {hash_one}.source_id",
@@ -117,7 +118,9 @@ class Property(Layer) :
         ])
 
         self.sql["attributes"][name].extend([
-            f"jsonb_agg({hash_two}.id) AS {role}"
+            f"jsonb_build_object('id', {hash_two}.id",
+            f"'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')')",
+            f"'href', {hash_two}.href) AS {role}"
         ])
 
     def add_association_snowflake_one(self, schema, name, attribute, group, col, role):
@@ -129,6 +132,7 @@ class Property(Layer) :
 
         formatted_attribute = [attr.format(alias=hash, role=role) for attr in attribute]
         formatted_group = [grp.format(alias=hash) for grp in group]
+
         self.sql["attributes"][name].extend(formatted_attribute)
         self.sql["group"].extend(formatted_group)
 
@@ -142,7 +146,7 @@ class Property(Layer) :
         hash_one = self.generate_letter_hash(str("master_join"))
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        formatted_attribute = [attr.format(alias=hash_two, role=role) for attr in attribute]
+        formatted_attribute = [attr.format(alias=hash_two, role=str(self.name + "_" + role)) for attr in attribute]
         self.sql["attributes"][name].extend(formatted_attribute)
 
         self.sql["left"].extend([

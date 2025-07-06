@@ -4,8 +4,11 @@ from lib.layer import Layer
 
 class Feature(Layer) :
 
+    def get_name(self):
+        return f"{self.schema}.{self.name}_view"
+
     def generate_view(self, name, schema) :
-        return [f"create or replace view {schema}.{name}_publisher_view as"]
+        return [f"create or replace view {schema}.{name}_view as"]
 
     def generate_select(self, name, schema) :
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
@@ -23,7 +26,6 @@ class Feature(Layer) :
         res.append(f"{schema}.{name}_ts.valid_time_end")
         res.append(f"{schema}.{name}_ts.feature_lifetime_begin")
         res.append(f"{schema}.{name}_ts.feature_lifetime_end")
-        res.append(f"jsonb_agg(notes.note_view.note) AS feature_annotation")
         return res
         
     def generate_inner(self, name, schema) : 
@@ -46,8 +48,6 @@ class Feature(Layer) :
 
     def generate_left(self, name, schema) :
         return [
-            f"left join master_join mj3 on {schema}.{name}_ts.id = mj3.source_id",
-            f"left join notes.note_view on mj3.target_id = notes.note_view.id"
         ]
 
     def generate_where(self, name, schema) : 
@@ -91,7 +91,6 @@ class Feature(Layer) :
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
     def add_association_feature_one(self, schema, name, role, col):
-        self.dependecy.add(f"{schema}.{name}_publisher_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
@@ -108,34 +107,84 @@ class Feature(Layer) :
 
         self.sql["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
     
-    def add_association_object_one(self, schema, name, role, type):
+    def add_association_object_one(self, schema, name, role, col):
+        self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
-        self.sql["left"].append(f"--object one {schema}.{name}.{role}" + " - " + type)
+        hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+
+        self.sql["attributes"][name].extend([
+            f"{hash}.* AS {role}"
+        ])
+
+        self.add_group(hash, "*")
+
+        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
     def add_association_feature_many(self, schema, name, role, type):
-        self.dependecy.add(f"{schema}.{name}_publisher_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
-        self.sql["left"].append(f"--feature many {schema}.{name}.{role}" + " - " + type)
+        hash_one = self.generate_letter_hash(str("master_join"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
+
+        self.sql["left"].extend([
+            f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
+            f"left join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id"
+        ])
+
+        self.sql["attributes"][name].extend([
+            f"jsonb_build_object('id', {hash_two}.id",
+            f"'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')')",
+            f"'href', {hash_two}.href) AS {role}"
+        ])
 
     def add_association_object_many(self, schema, name, role, type):
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
 
-        self.sql["left"].append(f"--object many {schema}.{name}.{role}" + " - " + type)
+        hash_one = self.generate_letter_hash(str("master_join"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-    def add_association_snowflake_one(self, schema, name, role, type):
+        self.sql["left"].extend([
+            f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
+            f"left join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id"
+        ])
+
+        self.sql["attributes"][name].extend([
+            f"jsonb_agg({hash_two}.id) AS {role}"
+        ])
+
+    def add_association_snowflake_one(self, schema, name, attribute, group, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
-        self.sql["left"].append(f"--snowflake one {schema}.{name}.{role}" + " - " + type)
 
-    def add_association_snowflake_many(self, schema, name, role, type):
+        hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+
+        formatted_attribute = [attr.format(alias=hash, role=role) for attr in attribute]
+        formatted_group = [grp.format(alias=hash) for grp in group]
+
+        self.sql["attributes"][name].extend(formatted_attribute)
+        self.sql["group"].extend(formatted_group)
+
+        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+
+
+    def add_association_snowflake_many(self, schema, name, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
             self.sql["attributes"][name] = []
-        self.sql["left"].append(f"--snowflake many {schema}.{name}.{role}" + " - " + type)
+
+        hash_one = self.generate_letter_hash(str("master_join"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+
+        formatted_attribute = [attr.format(alias=hash_two, role=str(self.name + "_" + role)) for attr in attribute]
+        self.sql["attributes"][name].extend(formatted_attribute)
+
+        self.sql["left"].extend([
+            f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
+            f"left join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id"
+        ])

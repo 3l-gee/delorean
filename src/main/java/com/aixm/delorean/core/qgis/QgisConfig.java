@@ -1,6 +1,7 @@
 package com.aixm.delorean.core.qgis;
 
 import com.aixm.delorean.core.database.DatabaseConfig;
+import com.aixm.delorean.core.qgis.PostgresLayerConfig;
 
 import java.util.List;
 
@@ -12,16 +13,18 @@ public enum QgisConfig {
             "publisher.qgs.ftl",
             "qgis/8753078a_styles.db",
             "delorean aixm 5.1 - publisher",
-            List.of(new LayerConfig(
-                "OpenStreetMap"
+            List.of(new PostgresLayerConfig(
+                "OpenStreetMap",
+                ""
                 ))
         ),
         new ProjectConfig(
             null,
             null,
             null,
-            List.of(new LayerConfig(
-                "OpenStreetMap"
+            List.of(new PostgresLayerConfig(
+                "OpenStreetMap",
+                ""
                 ))
         )
     );

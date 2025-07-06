@@ -16,6 +16,7 @@ public class AixmElevatedSurfaceType extends AixmElevatedGeometryType {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "elevatedsurface_exterior", 
+        schema = "geometry",
         joinColumns ={@JoinColumn(name = "elevatedsurfacepropertytype_id")},
         inverseJoinColumns = {@JoinColumn(name = "exteriorlinestring_id")}
     )
@@ -23,6 +24,7 @@ public class AixmElevatedSurfaceType extends AixmElevatedGeometryType {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "elevatedsurface_interior", 
+        schema = "geometry",
         joinColumns ={@JoinColumn(name = "elevatedsurfacepropertytype_id")},
         inverseJoinColumns = {@JoinColumn(name = "interiorlinestring_id")}
     )

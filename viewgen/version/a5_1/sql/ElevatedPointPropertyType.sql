@@ -9,6 +9,6 @@ SELECT
 	COALESCE(verticaldatum || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS verticalDatum,
 	COALESCE(verticalaccuracy || ' ' || horizontalaccuracy_uom, '(' || verticaldatum_nilreason || ')') AS verticalAccuracy,
 	COALESCE(horizontalaccuracy || ' ' || horizontalaccuracy_uom, '(' || horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
-FROM elevated_point_pt;
+FROM geometry.elevated_point_pt;
 
 CREATE INDEX ON geometry.elevatedpoint_view (id);

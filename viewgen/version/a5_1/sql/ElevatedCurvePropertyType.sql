@@ -63,7 +63,7 @@ segment_union AS (
 ),
 merged_segments AS (
     SELECT 
-        public.elevated_curve_pt.id,
+        geometry.elevated_curve_pt.id,
         ST_LineMerge(ST_Collect(segment_union.geom)) AS merged_geom,
 		elevation,
 		elevation_uom,
@@ -81,12 +81,12 @@ merged_segments AS (
 		verticaldatum_nilreason,
 		nilreason
     FROM 
-        public.elevated_curve_pt
+        geometry.elevated_curve_pt
     INNER JOIN 
-        public.elevated_curve_pt_linestring_segment ON public.elevated_curve_pt.id = public.elevated_curve_pt_linestring_segment.elevatedcurvepropertytype_id
+        geometry.elevated_curve_pt_linestring_segment ON geometry.elevated_curve_pt.id = geometry.elevated_curve_pt_linestring_segment.elevatedcurvepropertytype_id
     INNER JOIN 
-        segment_union ON public.elevated_curve_pt_linestring_segment.segments_id = segment_union.id
-    GROUP BY public.elevated_curve_pt.id
+        segment_union ON geometry.elevated_curve_pt_linestring_segment.segments_id = segment_union.id
+    GROUP BY geometry.elevated_curve_pt.id
 )
 SELECT 
     merged_segments.id,

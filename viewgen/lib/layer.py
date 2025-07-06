@@ -3,8 +3,9 @@ import string
 
 class Layer:
 
-    def __init__(self, name, schema, snowflake=False):
+    def __init__(self, type, name, schema, snowflake=False):
         self.dependecy = set()
+        self.type = type
         self.name = name
         self.schema = schema
         self.snowflake = snowflake
@@ -22,9 +23,6 @@ class Layer:
             "order": self.generate_order(name, schema)
         }
 
-    def get_name(self):
-        return f"{self.schema}.{self.name}_view"
-
     def get_schema(self):
         return self.schema
     
@@ -33,6 +31,9 @@ class Layer:
     
     def get_dependecy(self): 
         return list(self.dependecy)
+    
+    def get_type(self):
+        return self.type
 
     def generate_sql(self):
         if self.snowflake :
@@ -77,6 +78,8 @@ class Layer:
             print(f"Error loading SQL from '{path}': {e}")
             self.full_sql = ""
 
+    def load_dependecy(self, list):
+        self.dependecy.update(list)
 
     def generate_view(self, name, schema) : return []
     def generate_select(self, name, schema) : return []
