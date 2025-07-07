@@ -157,7 +157,7 @@ class Feature(Layer) :
         ])
 
         self.sql["attributes"][name].extend([
-            f"jsonb_agg({hash_two}.id) AS {role}"
+            f"jsonb_agg(DISTINCT {hash_two}.id) AS {role}"
         ])
 
     def add_association_snowflake_one(self, schema, name, attribute, group, col, role):

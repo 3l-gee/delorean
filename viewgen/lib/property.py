@@ -98,7 +98,7 @@ class Property(Layer) :
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.sql["attributes"][name].extend([
-            f"jsonb_agg({hash_two}.id) AS {role}"
+            f"jsonb_agg(DISTINCT {hash_two}.id) AS {role}"
         ])
 
         self.sql["left"].extend([
