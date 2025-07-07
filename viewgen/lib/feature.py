@@ -8,7 +8,10 @@ class Feature(Layer) :
         return f"{self.schema}.{self.name}_view"
 
     def generate_view(self, name, schema) :
-        return [f"create or replace view {schema}.{name}_view as"]
+        return [
+            f"drop materialized view if exists {schema}.{name}_view cascade;",
+            f"create materialized view {schema}.{name}_view as"
+            ]
 
     def generate_select(self, name, schema) :
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
@@ -115,10 +118,10 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.sql["attributes"][name].extend([
-            f"{hash}.* AS {role}"
+            f"{hash}.id AS {role}"
         ])
 
-        self.add_group(hash, "*")
+        self.add_group(hash, "id")
 
         self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
@@ -135,9 +138,9 @@ class Feature(Layer) :
         ])
 
         self.sql["attributes"][name].extend([
-            f"jsonb_build_object('id', {hash_two}.id",
+            f"jsonb_agg(DISTINCT jsonb_build_object('id', {hash_two}.id",
             f"'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')')",
-            f"'href', {hash_two}.href) AS {role}"
+            f"'href', {hash_two}.href)) AS {role}"
         ])
 
     def add_association_object_many(self, schema, name, role, type):
@@ -181,7 +184,7 @@ class Feature(Layer) :
         hash_one = self.generate_letter_hash(str("master_join"))
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        formatted_attribute = [attr.format(alias=hash_two, role=str(self.name + "_" + role)) for attr in attribute]
+        formatted_attribute = [attr.format(alias=hash_two, name=name, role=role) for attr in attribute]
         self.sql["attributes"][name].extend(formatted_attribute)
 
         self.sql["left"].extend([

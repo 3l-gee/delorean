@@ -16,7 +16,7 @@ import jakarta.persistence.Index;
 @Entity
 @Table(
     name = "polygon_segment",
-    schema = "public",
+    schema = "geometry",
     indexes = {
         @Index(name = "idx_polygon_segment_order", columnList = "sequence"),
         @Index(name = "idx_polygon_segment_interpretation", columnList = "interpretation")

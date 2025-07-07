@@ -64,7 +64,7 @@ class Parsing :
                 in_degree[neighbor] -= 1
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
-   
+  
         # Merge with features
         feaures_layers = list(self.feature.values())
         for item in feaures_layers:
@@ -85,7 +85,7 @@ class Parsing :
             self._classify_file(file)
 
         for file in path_list:
-            self._process_file(file)
+            self._process_file(file)    
 
     def _classify_file(self, path):
         content = self._load_content(path)
@@ -139,7 +139,6 @@ class Parsing :
         # - Ignored 
         # - Feature
         # - Property
-
         if class_name[0] in self.ignore_set:
             return  # Ignore specific classes
 
@@ -158,7 +157,6 @@ class Parsing :
                 print("in self.feature but not in feature_parent_set or timeslice_parent_set :" + name + " / " + class_name[0])
 
         elif name in self.property.keys():
-
             if not parent_name:
                 pass
 
@@ -197,7 +195,7 @@ class Parsing :
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
-                layer.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
+                layer.add_association_object_one(schema, name, item.get("role"),item.get("col"))
             
             elif name in self.feature.keys():
                 schema = self.feature[name].get_schema()
@@ -234,6 +232,8 @@ class Parsing :
 
 
     def _process_object(self, property, content):
+
+
         for item in self.extract_embedded_columns_two(content):
             property.add_attributes_two(item.get("value"), item.get("nil"))
 

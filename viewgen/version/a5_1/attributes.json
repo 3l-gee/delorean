@@ -60,7 +60,7 @@
             },
             "many" : {
                 "attribute" : [
-                    "jsonb_agg({alias}.*) AS {role}"
+                    "jsonb_agg({alias}.*) AS annotation"
                 ], 
                 "group" : [
                     
@@ -98,10 +98,10 @@
             ],
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom",
-                    "ST_X({alias}.geom) AS longitude",
-                    "ST_Y({alias}.geom) AS latitude",
-                    "{alias}.horizontalAccuracy"
+                    "{alias}.geom AS {role}_geom",
+                    "ST_X({alias}.geom) AS {role}_longitude",
+                    "ST_Y({alias}.geom) AS {role}_latitude",
+                    "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
                 ], 
                 "group" : [
                     "{alias}.geom",
@@ -110,7 +110,7 @@
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -126,15 +126,17 @@
             ],
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "{alias}.geom AS {role}_geom",
+                    "{alias}.horizontalAccuracy as {role}_horizontalaccuracy"
                 ], 
                 "group" : [
-                    "{alias}.geom"
+                    "{alias}.geom",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -142,7 +144,7 @@
             }
         },
         "surface" : {
-            "path" :"",
+            "path" :"viewgen/version/a5_1/sql/SurfacePropertyType.sql",
             "type" : "SurfacePropertyType",
             "schema" : "geometry",
             "dependency" : [
@@ -150,15 +152,17 @@
             ],
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "{alias}.geom AS {role}_geom",
+                    "{alias}.horizontalAccuracy as {role}_horizontalaccuracy"
                 ], 
                 "group" : [
-                    "{alias}.geom"
+                    "{alias}.geom",
+                    "{alias}.horizontalAccuracy"
                 ]
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -174,14 +178,14 @@
             ],
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom",
-                    "ST_X({alias}.geom) AS longitude",
-                    "ST_Y({alias}.geom) AS latitude",
-                    "{alias}.elevation",
-                    "{alias}.geoidUndulation",
-                    "{alias}.verticalDatum",
-                    "{alias}.verticalAccuracy",
-                    "{alias}.horizontalAccuracy"
+                    "{alias}.geom AS {role}_geom",
+                    "ST_X({alias}.geom) AS {role}_longitude",
+                    "ST_Y({alias}.geom) AS {role}_latitude",
+                    "{alias}.elevation AS {role}_elevation",
+                    "{alias}.geoidUndulation AS {role}_geoidundulation",
+                    "{alias}.verticalDatum AS {role}_verticaldatum",
+                    "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                    "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
                 ], 
                 "group" : [
                     "{alias}.geom",
@@ -194,7 +198,7 @@
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -210,12 +214,12 @@
             ],         
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom",
-                    "{alias}.elevation",
-                    "{alias}.geoidUndulation",
-                    "{alias}.verticalDatum",
-                    "{alias}.verticalAccuracy",
-                    "{alias}.horizontalAccuracy"
+                    "{alias}.geom AS {role}_geom",
+                    "{alias}.elevation AS {role}_elevation",
+                    "{alias}.geoidUndulation AS {role}_geoidundulation",
+                    "{alias}.verticalDatum AS {role}_verticaldatum",
+                    "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                    "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
                 ], 
                 "group" : [
                     "{alias}.geom",
@@ -228,7 +232,7 @@
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -236,7 +240,7 @@
             }
         },
         "elevatedsurface" : {
-            "path" :"",
+            "path" :"viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
             "type" : "ElevatedSurfacePropertyType",
             "schema" : "geometry",
             "dependency" : [
@@ -244,12 +248,12 @@
             ],
             "one" : {
                 "attribute" : [
-                    "{alias}.geom AS geom",
-                    "{alias}.elevation",
-                    "{alias}.geoidUndulation",
-                    "{alias}.verticalDatum",
-                    "{alias}.verticalAccuracy",
-                    "{alias}.horizontalAccuracy"
+                    "{alias}.geom AS {role}_geom",
+                    "{alias}.elevation AS {role}_elevation",
+                    "{alias}.geoidUndulation AS {role}_geoidundulation",
+                    "{alias}.verticalDatum AS {role}_verticaldatum",
+                    "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                    "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
                 ], 
                 "group" : [
                     "{alias}.geom",
@@ -262,7 +266,7 @@
             },
             "many" : {
                 "attribute" : [
-                    "{alias}.geom AS geom"
+                    "ST_Collect({alias}.geom) AS {role}_geom"
                 ], 
                 "group" : [
                     
@@ -285,150 +289,35 @@
         "AbstractSegmentLegType",
         "AbstractTrafficSeparationServiceType"
     ],
-    "timeslice_parent": {
-        "AbstractAIXMTimeSliceType": [
-            "id",
-            "feature_status",
-            "interpretation",
-            "sequence_number",
-            "correction_number",
-            "valid_time_begin",
-            "valid_time_end",
-            "feature_lifetime_begin",
-            "feature_lifetime_end"
-        ]
-    },
-    "object_parent": {
-        "AbstractAIXMObjectType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractSurfaceContaminationType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractUsageConditionType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractDirectFlightType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractPropertiesWithScheduleType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractSegmentPointType": [
-            "id",
-            "identifier",
-            "identifier_code_space"
-        ]
-    },
-    "property_parent" :{
-        "AbstractAIXMPropertyType": [
-            "id"
-        ]
-    },
-    "parents_attribute": {
-        "AbstractAIXMFeatureType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractAirportHeliportProtectionAreaType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractGroundLightSystemType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractMarkingType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractRadarEquipmentType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractSurveillanceRadarType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractServiceType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractTrafficSeparationServiceType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractAirportGroundServiceType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractNavigationSystemCheckpointType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractNavaidEquipmentType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractProcedureType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractSegmentLegType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ],
-        "AbstractApproachLegType": [
-            "id",
-            "feature_status",
-            "identifier",
-            "identifier_code_space"
-        ]
-    },
-    "snowflake_attribute": {
-        "PointPropertyType": "geom",
-        "CurvePropertyType": "geom",
-        "SurfacePropertyType": "geom",
-        "ElevatedPointPropertyType": "geom",
-        "ElevatedCurvePropertyType": "geom",
-        "ElevatedSurfacePropertyType": "geom"
-    },
+    "timeslice_parent": [
+        "AbstractAIXMTimeSliceType"
+    ],
+    "object_parent": [
+        "AbstractAIXMObjectType",
+        "AbstractSurfaceContaminationType",
+        "AbstractUsageConditionType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+        "AbstractSegmentPointType"
+    ],
+    "property_parent" :[
+        "AbstractAIXMPropertyType"
+    ],
+    "parents_attribute": [
+        "AbstractAIXMFeatureType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractMarkingType",
+        "AbstractSurveillanceRadarType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType"
+    ],
     "ignore": [
         "UsageConditionPropertyType",
         "SurfaceContaminationPropertyType",
@@ -442,8 +331,6 @@
         "AbstractSurfaceContaminationType",
         "AbstractUsageConditionType",
         "AbstractDirectFlightType",
-        "AbstractPropertiesWithScheduleType",
-        "AbstractPropertiesWithScheduleType",
         "AbstractPropertiesWithScheduleType",
         "AbstractSegmentPointType",
         "AbstractAIXMTimeSliceType",

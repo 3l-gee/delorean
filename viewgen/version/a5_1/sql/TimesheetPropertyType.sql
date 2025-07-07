@@ -1,5 +1,7 @@
 -- Snowflake SQL : TimesheetPropertyType 
 
+DROP MATERIALIZED VIEW IF EXISTS shared.timesheet_view CASCADE;
+
 CREATE MATERIALIZED VIEW shared.timesheet_view AS
 SELECT
 shared.timesheet_pt.id,

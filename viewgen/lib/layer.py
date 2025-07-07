@@ -65,7 +65,7 @@ class Layer:
             order_clause
         ]
 
-        self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
+        self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";" + "\n" + f"create index on {self.schema}.{self.name}_view (id);"
 
     def load_sql(self, path):
         try:

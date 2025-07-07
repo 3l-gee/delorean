@@ -24,6 +24,22 @@ BEGIN
     END LOOP;
 END $$;
 
+DO $$
+DECLARE
+    constraint_record RECORD;
+BEGIN
+    FOR constraint_record IN
+        SELECT conname
+        FROM pg_constraint
+        WHERE conrelid = 'master_join_geometry'::regclass
+          AND contype = 'f'
+    LOOP
+        EXECUTE format('ALTER TABLE master_join_geometry DROP CONSTRAINT %I', constraint_record.conname);
+    END LOOP;
+END $$;
+
 -- Add indexes to speed up lookups on the master_join table.
 CREATE INDEX IF NOT EXISTS idx_master_join_source_id ON master_join(source_id);
 CREATE INDEX IF NOT EXISTS idx_master_join_target_id ON master_join(target_id);
+CREATE INDEX IF NOT EXISTS idx_master_join_geometry_source_id ON master_join_geometry(source_id);
+CREATE INDEX IF NOT EXISTS idx_master_join_geometry_target_id ON master_join_geometry(target_id);

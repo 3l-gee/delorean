@@ -1,4 +1,6 @@
--- Snowflake SQL : ElevatedCurvePropertyType 
+-- Snowflake SQL : ElevatedCurvePropertyType
+
+DROP MATERIALIZED VIEW IF EXISTS geometry.elevatedcurve_view CASCADE;
 
 CREATE MATERIALIZED VIEW geometry.elevatedcurve_view AS
 WITH 
@@ -10,8 +12,8 @@ center AS (
 		start_angle,
 		end_angle,
 		(end_angle - start_angle) / 100 AS step_size
-    FROM public.linestring_segment 
-	WHERE public.linestring_segment.interpretation = 2
+    FROM geometry.linestring_segment 
+	WHERE geometry.linestring_segment.interpretation = 2
 	UNION ALL 
 	SELECT 
 		id, 
@@ -20,8 +22,8 @@ center AS (
 		0 as start_angle,
 		2*PI() as end_angle,
 		(0 - 2*PI()) / 100 AS step_size
-    FROM public.linestring_segment 
-	WHERE public.linestring_segment.interpretation = 3
+    FROM geometry.linestring_segment 
+	WHERE geometry.linestring_segment.interpretation = 3
 ),
 interpolated_points AS (
     SELECT 
@@ -43,17 +45,17 @@ segment_union AS (
 		id, 
 		ST_ReducePrecision(linestring,0.000000000000001) AS geom
     FROM
-		public.linestring_segment 
+		geometry.linestring_segment 
     WHERE 
-		public.linestring_segment.interpretation = 0
+		geometry.linestring_segment.interpretation = 0
     UNION ALL 
     SELECT 
 		id, 
 		ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 1000)::geometry AS geom
     FROM 
-		public.linestring_segment 
+		geometry.linestring_segment 
     WHERE 
-		public.linestring_segment.interpretation = 1
+		geometry.linestring_segment.interpretation = 1
     UNION ALL 
     SELECT 
 		id, 
@@ -83,9 +85,9 @@ merged_segments AS (
     FROM 
         geometry.elevated_curve_pt
     INNER JOIN 
-        geometry.elevated_curve_pt_linestring_segment ON geometry.elevated_curve_pt.id = geometry.elevated_curve_pt_linestring_segment.elevatedcurvepropertytype_id
+		master_join_geometry ON  geometry.elevated_curve_pt.id = master_join_geometry.source_id 
     INNER JOIN 
-        segment_union ON geometry.elevated_curve_pt_linestring_segment.segments_id = segment_union.id
+        segment_union ON master_join_geometry.target_id  = segment_union.id
     GROUP BY geometry.elevated_curve_pt.id
 )
 SELECT 

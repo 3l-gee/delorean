@@ -3,6 +3,8 @@
 CREATE INDEX ON notes.note_pt (note_id);
 CREATE INDEX ON notes.note (id);
 
+DROP MATERIALIZED VIEW IF EXISTS notes.note_view CASCADE;
+
 CREATE MATERIALIZED VIEW notes.note_view AS
 SELECT
     notes.note_pt.id,

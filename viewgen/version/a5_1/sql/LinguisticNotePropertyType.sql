@@ -3,6 +3,8 @@
 CREATE INDEX ON notes.linguisticnote_pt (linguisticnote_id);
 CREATE INDEX ON notes.linguisticnote (id);
 
+DROP MATERIALIZED VIEW IF EXISTS notes.linguisticnote_view CASCADE;
+
 CREATE MATERIALIZED VIEW notes.linguisticnote_view AS
 SELECT 
     notes.linguisticnote_pt.id,

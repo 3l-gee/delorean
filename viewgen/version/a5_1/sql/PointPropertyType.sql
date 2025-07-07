@@ -1,5 +1,7 @@
 -- Snowflake SQL : PointPropertyType
 
+DROP MATERIALIZED VIEW IF EXISTS geometry.point_view CASCADE;
+
 CREATE MATERIALIZED VIEW geometry.point_view AS
 SELECT
     id, 
