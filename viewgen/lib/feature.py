@@ -141,7 +141,7 @@ class Feature(Layer) :
             f"  )) as lat_{role}"
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id",
-            f"  where {hash_one}.source_id = {self.schema}.{self.name}.id",
+            f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as lat_{role} on TRUE"
         ])
 
@@ -173,7 +173,7 @@ class Feature(Layer) :
             f"  select jsonb_agg(DISTINCT {hash_two}.id) as lat_{role}",
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id",
-            f"  where {hash_one}.source_id = {self.schema}.{self.name}.id",
+            f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as lat_{role} on TRUE"
         ])
 
@@ -234,7 +234,7 @@ class Feature(Layer) :
         self.sql["lateral"].extend([
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
-            f"  where {hash_one}.source_id = {self.schema}.{self.name}.id",
+            f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as lat_{role} on TRUE"
         ])
 

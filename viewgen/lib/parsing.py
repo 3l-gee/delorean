@@ -66,11 +66,11 @@ class Parsing :
                     queue.append(neighbor)
   
         # Merge with features
-        # feaures_layers = list(self.feature.values())
-        # for item in feaures_layers:
-        #     item.generate_sql()
-        #     dependencies = item.get_dependecy()
-        #     sorted_layers.append((item, dependencies))
+        feaures_layers = list(self.feature.values())
+        for item in feaures_layers:
+            item.generate_sql()
+            dependencies = item.get_dependecy()
+            sorted_layers.append((item, dependencies))
 
         return sorted_layers
 
