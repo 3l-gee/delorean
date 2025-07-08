@@ -66,11 +66,11 @@ class Parsing :
                     queue.append(neighbor)
   
         # Merge with features
-        feaures_layers = list(self.feature.values())
-        for item in feaures_layers:
-            item.generate_sql()
-            dependencies = item.get_dependecy()
-            sorted_layers.append((item, dependencies))
+        # feaures_layers = list(self.feature.values())
+        # for item in feaures_layers:
+        #     item.generate_sql()
+        #     dependencies = item.get_dependecy()
+        #     sorted_layers.append((item, dependencies))
 
         return sorted_layers
 
@@ -216,8 +216,9 @@ class Parsing :
             
             elif name in self.snowflake_set.keys():
                 schema = self.snowflake_set[name].get("schema")
+                argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                layer.add_association_snowflake_many(schema, name, attribute,item.get("col"), item.get("role"))
+                layer.add_association_snowflake_many(schema, name, argument, attribute, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -279,8 +280,9 @@ class Parsing :
 
             elif name in self.snowflake_set.keys():
                 schema = self.snowflake_set[name].get("schema")
+                argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                property.add_association_snowflake_many(schema, name, attribute,item.get("col"), item.get("role"))
+                property.add_association_snowflake_many(schema, name, argument, attribute, item.get("col"), item.get("role"))
 
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()

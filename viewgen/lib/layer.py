@@ -18,6 +18,7 @@ class Layer:
             "select": self.generate_select(name, schema),
             "inner": self.generate_inner(name, schema),
             "left": self.generate_left(name, schema),
+            "lateral" : [],
             "where": self.generate_where(name, schema),
             "group": self.generate_group(name, schema),
             "order": self.generate_order(name, schema)
@@ -49,6 +50,7 @@ class Layer:
         attributes_sql = ",\n    ".join(attributes)
         inner_sql = "\n".join(self.sql["inner"])
         left_sql = "\n".join(self.sql["left"])
+        lateral_sql = "\n".join(self.sql["lateral"])
         where_clause = "where " + "\n  and ".join(self.sql["where"]) if self.sql["where"] else ""
         group_clause = "group by\n    " + ",\n    ".join(self.sql["group"]) if self.sql["group"] else ""
         order_clause = ", ".join(self.sql["order"])
@@ -60,8 +62,9 @@ class Layer:
             f"    {attributes_sql}" if attributes_sql else "",
             inner_sql,
             left_sql,
+            lateral_sql,
             where_clause,
-            group_clause,
+            # group_clause,
             order_clause
         ]
 

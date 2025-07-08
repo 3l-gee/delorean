@@ -14,8 +14,11 @@
             },
             "many" : {
                 "attribute" : [
-                    "jsonb_agg(DISTINCT {alias}.*) AS timeinterval"
+                    "lat_{role}.timeinterval as timeinterval"
                 ], 
+                "argument" : [
+                    "jsonb_agg(DISTINCT {alias}.*) AS timeinterval"
+                ],
                 "group" : [
                     
                 ]
@@ -38,7 +41,11 @@
             },
             "many" : {
                 "attribute" : [
+
                 ], 
+                "argument" : [
+
+                ],
                 "group" : [
                     
                 ]
@@ -61,8 +68,11 @@
             },
             "many" : {
                 "attribute" : [
-                    "jsonb_agg(DISTINCT {alias}.*) AS annotation"
+                    "lat_{role}.annotation as annotation"
                 ], 
+                "argument" : [
+                    "jsonb_agg(DISTINCT {alias}.*) AS annotation"
+                ],
                 "group" : [
                     
                 ]
@@ -84,9 +94,13 @@
             },
             "many" : {
                 "attribute" : [
+
                 ], 
+                "argument" : [
+
+                ],
                 "group" : [
-                    
+
                 ]
             }
         },
@@ -100,8 +114,8 @@
             "one" : {
                 "attribute" : [
                     "{alias}.geom AS {role}_geom",
-                    "ST_X({alias}.geom) AS {role}_longitude",
-                    "ST_Y({alias}.geom) AS {role}_latitude",
+                    "{alias}.longitude AS {role}_longitude",
+                    "{alias}.latitude AS {role}_latitude",
                     "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
                 ], 
                 "group" : [
@@ -111,8 +125,18 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
+                "argument" : [
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'longitude', {alias}.longitude,",
+                    "  'latitude', {alias}.latitude,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
+                ],
                 "group" : [
                     
                 ]
@@ -137,8 +161,16 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
+                "argument" : [
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
+                ],
                 "group" : [
                     
                 ]
@@ -163,8 +195,11 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
+
                 ], 
+                "argument" : [
+
+                ],
                 "group" : [
                     
                 ]
@@ -180,8 +215,8 @@
             "one" : {
                 "attribute" : [
                     "{alias}.geom AS {role}_geom",
-                    "ST_X({alias}.geom) AS {role}_longitude",
-                    "ST_Y({alias}.geom) AS {role}_latitude",
+                    "{alias}.longitude AS {role}_longitude",
+                    "{alias}.latitude AS {role}_latitude",
                     "{alias}.elevation AS {role}_elevation",
                     "{alias}.geoidUndulation AS {role}_geoidundulation",
                     "{alias}.verticalDatum AS {role}_verticaldatum",
@@ -199,8 +234,22 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
+                "argument" : [
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'longitude', {alias}.longitude,",
+                    "  'latitude', {alias}.latitude,",
+                    "  'elevation', {alias}.elevation,",
+                    "  'geoidUndulation', {alias}.geoidUndulation,",
+                    "  'verticalDatum', {alias}.verticalDatum,",
+                    "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
+                ],
                 "group" : [
                     
                 ]
@@ -233,8 +282,20 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
+                "argument" : [
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'elevation', {alias}.elevation,",
+                    "  'geoidUndulation', {alias}.geoidUndulation,",
+                    "  'verticalDatum', {alias}.verticalDatum,",
+                    "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
+                ],
                 "group" : [
                     
                 ]
@@ -267,8 +328,10 @@
             },
             "many" : {
                 "attribute" : [
-                    "ST_Collect(DISTINCT {alias}.geom) AS {role}_geom"
                 ], 
+                "argument" : [
+
+                ],
                 "group" : [
                     
                 ]

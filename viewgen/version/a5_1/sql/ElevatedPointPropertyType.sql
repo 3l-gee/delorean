@@ -6,6 +6,8 @@ CREATE MATERIALIZED VIEW geometry.elevatedpoint_view AS
 SELECT 
     id, 
     point as geom,
+	ST_X(point) AS longitude,
+	ST_Y(point) AS latitude,
 	COALESCE(elevation || ' ' || elevation_uom, '(' || elevation_nilreason || ')') AS elevation,
 	COALESCE(geoidundulation || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS geoidUndulation,
 	COALESCE(verticaldatum || ' ' || geoidundulation_uom, '(' || geoidundulation_nilreason || ')') AS verticalDatum,
