@@ -50,7 +50,7 @@ class Parsing :
 
         # Queue for views with no dependencies
         queue = deque([name for name in view_map if in_degree[name] == 0])
-        sorted_layers = []
+        sorted_layers = {}
 
         while queue:
 
@@ -58,19 +58,24 @@ class Parsing :
             layer = view_map[name]
             dependencies = layer.get_dependecy()
 
-            sorted_layers.append((layer, dependencies))
+            sorted_layers[layer.get_type()] = ((layer, dependencies))
 
             for neighbor in graph[name]:
                 in_degree[neighbor] -= 1
                 if in_degree[neighbor] == 0:
                     queue.append(neighbor)
+
+        for prop in self.property.values():
+            if prop.get_type() not in sorted_layers:
+                print(" * : ", prop.get_type() + "Missing in sorted_layers")
   
         # Merge with features
+        sorted_layers = {}
         feaures_layers = list(self.feature.values())
         for item in feaures_layers:
             item.generate_sql()
             dependencies = item.get_dependecy()
-            sorted_layers.append((item, dependencies))
+            sorted_layers[item.get_type()] = (item, dependencies)
 
         return sorted_layers
 

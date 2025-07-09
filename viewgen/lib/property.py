@@ -66,7 +66,7 @@ class Property(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.sql["attributes"][name].extend([
-            f"{hash}.id AS {role}"
+            f"to_jsonb({hash}.id) AS {role}"
         ])
         
         self.add_group(hash, "id")

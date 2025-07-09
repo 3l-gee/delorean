@@ -50,7 +50,7 @@ class InteractionMachinery:
 
     def export_sql(self):
         res = ""
-        for layer, deps in self.layer:
+        for layer, deps in self.layer.values():
             res += f"-- {layer.get_type()}\n" + f"-- {deps}\n" + layer.get_sql() + "\n"
 
         # Ensure the viewgen folder exists

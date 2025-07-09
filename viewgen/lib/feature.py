@@ -118,7 +118,7 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.sql["attributes"][name].extend([
-            f"{hash}.id AS {role}"
+            f"to_jsonb({hash}.*) AS {role}"
         ])
 
         self.add_group(hash, "id")
@@ -170,9 +170,9 @@ class Feature(Layer) :
 
         self.sql["lateral"].extend([
             f"left join lateral(",
-            f"  select jsonb_agg(DISTINCT {hash_two}.id) as lat_{role}",
+            f"  select jsonb_agg(DISTINCT {hash_two}.*) as lat_{role}",
             f"  from master_join {hash_one}",
-            f"  join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id",
+            f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as lat_{role} on TRUE"
         ])
