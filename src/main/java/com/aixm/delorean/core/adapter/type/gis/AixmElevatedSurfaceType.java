@@ -15,18 +15,16 @@ import jakarta.persistence.OneToMany;
 public class AixmElevatedSurfaceType extends AixmElevatedGeometryType {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "elevatedsurface_exterior", 
-        schema = "geometry",
-        joinColumns ={@JoinColumn(name = "elevatedsurfacepropertytype_id")},
-        inverseJoinColumns = {@JoinColumn(name = "exteriorlinestring_id")}
+    @JoinTable(name = "master_join_geometry", 
+        joinColumns ={@JoinColumn(name = "source_id")},
+        inverseJoinColumns = {@JoinColumn(name = "target_id")}
     )
     protected List<PolygonSegment> exteriorlinestring;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "elevatedsurface_interior", 
-        schema = "geometry",
-        joinColumns ={@JoinColumn(name = "elevatedsurfacepropertytype_id")},
-        inverseJoinColumns = {@JoinColumn(name = "interiorlinestring_id")}
+    @JoinTable(name = "master_join_geometry", 
+        joinColumns ={@JoinColumn(name = "source_id")},
+        inverseJoinColumns = {@JoinColumn(name = "target_id")}
     )
     protected List<PolygonSegment> interiorlinestring;
 

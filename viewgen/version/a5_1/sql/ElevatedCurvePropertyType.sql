@@ -101,3 +101,4 @@ SELECT
 FROM merged_segments;
 
 CREATE INDEX ON geometry.elevatedcurve_view (id);
+CREATE INDEX ON geometry.elevatedcurve_view USING GIST (geom);

@@ -70,7 +70,6 @@ class Parsing :
                 print(" * : ", prop.get_type() + "Missing in sorted_layers")
   
         # Merge with features
-        sorted_layers = {}
         feaures_layers = list(self.feature.values())
         for item in feaures_layers:
             item.generate_sql()

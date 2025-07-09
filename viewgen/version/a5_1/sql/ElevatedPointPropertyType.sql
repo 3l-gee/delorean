@@ -16,3 +16,4 @@ SELECT
 FROM geometry.elevated_point_pt;
 
 CREATE INDEX ON geometry.elevatedpoint_view (id);
+CREATE INDEX ON geometry.elevatedpoint_view USING GIST (geom);

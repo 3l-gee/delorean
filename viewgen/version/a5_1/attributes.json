@@ -195,9 +195,15 @@
             },
             "many" : {
                 "attribute" : [
-
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
                 "argument" : [
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
 
                 ],
                 "group" : [
@@ -328,9 +334,19 @@
             },
             "many" : {
                 "attribute" : [
+                    "lat_{role}.geom as {role}_geom",
+                    "lat_{role}.attr as {role}"
                 ], 
                 "argument" : [
-
+                    "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                    "jsonb_agg(DISTINCT jsonb_build_object(",
+                    "  'id', {alias}.id,",
+                    "  'elevation', {alias}.elevation,",
+                    "  'geoidUndulation', {alias}.geoidUndulation,",
+                    "  'verticalDatum', {alias}.verticalDatum,",
+                    "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                    "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                    ")) AS attr"
                 ],
                 "group" : [
                     

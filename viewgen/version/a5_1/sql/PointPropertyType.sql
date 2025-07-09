@@ -12,3 +12,4 @@ SELECT
 FROM geometry.point_pt;
 
 CREATE INDEX ON geometry.point_view (id);
+CREATE INDEX ON geometry.point_view USING GIST (geom);

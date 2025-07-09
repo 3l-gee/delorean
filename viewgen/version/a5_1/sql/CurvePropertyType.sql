@@ -86,3 +86,4 @@ SELECT
 FROM merged_segments;
 
 CREATE INDEX ON geometry.curve_view (id);
+CREATE INDEX ON geometry.curve_view USING GIST (geom);

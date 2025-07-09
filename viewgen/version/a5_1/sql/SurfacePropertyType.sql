@@ -1,6 +1,7 @@
 -- -- Snowflake SQL : SurfacePropertyType
 
--- CREATE MATERIALIZED VIEW partial_surface_view AS
+DROP MATERIALIZED VIEW IF EXISTS partial_surface_view CASCADE;
+CREATE MATERIALIZED VIEW partial_surface_view AS
 WITH  
 segment_ref AS(
 	SELECT 
@@ -335,9 +336,9 @@ output AS (
 		member
 )
 SELECT 
+    (row_number() OVER ())::integer AS row,
 	ST_GeometryType(geom),
 	output.surf_id, 
-	to_jsonb(output.surf_id) AS surf_id,
 	to_jsonb(output.seg_id) AS seg_id,
 	output.part,
 	output.increment,
@@ -347,6 +348,12 @@ SELECT
 	output.points
 FROM
 	output;
+
+CREATE INDEX ON partial_surface_view (surf_id);
+CREATE INDEX ON partial_surface_view USING GIST (geom);
+CREATE INDEX ON partial_surface_view USING GIST (points);
+
+DROP MATERIALIZED VIEW IF EXISTS geometry.surface_view CASCADE;
 
 -- R1 : Simple feature, closed
 -- R2 : Simple feature, unclosed
@@ -412,33 +419,28 @@ g1_segment AS (
 		AND
 		partial_surface_view.interpretation != 4
 	ORDER BY
-		id, 
-		xml_id, 
+		surf_id, 
+		seg_id, 
 		part,
 		increment
 ),
 g2_segment AS (
 	SELECT
-		geoborder.id, 
-		geoborder.xml_id,
-		geoborder.curve_xml_id,
+		geoborder.surf_id, 
+		geoborder.seg_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
 		geoborder.total_count,
 		geoborder.geom AS geom,
 		Null::geometry AS  start_segment,
-		Null::geometry AS end_segment,
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		Null::geometry AS end_segment
 	FROM 
 		partial_surface_view geoborder
 	JOIN
 		partial_surface_view before
 	ON 
-        before.xml_id = geoborder.xml_id
+        before.surf_id = geoborder.surf_id
 		AND
 		before.part = geoborder.part
 	    AND (
@@ -448,7 +450,7 @@ g2_segment AS (
 	JOIN
 		partial_surface_view after
 	ON 
-        after.xml_id = geoborder.xml_id
+        after.surf_id = geoborder.surf_id
 		AND
 		after.part = geoborder.part
 	    AND (
@@ -464,9 +466,8 @@ g2_segment AS (
 		AND 
 		after.interpretation = 4
 	GROUP BY
-		geoborder.id, 
-		geoborder.xml_id, 
-		geoborder.curve_xml_id,
+		geoborder.surf_id, 
+		geoborder.seg_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -475,16 +476,11 @@ g2_segment AS (
 		geoborder.total_count,
 		before.increment,
 		after.increment,
-		geoborder.geom, 
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		geoborder.geom
 	UNION ALL
 	SELECT
-		geoborder.id, 
-		geoborder.xml_id,
-		geoborder.curve_xml_id,
+		geoborder.surf_id,
+		geoborder.seg_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -499,17 +495,13 @@ g2_segment AS (
 		  )
 		)).geom AS geom,
 		ST_ShortestLine(ST_Collect(geoborder.points), ST_EndPoint(before.geom)) AS  start_segment,
-		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment,
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment
 	FROM 
 		partial_surface_view geoborder
 	JOIN
 		partial_surface_view before
 	ON 
-        before.xml_id = geoborder.xml_id
+        before.surf_id = geoborder.surf_id
 		AND
 		before.part = geoborder.part
 	    AND (
@@ -519,7 +511,7 @@ g2_segment AS (
 	JOIN
 		partial_surface_view after
 	ON 
-        after.xml_id = geoborder.xml_id
+        after.surf_id = geoborder.surf_id
 		AND
 		after.part = geoborder.part
 	    AND (
@@ -535,9 +527,8 @@ g2_segment AS (
 		AND 
 		after.interpretation != 4
 	GROUP BY
-		geoborder.id, 
-		geoborder.xml_id, 
-		geoborder.curve_xml_id,
+		geoborder.surf_id, 
+		geoborder.seg_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -546,16 +537,11 @@ g2_segment AS (
 		geoborder.total_count,
 		before.increment,
 		after.increment,
-		geoborder.geom, 
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		geoborder.geom
 	UNION ALL
 	SELECT
-		geoborder.id, 
-		geoborder.xml_id,
-		geoborder.curve_xml_id,
+		geoborder.surf_id,
+		geoborder.seg_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -567,17 +553,13 @@ g2_segment AS (
 		  )
 		).geom AS geom,
 		ST_ShortestLine(ST_Collect(geoborder.points), ST_EndPoint(before.geom)) AS  start_segment,
-		Null::geometry AS end_segment,
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		Null::geometry AS end_segment
 	FROM 
 		partial_surface_view geoborder
 	JOIN
 		partial_surface_view before
 	ON 
-        before.xml_id = geoborder.xml_id
+        before.surf_id = geoborder.surf_id
 		AND
 		before.part = geoborder.part
 	    AND (
@@ -587,7 +569,7 @@ g2_segment AS (
 	JOIN
 		partial_surface_view after
 	ON 
-        after.xml_id = geoborder.xml_id
+        after.surf_id = geoborder.surf_id
 		AND
 		after.part = geoborder.part
 	    AND (
@@ -603,9 +585,8 @@ g2_segment AS (
 		AND 
 		after.interpretation = 4
 	GROUP BY
-		geoborder.id, 
-		geoborder.xml_id, 
-		geoborder.curve_xml_id,
+		geoborder.surf_id, 
+		geoborder.seg_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -614,16 +595,11 @@ g2_segment AS (
 		geoborder.total_count,
 		before.increment,
 		after.increment,
-		geoborder.geom, 
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		geoborder.geom
 	UNION ALL
 	SELECT
-		geoborder.id, 
-		geoborder.xml_id,
-		geoborder.curve_xml_id,
+		geoborder.surf_id,
+		geoborder.seg_id,
 		geoborder.part,
 		geoborder.increment,
 		geoborder.interpretation,
@@ -635,17 +611,13 @@ g2_segment AS (
 		  )
 		).geom AS geom,
 		Null::geometry AS  start_segment,
-		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment,
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		ST_ShortestLine(ST_Collect(geoborder.points), ST_StartPoint(after.geom)) AS end_segment
 	FROM 
 		partial_surface_view geoborder
 	JOIN
 		partial_surface_view before
 	ON 
-        before.xml_id = geoborder.xml_id
+        before.surf_id = geoborder.surf_id
 		AND
 		before.part = geoborder.part
 	    AND (
@@ -655,7 +627,7 @@ g2_segment AS (
 	JOIN
 		partial_surface_view after
 	ON 
-        after.xml_id = geoborder.xml_id
+        after.surf_id = geoborder.surf_id
 		AND
 		after.part = geoborder.part
 	    AND (
@@ -671,9 +643,8 @@ g2_segment AS (
 		AND 
 		after.interpretation != 4
 	GROUP BY
-		geoborder.id, 
-		geoborder.xml_id,
-		geoborder.curve_xml_id,
+		geoborder.surf_id,
+		geoborder.seg_id,
 		geoborder.part,
 		before.geom, 
 		after.geom,
@@ -682,27 +653,18 @@ g2_segment AS (
 		geoborder.total_count,
 		before.increment,
 		after.increment,
-		geoborder.geom, 
-		geoborder.horizontalaccuracy, 
-		geoborder.horizontalaccuracy_uom, 
-		geoborder.horizontalaccuracy_nilreason, 
-		geoborder.nilreason
+		geoborder.geom
 	UNION ALL
 	SELECT
-		partial_surface_view.id, 
-		partial_surface_view.xml_id,
-		partial_surface_view.curve_xml_id,
+		partial_surface_view.surf_id, 
+		partial_surface_view.seg_id,
 		partial_surface_view.part,
 		partial_surface_view.increment,
 		partial_surface_view.interpretation,
 		partial_surface_view.total_count,
 		partial_surface_view.geom,
 		Null::geometry AS start_segment,
-		Null::geometry AS end_segment,
-		partial_surface_view.horizontalaccuracy, 
-		partial_surface_view.horizontalaccuracy_uom, 
-		partial_surface_view.horizontalaccuracy_nilreason, 
-		partial_surface_view.nilreason
+		Null::geometry AS end_segment
 	FROM 
 		partial_surface_view
 	WHERE 
@@ -710,29 +672,24 @@ g2_segment AS (
 		AND
 		partial_surface_view.interpretation != 4
 	ORDER BY
-		id, 
-		xml_id, 
+		surf_id, 
+		seg_id, 
 		part,
 		increment
 ),
 g2_segment_filtered AS (
 	SELECT 
-		curr.id, 
-		curr.xml_id,
-		curr.curve_xml_id,
+		curr.surf_id,
+		curr.seg_id,
 		curr.part,
 		curr.increment,
-		curr.geom AS geom,
-		curr.horizontalaccuracy, 
-		curr.horizontalaccuracy_uom, 
-		curr.horizontalaccuracy_nilreason, 
-		curr.nilreason
+		curr.geom AS geom
 	FROM
 		g2_segment curr
 	JOIN
 		g2_segment before
 	ON 
-        before.xml_id = curr.xml_id
+        before.surf_id = curr.surf_id
 		AND
 		before.part = curr.part
 	    AND (
@@ -742,7 +699,7 @@ g2_segment_filtered AS (
 	JOIN	
 		g2_segment after
 	ON 
-        after.xml_id = curr.xml_id
+        after.surf_id = curr.surf_id
 		AND
 		after.part = curr.part
 	    AND (
@@ -761,22 +718,17 @@ g2_segment_filtered AS (
 		after.interpretation = 4
 	UNION ALL
 	SELECT 
-		curr.id, 
-		curr.xml_id,
-		curr.curve_xml_id,
+		curr.surf_id,
+		curr.seg_id,
 		curr.part,
 		curr.increment,
-		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.start_segment])) AS geom,
-		curr.horizontalaccuracy, 
-		curr.horizontalaccuracy_uom, 
-		curr.horizontalaccuracy_nilreason, 
-		curr.nilreason
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.start_segment])) AS geom
 	FROM
 		g2_segment curr
 	JOIN
 		g2_segment before
 	ON 
-        before.xml_id = curr.xml_id
+        before.surf_id = curr.surf_id
 		AND
 		before.part = curr.part
 	    AND (
@@ -786,7 +738,7 @@ g2_segment_filtered AS (
 	JOIN	
 		g2_segment after
 	ON 
-        after.xml_id = curr.xml_id
+        after.surf_id = curr.surf_id
 		AND
 		after.part = curr.part
 	    AND (
@@ -805,22 +757,17 @@ g2_segment_filtered AS (
 		after.interpretation = 4
 	UNION ALL
 	SELECT 
-		curr.id, 
-		curr.xml_id,
-		curr.curve_xml_id,
+		curr.surf_id,
+		curr.seg_id,
 		curr.part,
 		curr.increment,
-		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment])) AS geom,
-		curr.horizontalaccuracy, 
-		curr.horizontalaccuracy_uom, 
-		curr.horizontalaccuracy_nilreason, 
-		curr.nilreason
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment])) AS geom
 	FROM
 		g2_segment curr
 	JOIN
 		g2_segment before
 	ON 
-        before.xml_id = curr.xml_id
+        before.surf_id = curr.surf_id
 		AND
 		before.part = curr.part
 	    AND (
@@ -830,7 +777,7 @@ g2_segment_filtered AS (
 	JOIN	
 		g2_segment after
 	ON 
-        after.xml_id = curr.xml_id
+        after.surf_id = curr.surf_id
 		AND
 		after.part = curr.part
 	    AND (
@@ -849,22 +796,17 @@ g2_segment_filtered AS (
 		after.interpretation != 4
 	UNION ALL
 	SELECT 
-		curr.id, 
-		curr.xml_id,
-		curr.curve_xml_id,
+		curr.surf_id,
+		curr.seg_id,
 		curr.part,
 		curr.increment,
-		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment, curr.start_segment])) AS geom,
-		curr.horizontalaccuracy, 
-		curr.horizontalaccuracy_uom, 
-		curr.horizontalaccuracy_nilreason, 
-		curr.nilreason
+		ST_LineMerge(ST_Collect(ARRAY[curr.geom, curr.end_segment, curr.start_segment])) AS geom
 	FROM
 		g2_segment curr
 	JOIN
 		g2_segment before
 	ON 
-        before.xml_id = curr.xml_id
+        before.surf_id = curr.surf_id
 		AND
 		before.part = curr.part
 	    AND (
@@ -874,7 +816,7 @@ g2_segment_filtered AS (
 	JOIN	
 	g2_segment after
 	ON 
-        after.xml_id = curr.xml_id
+        after.surf_id = curr.surf_id
 		AND
 		after.part = curr.part
 	    AND (
@@ -893,37 +835,26 @@ g2_segment_filtered AS (
 		after.interpretation != 4
 	UNION ALL
 	SELECT
-		g2_segment.id, 
-		g2_segment.xml_id,
-		g2_segment.curve_xml_id,
+		g2_segment.surf_id,
+		g2_segment.seg_id,
 		g2_segment.part,
 		g2_segment.increment,
-		g2_segment.geom,
-		g2_segment.horizontalaccuracy, 
-		g2_segment.horizontalaccuracy_uom, 
-		g2_segment.horizontalaccuracy_nilreason, 
-		g2_segment.nilreason
+		g2_segment.geom
 	FROM 
 		g2_segment
 	WHERE 
 		g2_segment.interpretation != 4
 	ORDER BY
-		id, 
-		xml_id, 
+		surf_id, 
 		part,
 		increment
 ),
 r1 AS (
 	SELECT
-		partial_surface_view.id,
-		partial_surface_view.xml_id,
-		partial_surface_view.curve_xml_id,
+		partial_surface_view.surf_id,
+		partial_surface_view.seg_id,
 		partial_surface_view.part,
-		partial_surface_view.geom,
-		partial_surface_view.horizontalaccuracy,
-		partial_surface_view.horizontalaccuracy_uom,
-		partial_surface_view.horizontalaccuracy_nilreason,
-		partial_surface_view.nilreason
+		partial_surface_view.geom
 	FROM
 		partial_surface_view
 	WHERE
@@ -935,15 +866,10 @@ r1 AS (
 ),
 r2 AS (
 	SELECT
-		partial_surface_view.id,
-		partial_surface_view.xml_id,
-		partial_surface_view.curve_xml_id,
+		partial_surface_view.surf_id,
+		partial_surface_view.seg_id,
 		partial_surface_view.part,
-		ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom)) AS geom,
-		partial_surface_view.horizontalaccuracy,
-		partial_surface_view.horizontalaccuracy_uom,
-		partial_surface_view.horizontalaccuracy_nilreason,
-		partial_surface_view.nilreason
+		ST_AddPoint(partial_surface_view.geom, ST_StartPoint(partial_surface_view.geom)) AS geom
 	FROM
 		partial_surface_view
 	WHERE
@@ -955,21 +881,15 @@ r2 AS (
 ),
 g1 AS (
 	SELECT 
-		ring.id,
-		ring.xml_id || geoborder.xml_id AS xml_id,
-		ring.curve_xml_id || geoborder.curve_xml_id AS curve_xml_id,
+		ring.surf_id,
 		ring.part,
-		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
-		ring.horizontalaccuracy,
-		ring.horizontalaccuracy_uom,
-		ring.horizontalaccuracy_nilreason,
-		ring.nilreason
+		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment])) AS geom
 	FROM
 	g1_segment ring
 	JOIN
 	g1_segment geoborder
 	ON 
-		ring.xml_id = geoborder.xml_id
+		ring.surf_id = geoborder.surf_id
 		AND
 		geoborder.part = geoborder.part
 		AND 
@@ -984,21 +904,15 @@ g1 AS (
 		ST_NPoints(ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.geom, geoborder.end_segment, geoborder.start_segment]))) >= 4
 	UNION ALL
 	SELECT DISTINCT 
-		ring.id,
-		ring.xml_id || geoborder.xml_id AS xml_id,
-		ring.curve_xml_id || geoborder.curve_xml_id AS curve_xml_id,
+		ring.surf_id,
 		ring.part,
-		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.end_segment, geoborder.start_segment])) AS geom,
-		ring.horizontalaccuracy,
-		ring.horizontalaccuracy_uom,
-		ring.horizontalaccuracy_nilreason,
-		ring.nilreason
+		ST_LineMerge(ST_Collect(ARRAY[ring.geom, geoborder.end_segment, geoborder.start_segment])) AS geom
 	FROM
 	g1_segment ring
 	JOIN
 	g1_segment geoborder
 	ON 
-		ring.xml_id = geoborder.xml_id
+		ring.surf_id = geoborder.surf_id
 		AND
 		geoborder.part = geoborder.part
 		AND 
@@ -1014,20 +928,13 @@ g1 AS (
 ),
 g2 AS (	
 	SELECT 
-		MIN(g2_segment_filtered.id) AS id,
-		JSONB_AGG(g2_segment_filtered.xml_id) AS xml_id,
-		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
+		g2_segment_filtered.surf_id,
 		MIN(g2_segment_filtered.part) AS part,
-		ST_LineMerge(ST_Collect(g2_segment_filtered.geom)) AS geom,
-		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
-		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
-		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
-		MIN(g2_segment_filtered.nilreason) AS nilreason
+		ST_LineMerge(ST_Collect(g2_segment_filtered.geom)) AS geom
 	FROM
 		g2_segment_filtered
 	GROUP BY
-		g2_segment_filtered.id,
-		g2_segment_filtered.xml_id,
+		g2_segment_filtered.surf_id,
 		g2_segment_filtered.part
 	HAVING
 		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = true
@@ -1037,20 +944,13 @@ g2 AS (
 		ST_NPoints(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) >= 4
 	UNION ALL
 	SELECT 
-		MIN(g2_segment_filtered.id) AS id,
-		JSONB_AGG(g2_segment_filtered.xml_id) AS xml_id,
-		JSONB_AGG(g2_segment_filtered.curve_xml_id) AS curve_xml_id,
+		g2_segment_filtered.surf_id,
 		MIN(g2_segment_filtered.part) AS part,
-		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom,
-		MIN(g2_segment_filtered.horizontalaccuracy) AS horizontalaccuracy,
-		MIN(g2_segment_filtered.horizontalaccuracy_uom) AS horizontalaccuracy_uom,
-		MIN(g2_segment_filtered.horizontalaccuracy_nilreason) AS horizontalaccuracy_nilreason,
-		MIN(g2_segment_filtered.nilreason) AS nilreason
+		ST_AddPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)), ST_StartPoint(ST_LineMerge(ST_Collect(g2_segment_filtered.geom)))) AS geom
 	FROM
 		g2_segment_filtered
 	GROUP BY
-		g2_segment_filtered.id,
-		g2_segment_filtered.xml_id,
+		g2_segment_filtered.surf_id,
 		g2_segment_filtered.part
 	HAVING
 		ST_IsClosed(ST_LineMerge(ST_Collect(g2_segment_filtered.geom))) = false
@@ -1061,107 +961,65 @@ g2 AS (
 ),
 combined_data AS (
     SELECT 
-        id, 
-        xml_id, 
-		curve_xml_id,
+        surf_id, 
 		geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason,
         part
     FROM 
         r1
     UNION ALL
     SELECT 
-        id, 
-        xml_id,
-		curve_xml_id,
+        surf_id,
         geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason,
         part
     FROM 
         r2
     UNION ALL
     SELECT 
-        id, 
-        xml_id, 
-		curve_xml_id,
+        surf_id, 
         geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason,
         part
     FROM 
         g1
     UNION ALL
     SELECT 
-        id, 
-        xml_id, 
-		curve_xml_id,
+        surf_id, 
         geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason,
         part
     FROM 
         g2
 ),
 outer_shells AS (
     SELECT 
-        id, 
-        xml_id, 
-		curve_xml_id,
-        ST_MakePolygon(geom) AS geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason
+        surf_id, 
+        ST_MakePolygon(geom) AS geom
     FROM 
         combined_data
     WHERE 
-        part = 0
+        part = 0    
 ),
 inner_shells AS (
     SELECT 
-        id, 
-        xml_id, 
-		curve_xml_id,
-        geom,
-        horizontalaccuracy,
-        horizontalaccuracy_uom,
-        horizontalaccuracy_nilreason,
-		nilreason
+        surf_id, 
+        geom
     FROM 
         combined_data
     WHERE 
         part <> 0
 )
 SELECT 
-    outer_shells.id,
+    outer_shells.surf_id AS id,
     ST_MakePolygon(
         ST_ExteriorRing(outer_shells.geom),
         ARRAY(
             SELECT ST_ExteriorRing(inner_shells.geom)
             FROM inner_shells 
-            WHERE inner_shells.id = outer_shells.id
+            WHERE inner_shells.surf_id = outer_shells.surf_id
         )
     ) AS geom,
-	COALESCE(outer_shells.horizontalaccuracy || ' ' ||outer_shells. horizontalaccuracy_uom, '(' || outer_shells.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
+	COALESCE(geometry.surface_pt.horizontalaccuracy || ' ' || geometry.surface_pt.horizontalaccuracy_uom, '(' || geometry.surface_pt.horizontalaccuracy_nilreason || ')') AS horizontalAccuracy
 FROM 
-outer_shells;
+outer_shells
+INNER JOIN geometry.surface_pt ON outer_shells.surf_id = geometry.surface_pt.id;
 
 CREATE INDEX ON geometry.surface_view (id);
-
--- DROP MATERIALIZED VIEW IF EXISTS geometry.surface_view CASCADE;
-
--- CREATE MATERIALIZED VIEW geometry.surface_view AS
--- SELECT 
--- 0 AS id,
--- ST_GeomFromText('POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))', 4326) AS geom,
--- 0 AS horizontalAccuracy;
+CREATE INDEX ON geometry.surface_view USING GIST (geom);

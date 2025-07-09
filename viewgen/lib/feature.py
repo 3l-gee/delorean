@@ -149,17 +149,6 @@ class Feature(Layer) :
             f"lat_{role}.lat_{role} as {role}"
         ])
 
-        # self.sql["left"].extend([
-        #     f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
-        #     f"left join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id"
-        # ])
-
-        # self.sql["attributes"][name].extend([
-        #     f"jsonb_agg(DISTINCT jsonb_build_object('id', {hash_two}.id",
-        #     f"'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')')",
-        #     f"'href', {hash_two}.href)) AS {role}"
-        # ])
-
     def add_association_object_many(self, schema, name, role, type):
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
@@ -181,15 +170,6 @@ class Feature(Layer) :
             f"lat_{role}.lat_{role} as {role}"
         ])
 
-        # self.sql["left"].extend([
-        #     f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
-        #     f"left join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id"
-        # ])
-
-        # self.sql["attributes"][name].extend([
-        #     f"jsonb_agg(DISTINCT {hash_two}.id) AS {role}"
-        # ])
-
     def add_association_snowflake_one(self, schema, name, attribute, group, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.sql["attributes"].get(name):
@@ -201,7 +181,6 @@ class Feature(Layer) :
         formatted_group = [grp.format(alias=hash) for grp in group]
 
         self.sql["attributes"][name].extend(formatted_attribute)
-        self.sql["group"].extend(formatted_group)
 
         self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
@@ -219,11 +198,6 @@ class Feature(Layer) :
 
         self.sql["attributes"][name].extend(formatted_attribute)
 
-        # self.sql["left"].extend([
-        #     f"left join master_join {hash_one} on {self.schema}.{self.name}_ts.id = {hash_one}.source_id",
-        #     f"left join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id"
-        # ])
-
         self.sql["lateral"].extend([
             f"left join lateral(",
             f"  select"
@@ -237,7 +211,3 @@ class Feature(Layer) :
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as lat_{role} on TRUE"
         ])
-
-        # self.sql["attributes"][name].extend([
-        #     f"lat_{role}.lat_{role} as {role}"
-        # ])

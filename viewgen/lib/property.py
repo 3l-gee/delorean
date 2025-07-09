@@ -143,16 +143,6 @@ class Property(Layer) :
             f"lat_{role}.lat_{role} as {role}"
         ])
 
-        # self.sql["attributes"][name].extend([
-        #     f"jsonb_agg(DISTINCT jsonb_build_object('id', {hash_two}.id",
-        #     f"'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')')",
-        #     f"'href', {hash_two}.href)) AS {role}"
-        # ])
-
-        # self.sql["left"].extend([
-        #     f"left join master_join {hash_one} on {self.schema}.{self.name}.id = {hash_one}.source_id",
-        #     f"left join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id"
-        # ])
 
     def add_association_snowflake_one(self, schema, name, attribute, group, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -164,11 +154,9 @@ class Property(Layer) :
         formatted_attribute = [attr.format(alias=hash, role=role) for attr in attribute]
         formatted_group = [grp.format(alias=hash) for grp in group]
 
-        # self.sql["attributes"][name].extend(formatted_attribute)
+        self.sql["attributes"][name].extend(formatted_attribute)
 
-        # self.sql["group"].extend(formatted_group)
-
-        # self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
+        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
 
     def add_association_snowflake_many(self, schema, name, argument, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -182,11 +170,6 @@ class Property(Layer) :
         formatted_argument = ["    " + arg.format(alias=hash_two, name=name, role=role) for arg in argument]
 
         self.sql["attributes"][name].extend(formatted_attribute)
-
-        # self.sql["left"].extend([
-        #     f"left join master_join {hash_one} on {self.schema}.{self.name}.id = {hash_one}.source_id",
-        #     f"left join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id"
-        # ])
 
         self.sql["lateral"].extend([
             f"left join lateral(",
@@ -202,8 +185,4 @@ class Property(Layer) :
             f") as lat_{role} on TRUE"
         ])
         
-        # self.sql["attributes"][name].extend([
-        #     f"lat_{role}.lat_{role} as {role}"
-        # ])
-
 
