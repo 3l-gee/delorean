@@ -93,11 +93,20 @@ public class Container<T> {
         recursiveShow(this.record.getClass(), this.record); 
     }
 
-    public void load() {
+    public void initQGIS(){
+        if (this.databaseBinding == null) {
+            throw new RuntimeException("DatabaseBinding is not set");
+        }
+
+        this.publisherPRJ.init(databaseBinding);
+    }
+
+    public void loadDB() {
         if (this.databaseBinding == null) {
             throw new RuntimeException("DatabaseBinding is not set");
         }
         this.databaseBinding.load(this.record);
+        
         if (this.getEditorProject() != null) {
         }
 
@@ -108,7 +117,7 @@ public class Container<T> {
         }
     }
 
-    public void export(Object id) {
+    public void exportDB(Object id) {
         if (this.databaseBinding == null) {
             throw new RuntimeException("DatabaseBinding is not set");
         }   

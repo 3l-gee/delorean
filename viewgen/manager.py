@@ -41,4 +41,4 @@ parsing = {
 }
 
 
-InteractionMachinery("a5_1", parsing,"viewgen/version/a5_1", "src/main/java/com/aixm/delorean/core/schema/a5_1/aixm")
+InteractionMachinery("a5_1", parsing,"viewgen/version/a5_1","src/main/resources/a5_1", "src/main/java/com/aixm/delorean/core/schema/a5_1/aixm")

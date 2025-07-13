@@ -1,5 +1,8 @@
 import random
 import string
+import xml.etree.ElementTree as ET
+import uuid
+import copy
 
 class Layer:
 
@@ -9,8 +12,19 @@ class Layer:
         self.name = name
         self.schema = schema
         self.snowflake = snowflake
+        self.layer_template = self.load_template("viewgen/version/a5_1/maplayer.xml")
+        self.publish_layer = []
         self.full_sql = ""
-        self.sql = {
+        self.attributes = {
+            "publish" : {
+                "geometry" : [],
+                "action" : {
+
+                },
+                "html" : {
+
+                },
+            },
             "attributes": {
                 "feature": self.generate_attributes(name, schema)
             },
@@ -36,24 +50,39 @@ class Layer:
     def get_type(self):
         return self.type
 
+    def get_publish_layer(self):
+        return self.publish_layer
+
+    def genrate_prj(self):
+        # Make sure the template loaded correctly
+        if self.layer_template is None:
+            print("[ERROR] Layer template not loaded")
+            return
+        
+        for geom in self.attributes["publish"]["geometry"] :
+            template_copy = copy.deepcopy(self.layer_template)
+            self.qgis_gen_id(template_copy.find(".//id"))
+            self.qgis_gen_datasource(geom, template_copy.find(".//datasource"))
+            self.publish_layer.append(template_copy)
+
     def generate_sql(self):
         if self.snowflake :
             return None
         # Combine attributes from all attribute types
         attributes = []
-        for attr_list in self.sql["attributes"].values():
+        for attr_list in self.attributes["attributes"].values():
             attributes.extend(attr_list)
 
         # Join SQL fragments with appropriate formatting
-        view_sql = "\n".join(self.sql["view"])
-        select_sql = "\n".join(self.sql["select"])
+        view_sql = "\n".join(self.attributes["view"])
+        select_sql = "\n".join(self.attributes["select"])
         attributes_sql = ",\n    ".join(attributes)
-        inner_sql = "\n".join(self.sql["inner"])
-        left_sql = "\n".join(self.sql["left"])
-        lateral_sql = "\n".join(self.sql["lateral"])
-        where_clause = "where " + "\n  and ".join(self.sql["where"]) if self.sql["where"] else ""
-        group_clause = "group by\n    " + ",\n    ".join(self.sql["group"]) if self.sql["group"] else ""
-        order_clause = ", ".join(self.sql["order"])
+        inner_sql = "\n".join(self.attributes["inner"])
+        left_sql = "\n".join(self.attributes["left"])
+        lateral_sql = "\n".join(self.attributes["lateral"])
+        where_clause = "where " + "\n  and ".join(self.attributes["where"]) if self.attributes["where"] else ""
+        group_clause = "group by\n    " + ",\n    ".join(self.attributes["group"]) if self.attributes["group"] else ""
+        order_clause = ", ".join(self.attributes["order"])
 
         # Assemble final SQL
         sql_parts = [
@@ -81,6 +110,18 @@ class Layer:
             print(f"Error loading SQL from '{path}': {e}")
             self.full_sql = ""
 
+    def load_template(self, path):
+        try:
+            tree = ET.parse(path)
+            root = tree.getroot()
+            return root
+        except ET.ParseError as e:
+            print(f"[ERROR] XML parsing failed: {e}")
+            return None
+        except FileNotFoundError:
+            print(f"[ERROR] File not found: {path}")
+            return None
+
     def load_dependecy(self, list):
         self.dependecy.update(list)
 
@@ -97,9 +138,9 @@ class Layer:
     def generate_group(self, name, schema) : return []
     def add_group(self, name, column, group=None):
         if group:
-            self.sql["group"].append(f"{group}.{name}.{column}")
+            self.attributes["group"].append(f"{group}.{name}.{column}")
         else:
-            self.sql["group"].append(f"{name}.{column}")
+            self.attributes["group"].append(f"{name}.{column}")
 
     def add_attributes_three(self, value, uom, nil) : pass
     def add_attributes_two(self, value, nil) : pass
@@ -109,3 +150,33 @@ class Layer:
     def add_association_object_many(self, schema, name, role, type) : pass
     def add_association_snowflake_one(self, schema, name, role, type) : pass
     def add_association_snowflake_many(self, schema, name, role, type) : pass
+
+    def publish_handler(self, schema, name, full_name, publish_param):
+        if publish_param.get("geometry") == True:
+            self.attributes["publish"]["geometry"].append(full_name)
+        
+        # if publish_param.get()
+
+    def qgis_gen_id(self, node):
+        generated_uuid = str(uuid.uuid4())
+        full_id = f"{self.name}_{generated_uuid}"
+
+        if node is not None:
+            node.text = full_id
+        else:
+            print("[WARNING] <id> element not found")
+
+    def qgis_gen_datasource(self, geom, node):
+        res = ""
+        if node is not None:
+            res += "dbname=${ProjectConfig.dbname} "
+            res += "host=${ProjectConfig.host} "
+            res += "port=${ProjectConfig.port}"
+            res += "key='id' "
+            res += f'"table="{self.schema}"."{self.name}"" '
+            res += f'({geom})'
+            node.text = res
+        else:
+            print("[WARNING] <datasource> element not found")
+
+        

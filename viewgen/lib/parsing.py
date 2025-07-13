@@ -28,13 +28,8 @@ class Parsing :
     def get_layer(self):
         propeties_layers = self.property.values()
     
-        # Generate SQL for each layer first
-        for item in propeties_layers:
-            item.generate_sql()
-
         # Create a mapping from view name to the view object
         view_map = {layer.get_name(): layer for layer in propeties_layers}
-
 
         in_degree = defaultdict(int)
         graph = defaultdict(list)
@@ -89,7 +84,16 @@ class Parsing :
             self._classify_file(file)
 
         for file in path_list:
-            self._process_file(file)    
+            self._process_file(file)
+
+        for key,feature in self.feature.items():
+            feature.generate_sql()
+            feature.genrate_prj()
+
+        for key,property in self.property.items():
+            property.generate_sql()
+            property.genrate_prj()
+
 
     def _classify_file(self, path):
         content = self._load_content(path)
@@ -195,7 +199,8 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 attribute = self.snowflake_set[name].get("one").get("attribute")
                 group = self.snowflake_set[name].get("one").get("group")
-                layer.add_association_snowflake_one(schema, name, attribute, group, item.get("col"), item.get("role"))
+                publish = self.snowflake_set[name].get("publish")
+                layer.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -222,7 +227,8 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                layer.add_association_snowflake_many(schema, name, argument, attribute, item.get("col"), item.get("role"))
+                publish = self.snowflake_set[name].get("publish")
+                layer.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -259,7 +265,8 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 attribute = self.snowflake_set[name].get("one").get("attribute")
                 group = self.snowflake_set[name].get("one").get("group")
-                property.add_association_snowflake_one(schema, name, attribute, group, item.get("col"), item.get("role"))
+                publish = self.snowflake_set[name].get("publish")
+                property.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()
@@ -286,7 +293,8 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                property.add_association_snowflake_many(schema, name, argument, attribute, item.get("col"), item.get("role"))
+                publish = self.snowflake_set[name].get("publish")
+                property.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
 
             elif name in self.property.keys():
                 schema = self.property[name].get_schema()

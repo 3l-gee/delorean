@@ -82,24 +82,24 @@ class Feature(Layer) :
 
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
-        self.sql["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
     def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
-        self.sql["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
     def add_association_feature_one(self, schema, name, role, col):
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
-        self.sql["attributes"][name].extend([
+        self.attributes["attributes"][name].extend([
             f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
             f"{hash}.href AS {role}_href"
         ])
@@ -108,106 +108,112 @@ class Feature(Layer) :
         self.add_group(hash, "nilreason[1]")
         self.add_group(hash, "href")
 
-        self.sql["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+        self.attributes["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
     
     def add_association_object_one(self, schema, name, role, col):
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        self.sql["attributes"][name].extend([
+        self.attributes["attributes"][name].extend([
             f"to_jsonb({hash}.*) AS {role}"
         ])
 
         self.add_group(hash, "id")
 
-        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+        self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
     def add_association_feature_many(self, schema, name, role, type):
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
-        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
+        hash_three = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
-        self.sql["lateral"].extend([
+        self.attributes["lateral"].extend([
             f"left join lateral(",
             f"  select jsonb_agg(DISTINCT jsonb_build_object(",
             f"      'id', {hash_two}.id,",
             f"      'title', coalesce(cast({hash_two}.title AS varchar), '(' || {hash_two}.nilreason[1] || ')'),",
             f"      'href', {hash_two}.href",
-            f"  )) as lat_{role}"
+            f"  )) as {role}"
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_pt {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
-            f") as lat_{role} on TRUE"
+            f") as {hash_three} on TRUE"
         ])
 
-        self.sql["attributes"][name].extend([
-            f"lat_{role}.lat_{role} as {role}"
+        self.attributes["attributes"][name].extend([
+            f"{hash_three}.{role} as {role}"
         ])
 
     def add_association_object_many(self, schema, name, role, type):
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
-        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
+        hash_three = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        self.sql["lateral"].extend([
+        self.attributes["lateral"].extend([
             f"left join lateral(",
-            f"  select jsonb_agg(DISTINCT {hash_two}.*) as lat_{role}",
+            f"  select jsonb_agg(DISTINCT {hash_two}.*) as {role}",
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
-            f") as lat_{role} on TRUE"
+            f") as {hash_three} on TRUE"
         ])
 
-        self.sql["attributes"][name].extend([
-            f"lat_{role}.lat_{role} as {role}"
+        self.attributes["attributes"][name].extend([
+            f"{hash_three}.{role} as {role}"
         ])
 
-    def add_association_snowflake_one(self, schema, name, attribute, group, col, role):
+    def add_association_snowflake_one(self, schema, name, publish_param, attribute, group, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         formatted_attribute = [attr.format(alias=hash, role=role) for attr in attribute]
-        formatted_group = [grp.format(alias=hash) for grp in group]
 
-        self.sql["attributes"][name].extend(formatted_attribute)
+        self.attributes["attributes"][name].extend(formatted_attribute)
 
-        self.sql["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+        self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+
+        self.publish_handler(schema, name, hash, publish_param)
 
 
-    def add_association_snowflake_many(self, schema, name, argument, attribute, col, role):
+    def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.sql["attributes"].get(name):
-            self.sql["attributes"][name] = []
+        if not self.attributes["attributes"].get(name):
+            self.attributes["attributes"][name] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
-        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_view"))
+        hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
+        hash_three = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        formatted_attribute = [attr.format(alias=hash_two, name=name, role=role) for attr in attribute]
+        formatted_attribute = [attr.format(alias=hash_three, name=name, role=role) for attr in attribute]
         formatted_argument = ["    " + arg.format(alias=hash_two, name=name, role=role) for arg in argument]
 
-        self.sql["attributes"][name].extend(formatted_attribute)
+        self.attributes["attributes"][name].extend(formatted_attribute)
 
-        self.sql["lateral"].extend([
+        self.attributes["lateral"].extend([
             f"left join lateral(",
             f"  select"
         ])
 
-        self.sql["lateral"].extend(formatted_argument)
+        self.attributes["lateral"].extend(formatted_argument)
 
-        self.sql["lateral"].extend([
+        self.attributes["lateral"].extend([
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
-            f") as lat_{role} on TRUE"
+            f") as {hash_three} on TRUE"
         ])
+
+        self.publish_handler(name, schema, hash_three, publish_param)

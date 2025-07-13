@@ -10,8 +10,8 @@ public enum QgisConfig {
     A5_1(
         "a5_1",
         new ProjectConfig(
-            "publisher.qgs.ftl",
-            "qgis/8753078a_styles.db",
+            "a5_1/qgis/publisher.qgs.ftl",
+            "a5_1/qgis/8753078a_styles.db",
             "delorean aixm 5.1 - publisher",
             List.of(new PostgresLayerConfig(
                 "OpenStreetMap",

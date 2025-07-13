@@ -191,6 +191,7 @@ public class Main {
     db          <container id, - >      startup                      : start the database
     db          <container id, - >      load                         : load the data into the database
     db          <container id, - >      export           <id>        : export the master aixmmessage with the specified id
+    qgis        <container id, - >
     list                                                             : List all the containers
     exit                                                             : Exit the shell                                    
                 """);
@@ -396,11 +397,7 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             switch (parameter.toLowerCase()) {
                 case "init":
-                    this.containerWarehouse.getContainer(argument).getPublisherProject().init();
-                    break;
-
-                case "load":
-                    this.containerWarehouse.getContainer(argument).getPublisherProject().init();
+                    this.containerWarehouse.getContainer(argument).initQGIS();
                     break;
 
                 default:
@@ -432,12 +429,12 @@ public class Main {
                     break;
 
                 case "load":
-                    this.containerWarehouse.getContainer(argument).load();
+                    this.containerWarehouse.getContainer(argument).loadDB();
                     // this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
                 case "export":
-                    this.containerWarehouse.getContainer(argument).export(option);
+                    this.containerWarehouse.getContainer(argument).exportDB(option);
                     break;
 
                 default:

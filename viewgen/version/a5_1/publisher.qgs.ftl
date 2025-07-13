@@ -2,8 +2,8 @@
 <qgis saveDateTime="2025-05-24T10:35:00"
       projectname=""
       version="3.34.8-Prizren"
-      saveUser="marty"
-      saveUserFull="Marty McFly">
+      saveUser="3l-gee"
+      saveUserFull="Raphael Gerth">
 	<homePath path=""/>
 	<!-- qgis project title definition -->
 	<title>${ProjectConfig.title}</title>
@@ -646,39 +646,39 @@
 			</spatialrefsys>
 		</DefaultViewExtent>
 	</ProjectViewSettings>
-	<ProjectDisplaySettings CoordinateAxisOrder="Default"
+	<ProjectDisplaySettings CoordinateAxisOrder="YX"
 	                        CoordinateType="CustomCrs">
 		<BearingFormat id="bearing">
 			<Option type="Map">
-				<Option type="invalid"
-				        name="decimal_separator"/>
-				<Option type="int"
-				        value="6"
-				        name="decimals"/>
-				<Option type="int"
-				        value="0"
-				        name="direction_format"/>
-				<Option type="int"
-				        value="0"
-				        name="rounding_type"/>
-				<Option type="bool"
-				        value="false"
-				        name="show_plus"/>
-				<Option type="bool"
-				        value="true"
-				        name="show_thousand_separator"/>
-				<Option type="bool"
-				        value="false"
-				        name="show_trailing_zeros"/>
-				<Option type="invalid"
-				        name="thousand_separator"/>
+				<Option name="decimal_separator"
+				        type="invalid"/>
+				<Option name="decimals"
+				        type="int"
+				        value="6"/>
+				<Option name="direction_format"
+				        type="int"
+				        value="0"/>
+				<Option name="rounding_type"
+				        type="int"
+				        value="0"/>
+				<Option name="show_plus"
+				        type="bool"
+				        value="false"/>
+				<Option name="show_thousand_separator"
+				        type="bool"
+				        value="true"/>
+				<Option name="show_trailing_zeros"
+				        type="bool"
+				        value="false"/>
+				<Option name="thousand_separator"
+				        type="invalid"/>
 			</Option>
 		</BearingFormat>
 		<GeographicCoordinateFormat id="geographiccoordinate">
 			<Option type="Map">
 				<Option name="angle_format"
 				        type="QString"
-				        value="DecimalDegrees"/>
+				        value="DegreesMinutesSeconds"/>
 				<Option name="decimal_separator"
 				        type="invalid"/>
 				<Option name="decimals"
@@ -689,22 +689,22 @@
 				        value="0"/>
 				<Option name="show_leading_degree_zeros"
 				        type="bool"
-				        value="false"/>
+				        value="true"/>
 				<Option name="show_leading_zeros"
 				        type="bool"
-				        value="false"/>
+				        value="true"/>
 				<Option name="show_plus"
 				        type="bool"
 				        value="false"/>
 				<Option name="show_suffix"
 				        type="bool"
-				        value="false"/>
+				        value="true"/>
 				<Option name="show_thousand_separator"
 				        type="bool"
 				        value="true"/>
 				<Option name="show_trailing_zeros"
 				        type="bool"
-				        value="false"/>
+				        value="true"/>
 				<Option name="thousand_separator"
 				        type="invalid"/>
 			</Option>

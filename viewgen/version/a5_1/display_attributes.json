@@ -1,0 +1,85 @@
+{ 
+    "snowflake" : {
+        "timesheet" : {
+            "geometry" : false,
+            "action" : "",
+            "html" : "",
+            "type" : "TimesheetPropertyType",
+            "schema" : "shared"
+        },
+        "contactinformation" : {
+            "geometry" : false,
+            "action" : "",
+            "html" : "",
+            "type" : "ContactInformationPropertyType",
+            "schema" : "shared"
+        },
+        "note" : {   
+            "geometry" : false,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/NotePropertyType.sql",
+            "type" : "NotePropertyType",
+            "schema" : "notes"
+        },
+        "linguisticnote" : {   
+            "geometry" : false,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/LinguisticNotePropertyType.sql",
+            "type" : "LinguisticNotePropertyType",
+            "schema" : "notes"
+        },
+        "point" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/PointPropertyType.sql",
+            "type" : "PointPropertyType",
+            "schema" : "geometry"
+        },
+        "curve" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/CurvePropertyType.sql",
+            "type" : "CurvePropertyType",
+            "schema" : "geometry"
+        },
+        "surface" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" :"viewgen/version/a5_1/sql/SurfacePropertyType.sql",
+            "type" : "SurfacePropertyType",
+            "schema" : "geometry"
+        },
+        "elevatedpoint" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/ElevatedPointPropertyType.sql",
+            "type" : "ElevatedPointPropertyType",
+            "schema" : "geometry"
+        },
+        "elevatedcurve" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" : "viewgen/version/a5_1/sql/ElevatedCurvePropertyType.sql",
+            "type" : "ElevatedCurvePropertyType",
+            "schema" : "geometry"
+        },
+        "elevatedsurface" : {
+            "geometry" : true,
+            "action" : "",
+            "html" : "",
+            "path" :"viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
+            "type" : "ElevatedSurfacePropertyType",
+            "schema" : "geometry"
+        }
+    },
+    "generic" : {
+
+    }
+}

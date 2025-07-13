@@ -25,6 +25,7 @@ import java.time.format.DateTimeFormatter;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.aixm.delorean.core.database.DatabaseBinding;
 import com.aixm.delorean.core.database.DatabaseConfig;
 import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
@@ -51,7 +52,7 @@ public class QgisProjectBinding {
         this.cfg.setDefaultEncoding("UTF-8");
         this.cfg.setLocale(Locale.US);
         this.cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-        this.cfg.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "qgis");
+        this.cfg.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "");
         this.input = new HashMap<String, Object>();
     }
 
@@ -60,8 +61,9 @@ public class QgisProjectBinding {
     }
 
 
-    public void init() {
+    public void init(DatabaseBinding databaseBinding) {
         this.loadTemplate();
+        this.projectConfig.generateSource(databaseBinding);
         this.putInput(this.projectConfig);
         this.projectZip = this.processTemplate();
     }
