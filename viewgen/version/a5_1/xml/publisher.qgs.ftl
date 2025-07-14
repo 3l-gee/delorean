@@ -1,7 +1,7 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis saveDateTime="2025-05-24T10:35:00"
       projectname=""
-      version="3.34.8-Prizren"
+      version="3.40.7-Bratislava"
       saveUser="3l-gee"
       saveUserFull="Raphael Gerth">
 	<homePath path=""/>
@@ -22,6 +22,30 @@
 			<geographicflag>false</geographicflag>
 		</spatialrefsys>
 	</projectCrs>
+	<verticalCrs>
+		<spatialrefsys nativeFormat="Wkt">
+			<wkt/>
+			<proj4/>
+			<srsid>0</srsid>
+			<srid>0</srid>
+			<authid/>
+			<description/>
+			<projectionacronym/>
+			<ellipsoidacronym/>
+			<geographicflag>false</geographicflag>
+		</spatialrefsys>
+	</verticalCrs>
+	<elevation-shading-renderer edl-distance="0.5"
+	                            edl-distance-unit="0"
+	                            hillshading-is-multidirectional="0"
+	                            light-azimuth="315"
+	                            combined-method="0"
+	                            light-altitude="45"
+	                            edl-is-active="1"
+	                            hillshading-is-active="0"
+	                            hillshading-z-factor="1"
+	                            edl-strength="1000"
+	                            is-active="0"/>
 	<layer-tree-group>
 		<customproperties>
 			<Option/>
@@ -81,6 +105,7 @@
 		<rendermaptile>0</rendermaptile>
 		<expressionContextScope/>
 	</mapcanvas>
+	<projectModels/>
 	<legend updateDrawingOrder="true">
 		<legendlayer open="true"
 		             showFeatureCount="0"
@@ -95,6 +120,76 @@
 			</filegroup>
 		</legendlayer>
 	</legend>
+	<mapViewDocks/>
+	<main-annotation-layer legendPlaceholderImage=""
+	                       autoRefreshMode="Disabled"
+	                       minScale="1e+08"
+	                       type="annotation"
+	                       refreshOnNotifyEnabled="0"
+	                       autoRefreshTime="0"
+	                       styleCategories="AllStyleCategories"
+	                       maxScale="0"
+	                       hasScaleBasedVisibilityFlag="0"
+	                       refreshOnNotifyMessage="">
+		<id>Annotations_14c0419f_2fc1_400f_b4c2_594e52b7aa0a</id>
+		<datasource/>
+		<keywordList>
+			<value/>
+		</keywordList>
+		<layername>Annotations</layername>
+		<srs>
+			<spatialrefsys nativeFormat="Wkt">
+				<wkt>PROJCRS["WGS 84 / Pseudo-Mercator",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["Popular Visualisation Pseudo-Mercator",METHOD["Popular Visualisation Pseudo Mercator",ID["EPSG",1024]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["False easting",0,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["easting (X)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["northing (Y)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Web mapping and visualisation."],AREA["World between 85.06°S and 85.06°N."],BBOX[-85.06,-180,85.06,180]],ID["EPSG",3857]]</wkt>
+				<proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+				<srsid>3857</srsid>
+				<srid>3857</srid>
+				<authid>EPSG:3857</authid>
+				<description>WGS 84 / Pseudo-Mercator</description>
+				<projectionacronym>merc</projectionacronym>
+				<ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+				<geographicflag>false</geographicflag>
+			</spatialrefsys>
+		</srs>
+		<resourceMetadata>
+			<identifier/>
+			<parentidentifier/>
+			<language/>
+			<type/>
+			<title/>
+			<abstract/>
+			<links/>
+			<dates/>
+			<fees/>
+			<encoding/>
+			<crs>
+				<spatialrefsys nativeFormat="Wkt">
+					<wkt/>
+					<proj4/>
+					<srsid>0</srsid>
+					<srid>0</srid>
+					<authid/>
+					<description/>
+					<projectionacronym/>
+					<ellipsoidacronym/>
+					<geographicflag>false</geographicflag>
+				</spatialrefsys>
+			</crs>
+			<extent/>
+		</resourceMetadata>
+		<items/>
+		<flags>
+			<Identifiable>1</Identifiable>
+			<Removable>1</Removable>
+			<Searchable>1</Searchable>
+			<Private>0</Private>
+		</flags>
+		<customproperties>
+			<Option/>
+		</customproperties>
+		<layerOpacity>1</layerOpacity>
+		<blendMode>0</blendMode>
+		<paintEffect/>
+	</main-annotation-layer>
 	<projectlayers>
 		<maplayer legendPlaceholderImage=""
 		          styleCategories="AllStyleCategories"
@@ -478,6 +573,7 @@
 	<layerorder>
 		<layer id="_556bb755_1006_4e99_869c_27c4a486ea49"/>
 	</layerorder>
+	<labelEngineSettings/>
 	<properties>
 		<Digitizing>
 			<AvoidIntersectionsMode type="int">0</AvoidIntersectionsMode>
@@ -494,8 +590,11 @@
 		<Legend>
 			<filterByMap type="bool">false</filterByMap>
 		</Legend>
+		<Macros>
+			<pythonCode type="QString"/>
+		</Macros>
 		<Measure>
-			<Ellipsoid type="QString">EPSG:7004</Ellipsoid>
+			<Ellipsoid type="QString">EPSG:7030</Ellipsoid>
 		</Measure>
 		<Measurement>
 			<AreaUnits type="QString">m2</AreaUnits>
@@ -504,6 +603,7 @@
 		<PAL>
 			<CandidatesLinePerCM type="double">5</CandidatesLinePerCM>
 			<CandidatesPolygonPerCM type="double">2.5</CandidatesPolygonPerCM>
+			<DrawLabelMetrics type="bool">false</DrawLabelMetrics>
 			<DrawRectOnly type="bool">false</DrawRectOnly>
 			<DrawUnplaced type="bool">false</DrawUnplaced>
 			<PlacementEngineVersion type="int">1</PlacementEngineVersion>
@@ -512,7 +612,7 @@
 			<ShowingCandidates type="bool">false</ShowingCandidates>
 			<ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
 			<TextFormat type="int">0</TextFormat>
-			<UnplacedColor type="QString">255,0,0,255</UnplacedColor>
+			<UnplacedColor type="QString">255,0,0,255,rgb:1,0,0,1</UnplacedColor>
 		</PAL>
 		<Paths>
 			<Absolute type="bool">false</Absolute>
@@ -521,9 +621,66 @@
 			<Automatic type="bool">true</Automatic>
 			<DecimalPlaces type="int">2</DecimalPlaces>
 		</PositionPrecision>
+		<RenderMapTile type="bool">false</RenderMapTile>
 		<SpatialRefSys>
 			<ProjectionsEnabled type="int">1</ProjectionsEnabled>
 		</SpatialRefSys>
+		<WCSLayers type="QStringList"/>
+		<WCSUrl type="QString"/>
+		<WFSLayers type="QStringList"/>
+		<WFSTLayers>
+			<Delete type="QStringList"/>
+			<Insert type="QStringList"/>
+			<Update type="QStringList"/>
+		</WFSTLayers>
+		<WFSUrl type="QString"/>
+		<WMSAccessConstraints type="QString">None</WMSAccessConstraints>
+		<WMSAddLayerGroupsLegendGraphic type="bool">false</WMSAddLayerGroupsLegendGraphic>
+		<WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
+		<WMSContactMail type="QString"/>
+		<WMSContactOrganization type="QString"/>
+		<WMSContactPerson type="QString"/>
+		<WMSContactPhone type="QString"/>
+		<WMSContactPosition type="QString"/>
+		<WMSFeatureInfoUseAttributeFormSettings type="bool">false</WMSFeatureInfoUseAttributeFormSettings>
+		<WMSFees type="QString">conditions unknown</WMSFees>
+		<WMSImageQuality type="int">90</WMSImageQuality>
+		<WMSKeywordList type="QStringList">
+			<value/>
+		</WMSKeywordList>
+		<WMSMaxAtlasFeatures type="int">1</WMSMaxAtlasFeatures>
+		<WMSOnlineResource type="QString"/>
+		<WMSPrecision type="QString">8</WMSPrecision>
+		<WMSRootName type="QString"/>
+		<WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
+		<WMSServiceAbstract type="QString"/>
+		<WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+		<WMSServiceTitle type="QString"/>
+		<WMSSkipNameForGroup type="bool">false</WMSSkipNameForGroup>
+		<WMSTileBuffer type="int">0</WMSTileBuffer>
+		<WMSUrl type="QString"/>
+		<WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+		<WMTSGrids>
+			<CRS type="QStringList"/>
+			<Config type="QStringList"/>
+		</WMTSGrids>
+		<WMTSJpegLayers>
+			<Group type="QStringList"/>
+			<Layer type="QStringList"/>
+			<Project type="bool">false</Project>
+		</WMTSJpegLayers>
+		<WMTSLayers>
+			<Group type="QStringList"/>
+			<Layer type="QStringList"/>
+			<Project type="bool">false</Project>
+		</WMTSLayers>
+		<WMTSMinScale type="int">5000</WMTSMinScale>
+		<WMTSPngLayers>
+			<Group type="QStringList"/>
+			<Layer type="QStringList"/>
+			<Project type="bool">false</Project>
+		</WMTSPngLayers>
+		<WMTSUrl type="QString"/>
 	</properties>
 	<dataDefinedServerProperties>
 		<Option type="Map">
@@ -566,38 +723,42 @@
 	<Layouts/>
 	<mapViewDocks3D/>
 	<Bookmarks/>
-	<ProjectViewSettings UseProjectScales="0" rotation="0">
-		<Scales/>
-	</ProjectViewSettings>
-	<ProjectStyleSettings DefaultSymbolOpacity="1" RandomizeDefaultSymbolColor="1" projectStyleId="attachment:///hCTHIH_styles.db">
-		<databases/>
-	</ProjectStyleSettings>
-	<ProjectTimeSettings cumulativeTemporalRange="0" timeStep="1" frameRate="1" timeStepUnit="h"/>
-	<ElevationProperties>
-		<terrainProvider type="flat">
-			<TerrainProvider offset="0" scale="1"/>
-		</terrainProvider>
-	</ElevationProperties>
+	<Sensors/>
 	<ProjectViewSettings UseProjectScales="0"
 	                     rotation="0">
 		<Scales/>
-		<DefaultViewExtent xmin="4.14361879081629869"
-		                   ymin="44.58253207445003596"
-		                   ymax="47.9609278816433644"
-		                   xmax="11.56188343446944344">
+		<DefaultViewExtent xmax="45416312.28240852802991867"
+		                   xmin="-33731616.14959219843149185"
+		                   ymax="21772083.87288045883178711"
+		                   ymin="-23155251.55421639233827591">
 			<spatialrefsys nativeFormat="Wkt">
-				<wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
-				<proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
-				<srsid>3452</srsid>
-				<srid>4326</srid>
-				<authid>EPSG:4326</authid>
-				<description>WGS 84</description>
-				<projectionacronym>longlat</projectionacronym>
+				<wkt>PROJCRS["WGS 84 / Pseudo-Mercator",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["Popular Visualisation Pseudo-Mercator",METHOD["Popular Visualisation Pseudo Mercator",ID["EPSG",1024]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["False easting",0,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["easting (X)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["northing (Y)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Web mapping and visualisation."],AREA["World between 85.06°S and 85.06°N."],BBOX[-85.06,-180,85.06,180]],ID["EPSG",3857]]</wkt>
+				<proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+				<srsid>3857</srsid>
+				<srid>3857</srid>
+				<authid>EPSG:3857</authid>
+				<description>WGS 84 / Pseudo-Mercator</description>
+				<projectionacronym>merc</projectionacronym>
 				<ellipsoidacronym>EPSG:7030</ellipsoidacronym>
-				<geographicflag>true</geographicflag>
+				<geographicflag>false</geographicflag>
 			</spatialrefsys>
 		</DefaultViewExtent>
 	</ProjectViewSettings>
+	<ProjectStyleSettings DefaultSymbolOpacity="1"
+	                      RandomizeDefaultSymbolColor="1"
+	                      projectStyleId="attachment:///hCTHIH_styles.db">
+		<databases/>
+	</ProjectStyleSettings>
+	<ProjectTimeSettings cumulativeTemporalRange="0"
+	                     timeStep="1"
+	                     frameRate="1"
+	                     timeStepUnit="h"/>
+	<ElevationProperties>
+		<terrainProvider type="flat">
+			<TerrainProvider offset="0"
+			                 scale="1"/>
+		</terrainProvider>
+	</ElevationProperties>
 	<ProjectDisplaySettings CoordinateAxisOrder="YX"
 	                        CoordinateType="CustomCrs">
 		<BearingFormat id="bearing">
@@ -675,13 +836,10 @@
 			</spatialrefsys>
 		</CoordinateCustomCrs>
 	</ProjectDisplaySettings>
-	<ProjectGpsSettings destinationLayerSource="dbname='delorean' port=5432 key='row' srid=4326 type=Point checkPrimaryKeyUnicity='1' table=&quot;airport_heliport&quot;.&quot;airportheliport_publisher_view&quot; (geom)"
-	                    destinationFollowsActiveLayer="1"
-	                    destinationLayer="airportheliport_publisher_view_4e1bcdbd_6040_4a10_b841_b02ba0ea3cb6"
-	                    destinationLayerName="airportheliport_publisher_view"
+	<ProjectGpsSettings destinationLayer=""
 	                    autoCommitFeatures="0"
-	                    destinationLayerProvider="postgres"
-	                    autoAddTrackVertices="0">
+	                    autoAddTrackVertices="0"
+	                    destinationFollowsActiveLayer="1">
 		<timeStampFields/>
 	</ProjectGpsSettings>
 </qgis>

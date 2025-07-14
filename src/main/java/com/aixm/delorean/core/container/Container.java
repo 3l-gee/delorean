@@ -2,6 +2,8 @@ package com.aixm.delorean.core.container;
 
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.database.DatabaseBinding;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.qgis.QgisProjectBinding;
 
 import java.lang.reflect.Field;
@@ -99,6 +101,7 @@ public class Container<T> {
         }
 
         this.publisherPRJ.init(databaseBinding);
+        ConsoleLogger.log(LogLevel.INFO, "QGIS project successfully initialized.");
     }
 
     public void loadDB() {

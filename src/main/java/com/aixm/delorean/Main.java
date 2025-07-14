@@ -193,7 +193,7 @@ public class Main {
     db          <container id, - >      startup                      : start the database
     db          <container id, - >      load                         : load the data into the database
     db          <container id, - >      export           <id>        : export the master aixmmessage with the specified id
-    qgis        <container id, - >
+    qgis        <container id, - >      init                         : format the qgis project
     list                                                             : List all the containers
     exit                                                             : Exit the shell                                    
                 """);
@@ -432,7 +432,6 @@ public class Main {
 
                 case "load":
                     this.containerWarehouse.getContainer(argument).loadDB();
-                    // this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
                     break; 
                     
                 case "export":
