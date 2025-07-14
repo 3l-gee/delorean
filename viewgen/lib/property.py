@@ -18,6 +18,7 @@ class Property(Layer) :
         
     def generate_attributes(self, name, schema) : 
         return [
+            "(row_number() OVER ())::integer AS row",
             f"{schema}.{name}_pt.id",
             f"{schema}.{name}_pt.nilreason AS {self.name}_nilreason",
         ]
@@ -157,7 +158,7 @@ class Property(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}.{col} = {hash}.id")
 
-        self.publish_handler(name, schema, hash, publish_param)
+        self.publish_handler(name, schema, role, hash, publish_param)
 
     def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -187,6 +188,6 @@ class Property(Layer) :
             f") as {hash_three} on TRUE"
         ])
 
-        self.publish_handler(name, schema, hash_three, publish_param)
+        self.publish_handler(name, schema, role, hash_three, publish_param)
         
 

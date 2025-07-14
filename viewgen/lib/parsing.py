@@ -4,8 +4,9 @@ from lib.feature import Feature
 from lib.property import Property
 
 class Parsing :
-    def __init__(self, parsing, attribute):
+    def __init__(self, parsing, attribute, input_path):
         self.parsing = parsing
+        self.input_path = input_path
         self.snowflake_set = attribute["snowflake"]
         self.ignore_set = set(attribute["ignore"])
         self.feature_parent_set = set(attribute["feature_parent"])
@@ -122,16 +123,16 @@ class Parsing :
             
         if  parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
             if name not in self.feature.keys() : 
-                self.feature[name] = Feature(class_name[0], name, table_schema)
+                self.feature[name] = Feature(self.input_path, class_name[0], name, table_schema)
         
         elif parent_name and parent_name[0] in self.property_parent_set:
             if name in self.snowflake_set:
-                self.property[name] = Property(class_name[0], name, table_schema, True)  
+                self.property[name] = Property(self.input_path, class_name[0], name, table_schema, True)  
                 self.property[name].load_sql(self.snowflake_set[name].get("path"))
                 self.property[name].load_dependecy(self.snowflake_set[name].get("dependency"))
 
             if name not in self.property.keys() : 
-                self.property[name] = Property(class_name[0], name, table_schema)
+                self.property[name] = Property(self.input_path, class_name[0], name, table_schema)
         
     def _process_file(self, path):
         content = self._load_content(path)   

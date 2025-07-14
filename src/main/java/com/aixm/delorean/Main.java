@@ -60,9 +60,11 @@ public class Main {
         System.out.println(" ██████╔╝ ███████╗ ███████╗ ╚██████╔╝ ██║  ██║ ███████╗ ██║  ██║ ██║ ╚████║ ");
         System.out.println(" ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝  v0.1.0");
         System.out.println("");
-        System.out.println("Author : Raphaël Gerth");
-        ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0-SNAPSHOT");
-        ConsoleLogger.log(LogLevel.INFO, "type 'help' for a list of commands");
+        System.out.println("       version : 0.1.0-SNAPSHOT");
+        System.out.println("        author : Raphaël Gerth");
+        System.out.println("          repo : https://github.com/3l-gee/delorean");
+        System.out.println("          help : 'help' ");
+        System.out.println("");
 
         while (true) {
             System.out.print("> ");
@@ -106,18 +108,18 @@ public class Main {
 
         ConsoleLogger.log(LogLevel.INFO, "qgig_config - a5_1");
         executeQgisConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
-
-        ConsoleLogger.log(LogLevel.INFO, "qgig_config - init");
-        executeQgisActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"init", "");
         
         ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1");
         executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
 
-        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
+        ConsoleLogger.log(LogLevel.INFO, "qgig_config - init");
+        executeQgisActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"init", "");
 
-        // ConsoleLogger.log(LogLevel.INFO, "db - load");
-        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
+        ConsoleLogger.log(LogLevel.INFO, "db - startup");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
+
+        ConsoleLogger.log(LogLevel.INFO, "db - load");
+        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
 
         // ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
         // executeNewCommand("a5_1_1", scanner, "", "");

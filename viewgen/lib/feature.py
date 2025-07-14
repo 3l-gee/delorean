@@ -185,7 +185,7 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        self.publish_handler(schema, name, hash, publish_param)
+        self.publish_handler(schema, name, role, hash, publish_param)
 
 
     def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
@@ -216,4 +216,4 @@ class Feature(Layer) :
             f") as {hash_three} on TRUE"
         ])
 
-        self.publish_handler(name, schema, hash_three, publish_param)
+        self.publish_handler(name, schema, role, hash_three, publish_param)

@@ -494,11 +494,8 @@
 		<Legend>
 			<filterByMap type="bool">false</filterByMap>
 		</Legend>
-		<Macros>
-			<pythonCode type="QString"/>
-		</Macros>
 		<Measure>
-			<Ellipsoid type="QString">EPSG:7030</Ellipsoid>
+			<Ellipsoid type="QString">EPSG:7004</Ellipsoid>
 		</Measure>
 		<Measurement>
 			<AreaUnits type="QString">m2</AreaUnits>
@@ -507,7 +504,6 @@
 		<PAL>
 			<CandidatesLinePerCM type="double">5</CandidatesLinePerCM>
 			<CandidatesPolygonPerCM type="double">2.5</CandidatesPolygonPerCM>
-			<DrawLabelMetrics type="bool">false</DrawLabelMetrics>
 			<DrawRectOnly type="bool">false</DrawRectOnly>
 			<DrawUnplaced type="bool">false</DrawUnplaced>
 			<PlacementEngineVersion type="int">1</PlacementEngineVersion>
@@ -519,77 +515,15 @@
 			<UnplacedColor type="QString">255,0,0,255</UnplacedColor>
 		</PAL>
 		<Paths>
-			<Absolute type="bool">true</Absolute>
+			<Absolute type="bool">false</Absolute>
 		</Paths>
 		<PositionPrecision>
 			<Automatic type="bool">true</Automatic>
 			<DecimalPlaces type="int">2</DecimalPlaces>
 		</PositionPrecision>
-		<RenderMapTile type="bool">false</RenderMapTile>
 		<SpatialRefSys>
 			<ProjectionsEnabled type="int">1</ProjectionsEnabled>
 		</SpatialRefSys>
-		<TemporalControllerWidget>
-			<EndDateTime type="QString">2025-04-14T22:00:00.000Z</EndDateTime>
-			<NavigationMode type="int">2</NavigationMode>
-			<StartDateTime type="QString">2025-04-13T22:00:01.000Z</StartDateTime>
-		</TemporalControllerWidget>
-		<WCSLayers type="QStringList"/>
-		<WCSUrl type="QString"/>
-		<WFSLayers type="QStringList"/>
-		<WFSTLayers>
-			<Delete type="QStringList"/>
-			<Insert type="QStringList"/>
-			<Update type="QStringList"/>
-		</WFSTLayers>
-		<WFSUrl type="QString"/>
-		<WMSAccessConstraints type="QString">None</WMSAccessConstraints>
-		<WMSAddLayerGroupsLegendGraphic type="bool">false</WMSAddLayerGroupsLegendGraphic>
-		<WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
-		<WMSContactMail type="QString"/>
-		<WMSContactOrganization type="QString"/>
-		<WMSContactPerson type="QString"/>
-		<WMSContactPhone type="QString"/>
-		<WMSContactPosition type="QString"/>
-		<WMSDefaultMapUnitsPerMm type="double">8.983152841195214e-06</WMSDefaultMapUnitsPerMm>
-		<WMSFeatureInfoUseAttributeFormSettings type="bool">false</WMSFeatureInfoUseAttributeFormSettings>
-		<WMSFees type="QString">conditions unknown</WMSFees>
-		<WMSImageQuality type="int">90</WMSImageQuality>
-		<WMSKeywordList type="QStringList">
-			<value/>
-		</WMSKeywordList>
-		<WMSMaxAtlasFeatures type="int">1</WMSMaxAtlasFeatures>
-		<WMSOnlineResource type="QString"/>
-		<WMSPrecision type="QString">8</WMSPrecision>
-		<WMSRootName type="QString"/>
-		<WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
-		<WMSServiceAbstract type="QString"/>
-		<WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
-		<WMSServiceTitle type="QString"/>
-		<WMSTileBuffer type="int">0</WMSTileBuffer>
-		<WMSUrl type="QString"/>
-		<WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
-		<WMTSGrids>
-			<CRS type="QStringList"/>
-			<Config type="QStringList"/>
-		</WMTSGrids>
-		<WMTSJpegLayers>
-			<Group type="QStringList"/>
-			<Layer type="QStringList"/>
-			<Project type="bool">false</Project>
-		</WMTSJpegLayers>
-		<WMTSLayers>
-			<Group type="QStringList"/>
-			<Layer type="QStringList"/>
-			<Project type="bool">false</Project>
-		</WMTSLayers>
-		<WMTSMinScale type="int">5000</WMTSMinScale>
-		<WMTSPngLayers>
-			<Group type="QStringList"/>
-			<Layer type="QStringList"/>
-			<Project type="bool">false</Project>
-		</WMTSPngLayers>
-		<WMTSUrl type="QString"/>
 	</properties>
 	<dataDefinedServerProperties>
 		<Option type="Map">
@@ -602,6 +536,8 @@
 			        value="collection"/>
 		</Option>
 	</dataDefinedServerProperties>
+	<visibility-presets/>
+	<transformContext/>
 	<projectMetadata>
 		<identifier/>
 		<parentidentifier/>
@@ -626,6 +562,22 @@
 		<author>Raphael Gerth</author>
 		<creation>2025-04-13T17:27:43</creation>
 	</projectMetadata>
+	<Annotations/>
+	<Layouts/>
+	<mapViewDocks3D/>
+	<Bookmarks/>
+	<ProjectViewSettings UseProjectScales="0" rotation="0">
+		<Scales/>
+	</ProjectViewSettings>
+	<ProjectStyleSettings DefaultSymbolOpacity="1" RandomizeDefaultSymbolColor="1" projectStyleId="attachment:///hCTHIH_styles.db">
+		<databases/>
+	</ProjectStyleSettings>
+	<ProjectTimeSettings cumulativeTemporalRange="0" timeStep="1" frameRate="1" timeStepUnit="h"/>
+	<ElevationProperties>
+		<terrainProvider type="flat">
+			<TerrainProvider offset="0" scale="1"/>
+		</terrainProvider>
+	</ElevationProperties>
 	<ProjectViewSettings UseProjectScales="0"
 	                     rotation="0">
 		<Scales/>

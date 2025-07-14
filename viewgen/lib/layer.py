@@ -3,17 +3,20 @@ import string
 import xml.etree.ElementTree as ET
 import uuid
 import copy
+from lib.helper_function import HeleperFunction
 
 class Layer:
 
-    def __init__(self, type, name, schema, snowflake=False):
+    def __init__(self, input_path, type, name, schema, snowflake=False):
         self.dependecy = set()
         self.type = type
+        self.input_path = input_path
         self.name = name
         self.schema = schema
         self.snowflake = snowflake
-        self.layer_template = self.load_template("viewgen/version/a5_1/maplayer.xml")
-        self.publish_layer = []
+        self.map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/maplayer.xml")
+        self.layer_tree_layer_template = HeleperFunction.load_xml(self.input_path, "xml/layer-tree-layer.xml")
+        self.publish_layer = {}
         self.full_sql = ""
         self.attributes = {
             "publish" : {
@@ -41,6 +44,9 @@ class Layer:
     def get_schema(self):
         return self.schema
     
+    def get_name(self):
+        return self.name
+    
     def get_sql(self):
         return self.full_sql
     
@@ -55,15 +61,60 @@ class Layer:
 
     def genrate_prj(self):
         # Make sure the template loaded correctly
-        if self.layer_template is None:
+        if self.map_layer_template is None:
             print("[ERROR] Layer template not loaded")
             return
         
-        for geom in self.attributes["publish"]["geometry"] :
-            template_copy = copy.deepcopy(self.layer_template)
-            self.qgis_gen_id(template_copy.find(".//id"))
-            self.qgis_gen_datasource(geom, template_copy.find(".//datasource"))
-            self.publish_layer.append(template_copy)
+
+        geometries = self.attributes["publish"].get("geometry", [])
+
+        # If empty, default to [None]
+        if not geometries:
+            geometries = [None]
+
+        for geom in geometries:
+            map_layer = copy.deepcopy(self.map_layer_template)
+            layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
+
+            # Format name 
+            layer_tree_layer.set("name", self.name)
+
+            # Format id
+            id = self.qgis_gen_id()
+            map_layer.find(".//id").text = id
+            layer_tree_layer.set("id", id)
+
+            #Format layername
+            layername_elem = map_layer.find(".//layername")
+            if layername_elem is not None:
+                if geom is None:
+                    layername_elem.text = f"{self.name}"
+                else:
+                    role = geom.get("role")
+                    if len(geometries) == 1:
+                        layername_elem.text = f"{self.name}"
+                    else:
+                        layername_elem.text = f"{self.name}.{role}"
+
+
+            # Format datasource
+            if layername_elem is not None:
+                if geom is None:
+                    datasource = self.qgis_gen_datasource()
+                else:
+                    role = geom.get("role")
+                    datasource = self.qgis_gen_datasource(role)
+                   
+            map_layer.find(".//datasource").text = datasource
+            layer_tree_layer.set("source", datasource.replace('"',"&quot"))
+
+
+            self.publish_layer[f"{self.name}"] = {
+                "id" : id,
+                "datasource" : datasource,
+                "maplayer" : map_layer,
+                "layertree" : layer_tree_layer,
+                }
 
     def generate_sql(self):
         if self.snowflake :
@@ -151,32 +202,32 @@ class Layer:
     def add_association_snowflake_one(self, schema, name, role, type) : pass
     def add_association_snowflake_many(self, schema, name, role, type) : pass
 
-    def publish_handler(self, schema, name, full_name, publish_param):
+    def publish_handler(self, schema, name, role, full_name, publish_param):
         if publish_param.get("geometry") == True:
-            self.attributes["publish"]["geometry"].append(full_name)
+            self.attributes["publish"]["geometry"].append({
+                "role" : role,
+                "fullname" : full_name,
+        })
         
         # if publish_param.get()
 
-    def qgis_gen_id(self, node):
+    def qgis_gen_id(self):
         generated_uuid = str(uuid.uuid4())
         full_id = f"{self.name}_{generated_uuid}"
+        return full_id
 
-        if node is not None:
-            node.text = full_id
-        else:
-            print("[WARNING] <id> element not found")
-
-    def qgis_gen_datasource(self, geom, node):
+    def qgis_gen_datasource(self, geom=None):
         res = ""
-        if node is not None:
-            res += "dbname=${ProjectConfig.dbname} "
-            res += "host=${ProjectConfig.host} "
-            res += "port=${ProjectConfig.port}"
-            res += "key='id' "
-            res += f'"table="{self.schema}"."{self.name}"" '
-            res += f'({geom})'
-            node.text = res
+        res += "dbname='${ProjectConfig.dbname}' "
+        res += "host=${ProjectConfig.host} "
+        res += "port=${ProjectConfig.port} "
+        res += "sslmode=disable "
+        res += "key='row' "
+        res += "checkPrimaryKeyUnicity='1' "
+        res += f'table="{self.schema}"."{self.name}_view" '
+        if geom is None:
+            return res
         else:
-            print("[WARNING] <datasource> element not found")
-
+            res += f'({geom}_geom)'
+        return res
         

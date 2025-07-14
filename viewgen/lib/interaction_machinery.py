@@ -3,14 +3,15 @@ import re
 import json
 import xml.etree.ElementTree as ET
 from lib.parsing import Parsing
+from lib.helper_function import HeleperFunction
 
 
 class InteractionMachinery:
     def __init__(self, name, parsing, input_path, output_path, directory,):
         self.name = name
-        self.attributes = self.load_json(input_path, "attributes.json")
-        self.publisher_qgis = self.load_xml(input_path, "publisher.qgs.ftl")
-        self.parsing = Parsing(parsing, self.attributes)
+        self.attributes = HeleperFunction.load_json(input_path, "attributes.json")
+        self.publisher_qgis = HeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
+        self.parsing = Parsing(parsing, self.attributes, input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
 
@@ -83,10 +84,32 @@ class InteractionMachinery:
         return self.parsing.get_layer()
     
     def populate_qgis_prj(self, prj) : 
-        projectlayers = prj.find(".//projectlayers")
+        project_layers = prj.find(".//projectlayers")
+        layer_tree_group = prj.find(".//layer-tree-group")
+        
+        # count = 0
         for layer, _ in self.layers.values():
-            for publish_layer in layer.get_publish_layer():
-                projectlayers.append(publish_layer)
+            for key, publish_layer in layer.get_publish_layer().items():
+                # if count % 10 == 0:
+                project_layers.append(publish_layer.get("maplayer"))
+                layer_tree_group.append(publish_layer.get("layertree"))
+                # count += 1
+
+    # def populate_tree_layer(self, noide, layer) :
+    #     layer_tree_group = {}
+    #     for layer, _ in self.layers.values():
+    #         for publish_layer in layer.get_publish_layer():
+    #             if layer_tree_group.get(layer.get_schema()) :
+    #                 layer_tree_group[layer.get_schema()] = [{
+    #                     "name" : layer.get_name(),
+    #                     "id" :
+    #                 }]
+
+
+    #         schema_set.add(layer.get_schema())
+    #         layer.get_name()
+
+        
 
             
         # if title is not None:

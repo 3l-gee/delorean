@@ -1,0 +1,13 @@
+<layer-tree-layer name="name"
+                  checked="Qt::Unchecked"
+                  expanded="1"
+                  patch_size="-1,-1"
+                  providerKey="postgres"
+                  source="dbname=&quot;${ProjectConfig.dbname}&quot; host=&quot;${ProjectConfig.host}&quot; port=&quot;${ProjectConfig.port} key=&quot;id&quot; table=&quot;&quot; ()"
+                  legend_exp=""
+                  id="id"
+                  legend_split_behavior="0">
+    <customproperties>
+        <Option/>
+    </customproperties>
+</layer-tree-layer>
