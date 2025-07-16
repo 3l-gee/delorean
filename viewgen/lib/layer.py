@@ -14,12 +14,51 @@ class Layer:
         self.name = name
         self.schema = schema
         self.snowflake = snowflake
-        self.map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/maplayer.xml")
+        self.geom_map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/geom-maplayer.xml")
+        self.table_map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/table-maplayer.xml")
         self.layer_tree_layer_template = HeleperFunction.load_xml(self.input_path, "xml/layer-tree-layer.xml")
-        self.publish_layer = {}
+        self.label_style = HeleperFunction.load_xml(self.input_path, "xml/labelStyle.xml")
+        self.attribute_editor_container = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorContainer.xml")
+        self.publish_layer = []
         self.full_sql = ""
         self.attributes = {
             "publish" : {
+                "attributes" : {
+                    "generic" : [
+                        {
+                            "field": "identifier",
+                            "name": "identifier",
+                        },
+                        {
+                            "field": "interpretation",
+                            "name": "interpretation",
+                        },
+                        {
+                            "field": "sequence_number",
+                            "name": "sequence_number",
+                        },
+                        {
+                            "field": "correction_number",
+                            "name": "correction_number",
+                        },
+                        {
+                            "field": "valid_time_begin",
+                            "name": "valid_time_begin",
+                        },
+                        {
+                            "field": "valid_time_end",
+                            "name": "valid_time_end",
+                        },
+                        {
+                            "field": "feature_lifetime_begin",
+                            "name": "feature_lifetime_begin",
+                        },
+                        {
+                            "field": "feature_lifetime_end",
+                            "name": "feature_lifetime_end",
+                        }
+                    ],
+                    "feature" : []},
                 "geometry" : [],
                 "action" : {
 
@@ -38,7 +77,8 @@ class Layer:
             "lateral" : [],
             "where": self.generate_where(name, schema),
             "group": self.generate_group(name, schema),
-            "order": self.generate_order(name, schema)
+            "order": self.generate_order(name, schema),
+            "index" : []
         }
 
     def get_schema(self):
@@ -58,64 +98,92 @@ class Layer:
 
     def get_publish_layer(self):
         return self.publish_layer
+    
+    def generate_form(self, attribut_edit_form):
+        copy_label_style = copy.deepcopy(self.label_style)
+        attribut_edit_form.append(copy_label_style)
 
+        for schema , value in self.attributes["publish"]["attributes"].items():
+            copy_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+            attribut_edit_form.append()
+
+    
     def genrate_prj(self):
         # Make sure the template loaded correctly
-        if self.map_layer_template is None:
+        if self.geom_map_layer_template is None:
             print("[ERROR] Layer template not loaded")
             return
         
-
         geometries = self.attributes["publish"].get("geometry", [])
 
         # If empty, default to [None]
-        if not geometries:
-            geometries = [None]
+        if geometries :
+            for geom in geometries:
+                self.genrate_geom_layer(geom)
+        else :
+            self.genrate_table_layer()
 
-        for geom in geometries:
-            map_layer = copy.deepcopy(self.map_layer_template)
-            layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
+    def genrate_table_layer(self):
+        table_layer = copy.deepcopy(self.table_map_layer_template)
+        layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
 
-            # Format name 
-            layer_tree_layer.set("name", self.name)
+        # Format name 
+        layer_tree_layer.set("name", self.name)
 
-            # Format id
-            id = self.qgis_gen_id()
-            map_layer.find(".//id").text = id
-            layer_tree_layer.set("id", id)
+        # Format id
+        id = self.qgis_gen_id()
+        table_layer.find(".//id").text = id
+        layer_tree_layer.set("id", id)
 
-            #Format layername
-            layername_elem = map_layer.find(".//layername")
-            if layername_elem is not None:
-                if geom is None:
-                    layername_elem.text = f"{self.name}"
-                else:
-                    role = geom.get("role")
-                    if len(geometries) == 1:
-                        layername_elem.text = f"{self.name}"
-                    else:
-                        layername_elem.text = f"{self.name}.{role}"
+        # Format layername
+        table_layer.find(".//layername").text = f"{self.name}"
+        
+        # Format datasource
+        datasource = self.qgis_gen_datasource()
+        table_layer.find(".//datasource").text = datasource
+        layer_tree_layer.set("source", datasource.replace('"',"&quot"))
 
+        self.publish_layer.append({
+            "id" : id,
+            "datasource" : datasource,
+            "maplayer" : table_layer,
+            "layertree" : layer_tree_layer,
+            })
 
-            # Format datasource
-            if layername_elem is not None:
-                if geom is None:
-                    datasource = self.qgis_gen_datasource()
-                else:
-                    role = geom.get("role")
-                    datasource = self.qgis_gen_datasource(role)
-                   
-            map_layer.find(".//datasource").text = datasource
-            layer_tree_layer.set("source", datasource.replace('"',"&quot"))
+    def genrate_geom_layer(self, geom):
+        map_layer = copy.deepcopy(self.geom_map_layer_template)
+        layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
 
+        id = self.qgis_gen_id()
+        role = geom.get("role")
+        goemtry_type = geom.get("geometrytype")
 
-            self.publish_layer[f"{self.name}"] = {
-                "id" : id,
-                "datasource" : datasource,
-                "maplayer" : map_layer,
-                "layertree" : layer_tree_layer,
-                }
+        # Format maplayer
+        map_layer.set("geometry", goemtry_type)
+        map_layer.set("wkbType", goemtry_type)
 
+        # Format name 
+        layer_tree_layer.set("name", self.name)
+
+        # Format id
+        map_layer.find(".//id").text = id
+        layer_tree_layer.set("id", id)
+
+        # Format layername
+        map_layer.find(".//layername").text = f"{self.name} ({role})"
+        
+        # Format datasource
+        datasource = self.qgis_gen_datasource(role)
+        map_layer.find(".//datasource").text = datasource
+        layer_tree_layer.set("source", datasource.replace('"',"&quot"))
+
+        self.publish_layer.append({
+            "id" : id,
+            "datasource" : datasource,
+            "maplayer" : map_layer,
+            "layertree" : layer_tree_layer,
+            })
+    
     def generate_sql(self):
         if self.snowflake :
             return None
@@ -203,8 +271,9 @@ class Layer:
     def add_association_snowflake_many(self, schema, name, role, type) : pass
 
     def publish_handler(self, schema, name, role, full_name, publish_param):
-        if publish_param.get("geometry") == True:
+        if publish_param.get("geometry"):
             self.attributes["publish"]["geometry"].append({
+                "geometrytype" : publish_param["geometry"].get("geometrytype"),
                 "role" : role,
                 "fullname" : full_name,
         })
@@ -222,7 +291,7 @@ class Layer:
         res += "host=${ProjectConfig.host} "
         res += "port=${ProjectConfig.port} "
         res += "sslmode=disable "
-        res += "key='row' "
+        res += "key='id' "
         res += "checkPrimaryKeyUnicity='1' "
         res += f'table="{self.schema}"."{self.name}_view" '
         if geom is None:

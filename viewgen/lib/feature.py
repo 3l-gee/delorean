@@ -17,18 +17,19 @@ class Feature(Layer) :
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
    
     def generate_attributes(self, name, schema) : 
-        res = ["(row_number() OVER ())::integer AS row"]
-        res.append(f"{schema}.{name}.id")
-        res.append(f"{schema}.{name}_ts.id as ts_id")
-        res.append(f"{schema}.{name}_tsp.id as tsp_id")
-        res.append(f"{schema}.{name}.identifier")
-        res.append(f"{schema}.{name}_ts.interpretation")
-        res.append(f"{schema}.{name}_ts.sequence_number")
-        res.append(f"{schema}.{name}_ts.correction_number")        
-        res.append(f"{schema}.{name}_ts.valid_time_begin")
-        res.append(f"{schema}.{name}_ts.valid_time_end")
-        res.append(f"{schema}.{name}_ts.feature_lifetime_begin")
-        res.append(f"{schema}.{name}_ts.feature_lifetime_end")
+        res = ["(row_number() over ())::integer as id"]
+        res.append(f"{schema}.{name}.id::integer as f_id")
+        res.append(f"{schema}.{name}_ts.id::integer as ts_id")
+        res.append(f"{schema}.{name}_tsp.id::integer as tsp_id")
+        res.append(f"{schema}.{name}.identifier::uuid")
+        res.append(f"{schema}.{name}_ts.interpretation::text")
+        res.append(f"{schema}.{name}_ts.sequence_number::integer")
+        res.append(f"{schema}.{name}_ts.correction_number::integer")        
+        res.append(f"{schema}.{name}_ts.valid_time_begin::timestamp")
+        res.append(f"{schema}.{name}_ts.valid_time_end::timestamp")
+        res.append(f"{schema}.{name}_ts.feature_lifetime_begin::timestamp")
+        res.append(f"{schema}.{name}_ts.feature_lifetime_end::timestamp")
+
         return res
         
     def generate_inner(self, name, schema) : 
@@ -82,16 +83,26 @@ class Feature(Layer) :
 
     def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
+        self.attributes["publish"]["attributes"]["feature"].append({
+                "field": f"{name}",
+                "name": f"{name}",
+            })
+
     def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')') as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
+
+        self.attributes["publish"]["attributes"]["feature"].append({
+                "field": f"{name}",
+                "name": f"{name}",
+            })
 
     def add_association_feature_one(self, schema, name, role, col):
         if not self.attributes["attributes"].get(name):
@@ -100,8 +111,8 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.attributes["attributes"][name].extend([
-            f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')') AS {role}",
-            f"{hash}.href AS {role}_href"
+            f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')')::text AS {role}",
+            f"{hash}.href::text AS {role}_href"
         ])
         
         self.add_group(hash, "title")
@@ -109,6 +120,20 @@ class Feature(Layer) :
         self.add_group(hash, "href")
 
         self.attributes["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+
+        if not  self.attributes["publish"]["attributes"].get(schema) :
+            self.attributes["publish"]["attributes"][schema] = []
+
+        self.attributes["publish"]["attributes"][schema].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
+            {
+                "field": f"{role}_href",
+                "name": f"Ref",
+            }
+        ])
     
     def add_association_object_one(self, schema, name, role, col):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -118,12 +143,22 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.attributes["attributes"][name].extend([
-            f"to_jsonb({hash}.*) AS {role}"
+            f"to_jsonb({hash}.*)::jsonb AS {role}"
         ])
 
         self.add_group(hash, "id")
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
+
+        if not  self.attributes["publish"]["attributes"].get(schema) :
+            self.attributes["publish"]["attributes"][schema] = []
+
+        self.attributes["publish"]["attributes"][schema].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
+        ])
 
     def add_association_feature_many(self, schema, name, role, type):
         if not self.attributes["attributes"].get(name):
@@ -147,7 +182,17 @@ class Feature(Layer) :
         ])
 
         self.attributes["attributes"][name].extend([
-            f"{hash_three}.{role} as {role}"
+            f"{hash_three}.{role}::jsonb as {role}"
+        ])
+
+        if not  self.attributes["publish"]["attributes"].get(schema) :
+            self.attributes["publish"]["attributes"][schema] = []
+
+        self.attributes["publish"]["attributes"][schema].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
         ])
 
     def add_association_object_many(self, schema, name, role, type):
@@ -169,7 +214,17 @@ class Feature(Layer) :
         ])
 
         self.attributes["attributes"][name].extend([
-            f"{hash_three}.{role} as {role}"
+            f"{hash_three}.{role}::jsonb as {role}"
+        ])
+
+        if not  self.attributes["publish"]["attributes"].get(schema) :
+            self.attributes["publish"]["attributes"][schema] = []
+
+        self.attributes["publish"]["attributes"][schema].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
         ])
 
     def add_association_snowflake_one(self, schema, name, publish_param, attribute, group, col, role):
@@ -186,6 +241,16 @@ class Feature(Layer) :
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
         self.publish_handler(schema, name, role, hash, publish_param)
+
+        if not  self.attributes["publish"]["attributes"].get(schema) :
+            self.attributes["publish"]["attributes"][schema] = []
+            
+        self.attributes["publish"]["attributes"][schema].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
+        ])
 
 
     def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
@@ -215,5 +280,8 @@ class Feature(Layer) :
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
             f") as {hash_three} on TRUE"
         ])
+
+        if publish_param.get("geometry") :
+            self.attributes["index"].append(f"create index on {self.schema}.{self.name}_view using gist ({hash_three}.geom)")
 
         self.publish_handler(name, schema, role, hash_three, publish_param)

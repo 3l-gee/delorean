@@ -1,0 +1,174 @@
+<maplayer refreshOnNotifyMessage=""
+			geometry="No geometry"
+			autoRefreshEnabled="0"
+			wkbType="NoGeometry"
+			autoRefreshTime="0"
+			refreshOnNotifyEnabled="0"
+			legendPlaceholderImage=""
+			hasScaleBasedVisibilityFlag="0"
+			minScale="1e+08"
+			styleCategories="AllStyleCategories"
+			maxScale="0"
+			readOnly="0"
+			type="vector">
+    <!-- qgis layer id : qgis_gen_id() -->
+    <id/>
+	<!-- qgis layer source : qgis_gen_datasource() -->
+	<datasource>dbname='${ProjectConfig.dbname}' host='${ProjectConfig.host}' port=${ProjectConfig.port} key='id' table=""</datasource>
+	<keywordList>
+		<value/>
+	</keywordList>
+	<!-- qgis layer source : genrate_prj() -->
+	<layername/>
+	<srs>
+		<spatialrefsys nativeFormat="Wkt">
+			<wkt/>
+			<proj4/>
+			<srsid>0</srsid>
+			<srid>0</srid>
+			<authid/>
+			<description/>
+			<projectionacronym/>
+			<ellipsoidacronym/>
+			<geographicflag>false</geographicflag>
+		</spatialrefsys>
+	</srs>
+	<resourceMetadata>
+		<identifier/>
+		<parentidentifier/>
+		<language/>
+		<type>dataset</type>
+		<title/>
+		<abstract/>
+		<links/>
+		<fees/>
+		<encoding/>
+		<crs>
+			<spatialrefsys nativeFormat="Wkt">
+				<wkt/>
+				<proj4/>
+				<srsid>0</srsid>
+				<srid>0</srid>
+				<authid/>
+				<description/>
+				<projectionacronym/>
+				<ellipsoidacronym/>
+				<geographicflag>false</geographicflag>
+			</spatialrefsys>
+		</crs>
+		<extent/>
+	</resourceMetadata>
+	<provider encoding="">postgres</provider>
+	<vectorjoins/>
+	<layerDependencies/>
+	<dataDependencies/>
+	<expressionfields/>
+	<map-layer-style-manager current="default">
+		<map-layer-style name="default"/>
+	</map-layer-style-manager>
+	<auxiliaryLayer/>
+	<metadataUrls/>
+	<flags>
+		<Identifiable>1</Identifiable>
+		<Removable>1</Removable>
+		<Searchable>1</Searchable>
+		<Private>0</Private>
+	</flags>
+	<!-- <temporal durationUnit="min"
+		durationField=""
+		endField=""
+		mode="0"
+		endExpression=""
+		fixedDuration="0"
+		startExpression=""
+		enabled="0"
+		limitMode="0"
+		startField=""
+		accumulate="0">
+		<fixedRange>
+			<start/>
+			<end/>
+		</fixedRange>
+	</temporal> -->
+	<elevation/>
+	<customproperties>
+		<Option type="Map">
+			<Option name="dualview/previewExpressions"
+				type="List">
+				<Option value="&quot;id&quot;"
+					type="QString"/>
+			</Option>
+		</Option>
+	</customproperties>
+	<geometryOptions removeDuplicateNodes="0"
+		geometryPrecision="0">
+		<activeChecks type="StringList">
+			<Option value=""
+				type="QString"/>
+		</activeChecks>
+		<checkConfiguration/>
+	</geometryOptions>
+	<legend showLabelLegend="0"
+		type="default-vector"/>
+	<referencedLayers/>
+	<fieldConfiguration>
+		<field configurationFlags="None"
+			name="id">
+			<editWidget type="">
+				<config>
+					<Option/>
+				</config>
+			</editWidget>
+		</field>
+	</fieldConfiguration>
+	<aliases>
+		<alias field="id"
+			name=""
+			index="0"/>
+	</aliases>
+	<defaults>
+		<default field="id"
+			applyOnUpdate="0"
+			expression=""/>
+	</defaults>
+	<constraints>
+		<constraint field="id"
+			exp_strength="0"
+			constraints="3"
+			unique_strength="1"
+			notnull_strength="1"/>
+	</constraints>
+	<constraintExpressions>
+		<constraint field="id"
+			desc=""
+			exp=""/>
+	</constraintExpressions>
+	<expressionfields/>
+	<attributeactions>
+		<defaultAction key="Canvas"
+			value="{00000000-0000-0000-0000-000000000000}"/>
+	</attributeactions>
+	<attributetableconfig sortOrder="0"
+		sortExpression=""
+		actionWidgetStyle="dropDown">
+	</attributetableconfig>
+	<conditionalstyles>
+		<rowstyles/>
+		<fieldstyles/>
+	</conditionalstyles>
+	<storedexpressions/>
+	<editform tolerant="1"/>
+	<editforminit/>
+	<editforminitcodesource>0</editforminitcodesource>
+	<editforminitfilepath/>
+	<editforminitcode><![CDATA[]]></editforminitcode>
+	<featformsuppress>0</featformsuppress>
+	<editorlayout>generatedlayout</editorlayout>
+	<editable/>
+	<labelOnTop/>
+	<reuseLastValue/>
+	<dataDefinedFieldProperties/>
+	<widgets/>
+	<previewExpression/>
+	<mapTip/>
+</maplayer>

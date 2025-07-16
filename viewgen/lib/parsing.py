@@ -200,7 +200,7 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 attribute = self.snowflake_set[name].get("one").get("attribute")
                 group = self.snowflake_set[name].get("one").get("group")
-                publish = self.snowflake_set[name].get("publish")
+                publish = self.snowflake_set[name].get("one").get("publish")
                 layer.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
@@ -228,7 +228,7 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                publish = self.snowflake_set[name].get("publish")
+                publish = self.snowflake_set[name].get("many").get("publish")
                 layer.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
@@ -266,7 +266,7 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 attribute = self.snowflake_set[name].get("one").get("attribute")
                 group = self.snowflake_set[name].get("one").get("group")
-                publish = self.snowflake_set[name].get("publish")
+                publish = self.snowflake_set[name].get("one").get("publish")
                 property.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
                         
             elif name in self.property.keys():
@@ -294,7 +294,7 @@ class Parsing :
                 schema = self.snowflake_set[name].get("schema")
                 argument = self.snowflake_set[name].get("many").get("argument")
                 attribute = self.snowflake_set[name].get("many").get("attribute")
-                publish = self.snowflake_set[name].get("publish")
+                publish = self.snowflake_set[name].get("many").get("publish")
                 property.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
 
             elif name in self.property.keys():

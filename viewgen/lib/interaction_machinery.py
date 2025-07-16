@@ -9,11 +9,13 @@ from lib.helper_function import HeleperFunction
 class InteractionMachinery:
     def __init__(self, name, parsing, input_path, output_path, directory,):
         self.name = name
-        self.attributes = HeleperFunction.load_json(input_path, "attributes.json")
+        self.attribute = HeleperFunction.load_json(input_path, "attributes.json")
+        self.ignore_set = set(self.attribute["ignore"])
         self.publisher_qgis = HeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
-        self.parsing = Parsing(parsing, self.attributes, input_path)
+        self.parsing = Parsing(parsing, self.attribute, input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
+        
 
         self.populate_qgis_prj(self.publisher_qgis)
         self.export_sql(output_path, "postgres/view.sql")
@@ -89,11 +91,13 @@ class InteractionMachinery:
         
         # count = 0
         for layer, _ in self.layers.values():
-            for key, publish_layer in layer.get_publish_layer().items():
-                # if count % 10 == 0:
-                project_layers.append(publish_layer.get("maplayer"))
-                layer_tree_group.append(publish_layer.get("layertree"))
-                # count += 1
+            if layer.get_type() not in self.ignore_set:
+                for publish_layer in layer.get_publish_layer():
+                    project_layers.append(publish_layer.get("maplayer"))
+                    layer_tree_group.append(publish_layer.get("layertree"))
+
+            else : 
+                print("Ignored : ", layer.get_type())
 
     # def populate_tree_layer(self, noide, layer) :
     #     layer_tree_group = {}
