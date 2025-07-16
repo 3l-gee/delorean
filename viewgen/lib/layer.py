@@ -23,7 +23,7 @@ class Layer:
         self.full_sql = ""
         self.attributes = {
             "publish" : {
-                "attributes" : {
+                "form" : {
                     "generic" : [
                         {
                             "field": "identifier",
@@ -58,7 +58,7 @@ class Layer:
                             "name": "feature_lifetime_end",
                         }
                     ],
-                    "feature" : []},
+                    "attributes" : []},
                 "geometry" : [],
                 "action" : {
 
@@ -103,7 +103,13 @@ class Layer:
         copy_label_style = copy.deepcopy(self.label_style)
         attribut_edit_form.append(copy_label_style)
 
-        for schema , value in self.attributes["publish"]["attributes"].items():
+        feature_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+
+        for schema, value in self.attributes["publish"]["form"].items():
+            if schema == "generic" or schema == "attributes" :
+
+            else :
+
             copy_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
             attribut_edit_form.append()
 

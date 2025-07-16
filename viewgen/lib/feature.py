@@ -88,7 +88,7 @@ class Feature(Layer) :
         self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["attributes"]["feature"].append({
+        self.attributes["publish"]["form"]["attributes"].append({
                 "field": f"{name}",
                 "name": f"{name}",
             })
@@ -99,7 +99,7 @@ class Feature(Layer) :
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["attributes"]["feature"].append({
+        self.attributes["publish"]["form"]["attributes"].append({
                 "field": f"{name}",
                 "name": f"{name}",
             })
@@ -121,10 +121,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["attributes"].get(schema) :
-            self.attributes["publish"]["attributes"][schema] = []
+        if not  self.attributes["publish"]["form"].get(schema) :
+            self.attributes["publish"]["form"][schema] = []
 
-        self.attributes["publish"]["attributes"][schema].extend([
+        self.attributes["publish"]["form"][schema].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -150,10 +150,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["attributes"].get(schema) :
-            self.attributes["publish"]["attributes"][schema] = []
+        if not  self.attributes["publish"]["form"].get(schema) :
+            self.attributes["publish"]["form"][schema] = []
 
-        self.attributes["publish"]["attributes"][schema].extend([
+        self.attributes["publish"]["form"][schema].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -185,10 +185,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
-        if not  self.attributes["publish"]["attributes"].get(schema) :
-            self.attributes["publish"]["attributes"][schema] = []
+        if not  self.attributes["publish"]["form"].get(schema) :
+            self.attributes["publish"]["form"][schema] = []
 
-        self.attributes["publish"]["attributes"][schema].extend([
+        self.attributes["publish"]["form"][schema].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -217,10 +217,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
-        if not  self.attributes["publish"]["attributes"].get(schema) :
-            self.attributes["publish"]["attributes"][schema] = []
+        if not  self.attributes["publish"]["form"].get(schema) :
+            self.attributes["publish"]["form"][schema] = []
 
-        self.attributes["publish"]["attributes"][schema].extend([
+        self.attributes["publish"]["form"][schema].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -242,10 +242,10 @@ class Feature(Layer) :
 
         self.publish_handler(schema, name, role, hash, publish_param)
 
-        if not  self.attributes["publish"]["attributes"].get(schema) :
-            self.attributes["publish"]["attributes"][schema] = []
+        if not  self.attributes["publish"]["form"].get(schema) :
+            self.attributes["publish"]["form"][schema] = []
             
-        self.attributes["publish"]["attributes"][schema].extend([
+        self.attributes["publish"]["form"][schema].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
