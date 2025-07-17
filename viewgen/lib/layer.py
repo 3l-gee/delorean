@@ -19,6 +19,7 @@ class Layer:
         self.layer_tree_layer_template = HeleperFunction.load_xml(self.input_path, "xml/layer-tree-layer.xml")
         self.label_style = HeleperFunction.load_xml(self.input_path, "xml/labelStyle.xml")
         self.attribute_editor_container = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorContainer.xml")
+        self.attribut_editor_field = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorField.xml")
         self.publish_layer = []
         self.full_sql = ""
         self.attributes = {
@@ -104,14 +105,58 @@ class Layer:
         attribut_edit_form.append(copy_label_style)
 
         feature_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+        feature_attribute_editor_container.set("name", "feature")
+        feature_attribute_editor_container.append(copy_label_style)
+
+        index = 0
 
         for schema, value in self.attributes["publish"]["form"].items():
-            if schema == "generic" or schema == "attributes" :
+            if schema == "generic" : 
+                group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+                group_attribute_editor_container.set("name", schema)
+                group_attribute_editor_container.set("groupBox", "1")
+                group_attribute_editor_container.append(copy_label_style)
 
+                for item in value : 
+                    field = copy.deepcopy(self.attribut_editor_field)
+                    field.set("name", item.get("name"))
+                    field.set("index", str(index))
+                    group_attribute_editor_container.append(field)
+                    index+=1
+
+                feature_attribute_editor_container.append(group_attribute_editor_container)
+            
+            if schema == "attributes" :
+                group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+                group_attribute_editor_container.set("name", schema)
+                group_attribute_editor_container.set("groupBox", "1")
+                group_attribute_editor_container.append(copy_label_style)
+
+                for item in value : 
+                    field = copy.deepcopy(self.attribut_editor_field)
+                    field.set("name", item.get("name"))
+                    field.set("index", str(index))
+                    group_attribute_editor_container.append(field)
+                    index+=1
+
+                feature_attribute_editor_container.append(group_attribute_editor_container)
+            
             else :
+                attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
+                attribute_editor_container.set("name", schema)
+                attribute_editor_container.append(copy_label_style)
 
-            copy_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-            attribut_edit_form.append()
+                for item in value : 
+                    field = copy.deepcopy(self.attribut_editor_field)
+                    field.set("name", item.get("name"))
+                    field.set("index", str(index))
+                    attribute_editor_container.append(field)
+                    index+=1
+
+                attribut_edit_form.append(group_attribute_editor_container)
+            
+            attribut_edit_form.append(feature_attribute_editor_container)
+            return attribut_edit_form
 
     
     def genrate_prj(self):
@@ -149,6 +194,11 @@ class Layer:
         table_layer.find(".//datasource").text = datasource
         layer_tree_layer.set("source", datasource.replace('"',"&quot"))
 
+        # Format qgis form
+        attribute_edit_form = table_layer.find(".//attributeEditorForm")
+        table_layer.remove(attribute_edit_form)
+        table_layer.append(self.generate_form(attribute_edit_form))
+
         self.publish_layer.append({
             "id" : id,
             "datasource" : datasource,
@@ -182,6 +232,11 @@ class Layer:
         datasource = self.qgis_gen_datasource(role)
         map_layer.find(".//datasource").text = datasource
         layer_tree_layer.set("source", datasource.replace('"',"&quot"))
+
+        # Format qgis form
+        attribute_edit_form = map_layer.find(".//attributeEditorForm")
+        map_layer.remove(attribute_edit_form)
+        map_layer.append(self.generate_form(attribute_edit_form))
 
         self.publish_layer.append({
             "id" : id,

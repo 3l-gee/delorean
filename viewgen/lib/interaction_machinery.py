@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import re
 import json
 import xml.etree.ElementTree as ET
@@ -16,7 +17,6 @@ class InteractionMachinery:
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
         
-
         self.populate_qgis_prj(self.publisher_qgis)
         self.export_sql(output_path, "postgres/view.sql")
         self.export_publish_qgis(output_path, "qgis/publisher.qgs.ftl")
@@ -48,7 +48,7 @@ class InteractionMachinery:
                 raise ValueError(f"Invalid JSON in '{name}': {e}")
             
     def load_xml(self, path, name):
-        file_path = os.path.join(path, name)
+        file_path = os.path.join(path, name).replace("\\", "/")
 
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"'{name}' not found at: {file_path}")
@@ -62,7 +62,7 @@ class InteractionMachinery:
         
 
     def export_publish_qgis(self, output_path, name):
-        file_path = os.path.join(output_path, name)
+        file_path = os.path.join(output_path, name).replace("\\", "/")
 
         try:
             tree = ET.ElementTree(self.publisher_qgis)
