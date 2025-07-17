@@ -190,7 +190,7 @@
     <editforminitfilepath/>
     <editforminitcode><![CDATA[]]></editforminitcode>
     <featformsuppress>0</featformsuppress>
-    <editorlayout>generatedlayout</editorlayout>
+    <editorlayout>tablayout</editorlayout>
     <attributeEditorForm/>
     <editable/>
     <labelOnTop/>

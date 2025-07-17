@@ -31,4 +31,18 @@ class HeleperFunction:
             return root
         except ET.ParseError as e:
             raise ValueError(f"Invalid XML in '{name}': {e}")
+        
+    @staticmethod
+    def load_html(path, name):
+        file_path = os.path.join(path, name)
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"'{name}' not found at: {file_path}")
+
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                soup = BeautifulSoup(f, 'html.parser')  # or 'lxml' if installed
+                return soup
+        except Exception as e:
+            raise ValueError(f"Failed to load HTML '{name}': {e}")
 

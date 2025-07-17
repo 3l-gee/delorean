@@ -8,6 +8,7 @@ from lib.helper_function import HeleperFunction
 class Layer:
 
     def __init__(self, input_path, type, name, schema, snowflake=False):
+        self.layer_type = None
         self.dependecy = set()
         self.type = type
         self.input_path = input_path
@@ -79,7 +80,7 @@ class Layer:
             "where": self.generate_where(name, schema),
             "group": self.generate_group(name, schema),
             "order": self.generate_order(name, schema),
-            "index" : []
+            "index" : [f"create index on {self.schema}.{self.name}_view (id)"]
         }
 
     def get_schema(self):
@@ -108,42 +109,35 @@ class Layer:
         feature_attribute_editor_container.set("name", "feature")
         feature_attribute_editor_container.append(copy_label_style)
 
+        tab_list = []
+
         index = 0
 
-        for schema, value in self.attributes["publish"]["form"].items():
-            if schema == "generic" : 
+        for role, value in self.attributes["publish"]["form"].items():
+            if role in ["generic", "attributes"]:
                 group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                group_attribute_editor_container.set("name", schema)
+                group_attribute_editor_container.set("name", role)
                 group_attribute_editor_container.set("groupBox", "1")
                 group_attribute_editor_container.append(copy_label_style)
 
-                for item in value : 
+                for item in value:
                     field = copy.deepcopy(self.attribut_editor_field)
                     field.set("name", item.get("name"))
                     field.set("index", str(index))
                     group_attribute_editor_container.append(field)
-                    index+=1
+                    index += 1
 
                 feature_attribute_editor_container.append(group_attribute_editor_container)
-            
-            if schema == "attributes" :
+
+            if value.get("html") :
                 group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                group_attribute_editor_container.set("name", schema)
+                group_attribute_editor_container.set("name", role)
                 group_attribute_editor_container.set("groupBox", "1")
                 group_attribute_editor_container.append(copy_label_style)
-
-                for item in value : 
-                    field = copy.deepcopy(self.attribut_editor_field)
-                    field.set("name", item.get("name"))
-                    field.set("index", str(index))
-                    group_attribute_editor_container.append(field)
-                    index+=1
-
-                feature_attribute_editor_container.append(group_attribute_editor_container)
             
             else :
                 attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                attribute_editor_container.set("name", schema)
+                attribute_editor_container.set("name", role)
                 attribute_editor_container.append(copy_label_style)
 
                 for item in value : 
@@ -153,10 +147,11 @@ class Layer:
                     attribute_editor_container.append(field)
                     index+=1
 
-                attribut_edit_form.append(group_attribute_editor_container)
+                tab_list.append(copy.deepcopy(attribute_editor_container))
             
-            attribut_edit_form.append(feature_attribute_editor_container)
-            return attribut_edit_form
+        attribut_edit_form.append(copy.deepcopy(feature_attribute_editor_container))
+        attribut_edit_form.extend(tab_list)
+        return attribut_edit_form
 
     
     def genrate_prj(self):
@@ -263,6 +258,7 @@ class Layer:
         where_clause = "where " + "\n  and ".join(self.attributes["where"]) if self.attributes["where"] else ""
         group_clause = "group by\n    " + ",\n    ".join(self.attributes["group"]) if self.attributes["group"] else ""
         order_clause = ", ".join(self.attributes["order"])
+        # index_clause = ";\n".join(self.attributes["index"])
 
         # Assemble final SQL
         sql_parts = [
@@ -274,10 +270,9 @@ class Layer:
             lateral_sql,
             where_clause,
             # group_clause,
-            order_clause
+            order_clause,
         ]
-
-        self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";" + "\n" + f"create index on {self.schema}.{self.name}_view (id);"
+        self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
 
     def load_sql(self, path):
         try:
@@ -339,7 +334,6 @@ class Layer:
                 "fullname" : full_name,
         })
         
-        # if publish_param.get()
 
     def qgis_gen_id(self):
         generated_uuid = str(uuid.uuid4())
@@ -352,7 +346,13 @@ class Layer:
         res += "host=${ProjectConfig.host} "
         res += "port=${ProjectConfig.port} "
         res += "sslmode=disable "
-        res += "key='id' "
+        # Feature needs a row as primary key as we display the versions and thus id is not unique
+        if self.layer_type == "feature" : 
+            res += "key='row' "
+
+        if self.layer_type == "property" : 
+            res += "key='id' "
+
         res += "checkPrimaryKeyUnicity='1' "
         res += f'table="{self.schema}"."{self.name}_view" '
         if geom is None:

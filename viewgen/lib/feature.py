@@ -4,6 +4,10 @@ from lib.layer import Layer
 
 class Feature(Layer) :
 
+    def __init__(self, input_path, type, name, schema, snowflake=False):
+        super().__init__(input_path, type, name, schema, snowflake)
+        self.layer_type = "feature"
+
     def get_name(self):
         return f"{self.schema}.{self.name}_view"
 
@@ -17,8 +21,8 @@ class Feature(Layer) :
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
    
     def generate_attributes(self, name, schema) : 
-        res = ["(row_number() over ())::integer as id"]
-        res.append(f"{schema}.{name}.id::integer as f_id")
+        res = ["(row_number() over ())::integer as row"]
+        res.append(f"{schema}.{name}.id::integer as id")
         res.append(f"{schema}.{name}_ts.id::integer as ts_id")
         res.append(f"{schema}.{name}_tsp.id::integer as tsp_id")
         res.append(f"{schema}.{name}.identifier::uuid")
@@ -81,22 +85,22 @@ class Feature(Layer) :
         res.append(f"{schema}.{name}_ts.feature_lifetime_end")
         return res 
 
-    def add_attributes_three(self, value, uom, nil) :
+    def add_attributes_two(self, value, nil) :
         name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
-        self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
         self.attributes["publish"]["form"]["attributes"].append({
                 "field": f"{name}",
                 "name": f"{name}",
             })
-
-    def add_attributes_two(self, value, nil) :
+        
+    def add_attributes_three(self, value, uom, nil) :
         name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
+        self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
         self.attributes["publish"]["form"]["attributes"].append({
@@ -121,10 +125,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["form"].get(schema) :
-            self.attributes["publish"]["form"][schema] = []
+        if not  self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
 
-        self.attributes["publish"]["form"][schema].extend([
+        self.attributes["publish"]["form"][role].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -150,10 +154,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["form"].get(schema) :
-            self.attributes["publish"]["form"][schema] = []
+        if not  self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
 
-        self.attributes["publish"]["form"][schema].extend([
+        self.attributes["publish"]["form"][role].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -185,10 +189,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
-        if not  self.attributes["publish"]["form"].get(schema) :
-            self.attributes["publish"]["form"][schema] = []
+        if not  self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
 
-        self.attributes["publish"]["form"][schema].extend([
+        self.attributes["publish"]["form"][role].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -217,10 +221,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
-        if not  self.attributes["publish"]["form"].get(schema) :
-            self.attributes["publish"]["form"][schema] = []
+        if not  self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
 
-        self.attributes["publish"]["form"][schema].extend([
+        self.attributes["publish"]["form"][role].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -242,10 +246,10 @@ class Feature(Layer) :
 
         self.publish_handler(schema, name, role, hash, publish_param)
 
-        if not  self.attributes["publish"]["form"].get(schema) :
-            self.attributes["publish"]["form"][schema] = []
+        if not  self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
             
-        self.attributes["publish"]["form"][schema].extend([
+        self.attributes["publish"]["form"][role].extend([
             {
                 "field": f"{role}",
                 "name": f"{role}",
@@ -285,3 +289,13 @@ class Feature(Layer) :
             self.attributes["index"].append(f"create index on {self.schema}.{self.name}_view using gist ({hash_three}.geom)")
 
         self.publish_handler(name, schema, role, hash_three, publish_param)
+
+        if not self.attributes["publish"]["form"].get(role) :
+            self.attributes["publish"]["form"][role] = []
+            
+        self.attributes["publish"]["form"][role].extend([
+            {
+                "field": f"{role}",
+                "name": f"{role}",
+            },
+        ])
