@@ -1,6 +1,7 @@
 import os
 import json
-import xml.etree.ElementTree as ET
+from lxml import etree
+from lxml import html
 
 class HeleperFunction:
 
@@ -26,10 +27,10 @@ class HeleperFunction:
             raise FileNotFoundError(f"'{name}' not found at: {file_path}")
 
         try:
-            tree = ET.parse(file_path)
+            tree = etree.parse(file_path)
             root = tree.getroot()
             return root
-        except ET.ParseError as e:
+        except etree .XMLSyntaxError  as e:
             raise ValueError(f"Invalid XML in '{name}': {e}")
         
     @staticmethod
@@ -41,8 +42,24 @@ class HeleperFunction:
 
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
-                soup = BeautifulSoup(f, 'html.parser')  # or 'lxml' if installed
-                return soup
+                raw_html = f.read()
+            return raw_html
         except Exception as e:
-            raise ValueError(f"Failed to load HTML '{name}': {e}")
+            raise ValueError(f"Error loading HTML '{name}': {e}")
+        
+    @staticmethod
+    def format_structure(structure, **kwargs):
+        """
+        Recursively formats all strings in a nested structure using Python's str.format().
+        """
+        if isinstance(structure, dict):
+            return {k: HeleperFunction.format_structure(v, **kwargs) for k, v in structure.items()}
+        elif isinstance(structure, list):
+            return [HeleperFunction.format_structure(item, **kwargs) for item in structure]
+        elif isinstance(structure, str):
+            return structure.format(**kwargs)
+        else:
+            return structure
+
+
 

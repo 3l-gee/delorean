@@ -1,6 +1,7 @@
 import random
 import string
-import xml.etree.ElementTree as ET
+from lxml import etree
+import re
 import uuid
 import copy
 from lib.helper_function import HeleperFunction
@@ -21,6 +22,8 @@ class Layer:
         self.label_style = HeleperFunction.load_xml(self.input_path, "xml/labelStyle.xml")
         self.attribute_editor_container = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorContainer.xml")
         self.attribut_editor_field = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorField.xml")
+        self.attribut_editor_html_element = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorHtmlElement.xml")
+        self.alias = HeleperFunction.load_xml(self.input_path, "xml/alias.xml")
         self.publish_layer = []
         self.full_sql = ""
         self.attributes = {
@@ -101,6 +104,65 @@ class Layer:
     def get_publish_layer(self):
         return self.publish_layer
     
+    def genrate_field_generic(self, index, entry):
+        copy_label_style = copy.deepcopy(self.label_style)
+
+        html_node = copy.deepcopy(self.attribut_editor_html_element)
+        html_node.set("name", entry.get("name"))
+        html_node.append(copy_label_style)
+
+        raw_html = HeleperFunction.load_html(self.input_path, "html/annotation.html")
+
+        if html_node[-1].tail is None:
+            html_node[-1].tail = raw_html 
+        else:
+            html_node[-1].tail = raw_html 
+
+        return html_node
+    
+    def genrate_field_generic(self, index, entry):
+        copy_label_style = copy.deepcopy(self.label_style)
+
+        if entry.get("html") :
+            html_node = copy.deepcopy(self.attribut_editor_html_element)
+            html_node.set("name", entry.get("field"))
+            html_node.append(copy_label_style)
+
+            # Load raw HTML file as string
+            raw_html = HeleperFunction.load_html(self.input_path, "html/annotation.html")
+
+            raw_html = re.sub(r'to_json\(\s*annotation\s*\)', f"to_json({entry.get('field')})", raw_html)
+
+            wrapped = f"<#noparse>\n{raw_html}\n</#noparse>"
+
+            if html_node[-1].tail is None:
+                html_node[-1].tail = etree.CDATA(wrapped)
+            else:
+                html_node[-1].tail = etree.CDATA(wrapped)
+
+            return html_node
+
+        else :
+            field = copy.deepcopy(self.attribut_editor_field)
+            field.set("name", entry.get("field"))
+            field.set("index", str(index))
+            field.append(copy_label_style)
+            return field
+        
+    # def generate_aliases(self, aliases):
+    #     index = 0
+    #     for role, value in self.attributes["publish"]["form"].items():
+    #         for item in value:
+    #             alias = copy.deepcopy(self.alias)
+    #             alias.set("index", str(index))
+    #             alias.set("name", str(item.get("name")))
+    #             alias.set("field", str(item.get("field")))
+    #             aliases.append(alias)
+
+    #             index+=1
+
+    #     return aliases
+    
     def generate_form(self, attribut_edit_form):
         copy_label_style = copy.deepcopy(self.label_style)
         attribut_edit_form.append(copy_label_style)
@@ -114,26 +176,18 @@ class Layer:
         index = 0
 
         for role, value in self.attributes["publish"]["form"].items():
-            if role in ["generic", "attributes"]:
+            if role in ["generic", "attributes"] or role in ["annotation"]:
                 group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
                 group_attribute_editor_container.set("name", role)
                 group_attribute_editor_container.set("groupBox", "1")
                 group_attribute_editor_container.append(copy_label_style)
+
 
                 for item in value:
-                    field = copy.deepcopy(self.attribut_editor_field)
-                    field.set("name", item.get("name"))
-                    field.set("index", str(index))
-                    group_attribute_editor_container.append(field)
-                    index += 1
+                    group_attribute_editor_container.append(self.genrate_field_generic(index, item))
+                    index+=1
 
                 feature_attribute_editor_container.append(group_attribute_editor_container)
-
-            if value.get("html") :
-                group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                group_attribute_editor_container.set("name", role)
-                group_attribute_editor_container.set("groupBox", "1")
-                group_attribute_editor_container.append(copy_label_style)
             
             else :
                 attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
@@ -141,15 +195,12 @@ class Layer:
                 attribute_editor_container.append(copy_label_style)
 
                 for item in value : 
-                    field = copy.deepcopy(self.attribut_editor_field)
-                    field.set("name", item.get("name"))
-                    field.set("index", str(index))
-                    attribute_editor_container.append(field)
+                    attribute_editor_container.append(self.genrate_field_generic(index, item))
                     index+=1
 
-                tab_list.append(copy.deepcopy(attribute_editor_container))
+                tab_list.append(attribute_editor_container)
             
-        attribut_edit_form.append(copy.deepcopy(feature_attribute_editor_container))
+        attribut_edit_form.append(feature_attribute_editor_container)
         attribut_edit_form.extend(tab_list)
         return attribut_edit_form
 
@@ -193,6 +244,10 @@ class Layer:
         attribute_edit_form = table_layer.find(".//attributeEditorForm")
         table_layer.remove(attribute_edit_form)
         table_layer.append(self.generate_form(attribute_edit_form))
+
+        # aliases = table_layer.find(".//aliases")
+        # table_layer.remove(aliases)
+        # table_layer.append(self.generate_aliases(aliases))
 
         self.publish_layer.append({
             "id" : id,

@@ -1,12 +1,12 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveUser="gerth" saveDateTime="2025-07-15T14:21:35" version="3.28.3-Firenze" saveUserFull="Raphael Gerth" projectname="">
+<qgis saveUser="gerth" version="3.40.8-Bratislava" saveUserFull="Raphael Gerth" saveDateTime="2025-07-18T09:24:15" projectname="">
   <homePath path=""/>
   <title></title>
   <transaction mode="Disabled"/>
   <projectFlags set=""/>
   <projectCrs>
     <spatialrefsys nativeFormat="Wkt">
-      <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth of initial line",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor on initial line",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.82,5.96,47.81,10.49]],ID["EPSG",2056]]</wkt>
+      <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth at projection centre",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor at projection centre",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.81,5.95,47.81,10.5]],ID["EPSG",2056]]</wkt>
       <proj4>+proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
       <srsid>47</srsid>
       <srid>2056</srid>
@@ -17,42 +17,55 @@
       <geographicflag>false</geographicflag>
     </spatialrefsys>
   </projectCrs>
+  <verticalCrs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt></wkt>
+      <proj4></proj4>
+      <srsid>0</srsid>
+      <srid>0</srid>
+      <authid></authid>
+      <description></description>
+      <projectionacronym></projectionacronym>
+      <ellipsoidacronym></ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </verticalCrs>
+  <elevation-shading-renderer hillshading-is-active="0" hillshading-z-factor="1" combined-method="0" edl-distance-unit="0" edl-strength="1000" edl-distance="0.5" hillshading-is-multidirectional="0" light-altitude="45" light-azimuth="315" edl-is-active="1" is-active="0"/>
   <layer-tree-group>
     <customproperties>
       <Option/>
     </customproperties>
-    <layer-tree-layer checked="Qt::Checked" id="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" legend_exp="" name="geoborder_view" legend_split_behavior="0" providerKey="postgres" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=LineString checkPrimaryKeyUnicity='1' table=&quot;airspace&quot;.&quot;geoborder_view&quot; (border_geom)" patch_size="-1,-1" expanded="1">
+    <layer-tree-layer id="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" name="geoborder_view" legend_split_behavior="0" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=LineString checkPrimaryKeyUnicity='1' table=&quot;airspace&quot;.&quot;geoborder_view&quot; (border_geom)" checked="Qt::Checked" legend_exp="" patch_size="-1,-1" providerKey="postgres" expanded="1">
       <customproperties>
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer checked="Qt::Checked" id="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" legend_exp="" name="airspacevolume_view.horizontalprojection_geom" legend_split_behavior="0" providerKey="postgres" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=Polygon checkPrimaryKeyUnicity='1' table=&quot;airspace&quot;.&quot;airspacevolume_view&quot; (horizontalprojection_geom)" patch_size="-1,-1" expanded="1">
+    <layer-tree-layer id="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" name="airspacevolume_view.horizontalprojection_geom" legend_split_behavior="0" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=Polygon checkPrimaryKeyUnicity='1' table=&quot;airspace&quot;.&quot;airspacevolume_view&quot; (horizontalprojection_geom)" checked="Qt::Unchecked" legend_exp="" patch_size="-1,-1" providerKey="postgres" expanded="1">
       <customproperties>
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer checked="Qt::Checked" id="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" legend_exp="" name="aircraftstand_view.location_geom" legend_split_behavior="0" providerKey="postgres" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=Point checkPrimaryKeyUnicity='1' table=&quot;airport_heliport&quot;.&quot;aircraftstand_view&quot; (location_geom)" patch_size="-1,-1" expanded="1">
+    <layer-tree-layer id="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" name="aircraftstand_view.location_geom" legend_split_behavior="0" source="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=Point checkPrimaryKeyUnicity='1' table=&quot;airport_heliport&quot;.&quot;aircraftstand_view&quot; (location_geom)" checked="Qt::Unchecked" legend_exp="" patch_size="-1,-1" providerKey="postgres" expanded="1">
       <customproperties>
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer checked="Qt::Checked" id="note_view_905ab7df_42cd_4742_8f09_5633db75916f" legend_exp="" name="note_view" legend_split_behavior="0" providerKey="postgres" source="dbname='demo' port=5432 sslmode=disable key='id' checkPrimaryKeyUnicity='1' table=&quot;notes&quot;.&quot;note_view&quot;" patch_size="-1,-1" expanded="1">
+    <layer-tree-layer id="note_view_905ab7df_42cd_4742_8f09_5633db75916f" name="note_view" legend_split_behavior="0" source="dbname='demo' port=5432 sslmode=disable key='id' checkPrimaryKeyUnicity='1' table=&quot;notes&quot;.&quot;note_view&quot;" checked="Qt::Checked" legend_exp="" patch_size="-1,-1" providerKey="postgres" expanded="1">
       <customproperties>
         <Option/>
       </customproperties>
     </layer-tree-layer>
     <custom-order enabled="0">
-      <item>note_view_905ab7df_42cd_4742_8f09_5633db75916f</item>
       <item>aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4</item>
       <item>airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5</item>
       <item>geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee</item>
     </custom-order>
   </layer-tree-group>
-  <snapping-settings unit="1" scaleDependencyMode="0" intersection-snapping="0" mode="2" minScale="0" maxScale="0" type="1" enabled="0" self-snapping="0" tolerance="12">
+  <snapping-settings mode="2" tolerance="12" unit="1" intersection-snapping="0" type="1" minScale="0" enabled="0" maxScale="0" self-snapping="0" scaleDependencyMode="0">
     <individual-layer-settings>
-      <layer-setting id="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" units="1" minScale="0" maxScale="0" type="1" enabled="0" tolerance="12"/>
-      <layer-setting id="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" units="1" minScale="0" maxScale="0" type="1" enabled="0" tolerance="12"/>
-      <layer-setting id="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" units="1" minScale="0" maxScale="0" type="1" enabled="0" tolerance="12"/>
+      <layer-setting id="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" tolerance="12" units="1" type="1" minScale="0" enabled="0" maxScale="0"/>
+      <layer-setting id="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" tolerance="12" units="1" type="1" minScale="0" enabled="0" maxScale="0"/>
+      <layer-setting id="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" tolerance="12" units="1" type="1" minScale="0" enabled="0" maxScale="0"/>
     </individual-layer-settings>
   </snapping-settings>
   <relations/>
@@ -60,15 +73,15 @@
   <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>meters</units>
     <extent>
-      <xmin>2491529.46589848306030035</xmin>
-      <ymin>1115032.27933325641788542</ymin>
-      <xmax>2691841.69233718793839216</xmax>
-      <ymax>1261418.73000732972286642</ymax>
+      <xmin>2433976.01484887301921844</xmin>
+      <ymin>1070631.62645951984450221</ymin>
+      <xmax>2584210.18467919528484344</xmax>
+      <ymax>1180421.46446506259962916</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
       <spatialrefsys nativeFormat="Wkt">
-        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth of initial line",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor on initial line",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.82,5.96,47.81,10.49]],ID["EPSG",2056]]</wkt>
+        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth at projection centre",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor at projection centre",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.81,5.95,47.81,10.5]],ID["EPSG",2056]]</wkt>
         <proj4>+proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
         <srsid>47</srsid>
         <srid>2056</srid>
@@ -84,29 +97,29 @@
   </mapcanvas>
   <projectModels/>
   <legend updateDrawingOrder="true">
-    <legendlayer checked="Qt::Checked" name="geoborder_view" showFeatureCount="0" drawingOrder="-1" open="true">
+    <legendlayer name="geoborder_view" open="true" showFeatureCount="0" drawingOrder="-1" checked="Qt::Checked">
       <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" visible="1" isInOverview="0"/>
+        <legendlayerfile isInOverview="0" layerid="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer checked="Qt::Checked" name="airspacevolume_view.horizontalprojection_geom" showFeatureCount="0" drawingOrder="-1" open="true">
+    <legendlayer name="airspacevolume_view.horizontalprojection_geom" open="true" showFeatureCount="0" drawingOrder="-1" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" visible="1" isInOverview="0"/>
+        <legendlayerfile isInOverview="0" layerid="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer checked="Qt::Checked" name="aircraftstand_view.location_geom" showFeatureCount="0" drawingOrder="-1" open="true">
+    <legendlayer name="aircraftstand_view.location_geom" open="true" showFeatureCount="0" drawingOrder="-1" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" visible="1" isInOverview="0"/>
+        <legendlayerfile isInOverview="0" layerid="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer checked="Qt::Checked" name="note_view" showFeatureCount="0" drawingOrder="-1" open="true">
+    <legendlayer name="note_view" open="true" showFeatureCount="0" drawingOrder="-1" checked="Qt::Checked">
       <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="note_view_905ab7df_42cd_4742_8f09_5633db75916f" visible="1" isInOverview="0"/>
+        <legendlayerfile isInOverview="0" layerid="note_view_905ab7df_42cd_4742_8f09_5633db75916f" visible="1"/>
       </filegroup>
     </legendlayer>
   </legend>
   <mapViewDocks/>
-  <main-annotation-layer refreshOnNotifyMessage="" autoRefreshEnabled="0" autoRefreshTime="0" refreshOnNotifyEnabled="0" legendPlaceholderImage="" type="annotation">
+  <main-annotation-layer legendPlaceholderImage="" styleCategories="AllStyleCategories" type="annotation" autoRefreshTime="0" minScale="0" refreshOnNotifyMessage="" autoRefreshMode="Disabled" refreshOnNotifyEnabled="0" maxScale="0" hasScaleBasedVisibilityFlag="0">
     <id>Annotations_14c0419f_2fc1_400f_b4c2_594e52b7aa0a</id>
     <datasource></datasource>
     <keywordList>
@@ -115,7 +128,7 @@
     <layername>Annotations</layername>
     <srs>
       <spatialrefsys nativeFormat="Wkt">
-        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth of initial line",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor on initial line",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.82,5.96,47.81,10.49]],ID["EPSG",2056]]</wkt>
+        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth at projection centre",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor at projection centre",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.81,5.95,47.81,10.5]],ID["EPSG",2056]]</wkt>
         <proj4>+proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
         <srsid>47</srsid>
         <srid>2056</srid>
@@ -134,6 +147,7 @@
       <title></title>
       <abstract></abstract>
       <links/>
+      <dates/>
       <fees></fees>
       <encoding></encoding>
       <crs>
@@ -152,12 +166,21 @@
       <extent/>
     </resourceMetadata>
     <items/>
+    <flags>
+      <Identifiable>1</Identifiable>
+      <Removable>1</Removable>
+      <Searchable>1</Searchable>
+      <Private>0</Private>
+    </flags>
+    <customproperties>
+      <Option/>
+    </customproperties>
     <layerOpacity>1</layerOpacity>
     <blendMode>0</blendMode>
     <paintEffect/>
   </main-annotation-layer>
   <projectlayers>
-    <maplayer minScale="100000000" wkbType="Point" symbologyReferenceScale="-1" autoRefreshEnabled="0" simplifyMaxScale="1" autoRefreshTime="0" simplifyLocal="1" hasScaleBasedVisibilityFlag="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" readOnly="0" labelsEnabled="0" simplifyDrawingHints="1" refreshOnNotifyEnabled="0" type="vector" simplifyAlgorithm="0" refreshOnNotifyMessage="" maxScale="0" geometry="Point" simplifyDrawingTol="1">
+    <maplayer labelsEnabled="0" hasScaleBasedVisibilityFlag="0" geometry="Point" autoRefreshTime="0" type="vector" readOnly="0" maxScale="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" autoRefreshMode="Disabled" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" wkbType="Point" simplifyDrawingHints="0" simplifyMaxScale="1" simplifyLocal="1" minScale="100000000" simplifyDrawingTol="1" simplifyAlgorithm="0" symbologyReferenceScale="-1">
       <extent>
         <xmin>6.09469444439999997</xmin>
         <ymin>46.21810805559999835</ymin>
@@ -178,7 +201,7 @@
       <layername>aircraftstand_view.location_geom</layername>
       <srs>
         <spatialrefsys nativeFormat="Wkt">
-          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
           <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
           <srsid>3452</srsid>
           <srid>4326</srid>
@@ -196,12 +219,22 @@
         <type>dataset</type>
         <title></title>
         <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
         <links/>
+        <dates/>
         <fees></fees>
         <encoding></encoding>
         <crs>
           <spatialrefsys nativeFormat="Wkt">
-            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
             <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
             <srsid>3452</srsid>
             <srid>4326</srid>
@@ -212,7 +245,15 @@
             <geographicflag>true</geographicflag>
           </spatialrefsys>
         </crs>
-        <extent/>
+        <extent>
+          <spatial minx="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" dimensions="2" crs="EPSG:4326" maxx="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" minz="0" maxy="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" maxz="0" miny="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
       </resourceMetadata>
       <provider encoding="">postgres</provider>
       <vectorjoins/>
@@ -230,13 +271,13 @@
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal durationUnit="min" durationField="" endField="valid_time_end" mode="2" endExpression="" fixedDuration="0" startExpression="" enabled="0" limitMode="0" startField="valid_time_begin" accumulate="0">
+      <temporal durationUnit="min" mode="2" fixedDuration="0" endExpression="" durationField="row" startExpression="" accumulate="0" enabled="0" startField="" endField="" limitMode="0">
         <fixedRange>
           <start></start>
           <end></end>
         </fixedRange>
       </temporal>
-      <elevation zscale="1" extrusion="0" binding="Centroid" clamping="Terrain" symbology="Line" extrusionEnabled="0" respectLayerSymbol="1" showMarkerSymbolInSurfacePlots="0" type="IndividualFeatures" zoffset="0">
+      <elevation clamping="Terrain" binding="Centroid" respectLayerSymbol="1" extrusion="0" type="IndividualFeatures" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" zoffset="0" extrusionEnabled="0">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -245,7 +286,7 @@
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="line" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -253,7 +294,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleLine" enabled="1">
+            <layer id="{d03a3ab2-ef16-442f-bfa6-a7607391fef3}" locked="0" class="SimpleLine" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="align_dash_pattern" type="QString"/>
                 <Option value="square" name="capstyle" type="QString"/>
@@ -265,7 +306,7 @@
                 <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
                 <Option value="0" name="draw_inside_polygon" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
-                <Option value="114,155,111,255" name="line_color" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="line_color" type="QString"/>
                 <Option value="solid" name="line_style" type="QString"/>
                 <Option value="0.6" name="line_width" type="QString"/>
                 <Option value="MM" name="line_width_unit" type="QString"/>
@@ -294,7 +335,7 @@
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="fill" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="fill" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -302,15 +343,15 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleFill" enabled="1">
+            <layer id="{e3480078-1682-439c-883b-86e8501d65be}" locked="0" class="SimpleFill" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
-                <Option value="114,155,111,255" name="color" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="color" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="81,111,79,255" name="outline_color" type="QString"/>
+                <Option value="81,111,79,255,rgb:0.31764705882352939,0.43529411764705883,0.30980392156862746,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="MM" name="outline_width_unit" type="QString"/>
@@ -327,7 +368,7 @@
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="marker" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -335,18 +376,18 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
+            <layer id="{a5471322-4f67-4122-b61f-5db54b354463}" locked="0" class="SimpleMarker" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="angle" type="QString"/>
                 <Option value="square" name="cap_style" type="QString"/>
-                <Option value="114,155,111,255" name="color" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="color" type="QString"/>
                 <Option value="1" name="horizontal_anchor_point" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="diamond" name="name" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="81,111,79,255" name="outline_color" type="QString"/>
+                <Option value="81,111,79,255,rgb:0.31764705882352939,0.43529411764705883,0.30980392156862746,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
@@ -368,9 +409,9 @@
           </symbol>
         </profileMarkerSymbol>
       </elevation>
-      <renderer-v2 referencescale="-1" symbollevels="0" enableorderby="0" type="singleSymbol" forceraster="0">
+      <renderer-v2 symbollevels="0" enableorderby="0" referencescale="-1" type="singleSymbol" forceraster="0">
         <symbols>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="0" frame_rate="10" type="marker" clip_to_extent="1">
+          <symbol name="0" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -378,18 +419,18 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
+            <layer id="{f9943875-c493-4876-839d-17683352ae06}" locked="0" class="SimpleMarker" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="angle" type="QString"/>
                 <Option value="square" name="cap_style" type="QString"/>
-                <Option value="213,180,60,255" name="color" type="QString"/>
+                <Option value="213,180,60,255,rgb:0.83529411764705885,0.70588235294117652,0.23529411764705882,1" name="color" type="QString"/>
                 <Option value="1" name="horizontal_anchor_point" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="circle" name="name" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="35,35,35,255" name="outline_color" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0" name="outline_width" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
@@ -412,411 +453,589 @@
         </symbols>
         <rotation/>
         <sizescale/>
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
       </renderer-v2>
+      <selection mode="Default">
+        <selectionColor invalid="1"/>
+        <selectionSymbol>
+          <symbol name="" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer id="{ebd6d1f1-db45-4d89-9c24-c0dac3d32b29}" locked="0" class="SimpleMarker" pass="0" enabled="1">
+              <Option type="Map">
+                <Option value="0" name="angle" type="QString"/>
+                <Option value="square" name="cap_style" type="QString"/>
+                <Option value="255,0,0,255,rgb:1,0,0,1" name="color" type="QString"/>
+                <Option value="1" name="horizontal_anchor_point" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="circle" name="name" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0" name="outline_width" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="diameter" name="scale_method" type="QString"/>
+                <Option value="2" name="size" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="size_map_unit_scale" type="QString"/>
+                <Option value="MM" name="size_unit" type="QString"/>
+                <Option value="1" name="vertical_anchor_point" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </selectionSymbol>
+      </selection>
       <customproperties>
-        <Option/>
+        <Option type="Map">
+          <Option value="offline" name="QFieldSync/action" type="QString"/>
+          <Option value="{}" name="QFieldSync/attachment_naming" type="QString"/>
+          <Option value="offline" name="QFieldSync/cloud_action" type="QString"/>
+          <Option value="" name="QFieldSync/geometry_locked_expression" type="QString"/>
+          <Option value="{}" name="QFieldSync/photo_naming" type="QString"/>
+          <Option value="{}" name="QFieldSync/relationship_maximum_visible" type="QString"/>
+          <Option value="30" name="QFieldSync/tracking_distance_requirement_minimum_meters" type="int"/>
+          <Option value="1" name="QFieldSync/tracking_erroneous_distance_safeguard_maximum_meters" type="int"/>
+          <Option value="0" name="QFieldSync/tracking_measurement_type" type="int"/>
+          <Option value="30" name="QFieldSync/tracking_time_requirement_interval_seconds" type="int"/>
+          <Option value="0" name="QFieldSync/value_map_button_interface_threshold" type="int"/>
+          <Option value="0" name="embeddedWidgets/count" type="int"/>
+          <Option name="variableNames"/>
+          <Option name="variableValues"/>
+        </Option>
       </customproperties>
       <blendMode>0</blendMode>
       <featureBlendMode>0</featureBlendMode>
       <layerOpacity>1</layerOpacity>
-      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
-        <activeChecks type="StringList">
-          <Option value="" type="QString"/>
-        </activeChecks>
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
+        <activeChecks/>
         <checkConfiguration/>
       </geometryOptions>
-      <legend showLabelLegend="0" type="default-vector"/>
+      <legend type="default-vector" showLabelLegend="0"/>
       <referencedLayers/>
       <fieldConfiguration>
-        <field configurationFlags="None" name="row">
-          <editWidget type="">
+        <field name="row" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="id">
-          <editWidget type="">
+        <field name="id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="ts_id">
-          <editWidget type="">
+        <field name="ts_id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="tsp_id">
-          <editWidget type="">
+        <field name="tsp_id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="identifier">
-          <editWidget type="">
+        <field name="identifier" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="interpretation">
-          <editWidget type="">
+        <field name="interpretation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="sequence_number">
-          <editWidget type="">
+        <field name="sequence_number" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="correction_number">
-          <editWidget type="">
+        <field name="correction_number" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="valid_time_begin">
-          <editWidget type="">
+        <field name="valid_time_begin" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="valid_time_end">
-          <editWidget type="">
+        <field name="valid_time_end" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="feature_lifetime_begin">
-          <editWidget type="">
+        <field name="feature_lifetime_begin" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="feature_lifetime_end">
-          <editWidget type="">
+        <field name="feature_lifetime_end" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="designator">
-          <editWidget type="">
+        <field name="designator" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="type">
-          <editWidget type="">
+        <field name="type" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="visualdockingsystem">
-          <editWidget type="">
+        <field name="visualdockingsystem" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="surfaceproperties">
-          <editWidget type="">
+        <field name="surfaceproperties" configurationFlags="NoFlag">
+          <editWidget type="JsonEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_longitude">
-          <editWidget type="">
+        <field name="location_longitude" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_latitude">
-          <editWidget type="">
+        <field name="location_latitude" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_elevation">
-          <editWidget type="">
+        <field name="location_elevation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_geoidundulation">
-          <editWidget type="">
+        <field name="location_geoidundulation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_verticaldatum">
-          <editWidget type="">
+        <field name="location_verticaldatum" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_verticalaccuracy">
-          <editWidget type="">
+        <field name="location_verticalaccuracy" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="location_horizontalaccuracy">
-          <editWidget type="">
+        <field name="location_horizontalaccuracy" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="apronlocation">
-          <editWidget type="">
+        <field name="apronlocation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="apronlocation_href">
-          <editWidget type="">
+        <field name="apronlocation_href" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_geom">
-          <editWidget type="">
+        <field name="extent_geom" configurationFlags="NoFlag">
+          <editWidget type="Geometry">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_elevation">
-          <editWidget type="">
+        <field name="extent_elevation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_geoidundulation">
-          <editWidget type="">
+        <field name="extent_geoidundulation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_verticaldatum">
-          <editWidget type="">
+        <field name="extent_verticaldatum" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_verticalaccuracy">
-          <editWidget type="">
+        <field name="extent_verticalaccuracy" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="extent_horizontalaccuracy">
-          <editWidget type="">
+        <field name="extent_horizontalaccuracy" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="contaminant" configurationFlags="NoFlag">
+          <editWidget type="JsonEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="contaminant">
-          <editWidget type="">
+        <field name="annotation" configurationFlags="NoFlag">
+          <editWidget type="JsonEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="annotation">
-          <editWidget type="">
+        <field name="availability" configurationFlags="NoFlag">
+          <editWidget type="JsonEdit">
             <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field configurationFlags="None" name="availability">
-          <editWidget type="">
-            <config>
-              <Option/>
+              <Option type="Map">
+                <Option value="0" name="DefaultView" type="int"/>
+                <Option value="0" name="FormatJson" type="int"/>
+              </Option>
             </config>
           </editWidget>
         </field>
       </fieldConfiguration>
       <aliases>
-        <alias field="row" name="" index="0"/>
-        <alias field="id" name="" index="1"/>
-        <alias field="ts_id" name="" index="2"/>
-        <alias field="tsp_id" name="" index="3"/>
-        <alias field="identifier" name="" index="4"/>
-        <alias field="interpretation" name="" index="5"/>
-        <alias field="sequence_number" name="" index="6"/>
-        <alias field="correction_number" name="" index="7"/>
-        <alias field="valid_time_begin" name="" index="8"/>
-        <alias field="valid_time_end" name="" index="9"/>
-        <alias field="feature_lifetime_begin" name="" index="10"/>
-        <alias field="feature_lifetime_end" name="" index="11"/>
-        <alias field="designator" name="" index="12"/>
-        <alias field="type" name="" index="13"/>
-        <alias field="visualdockingsystem" name="" index="14"/>
-        <alias field="surfaceproperties" name="" index="15"/>
-        <alias field="location_longitude" name="" index="16"/>
-        <alias field="location_latitude" name="" index="17"/>
-        <alias field="location_elevation" name="" index="18"/>
-        <alias field="location_geoidundulation" name="" index="19"/>
-        <alias field="location_verticaldatum" name="" index="20"/>
-        <alias field="location_verticalaccuracy" name="" index="21"/>
-        <alias field="location_horizontalaccuracy" name="" index="22"/>
-        <alias field="apronlocation" name="" index="23"/>
-        <alias field="apronlocation_href" name="" index="24"/>
-        <alias field="extent_geom" name="" index="25"/>
-        <alias field="extent_elevation" name="" index="26"/>
-        <alias field="extent_geoidundulation" name="" index="27"/>
-        <alias field="extent_verticaldatum" name="" index="28"/>
-        <alias field="extent_verticalaccuracy" name="" index="29"/>
-        <alias field="extent_horizontalaccuracy" name="" index="30"/>
-        <alias field="contaminant" name="" index="31"/>
-        <alias field="annotation" name="" index="32"/>
-        <alias field="availability" name="" index="33"/>
+        <alias name="" index="0" field="row"/>
+        <alias name="" index="1" field="id"/>
+        <alias name="" index="2" field="ts_id"/>
+        <alias name="" index="3" field="tsp_id"/>
+        <alias name="" index="4" field="identifier"/>
+        <alias name="" index="5" field="interpretation"/>
+        <alias name="" index="6" field="sequence_number"/>
+        <alias name="" index="7" field="correction_number"/>
+        <alias name="" index="8" field="valid_time_begin"/>
+        <alias name="" index="9" field="valid_time_end"/>
+        <alias name="" index="10" field="feature_lifetime_begin"/>
+        <alias name="" index="11" field="feature_lifetime_end"/>
+        <alias name="" index="12" field="designator"/>
+        <alias name="" index="13" field="type"/>
+        <alias name="" index="14" field="visualdockingsystem"/>
+        <alias name="" index="15" field="surfaceproperties"/>
+        <alias name="" index="16" field="location_longitude"/>
+        <alias name="" index="17" field="location_latitude"/>
+        <alias name="" index="18" field="location_elevation"/>
+        <alias name="" index="19" field="location_geoidundulation"/>
+        <alias name="" index="20" field="location_verticaldatum"/>
+        <alias name="" index="21" field="location_verticalaccuracy"/>
+        <alias name="" index="22" field="location_horizontalaccuracy"/>
+        <alias name="" index="23" field="apronlocation"/>
+        <alias name="" index="24" field="apronlocation_href"/>
+        <alias name="" index="25" field="extent_geom"/>
+        <alias name="" index="26" field="extent_elevation"/>
+        <alias name="" index="27" field="extent_geoidundulation"/>
+        <alias name="" index="28" field="extent_verticaldatum"/>
+        <alias name="" index="29" field="extent_verticalaccuracy"/>
+        <alias name="" index="30" field="extent_horizontalaccuracy"/>
+        <alias name="" index="31" field="contaminant"/>
+        <alias name="" index="32" field="annotation"/>
+        <alias name="" index="33" field="availability"/>
       </aliases>
+      <splitPolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="designator"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="Duplicate" field="visualdockingsystem"/>
+        <policy policy="Duplicate" field="surfaceproperties"/>
+        <policy policy="Duplicate" field="location_longitude"/>
+        <policy policy="Duplicate" field="location_latitude"/>
+        <policy policy="Duplicate" field="location_elevation"/>
+        <policy policy="Duplicate" field="location_geoidundulation"/>
+        <policy policy="Duplicate" field="location_verticaldatum"/>
+        <policy policy="Duplicate" field="location_verticalaccuracy"/>
+        <policy policy="Duplicate" field="location_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="apronlocation"/>
+        <policy policy="Duplicate" field="apronlocation_href"/>
+        <policy policy="Duplicate" field="extent_geom"/>
+        <policy policy="Duplicate" field="extent_elevation"/>
+        <policy policy="Duplicate" field="extent_geoidundulation"/>
+        <policy policy="Duplicate" field="extent_verticaldatum"/>
+        <policy policy="Duplicate" field="extent_verticalaccuracy"/>
+        <policy policy="DefaultValue" field="extent_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="contaminant"/>
+        <policy policy="Duplicate" field="annotation"/>
+        <policy policy="DefaultValue" field="availability"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="designator"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="Duplicate" field="visualdockingsystem"/>
+        <policy policy="Duplicate" field="surfaceproperties"/>
+        <policy policy="Duplicate" field="location_longitude"/>
+        <policy policy="Duplicate" field="location_latitude"/>
+        <policy policy="Duplicate" field="location_elevation"/>
+        <policy policy="Duplicate" field="location_geoidundulation"/>
+        <policy policy="Duplicate" field="location_verticaldatum"/>
+        <policy policy="Duplicate" field="location_verticalaccuracy"/>
+        <policy policy="Duplicate" field="location_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="apronlocation"/>
+        <policy policy="Duplicate" field="apronlocation_href"/>
+        <policy policy="Duplicate" field="extent_geom"/>
+        <policy policy="Duplicate" field="extent_elevation"/>
+        <policy policy="Duplicate" field="extent_geoidundulation"/>
+        <policy policy="Duplicate" field="extent_verticaldatum"/>
+        <policy policy="Duplicate" field="extent_verticalaccuracy"/>
+        <policy policy="Duplicate" field="extent_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="contaminant"/>
+        <policy policy="Duplicate" field="annotation"/>
+        <policy policy="Duplicate" field="availability"/>
+      </duplicatePolicies>
       <defaults>
-        <default field="row" applyOnUpdate="0" expression=""/>
-        <default field="id" applyOnUpdate="0" expression=""/>
-        <default field="ts_id" applyOnUpdate="0" expression=""/>
-        <default field="tsp_id" applyOnUpdate="0" expression=""/>
-        <default field="identifier" applyOnUpdate="0" expression=""/>
-        <default field="interpretation" applyOnUpdate="0" expression=""/>
-        <default field="sequence_number" applyOnUpdate="0" expression=""/>
-        <default field="correction_number" applyOnUpdate="0" expression=""/>
-        <default field="valid_time_begin" applyOnUpdate="0" expression=""/>
-        <default field="valid_time_end" applyOnUpdate="0" expression=""/>
-        <default field="feature_lifetime_begin" applyOnUpdate="0" expression=""/>
-        <default field="feature_lifetime_end" applyOnUpdate="0" expression=""/>
-        <default field="designator" applyOnUpdate="0" expression=""/>
-        <default field="type" applyOnUpdate="0" expression=""/>
-        <default field="visualdockingsystem" applyOnUpdate="0" expression=""/>
-        <default field="surfaceproperties" applyOnUpdate="0" expression=""/>
-        <default field="location_longitude" applyOnUpdate="0" expression=""/>
-        <default field="location_latitude" applyOnUpdate="0" expression=""/>
-        <default field="location_elevation" applyOnUpdate="0" expression=""/>
-        <default field="location_geoidundulation" applyOnUpdate="0" expression=""/>
-        <default field="location_verticaldatum" applyOnUpdate="0" expression=""/>
-        <default field="location_verticalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="location_horizontalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="apronlocation" applyOnUpdate="0" expression=""/>
-        <default field="apronlocation_href" applyOnUpdate="0" expression=""/>
-        <default field="extent_geom" applyOnUpdate="0" expression=""/>
-        <default field="extent_elevation" applyOnUpdate="0" expression=""/>
-        <default field="extent_geoidundulation" applyOnUpdate="0" expression=""/>
-        <default field="extent_verticaldatum" applyOnUpdate="0" expression=""/>
-        <default field="extent_verticalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="extent_horizontalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="contaminant" applyOnUpdate="0" expression=""/>
-        <default field="annotation" applyOnUpdate="0" expression=""/>
-        <default field="availability" applyOnUpdate="0" expression=""/>
+        <default applyOnUpdate="0" expression="" field="row"/>
+        <default applyOnUpdate="0" expression="" field="id"/>
+        <default applyOnUpdate="0" expression="" field="ts_id"/>
+        <default applyOnUpdate="0" expression="" field="tsp_id"/>
+        <default applyOnUpdate="0" expression="" field="identifier"/>
+        <default applyOnUpdate="0" expression="" field="interpretation"/>
+        <default applyOnUpdate="0" expression="" field="sequence_number"/>
+        <default applyOnUpdate="0" expression="" field="correction_number"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_begin"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_end"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_begin"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_end"/>
+        <default applyOnUpdate="0" expression="" field="designator"/>
+        <default applyOnUpdate="0" expression="" field="type"/>
+        <default applyOnUpdate="0" expression="" field="visualdockingsystem"/>
+        <default applyOnUpdate="0" expression="" field="surfaceproperties"/>
+        <default applyOnUpdate="0" expression="" field="location_longitude"/>
+        <default applyOnUpdate="0" expression="" field="location_latitude"/>
+        <default applyOnUpdate="0" expression="" field="location_elevation"/>
+        <default applyOnUpdate="0" expression="" field="location_geoidundulation"/>
+        <default applyOnUpdate="0" expression="" field="location_verticaldatum"/>
+        <default applyOnUpdate="0" expression="" field="location_verticalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="location_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="apronlocation"/>
+        <default applyOnUpdate="0" expression="" field="apronlocation_href"/>
+        <default applyOnUpdate="0" expression="" field="extent_geom"/>
+        <default applyOnUpdate="0" expression="" field="extent_elevation"/>
+        <default applyOnUpdate="0" expression="" field="extent_geoidundulation"/>
+        <default applyOnUpdate="0" expression="" field="extent_verticaldatum"/>
+        <default applyOnUpdate="0" expression="" field="extent_verticalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="extent_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="contaminant"/>
+        <default applyOnUpdate="0" expression="" field="annotation"/>
+        <default applyOnUpdate="0" expression="" field="availability"/>
       </defaults>
       <constraints>
-        <constraint field="row" exp_strength="0" constraints="3" unique_strength="1" notnull_strength="1"/>
-        <constraint field="id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="ts_id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="tsp_id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="identifier" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="interpretation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="sequence_number" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="correction_number" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="valid_time_begin" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="valid_time_end" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="feature_lifetime_begin" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="feature_lifetime_end" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="designator" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="type" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="visualdockingsystem" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="surfaceproperties" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_longitude" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_latitude" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_elevation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_geoidundulation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_verticaldatum" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_verticalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="location_horizontalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="apronlocation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="apronlocation_href" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_geom" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_elevation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_geoidundulation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_verticaldatum" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_verticalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="extent_horizontalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="contaminant" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="annotation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="availability" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
+        <constraint constraints="3" unique_strength="1" exp_strength="0" notnull_strength="1" field="row"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="ts_id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="tsp_id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="identifier"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="interpretation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="sequence_number"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="correction_number"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="valid_time_begin"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="valid_time_end"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="feature_lifetime_begin"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="feature_lifetime_end"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="designator"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="type"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="visualdockingsystem"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="surfaceproperties"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_longitude"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_latitude"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_elevation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_geoidundulation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_verticaldatum"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_verticalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="location_horizontalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="apronlocation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="apronlocation_href"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_geom"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_elevation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_geoidundulation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_verticaldatum"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_verticalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="extent_horizontalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="contaminant"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="annotation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="availability"/>
       </constraints>
       <constraintExpressions>
-        <constraint field="row" desc="" exp=""/>
-        <constraint field="id" desc="" exp=""/>
-        <constraint field="ts_id" desc="" exp=""/>
-        <constraint field="tsp_id" desc="" exp=""/>
-        <constraint field="identifier" desc="" exp=""/>
-        <constraint field="interpretation" desc="" exp=""/>
-        <constraint field="sequence_number" desc="" exp=""/>
-        <constraint field="correction_number" desc="" exp=""/>
-        <constraint field="valid_time_begin" desc="" exp=""/>
-        <constraint field="valid_time_end" desc="" exp=""/>
-        <constraint field="feature_lifetime_begin" desc="" exp=""/>
-        <constraint field="feature_lifetime_end" desc="" exp=""/>
-        <constraint field="designator" desc="" exp=""/>
-        <constraint field="type" desc="" exp=""/>
-        <constraint field="visualdockingsystem" desc="" exp=""/>
-        <constraint field="surfaceproperties" desc="" exp=""/>
-        <constraint field="location_longitude" desc="" exp=""/>
-        <constraint field="location_latitude" desc="" exp=""/>
-        <constraint field="location_elevation" desc="" exp=""/>
-        <constraint field="location_geoidundulation" desc="" exp=""/>
-        <constraint field="location_verticaldatum" desc="" exp=""/>
-        <constraint field="location_verticalaccuracy" desc="" exp=""/>
-        <constraint field="location_horizontalaccuracy" desc="" exp=""/>
-        <constraint field="apronlocation" desc="" exp=""/>
-        <constraint field="apronlocation_href" desc="" exp=""/>
-        <constraint field="extent_geom" desc="" exp=""/>
-        <constraint field="extent_elevation" desc="" exp=""/>
-        <constraint field="extent_geoidundulation" desc="" exp=""/>
-        <constraint field="extent_verticaldatum" desc="" exp=""/>
-        <constraint field="extent_verticalaccuracy" desc="" exp=""/>
-        <constraint field="extent_horizontalaccuracy" desc="" exp=""/>
-        <constraint field="contaminant" desc="" exp=""/>
-        <constraint field="annotation" desc="" exp=""/>
-        <constraint field="availability" desc="" exp=""/>
+        <constraint exp="" field="row" desc=""/>
+        <constraint exp="" field="id" desc=""/>
+        <constraint exp="" field="ts_id" desc=""/>
+        <constraint exp="" field="tsp_id" desc=""/>
+        <constraint exp="" field="identifier" desc=""/>
+        <constraint exp="" field="interpretation" desc=""/>
+        <constraint exp="" field="sequence_number" desc=""/>
+        <constraint exp="" field="correction_number" desc=""/>
+        <constraint exp="" field="valid_time_begin" desc=""/>
+        <constraint exp="" field="valid_time_end" desc=""/>
+        <constraint exp="" field="feature_lifetime_begin" desc=""/>
+        <constraint exp="" field="feature_lifetime_end" desc=""/>
+        <constraint exp="" field="designator" desc=""/>
+        <constraint exp="" field="type" desc=""/>
+        <constraint exp="" field="visualdockingsystem" desc=""/>
+        <constraint exp="" field="surfaceproperties" desc=""/>
+        <constraint exp="" field="location_longitude" desc=""/>
+        <constraint exp="" field="location_latitude" desc=""/>
+        <constraint exp="" field="location_elevation" desc=""/>
+        <constraint exp="" field="location_geoidundulation" desc=""/>
+        <constraint exp="" field="location_verticaldatum" desc=""/>
+        <constraint exp="" field="location_verticalaccuracy" desc=""/>
+        <constraint exp="" field="location_horizontalaccuracy" desc=""/>
+        <constraint exp="" field="apronlocation" desc=""/>
+        <constraint exp="" field="apronlocation_href" desc=""/>
+        <constraint exp="" field="extent_geom" desc=""/>
+        <constraint exp="" field="extent_elevation" desc=""/>
+        <constraint exp="" field="extent_geoidundulation" desc=""/>
+        <constraint exp="" field="extent_verticaldatum" desc=""/>
+        <constraint exp="" field="extent_verticalaccuracy" desc=""/>
+        <constraint exp="" field="extent_horizontalaccuracy" desc=""/>
+        <constraint exp="" field="contaminant" desc=""/>
+        <constraint exp="" field="annotation" desc=""/>
+        <constraint exp="" field="availability" desc=""/>
       </constraintExpressions>
       <expressionfields/>
       <attributeactions>
-        <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
       </attributeactions>
-      <attributetableconfig sortOrder="0" sortExpression="" actionWidgetStyle="dropDown">
-        <columns/>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column name="row" hidden="0" type="field" width="-1"/>
+          <column name="id" hidden="0" type="field" width="-1"/>
+          <column name="ts_id" hidden="0" type="field" width="-1"/>
+          <column name="tsp_id" hidden="0" type="field" width="-1"/>
+          <column name="identifier" hidden="0" type="field" width="-1"/>
+          <column name="interpretation" hidden="0" type="field" width="-1"/>
+          <column name="sequence_number" hidden="0" type="field" width="-1"/>
+          <column name="correction_number" hidden="0" type="field" width="-1"/>
+          <column name="valid_time_begin" hidden="0" type="field" width="-1"/>
+          <column name="valid_time_end" hidden="0" type="field" width="-1"/>
+          <column name="feature_lifetime_begin" hidden="0" type="field" width="-1"/>
+          <column name="feature_lifetime_end" hidden="0" type="field" width="-1"/>
+          <column name="designator" hidden="0" type="field" width="-1"/>
+          <column name="type" hidden="0" type="field" width="-1"/>
+          <column name="visualdockingsystem" hidden="0" type="field" width="-1"/>
+          <column name="surfaceproperties" hidden="0" type="field" width="-1"/>
+          <column name="location_longitude" hidden="0" type="field" width="-1"/>
+          <column name="location_latitude" hidden="0" type="field" width="-1"/>
+          <column name="location_elevation" hidden="0" type="field" width="-1"/>
+          <column name="location_geoidundulation" hidden="0" type="field" width="-1"/>
+          <column name="location_verticaldatum" hidden="0" type="field" width="-1"/>
+          <column name="location_verticalaccuracy" hidden="0" type="field" width="-1"/>
+          <column name="location_horizontalaccuracy" hidden="0" type="field" width="-1"/>
+          <column name="apronlocation" hidden="0" type="field" width="-1"/>
+          <column name="apronlocation_href" hidden="0" type="field" width="-1"/>
+          <column name="extent_geom" hidden="0" type="field" width="-1"/>
+          <column name="extent_elevation" hidden="0" type="field" width="-1"/>
+          <column name="extent_geoidundulation" hidden="0" type="field" width="-1"/>
+          <column name="extent_verticaldatum" hidden="0" type="field" width="-1"/>
+          <column name="extent_verticalaccuracy" hidden="0" type="field" width="-1"/>
+          <column name="extent_horizontalaccuracy" hidden="0" type="field" width="-1"/>
+          <column name="contaminant" hidden="0" type="field" width="-1"/>
+          <column name="annotation" hidden="0" type="field" width="-1"/>
+          <column name="availability" hidden="0" type="field" width="-1"/>
+          <column hidden="1" type="actions" width="-1"/>
+        </columns>
       </attributetableconfig>
       <conditionalstyles>
         <rowstyles/>
@@ -827,18 +1046,272 @@
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
       <editforminitfilepath></editforminitfilepath>
-      <editforminitcode><![CDATA[]]></editforminitcode>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
       <featformsuppress>0</featformsuppress>
-      <editorlayout>generatedlayout</editorlayout>
-      <editable/>
-      <labelOnTop/>
-      <reuseLastValue/>
+      <editorlayout>tablayout</editorlayout>
+      <attributeEditorForm>
+        <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+          <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+        </labelStyle>
+        <attributeEditorHtmlElement name="HTML Widget" horizontalStretch="0" showLabel="0" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>&lt;!DOCTYPE html>&#xd;
+&lt;html lang="en">&#xd;
+&lt;head>&#xd;
+  &lt;meta charset="UTF-8">&#xd;
+  &lt;title>Note List Viewer&lt;/title>&#xd;
+  &lt;style>&#xd;
+body {&#xd;
+  font-family: 'Segoe UI', sans-serif;&#xd;
+  background-color: #323232;&#xd;
+  color: #e0e0e0;&#xd;
+  margin: 12px;&#xd;
+}&#xd;
+&#xd;
+.annotation-block {&#xd;
+  border: 1px solid #bbbbbb;;&#xd;
+  box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);&#xd;
+  padding: 8px;&#xd;
+  margin-bottom: 16px;&#xd;
+}&#xd;
+&#xd;
+table {&#xd;
+  width: 100%;&#xd;
+  border-collapse: collapse;&#xd;
+}&#xd;
+&#xd;
+td.title {&#xd;
+  white-space: nowrap;&#xd;
+  padding: 2px 10px 2px 0;&#xd;
+  color: #cccccc;&#xd;
+  font-size: 0.8em;&#xd;
+  vertical-align: top;&#xd;
+  width: 160px;&#xd;
+}&#xd;
+&#xd;
+.value {&#xd;
+  color: #bbbbbb;&#xd;
+  background-color: #1e1e1e;&#xd;
+  font-size: 0.8em;&#xd;
+  vertical-align: top;&#xd;
+  padding: 3px;&#xd;
+  margin: 3px;&#xd;
+}&#xd;
+&#xd;
+.translated {&#xd;
+    margin-top: 8px;&#xd;
+}&#xd;
+&#xd;
+.translated span {&#xd;
+  font-weight: bold;&#xd;
+  color: #87cefa;&#xd;
+}&#xd;
+&#xd;
+.translated-text {&#xd;
+  color: #dddddd;&#xd;
+  font-size: 0.8em;&#xd;
+  background-color: #1e1e1e;&#xd;
+  border-left: 4px solid #3a9aed; &#xd;
+  padding: 3px;&#xd;
+  margin: 3px;&#xd;
+  padding-left: 6px;&#xd;
+  margin-bottom: 6px;&#xd;
+&#xd;
+}&#xd;
+  &lt;/style>&#xd;
+&lt;/head>&#xd;
+&lt;body>&#xd;
+  &lt;h1>Annotation&lt;/h1>&#xd;
+  &lt;div id="notes-container">Loading...&lt;/div>&#xd;
+&#xd;
+&lt;script>&#xd;
+  try {&#xd;
+    let raw = expression.evaluate("to_json(annotation)");&#xd;
+    let annotation = JSON.parse(raw);&#xd;
+&#xd;
+    if (!Array.isArray(annotation)) {&#xd;
+      annotation = [annotation];&#xd;
+    }&#xd;
+    annotation = annotation.filter(n => n !== null &amp;&amp; typeof n === 'object');&#xd;
+&#xd;
+    const container = document.getElementById('notes-container');&#xd;
+    container.innerHTML = '';&#xd;
+&#xd;
+    if (annotation.length === 0) {&#xd;
+      container.textContent = '';&#xd;
+    } else {&#xd;
+      annotation.forEach(annotation => {&#xd;
+        const div = document.createElement('div');&#xd;
+        div.className = 'note';&#xd;
+&#xd;
+        div.innerHTML = `&#xd;
+          &lt;div class="annotation-block">&#xd;
+            &lt;table>&#xd;
+              &lt;tr>&#xd;
+                &lt;td class="title">Purpose&lt;/td>&#xd;
+                &lt;td>&lt;div class="value">${annotation.note.purpose}&lt;/div>&lt;/td>&#xd;
+              &lt;/tr>&#xd;
+              &lt;tr>&#xd;
+                &lt;td class="title">Property Name&lt;/td>&#xd;
+                &lt;td>&lt;div class="value">${annotation.note.propertyName}&lt;/div>&lt;/td>&#xd;
+              &lt;/tr>&#xd;
+            &lt;/table>&#xd;
+            &lt;div class="translated">&#xd;
+              ${&#xd;
+                Array.isArray(annotation.note.notes) &amp;&amp; annotation.note.notes.length > 0&#xd;
+                  ? annotation.note.notes.map(n =>&#xd;
+                      `&lt;div class="translated-text">&#xd;
+                        &lt;span>[${n.lang}]&lt;/span>&lt;br> ${n.note.replace(/\n/g, '&lt;br>')}&#xd;
+                      &lt;/div>`).join('')&#xd;
+                  : ''&#xd;
+              }&#xd;
+            &lt;/div>&#xd;
+          &lt;/div>&#xd;
+        `;&#xd;
+&#xd;
+        container.appendChild(div);&#xd;
+      });&#xd;
+    }&#xd;
+  } catch (e) {&#xd;
+    document.getElementById('notes-container').textContent = "Error: " + e;&#xd;
+  }&#xd;
+&lt;/script>&#xd;
+&#xd;
+&lt;/body>&#xd;
+&lt;/html>&#xd;
+</attributeEditorHtmlElement>
+      </attributeEditorForm>
+      <editable>
+        <field name="annotation" editable="1"/>
+        <field name="apronlocation" editable="1"/>
+        <field name="apronlocation_href" editable="1"/>
+        <field name="availability" editable="1"/>
+        <field name="contaminant" editable="1"/>
+        <field name="correction_number" editable="1"/>
+        <field name="designator" editable="1"/>
+        <field name="extent_elevation" editable="1"/>
+        <field name="extent_geoidundulation" editable="1"/>
+        <field name="extent_geom" editable="1"/>
+        <field name="extent_horizontalaccuracy" editable="1"/>
+        <field name="extent_verticalaccuracy" editable="1"/>
+        <field name="extent_verticaldatum" editable="1"/>
+        <field name="feature_lifetime_begin" editable="1"/>
+        <field name="feature_lifetime_end" editable="1"/>
+        <field name="id" editable="1"/>
+        <field name="identifier" editable="1"/>
+        <field name="interpretation" editable="1"/>
+        <field name="location_elevation" editable="1"/>
+        <field name="location_geoidundulation" editable="1"/>
+        <field name="location_horizontalaccuracy" editable="1"/>
+        <field name="location_latitude" editable="1"/>
+        <field name="location_longitude" editable="1"/>
+        <field name="location_verticalaccuracy" editable="1"/>
+        <field name="location_verticaldatum" editable="1"/>
+        <field name="row" editable="1"/>
+        <field name="sequence_number" editable="1"/>
+        <field name="surfaceproperties" editable="1"/>
+        <field name="ts_id" editable="1"/>
+        <field name="tsp_id" editable="1"/>
+        <field name="type" editable="1"/>
+        <field name="valid_time_begin" editable="1"/>
+        <field name="valid_time_end" editable="1"/>
+        <field name="visualdockingsystem" editable="1"/>
+      </editable>
+      <labelOnTop>
+        <field name="annotation" labelOnTop="0"/>
+        <field name="apronlocation" labelOnTop="0"/>
+        <field name="apronlocation_href" labelOnTop="0"/>
+        <field name="availability" labelOnTop="0"/>
+        <field name="contaminant" labelOnTop="0"/>
+        <field name="correction_number" labelOnTop="0"/>
+        <field name="designator" labelOnTop="0"/>
+        <field name="extent_elevation" labelOnTop="0"/>
+        <field name="extent_geoidundulation" labelOnTop="0"/>
+        <field name="extent_geom" labelOnTop="0"/>
+        <field name="extent_horizontalaccuracy" labelOnTop="0"/>
+        <field name="extent_verticalaccuracy" labelOnTop="0"/>
+        <field name="extent_verticaldatum" labelOnTop="0"/>
+        <field name="feature_lifetime_begin" labelOnTop="0"/>
+        <field name="feature_lifetime_end" labelOnTop="0"/>
+        <field name="id" labelOnTop="0"/>
+        <field name="identifier" labelOnTop="0"/>
+        <field name="interpretation" labelOnTop="0"/>
+        <field name="location_elevation" labelOnTop="0"/>
+        <field name="location_geoidundulation" labelOnTop="0"/>
+        <field name="location_horizontalaccuracy" labelOnTop="0"/>
+        <field name="location_latitude" labelOnTop="0"/>
+        <field name="location_longitude" labelOnTop="0"/>
+        <field name="location_verticalaccuracy" labelOnTop="0"/>
+        <field name="location_verticaldatum" labelOnTop="0"/>
+        <field name="row" labelOnTop="0"/>
+        <field name="sequence_number" labelOnTop="0"/>
+        <field name="surfaceproperties" labelOnTop="0"/>
+        <field name="ts_id" labelOnTop="0"/>
+        <field name="tsp_id" labelOnTop="0"/>
+        <field name="type" labelOnTop="0"/>
+        <field name="valid_time_begin" labelOnTop="0"/>
+        <field name="valid_time_end" labelOnTop="0"/>
+        <field name="visualdockingsystem" labelOnTop="0"/>
+      </labelOnTop>
+      <reuseLastValue>
+        <field name="annotation" reuseLastValue="0"/>
+        <field name="apronlocation" reuseLastValue="0"/>
+        <field name="apronlocation_href" reuseLastValue="0"/>
+        <field name="availability" reuseLastValue="0"/>
+        <field name="contaminant" reuseLastValue="0"/>
+        <field name="correction_number" reuseLastValue="0"/>
+        <field name="designator" reuseLastValue="0"/>
+        <field name="extent_elevation" reuseLastValue="0"/>
+        <field name="extent_geoidundulation" reuseLastValue="0"/>
+        <field name="extent_geom" reuseLastValue="0"/>
+        <field name="extent_horizontalaccuracy" reuseLastValue="0"/>
+        <field name="extent_verticalaccuracy" reuseLastValue="0"/>
+        <field name="extent_verticaldatum" reuseLastValue="0"/>
+        <field name="feature_lifetime_begin" reuseLastValue="0"/>
+        <field name="feature_lifetime_end" reuseLastValue="0"/>
+        <field name="id" reuseLastValue="0"/>
+        <field name="identifier" reuseLastValue="0"/>
+        <field name="interpretation" reuseLastValue="0"/>
+        <field name="location_elevation" reuseLastValue="0"/>
+        <field name="location_geoidundulation" reuseLastValue="0"/>
+        <field name="location_horizontalaccuracy" reuseLastValue="0"/>
+        <field name="location_latitude" reuseLastValue="0"/>
+        <field name="location_longitude" reuseLastValue="0"/>
+        <field name="location_verticalaccuracy" reuseLastValue="0"/>
+        <field name="location_verticaldatum" reuseLastValue="0"/>
+        <field name="row" reuseLastValue="0"/>
+        <field name="sequence_number" reuseLastValue="0"/>
+        <field name="surfaceproperties" reuseLastValue="0"/>
+        <field name="ts_id" reuseLastValue="0"/>
+        <field name="tsp_id" reuseLastValue="0"/>
+        <field name="type" reuseLastValue="0"/>
+        <field name="valid_time_begin" reuseLastValue="0"/>
+        <field name="valid_time_end" reuseLastValue="0"/>
+        <field name="visualdockingsystem" reuseLastValue="0"/>
+      </reuseLastValue>
       <dataDefinedFieldProperties/>
       <widgets/>
-      <previewExpression></previewExpression>
-      <mapTip></mapTip>
+      <previewExpression>"identifier"</previewExpression>
+      <mapTip enabled="1"></mapTip>
     </maplayer>
-    <maplayer minScale="100000000" wkbType="Polygon" symbologyReferenceScale="-1" autoRefreshEnabled="0" simplifyMaxScale="1" autoRefreshTime="0" simplifyLocal="1" hasScaleBasedVisibilityFlag="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" readOnly="0" labelsEnabled="0" simplifyDrawingHints="1" refreshOnNotifyEnabled="0" type="vector" simplifyAlgorithm="0" refreshOnNotifyMessage="" maxScale="0" geometry="Polygon" simplifyDrawingTol="1">
+    <maplayer labelsEnabled="0" hasScaleBasedVisibilityFlag="0" geometry="Polygon" autoRefreshTime="0" type="vector" readOnly="0" maxScale="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" wkbType="Polygon" simplifyDrawingHints="1" simplifyMaxScale="1" simplifyLocal="1" minScale="100000000" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyAlgorithm="0" symbologyReferenceScale="-1">
       <extent>
         <xmin>2.90444444440000016</xmin>
         <ymin>44.25</ymin>
@@ -854,7 +1327,7 @@
       <id>airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5</id>
       <datasource>dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=Polygon checkPrimaryKeyUnicity='1' table="airspace"."airspacevolume_view" (horizontalprojection_geom)</datasource>
       <keywordList>
-        <value></value>
+        <value/>
       </keywordList>
       <layername>airspacevolume_view.horizontalprojection_geom</layername>
       <srs>
@@ -871,15 +1344,15 @@
         </spatialrefsys>
       </srs>
       <resourceMetadata>
-        <identifier></identifier>
-        <parentidentifier></parentidentifier>
-        <language></language>
+        <identifier/>
+        <parentidentifier/>
+        <language/>
         <type>dataset</type>
-        <title></title>
-        <abstract></abstract>
+        <title/>
+        <abstract/>
         <links/>
-        <fees></fees>
-        <encoding></encoding>
+        <fees/>
+        <encoding/>
         <crs>
           <spatialrefsys nativeFormat="Wkt">
             <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
@@ -911,13 +1384,13 @@
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal durationUnit="min" durationField="" endField="" mode="0" endExpression="" fixedDuration="0" startExpression="" enabled="0" limitMode="0" startField="" accumulate="0">
+      <temporal durationUnit="min" mode="0" fixedDuration="0" endExpression="" durationField="" startExpression="" accumulate="0" enabled="0" startField="" endField="" limitMode="0">
         <fixedRange>
-          <start></start>
-          <end></end>
+          <start/>
+          <end/>
         </fixedRange>
       </temporal>
-      <elevation zscale="1" extrusion="0" binding="Centroid" clamping="Terrain" symbology="Line" extrusionEnabled="0" respectLayerSymbol="1" showMarkerSymbolInSurfacePlots="0" type="IndividualFeatures" zoffset="0">
+      <elevation clamping="Terrain" binding="Centroid" respectLayerSymbol="1" extrusion="0" type="IndividualFeatures" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" zoffset="0" extrusionEnabled="0">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -926,7 +1399,7 @@
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="line" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -934,7 +1407,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleLine" enabled="1">
+            <layer locked="0" class="SimpleLine" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="align_dash_pattern" type="QString"/>
                 <Option value="square" name="capstyle" type="QString"/>
@@ -975,7 +1448,7 @@
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="fill" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="fill" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -983,7 +1456,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleFill" enabled="1">
+            <layer locked="0" class="SimpleFill" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
                 <Option value="125,139,143,255" name="color" type="QString"/>
@@ -1008,7 +1481,7 @@
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="marker" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1016,7 +1489,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
+            <layer locked="0" class="SimpleMarker" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="angle" type="QString"/>
                 <Option value="square" name="cap_style" type="QString"/>
@@ -1049,9 +1522,9 @@
           </symbol>
         </profileMarkerSymbol>
       </elevation>
-      <renderer-v2 referencescale="-1" symbollevels="0" enableorderby="0" type="singleSymbol" forceraster="0">
+      <renderer-v2 symbollevels="0" enableorderby="0" referencescale="-1" type="singleSymbol" forceraster="0">
         <symbols>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="0" frame_rate="10" type="fill" clip_to_extent="1">
+          <symbol name="0" clip_to_extent="1" type="fill" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1059,7 +1532,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleFill" enabled="1">
+            <layer locked="0" class="SimpleFill" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
                 <Option value="145,82,45,255" name="color" type="QString"/>
@@ -1092,128 +1565,128 @@
       <blendMode>0</blendMode>
       <featureBlendMode>0</featureBlendMode>
       <layerOpacity>1</layerOpacity>
-      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
         <activeChecks type="StringList">
           <Option value="" type="QString"/>
         </activeChecks>
         <checkConfiguration/>
       </geometryOptions>
-      <legend showLabelLegend="0" type="default-vector"/>
+      <legend type="default-vector" showLabelLegend="0"/>
       <referencedLayers/>
       <fieldConfiguration>
-        <field configurationFlags="None" name="row">
+        <field name="row" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="id">
+        <field name="id" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="airspacevolume_nilreason">
+        <field name="airspacevolume_nilreason" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="upperlimitreference">
+        <field name="upperlimitreference" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="maximumlimitreference">
+        <field name="maximumlimitreference" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="lowerlimitreference">
+        <field name="lowerlimitreference" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="minimumlimitreference">
+        <field name="minimumlimitreference" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="upperlimit">
+        <field name="upperlimit" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="maximumlimit">
+        <field name="maximumlimit" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="lowerlimit">
+        <field name="lowerlimit" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="minimumlimit">
+        <field name="minimumlimit" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="width">
+        <field name="width" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="horizontalprojection_horizontalaccuracy">
+        <field name="horizontalprojection_horizontalaccuracy" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="centreline_geom">
+        <field name="centreline_geom" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="centreline_horizontalaccuracy">
+        <field name="centreline_horizontalaccuracy" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="contributorairspace">
+        <field name="contributorairspace" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="annotation">
+        <field name="annotation" configurationFlags="None">
           <editWidget type="">
             <config>
               <Option/>
@@ -1222,86 +1695,86 @@
         </field>
       </fieldConfiguration>
       <aliases>
-        <alias field="row" name="" index="0"/>
-        <alias field="id" name="" index="1"/>
-        <alias field="airspacevolume_nilreason" name="" index="2"/>
-        <alias field="upperlimitreference" name="" index="3"/>
-        <alias field="maximumlimitreference" name="" index="4"/>
-        <alias field="lowerlimitreference" name="" index="5"/>
-        <alias field="minimumlimitreference" name="" index="6"/>
-        <alias field="upperlimit" name="" index="7"/>
-        <alias field="maximumlimit" name="" index="8"/>
-        <alias field="lowerlimit" name="" index="9"/>
-        <alias field="minimumlimit" name="" index="10"/>
-        <alias field="width" name="" index="11"/>
-        <alias field="horizontalprojection_horizontalaccuracy" name="" index="12"/>
-        <alias field="centreline_geom" name="" index="13"/>
-        <alias field="centreline_horizontalaccuracy" name="" index="14"/>
-        <alias field="contributorairspace" name="" index="15"/>
-        <alias field="annotation" name="" index="16"/>
+        <alias name="" index="0" field="row"/>
+        <alias name="" index="1" field="id"/>
+        <alias name="" index="2" field="airspacevolume_nilreason"/>
+        <alias name="" index="3" field="upperlimitreference"/>
+        <alias name="" index="4" field="maximumlimitreference"/>
+        <alias name="" index="5" field="lowerlimitreference"/>
+        <alias name="" index="6" field="minimumlimitreference"/>
+        <alias name="" index="7" field="upperlimit"/>
+        <alias name="" index="8" field="maximumlimit"/>
+        <alias name="" index="9" field="lowerlimit"/>
+        <alias name="" index="10" field="minimumlimit"/>
+        <alias name="" index="11" field="width"/>
+        <alias name="" index="12" field="horizontalprojection_horizontalaccuracy"/>
+        <alias name="" index="13" field="centreline_geom"/>
+        <alias name="" index="14" field="centreline_horizontalaccuracy"/>
+        <alias name="" index="15" field="contributorairspace"/>
+        <alias name="" index="16" field="annotation"/>
       </aliases>
       <defaults>
-        <default field="row" applyOnUpdate="0" expression=""/>
-        <default field="id" applyOnUpdate="0" expression=""/>
-        <default field="airspacevolume_nilreason" applyOnUpdate="0" expression=""/>
-        <default field="upperlimitreference" applyOnUpdate="0" expression=""/>
-        <default field="maximumlimitreference" applyOnUpdate="0" expression=""/>
-        <default field="lowerlimitreference" applyOnUpdate="0" expression=""/>
-        <default field="minimumlimitreference" applyOnUpdate="0" expression=""/>
-        <default field="upperlimit" applyOnUpdate="0" expression=""/>
-        <default field="maximumlimit" applyOnUpdate="0" expression=""/>
-        <default field="lowerlimit" applyOnUpdate="0" expression=""/>
-        <default field="minimumlimit" applyOnUpdate="0" expression=""/>
-        <default field="width" applyOnUpdate="0" expression=""/>
-        <default field="horizontalprojection_horizontalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="centreline_geom" applyOnUpdate="0" expression=""/>
-        <default field="centreline_horizontalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="contributorairspace" applyOnUpdate="0" expression=""/>
-        <default field="annotation" applyOnUpdate="0" expression=""/>
+        <default applyOnUpdate="0" expression="" field="row"/>
+        <default applyOnUpdate="0" expression="" field="id"/>
+        <default applyOnUpdate="0" expression="" field="airspacevolume_nilreason"/>
+        <default applyOnUpdate="0" expression="" field="upperlimitreference"/>
+        <default applyOnUpdate="0" expression="" field="maximumlimitreference"/>
+        <default applyOnUpdate="0" expression="" field="lowerlimitreference"/>
+        <default applyOnUpdate="0" expression="" field="minimumlimitreference"/>
+        <default applyOnUpdate="0" expression="" field="upperlimit"/>
+        <default applyOnUpdate="0" expression="" field="maximumlimit"/>
+        <default applyOnUpdate="0" expression="" field="lowerlimit"/>
+        <default applyOnUpdate="0" expression="" field="minimumlimit"/>
+        <default applyOnUpdate="0" expression="" field="width"/>
+        <default applyOnUpdate="0" expression="" field="horizontalprojection_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="centreline_geom"/>
+        <default applyOnUpdate="0" expression="" field="centreline_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="contributorairspace"/>
+        <default applyOnUpdate="0" expression="" field="annotation"/>
       </defaults>
       <constraints>
-        <constraint field="row" exp_strength="0" constraints="3" unique_strength="1" notnull_strength="1"/>
-        <constraint field="id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="airspacevolume_nilreason" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="upperlimitreference" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="maximumlimitreference" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="lowerlimitreference" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="minimumlimitreference" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="upperlimit" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="maximumlimit" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="lowerlimit" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="minimumlimit" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="width" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="horizontalprojection_horizontalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="centreline_geom" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="centreline_horizontalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="contributorairspace" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="annotation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
+        <constraint constraints="3" unique_strength="1" exp_strength="0" notnull_strength="1" field="row"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="airspacevolume_nilreason"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="upperlimitreference"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="maximumlimitreference"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="lowerlimitreference"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="minimumlimitreference"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="upperlimit"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="maximumlimit"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="lowerlimit"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="minimumlimit"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="width"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="horizontalprojection_horizontalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="centreline_geom"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="centreline_horizontalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="contributorairspace"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="annotation"/>
       </constraints>
       <constraintExpressions>
-        <constraint field="row" desc="" exp=""/>
-        <constraint field="id" desc="" exp=""/>
-        <constraint field="airspacevolume_nilreason" desc="" exp=""/>
-        <constraint field="upperlimitreference" desc="" exp=""/>
-        <constraint field="maximumlimitreference" desc="" exp=""/>
-        <constraint field="lowerlimitreference" desc="" exp=""/>
-        <constraint field="minimumlimitreference" desc="" exp=""/>
-        <constraint field="upperlimit" desc="" exp=""/>
-        <constraint field="maximumlimit" desc="" exp=""/>
-        <constraint field="lowerlimit" desc="" exp=""/>
-        <constraint field="minimumlimit" desc="" exp=""/>
-        <constraint field="width" desc="" exp=""/>
-        <constraint field="horizontalprojection_horizontalaccuracy" desc="" exp=""/>
-        <constraint field="centreline_geom" desc="" exp=""/>
-        <constraint field="centreline_horizontalaccuracy" desc="" exp=""/>
-        <constraint field="contributorairspace" desc="" exp=""/>
-        <constraint field="annotation" desc="" exp=""/>
+        <constraint exp="" field="row" desc=""/>
+        <constraint exp="" field="id" desc=""/>
+        <constraint exp="" field="airspacevolume_nilreason" desc=""/>
+        <constraint exp="" field="upperlimitreference" desc=""/>
+        <constraint exp="" field="maximumlimitreference" desc=""/>
+        <constraint exp="" field="lowerlimitreference" desc=""/>
+        <constraint exp="" field="minimumlimitreference" desc=""/>
+        <constraint exp="" field="upperlimit" desc=""/>
+        <constraint exp="" field="maximumlimit" desc=""/>
+        <constraint exp="" field="lowerlimit" desc=""/>
+        <constraint exp="" field="minimumlimit" desc=""/>
+        <constraint exp="" field="width" desc=""/>
+        <constraint exp="" field="horizontalprojection_horizontalaccuracy" desc=""/>
+        <constraint exp="" field="centreline_geom" desc=""/>
+        <constraint exp="" field="centreline_horizontalaccuracy" desc=""/>
+        <constraint exp="" field="contributorairspace" desc=""/>
+        <constraint exp="" field="annotation" desc=""/>
       </constraintExpressions>
       <expressionfields/>
       <attributeactions>
-        <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
       </attributeactions>
-      <attributetableconfig sortOrder="0" sortExpression="" actionWidgetStyle="dropDown">
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
         <columns/>
       </attributetableconfig>
       <conditionalstyles>
@@ -1309,10 +1782,10 @@
         <fieldstyles/>
       </conditionalstyles>
       <storedexpressions/>
-      <editform tolerant="1"></editform>
+      <editform tolerant="1"/>
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
+      <editforminitfilepath/>
       <editforminitcode><![CDATA[]]></editforminitcode>
       <featformsuppress>0</featformsuppress>
       <editorlayout>generatedlayout</editorlayout>
@@ -1321,10 +1794,10 @@
       <reuseLastValue/>
       <dataDefinedFieldProperties/>
       <widgets/>
-      <previewExpression></previewExpression>
-      <mapTip></mapTip>
+      <previewExpression/>
+      <mapTip/>
     </maplayer>
-    <maplayer minScale="100000000" wkbType="LineString" symbologyReferenceScale="-1" autoRefreshEnabled="0" simplifyMaxScale="1" autoRefreshTime="0" simplifyLocal="1" hasScaleBasedVisibilityFlag="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" readOnly="0" labelsEnabled="0" simplifyDrawingHints="1" refreshOnNotifyEnabled="0" type="vector" simplifyAlgorithm="0" refreshOnNotifyMessage="" maxScale="0" geometry="Line" simplifyDrawingTol="1">
+    <maplayer labelsEnabled="0" hasScaleBasedVisibilityFlag="0" geometry="Line" autoRefreshTime="0" type="vector" readOnly="0" maxScale="0" styleCategories="AllStyleCategories" legendPlaceholderImage="" autoRefreshMode="Disabled" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" wkbType="LineString" simplifyDrawingHints="1" simplifyMaxScale="1" simplifyLocal="1" minScale="100000000" simplifyDrawingTol="1" simplifyAlgorithm="0" symbologyReferenceScale="-1">
       <extent>
         <xmin>5.95589999999999975</xmin>
         <ymin>43.78333333300000874</ymin>
@@ -1345,7 +1818,7 @@
       <layername>geoborder_view</layername>
       <srs>
         <spatialrefsys nativeFormat="Wkt">
-          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
           <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
           <srsid>3452</srsid>
           <srid>4326</srid>
@@ -1363,12 +1836,22 @@
         <type>dataset</type>
         <title></title>
         <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
         <links/>
+        <dates/>
         <fees></fees>
         <encoding></encoding>
         <crs>
           <spatialrefsys nativeFormat="Wkt">
-            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
             <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
             <srsid>3452</srsid>
             <srid>4326</srid>
@@ -1379,7 +1862,15 @@
             <geographicflag>true</geographicflag>
           </spatialrefsys>
         </crs>
-        <extent/>
+        <extent>
+          <spatial minx="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" dimensions="2" crs="EPSG:4326" maxx="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" minz="0" maxy="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" maxz="0" miny="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
       </resourceMetadata>
       <provider encoding="">postgres</provider>
       <vectorjoins/>
@@ -1397,13 +1888,13 @@
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal durationUnit="min" durationField="" endField="valid_time_end" mode="2" endExpression="" fixedDuration="0" startExpression="" enabled="0" limitMode="0" startField="valid_time_begin" accumulate="0">
+      <temporal durationUnit="min" mode="2" fixedDuration="0" endExpression="" durationField="row" startExpression="" accumulate="0" enabled="0" startField="" endField="" limitMode="0">
         <fixedRange>
           <start></start>
           <end></end>
         </fixedRange>
       </temporal>
-      <elevation zscale="1" extrusion="0" binding="Centroid" clamping="Terrain" symbology="Line" extrusionEnabled="0" respectLayerSymbol="1" showMarkerSymbolInSurfacePlots="0" type="IndividualFeatures" zoffset="0">
+      <elevation clamping="Terrain" binding="Centroid" respectLayerSymbol="1" extrusion="0" type="IndividualFeatures" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" zoffset="0" extrusionEnabled="0">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -1412,7 +1903,7 @@
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="line" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1420,7 +1911,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleLine" enabled="1">
+            <layer id="{49f8f946-8c43-44d1-a32d-0e7a51da2534}" locked="0" class="SimpleLine" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="align_dash_pattern" type="QString"/>
                 <Option value="square" name="capstyle" type="QString"/>
@@ -1432,7 +1923,7 @@
                 <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
                 <Option value="0" name="draw_inside_polygon" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
-                <Option value="196,60,57,255" name="line_color" type="QString"/>
+                <Option value="196,60,57,255,rgb:0.7686274509803922,0.23529411764705882,0.22352941176470589,1" name="line_color" type="QString"/>
                 <Option value="solid" name="line_style" type="QString"/>
                 <Option value="0.6" name="line_width" type="QString"/>
                 <Option value="MM" name="line_width_unit" type="QString"/>
@@ -1461,7 +1952,7 @@
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="fill" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="fill" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1469,15 +1960,15 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleFill" enabled="1">
+            <layer id="{14684d1c-7dc4-4de0-838c-de5723b71957}" locked="0" class="SimpleFill" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
-                <Option value="196,60,57,255" name="color" type="QString"/>
+                <Option value="196,60,57,255,rgb:0.7686274509803922,0.23529411764705882,0.22352941176470589,1" name="color" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="140,43,41,255" name="outline_color" type="QString"/>
+                <Option value="140,43,41,255,rgb:0.5490196078431373,0.16862745098039217,0.16078431372549021,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="MM" name="outline_width_unit" type="QString"/>
@@ -1494,7 +1985,7 @@
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="marker" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1502,18 +1993,18 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
+            <layer id="{13115310-c795-4148-9bb5-fc5dac492928}" locked="0" class="SimpleMarker" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="angle" type="QString"/>
                 <Option value="square" name="cap_style" type="QString"/>
-                <Option value="196,60,57,255" name="color" type="QString"/>
+                <Option value="196,60,57,255,rgb:0.7686274509803922,0.23529411764705882,0.22352941176470589,1" name="color" type="QString"/>
                 <Option value="1" name="horizontal_anchor_point" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="diamond" name="name" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="140,43,41,255" name="outline_color" type="QString"/>
+                <Option value="140,43,41,255,rgb:0.5490196078431373,0.16862745098039217,0.16078431372549021,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
@@ -1535,9 +2026,9 @@
           </symbol>
         </profileMarkerSymbol>
       </elevation>
-      <renderer-v2 referencescale="-1" symbollevels="0" enableorderby="0" type="singleSymbol" forceraster="0">
+      <renderer-v2 symbollevels="0" enableorderby="0" referencescale="-1" type="singleSymbol" forceraster="0">
         <symbols>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="0" frame_rate="10" type="line" clip_to_extent="1">
+          <symbol name="0" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1545,7 +2036,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleLine" enabled="1">
+            <layer id="{3d8d8e46-e3a7-4097-9772-a7356c0f6263}" locked="0" class="SimpleLine" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="align_dash_pattern" type="QString"/>
                 <Option value="square" name="capstyle" type="QString"/>
@@ -1557,7 +2048,7 @@
                 <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
                 <Option value="0" name="draw_inside_polygon" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
-                <Option value="229,182,54,255" name="line_color" type="QString"/>
+                <Option value="229,182,54,255,rgb:0.89803921568627454,0.71372549019607845,0.21176470588235294,1" name="line_color" type="QString"/>
                 <Option value="solid" name="line_style" type="QString"/>
                 <Option value="0.26" name="line_width" type="QString"/>
                 <Option value="MM" name="line_width_unit" type="QString"/>
@@ -1587,129 +2078,201 @@
         </symbols>
         <rotation/>
         <sizescale/>
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
       </renderer-v2>
+      <selection mode="Default">
+        <selectionColor invalid="1"/>
+        <selectionSymbol>
+          <symbol name="" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer id="{4ff0a86e-6495-44e9-9079-b50326d292ca}" locked="0" class="SimpleLine" pass="0" enabled="1">
+              <Option type="Map">
+                <Option value="0" name="align_dash_pattern" type="QString"/>
+                <Option value="square" name="capstyle" type="QString"/>
+                <Option value="5;2" name="customdash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="customdash_map_unit_scale" type="QString"/>
+                <Option value="MM" name="customdash_unit" type="QString"/>
+                <Option value="0" name="dash_pattern_offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="dash_pattern_offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
+                <Option value="0" name="draw_inside_polygon" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="line_color" type="QString"/>
+                <Option value="solid" name="line_style" type="QString"/>
+                <Option value="0.26" name="line_width" type="QString"/>
+                <Option value="MM" name="line_width_unit" type="QString"/>
+                <Option value="0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="0" name="ring_filter" type="QString"/>
+                <Option value="0" name="trim_distance_end" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_end_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_end_unit" type="QString"/>
+                <Option value="0" name="trim_distance_start" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_start_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_start_unit" type="QString"/>
+                <Option value="0" name="tweak_dash_pattern_on_corners" type="QString"/>
+                <Option value="0" name="use_custom_dash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="width_map_unit_scale" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </selectionSymbol>
+      </selection>
       <customproperties>
-        <Option/>
+        <Option type="Map">
+          <Option value="offline" name="QFieldSync/action" type="QString"/>
+          <Option value="{}" name="QFieldSync/attachment_naming" type="QString"/>
+          <Option value="offline" name="QFieldSync/cloud_action" type="QString"/>
+          <Option value="" name="QFieldSync/geometry_locked_expression" type="QString"/>
+          <Option value="{}" name="QFieldSync/photo_naming" type="QString"/>
+          <Option value="{}" name="QFieldSync/relationship_maximum_visible" type="QString"/>
+          <Option value="30" name="QFieldSync/tracking_distance_requirement_minimum_meters" type="int"/>
+          <Option value="1" name="QFieldSync/tracking_erroneous_distance_safeguard_maximum_meters" type="int"/>
+          <Option value="0" name="QFieldSync/tracking_measurement_type" type="int"/>
+          <Option value="30" name="QFieldSync/tracking_time_requirement_interval_seconds" type="int"/>
+          <Option value="0" name="QFieldSync/value_map_button_interface_threshold" type="int"/>
+          <Option value="0" name="embeddedWidgets/count" type="int"/>
+          <Option name="variableNames"/>
+          <Option name="variableValues"/>
+        </Option>
       </customproperties>
       <blendMode>0</blendMode>
       <featureBlendMode>0</featureBlendMode>
       <layerOpacity>1</layerOpacity>
-      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
-        <activeChecks type="StringList">
-          <Option value="" type="QString"/>
-        </activeChecks>
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
+        <activeChecks/>
         <checkConfiguration/>
       </geometryOptions>
-      <legend showLabelLegend="0" type="default-vector"/>
+      <legend type="default-vector" showLabelLegend="0"/>
       <referencedLayers/>
       <fieldConfiguration>
-        <field configurationFlags="None" name="row">
-          <editWidget type="">
+        <field name="row" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="id">
-          <editWidget type="">
+        <field name="id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="ts_id">
-          <editWidget type="">
+        <field name="ts_id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="tsp_id">
-          <editWidget type="">
+        <field name="tsp_id" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="identifier">
-          <editWidget type="">
+        <field name="identifier" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="interpretation">
-          <editWidget type="">
+        <field name="interpretation" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="sequence_number">
-          <editWidget type="">
+        <field name="sequence_number" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="correction_number">
-          <editWidget type="">
+        <field name="correction_number" configurationFlags="NoFlag">
+          <editWidget type="Range">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="valid_time_begin">
-          <editWidget type="">
+        <field name="valid_time_begin" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="valid_time_end">
-          <editWidget type="">
+        <field name="valid_time_end" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="feature_lifetime_begin">
-          <editWidget type="">
+        <field name="feature_lifetime_begin" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="feature_lifetime_end">
-          <editWidget type="">
+        <field name="feature_lifetime_end" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="name">
-          <editWidget type="">
+        <field name="name" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="type">
-          <editWidget type="">
+        <field name="type" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="border_horizontalaccuracy">
-          <editWidget type="">
+        <field name="border_horizontalaccuracy" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="annotation">
-          <editWidget type="">
+        <field name="annotation" configurationFlags="NoFlag">
+          <editWidget type="JsonEdit">
             <config>
               <Option/>
             </config>
@@ -1717,83 +2280,137 @@
         </field>
       </fieldConfiguration>
       <aliases>
-        <alias field="row" name="" index="0"/>
-        <alias field="id" name="" index="1"/>
-        <alias field="ts_id" name="" index="2"/>
-        <alias field="tsp_id" name="" index="3"/>
-        <alias field="identifier" name="" index="4"/>
-        <alias field="interpretation" name="" index="5"/>
-        <alias field="sequence_number" name="" index="6"/>
-        <alias field="correction_number" name="" index="7"/>
-        <alias field="valid_time_begin" name="" index="8"/>
-        <alias field="valid_time_end" name="" index="9"/>
-        <alias field="feature_lifetime_begin" name="" index="10"/>
-        <alias field="feature_lifetime_end" name="" index="11"/>
-        <alias field="name" name="" index="12"/>
-        <alias field="type" name="" index="13"/>
-        <alias field="border_horizontalaccuracy" name="" index="14"/>
-        <alias field="annotation" name="" index="15"/>
+        <alias name="" index="0" field="row"/>
+        <alias name="" index="1" field="id"/>
+        <alias name="" index="2" field="ts_id"/>
+        <alias name="" index="3" field="tsp_id"/>
+        <alias name="" index="4" field="identifier"/>
+        <alias name="" index="5" field="interpretation"/>
+        <alias name="" index="6" field="sequence_number"/>
+        <alias name="" index="7" field="correction_number"/>
+        <alias name="" index="8" field="valid_time_begin"/>
+        <alias name="" index="9" field="valid_time_end"/>
+        <alias name="" index="10" field="feature_lifetime_begin"/>
+        <alias name="" index="11" field="feature_lifetime_end"/>
+        <alias name="" index="12" field="name"/>
+        <alias name="" index="13" field="type"/>
+        <alias name="" index="14" field="border_horizontalaccuracy"/>
+        <alias name="" index="15" field="annotation"/>
       </aliases>
+      <splitPolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="name"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="Duplicate" field="border_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="annotation"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="name"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="Duplicate" field="border_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="annotation"/>
+      </duplicatePolicies>
       <defaults>
-        <default field="row" applyOnUpdate="0" expression=""/>
-        <default field="id" applyOnUpdate="0" expression=""/>
-        <default field="ts_id" applyOnUpdate="0" expression=""/>
-        <default field="tsp_id" applyOnUpdate="0" expression=""/>
-        <default field="identifier" applyOnUpdate="0" expression=""/>
-        <default field="interpretation" applyOnUpdate="0" expression=""/>
-        <default field="sequence_number" applyOnUpdate="0" expression=""/>
-        <default field="correction_number" applyOnUpdate="0" expression=""/>
-        <default field="valid_time_begin" applyOnUpdate="0" expression=""/>
-        <default field="valid_time_end" applyOnUpdate="0" expression=""/>
-        <default field="feature_lifetime_begin" applyOnUpdate="0" expression=""/>
-        <default field="feature_lifetime_end" applyOnUpdate="0" expression=""/>
-        <default field="name" applyOnUpdate="0" expression=""/>
-        <default field="type" applyOnUpdate="0" expression=""/>
-        <default field="border_horizontalaccuracy" applyOnUpdate="0" expression=""/>
-        <default field="annotation" applyOnUpdate="0" expression=""/>
+        <default applyOnUpdate="0" expression="" field="row"/>
+        <default applyOnUpdate="0" expression="" field="id"/>
+        <default applyOnUpdate="0" expression="" field="ts_id"/>
+        <default applyOnUpdate="0" expression="" field="tsp_id"/>
+        <default applyOnUpdate="0" expression="" field="identifier"/>
+        <default applyOnUpdate="0" expression="" field="interpretation"/>
+        <default applyOnUpdate="0" expression="" field="sequence_number"/>
+        <default applyOnUpdate="0" expression="" field="correction_number"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_begin"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_end"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_begin"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_end"/>
+        <default applyOnUpdate="0" expression="" field="name"/>
+        <default applyOnUpdate="0" expression="" field="type"/>
+        <default applyOnUpdate="0" expression="" field="border_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="annotation"/>
       </defaults>
       <constraints>
-        <constraint field="row" exp_strength="0" constraints="3" unique_strength="1" notnull_strength="1"/>
-        <constraint field="id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="ts_id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="tsp_id" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="identifier" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="interpretation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="sequence_number" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="correction_number" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="valid_time_begin" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="valid_time_end" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="feature_lifetime_begin" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="feature_lifetime_end" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="name" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="type" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="border_horizontalaccuracy" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
-        <constraint field="annotation" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
+        <constraint constraints="3" unique_strength="1" exp_strength="0" notnull_strength="1" field="row"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="ts_id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="tsp_id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="identifier"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="interpretation"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="sequence_number"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="correction_number"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="valid_time_begin"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="valid_time_end"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="feature_lifetime_begin"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="feature_lifetime_end"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="name"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="type"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="border_horizontalaccuracy"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="annotation"/>
       </constraints>
       <constraintExpressions>
-        <constraint field="row" desc="" exp=""/>
-        <constraint field="id" desc="" exp=""/>
-        <constraint field="ts_id" desc="" exp=""/>
-        <constraint field="tsp_id" desc="" exp=""/>
-        <constraint field="identifier" desc="" exp=""/>
-        <constraint field="interpretation" desc="" exp=""/>
-        <constraint field="sequence_number" desc="" exp=""/>
-        <constraint field="correction_number" desc="" exp=""/>
-        <constraint field="valid_time_begin" desc="" exp=""/>
-        <constraint field="valid_time_end" desc="" exp=""/>
-        <constraint field="feature_lifetime_begin" desc="" exp=""/>
-        <constraint field="feature_lifetime_end" desc="" exp=""/>
-        <constraint field="name" desc="" exp=""/>
-        <constraint field="type" desc="" exp=""/>
-        <constraint field="border_horizontalaccuracy" desc="" exp=""/>
-        <constraint field="annotation" desc="" exp=""/>
+        <constraint exp="" field="row" desc=""/>
+        <constraint exp="" field="id" desc=""/>
+        <constraint exp="" field="ts_id" desc=""/>
+        <constraint exp="" field="tsp_id" desc=""/>
+        <constraint exp="" field="identifier" desc=""/>
+        <constraint exp="" field="interpretation" desc=""/>
+        <constraint exp="" field="sequence_number" desc=""/>
+        <constraint exp="" field="correction_number" desc=""/>
+        <constraint exp="" field="valid_time_begin" desc=""/>
+        <constraint exp="" field="valid_time_end" desc=""/>
+        <constraint exp="" field="feature_lifetime_begin" desc=""/>
+        <constraint exp="" field="feature_lifetime_end" desc=""/>
+        <constraint exp="" field="name" desc=""/>
+        <constraint exp="" field="type" desc=""/>
+        <constraint exp="" field="border_horizontalaccuracy" desc=""/>
+        <constraint exp="" field="annotation" desc=""/>
       </constraintExpressions>
       <expressionfields/>
       <attributeactions>
-        <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
       </attributeactions>
-      <attributetableconfig sortOrder="0" sortExpression="" actionWidgetStyle="dropDown">
-        <columns/>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column name="row" hidden="0" type="field" width="-1"/>
+          <column name="id" hidden="0" type="field" width="-1"/>
+          <column name="ts_id" hidden="0" type="field" width="-1"/>
+          <column name="tsp_id" hidden="0" type="field" width="-1"/>
+          <column name="identifier" hidden="0" type="field" width="-1"/>
+          <column name="interpretation" hidden="0" type="field" width="-1"/>
+          <column name="sequence_number" hidden="0" type="field" width="-1"/>
+          <column name="correction_number" hidden="0" type="field" width="-1"/>
+          <column name="valid_time_begin" hidden="0" type="field" width="-1"/>
+          <column name="valid_time_end" hidden="0" type="field" width="-1"/>
+          <column name="feature_lifetime_begin" hidden="0" type="field" width="-1"/>
+          <column name="feature_lifetime_end" hidden="0" type="field" width="-1"/>
+          <column name="name" hidden="0" type="field" width="-1"/>
+          <column name="type" hidden="0" type="field" width="-1"/>
+          <column name="border_horizontalaccuracy" hidden="0" type="field" width="-1"/>
+          <column name="annotation" hidden="0" type="field" width="-1"/>
+          <column hidden="1" type="actions" width="-1"/>
+        </columns>
       </attributetableconfig>
       <conditionalstyles>
         <rowstyles/>
@@ -1804,18 +2421,298 @@
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
       <editforminitfilepath></editforminitfilepath>
-      <editforminitcode><![CDATA[]]></editforminitcode>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
       <featformsuppress>0</featformsuppress>
-      <editorlayout>generatedlayout</editorlayout>
-      <editable/>
-      <labelOnTop/>
-      <reuseLastValue/>
+      <editorlayout>tablayout</editorlayout>
+      <attributeEditorForm>
+        <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+          <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+        </labelStyle>
+        <attributeEditorField name="row" horizontalStretch="0" index="0" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="id" horizontalStretch="0" index="1" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="ts_id" horizontalStretch="0" index="2" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="tsp_id" horizontalStretch="0" index="3" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="identifier" horizontalStretch="0" index="4" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="interpretation" horizontalStretch="0" index="5" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="sequence_number" horizontalStretch="0" index="6" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="correction_number" horizontalStretch="0" index="7" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="valid_time_begin" horizontalStretch="0" index="8" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="valid_time_end" horizontalStretch="0" index="9" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="feature_lifetime_begin" horizontalStretch="0" index="10" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="feature_lifetime_end" horizontalStretch="0" index="11" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="name" horizontalStretch="0" index="12" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="type" horizontalStretch="0" index="13" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="border_horizontalaccuracy" horizontalStretch="0" index="14" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField name="annotation" horizontalStretch="0" index="15" showLabel="1" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorHtmlElement name="HTML Widget" horizontalStretch="0" showLabel="0" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont style="" underline="0" italic="0" strikethrough="0" bold="0" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>&lt;!DOCTYPE html>&#xd;
+&lt;html lang="en">&#xd;
+&lt;head>&#xd;
+  &lt;meta charset="UTF-8">&#xd;
+  &lt;title>Note List Viewer&lt;/title>&#xd;
+  &lt;style>&#xd;
+body {&#xd;
+  font-family: 'Segoe UI', sans-serif;&#xd;
+  background-color: #323232;&#xd;
+  color: #e0e0e0;&#xd;
+  margin: 12px;&#xd;
+}&#xd;
+&#xd;
+.annotation-block {&#xd;
+  border: 1px solid #bbbbbb;;&#xd;
+  box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);&#xd;
+  padding: 8px;&#xd;
+  margin-bottom: 16px;&#xd;
+}&#xd;
+&#xd;
+table {&#xd;
+  width: 100%;&#xd;
+  border-collapse: collapse;&#xd;
+}&#xd;
+&#xd;
+td.title {&#xd;
+  white-space: nowrap;&#xd;
+  padding: 2px 10px 2px 0;&#xd;
+  color: #cccccc;&#xd;
+  font-size: 0.8em;&#xd;
+  vertical-align: top;&#xd;
+  width: 160px;&#xd;
+}&#xd;
+&#xd;
+.value {&#xd;
+  color: #bbbbbb;&#xd;
+  background-color: #1e1e1e;&#xd;
+  font-size: 0.8em;&#xd;
+  vertical-align: top;&#xd;
+  padding: 3px;&#xd;
+  margin: 3px;&#xd;
+}&#xd;
+&#xd;
+.translated {&#xd;
+    margin-top: 8px;&#xd;
+}&#xd;
+&#xd;
+.translated span {&#xd;
+  font-weight: bold;&#xd;
+  color: #87cefa;&#xd;
+}&#xd;
+&#xd;
+.translated-text {&#xd;
+  color: #dddddd;&#xd;
+  font-size: 0.8em;&#xd;
+  background-color: #1e1e1e;&#xd;
+  border-left: 4px solid #3a9aed; &#xd;
+  padding: 3px;&#xd;
+  margin: 3px;&#xd;
+  padding-left: 6px;&#xd;
+  margin-bottom: 6px;&#xd;
+&#xd;
+}&#xd;
+  &lt;/style>&#xd;
+&lt;/head>&#xd;
+&lt;body>&#xd;
+  &lt;h1>Annotation&lt;/h1>&#xd;
+  &lt;div id="notes-container">Loading...&lt;/div>&#xd;
+&#xd;
+&lt;script>&#xd;
+  try {&#xd;
+    let raw = expression.evaluate("to_json(annotation)");&#xd;
+    let annotation = JSON.parse(raw);&#xd;
+&#xd;
+    if (!Array.isArray(annotation)) {&#xd;
+      annotation = [annotation];&#xd;
+    }&#xd;
+    annotation = annotation.filter(n => n !== null &amp;&amp; typeof n === 'object');&#xd;
+&#xd;
+    const container = document.getElementById('notes-container');&#xd;
+    container.innerHTML = '';&#xd;
+&#xd;
+    if (annotation.length === 0) {&#xd;
+      container.textContent = '';&#xd;
+    } else {&#xd;
+      annotation.forEach(annotation => {&#xd;
+        const div = document.createElement('div');&#xd;
+        div.className = 'note';&#xd;
+&#xd;
+        div.innerHTML = `&#xd;
+          &lt;div class="annotation-block">&#xd;
+            &lt;table>&#xd;
+              &lt;tr>&#xd;
+                &lt;td class="title">Purpose&lt;/td>&#xd;
+                &lt;td>&lt;div class="value">${annotation.note.purpose}&lt;/div>&lt;/td>&#xd;
+              &lt;/tr>&#xd;
+              &lt;tr>&#xd;
+                &lt;td class="title">Property Name&lt;/td>&#xd;
+                &lt;td>&lt;div class="value">${annotation.note.propertyName}&lt;/div>&lt;/td>&#xd;
+              &lt;/tr>&#xd;
+            &lt;/table>&#xd;
+            &lt;div class="translated">&#xd;
+              ${&#xd;
+                Array.isArray(annotation.note.notes) &amp;&amp; annotation.note.notes.length > 0&#xd;
+                  ? annotation.note.notes.map(n =>&#xd;
+                      `&lt;div class="translated-text">&#xd;
+                        &lt;span>[${n.lang}]&lt;/span>&lt;br> ${n.note.replace(/\n/g, '&lt;br>')}&#xd;
+                      &lt;/div>`).join('')&#xd;
+                  : ''&#xd;
+              }&#xd;
+            &lt;/div>&#xd;
+          &lt;/div>&#xd;
+        `;&#xd;
+&#xd;
+        container.appendChild(div);&#xd;
+      });&#xd;
+    }&#xd;
+  } catch (e) {&#xd;
+    document.getElementById('notes-container').textContent = "Error: " + e;&#xd;
+  }&#xd;
+&lt;/script>&#xd;
+&#xd;
+&lt;/body>&#xd;
+&lt;/html>&#xd;
+</attributeEditorHtmlElement>
+      </attributeEditorForm>
+      <editable>
+        <field name="annotation" editable="1"/>
+        <field name="border_horizontalaccuracy" editable="1"/>
+        <field name="correction_number" editable="1"/>
+        <field name="feature_lifetime_begin" editable="1"/>
+        <field name="feature_lifetime_end" editable="1"/>
+        <field name="id" editable="1"/>
+        <field name="identifier" editable="1"/>
+        <field name="interpretation" editable="1"/>
+        <field name="name" editable="1"/>
+        <field name="row" editable="1"/>
+        <field name="sequence_number" editable="1"/>
+        <field name="ts_id" editable="1"/>
+        <field name="tsp_id" editable="1"/>
+        <field name="type" editable="1"/>
+        <field name="valid_time_begin" editable="1"/>
+        <field name="valid_time_end" editable="1"/>
+      </editable>
+      <labelOnTop>
+        <field name="annotation" labelOnTop="0"/>
+        <field name="border_horizontalaccuracy" labelOnTop="0"/>
+        <field name="correction_number" labelOnTop="0"/>
+        <field name="feature_lifetime_begin" labelOnTop="0"/>
+        <field name="feature_lifetime_end" labelOnTop="0"/>
+        <field name="id" labelOnTop="0"/>
+        <field name="identifier" labelOnTop="0"/>
+        <field name="interpretation" labelOnTop="0"/>
+        <field name="name" labelOnTop="0"/>
+        <field name="row" labelOnTop="0"/>
+        <field name="sequence_number" labelOnTop="0"/>
+        <field name="ts_id" labelOnTop="0"/>
+        <field name="tsp_id" labelOnTop="0"/>
+        <field name="type" labelOnTop="0"/>
+        <field name="valid_time_begin" labelOnTop="0"/>
+        <field name="valid_time_end" labelOnTop="0"/>
+      </labelOnTop>
+      <reuseLastValue>
+        <field name="annotation" reuseLastValue="0"/>
+        <field name="border_horizontalaccuracy" reuseLastValue="0"/>
+        <field name="correction_number" reuseLastValue="0"/>
+        <field name="feature_lifetime_begin" reuseLastValue="0"/>
+        <field name="feature_lifetime_end" reuseLastValue="0"/>
+        <field name="id" reuseLastValue="0"/>
+        <field name="identifier" reuseLastValue="0"/>
+        <field name="interpretation" reuseLastValue="0"/>
+        <field name="name" reuseLastValue="0"/>
+        <field name="row" reuseLastValue="0"/>
+        <field name="sequence_number" reuseLastValue="0"/>
+        <field name="ts_id" reuseLastValue="0"/>
+        <field name="tsp_id" reuseLastValue="0"/>
+        <field name="type" reuseLastValue="0"/>
+        <field name="valid_time_begin" reuseLastValue="0"/>
+        <field name="valid_time_end" reuseLastValue="0"/>
+      </reuseLastValue>
       <dataDefinedFieldProperties/>
       <widgets/>
-      <previewExpression></previewExpression>
-      <mapTip></mapTip>
+      <previewExpression>"name"</previewExpression>
+      <mapTip enabled="1"></mapTip>
     </maplayer>
-    <maplayer refreshOnNotifyMessage="" geometry="No geometry" autoRefreshEnabled="0" wkbType="NoGeometry" autoRefreshTime="0" refreshOnNotifyEnabled="0" legendPlaceholderImage="" hasScaleBasedVisibilityFlag="0" minScale="1e+08" styleCategories="AllStyleCategories" maxScale="0" readOnly="0" type="vector">
+    <maplayer legendPlaceholderImage="" styleCategories="AllStyleCategories" type="vector" wkbType="NoGeometry" autoRefreshTime="0" geometry="No geometry" minScale="1e+08" refreshOnNotifyMessage="" readOnly="0" autoRefreshMode="Disabled" refreshOnNotifyEnabled="0" maxScale="0" hasScaleBasedVisibilityFlag="0">
       <id>note_view_905ab7df_42cd_4742_8f09_5633db75916f</id>
       <datasource>dbname='demo' port=5432 sslmode=disable key='id' checkPrimaryKeyUnicity='1' table="notes"."note_view"</datasource>
       <keywordList>
@@ -1843,6 +2740,7 @@
         <title></title>
         <abstract></abstract>
         <links/>
+        <dates/>
         <fees></fees>
         <encoding></encoding>
         <crs>
@@ -1876,13 +2774,13 @@
         <Searchable>1</Searchable>
         <Private>0</Private>
       </flags>
-      <temporal durationUnit="min" durationField="" endField="" mode="0" endExpression="" fixedDuration="0" startExpression="" enabled="0" limitMode="0" startField="" accumulate="0">
+      <temporal durationUnit="min" mode="0" fixedDuration="0" endExpression="" durationField="" startExpression="" accumulate="0" enabled="0" startField="" endField="" limitMode="0">
         <fixedRange>
           <start></start>
           <end></end>
         </fixedRange>
       </temporal>
-      <elevation zscale="1" extrusion="0" binding="Centroid" clamping="Terrain" symbology="Line" extrusionEnabled="0" respectLayerSymbol="1" showMarkerSymbolInSurfacePlots="0" type="IndividualFeatures" zoffset="0">
+      <elevation clamping="Terrain" binding="Centroid" respectLayerSymbol="1" extrusion="0" type="IndividualFeatures" zscale="1" symbology="Line" showMarkerSymbolInSurfacePlots="0" zoffset="0" extrusionEnabled="0">
         <data-defined-properties>
           <Option type="Map">
             <Option value="" name="name" type="QString"/>
@@ -1891,7 +2789,7 @@
           </Option>
         </data-defined-properties>
         <profileLineSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="line" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="line" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1899,7 +2797,7 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleLine" enabled="1">
+            <layer id="{62dcd9bb-41a9-470c-a1e0-fd7613d22b60}" locked="0" class="SimpleLine" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="align_dash_pattern" type="QString"/>
                 <Option value="square" name="capstyle" type="QString"/>
@@ -1911,7 +2809,7 @@
                 <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
                 <Option value="0" name="draw_inside_polygon" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
-                <Option value="141,90,153,255" name="line_color" type="QString"/>
+                <Option value="141,90,153,255,rgb:0.55294117647058827,0.35294117647058826,0.59999999999999998,1" name="line_color" type="QString"/>
                 <Option value="solid" name="line_style" type="QString"/>
                 <Option value="0.6" name="line_width" type="QString"/>
                 <Option value="MM" name="line_width_unit" type="QString"/>
@@ -1940,7 +2838,7 @@
           </symbol>
         </profileLineSymbol>
         <profileFillSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="fill" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="fill" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1948,15 +2846,15 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleFill" enabled="1">
+            <layer id="{2ecf7256-4f4a-4232-b9a5-73639cb53d05}" locked="0" class="SimpleFill" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
-                <Option value="141,90,153,255" name="color" type="QString"/>
+                <Option value="141,90,153,255,rgb:0.55294117647058827,0.35294117647058826,0.59999999999999998,1" name="color" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="101,64,109,255" name="outline_color" type="QString"/>
+                <Option value="101,64,109,255,rgb:0.396078431372549,0.25098039215686274,0.42745098039215684,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="MM" name="outline_width_unit" type="QString"/>
@@ -1973,7 +2871,7 @@
           </symbol>
         </profileFillSymbol>
         <profileMarkerSymbol>
-          <symbol alpha="1" is_animated="0" force_rhr="0" name="" frame_rate="10" type="marker" clip_to_extent="1">
+          <symbol name="" clip_to_extent="1" type="marker" alpha="1" force_rhr="0" is_animated="0" frame_rate="10">
             <data_defined_properties>
               <Option type="Map">
                 <Option value="" name="name" type="QString"/>
@@ -1981,18 +2879,18 @@
                 <Option value="collection" name="type" type="QString"/>
               </Option>
             </data_defined_properties>
-            <layer pass="0" locked="0" class="SimpleMarker" enabled="1">
+            <layer id="{3b2b41d0-17df-460a-b94d-7e9e4883dd4c}" locked="0" class="SimpleMarker" pass="0" enabled="1">
               <Option type="Map">
                 <Option value="0" name="angle" type="QString"/>
                 <Option value="square" name="cap_style" type="QString"/>
-                <Option value="141,90,153,255" name="color" type="QString"/>
+                <Option value="141,90,153,255,rgb:0.55294117647058827,0.35294117647058826,0.59999999999999998,1" name="color" type="QString"/>
                 <Option value="1" name="horizontal_anchor_point" type="QString"/>
                 <Option value="bevel" name="joinstyle" type="QString"/>
                 <Option value="diamond" name="name" type="QString"/>
                 <Option value="0,0" name="offset" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
                 <Option value="MM" name="offset_unit" type="QString"/>
-                <Option value="101,64,109,255" name="outline_color" type="QString"/>
+                <Option value="101,64,109,255,rgb:0.396078431372549,0.25098039215686274,0.42745098039215684,1" name="outline_color" type="QString"/>
                 <Option value="solid" name="outline_style" type="QString"/>
                 <Option value="0.2" name="outline_width" type="QString"/>
                 <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
@@ -2021,23 +2919,23 @@
           </Option>
         </Option>
       </customproperties>
-      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
         <activeChecks type="StringList">
           <Option value="" type="QString"/>
         </activeChecks>
         <checkConfiguration/>
       </geometryOptions>
-      <legend showLabelLegend="0" type="default-vector"/>
+      <legend type="default-vector" showLabelLegend="0"/>
       <referencedLayers/>
       <fieldConfiguration>
-        <field configurationFlags="None" name="id">
+        <field name="id" configurationFlags="NoFlag">
           <editWidget type="">
             <config>
               <Option/>
             </config>
           </editWidget>
         </field>
-        <field configurationFlags="None" name="note">
+        <field name="note" configurationFlags="NoFlag">
           <editWidget type="">
             <config>
               <Option/>
@@ -2046,30 +2944,38 @@
         </field>
       </fieldConfiguration>
       <aliases>
-        <alias field="id" name="" index="0"/>
-        <alias field="note" name="" index="1"/>
+        <alias name="" index="0" field="id"/>
+        <alias name="" index="1" field="note"/>
       </aliases>
+      <splitPolicies>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="note"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="note"/>
+      </duplicatePolicies>
       <defaults>
-        <default field="id" applyOnUpdate="0" expression=""/>
-        <default field="note" applyOnUpdate="0" expression=""/>
+        <default applyOnUpdate="0" expression="" field="id"/>
+        <default applyOnUpdate="0" expression="" field="note"/>
       </defaults>
       <constraints>
-        <constraint field="id" exp_strength="0" constraints="3" unique_strength="1" notnull_strength="1"/>
-        <constraint field="note" exp_strength="0" constraints="0" unique_strength="0" notnull_strength="0"/>
+        <constraint constraints="3" unique_strength="1" exp_strength="0" notnull_strength="1" field="id"/>
+        <constraint constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0" field="note"/>
       </constraints>
       <constraintExpressions>
-        <constraint field="id" desc="" exp=""/>
-        <constraint field="note" desc="" exp=""/>
+        <constraint exp="" field="id" desc=""/>
+        <constraint exp="" field="note" desc=""/>
       </constraintExpressions>
       <expressionfields/>
       <attributeactions>
-        <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
       </attributeactions>
-      <attributetableconfig sortOrder="0" sortExpression="" actionWidgetStyle="dropDown">
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
         <columns>
-          <column name="id" width="-1" hidden="0" type="field"/>
-          <column name="note" width="-1" hidden="0" type="field"/>
-          <column width="-1" hidden="1" type="actions"/>
+          <column name="id" hidden="0" type="field" width="-1"/>
+          <column name="note" hidden="0" type="field" width="-1"/>
+          <column hidden="1" type="actions" width="-1"/>
         </columns>
       </attributetableconfig>
       <conditionalstyles>
@@ -2090,15 +2996,15 @@
       <dataDefinedFieldProperties/>
       <widgets/>
       <previewExpression>"id"</previewExpression>
-      <mapTip></mapTip>
+      <mapTip enabled="1"></mapTip>
     </maplayer>
   </projectlayers>
   <layerorder>
-    <layer id="note_view_905ab7df_42cd_4742_8f09_5633db75916f"/>
     <layer id="aircraftstand_view_location_geom_a2dd3744_dbbe_4915_96d3_a5720a4c31a4"/>
     <layer id="airspacevolume_view_horizontalprojection_geom_15ccec83_c0e0_4e34_bf28_5345192802b5"/>
     <layer id="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee"/>
   </layerorder>
+  <labelEngineSettings/>
   <properties>
     <Digitizing>
       <AvoidIntersectionsMode type="int">0</AvoidIntersectionsMode>
@@ -2125,6 +3031,7 @@
     <PAL>
       <CandidatesLinePerCM type="double">5</CandidatesLinePerCM>
       <CandidatesPolygonPerCM type="double">2.5</CandidatesPolygonPerCM>
+      <DrawLabelMetrics type="bool">false</DrawLabelMetrics>
       <DrawRectOnly type="bool">false</DrawRectOnly>
       <DrawUnplaced type="bool">false</DrawUnplaced>
       <PlacementEngineVersion type="int">1</PlacementEngineVersion>
@@ -2133,7 +3040,7 @@
       <ShowingCandidates type="bool">false</ShowingCandidates>
       <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
       <TextFormat type="int">0</TextFormat>
-      <UnplacedColor type="QString">255,0,0,255</UnplacedColor>
+      <UnplacedColor type="QString">255,0,0,255,rgb:1,0,0,1</UnplacedColor>
     </PAL>
     <Paths>
       <Absolute type="bool">false</Absolute>
@@ -2163,6 +3070,9 @@
     <title></title>
     <abstract></abstract>
     <links/>
+    <dates>
+      <date value="2025-07-15T13:31:53" type="Created"/>
+    </dates>
     <author>Raphael Gerth</author>
     <creation>2025-07-15T13:31:53</creation>
   </projectMetadata>
@@ -2170,11 +3080,12 @@
   <Layouts/>
   <mapViewDocks3D/>
   <Bookmarks/>
+  <Sensors/>
   <ProjectViewSettings UseProjectScales="0" rotation="0">
     <Scales/>
-    <DefaultViewExtent ymin="1115032.27933325641788542" xmax="2692895.71332350978627801" ymax="1261418.73000732972286642" xmin="2490475.4449121612124145">
+    <DefaultViewExtent ymax="1238784.88646977674216032" ymin="1012268.20445480570197105" xmin="2433976.01484887301921844" xmax="2584210.18467919528484344">
       <spatialrefsys nativeFormat="Wkt">
-        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth of initial line",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor on initial line",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.82,5.96,47.81,10.49]],ID["EPSG",2056]]</wkt>
+        <wkt>PROJCRS["CH1903+ / LV95",BASEGEOGCRS["CH1903+",DATUM["CH1903+",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4150]],CONVERSION["Swiss Oblique Mercator 1995",METHOD["Hotine Oblique Mercator (variant B)",ID["EPSG",9815]],PARAMETER["Latitude of projection centre",46.9524055555556,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8811]],PARAMETER["Longitude of projection centre",7.43958333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8812]],PARAMETER["Azimuth at projection centre",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8813]],PARAMETER["Angle from Rectified to Skew Grid",90,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8814]],PARAMETER["Scale factor at projection centre",1,SCALEUNIT["unity",1],ID["EPSG",8815]],PARAMETER["Easting at projection centre",2600000,LENGTHUNIT["metre",1],ID["EPSG",8816]],PARAMETER["Northing at projection centre",1200000,LENGTHUNIT["metre",1],ID["EPSG",8817]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Liechtenstein; Switzerland."],BBOX[45.81,5.95,47.81,10.5]],ID["EPSG",2056]]</wkt>
         <proj4>+proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs</proj4>
         <srsid>47</srsid>
         <srid>2056</srid>
@@ -2186,16 +3097,16 @@
       </spatialrefsys>
     </DefaultViewExtent>
   </ProjectViewSettings>
-  <ProjectStyleSettings projectStyleId="attachment:///UngOLW_styles.db" RandomizeDefaultSymbolColor="1" DefaultSymbolOpacity="1">
+  <ProjectStyleSettings projectStyleId="attachment:///UngOLW_styles.db" iccProfileId="attachment:///" DefaultSymbolOpacity="1" RandomizeDefaultSymbolColor="1" colorModel="Rgb">
     <databases/>
   </ProjectStyleSettings>
-  <ProjectTimeSettings cumulativeTemporalRange="0" timeStep="1" timeStepUnit="h" frameRate="1"/>
-  <ElevationProperties>
+  <ProjectTimeSettings timeStep="1" timeStepUnit="h" cumulativeTemporalRange="0" frameRate="1" totalMovieFrames="100"/>
+  <ElevationProperties FilterInvertSlider="0">
     <terrainProvider type="flat">
       <TerrainProvider offset="0" scale="1"/>
     </terrainProvider>
   </ElevationProperties>
-  <ProjectDisplaySettings CoordinateType="MapCrs" CoordinateAxisOrder="Default">
+  <ProjectDisplaySettings CoordinateAxisOrder="Default" CoordinateType="MapCrs">
     <BearingFormat id="bearing">
       <Option type="Map">
         <Option name="decimal_separator" type="invalid"/>
@@ -2225,7 +3136,7 @@
     </GeographicCoordinateFormat>
     <CoordinateCustomCrs>
       <spatialrefsys nativeFormat="Wkt">
-        <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+        <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
         <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
         <srsid>3452</srsid>
         <srid>4326</srid>
@@ -2237,4 +3148,7 @@
       </spatialrefsys>
     </CoordinateCustomCrs>
   </ProjectDisplaySettings>
+  <ProjectGpsSettings destinationFollowsActiveLayer="1" destinationLayerSource="dbname='demo' port=5432 sslmode=disable key='row' srid=4326 type=LineString checkPrimaryKeyUnicity='1' table=&quot;airspace&quot;.&quot;geoborder_view&quot; (border_geom)" destinationLayer="geoborder_view_45edd410_d81e_4a0a_bd29_a9f1b6828eee" destinationLayerName="geoborder_view" autoCommitFeatures="0" destinationLayerProvider="postgres" autoAddTrackVertices="0">
+    <timeStampFields/>
+  </ProjectGpsSettings>
 </qgis>

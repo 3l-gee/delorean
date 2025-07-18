@@ -67,14 +67,17 @@ td.title {
   <div id="timesheet-container">Loading...</div>
 
 <script>
-const timesheetData = [
-  { id: 157, timeReference: "UTC", startDate: "01-03", endDate: "31-10", day: "ANY", startEvent: "SR", endEvent: "SS", daylightSavingAdjust: "NO", excluded: "NO" },
-  { id: 310, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "04:45", endTime: "22:30", daylightSavingAdjust: "YES", excluded: "NO" },
-  { id: 1210, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "00:00", endTime: "23:59", daylightSavingAdjust: "NO", excluded: "NO" },
-  { id: 2154, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "WORK_DAY", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
-  { id: 2156, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SAT", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
-  { id: 2158, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SUN", startTime: "09:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" }
-];
+let raw = expression.evaluate("to_json(timeinterval)");
+let timesheetData = JSON.parse(raw);
+
+// const timesheetData = [
+//   { id: 157, timeReference: "UTC", startDate: "01-03", endDate: "31-10", day: "ANY", startEvent: "SR", endEvent: "SS", daylightSavingAdjust: "NO", excluded: "NO" },
+//   { id: 310, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "04:45", endTime: "22:30", daylightSavingAdjust: "YES", excluded: "NO" },
+//   { id: 1210, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "00:00", endTime: "23:59", daylightSavingAdjust: "NO", excluded: "NO" },
+//   { id: 2154, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "WORK_DAY", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
+//   { id: 2156, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SAT", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
+//   { id: 2158, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SUN", startTime: "09:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" }
+// ];
 
 // Group timesheets by day
 const grouped = {};

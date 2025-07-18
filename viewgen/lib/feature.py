@@ -1,6 +1,4 @@
-import random
-import string
-from lib.layer import Layer
+from lib.layer import Layer, HeleperFunction
 
 class Feature(Layer) :
 
@@ -147,7 +145,8 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.attributes["attributes"][name].extend([
-            f"to_jsonb({hash}.*)::jsonb AS {role}"
+            f"to_jsonb({hash}.*)::jsonb AS {role}",
+            f"to_jsonb({hash}.annotation)::jsonb AS {role}_annotation"
         ])
 
         self.add_group(hash, "id")
@@ -162,6 +161,11 @@ class Feature(Layer) :
                 "field": f"{role}",
                 "name": f"{role}",
             },
+            {
+                "field": f"{role}_annotation",
+                "name": f"{role}_annotation",
+                "html" : "viewgen/version/a5_1/html/annotation.html"
+            }
         ])
 
     def add_association_feature_many(self, schema, name, role, type):
@@ -210,7 +214,8 @@ class Feature(Layer) :
 
         self.attributes["lateral"].extend([
             f"left join lateral(",
-            f"  select jsonb_agg(DISTINCT {hash_two}.*) as {role}",
+            f"  select jsonb_agg(DISTINCT {hash_two}.*) as {role},",
+            f"      jsonb_agg(DISTINCT {hash_two}.annotation) as {role}_annotation"
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
@@ -218,7 +223,8 @@ class Feature(Layer) :
         ])
 
         self.attributes["attributes"][name].extend([
-            f"{hash_three}.{role}::jsonb as {role}"
+            f"{hash_three}.{role}::jsonb as {role}",
+            f"{hash_three}.{role}_annotation::jsonb as {role}_annotation"
         ])
 
         if not  self.attributes["publish"]["form"].get(role) :
@@ -229,6 +235,11 @@ class Feature(Layer) :
                 "field": f"{role}",
                 "name": f"{role}",
             },
+            {
+                "field": f"{role}_annotation",
+                "name": f"{role}_annotation",
+                "html" : "viewgen/version/a5_1/html/annotation.html"
+            }
         ])
 
     def add_association_snowflake_one(self, schema, name, publish_param, attribute, group, col, role):
@@ -246,16 +257,11 @@ class Feature(Layer) :
 
         self.publish_handler(schema, name, role, hash, publish_param)
 
-        if not  self.attributes["publish"]["form"].get(role) :
+        if not self.attributes["publish"]["form"].get(role) :
             self.attributes["publish"]["form"][role] = []
             
-        self.attributes["publish"]["form"][role].extend([
-            {
-                "field": f"{role}",
-                "name": f"{role}",
-            },
-        ])
-
+        if publish_param.get("form") :
+            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
 
     def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -293,9 +299,5 @@ class Feature(Layer) :
         if not self.attributes["publish"]["form"].get(role) :
             self.attributes["publish"]["form"][role] = []
             
-        self.attributes["publish"]["form"][role].extend([
-            {
-                "field": f"{role}",
-                "name": f"{role}",
-            },
-        ])
+        if publish_param.get("form") :
+            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))

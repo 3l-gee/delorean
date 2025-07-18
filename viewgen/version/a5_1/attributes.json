@@ -9,8 +9,7 @@
             ],
             "one" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
+
                 },
                 "attribute" : [
 
@@ -24,11 +23,10 @@
                     "form" : [
                         {
                             "field" : "timeinterval",
-                            "name" : "timeinterval"
+                            "name" : "timeinterval",
+                            "html" : "viewgen/version/a5_1/html/timesheet.html"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.timeinterval::jsonb as timeinterval"
@@ -53,8 +51,7 @@
             ],
             "one" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
+
                 },
                 "attribute" : [
 
@@ -65,8 +62,7 @@
             },
             "many" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
+
                 },
                 "attribute" : [
 
@@ -88,8 +84,7 @@
             ],
             "one" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
+
                 },
                 "attribute" : [
 
@@ -103,11 +98,10 @@
                     "form" : [
                         {
                             "field" : "annotation",
-                            "name" : "annotation"
+                            "name" : "annotation",
+                            "html" : "viewgen/version/a5_1/html/annotation.html"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.annotation::jsonb as annotation"
@@ -128,8 +122,6 @@
             ],
             "one" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
                 },
                 "attribute" : [
 
@@ -140,8 +132,8 @@
             },
             "many" : {
                 "publish" : {
-                    "action" : "",
-                    "html" : ""
+                    "action" : null,
+                    "html" : null
                 },
                 "attribute" : [
 
@@ -179,9 +171,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(Point, 4326) AS {role}_geom",
@@ -198,9 +188,7 @@
                 "publish" : {
                     "geometry" : {
                         "geometrytype" : "Point"
-                    },
-                    "action" : "",
-                    "html" : ""
+                    }
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTIPOINT, 4326) as {role}_geom",
@@ -237,9 +225,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(LINESTRING, 4326) AS {role}_geom",
@@ -254,9 +240,7 @@
                 "publish" : {
                     "geometry" : {
                         "geometrytype" : "Linestring"
-                    },
-                    "action" : "",
-                    "html" : ""
+                    }
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTILINESTRING, 4326) as {role}_geom",
@@ -291,9 +275,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(POLYGON, 4326) AS {role}_geom",
@@ -308,9 +290,7 @@
                 "publish" : {
                     "geometry" : {
                         "geometrytype" : "Polygon"
-                    },
-                    "action" : "",
-                    "html" : ""
+                    }
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTIPOLYGON, 4326) as {role}_geom",
@@ -366,9 +346,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(Point, 4326) AS {role}_geom",
@@ -393,9 +371,7 @@
                 "publish" : {
                     "geometry" : {
                         "geometrytype" : "Point"
-                    },
-                    "action" : "",
-                    "html" : ""
+                    }
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTIPOINT, 4326) as {role}_geom",
@@ -448,9 +424,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(LINESTRING, 4326) AS {role}_geom",
@@ -491,9 +465,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTILINESTRING, 4326) as {role}_geom",
@@ -544,9 +516,7 @@
                             "field" : "{role}_horizontalaccuracy",
                             "name" : "horizontalaccuracy"
                         }
-                    ],
-                    "action" : "",
-                    "html" : ""
+                    ]
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(POLYGON, 4326) AS {role}_geom",
@@ -569,9 +539,7 @@
                 "publish" : {
                     "geometry" : {
                         "geometrytype" : "Polygon"
-                    },
-                    "action" : "",
-                    "html" : ""
+                    }
                 },
                 "attribute" : [
                     "{alias}.geom::geometry(MULTIPOLYGON, 4326) as {role}_geom",

@@ -1,6 +1,4 @@
-import random
-import string
-from lib.layer import Layer
+from lib.layer import Layer, HeleperFunction
 
 class Property(Layer) :
 
@@ -210,12 +208,8 @@ class Property(Layer) :
         if not self.attributes["publish"]["form"].get(role) :
             self.attributes["publish"]["form"][role] = []
             
-        self.attributes["publish"]["form"][role].extend([
-            {
-                "field": f"{role}",
-                "name": f"{role}",
-            },
-        ])
+        if publish_param.get("form") :
+            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
 
     def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
         self.dependecy.add(f"{schema}.{name}_view")
@@ -253,11 +247,7 @@ class Property(Layer) :
         if not self.attributes["publish"]["form"].get(role) :
             self.attributes["publish"]["form"][role] = []
             
-        self.attributes["publish"]["form"][role].extend([
-            {
-                "field": f"{role}",
-                "name": f"{role}",
-            },
-        ])
-        
+        if publish_param.get("form") :
+            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
 
+        

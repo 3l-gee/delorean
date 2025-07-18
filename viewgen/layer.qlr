@@ -1,0 +1,1822 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <layer-tree-group name="" checked="Qt::Checked" expanded="1" groupLayer="">
+    <customproperties>
+      <Option/>
+    </customproperties>
+    <layer-tree-layer legend_exp="" patch_size="-1,-1" legend_split_behavior="0" providerKey="postgres" name="airportheliport (arp)" id="airportheliport_8523dc83-746a-44b5-905b-ebb9e93ff369" source="dbname='demo' host=localhost port=5432 sslmode=disable key='row' checkPrimaryKeyUnicity='1' table=&quot;airport_heliport&quot;.&quot;airportheliport_view&quot; (arp_geom)" checked="Qt::Checked" expanded="1">
+      <customproperties>
+        <Option/>
+      </customproperties>
+    </layer-tree-layer>
+  </layer-tree-group>
+  <maplayers>
+    <maplayer geometry="Point" legendPlaceholderImage="" simplifyDrawingTol="1" simplifyAlgorithm="0" symbologyReferenceScale="-1" wkbType="Point" type="vector" autoRefreshTime="0" refreshOnNotifyMessage="" simplifyDrawingHints="0" minScale="100000000" simplifyLocal="1" labelsEnabled="0" readOnly="0" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0" styleCategories="AllStyleCategories" simplifyMaxScale="1" autoRefreshMode="Disabled" maxScale="0">
+      <extent>
+        <xmin>5.08111111100000024</xmin>
+        <ymin>45.6391666669999978</ymin>
+        <xmax>10.37440313889999999</xmax>
+        <ymax>47.97351944399999724</ymax>
+      </extent>
+      <wgs84extent>
+        <xmin>5.08111111100000024</xmin>
+        <ymin>45.6391666669999978</ymin>
+        <xmax>10.37440313889999999</xmax>
+        <ymax>47.97351944399999724</ymax>
+      </wgs84extent>
+      <id>airportheliport_8523dc83-746a-44b5-905b-ebb9e93ff369</id>
+      <datasource>dbname='demo' host=localhost port=5432 sslmode=disable key='row' checkPrimaryKeyUnicity='1' table="airport_heliport"."airportheliport_view" (arp_geom)</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>airportheliport (arp)</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type>dataset</type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <dates/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys nativeFormat="Wkt">
+            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+            <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+            <srsid>3452</srsid>
+            <srid>4326</srid>
+            <authid>EPSG:4326</authid>
+            <description>WGS 84</description>
+            <projectionacronym>longlat</projectionacronym>
+            <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+            <geographicflag>true</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial maxx="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" maxz="0" minz="0" crs="EPSG:4326" miny="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" dimensions="2" maxy="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" minx="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="">postgres</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <metadataUrls/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+        <Private>0</Private>
+      </flags>
+      <temporal mode="0" fixedDuration="0" startField="valid_time_begin" endField="" durationUnit="min" durationField="row" accumulate="0" enabled="0" startExpression="" limitMode="0" endExpression="">
+        <fixedRange>
+          <start></start>
+          <end></end>
+        </fixedRange>
+      </temporal>
+      <elevation symbology="Line" extrusion="0" clamping="Terrain" showMarkerSymbolInSurfacePlots="0" binding="Centroid" respectLayerSymbol="1" zoffset="0" extrusionEnabled="0" zscale="1" type="IndividualFeatures">
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
+        <profileLineSymbol>
+          <symbol clip_to_extent="1" is_animated="0" name="" type="line" force_rhr="0" alpha="1" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer pass="0" class="SimpleLine" enabled="1" locked="0" id="{7f325365-051f-4145-97fe-b9dd5e2e93ff}">
+              <Option type="Map">
+                <Option value="0" name="align_dash_pattern" type="QString"/>
+                <Option value="square" name="capstyle" type="QString"/>
+                <Option value="5;2" name="customdash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="customdash_map_unit_scale" type="QString"/>
+                <Option value="MM" name="customdash_unit" type="QString"/>
+                <Option value="0" name="dash_pattern_offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="dash_pattern_offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
+                <Option value="0" name="draw_inside_polygon" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="line_color" type="QString"/>
+                <Option value="solid" name="line_style" type="QString"/>
+                <Option value="0.6" name="line_width" type="QString"/>
+                <Option value="MM" name="line_width_unit" type="QString"/>
+                <Option value="0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="0" name="ring_filter" type="QString"/>
+                <Option value="0" name="trim_distance_end" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_end_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_end_unit" type="QString"/>
+                <Option value="0" name="trim_distance_start" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_start_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_start_unit" type="QString"/>
+                <Option value="0" name="tweak_dash_pattern_on_corners" type="QString"/>
+                <Option value="0" name="use_custom_dash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="width_map_unit_scale" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileLineSymbol>
+        <profileFillSymbol>
+          <symbol clip_to_extent="1" is_animated="0" name="" type="fill" force_rhr="0" alpha="1" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer pass="0" class="SimpleFill" enabled="1" locked="0" id="{925baf4b-25e4-4880-a163-ce64a04af32d}">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="color" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="81,111,79,255,rgb:0.31932555123216599,0.4341649500267033,0.3109178301670863,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.2" name="outline_width" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="solid" name="style" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileFillSymbol>
+        <profileMarkerSymbol>
+          <symbol clip_to_extent="1" is_animated="0" name="" type="marker" force_rhr="0" alpha="1" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0" id="{1da5563c-5945-4207-9e37-beb10c709f24}">
+              <Option type="Map">
+                <Option value="0" name="angle" type="QString"/>
+                <Option value="square" name="cap_style" type="QString"/>
+                <Option value="114,155,111,255,rgb:0.44705882352941179,0.60784313725490191,0.43529411764705883,1" name="color" type="QString"/>
+                <Option value="1" name="horizontal_anchor_point" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="diamond" name="name" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="81,111,79,255,rgb:0.31932555123216599,0.4341649500267033,0.3109178301670863,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.2" name="outline_width" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="diameter" name="scale_method" type="QString"/>
+                <Option value="3" name="size" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="size_map_unit_scale" type="QString"/>
+                <Option value="MM" name="size_unit" type="QString"/>
+                <Option value="1" name="vertical_anchor_point" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileMarkerSymbol>
+      </elevation>
+      <renderer-v2 enableorderby="0" symbollevels="0" forceraster="0" type="singleSymbol" referencescale="-1">
+        <symbols>
+          <symbol clip_to_extent="1" is_animated="0" name="0" type="marker" force_rhr="0" alpha="1" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0" id="{77c3f2c7-e4fc-486b-b915-40750bfe687a}">
+              <Option type="Map">
+                <Option value="0" name="angle" type="QString"/>
+                <Option value="square" name="cap_style" type="QString"/>
+                <Option value="243,166,178,255,rgb:0.95294117647058818,0.65098039215686276,0.69803921568627447,1" name="color" type="QString"/>
+                <Option value="1" name="horizontal_anchor_point" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="circle" name="name" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0" name="outline_width" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="diameter" name="scale_method" type="QString"/>
+                <Option value="2" name="size" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="size_map_unit_scale" type="QString"/>
+                <Option value="MM" name="size_unit" type="QString"/>
+                <Option value="1" name="vertical_anchor_point" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
+      </renderer-v2>
+      <selection mode="Default">
+        <selectionColor invalid="1"/>
+        <selectionSymbol>
+          <symbol clip_to_extent="1" is_animated="0" name="" type="marker" force_rhr="0" alpha="1" frame_rate="10">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0" id="{cc132e90-91e9-4ddc-9ec4-a60627e58f39}">
+              <Option type="Map">
+                <Option value="0" name="angle" type="QString"/>
+                <Option value="square" name="cap_style" type="QString"/>
+                <Option value="255,0,0,255,rgb:1,0,0,1" name="color" type="QString"/>
+                <Option value="1" name="horizontal_anchor_point" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="circle" name="name" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0" name="outline_width" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="diameter" name="scale_method" type="QString"/>
+                <Option value="2" name="size" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="size_map_unit_scale" type="QString"/>
+                <Option value="MM" name="size_unit" type="QString"/>
+                <Option value="1" name="vertical_anchor_point" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </selectionSymbol>
+      </selection>
+      <customproperties>
+        <Option type="Map">
+          <Option value="offline" name="QFieldSync/action" type="QString"/>
+          <Option value="{}" name="QFieldSync/attachment_naming" type="QString"/>
+          <Option value="offline" name="QFieldSync/cloud_action" type="QString"/>
+          <Option value="" name="QFieldSync/geometry_locked_expression" type="QString"/>
+          <Option value="{}" name="QFieldSync/photo_naming" type="QString"/>
+          <Option value="{}" name="QFieldSync/relationship_maximum_visible" type="QString"/>
+          <Option value="30" name="QFieldSync/tracking_distance_requirement_minimum_meters" type="int"/>
+          <Option value="1" name="QFieldSync/tracking_erroneous_distance_safeguard_maximum_meters" type="int"/>
+          <Option value="0" name="QFieldSync/tracking_measurement_type" type="int"/>
+          <Option value="30" name="QFieldSync/tracking_time_requirement_interval_seconds" type="int"/>
+          <Option value="0" name="QFieldSync/value_map_button_interface_threshold" type="int"/>
+          <Option value="0" name="embeddedWidgets/count" type="int"/>
+          <Option name="variableNames"/>
+          <Option name="variableValues"/>
+        </Option>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <geometryOptions geometryPrecision="0" removeDuplicateNodes="0">
+        <activeChecks/>
+        <checkConfiguration/>
+      </geometryOptions>
+      <legend showLabelLegend="0" type="default-vector"/>
+      <referencedLayers/>
+      <fieldConfiguration>
+        <field configurationFlags="NoFlag" name="row">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="id">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="ts_id">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="tsp_id">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="identifier">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="interpretation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="sequence_number">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="correction_number">
+          <editWidget type="Range">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="valid_time_begin">
+          <editWidget type="DateTime">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="valid_time_end">
+          <editWidget type="DateTime">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="feature_lifetime_begin">
+          <editWidget type="DateTime">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="feature_lifetime_end">
+          <editWidget type="DateTime">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="designator">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="name">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="locationindicatoricao">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="designatoriata">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="type">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="certifiedicao">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="privateuse">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="controltype">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="verticaldatum">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="magneticvariation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="magneticvariationaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="datemagneticvariation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="magneticvariationchange">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="altimeterchecklocation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="secondarypowersupply">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="winddirectionindicator">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="landingdirectionindicator">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="abandoned">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="fieldelevation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="fieldelevationaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="referencetemperature">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="transitionaltitude">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="transitionlevel">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="lowesttemperature">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="responsibleorganisation">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option type="Map">
+                <Option value="0" name="DefaultView" type="int"/>
+                <Option value="0" name="FormatJson" type="int"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_longitude">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_latitude">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_elevation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_geoidundulation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_verticaldatum">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_verticalaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="arp_horizontalaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_geom">
+          <editWidget type="Geometry">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_elevation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_geoidundulation">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_verticaldatum">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_verticalaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="aviationboundary_horizontalaccuracy">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="contaminant">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="servedcity">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="altimetersource">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="availability">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="annotation">
+          <editWidget type="JsonEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias index="0" name="" field="row"/>
+        <alias index="1" name="" field="id"/>
+        <alias index="2" name="" field="ts_id"/>
+        <alias index="3" name="" field="tsp_id"/>
+        <alias index="4" name="" field="identifier"/>
+        <alias index="5" name="" field="interpretation"/>
+        <alias index="6" name="" field="sequence_number"/>
+        <alias index="7" name="" field="correction_number"/>
+        <alias index="8" name="" field="valid_time_begin"/>
+        <alias index="9" name="" field="valid_time_end"/>
+        <alias index="10" name="" field="feature_lifetime_begin"/>
+        <alias index="11" name="" field="feature_lifetime_end"/>
+        <alias index="12" name="" field="designator"/>
+        <alias index="13" name="" field="name"/>
+        <alias index="14" name="" field="locationindicatoricao"/>
+        <alias index="15" name="" field="designatoriata"/>
+        <alias index="16" name="" field="type"/>
+        <alias index="17" name="" field="certifiedicao"/>
+        <alias index="18" name="" field="privateuse"/>
+        <alias index="19" name="" field="controltype"/>
+        <alias index="20" name="" field="verticaldatum"/>
+        <alias index="21" name="" field="magneticvariation"/>
+        <alias index="22" name="" field="magneticvariationaccuracy"/>
+        <alias index="23" name="" field="datemagneticvariation"/>
+        <alias index="24" name="" field="magneticvariationchange"/>
+        <alias index="25" name="" field="altimeterchecklocation"/>
+        <alias index="26" name="" field="secondarypowersupply"/>
+        <alias index="27" name="" field="winddirectionindicator"/>
+        <alias index="28" name="" field="landingdirectionindicator"/>
+        <alias index="29" name="" field="abandoned"/>
+        <alias index="30" name="" field="fieldelevation"/>
+        <alias index="31" name="" field="fieldelevationaccuracy"/>
+        <alias index="32" name="" field="referencetemperature"/>
+        <alias index="33" name="" field="transitionaltitude"/>
+        <alias index="34" name="" field="transitionlevel"/>
+        <alias index="35" name="" field="lowesttemperature"/>
+        <alias index="36" name="" field="responsibleorganisation"/>
+        <alias index="37" name="longitude" field="arp_longitude"/>
+        <alias index="38" name="" field="arp_latitude"/>
+        <alias index="39" name="" field="arp_elevation"/>
+        <alias index="40" name="" field="arp_geoidundulation"/>
+        <alias index="41" name="" field="arp_verticaldatum"/>
+        <alias index="42" name="" field="arp_verticalaccuracy"/>
+        <alias index="43" name="" field="arp_horizontalaccuracy"/>
+        <alias index="44" name="" field="aviationboundary_geom"/>
+        <alias index="45" name="" field="aviationboundary_elevation"/>
+        <alias index="46" name="" field="aviationboundary_geoidundulation"/>
+        <alias index="47" name="" field="aviationboundary_verticaldatum"/>
+        <alias index="48" name="" field="aviationboundary_verticalaccuracy"/>
+        <alias index="49" name="" field="aviationboundary_horizontalaccuracy"/>
+        <alias index="50" name="" field="contaminant"/>
+        <alias index="51" name="" field="servedcity"/>
+        <alias index="52" name="" field="altimetersource"/>
+        <alias index="53" name="" field="availability"/>
+        <alias index="54" name="" field="annotation"/>
+      </aliases>
+      <splitPolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="designator"/>
+        <policy policy="Duplicate" field="name"/>
+        <policy policy="Duplicate" field="locationindicatoricao"/>
+        <policy policy="Duplicate" field="designatoriata"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="DefaultValue" field="certifiedicao"/>
+        <policy policy="Duplicate" field="privateuse"/>
+        <policy policy="DefaultValue" field="controltype"/>
+        <policy policy="Duplicate" field="verticaldatum"/>
+        <policy policy="Duplicate" field="magneticvariation"/>
+        <policy policy="Duplicate" field="magneticvariationaccuracy"/>
+        <policy policy="Duplicate" field="datemagneticvariation"/>
+        <policy policy="Duplicate" field="magneticvariationchange"/>
+        <policy policy="Duplicate" field="altimeterchecklocation"/>
+        <policy policy="DefaultValue" field="secondarypowersupply"/>
+        <policy policy="Duplicate" field="winddirectionindicator"/>
+        <policy policy="Duplicate" field="landingdirectionindicator"/>
+        <policy policy="DefaultValue" field="abandoned"/>
+        <policy policy="Duplicate" field="fieldelevation"/>
+        <policy policy="Duplicate" field="fieldelevationaccuracy"/>
+        <policy policy="Duplicate" field="referencetemperature"/>
+        <policy policy="DefaultValue" field="transitionaltitude"/>
+        <policy policy="Duplicate" field="transitionlevel"/>
+        <policy policy="Duplicate" field="lowesttemperature"/>
+        <policy policy="DefaultValue" field="responsibleorganisation"/>
+        <policy policy="DefaultValue" field="arp_longitude"/>
+        <policy policy="DefaultValue" field="arp_latitude"/>
+        <policy policy="Duplicate" field="arp_elevation"/>
+        <policy policy="Duplicate" field="arp_geoidundulation"/>
+        <policy policy="Duplicate" field="arp_verticaldatum"/>
+        <policy policy="Duplicate" field="arp_verticalaccuracy"/>
+        <policy policy="Duplicate" field="arp_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="aviationboundary_geom"/>
+        <policy policy="Duplicate" field="aviationboundary_elevation"/>
+        <policy policy="Duplicate" field="aviationboundary_geoidundulation"/>
+        <policy policy="Duplicate" field="aviationboundary_verticaldatum"/>
+        <policy policy="Duplicate" field="aviationboundary_verticalaccuracy"/>
+        <policy policy="Duplicate" field="aviationboundary_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="contaminant"/>
+        <policy policy="Duplicate" field="servedcity"/>
+        <policy policy="Duplicate" field="altimetersource"/>
+        <policy policy="Duplicate" field="availability"/>
+        <policy policy="Duplicate" field="annotation"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy policy="Duplicate" field="row"/>
+        <policy policy="Duplicate" field="id"/>
+        <policy policy="Duplicate" field="ts_id"/>
+        <policy policy="Duplicate" field="tsp_id"/>
+        <policy policy="Duplicate" field="identifier"/>
+        <policy policy="Duplicate" field="interpretation"/>
+        <policy policy="Duplicate" field="sequence_number"/>
+        <policy policy="Duplicate" field="correction_number"/>
+        <policy policy="Duplicate" field="valid_time_begin"/>
+        <policy policy="Duplicate" field="valid_time_end"/>
+        <policy policy="Duplicate" field="feature_lifetime_begin"/>
+        <policy policy="Duplicate" field="feature_lifetime_end"/>
+        <policy policy="Duplicate" field="designator"/>
+        <policy policy="Duplicate" field="name"/>
+        <policy policy="Duplicate" field="locationindicatoricao"/>
+        <policy policy="Duplicate" field="designatoriata"/>
+        <policy policy="Duplicate" field="type"/>
+        <policy policy="Duplicate" field="certifiedicao"/>
+        <policy policy="Duplicate" field="privateuse"/>
+        <policy policy="Duplicate" field="controltype"/>
+        <policy policy="Duplicate" field="verticaldatum"/>
+        <policy policy="Duplicate" field="magneticvariation"/>
+        <policy policy="Duplicate" field="magneticvariationaccuracy"/>
+        <policy policy="Duplicate" field="datemagneticvariation"/>
+        <policy policy="Duplicate" field="magneticvariationchange"/>
+        <policy policy="Duplicate" field="altimeterchecklocation"/>
+        <policy policy="Duplicate" field="secondarypowersupply"/>
+        <policy policy="Duplicate" field="winddirectionindicator"/>
+        <policy policy="Duplicate" field="landingdirectionindicator"/>
+        <policy policy="Duplicate" field="abandoned"/>
+        <policy policy="Duplicate" field="fieldelevation"/>
+        <policy policy="Duplicate" field="fieldelevationaccuracy"/>
+        <policy policy="Duplicate" field="referencetemperature"/>
+        <policy policy="Duplicate" field="transitionaltitude"/>
+        <policy policy="Duplicate" field="transitionlevel"/>
+        <policy policy="Duplicate" field="lowesttemperature"/>
+        <policy policy="Duplicate" field="responsibleorganisation"/>
+        <policy policy="Duplicate" field="arp_longitude"/>
+        <policy policy="Duplicate" field="arp_latitude"/>
+        <policy policy="Duplicate" field="arp_elevation"/>
+        <policy policy="Duplicate" field="arp_geoidundulation"/>
+        <policy policy="Duplicate" field="arp_verticaldatum"/>
+        <policy policy="Duplicate" field="arp_verticalaccuracy"/>
+        <policy policy="Duplicate" field="arp_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="aviationboundary_geom"/>
+        <policy policy="Duplicate" field="aviationboundary_elevation"/>
+        <policy policy="Duplicate" field="aviationboundary_geoidundulation"/>
+        <policy policy="Duplicate" field="aviationboundary_verticaldatum"/>
+        <policy policy="Duplicate" field="aviationboundary_verticalaccuracy"/>
+        <policy policy="Duplicate" field="aviationboundary_horizontalaccuracy"/>
+        <policy policy="Duplicate" field="contaminant"/>
+        <policy policy="Duplicate" field="servedcity"/>
+        <policy policy="Duplicate" field="altimetersource"/>
+        <policy policy="Duplicate" field="availability"/>
+        <policy policy="Duplicate" field="annotation"/>
+      </duplicatePolicies>
+      <defaults>
+        <default applyOnUpdate="0" expression="" field="row"/>
+        <default applyOnUpdate="0" expression="" field="id"/>
+        <default applyOnUpdate="0" expression="" field="ts_id"/>
+        <default applyOnUpdate="0" expression="" field="tsp_id"/>
+        <default applyOnUpdate="0" expression="" field="identifier"/>
+        <default applyOnUpdate="0" expression="" field="interpretation"/>
+        <default applyOnUpdate="0" expression="" field="sequence_number"/>
+        <default applyOnUpdate="0" expression="" field="correction_number"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_begin"/>
+        <default applyOnUpdate="0" expression="" field="valid_time_end"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_begin"/>
+        <default applyOnUpdate="0" expression="" field="feature_lifetime_end"/>
+        <default applyOnUpdate="0" expression="" field="designator"/>
+        <default applyOnUpdate="0" expression="" field="name"/>
+        <default applyOnUpdate="0" expression="" field="locationindicatoricao"/>
+        <default applyOnUpdate="0" expression="" field="designatoriata"/>
+        <default applyOnUpdate="0" expression="" field="type"/>
+        <default applyOnUpdate="0" expression="" field="certifiedicao"/>
+        <default applyOnUpdate="0" expression="" field="privateuse"/>
+        <default applyOnUpdate="0" expression="" field="controltype"/>
+        <default applyOnUpdate="0" expression="" field="verticaldatum"/>
+        <default applyOnUpdate="0" expression="" field="magneticvariation"/>
+        <default applyOnUpdate="0" expression="" field="magneticvariationaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="datemagneticvariation"/>
+        <default applyOnUpdate="0" expression="" field="magneticvariationchange"/>
+        <default applyOnUpdate="0" expression="" field="altimeterchecklocation"/>
+        <default applyOnUpdate="0" expression="" field="secondarypowersupply"/>
+        <default applyOnUpdate="0" expression="" field="winddirectionindicator"/>
+        <default applyOnUpdate="0" expression="" field="landingdirectionindicator"/>
+        <default applyOnUpdate="0" expression="" field="abandoned"/>
+        <default applyOnUpdate="0" expression="" field="fieldelevation"/>
+        <default applyOnUpdate="0" expression="" field="fieldelevationaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="referencetemperature"/>
+        <default applyOnUpdate="0" expression="" field="transitionaltitude"/>
+        <default applyOnUpdate="0" expression="" field="transitionlevel"/>
+        <default applyOnUpdate="0" expression="" field="lowesttemperature"/>
+        <default applyOnUpdate="0" expression="" field="responsibleorganisation"/>
+        <default applyOnUpdate="0" expression="" field="arp_longitude"/>
+        <default applyOnUpdate="0" expression="" field="arp_latitude"/>
+        <default applyOnUpdate="0" expression="" field="arp_elevation"/>
+        <default applyOnUpdate="0" expression="" field="arp_geoidundulation"/>
+        <default applyOnUpdate="0" expression="" field="arp_verticaldatum"/>
+        <default applyOnUpdate="0" expression="" field="arp_verticalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="arp_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_geom"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_elevation"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_geoidundulation"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_verticaldatum"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_verticalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="aviationboundary_horizontalaccuracy"/>
+        <default applyOnUpdate="0" expression="" field="contaminant"/>
+        <default applyOnUpdate="0" expression="" field="servedcity"/>
+        <default applyOnUpdate="0" expression="" field="altimetersource"/>
+        <default applyOnUpdate="0" expression="" field="availability"/>
+        <default applyOnUpdate="0" expression="" field="annotation"/>
+      </defaults>
+      <constraints>
+        <constraint notnull_strength="1" unique_strength="1" constraints="3" exp_strength="0" field="row"/>
+        <constraint notnull_strength="1" unique_strength="1" constraints="3" exp_strength="0" field="id"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="ts_id"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="tsp_id"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="identifier"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="interpretation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="sequence_number"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="correction_number"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="valid_time_begin"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="valid_time_end"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="feature_lifetime_begin"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="feature_lifetime_end"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="designator"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="name"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="locationindicatoricao"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="designatoriata"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="type"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="certifiedicao"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="privateuse"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="controltype"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="verticaldatum"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="magneticvariation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="magneticvariationaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="datemagneticvariation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="magneticvariationchange"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="altimeterchecklocation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="secondarypowersupply"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="winddirectionindicator"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="landingdirectionindicator"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="abandoned"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="fieldelevation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="fieldelevationaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="referencetemperature"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="transitionaltitude"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="transitionlevel"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="lowesttemperature"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="responsibleorganisation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_longitude"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_latitude"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_elevation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_geoidundulation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_verticaldatum"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_verticalaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="arp_horizontalaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_geom"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_elevation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_geoidundulation"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_verticaldatum"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_verticalaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="aviationboundary_horizontalaccuracy"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="contaminant"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="servedcity"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="altimetersource"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="availability"/>
+        <constraint notnull_strength="0" unique_strength="0" constraints="0" exp_strength="0" field="annotation"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" exp="" field="row"/>
+        <constraint desc="" exp="" field="id"/>
+        <constraint desc="" exp="" field="ts_id"/>
+        <constraint desc="" exp="" field="tsp_id"/>
+        <constraint desc="" exp="" field="identifier"/>
+        <constraint desc="" exp="" field="interpretation"/>
+        <constraint desc="" exp="" field="sequence_number"/>
+        <constraint desc="" exp="" field="correction_number"/>
+        <constraint desc="" exp="" field="valid_time_begin"/>
+        <constraint desc="" exp="" field="valid_time_end"/>
+        <constraint desc="" exp="" field="feature_lifetime_begin"/>
+        <constraint desc="" exp="" field="feature_lifetime_end"/>
+        <constraint desc="" exp="" field="designator"/>
+        <constraint desc="" exp="" field="name"/>
+        <constraint desc="" exp="" field="locationindicatoricao"/>
+        <constraint desc="" exp="" field="designatoriata"/>
+        <constraint desc="" exp="" field="type"/>
+        <constraint desc="" exp="" field="certifiedicao"/>
+        <constraint desc="" exp="" field="privateuse"/>
+        <constraint desc="" exp="" field="controltype"/>
+        <constraint desc="" exp="" field="verticaldatum"/>
+        <constraint desc="" exp="" field="magneticvariation"/>
+        <constraint desc="" exp="" field="magneticvariationaccuracy"/>
+        <constraint desc="" exp="" field="datemagneticvariation"/>
+        <constraint desc="" exp="" field="magneticvariationchange"/>
+        <constraint desc="" exp="" field="altimeterchecklocation"/>
+        <constraint desc="" exp="" field="secondarypowersupply"/>
+        <constraint desc="" exp="" field="winddirectionindicator"/>
+        <constraint desc="" exp="" field="landingdirectionindicator"/>
+        <constraint desc="" exp="" field="abandoned"/>
+        <constraint desc="" exp="" field="fieldelevation"/>
+        <constraint desc="" exp="" field="fieldelevationaccuracy"/>
+        <constraint desc="" exp="" field="referencetemperature"/>
+        <constraint desc="" exp="" field="transitionaltitude"/>
+        <constraint desc="" exp="" field="transitionlevel"/>
+        <constraint desc="" exp="" field="lowesttemperature"/>
+        <constraint desc="" exp="" field="responsibleorganisation"/>
+        <constraint desc="" exp="" field="arp_longitude"/>
+        <constraint desc="" exp="" field="arp_latitude"/>
+        <constraint desc="" exp="" field="arp_elevation"/>
+        <constraint desc="" exp="" field="arp_geoidundulation"/>
+        <constraint desc="" exp="" field="arp_verticaldatum"/>
+        <constraint desc="" exp="" field="arp_verticalaccuracy"/>
+        <constraint desc="" exp="" field="arp_horizontalaccuracy"/>
+        <constraint desc="" exp="" field="aviationboundary_geom"/>
+        <constraint desc="" exp="" field="aviationboundary_elevation"/>
+        <constraint desc="" exp="" field="aviationboundary_geoidundulation"/>
+        <constraint desc="" exp="" field="aviationboundary_verticaldatum"/>
+        <constraint desc="" exp="" field="aviationboundary_verticalaccuracy"/>
+        <constraint desc="" exp="" field="aviationboundary_horizontalaccuracy"/>
+        <constraint desc="" exp="" field="contaminant"/>
+        <constraint desc="" exp="" field="servedcity"/>
+        <constraint desc="" exp="" field="altimetersource"/>
+        <constraint desc="" exp="" field="availability"/>
+        <constraint desc="" exp="" field="annotation"/>
+      </constraintExpressions>
+      <expressionfields/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column hidden="0" name="row" type="field" width="-1"/>
+          <column hidden="0" name="id" type="field" width="-1"/>
+          <column hidden="0" name="ts_id" type="field" width="-1"/>
+          <column hidden="0" name="tsp_id" type="field" width="-1"/>
+          <column hidden="0" name="identifier" type="field" width="-1"/>
+          <column hidden="0" name="interpretation" type="field" width="-1"/>
+          <column hidden="0" name="sequence_number" type="field" width="-1"/>
+          <column hidden="0" name="correction_number" type="field" width="-1"/>
+          <column hidden="0" name="valid_time_begin" type="field" width="-1"/>
+          <column hidden="0" name="valid_time_end" type="field" width="-1"/>
+          <column hidden="0" name="feature_lifetime_begin" type="field" width="-1"/>
+          <column hidden="0" name="feature_lifetime_end" type="field" width="-1"/>
+          <column hidden="0" name="designator" type="field" width="-1"/>
+          <column hidden="0" name="name" type="field" width="-1"/>
+          <column hidden="0" name="locationindicatoricao" type="field" width="-1"/>
+          <column hidden="0" name="designatoriata" type="field" width="-1"/>
+          <column hidden="0" name="type" type="field" width="-1"/>
+          <column hidden="0" name="certifiedicao" type="field" width="-1"/>
+          <column hidden="0" name="privateuse" type="field" width="-1"/>
+          <column hidden="0" name="controltype" type="field" width="-1"/>
+          <column hidden="0" name="verticaldatum" type="field" width="-1"/>
+          <column hidden="0" name="magneticvariation" type="field" width="-1"/>
+          <column hidden="0" name="magneticvariationaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="datemagneticvariation" type="field" width="-1"/>
+          <column hidden="0" name="magneticvariationchange" type="field" width="-1"/>
+          <column hidden="0" name="altimeterchecklocation" type="field" width="-1"/>
+          <column hidden="0" name="secondarypowersupply" type="field" width="-1"/>
+          <column hidden="0" name="winddirectionindicator" type="field" width="-1"/>
+          <column hidden="0" name="landingdirectionindicator" type="field" width="-1"/>
+          <column hidden="0" name="abandoned" type="field" width="-1"/>
+          <column hidden="0" name="fieldelevation" type="field" width="-1"/>
+          <column hidden="0" name="fieldelevationaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="referencetemperature" type="field" width="-1"/>
+          <column hidden="0" name="transitionaltitude" type="field" width="-1"/>
+          <column hidden="0" name="transitionlevel" type="field" width="-1"/>
+          <column hidden="0" name="lowesttemperature" type="field" width="-1"/>
+          <column hidden="0" name="responsibleorganisation" type="field" width="-1"/>
+          <column hidden="0" name="arp_longitude" type="field" width="-1"/>
+          <column hidden="0" name="arp_latitude" type="field" width="-1"/>
+          <column hidden="0" name="arp_elevation" type="field" width="-1"/>
+          <column hidden="0" name="arp_geoidundulation" type="field" width="-1"/>
+          <column hidden="0" name="arp_verticaldatum" type="field" width="-1"/>
+          <column hidden="0" name="arp_verticalaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="arp_horizontalaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_geom" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_elevation" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_geoidundulation" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_verticaldatum" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_verticalaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="aviationboundary_horizontalaccuracy" type="field" width="-1"/>
+          <column hidden="0" name="contaminant" type="field" width="-1"/>
+          <column hidden="0" name="servedcity" type="field" width="-1"/>
+          <column hidden="0" name="altimetersource" type="field" width="-1"/>
+          <column hidden="0" name="availability" type="field" width="-1"/>
+          <column hidden="0" name="annotation" type="field" width="-1"/>
+          <column hidden="1" type="actions" width="-1"/>
+        </columns>
+      </attributetableconfig>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <storedexpressions/>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>tablayout</editorlayout>
+      <attributeEditorForm>
+        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+          <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+        </labelStyle>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="feature" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="1" showLabel="1" columnCount="1" visibilityExpression="" name="generic" type="GroupBox" horizontalStretch="0" verticalStretch="0" collapsed="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+            <attributeEditorField showLabel="1" index="4" name="identifier" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="5" name="interpretation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="6" name="sequence_number" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="7" name="correction_number" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="8" name="valid_time_begin" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="9" name="valid_time_end" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="10" name="feature_lifetime_begin" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="11" name="feature_lifetime_end" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+          </attributeEditorContainer>
+          <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="1" showLabel="1" columnCount="1" visibilityExpression="" name="attributes" type="GroupBox" horizontalStretch="0" verticalStretch="0" collapsed="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+            <attributeEditorField showLabel="1" index="12" name="designator" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="13" name="name" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="14" name="locationindicatoricao" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="15" name="designatoriata" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="16" name="type" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="17" name="certifiedicao" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="18" name="privateuse" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="19" name="controltype" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="20" name="verticaldatum" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="21" name="magneticvariation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="22" name="magneticvariationaccuracy" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="23" name="datemagneticvariation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="24" name="magneticvariationchange" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="25" name="altimeterchecklocation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="26" name="secondarypowersupply" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="27" name="winddirectionindicator" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="28" name="landingdirectionindicator" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="29" name="abandoned" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="30" name="fieldelevation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="31" name="fieldelevationaccuracy" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="32" name="referencetemperature" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="33" name="transitionaltitude" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="34" name="transitionlevel" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField showLabel="1" index="35" name="lowesttemperature" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+            </attributeEditorField>
+          </attributeEditorContainer>
+          <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="1" showLabel="1" columnCount="1" visibilityExpression="" name="annotation" type="GroupBox" horizontalStretch="0" verticalStretch="0" collapsed="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+            <attributeEditorHtmlElement showLabel="0" name="annotation" horizontalStretch="0" verticalStretch="0">
+              <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+                <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+              </labelStyle>
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;title>Note List Viewer&lt;/title>
+  &lt;style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #323232;
+  color: #e0e0e0;
+  margin: 12px;
+}
+
+.annotation-block {
+  border: 1px solid #bbbbbb;;
+  box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td.title {
+  white-space: nowrap;
+  padding: 2px 10px 2px 0;
+  color: #cccccc;
+  font-size: 0.8em;
+  vertical-align: top;
+  width: 160px;
+}
+
+.value {
+  color: #bbbbbb;
+  background-color: #1e1e1e;
+  font-size: 0.8em;
+  vertical-align: top;
+  padding: 3px;
+  margin: 3px;
+}
+
+.translated {
+    margin-top: 8px;
+}
+
+.translated span {
+  font-weight: bold;
+  color: #87cefa;
+}
+
+.translated-text {
+  color: #dddddd;
+  font-size: 0.8em;
+  background-color: #1e1e1e;
+  border-left: 4px solid #3a9aed; 
+  padding: 3px;
+  margin: 3px;
+  padding-left: 6px;
+  margin-bottom: 6px;
+
+}
+  &lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;h1>Annotation&lt;/h1>
+  &lt;div id="notes-container">Loading...&lt;/div>
+
+&lt;script>
+  try {
+    let raw = expression.evaluate("to_json(annotation)");
+    let annotation = JSON.parse(raw);
+
+    if (!Array.isArray(annotation)) {
+      annotation = [annotation];
+    }
+    annotation = annotation.filter(n => n !== null &amp;&amp; typeof n === 'object');
+
+    const container = document.getElementById('notes-container');
+    container.innerHTML = '';
+
+    if (annotation.length === 0) {
+      container.textContent = '';
+    } else {
+      annotation.forEach(annotation => {
+        const div = document.createElement('div');
+        div.className = 'note';
+
+        div.innerHTML = `
+          &lt;div class="annotation-block">
+            &lt;table>
+              &lt;tr>
+                &lt;td class="title">Purpose&lt;/td>
+                &lt;td>&lt;div class="value">${annotation.note.purpose}&lt;/div>&lt;/td>
+              &lt;/tr>
+              &lt;tr>
+                &lt;td class="title">Property Name&lt;/td>
+                &lt;td>&lt;div class="value">${annotation.note.propertyName}&lt;/div>&lt;/td>
+              &lt;/tr>
+            &lt;/table>
+            &lt;div class="translated">
+              ${
+                Array.isArray(annotation.note.notes) &amp;&amp; annotation.note.notes.length > 0
+                  ? annotation.note.notes.map(n =>
+                      `&lt;div class="translated-text">
+                        &lt;span>[${n.lang}]&lt;/span>&lt;br> ${n.note.replace(/\n/g, '&lt;br>')}
+                      &lt;/div>`).join('')
+                  : ''
+              }
+            &lt;/div>
+          &lt;/div>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+  } catch (e) {
+    document.getElementById('notes-container').textContent = "Error: " + e;
+  }
+&lt;/script>
+
+&lt;/body>
+&lt;/html>
+</attributeEditorHtmlElement>
+          </attributeEditorContainer>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="responsibleorganisation" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="36" name="responsibleorganisation" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="arp" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="37" name="arp_longitude" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="37" name="longitude" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="latitude" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="elevation" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="geoidundulation" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="verticalaccuracy" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="horizontalaccuracy" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="aviationboundary" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="-1" name="elevation" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="geoidundulation" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="verticalaccuracy" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField showLabel="1" index="-1" name="horizontalaccuracy" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="contaminant" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="50" name="contaminant" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="servedcity" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="51" name="servedcity" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="altimetersource" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="52" name="altimetersource" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="contact" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+        </attributeEditorContainer>
+        <attributeEditorContainer collapsedExpression="" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" groupBox="0" showLabel="1" columnCount="1" visibilityExpression="" name="availability" type="Tab" horizontalStretch="0" verticalStretch="0" collapsed="0">
+          <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+            <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+          </labelStyle>
+          <attributeEditorField showLabel="1" index="53" name="availability" horizontalStretch="0" verticalStretch="0">
+            <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="">
+              <labelFont underline="0" style="" description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" bold="0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+      </attributeEditorForm>
+      <editable>
+        <field editable="1" name="abandoned"/>
+        <field editable="1" name="altimeterchecklocation"/>
+        <field editable="1" name="altimetersource"/>
+        <field editable="1" name="annotation"/>
+        <field editable="1" name="arp_elevation"/>
+        <field editable="1" name="arp_geoidundulation"/>
+        <field editable="1" name="arp_horizontalaccuracy"/>
+        <field editable="1" name="arp_latitude"/>
+        <field editable="1" name="arp_longitude"/>
+        <field editable="1" name="arp_verticalaccuracy"/>
+        <field editable="1" name="arp_verticaldatum"/>
+        <field editable="1" name="availability"/>
+        <field editable="1" name="aviationboundary_elevation"/>
+        <field editable="1" name="aviationboundary_geoidundulation"/>
+        <field editable="1" name="aviationboundary_geom"/>
+        <field editable="1" name="aviationboundary_horizontalaccuracy"/>
+        <field editable="1" name="aviationboundary_verticalaccuracy"/>
+        <field editable="1" name="aviationboundary_verticaldatum"/>
+        <field editable="1" name="certifiedicao"/>
+        <field editable="1" name="contaminant"/>
+        <field editable="1" name="controltype"/>
+        <field editable="1" name="correction_number"/>
+        <field editable="1" name="datemagneticvariation"/>
+        <field editable="1" name="designator"/>
+        <field editable="1" name="designatoriata"/>
+        <field editable="1" name="feature_lifetime_begin"/>
+        <field editable="1" name="feature_lifetime_end"/>
+        <field editable="1" name="fieldelevation"/>
+        <field editable="1" name="fieldelevationaccuracy"/>
+        <field editable="1" name="id"/>
+        <field editable="1" name="identifier"/>
+        <field editable="1" name="interpretation"/>
+        <field editable="1" name="landingdirectionindicator"/>
+        <field editable="1" name="locationindicatoricao"/>
+        <field editable="1" name="lowesttemperature"/>
+        <field editable="1" name="magneticvariation"/>
+        <field editable="1" name="magneticvariationaccuracy"/>
+        <field editable="1" name="magneticvariationchange"/>
+        <field editable="1" name="name"/>
+        <field editable="1" name="privateuse"/>
+        <field editable="1" name="referencetemperature"/>
+        <field editable="1" name="responsibleorganisation"/>
+        <field editable="1" name="row"/>
+        <field editable="1" name="secondarypowersupply"/>
+        <field editable="1" name="sequence_number"/>
+        <field editable="1" name="servedcity"/>
+        <field editable="1" name="transitionaltitude"/>
+        <field editable="1" name="transitionlevel"/>
+        <field editable="1" name="ts_id"/>
+        <field editable="1" name="tsp_id"/>
+        <field editable="1" name="type"/>
+        <field editable="1" name="valid_time_begin"/>
+        <field editable="1" name="valid_time_end"/>
+        <field editable="1" name="verticaldatum"/>
+        <field editable="1" name="winddirectionindicator"/>
+      </editable>
+      <labelOnTop>
+        <field labelOnTop="0" name="abandoned"/>
+        <field labelOnTop="0" name="altimeterchecklocation"/>
+        <field labelOnTop="0" name="altimetersource"/>
+        <field labelOnTop="0" name="annotation"/>
+        <field labelOnTop="0" name="arp_elevation"/>
+        <field labelOnTop="0" name="arp_geoidundulation"/>
+        <field labelOnTop="0" name="arp_horizontalaccuracy"/>
+        <field labelOnTop="0" name="arp_latitude"/>
+        <field labelOnTop="0" name="arp_longitude"/>
+        <field labelOnTop="0" name="arp_verticalaccuracy"/>
+        <field labelOnTop="0" name="arp_verticaldatum"/>
+        <field labelOnTop="0" name="availability"/>
+        <field labelOnTop="0" name="aviationboundary_elevation"/>
+        <field labelOnTop="0" name="aviationboundary_geoidundulation"/>
+        <field labelOnTop="0" name="aviationboundary_geom"/>
+        <field labelOnTop="0" name="aviationboundary_horizontalaccuracy"/>
+        <field labelOnTop="0" name="aviationboundary_verticalaccuracy"/>
+        <field labelOnTop="0" name="aviationboundary_verticaldatum"/>
+        <field labelOnTop="0" name="certifiedicao"/>
+        <field labelOnTop="0" name="contaminant"/>
+        <field labelOnTop="0" name="controltype"/>
+        <field labelOnTop="0" name="correction_number"/>
+        <field labelOnTop="0" name="datemagneticvariation"/>
+        <field labelOnTop="0" name="designator"/>
+        <field labelOnTop="0" name="designatoriata"/>
+        <field labelOnTop="0" name="feature_lifetime_begin"/>
+        <field labelOnTop="0" name="feature_lifetime_end"/>
+        <field labelOnTop="0" name="fieldelevation"/>
+        <field labelOnTop="0" name="fieldelevationaccuracy"/>
+        <field labelOnTop="0" name="id"/>
+        <field labelOnTop="0" name="identifier"/>
+        <field labelOnTop="0" name="interpretation"/>
+        <field labelOnTop="0" name="landingdirectionindicator"/>
+        <field labelOnTop="0" name="locationindicatoricao"/>
+        <field labelOnTop="0" name="lowesttemperature"/>
+        <field labelOnTop="0" name="magneticvariation"/>
+        <field labelOnTop="0" name="magneticvariationaccuracy"/>
+        <field labelOnTop="0" name="magneticvariationchange"/>
+        <field labelOnTop="0" name="name"/>
+        <field labelOnTop="0" name="privateuse"/>
+        <field labelOnTop="0" name="referencetemperature"/>
+        <field labelOnTop="0" name="responsibleorganisation"/>
+        <field labelOnTop="0" name="row"/>
+        <field labelOnTop="0" name="secondarypowersupply"/>
+        <field labelOnTop="0" name="sequence_number"/>
+        <field labelOnTop="0" name="servedcity"/>
+        <field labelOnTop="0" name="transitionaltitude"/>
+        <field labelOnTop="0" name="transitionlevel"/>
+        <field labelOnTop="0" name="ts_id"/>
+        <field labelOnTop="0" name="tsp_id"/>
+        <field labelOnTop="0" name="type"/>
+        <field labelOnTop="0" name="valid_time_begin"/>
+        <field labelOnTop="0" name="valid_time_end"/>
+        <field labelOnTop="0" name="verticaldatum"/>
+        <field labelOnTop="0" name="winddirectionindicator"/>
+      </labelOnTop>
+      <reuseLastValue>
+        <field reuseLastValue="0" name="abandoned"/>
+        <field reuseLastValue="0" name="altimeterchecklocation"/>
+        <field reuseLastValue="0" name="altimetersource"/>
+        <field reuseLastValue="0" name="annotation"/>
+        <field reuseLastValue="0" name="arp_elevation"/>
+        <field reuseLastValue="0" name="arp_geoidundulation"/>
+        <field reuseLastValue="0" name="arp_horizontalaccuracy"/>
+        <field reuseLastValue="0" name="arp_latitude"/>
+        <field reuseLastValue="0" name="arp_longitude"/>
+        <field reuseLastValue="0" name="arp_verticalaccuracy"/>
+        <field reuseLastValue="0" name="arp_verticaldatum"/>
+        <field reuseLastValue="0" name="availability"/>
+        <field reuseLastValue="0" name="aviationboundary_elevation"/>
+        <field reuseLastValue="0" name="aviationboundary_geoidundulation"/>
+        <field reuseLastValue="0" name="aviationboundary_geom"/>
+        <field reuseLastValue="0" name="aviationboundary_horizontalaccuracy"/>
+        <field reuseLastValue="0" name="aviationboundary_verticalaccuracy"/>
+        <field reuseLastValue="0" name="aviationboundary_verticaldatum"/>
+        <field reuseLastValue="0" name="certifiedicao"/>
+        <field reuseLastValue="0" name="contaminant"/>
+        <field reuseLastValue="0" name="controltype"/>
+        <field reuseLastValue="0" name="correction_number"/>
+        <field reuseLastValue="0" name="datemagneticvariation"/>
+        <field reuseLastValue="0" name="designator"/>
+        <field reuseLastValue="0" name="designatoriata"/>
+        <field reuseLastValue="0" name="feature_lifetime_begin"/>
+        <field reuseLastValue="0" name="feature_lifetime_end"/>
+        <field reuseLastValue="0" name="fieldelevation"/>
+        <field reuseLastValue="0" name="fieldelevationaccuracy"/>
+        <field reuseLastValue="0" name="id"/>
+        <field reuseLastValue="0" name="identifier"/>
+        <field reuseLastValue="0" name="interpretation"/>
+        <field reuseLastValue="0" name="landingdirectionindicator"/>
+        <field reuseLastValue="0" name="locationindicatoricao"/>
+        <field reuseLastValue="0" name="lowesttemperature"/>
+        <field reuseLastValue="0" name="magneticvariation"/>
+        <field reuseLastValue="0" name="magneticvariationaccuracy"/>
+        <field reuseLastValue="0" name="magneticvariationchange"/>
+        <field reuseLastValue="0" name="name"/>
+        <field reuseLastValue="0" name="privateuse"/>
+        <field reuseLastValue="0" name="referencetemperature"/>
+        <field reuseLastValue="0" name="responsibleorganisation"/>
+        <field reuseLastValue="0" name="row"/>
+        <field reuseLastValue="0" name="secondarypowersupply"/>
+        <field reuseLastValue="0" name="sequence_number"/>
+        <field reuseLastValue="0" name="servedcity"/>
+        <field reuseLastValue="0" name="transitionaltitude"/>
+        <field reuseLastValue="0" name="transitionlevel"/>
+        <field reuseLastValue="0" name="ts_id"/>
+        <field reuseLastValue="0" name="tsp_id"/>
+        <field reuseLastValue="0" name="type"/>
+        <field reuseLastValue="0" name="valid_time_begin"/>
+        <field reuseLastValue="0" name="valid_time_end"/>
+        <field reuseLastValue="0" name="verticaldatum"/>
+        <field reuseLastValue="0" name="winddirectionindicator"/>
+      </reuseLastValue>
+      <dataDefinedFieldProperties/>
+      <widgets/>
+      <previewExpression>"name"</previewExpression>
+      <mapTip enabled="1"></mapTip>
+    </maplayer>
+  </maplayers>
+</qlr>
