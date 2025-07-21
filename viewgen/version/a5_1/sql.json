@@ -1,0 +1,563 @@
+{ 
+    "timesheet" : {
+        "path" : "viewgen/version/a5_1/sql/TimesheetPropertyType.sql",
+        "type" : "TimesheetPropertyType",
+        "schema" : "shared",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+
+            },
+            "attribute" : [
+
+            ],
+            "group" : [
+                
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "form" : [
+                    {
+                        "field" : "timeinterval",
+                        "name" : "timeinterval",
+                        "html" : "viewgen/version/a5_1/html/timesheet.html"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.timeinterval::jsonb as timeinterval"
+            ], 
+            "argument" : [
+                "jsonb_agg(DISTINCT {alias}.*) AS timeinterval"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "contactinformation" : {
+        "path" : "viewgen/version/a5_1/sql/ContactInformationPropertyType.sql",
+        "type" : "ContactInformationPropertyType",
+        "schema" : "shared",
+        "dependency" : [
+            "notes.note_view",
+            "shared.postaladdress_view",
+            "shared.onlinecontact_view",
+            "shared.telephonecontact_view"
+        ],
+        "one" : {
+            "publish" : {
+
+            },
+            "attribute" : [
+
+            ], 
+            "group" : [
+                
+            ]
+        },
+        "many" : {
+            "publish" : {
+
+            },
+            "attribute" : [
+
+            ], 
+            "argument" : [
+
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "note" : {
+        "path" : "viewgen/version/a5_1/sql/NotePropertyType.sql",
+        "type" : "NotePropertyType",
+        "schema" : "notes",
+        "dependency" : [
+            "notes.linguisticnote_view"                
+        ],
+        "one" : {
+            "publish" : {
+
+            },
+            "attribute" : [
+
+            ], 
+            "group" : [
+                
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "form" : [
+                    {
+                        "field" : "annotation",
+                        "name" : "annotation",
+                        "html" : "viewgen/version/a5_1/html/annotation.html"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.annotation::jsonb as annotation"
+            ], 
+            "argument" : [
+                "jsonb_agg(DISTINCT {alias}.*) AS annotation"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "linguisticnote" : {   
+        "path" : "viewgen/version/a5_1/sql/LinguisticNotePropertyType.sql",
+        "type" : "LinguisticNotePropertyType",
+        "schema" : "notes",
+        "dependency" : [        
+        ],
+        "one" : {
+            "publish" : {
+            },
+            "attribute" : [
+
+            ], 
+            "group" : [
+                
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "action" : null,
+                "html" : null
+            },
+            "attribute" : [
+
+            ], 
+            "argument" : [
+
+            ],
+            "group" : [
+
+            ]
+        }
+    },
+    "point" : {
+        "path" : "viewgen/version/a5_1/sql/PointPropertyType.sql",
+        "type" : "PointPropertyType",
+        "schema" : "geometry",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Point"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_longitude",
+                        "name" : "longitude"
+                    },
+                    {
+                        "field" : "{role}_latitude",
+                        "name" : "latitude"
+                    },
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(Point, 4326) AS {role}_geom",
+                "{alias}.longitude AS {role}_longitude",
+                "{alias}.latitude AS {role}_latitude",
+                "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Point"
+                }
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTIPOINT, 4326) as {role}_geom",
+                "{alias}.attr::jsonb as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'longitude', {alias}.longitude,",
+                "  'latitude', {alias}.latitude,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "curve" : {
+        "path" : "viewgen/version/a5_1/sql/CurvePropertyType.sql",
+        "type" : "CurvePropertyType",
+        "schema" : "geometry",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Linestring"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(LINESTRING, 4326) AS {role}_geom",
+                "{alias}.horizontalAccuracy as {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Linestring"
+                }
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTILINESTRING, 4326) as {role}_geom",
+                "{alias}.attr::jsonb as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "surface" : {
+        "path" :"viewgen/version/a5_1/sql/SurfacePropertyType.sql",
+        "type" : "SurfacePropertyType",
+        "schema" : "geometry",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Polygon"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(POLYGON, 4326) AS {role}_geom",
+                "{alias}.horizontalAccuracy as {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Polygon"
+                }
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTIPOLYGON, 4326) as {role}_geom",
+                "{alias}.attr::jsonb as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "elevatedpoint" : {
+        "path" : "viewgen/version/a5_1/sql/ElevatedPointPropertyType.sql",
+        "type" : "ElevatedPointPropertyType",
+        "schema" : "geometry",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Point"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_longitude",
+                        "name" : "longitude"
+                    },
+                    {
+                        "field" : "{role}_latitude",
+                        "name" : "latitude"
+                    },
+                    {
+                        "field" : "{role}_elevation",
+                        "name" : "elevation"
+                    },
+                    {
+                        "field" : "{role}_geoidundulation",
+                        "name" : "geoidundulation"
+                    },
+                    {
+                        "field" : "{role}_verticalaccuracy",
+                        "name" : "verticalaccuracy"
+                    },
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(Point, 4326) AS {role}_geom",
+                "{alias}.longitude AS {role}_longitude",
+                "{alias}.latitude AS {role}_latitude",
+                "{alias}.elevation AS {role}_elevation",
+                "{alias}.geoidUndulation AS {role}_geoidundulation",
+                "{alias}.verticalDatum AS {role}_verticaldatum",
+                "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.elevation",
+                "{alias}.geoidUndulation",
+                "{alias}.verticalDatum",
+                "{alias}.verticalAccuracy",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Point"
+                }
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTIPOINT, 4326) as {role}_geom",
+                "{alias}.attr::jsonb as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'longitude', {alias}.longitude,",
+                "  'latitude', {alias}.latitude,",
+                "  'elevation', {alias}.elevation,",
+                "  'geoidUndulation', {alias}.geoidUndulation,",
+                "  'verticalDatum', {alias}.verticalDatum,",
+                "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "elevatedcurve" : {
+        "path" : "viewgen/version/a5_1/sql/ElevatedCurvePropertyType.sql",
+        "type" : "ElevatedCurvePropertyType",
+        "schema" : "geometry",   
+        "dependency" : [
+            "notes.note_view"                
+        ],         
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Linestring"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_elevation",
+                        "name" : "elevation"
+                    },
+                    {
+                        "field" : "{role}_geoidundulation",
+                        "name" : "geoidundulation"
+                    },
+                    {
+                        "field" : "{role}_verticalaccuracy",
+                        "name" : "verticalaccuracy"
+                    },
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(LINESTRING, 4326) AS {role}_geom",
+                "{alias}.elevation AS {role}_elevation",
+                "{alias}.geoidUndulation AS {role}_geoidundulation",
+                "{alias}.verticalDatum AS {role}_verticaldatum",
+                "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.elevation",
+                "{alias}.geoidUndulation",
+                "{alias}.verticalDatum",
+                "{alias}.verticalAccuracy",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Linestring"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_elevation",
+                        "name" : "elevation"
+                    },
+                    {
+                        "field" : "{role}_geoidundulation",
+                        "name" : "geoidundulation"
+                    },
+                    {
+                        "field" : "{role}_verticalaccuracy",
+                        "name" : "verticalaccuracy"
+                    },
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTILINESTRING, 4326) as {role}_geom",
+                "{alias}.attr::jsonb as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'elevation', {alias}.elevation,",
+                "  'geoidUndulation', {alias}.geoidUndulation,",
+                "  'verticalDatum', {alias}.verticalDatum,",
+                "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+            ],
+            "group" : [
+                
+            ]
+        }
+    },
+    "elevatedsurface" : {
+        "path" :"viewgen/version/a5_1/sql/ElevatedSurfacePropertyType.sql",
+        "type" : "ElevatedSurfacePropertyType",
+        "schema" : "geometry",
+        "dependency" : [
+            "notes.note_view"                
+        ],
+        "one" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Polygon"
+                },
+                "form" : [
+                    {
+                        "field" : "{role}_elevation",
+                        "name" : "elevation"
+                    },
+                    {
+                        "field" : "{role}_geoidundulation",
+                        "name" : "geoidundulation"
+                    },
+                    {
+                        "field" : "{role}_verticalaccuracy",
+                        "name" : "verticalaccuracy"
+                    },
+                    {
+                        "field" : "{role}_horizontalaccuracy",
+                        "name" : "horizontalaccuracy"
+                    }
+                ]
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(POLYGON, 4326) AS {role}_geom",
+                "{alias}.elevation AS {role}_elevation",
+                "{alias}.geoidUndulation AS {role}_geoidundulation",
+                "{alias}.verticalDatum AS {role}_verticaldatum",
+                "{alias}.verticalAccuracy AS {role}_verticalaccuracy",
+                "{alias}.horizontalAccuracy AS {role}_horizontalaccuracy"
+            ], 
+            "group" : [
+                "{alias}.geom",
+                "{alias}.elevation",
+                "{alias}.geoidUndulation",
+                "{alias}.verticalDatum",
+                "{alias}.verticalAccuracy",
+                "{alias}.horizontalAccuracy"
+            ]
+        },
+        "many" : {
+            "publish" : {
+                "geometry" : {
+                    "geometrytype" : "Polygon"
+                }
+            },
+            "attribute" : [
+                "{alias}.geom::geometry(MULTIPOLYGON, 4326) as {role}_geom",
+                "{alias}.attr::jsonb  as {role}"
+            ], 
+            "argument" : [
+                "ST_Collect(DISTINCT {alias}.geom) AS geom,",
+                "jsonb_agg(DISTINCT jsonb_build_object(",
+                "  'id', {alias}.id,",
+                "  'elevation', {alias}.elevation,",
+                "  'geoidUndulation', {alias}.geoidUndulation,",
+                "  'verticalDatum', {alias}.verticalDatum,",
+                "  'verticalAccuracy', {alias}.verticalAccuracy,",
+                "  'horizontalAccuracy', {alias}.horizontalAccuracy",
+                ")) AS attr"
+            ],
+            "group" : [
+                
+            ]
+        }
+    }
+}

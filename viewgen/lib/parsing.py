@@ -1,18 +1,19 @@
 import re
+import json
 from collections import defaultdict, deque
 from lib.feature import Feature
 from lib.property import Property
 
 class Parsing :
-    def __init__(self, parsing, attribute, input_path):
+    def __init__(self, parsing, inheritance, input_path):
         self.parsing = parsing
         self.input_path = input_path
-        self.snowflake_set = attribute["snowflake"]
-        self.ignore_set = set(attribute["ignore"])
-        self.feature_parent_set = set(attribute["feature_parent"])
-        self.timeslice_parent_set = set(attribute["timeslice_parent"])
-        self.object_parent_set = set(attribute["object_parent"])
-        self.property_parent_set = set(attribute["property_parent"])
+        # self.snowflake_set = attribute["snowflake"]
+        self.ignore_set = set(inheritance["ignore"])
+        self.feature_set = set(inheritance["features"])
+        self.timeslice_parent_set = set(inheritance["timeslice_parent"])
+        self.object_set = set(inheritance["objects"])
+        self.property_parent_set = set(inheritance["property_parent"])
 
         self.suffix = {
             "TimeSlicePropertyType": "",
@@ -83,100 +84,104 @@ class Parsing :
     def process(self, path_list):
         for file in path_list:
             self._classify_file(file)
+        #     self.feature_list(file)
 
-        for file in path_list:
-            self._process_file(file)
+        # print(json.dumps({"parent_name": list(self.name)}, indent=4))
 
-        for key,feature in self.feature.items():
-            feature.generate_sql()
-            feature.genrate_prj()
+        # for file in path_list:
+        #     self._process_file(file)
 
-        for key,property in self.property.items():
-            property.generate_sql()
-            property.genrate_prj()
+        # for key,feature in self.feature.items():
+        #     feature.generate_sql()
+        #     feature.genrate_prj()
+
+        # for key,property in self.property.items():
+        #     property.generate_sql()
+        #     property.genrate_prj()
+
+    def feature_list(self, path):
+        content = self._load_content(path)
+        table_name = re.search(self.parsing["table"]["method"], content)
+        class_name = re.findall(self.parsing["class"]["method"], content)
+        parent_name = re.findall(self.parsing["extends"]["method"], content)
+
+        if class_name and class_name[0] in self.feature_set :
+            return
+
+        elif parent_name and parent_name[0] in self.property_parent_set:
+            return
+        
+        elif class_name and class_name[0] in self.object_parent_set:
+            # self.name.add(class_name[0])
+            return
+        
+        elif parent_name and parent_name[0] in self.timeslice_parent_set:
+            self.name.add(class_name[0])
+            return
+        
+        elif class_name and class_name[0] in self.ignore_set:
+            return
+        
+        elif parent_name :
+            self.name.add(class_name[0])
 
 
     def _classify_file(self, path):
         content = self._load_content(path)
+        core =  self.extract_core(content)
+        class_name = core["class"]
+        parent_name = core["extends"]
+        table_name = core["table"]
+        schema_name = core["schema"]
 
-        table = re.search(self.parsing["table"]["method"], content)
-        if not table:
-            return  # Skip files that do not contain table annotations
-                
-        table_name, table_schema = table.groups()
-        class_name = re.findall(self.parsing["class"]["method"], content)
-        parent_name = re.findall(self.parsing["extends"]["method"], content)
-
-        name = class_name[0]
-        for suffix, replacement in self.suffix.items():
-            name = name.replace(suffix, replacement)
-
-        name = name.lower()
-
-        
         # files are either in: 
         # - Ignored 
         # - Feature
-        # - Property
-        if class_name[0] in self.ignore_set:
+        # - Object
+        if class_name in self.ignore_set:
             return  # Ignore specific classes
             
-        if  parent_name and (parent_name[0] in self.feature_parent_set or parent_name[0] in self.timeslice_parent_set) :
-            if name not in self.feature.keys() : 
-                self.feature[name] = Feature(self.input_path, class_name[0], name, table_schema)
+        if  class_name in self.feature_set :
+            if class_name not in self.feature.keys() : 
+                self.feature[class_name] = Feature(self.input_path, class_name, schema_name)
         
-        elif parent_name and parent_name[0] in self.property_parent_set:
-            if name in self.snowflake_set:
-                self.property[name] = Property(self.input_path, class_name[0], name, table_schema, True)  
-                self.property[name].load_sql(self.snowflake_set[name].get("path"))
-                self.property[name].load_dependecy(self.snowflake_set[name].get("dependency"))
+        elif parent_name in self.property_parent_set:
+            # if class_name in self.snowflake_set:
+            #     self.property[class_name] = Property(self.input_path, class_name, table_schema, True)  
+            #     self.property[class_name].load_sql(self.snowflake_set[class_name].get("path"))
+            #     self.property[class_name].load_dependecy(self.snowflake_set[class_name].get("dependency"))
 
-            if name not in self.property.keys() : 
-                self.property[name] = Property(self.input_path, class_name[0], name, table_schema)
+            if class_name not in self.property.keys() : 
+                self.property[class_name] = Property(self.input_path, class_name, schema_name)
         
     def _process_file(self, path):
-        content = self._load_content(path)   
-        class_name = re.findall(self.parsing["class"]["method"], content)
-        parent_name = re.findall(self.parsing["extends"]["method"], content)
-        name = class_name[0]
-        for suffix, replacement in self.suffix.items():
-            name = name.replace(suffix, replacement)
-
-        name = name.lower()
+        content = self._load_content(path)
+        core =  self.extract_core(content)
+        class_name = core["class"]
+        parent_name = core["extends"]
+        table_name = core["table"]
+        schema_name = core["schema"]
 
         # files are either in: 
         # - Ignored 
         # - Feature
         # - Property
-        if class_name[0] in self.ignore_set:
+        if class_name in self.ignore_set:
             return  # Ignore specific classes
 
-        elif name in self.feature.keys():
-
-            if not parent_name:
-                pass
-
-            elif parent_name[0] in self.feature_parent_set:
-                pass
-
-            elif parent_name[0] in self.timeslice_parent_set:
-                self._process_time_slice(self.feature[name], content)
+        elif parent_name in self.timeslice_parent_set :
+            if class_name.replace("TimeSlice","") in self.feature_set:
+                self._process_time_slice(self.feature[class_name.replace("TimeSlice","")], content)
 
             else : 
-                print("in self.feature but not in feature_parent_set or timeslice_parent_set :" + name + " / " + class_name[0])
+                ValueError(f"[ERROR] is a timeslice extension but wasn't part of feature layer generation: {class_name} / {content}")
 
-        elif name in self.property.keys():
-            if not parent_name:
-                pass
-
-            elif parent_name[0] in self.property_parent_set:
-                pass
-
-            elif parent_name[0] in self.object_parent_set:
-                self._process_object(self.property[name], content)
+        elif class_name in self.object_set :
+            if class_name.replace("Type","PropertyType") in self.property.keys():
+                self._process_object(self.property[class_name.replace("Type","PropertyType")], content)
 
             else : 
-                print("in self.property but not in property_parent_set or object_parent_set :" + name + " / " + class_name[0])
+                ValueError(f"[ERROR] is a object extension but wasn't part of the property layer generation :{class_name} / {content}")
             
 
     def _process_time_slice(self, layer, content):
@@ -187,65 +192,55 @@ class Parsing :
             layer.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
 
         for item in self.extract_one_to_one(content):
-            name = item.get("type")
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
+            type = item.get("type")
 
-            name = name.lower()
-
-            if item.get("type") in self.ignore_set:
+            if type in self.ignore_set:
                 pass
             
-            elif name in self.snowflake_set.keys():
-                schema = self.snowflake_set[name].get("schema")
-                attribute = self.snowflake_set[name].get("one").get("attribute")
-                group = self.snowflake_set[name].get("one").get("group")
-                publish = self.snowflake_set[name].get("one").get("publish")
-                layer.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
+            # elif type in self.snowflake_set.keys():
+            #     schema = self.snowflake_set[type].get("schema")
+            #     attribute = self.snowflake_set[type].get("one").get("attribute")
+            #     group = self.snowflake_set[type].get("one").get("group")
+            #     publish = self.snowflake_set[type].get("one").get("publish")
+            #     layer.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
                         
-            elif name in self.property.keys():
-                schema = self.property[name].get_schema()
-                layer.add_association_object_one(schema, name, item.get("role"),item.get("col"))
+            elif type in self.property.keys():
+                schema = self.property[type].get_schema()
+                layer.add_association_object_one(schema, type, item.get("role"),item.get("col"))
             
-            elif name in self.feature.keys():
-                schema = self.feature[name].get_schema()
-                layer.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
+            elif type in self.feature.keys():
+                schema = self.feature[type].get_schema()
+                layer.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
             
             else : 
-                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
 
         for item in self.extract_one_to_many(content):
-            name = item.get("type")
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
+            type = item.get("type")
 
-            name = name.lower()
-
-            if item.get("type") in self.ignore_set:
+            if type in self.ignore_set:
                 pass
             
-            elif name in self.snowflake_set.keys():
-                schema = self.snowflake_set[name].get("schema")
-                argument = self.snowflake_set[name].get("many").get("argument")
-                attribute = self.snowflake_set[name].get("many").get("attribute")
-                publish = self.snowflake_set[name].get("many").get("publish")
-                layer.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
+            elif type in self.snowflake_set.keys():
+                schema = self.snowflake_set[type].get("schema")
+                argument = self.snowflake_set[type].get("many").get("argument")
+                attribute = self.snowflake_set[type].get("many").get("attribute")
+                publish = self.snowflake_set[type].get("many").get("publish")
+                layer.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
                         
-            elif name in self.property.keys():
-                schema = self.property[name].get_schema()
-                layer.add_association_object_many(schema, name, item.get("role"),item.get("col"))
+            elif type in self.property.keys():
+                schema = self.property[type].get_schema()
+                layer.add_association_object_many(schema, type, item.get("role"),item.get("col"))
             
-            elif name in self.feature.keys():
-                schema = self.feature[name].get_schema()
-                layer.add_association_feature_many(schema, name, item.get("role"),item.get("col"))
+            elif type in self.feature.keys():
+                schema = self.feature[type].get_schema()
+                layer.add_association_feature_many(schema, type, item.get("role"),item.get("col"))
             
             else : 
-                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
 
 
     def _process_object(self, property, content):
-
-
         for item in self.extract_embedded_columns_two(content):
             property.add_attributes_two(item.get("value"), item.get("nil"))
 
@@ -253,60 +248,84 @@ class Parsing :
             property.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
 
         for item in self.extract_one_to_one(content):
-            name = item.get("type")
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
+            type = item.get("type")
 
-            name = name.lower()
-
-            if item.get("type") in self.ignore_set:
+            if type in self.ignore_set:
                 pass
             
-            elif name in self.snowflake_set.keys():
-                schema = self.snowflake_set[name].get("schema")
-                attribute = self.snowflake_set[name].get("one").get("attribute")
-                group = self.snowflake_set[name].get("one").get("group")
-                publish = self.snowflake_set[name].get("one").get("publish")
-                property.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
+            elif type in self.snowflake_set.keys():
+                schema = self.snowflake_set[type].get("schema")
+                attribute = self.snowflake_set[type].get("one").get("attribute")
+                group = self.snowflake_set[type].get("one").get("group")
+                publish = self.snowflake_set[type].get("one").get("publish")
+                property.add_association_snowflake_one(schema, type, publish, attribute, group, item.get("col"), item.get("role"))
                         
-            elif name in self.property.keys():
-                schema = self.property[name].get_schema()
-                property.add_association_object_one(schema, name, item.get("role"),item.get("col"))
+            elif type in self.property.keys():
+                schema = self.property[type].get_schema()
+                property.add_association_object_one(schema, type, item.get("role"),item.get("col"))
             
-            elif name in self.feature.keys():
-                schema = self.feature[name].get_schema()
-                property.add_association_feature_one(schema, name, item.get("role"),item.get("col"))
+            elif type in self.feature.keys():
+                schema = self.feature[type].get_schema()
+                property.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
             
             else : 
-                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
 
         for item in self.extract_one_to_many(content):
-            name = item.get("type")
-            for suffix, replacement in self.suffix.items():
-                name = name.replace(suffix, replacement)
+            type = item.get("type")
 
-            name = name.lower()
-
-            if item.get("type") in self.ignore_set:
+            if type in self.ignore_set:
                 pass
 
-            elif name in self.snowflake_set.keys():
-                schema = self.snowflake_set[name].get("schema")
-                argument = self.snowflake_set[name].get("many").get("argument")
-                attribute = self.snowflake_set[name].get("many").get("attribute")
-                publish = self.snowflake_set[name].get("many").get("publish")
-                property.add_association_snowflake_many(schema, name, publish, argument, attribute, item.get("col"), item.get("role"))
+            elif type in self.snowflake_set.keys():
+                schema = self.snowflake_set[type].get("schema")
+                argument = self.snowflake_set[type].get("many").get("argument")
+                attribute = self.snowflake_set[type].get("many").get("attribute")
+                publish = self.snowflake_set[type].get("many").get("publish")
+                property.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
 
-            elif name in self.property.keys():
-                schema = self.property[name].get_schema()
-                property.add_association_object_many(schema, name, item.get("role"), item.get("type"))
+            elif type in self.property.keys():
+                schema = self.property[type].get_schema()
+                property.add_association_object_many(schema, type, item.get("role"), item.get("type"))
 
-            elif name in self.feature.keys():
-                schema = self.feature[name].get_schema()
-                property.add_association_feature_many(schema, name, item.get("role"), item.get("type"))
+            elif type in self.feature.keys():
+                schema = self.feature[type].get_schema()
+                property.add_association_feature_many(schema, type, item.get("role"), item.get("type"))
 
             else : 
-                print("not in property, feature, snowflake, ignore:", name + " / " + item.get("type"))
+                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
+
+    def extract_core(self, content):
+        class_name = re.findall(self.parsing["class"]["method"], content)
+        parent_name = re.findall(self.parsing["extends"]["method"], content)
+        table_name = re.findall(self.parsing["table"]["method"], content)
+
+        if table_name :
+            table_name, table_schema = table_name.groups()
+
+        else : 
+            raise ValueError(f"[ERROR] parsing table name: {content}")
+        
+        if class_name :
+            class_name = class_name[0]
+
+        else : 
+            raise ValueError(f"[ERROR] parsing class name: {content}")
+        
+        if parent_name :
+            parent_name = parent_name[0]
+
+        else : 
+            raise ValueError(f"[ERROR] parsing parent name: {content}")
+        
+        res = {
+            "class" : class_name,
+            "table" : table_name,
+            "parent": parent_name,
+            "schema": table_schema
+        }
+        
+        return res
 
     def extract_columns(self, schema, table, content):
         """Extract simple column definitions."""

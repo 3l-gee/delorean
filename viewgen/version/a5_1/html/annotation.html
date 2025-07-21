@@ -70,6 +70,7 @@ td.title {
 <script>
   try {
     let raw = expression.evaluate("to_json(annotation)");
+
     let annotation = JSON.parse(raw);
 
     if (!Array.isArray(annotation)) {

@@ -146,7 +146,7 @@ class Feature(Layer) :
 
         self.attributes["attributes"][name].extend([
             f"to_jsonb({hash}.*)::jsonb AS {role}",
-            f"to_jsonb({hash}.annotation)::jsonb AS {role}_annotation"
+            f"{hash}.annotation::jsonb AS {role}_annotation"
         ])
 
         self.add_group(hash, "id")

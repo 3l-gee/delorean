@@ -10,13 +10,20 @@ import copy
 class InteractionMachinery:
     def __init__(self, name, parsing, input_path, output_path, directory,):
         self.name = name
-        self.attribute = HeleperFunction.load_json(input_path, "attributes.json")
-        self.ignore_set = set(self.attribute["ignore"])
+        # Attribute
+        self.qlr_attr = HeleperFunction.load_json(input_path, "qlr.json")
+        self.inheritance_attr = HeleperFunction.load_json(input_path, "inheritance.json")
+        self.sql_attr = HeleperFunction.load_json(input_path, "sql.json")
+        self.ignore_set = set(self.inheritance_attr["ignore"])
+
+        # Templates
         self.publisher_qgis = HeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
-        self.parsing = Parsing(parsing, self.attribute, input_path)
+        self.layer_tree_group = HeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
+
+        self.parsing = Parsing(parsing, self.inheritance_attr, input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
-        self.layer_tree_group = HeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
+        
         self.populate_qgis_prj(self.publisher_qgis)
         self.export_sql(output_path, "postgres/view.sql")
         self.export_publish_qgis(output_path, "qgis/publisher.qgs.ftl")
