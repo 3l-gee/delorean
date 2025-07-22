@@ -5,12 +5,14 @@ from lib.feature import Feature
 from lib.property import Property
 
 class Parsing :
-    def __init__(self, parsing, inheritance, input_path):
+    def __init__(self, parsing, inheritance, formated_sql, input_path):
         self.parsing = parsing
         self.input_path = input_path
         # self.snowflake_set = attribute["snowflake"]
+        self.formated_sql =  formated_sql
         self.ignore_set = set(inheritance["ignore"])
         self.feature_set = set(inheritance["features"])
+        self.feature_association_set = set(inheritance["feature_association"])
         self.timeslice_parent_set = set(inheritance["timeslice_parent"])
         self.object_set = set(inheritance["objects"])
         self.property_parent_set = set(inheritance["property_parent"])
@@ -26,6 +28,7 @@ class Parsing :
         self.feature = {}
         self.property = {}
         self.datatype = {}
+        self.assosication = {}
 
     def get_layer(self):
         propeties_layers = self.property.values()
@@ -84,20 +87,17 @@ class Parsing :
     def process(self, path_list):
         for file in path_list:
             self._classify_file(file)
-        #     self.feature_list(file)
 
-        # print(json.dumps({"parent_name": list(self.name)}, indent=4))
+        for file in path_list:
+            self._process_file(file)
 
-        # for file in path_list:
-        #     self._process_file(file)
+        for key, feature in self.feature.items():
+            feature.generate_sql()
+            # feature.genrate_prj()
 
-        # for key,feature in self.feature.items():
-        #     feature.generate_sql()
-        #     feature.genrate_prj()
-
-        # for key,property in self.property.items():
-        #     property.generate_sql()
-        #     property.genrate_prj()
+        for key,property in self.property.items():
+            property.generate_sql()
+            # property.genrate_prj()
 
     def feature_list(self, path):
         content = self._load_content(path)
@@ -130,7 +130,7 @@ class Parsing :
         content = self._load_content(path)
         core =  self.extract_core(content)
         class_name = core["class"]
-        parent_name = core["extends"]
+        parent_name = core["parent"]
         table_name = core["table"]
         schema_name = core["schema"]
 
@@ -141,24 +141,31 @@ class Parsing :
         if class_name in self.ignore_set:
             return  # Ignore specific classes
             
-        if  class_name in self.feature_set :
+        if class_name in self.feature_set :
             if class_name not in self.feature.keys() : 
                 self.feature[class_name] = Feature(self.input_path, class_name, schema_name)
         
         elif parent_name in self.property_parent_set:
-            # if class_name in self.snowflake_set:
-            #     self.property[class_name] = Property(self.input_path, class_name, table_schema, True)  
-            #     self.property[class_name].load_sql(self.snowflake_set[class_name].get("path"))
-            #     self.property[class_name].load_dependecy(self.snowflake_set[class_name].get("dependency"))
+            if class_name in self.formated_sql:
+                self.property[class_name] = Property(self.input_path, class_name, schema_name, True)  
+                self.property[class_name].load_sql(self.formated_sql[class_name].get("path"))
+                self.property[class_name].load_dependecy(self.formated_sql[class_name].get("dependency"))
 
             if class_name not in self.property.keys() : 
                 self.property[class_name] = Property(self.input_path, class_name, schema_name)
+
+        else :
+
+            self.assosication[class_name] = {
+                "schema" : schema_name,
+                "table" : table_name
+            }
         
     def _process_file(self, path):
         content = self._load_content(path)
         core =  self.extract_core(content)
         class_name = core["class"]
-        parent_name = core["extends"]
+        parent_name = core["parent"]
         table_name = core["table"]
         schema_name = core["schema"]
 
@@ -174,22 +181,23 @@ class Parsing :
                 self._process_time_slice(self.feature[class_name.replace("TimeSlice","")], content)
 
             else : 
-                ValueError(f"[ERROR] is a timeslice extension but wasn't part of feature layer generation: {class_name} / {content}")
+                raise ValueError(f"[ERROR] is a timeslice extension but wasn't part of feature layer generation: {class_name} / {content}")
 
         elif class_name in self.object_set :
             if class_name.replace("Type","PropertyType") in self.property.keys():
                 self._process_object(self.property[class_name.replace("Type","PropertyType")], content)
 
             else : 
-                ValueError(f"[ERROR] is a object extension but wasn't part of the property layer generation :{class_name} / {content}")
+                raise ValueError(f"[ERROR] is a object extension but wasn't part of the property layer generation :{class_name} / {content}")
             
 
-    def _process_time_slice(self, layer, content):
+    def _process_time_slice(self, layer, content):      
+        layer.get_name()
         for item in self.extract_embedded_columns_two(content):
-            layer.add_attributes_two(item.get("value"), item.get("nil"))
+            layer.add_attributes_two(item.get("type"), item.get("role"), item.get("value"), item.get("nil"))
 
         for item in self.extract_embedded_columns_three(content):
-            layer.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
+            layer.add_attributes_three(item.get("type"), item.get("role"), item.get("value"), item.get("uom"), item.get("nil"))
 
         for item in self.extract_one_to_one(content):
             type = item.get("type")
@@ -197,23 +205,28 @@ class Parsing :
             if type in self.ignore_set:
                 pass
             
-            # elif type in self.snowflake_set.keys():
-            #     schema = self.snowflake_set[type].get("schema")
-            #     attribute = self.snowflake_set[type].get("one").get("attribute")
-            #     group = self.snowflake_set[type].get("one").get("group")
-            #     publish = self.snowflake_set[type].get("one").get("publish")
-            #     layer.add_association_snowflake_one(schema, name, publish, attribute, group, item.get("col"), item.get("role"))
+            elif type in self.formated_sql:
+                schema = self.formated_sql[type].get("schema")
+                attribute = self.formated_sql[type].get("one").get("attribute")
+                group = self.formated_sql[type].get("one").get("group")
+                publish = self.formated_sql[type].get("one").get("publish")
+                layer.add_association_snowflake_one(schema, type, publish, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
                 schema = self.property[type].get_schema()
                 layer.add_association_object_one(schema, type, item.get("role"),item.get("col"))
             
-            elif type in self.feature.keys():
-                schema = self.feature[type].get_schema()
+            elif type.replace("Property","") in self.feature.keys():
+                renamed_type = type.replace("Property","")
+                schema = self.feature[renamed_type].get_schema()
                 layer.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
+
+            elif type in self.assosication.keys():
+                schema = self.assosication[type].get("schema")
+                layer.add_association_feature_many(schema, type, item.get("role"))
             
             else : 
-                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
+                raise ValueError(f"[ERROR] {layer.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
 
         for item in self.extract_one_to_many(content):
             type = item.get("type")
@@ -221,31 +234,36 @@ class Parsing :
             if type in self.ignore_set:
                 pass
             
-            elif type in self.snowflake_set.keys():
-                schema = self.snowflake_set[type].get("schema")
-                argument = self.snowflake_set[type].get("many").get("argument")
-                attribute = self.snowflake_set[type].get("many").get("attribute")
-                publish = self.snowflake_set[type].get("many").get("publish")
+            elif type in self.formated_sql:
+                schema = self.formated_sql[type].get("schema")
+                argument = self.formated_sql[type].get("many").get("argument")
+                attribute = self.formated_sql[type].get("many").get("attribute")
+                publish = self.formated_sql[type].get("many").get("publish")
                 layer.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
                 schema = self.property[type].get_schema()
-                layer.add_association_object_many(schema, type, item.get("role"),item.get("col"))
+                layer.add_association_object_many(schema, type, item.get("role"))
             
-            elif type in self.feature.keys():
-                schema = self.feature[type].get_schema()
-                layer.add_association_feature_many(schema, type, item.get("role"),item.get("col"))
+            elif type.replace("Property","") in self.feature.keys():
+                renamed_type = type.replace("Property","")
+                schema = self.feature[renamed_type].get_schema()
+                layer.add_association_feature_many(schema, type, item.get("role"))
+
+            elif type in self.assosication.keys():
+                schema = self.assosication[type].get("schema")
+                layer.add_association_feature_many(schema, type, item.get("role"))
             
             else : 
-                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
+                raise ValueError(f"[ERROR] {layer.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
 
 
     def _process_object(self, property, content):
         for item in self.extract_embedded_columns_two(content):
-            property.add_attributes_two(item.get("value"), item.get("nil"))
+            property.add_attributes_two(item.get("type"), item.get("role"), item.get("value"), item.get("nil"))
 
         for item in self.extract_embedded_columns_three(content):
-            property.add_attributes_three(item.get("value"), item.get("uom"), item.get("nil"))
+            property.add_attributes_three(item.get("type"), item.get("role"), item.get("value"), item.get("uom"), item.get("nil"))
 
         for item in self.extract_one_to_one(content):
             type = item.get("type")
@@ -253,23 +271,28 @@ class Parsing :
             if type in self.ignore_set:
                 pass
             
-            elif type in self.snowflake_set.keys():
-                schema = self.snowflake_set[type].get("schema")
-                attribute = self.snowflake_set[type].get("one").get("attribute")
-                group = self.snowflake_set[type].get("one").get("group")
-                publish = self.snowflake_set[type].get("one").get("publish")
-                property.add_association_snowflake_one(schema, type, publish, attribute, group, item.get("col"), item.get("role"))
+            elif type in self.formated_sql:
+                schema = self.formated_sql[type].get("schema")
+                attribute = self.formated_sql[type].get("one").get("attribute")
+                group = self.formated_sql[type].get("one").get("group")
+                publish = self.formated_sql[type].get("one").get("publish")
+                property.add_association_snowflake_one(schema, type, publish, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
                 schema = self.property[type].get_schema()
                 property.add_association_object_one(schema, type, item.get("role"),item.get("col"))
             
-            elif type in self.feature.keys():
-                schema = self.feature[type].get_schema()
+            elif type.replace("Property","") in self.feature.keys():
+                renamed_type = type.replace("Property","")
+                schema = self.feature[renamed_type].get_schema()
                 property.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
+
+            elif type in self.assosication.keys():
+                schema = self.assosication[type].get("schema")
+                property.add_association_feature_many(schema, type, item.get("role"))
             
             else : 
-                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
+                raise ValueError(f"[ERROR] {property.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
 
         for item in self.extract_one_to_many(content):
             type = item.get("type")
@@ -277,34 +300,37 @@ class Parsing :
             if type in self.ignore_set:
                 pass
 
-            elif type in self.snowflake_set.keys():
-                schema = self.snowflake_set[type].get("schema")
-                argument = self.snowflake_set[type].get("many").get("argument")
-                attribute = self.snowflake_set[type].get("many").get("attribute")
-                publish = self.snowflake_set[type].get("many").get("publish")
+            elif type in self.formated_sql:
+                schema = self.formated_sql[type].get("schema")
+                argument = self.formated_sql[type].get("many").get("argument")
+                attribute = self.formated_sql[type].get("many").get("attribute")
+                publish = self.formated_sql[type].get("many").get("publish")
                 property.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
 
             elif type in self.property.keys():
                 schema = self.property[type].get_schema()
-                property.add_association_object_many(schema, type, item.get("role"), item.get("type"))
+                property.add_association_object_many(schema, type, item.get("role"))
 
-            elif type in self.feature.keys():
-                schema = self.feature[type].get_schema()
-                property.add_association_feature_many(schema, type, item.get("role"), item.get("type"))
+            elif type.replace("Property","") in self.feature.keys():
+                renamed_type = type.replace("Property","")
+                schema = self.feature[renamed_type].get_schema()
+                property.add_association_feature_many(schema, type, item.get("role"))
+
+            elif type in self.assosication.keys():
+                schema = self.assosication[type].get("schema")
+                property.add_association_feature_many(schema, type, item.get("role"))
 
             else : 
-                ValueError(f"[ERROR] {type} can not be found in property, feature, snowflake, ignore:")
+                raise ValueError(f"[ERROR] {property.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
 
     def extract_core(self, content):
-        class_name = re.findall(self.parsing["class"]["method"], content)
-        parent_name = re.findall(self.parsing["extends"]["method"], content)
-        table_name = re.findall(self.parsing["table"]["method"], content)
+        class_name = re.findall(self.parsing["class"]["method"], content) or [None]
+        parent_name = re.findall(self.parsing["extends"]["method"], content) or [None]
+        table_name = re.search(self.parsing["table"]["method"], content) or None
+        table_schema = None
 
         if table_name :
             table_name, table_schema = table_name.groups()
-
-        else : 
-            raise ValueError(f"[ERROR] parsing table name: {content}")
         
         if class_name :
             class_name = class_name[0]
@@ -314,9 +340,6 @@ class Parsing :
         
         if parent_name :
             parent_name = parent_name[0]
-
-        else : 
-            raise ValueError(f"[ERROR] parsing parent name: {content}")
         
         res = {
             "class" : class_name,

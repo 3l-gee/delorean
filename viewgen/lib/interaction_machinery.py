@@ -13,14 +13,14 @@ class InteractionMachinery:
         # Attribute
         self.qlr_attr = HeleperFunction.load_json(input_path, "qlr.json")
         self.inheritance_attr = HeleperFunction.load_json(input_path, "inheritance.json")
-        self.sql_attr = HeleperFunction.load_json(input_path, "sql.json")
+        self.formated_sql = HeleperFunction.load_json(input_path, "sql.json")
         self.ignore_set = set(self.inheritance_attr["ignore"])
 
         # Templates
         self.publisher_qgis = HeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
         self.layer_tree_group = HeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
 
-        self.parsing = Parsing(parsing, self.inheritance_attr, input_path)
+        self.parsing = Parsing(parsing, self.inheritance_attr, self.formated_sql, input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
         
@@ -78,7 +78,7 @@ class InteractionMachinery:
         for layer, _ in self.layers.values():
             if layer.get_type() not in self.ignore_set:
                 
-                if not layer_tree_group_dict.get(layer.get_schema()):
+                if not layer_tree_group_dict.get(layer.get_schema()) and layer_tree_group_dict.get(layer.get_schema()) is not None:
                     layer_tree_group_schema = copy.deepcopy(self.layer_tree_group)
                     layer_tree_group_schema.set("name", layer.get_schema())
                     layer_tree_group_dict[layer.get_schema()] = layer_tree_group_schema

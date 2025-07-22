@@ -8,12 +8,12 @@ from lib.helper_function import HeleperFunction
 
 class Layer:
 
-    def __init__(self, input_path, type, name, schema, snowflake=False):
+    def __init__(self, input_path, type, schema, snowflake=False):
         self.layer_type = None
         self.dependecy = set()
         self.type = type
         self.input_path = input_path
-        self.name = name
+        self.name = HeleperFunction.remove_suffix(self.type)
         self.schema = schema
         self.snowflake = snowflake
         self.geom_map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/geom-maplayer.xml")
@@ -73,16 +73,16 @@ class Layer:
                 },
             },
             "attributes": {
-                "feature": self.generate_attributes(name, schema)
+                "feature": self.generate_attributes(self.name, schema)
             },
-            "view": self.generate_view(name, schema),
-            "select": self.generate_select(name, schema),
-            "inner": self.generate_inner(name, schema),
-            "left": self.generate_left(name, schema),
+            "view": self.generate_view(self.name, schema),
+            "select": self.generate_select(self.name, schema),
+            "inner": self.generate_inner(self.name, schema),
+            "left": self.generate_left(self.name, schema),
             "lateral" : [],
-            "where": self.generate_where(name, schema),
-            "group": self.generate_group(name, schema),
-            "order": self.generate_order(name, schema),
+            "where": self.generate_where(self.name, schema),
+            "group": self.generate_group(self.name, schema),
+            "order": self.generate_order(self.name, schema),
             "index" : [f"create index on {self.schema}.{self.name}_view (id)"]
         }
 
@@ -372,8 +372,8 @@ class Layer:
         else:
             self.attributes["group"].append(f"{name}.{column}")
 
-    def add_attributes_three(self, value, uom, nil) : pass
-    def add_attributes_two(self, value, nil) : pass
+    def add_attributes_three(self,type, value, uom, nil) : pass
+    def add_attributes_two(self, type, value, nil) : pass
     def add_association_feature_one(self, schema, name, role, col) : pass
     def add_association_object_one(self, schema, name, role, type) : pass
     def add_association_feature_many(self, schema, name, role, type) : pass

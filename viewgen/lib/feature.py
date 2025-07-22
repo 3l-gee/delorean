@@ -2,23 +2,26 @@ from lib.layer import Layer, HeleperFunction
 
 class Feature(Layer) :
 
-    def __init__(self, input_path, type, name, schema, snowflake=False):
-        super().__init__(input_path, type, name, schema, snowflake)
+    def __init__(self, input_path, type, schema, snowflake=False):
+        super().__init__(input_path, type, schema, snowflake)
         self.layer_type = "feature"
 
     def get_name(self):
         return f"{self.schema}.{self.name}_view"
 
-    def generate_view(self, name, schema) :
+    def generate_view(self, type, schema) :
+        name = HeleperFunction.remove_suffix(type)
         return [
             f"drop materialized view if exists {schema}.{name}_view cascade;",
             f"create materialized view {schema}.{name}_view as"
             ]
 
-    def generate_select(self, name, schema) :
+    def generate_select(self, type, schema) :
+        name = HeleperFunction.remove_suffix(type)
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
    
-    def generate_attributes(self, name, schema) : 
+    def generate_attributes(self, type, schema) : 
+        name = HeleperFunction.remove_suffix(type)
         res = ["(row_number() over ())::integer as row"]
         res.append(f"{schema}.{name}.id::integer as id")
         res.append(f"{schema}.{name}_ts.id::integer as ts_id")
@@ -34,7 +37,8 @@ class Feature(Layer) :
 
         return res
         
-    def generate_inner(self, name, schema) : 
+    def generate_inner(self, type, schema) : 
+        name = HeleperFunction.remove_suffix(type)
     # TODO : once basic messgae is linked with master_join and that the new ts are linked back to the old dataset
 #         return f"""
 # from aixm_basic_message 
@@ -52,24 +56,28 @@ class Feature(Layer) :
             f"inner join {schema}.{name}_ts on {schema}.{name}_tsp.{name}timeslice_id = {schema}.{name}_ts.id"
         ]
 
-    def generate_left(self, name, schema) :
+    def generate_left(self, type, schema) :
+        name = HeleperFunction.remove_suffix(type)
         return [
         ]
 
-    def generate_where(self, name, schema) : 
+    def generate_where(self, type, schema) : 
+        name = HeleperFunction.remove_suffix(type)
         return [
             f"{schema}.{name}.feature_status = 'APPROVED'",
             f"{schema}.{name}_ts.feature_status = 'APPROVED'"
         ]
     
-    def generate_order(self, name, schema) : 
+    def generate_order(self, type, schema) : 
+        name = HeleperFunction.remove_suffix(type)
         return [
             f"order by {name}.identifier",
             f"{name}_ts.sequence_number",
             f"{name}_ts.correction_number DESC"
         ]
     
-    def generate_group(self, name, schema) :
+    def generate_group(self, type, schema) :
+        name = HeleperFunction.remove_suffix(type)
         res = [f"{schema}.{name}.id"]
         res.append(f"{schema}.{name}_ts.id")
         res.append(f"{schema}.{name}_tsp.id")
@@ -83,36 +91,42 @@ class Feature(Layer) :
         res.append(f"{schema}.{name}_ts.feature_lifetime_end")
         return res 
 
-    def add_attributes_two(self, value, nil) :
-        name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
+    def add_attributes_two(self, type, role, value, nil) :
+        name = HeleperFunction.remove_suffix(type)
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {role}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["form"]["attributes"].append({
-                "field": f"{name}",
-                "name": f"{name}",
+        self.attributes["publish"]["form"]["attributes"].append(
+            {
+                "type" : f"{type}",
+                "field": f"{role}",
+                "name" : f"{role}",
             })
         
-    def add_attributes_three(self, value, uom, nil) :
-        name = value.replace("_value","")
-        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {name}")
+    def add_attributes_three(self, type, role, value, uom, nil) :
+        name = HeleperFunction.remove_suffix(type)
+        self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {role}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["form"]["attributes"].append({
-                "field": f"{name}",
-                "name": f"{name}",
+        self.attributes["publish"]["form"]["attributes"].append(
+            {
+                "type" : f"{type}",
+                "field": f"{role}",
+                "name" : f"{role}",
             })
 
-    def add_association_feature_one(self, schema, name, role, col):
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+    def add_association_feature_one(self, schema, type, role, col):
+        name = HeleperFunction.remove_suffix(type)
+
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
-        self.attributes["attributes"][name].extend([
+        self.attributes["attributes"][type].extend([
             f"coalesce(cast({hash}.title as varchar), '(' || {hash}.nilreason[1] || ')')::text AS {role}",
             f"{hash}.href::text AS {role}_href"
         ])
@@ -128,23 +142,27 @@ class Feature(Layer) :
 
         self.attributes["publish"]["form"][role].extend([
             {
+                "type" : f"{type}",
                 "field": f"{role}",
-                "name": f"{role}",
+                "name" : f"{role}",
             },
             {
+                "type" : f"{type}",
                 "field": f"{role}_href",
-                "name": f"Ref",
+                "name" : f"Ref",
             }
         ])
     
-    def add_association_object_one(self, schema, name, role, col):
+    def add_association_object_one(self, schema, type, role, col):
+        name = HeleperFunction.remove_suffix(type)
+
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
-        self.attributes["attributes"][name].extend([
+        self.attributes["attributes"][type].extend([
             f"to_jsonb({hash}.*)::jsonb AS {role}",
             f"{hash}.annotation::jsonb AS {role}_annotation"
         ])
@@ -158,19 +176,23 @@ class Feature(Layer) :
 
         self.attributes["publish"]["form"][role].extend([
             {
+                "type" : f"{type}",
                 "field": f"{role}",
-                "name": f"{role}",
+                "name" : f"{role}",
             },
             {
+                "type" : f"{type}",
                 "field": f"{role}_annotation",
-                "name": f"{role}_annotation",
+                "name" : f"{role}_annotation",
                 "html" : "viewgen/version/a5_1/html/annotation.html"
             }
         ])
 
-    def add_association_feature_many(self, schema, name, role, type):
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+    def add_association_feature_many(self, schema, type, role):
+        name = HeleperFunction.remove_suffix(type)
+
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
@@ -189,7 +211,7 @@ class Feature(Layer) :
             f") as {hash_three} on TRUE"
         ])
 
-        self.attributes["attributes"][name].extend([
+        self.attributes["attributes"][type].extend([
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
@@ -198,15 +220,18 @@ class Feature(Layer) :
 
         self.attributes["publish"]["form"][role].extend([
             {
+                "type" : f"{type}",
                 "field": f"{role}",
-                "name": f"{role}",
+                "name" : f"{role}",
             },
         ])
 
-    def add_association_object_many(self, schema, name, role, type):
+    def add_association_object_many(self, schema, type, role):
+        name = HeleperFunction.remove_suffix(type)
+
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
@@ -222,7 +247,7 @@ class Feature(Layer) :
             f") as {hash_three} on TRUE"
         ])
 
-        self.attributes["attributes"][name].extend([
+        self.attributes["attributes"][type].extend([
             f"{hash_three}.{role}::jsonb as {role}",
             f"{hash_three}.{role}_annotation::jsonb as {role}_annotation"
         ])
@@ -232,26 +257,30 @@ class Feature(Layer) :
 
         self.attributes["publish"]["form"][role].extend([
             {
+                "type" : f"{type}",
                 "field": f"{role}",
-                "name": f"{role}",
+                "name" : f"{role}",
             },
             {
+                "type" : f"{type}",
                 "field": f"{role}_annotation",
-                "name": f"{role}_annotation",
+                "name" : f"{role}_annotation",
                 "html" : "viewgen/version/a5_1/html/annotation.html"
             }
         ])
 
-    def add_association_snowflake_one(self, schema, name, publish_param, attribute, group, col, role):
+    def add_association_snowflake_one(self, schema, type, publish_param, attribute, col, role):
+        name = HeleperFunction.remove_suffix(type)
+
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         formatted_attribute = [attr.format(alias=hash, role=role) for attr in attribute]
 
-        self.attributes["attributes"][name].extend(formatted_attribute)
+        self.attributes["attributes"][type].extend(formatted_attribute)
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
@@ -263,10 +292,12 @@ class Feature(Layer) :
         if publish_param.get("form") :
             self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
 
-    def add_association_snowflake_many(self, schema, name, publish_param, argument, attribute, col, role):
+    def add_association_snowflake_many(self, schema, type, publish_param, argument, attribute, col, role):
+        name = HeleperFunction.remove_suffix(type)
+
         self.dependecy.add(f"{schema}.{name}_view")
-        if not self.attributes["attributes"].get(name):
-            self.attributes["attributes"][name] = []
+        if not self.attributes["attributes"].get(type):
+            self.attributes["attributes"][type] = []
 
         hash_one = self.generate_letter_hash(str("master_join"))
         hash_two = self.generate_letter_hash(str(schema + "_" + name + "_lat"))
@@ -275,7 +306,7 @@ class Feature(Layer) :
         formatted_attribute = [attr.format(alias=hash_three, name=name, role=role) for attr in attribute]
         formatted_argument = ["    " + arg.format(alias=hash_two, name=name, role=role) for arg in argument]
 
-        self.attributes["attributes"][name].extend(formatted_attribute)
+        self.attributes["attributes"][type].extend(formatted_attribute)
 
         self.attributes["lateral"].extend([
             f"left join lateral(",

@@ -60,6 +60,24 @@ class HeleperFunction:
             return structure.format(**kwargs)
         else:
             return structure
+        
+    @staticmethod
+    def remove_suffix(name):
+        suffixes = [
+            "TimeSlicePropertyType",
+            "PropertyType",
+            "TimeSliceType",
+            "TimeSlice",
+            "Type",
+        ]
+
+        for suffix in suffixes:
+            if name.endswith(suffix):
+                name = name[: -len(suffix)]
+                break
+
+        return name.lower()
+
 
 
 
