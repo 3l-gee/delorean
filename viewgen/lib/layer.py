@@ -4,7 +4,7 @@ from lxml import etree
 import re
 import uuid
 import copy
-from lib.helper_function import HeleperFunction
+from lib.generic_helper_function import GenericHeleperFunction
 
 class Layer:
 
@@ -13,21 +13,19 @@ class Layer:
         self.dependecy = set()
         self.type = type
         self.input_path = input_path
-        self.name = HeleperFunction.remove_suffix(self.type)
+        self.name = GenericHeleperFunction.remove_suffix(self.type)
         self.schema = schema
         self.snowflake = snowflake
-        self.geom_map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/geom-maplayer.xml")
-        self.table_map_layer_template = HeleperFunction.load_xml(self.input_path, "xml/table-maplayer.xml")
-        self.layer_tree_layer_template = HeleperFunction.load_xml(self.input_path, "xml/layer-tree-layer.xml")
-        self.label_style = HeleperFunction.load_xml(self.input_path, "xml/labelStyle.xml")
-        self.attribute_editor_container = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorContainer.xml")
-        self.attribut_editor_field = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorField.xml")
-        self.attribut_editor_html_element = HeleperFunction.load_xml(self.input_path, "xml/attributeEditorHtmlElement.xml")
-        self.alias = HeleperFunction.load_xml(self.input_path, "xml/alias.xml")
-        self.publish_layer = []
+        self.geom_map_layer_template = GenericHeleperFunction.load_xml(self.input_path, "xml/geom-maplayer.xml")
+        self.table_map_layer_template = GenericHeleperFunction.load_xml(self.input_path, "xml/table-maplayer.xml")
+        self.layer_tree_layer_template = GenericHeleperFunction.load_xml(self.input_path, "xml/layer-tree-layer.xml")
+        self.label_style = GenericHeleperFunction.load_xml(self.input_path, "xml/labelStyle.xml")
+        self.attribute_editor_container = GenericHeleperFunction.load_xml(self.input_path, "xml/attributeEditorContainer.xml")
+        self.attribut_editor_field = GenericHeleperFunction.load_xml(self.input_path, "xml/attributeEditorField.xml")
+        self.attribut_editor_html_element = GenericHeleperFunction.load_xml(self.input_path, "xml/attributeEditorHtmlElement.xml")
+        self.alias = GenericHeleperFunction.load_xml(self.input_path, "xml/alias.xml")
         self.full_sql = ""
-        self.attributes = {
-            "publish" : {
+        self.publish = {
                 "form" : {
                     "generic" : [
                         {
@@ -71,7 +69,9 @@ class Layer:
                 "html" : {
 
                 },
-            },
+            }
+        
+        self.attributes = {
             "attributes": {
                 "feature": self.generate_attributes(self.name, schema)
             },
@@ -101,199 +101,11 @@ class Layer:
     def get_type(self):
         return self.type
 
-    def get_publish_layer(self):
-        return self.publish_layer
+    def get_layer_type(self):
+        return self.layer_type
     
-    def genrate_field_generic(self, index, entry):
-        copy_label_style = copy.deepcopy(self.label_style)
-
-        html_node = copy.deepcopy(self.attribut_editor_html_element)
-        html_node.set("name", entry.get("name"))
-        html_node.append(copy_label_style)
-
-        raw_html = HeleperFunction.load_html(self.input_path, "html/annotation.html")
-
-        if html_node[-1].tail is None:
-            html_node[-1].tail = raw_html 
-        else:
-            html_node[-1].tail = raw_html 
-
-        return html_node
-    
-    def genrate_field_generic(self, index, entry):
-        copy_label_style = copy.deepcopy(self.label_style)
-
-        if entry.get("html") :
-            html_node = copy.deepcopy(self.attribut_editor_html_element)
-            html_node.set("name", entry.get("field"))
-            html_node.append(copy_label_style)
-
-            # Load raw HTML file as string
-            raw_html = HeleperFunction.load_html(self.input_path, "html/annotation.html")
-
-            raw_html = re.sub(r'to_json\(\s*annotation\s*\)', f"to_json({entry.get('field')})", raw_html)
-
-            wrapped = f"<#noparse>\n{raw_html}\n</#noparse>"
-
-            if html_node[-1].tail is None:
-                html_node[-1].tail = etree.CDATA(wrapped)
-            else:
-                html_node[-1].tail = etree.CDATA(wrapped)
-
-            return html_node
-
-        else :
-            field = copy.deepcopy(self.attribut_editor_field)
-            field.set("name", entry.get("field"))
-            field.set("index", str(index))
-            field.append(copy_label_style)
-            return field
-        
-    # def generate_aliases(self, aliases):
-    #     index = 0
-    #     for role, value in self.attributes["publish"]["form"].items():
-    #         for item in value:
-    #             alias = copy.deepcopy(self.alias)
-    #             alias.set("index", str(index))
-    #             alias.set("name", str(item.get("name")))
-    #             alias.set("field", str(item.get("field")))
-    #             aliases.append(alias)
-
-    #             index+=1
-
-    #     return aliases
-    
-    def generate_form(self, attribut_edit_form):
-        copy_label_style = copy.deepcopy(self.label_style)
-        attribut_edit_form.append(copy_label_style)
-
-        feature_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-        feature_attribute_editor_container.set("name", "feature")
-        feature_attribute_editor_container.append(copy_label_style)
-
-        tab_list = []
-
-        index = 0
-
-        for role, value in self.attributes["publish"]["form"].items():
-            if role in ["generic", "attributes"] or role in ["annotation"]:
-                group_attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                group_attribute_editor_container.set("name", role)
-                group_attribute_editor_container.set("groupBox", "1")
-                group_attribute_editor_container.append(copy_label_style)
-
-
-                for item in value:
-                    group_attribute_editor_container.append(self.genrate_field_generic(index, item))
-                    index+=1
-
-                feature_attribute_editor_container.append(group_attribute_editor_container)
-            
-            else :
-                attribute_editor_container = copy.deepcopy(self.attribute_editor_container)
-                attribute_editor_container.set("name", role)
-                attribute_editor_container.append(copy_label_style)
-
-                for item in value : 
-                    attribute_editor_container.append(self.genrate_field_generic(index, item))
-                    index+=1
-
-                tab_list.append(attribute_editor_container)
-            
-        attribut_edit_form.append(feature_attribute_editor_container)
-        attribut_edit_form.extend(tab_list)
-        return attribut_edit_form
-
-    
-    def genrate_prj(self):
-        # Make sure the template loaded correctly
-        if self.geom_map_layer_template is None:
-            print("[ERROR] Layer template not loaded")
-            return
-        
-        geometries = self.attributes["publish"].get("geometry", [])
-
-        # If empty, default to [None]
-        if geometries :
-            for geom in geometries:
-                self.genrate_geom_layer(geom)
-        else :
-            self.genrate_table_layer()
-
-    def genrate_table_layer(self):
-        table_layer = copy.deepcopy(self.table_map_layer_template)
-        layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
-
-        # Format name 
-        layer_tree_layer.set("name", self.name)
-
-        # Format id
-        id = self.qgis_gen_id()
-        table_layer.find(".//id").text = id
-        layer_tree_layer.set("id", id)
-
-        # Format layername
-        table_layer.find(".//layername").text = f"{self.name}"
-        
-        # Format datasource
-        datasource = self.qgis_gen_datasource()
-        table_layer.find(".//datasource").text = datasource
-        layer_tree_layer.set("source", datasource.replace('"',"&quot"))
-
-        # Format qgis form
-        attribute_edit_form = table_layer.find(".//attributeEditorForm")
-        table_layer.remove(attribute_edit_form)
-        table_layer.append(self.generate_form(attribute_edit_form))
-
-        # aliases = table_layer.find(".//aliases")
-        # table_layer.remove(aliases)
-        # table_layer.append(self.generate_aliases(aliases))
-
-        self.publish_layer.append({
-            "id" : id,
-            "datasource" : datasource,
-            "maplayer" : table_layer,
-            "layertree" : layer_tree_layer,
-            })
-
-    def genrate_geom_layer(self, geom):
-        map_layer = copy.deepcopy(self.geom_map_layer_template)
-        layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
-
-        id = self.qgis_gen_id()
-        role = geom.get("role")
-        goemtry_type = geom.get("geometrytype")
-
-        # Format maplayer
-        map_layer.set("geometry", goemtry_type)
-        map_layer.set("wkbType", goemtry_type)
-
-        # Format name 
-        layer_tree_layer.set("name", self.name)
-
-        # Format id
-        map_layer.find(".//id").text = id
-        layer_tree_layer.set("id", id)
-
-        # Format layername
-        map_layer.find(".//layername").text = f"{self.name} ({role})"
-        
-        # Format datasource
-        datasource = self.qgis_gen_datasource(role)
-        map_layer.find(".//datasource").text = datasource
-        layer_tree_layer.set("source", datasource.replace('"',"&quot"))
-
-        # Format qgis form
-        attribute_edit_form = map_layer.find(".//attributeEditorForm")
-        map_layer.remove(attribute_edit_form)
-        map_layer.append(self.generate_form(attribute_edit_form))
-
-        self.publish_layer.append({
-            "id" : id,
-            "datasource" : datasource,
-            "maplayer" : map_layer,
-            "layertree" : layer_tree_layer,
-            })
+    def get_attributes(self):
+        return self.attributes
     
     def generate_sql(self):
         if self.snowflake :
@@ -383,36 +195,8 @@ class Layer:
 
     def publish_handler(self, schema, name, role, full_name, publish_param):
         if publish_param.get("geometry"):
-            self.attributes["publish"]["geometry"].append({
+            self.publish["geometry"].append({
                 "geometrytype" : publish_param["geometry"].get("geometrytype"),
                 "role" : role,
                 "fullname" : full_name,
         })
-        
-
-    def qgis_gen_id(self):
-        generated_uuid = str(uuid.uuid4())
-        full_id = f"{self.name}_{generated_uuid}"
-        return full_id
-
-    def qgis_gen_datasource(self, geom=None):
-        res = ""
-        res += "dbname='${ProjectConfig.dbname}' "
-        res += "host=${ProjectConfig.host} "
-        res += "port=${ProjectConfig.port} "
-        res += "sslmode=disable "
-        # Feature needs a row as primary key as we display the versions and thus id is not unique
-        if self.layer_type == "feature" : 
-            res += "key='row' "
-
-        if self.layer_type == "property" : 
-            res += "key='id' "
-
-        res += "checkPrimaryKeyUnicity='1' "
-        res += f'table="{self.schema}"."{self.name}_view" '
-        if geom is None:
-            return res
-        else:
-            res += f'({geom}_geom)'
-        return res
-        

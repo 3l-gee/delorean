@@ -1,4 +1,4 @@
-from lib.layer import Layer, HeleperFunction
+from lib.layer import Layer, GenericHeleperFunction
 
 class Feature(Layer) :
 
@@ -10,18 +10,18 @@ class Feature(Layer) :
         return f"{self.schema}.{self.name}_view"
 
     def generate_view(self, type, schema) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         return [
             f"drop materialized view if exists {schema}.{name}_view cascade;",
             f"create materialized view {schema}.{name}_view as"
             ]
 
     def generate_select(self, type, schema) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         return [f"select distinct on ({name}.identifier,{name}_ts.sequence_number)"]
    
     def generate_attributes(self, type, schema) : 
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         res = ["(row_number() over ())::integer as row"]
         res.append(f"{schema}.{name}.id::integer as id")
         res.append(f"{schema}.{name}_ts.id::integer as ts_id")
@@ -38,7 +38,7 @@ class Feature(Layer) :
         return res
         
     def generate_inner(self, type, schema) : 
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
     # TODO : once basic messgae is linked with master_join and that the new ts are linked back to the old dataset
 #         return f"""
 # from aixm_basic_message 
@@ -57,19 +57,19 @@ class Feature(Layer) :
         ]
 
     def generate_left(self, type, schema) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         return [
         ]
 
     def generate_where(self, type, schema) : 
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         return [
             f"{schema}.{name}.feature_status = 'APPROVED'",
             f"{schema}.{name}_ts.feature_status = 'APPROVED'"
         ]
     
     def generate_order(self, type, schema) : 
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         return [
             f"order by {name}.identifier",
             f"{name}_ts.sequence_number",
@@ -77,7 +77,7 @@ class Feature(Layer) :
         ]
     
     def generate_group(self, type, schema) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         res = [f"{schema}.{name}.id"]
         res.append(f"{schema}.{name}_ts.id")
         res.append(f"{schema}.{name}_tsp.id")
@@ -92,12 +92,12 @@ class Feature(Layer) :
         return res 
 
     def add_attributes_two(self, type, role, value, nil) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar), '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {role}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["form"]["attributes"].append(
+        self.publish["form"]["attributes"].append(
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -105,13 +105,13 @@ class Feature(Layer) :
             })
         
     def add_attributes_three(self, type, role, value, uom, nil) :
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
         self.attributes["attributes"]["feature"].append(f"coalesce(cast({self.schema}.{self.name}_ts.{value} as varchar) || ' ' || {self.schema}.{self.name}_ts.{uom}, '(' || {self.schema}.{self.name}_ts.{nil} || ')')::text as {role}")
         self.add_group(str(self.name + "_ts"), value, self.schema)
         self.add_group(str(self.name + "_ts"), uom, self.schema)
         self.add_group(str(self.name + "_ts"), nil, self.schema)
 
-        self.attributes["publish"]["form"]["attributes"].append(
+        self.publish["form"]["attributes"].append(
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -119,7 +119,7 @@ class Feature(Layer) :
             })
 
     def add_association_feature_one(self, schema, type, role, col):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         if not self.attributes["attributes"].get(type):
             self.attributes["attributes"][type] = []
@@ -137,10 +137,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_pt {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not  self.publish["form"].get(role) :
+            self.publish["form"][role] = []
 
-        self.attributes["publish"]["form"][role].extend([
+        self.publish["form"][role].extend([
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -154,7 +154,7 @@ class Feature(Layer) :
         ])
     
     def add_association_object_one(self, schema, type, role, col):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.attributes["attributes"].get(type):
@@ -171,10 +171,10 @@ class Feature(Layer) :
 
         self.attributes["left"].append(f"left join {schema}.{name}_view {hash} on {self.schema}.{self.name}_ts.{col} = {hash}.id")
 
-        if not  self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not  self.publish["form"].get(role) :
+            self.publish["form"][role] = []
 
-        self.attributes["publish"]["form"][role].extend([
+        self.publish["form"][role].extend([
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -189,7 +189,7 @@ class Feature(Layer) :
         ])
 
     def add_association_feature_many(self, schema, type, role):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         if not self.attributes["attributes"].get(type):
             self.attributes["attributes"][type] = []
@@ -215,10 +215,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}::jsonb as {role}"
         ])
 
-        if not  self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not  self.publish["form"].get(role) :
+            self.publish["form"][role] = []
 
-        self.attributes["publish"]["form"][role].extend([
+        self.publish["form"][role].extend([
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -227,7 +227,7 @@ class Feature(Layer) :
         ])
 
     def add_association_object_many(self, schema, type, role):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.attributes["attributes"].get(type):
@@ -252,10 +252,10 @@ class Feature(Layer) :
             f"{hash_three}.{role}_annotation::jsonb as {role}_annotation"
         ])
 
-        if not  self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not  self.publish["form"].get(role) :
+            self.publish["form"][role] = []
 
-        self.attributes["publish"]["form"][role].extend([
+        self.publish["form"][role].extend([
             {
                 "type" : f"{type}",
                 "field": f"{role}",
@@ -270,7 +270,7 @@ class Feature(Layer) :
         ])
 
     def add_association_snowflake_one(self, schema, type, publish_param, attribute, col, role):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.attributes["attributes"].get(type):
@@ -286,14 +286,14 @@ class Feature(Layer) :
 
         self.publish_handler(schema, name, role, hash, publish_param)
 
-        if not self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not self.publish["form"].get(role) :
+            self.publish["form"][role] = []
             
         if publish_param.get("form") :
-            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
+            self.publish["form"][role].extend(GenericHeleperFunction.format_structure(publish_param.get("form"), role=role))
 
     def add_association_snowflake_many(self, schema, type, publish_param, argument, attribute, col, role):
-        name = HeleperFunction.remove_suffix(type)
+        name = GenericHeleperFunction.remove_suffix(type)
 
         self.dependecy.add(f"{schema}.{name}_view")
         if not self.attributes["attributes"].get(type):
@@ -327,8 +327,8 @@ class Feature(Layer) :
 
         self.publish_handler(name, schema, role, hash_three, publish_param)
 
-        if not self.attributes["publish"]["form"].get(role) :
-            self.attributes["publish"]["form"][role] = []
+        if not self.publish["form"].get(role) :
+            self.publish["form"][role] = []
             
         if publish_param.get("form") :
-            self.attributes["publish"]["form"][role].extend(HeleperFunction.format_structure(publish_param.get("form"), role=role))
+            self.publish["form"][role].extend(GenericHeleperFunction.format_structure(publish_param.get("form"), role=role))

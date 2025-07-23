@@ -3,7 +3,8 @@ import json
 from lxml import etree
 from lxml import html
 from lib.parsing import Parsing
-from lib.helper_function import HeleperFunction
+from lib.generic_helper_function import GenericHeleperFunction
+from lib.qlr_generator import QLRGenerator
 import copy
 
 
@@ -11,16 +12,17 @@ class InteractionMachinery:
     def __init__(self, name, parsing, input_path, output_path, directory,):
         self.name = name
         # Attribute
-        self.qlr_attr = HeleperFunction.load_json(input_path, "qlr.json")
-        self.inheritance_attr = HeleperFunction.load_json(input_path, "inheritance.json")
-        self.formated_sql = HeleperFunction.load_json(input_path, "sql.json")
+        self.qlr_attr = GenericHeleperFunction.load_json(input_path, "qlr.json")
+        self.inheritance_attr = GenericHeleperFunction.load_json(input_path, "inheritance.json")
+        self.formated_sql = GenericHeleperFunction.load_json(input_path, "sql.json")
         self.ignore_set = set(self.inheritance_attr["ignore"])
 
         # Templates
-        self.publisher_qgis = HeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
-        self.layer_tree_group = HeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
+        self.publisher_qgis = GenericHeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
+        self.layer_tree_group = GenericHeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
 
         self.parsing = Parsing(parsing, self.inheritance_attr, self.formated_sql, input_path)
+        self.qlr_generator = QLRGenerator(input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
         
@@ -77,15 +79,19 @@ class InteractionMachinery:
         
         for layer, _ in self.layers.values():
             if layer.get_type() not in self.ignore_set:
-                
-                if not layer_tree_group_dict.get(layer.get_schema()) and layer_tree_group_dict.get(layer.get_schema()) is not None:
+                # print(json.dumps({'publish': layer.publish}))
+
+                # Adds qlr to layer tree group
+                if layer.get_schema() not in layer_tree_group_dict:
                     layer_tree_group_schema = copy.deepcopy(self.layer_tree_group)
                     layer_tree_group_schema.set("name", layer.get_schema())
                     layer_tree_group_dict[layer.get_schema()] = layer_tree_group_schema
 
-                for publish_layer in layer.get_publish_layer():
-                    project_layers.append(publish_layer.get("maplayer"))
-                    layer_tree_group_dict[layer.get_schema()].append(publish_layer.get("layertree"))
+                # generates qlr layer from layer publish information
+                list_qlr_bundle = self.qlr_generator.genrate_publish_qlr(layer)
+                for qlr_bundle in list_qlr_bundle:
+                    project_layers.append(qlr_bundle.get("layer"))
+                    layer_tree_group_dict[layer.get_schema()].append(qlr_bundle.get("layertree"))
             else : 
                 print("Ignored : ", layer.get_type())
         

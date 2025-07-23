@@ -4,11 +4,13 @@ from qgis.utils import iface
 import re
 import json
 
+UUID_PATTERN = r'[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
+
 # Source field to extract UUID from
 source_parameters = {
     "name" : "",
     "field" : "responsibleorganisation",
-    "key" : "theorganisationauthority_href"
+    "key" : None
 }
 
 # Target layer info
@@ -18,17 +20,40 @@ target_parameter = {
     "key" : ""
 }
 
-data = [%to_json(responsibleorganisation)%]
+data = [%to_json(theorganisationauthority_href)%]
 
 # --------------------------------------------------------
 # Function: extract UUID from JSON field
 # --------------------------------------------------------
 def get_source_value(data, param):
-    raw_value = data.get(param["key"])
-    if not raw_value:
+    key = param.get("key", None)
+
+    def extract_uuid(val):
+        if isinstance(val, str):
+            match = re.search(UUID_PATTERN, val, re.IGNORECASE)
+            return match.group(0) if match else None
+        elif isinstance(val, dict):
+            for v in val.values():
+                uuid = extract_uuid(v)
+                if uuid:
+                    return uuid
+        elif isinstance(val, list):
+            for item in val:
+                uuid = extract_uuid(item)
+                if uuid:
+                    return uuid
         return None
-    match = re.search(r'[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}', raw_value, re.IGNORECASE)
-    return match.group(0) if match else None
+
+    # If key is None, use data directly
+    if key is None:
+        return extract_uuid(data)
+
+    # If key is set, look for that key in a dict
+    if isinstance(data, dict):
+        value = data.get(key)
+        return extract_uuid(value)
+
+    return None
 
 # --------------------------------------------------------
 # Function: get QGIS layer by name
@@ -38,8 +63,10 @@ def get_target_layer(param):
     return layers[0] if layers else None
 
 uuid = get_source_value(data, source_parameters)
+
 if not uuid:
     print("UUID not found in source data.")
+
 
 layer = get_target_layer(target_parameter)
 if not layer:
