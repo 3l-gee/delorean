@@ -5,6 +5,51 @@ class Feature(Layer) :
     def __init__(self, input_path, type, schema, snowflake=False):
         super().__init__(input_path, type, schema, snowflake)
         self.layer_type = "feature"
+        self.publish = {
+                "form" : {
+                    "generic" : [
+                        {
+                            "field": "identifier",
+                            "name": "identifier",
+                        },
+                        {
+                            "field": "interpretation",
+                            "name": "interpretation",
+                        },
+                        {
+                            "field": "sequence_number",
+                            "name": "sequence_number",
+                        },
+                        {
+                            "field": "correction_number",
+                            "name": "correction_number",
+                        },
+                        {
+                            "field": "valid_time_begin",
+                            "name": "valid_time_begin",
+                        },
+                        {
+                            "field": "valid_time_end",
+                            "name": "valid_time_end",
+                        },
+                        {
+                            "field": "feature_lifetime_begin",
+                            "name": "feature_lifetime_begin",
+                        },
+                        {
+                            "field": "feature_lifetime_end",
+                            "name": "feature_lifetime_end",
+                        }
+                    ],
+                    "attributes" : []},
+                "geometry" : [],
+                "action" : {
+
+                },
+                "html" : {
+
+                },
+            }
 
     def get_name(self):
         return f"{self.schema}.{self.name}_view"
@@ -163,7 +208,7 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.attributes["attributes"][type].extend([
-            f"to_jsonb({hash}.*)::jsonb AS {role}",
+            f"to_jsonb({hash}.id)::jsonb AS {role}",
             f"{hash}.annotation::jsonb AS {role}_annotation"
         ])
 
@@ -179,12 +224,6 @@ class Feature(Layer) :
                 "type" : f"{type}",
                 "field": f"{role}",
                 "name" : f"{role}",
-            },
-            {
-                "type" : f"{type}",
-                "field": f"{role}_annotation",
-                "name" : f"{role}_annotation",
-                "html" : "viewgen/version/a5_1/html/annotation.html"
             }
         ])
 
@@ -239,8 +278,7 @@ class Feature(Layer) :
 
         self.attributes["lateral"].extend([
             f"left join lateral(",
-            f"  select jsonb_agg(DISTINCT {hash_two}.*) as {role},",
-            f"      jsonb_agg(DISTINCT {hash_two}.annotation) as {role}_annotation"
+            f"  select jsonb_agg(DISTINCT {hash_two}.id) as {role}",
             f"  from master_join {hash_one}",
             f"  join {schema}.{name}_view {hash_two} on {hash_one}.target_id = {hash_two}.id",
             f"  where {hash_one}.source_id = {self.schema}.{self.name}_ts.id",
@@ -249,7 +287,6 @@ class Feature(Layer) :
 
         self.attributes["attributes"][type].extend([
             f"{hash_three}.{role}::jsonb as {role}",
-            f"{hash_three}.{role}_annotation::jsonb as {role}_annotation"
         ])
 
         if not  self.publish["form"].get(role) :
@@ -260,12 +297,6 @@ class Feature(Layer) :
                 "type" : f"{type}",
                 "field": f"{role}",
                 "name" : f"{role}",
-            },
-            {
-                "type" : f"{type}",
-                "field": f"{role}_annotation",
-                "name" : f"{role}_annotation",
-                "html" : "viewgen/version/a5_1/html/annotation.html"
             }
         ])
 

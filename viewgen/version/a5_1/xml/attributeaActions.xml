@@ -1,0 +1,18 @@
+<attributeactions>
+	<defaultAction value="{00000000-0000-0000-0000-000000000000}"
+	               key="Canvas"/>
+	<actionsetting action=""
+	               notificationMessage=""
+	               icon=""
+	               name=""
+	               type="1"
+	               id=""
+	               shortTitle=""
+	               capture="0"
+	               isEnabledOnlyWhenEditable="0">
+		<actionScope id="Canvas"/>
+		<actionScope id="Feature"/>
+		<actionScope id="Field"/>
+		<actionScope id="Form"/>
+	</actionsetting>
+</attributeactions>

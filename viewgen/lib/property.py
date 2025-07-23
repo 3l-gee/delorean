@@ -5,6 +5,27 @@ class Property(Layer) :
     def __init__(self, input_path, type, schema, snowflake=False):
         super().__init__(input_path, type, schema, snowflake)
         self.layer_type = "property"
+        self.publish = {
+                "form" : {
+                    "generic" : [
+                        {
+                            "field": "id",
+                            "name": "id",
+                        },
+                        {
+                            "field": "nilreason",
+                            "name": "nilreason",
+                        }
+                    ],
+                    "attributes" : []},
+                "geometry" : [],
+                "action" : {
+
+                },
+                "html" : {
+
+                },
+            }
 
     def get_name(self):
         return f"{self.schema}.{self.name}_view"

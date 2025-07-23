@@ -223,7 +223,7 @@ class Parsing :
 
             elif type in self.assosication.keys():
                 schema = self.assosication[type].get("schema")
-                layer.add_association_feature_many(schema, type, item.get("role"))
+                layer.add_association_feature_one(schema, type, item.get("role"), item.get("col"))
             
             else : 
                 raise ValueError(f"[ERROR] {layer.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
@@ -289,7 +289,7 @@ class Parsing :
 
             elif type in self.assosication.keys():
                 schema = self.assosication[type].get("schema")
-                property.add_association_feature_many(schema, type, item.get("role"))
+                property.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
             
             else : 
                 raise ValueError(f"[ERROR] {property.get_type()} {type} can not be found in property, feature, snowflake, ignore:")

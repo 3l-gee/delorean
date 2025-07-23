@@ -83,11 +83,11 @@ class QLRGenerator:
             "layertree" : layer_tree_layer,
             })
 
-    def _generate_publish_geom_layer(self, layer,  geom):
+    def _generate_publish_geom_layer(self, layer, geom):
         map_layer = copy.deepcopy(self.geom_map_layer_template)
         layer_tree_layer = copy.deepcopy(self.layer_tree_layer_template)
 
-        name = layer.get_name
+        name = layer.name
         schema = layer.get_schema()
         layer_type = layer.get_layer_type()
 

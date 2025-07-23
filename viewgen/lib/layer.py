@@ -26,49 +26,6 @@ class Layer:
         self.alias = GenericHeleperFunction.load_xml(self.input_path, "xml/alias.xml")
         self.full_sql = ""
         self.publish = {
-                "form" : {
-                    "generic" : [
-                        {
-                            "field": "identifier",
-                            "name": "identifier",
-                        },
-                        {
-                            "field": "interpretation",
-                            "name": "interpretation",
-                        },
-                        {
-                            "field": "sequence_number",
-                            "name": "sequence_number",
-                        },
-                        {
-                            "field": "correction_number",
-                            "name": "correction_number",
-                        },
-                        {
-                            "field": "valid_time_begin",
-                            "name": "valid_time_begin",
-                        },
-                        {
-                            "field": "valid_time_end",
-                            "name": "valid_time_end",
-                        },
-                        {
-                            "field": "feature_lifetime_begin",
-                            "name": "feature_lifetime_begin",
-                        },
-                        {
-                            "field": "feature_lifetime_end",
-                            "name": "feature_lifetime_end",
-                        }
-                    ],
-                    "attributes" : []},
-                "geometry" : [],
-                "action" : {
-
-                },
-                "html" : {
-
-                },
             }
         
         self.attributes = {
