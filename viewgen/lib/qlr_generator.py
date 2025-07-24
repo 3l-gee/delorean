@@ -158,6 +158,26 @@ class QLRGenerator:
     
 
     def _generate_actions(self, layer, attribute_actions, aixm_type_to_layer):
+        generic_script = GenericHeleperFunction.load_txt(self.input_path, "python/open_table.py")
+        actionsetting = etree.Element("actionsetting")
+        actionsetting.set("action", generic_script)
+        actionsetting.set("notificationMessage", "")
+        actionsetting.set("icon", "")
+        actionsetting.set("name", "open table")
+        actionsetting.set("type", "1")
+
+        generic_id = str(uuid.uuid4())
+        actionsetting.set("id", "{" + generic_id + "}")
+        actionsetting.set("shortTitle", "open table")
+        actionsetting.set("capture", "0")
+        actionsetting.set("isEnabledOnlyWhenEditable", "0")
+
+        # Add required <actionScope> children
+        for scope in ["Feature"]:
+            scope_elem = etree.SubElement(actionsetting, "actionScope")
+            scope_elem.set("id", scope)
+        attribute_actions.append(actionsetting)
+
         for role, fields in layer.publish["form"].items():
             for field in fields:
                 if field.get("action"):

@@ -38,6 +38,6 @@ for param in target_parameters:
     for feature in layer.getFeatures(expression):
         features_found = True
         iface.openFeatureForm(layer, feature, False)
-
+        
     if not features_found:
         iface.messageBar().pushInfo("Info", f"No feature found in layer '{param['name']}' with ID(s): {id_list_str}")

@@ -11,7 +11,7 @@ target_parameters = YYYY
 # - str: a raw string possibly containing a UUID
 # - dict: a JSON-like object with nested structures
 # - list[dict]: a list of such dicts, each potentially containing a UUID
-data = '[% thenavaidequipment_href %]'
+data = '[% XXXX %]'
 
 uuid = re.findall(UUID_PATTERN, data, re.IGNORECASE)
 

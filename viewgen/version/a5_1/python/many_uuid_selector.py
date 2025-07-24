@@ -1,6 +1,7 @@
 from qgis.core import QgsProject 
 from qgis.utils import iface
 import re
+import json
 
 UUID_PATTERN = r'[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
 
@@ -10,7 +11,9 @@ target_parameters = YYYY
 # - str: a raw string possibly containing a UUID
 # - dict: a JSON-like object with nested structures
 # - list[dict]: a list of such dicts, each potentially containing a UUID
-data = '[% array_to_string(XXXX) %]'
+data = '[% to_json(XXXX) %]'
+
+data = json.loads(data)
 
 # Extract UUIDs from href
 uuid = []
