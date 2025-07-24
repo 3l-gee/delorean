@@ -1,7 +1,7 @@
 import random
 import string
 from lxml import etree
-import re
+import os
 import uuid
 import copy
 from lib.generic_helper_function import GenericHeleperFunction
@@ -99,15 +99,17 @@ class Layer:
         self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
 
     def load_sql(self, path):
+        file_path = os.path.join(self.input_path, path)
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"'{path}' not found at: {file_path}")
+
         try:
-            with open(path, 'r', encoding='utf-8') as file:
-                self.full_sql = file.read()
-        except FileNotFoundError:
-            print(f"Error: File not found at '{path}'")
-            self.full_sql = ""
+            with open(file_path, 'r', encoding='utf-8') as f:
+                raw_html = f.read()
+            self.full_sql = raw_html
         except Exception as e:
-            print(f"Error loading SQL from '{path}': {e}")
-            self.full_sql = ""
+            raise ValueError(f"Error loading HTML '{path}': {e}")
 
     def load_template(self, path):
         try:
@@ -151,9 +153,9 @@ class Layer:
     def add_association_snowflake_many(self, schema, name, role, type) : pass
 
     def publish_handler(self, schema, name, role, full_name, publish_param):
-        if publish_param.get("geometry"):
+        if publish_param.get("geometrytype"):
             self.publish["geometry"].append({
-                "geometrytype" : publish_param["geometry"].get("geometrytype"),
+                "geometrytype" : publish_param.get("geometrytype")[0], # TODO why did i make them a list ?
                 "role" : role,
                 "fullname" : full_name,
         })

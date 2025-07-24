@@ -3,19 +3,22 @@ import json
 from collections import defaultdict, deque
 from lib.feature import Feature
 from lib.property import Property
+from lib.generic_helper_function import GenericHeleperFunction
 
 class Parsing :
-    def __init__(self, parsing, inheritance, formated_sql, input_path):
+    def __init__(self, parsing, inheritance, formated_sql, association, qlr_attr, input_path):
         self.parsing = parsing
         self.input_path = input_path
-        # self.snowflake_set = attribute["snowflake"]
+
+        self.qlr_attr = qlr_attr
         self.formated_sql =  formated_sql
         self.ignore_set = set(inheritance["ignore"])
         self.feature_set = set(inheritance["features"])
-        self.feature_association_set = set(inheritance["feature_association"])
         self.timeslice_parent_set = set(inheritance["timeslice_parent"])
         self.object_set = set(inheritance["objects"])
         self.property_parent_set = set(inheritance["property_parent"])
+
+        self.feature_association_set = association["feature"]
 
         self.suffix = {
             "TimeSlicePropertyType": "",
@@ -209,7 +212,7 @@ class Parsing :
                 schema = self.formated_sql[type].get("schema")
                 attribute = self.formated_sql[type].get("one").get("attribute")
                 group = self.formated_sql[type].get("one").get("group")
-                publish = self.formated_sql[type].get("one").get("publish")
+                publish = self.qlr_attr[type].get("one")
                 layer.add_association_snowflake_one(schema, type, publish, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
@@ -221,9 +224,10 @@ class Parsing :
                 schema = self.feature[renamed_type].get_schema()
                 layer.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
 
-            elif type in self.assosication.keys():
+            elif type in self.feature_association_set.keys():
                 schema = self.assosication[type].get("schema")
-                layer.add_association_feature_one(schema, type, item.get("role"), item.get("col"))
+                ref_types = self.feature_association_set[type].get("type")
+                layer.add_association_feature_one(schema, type, item.get("role"), item.get("col"), ref_types)
             
             else : 
                 raise ValueError(f"[ERROR] {layer.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
@@ -238,7 +242,7 @@ class Parsing :
                 schema = self.formated_sql[type].get("schema")
                 argument = self.formated_sql[type].get("many").get("argument")
                 attribute = self.formated_sql[type].get("many").get("attribute")
-                publish = self.formated_sql[type].get("many").get("publish")
+                publish = self.qlr_attr[type].get("many")
                 layer.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
@@ -250,9 +254,10 @@ class Parsing :
                 schema = self.feature[renamed_type].get_schema()
                 layer.add_association_feature_many(schema, type, item.get("role"))
 
-            elif type in self.assosication.keys():
+            elif type in self.feature_association_set.keys():
                 schema = self.assosication[type].get("schema")
-                layer.add_association_feature_many(schema, type, item.get("role"))
+                ref_types = self.feature_association_set[type].get("type")
+                layer.add_association_feature_many(schema, type, item.get("role"), ref_types)
             
             else : 
                 raise ValueError(f"[ERROR] {layer.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
@@ -275,7 +280,7 @@ class Parsing :
                 schema = self.formated_sql[type].get("schema")
                 attribute = self.formated_sql[type].get("one").get("attribute")
                 group = self.formated_sql[type].get("one").get("group")
-                publish = self.formated_sql[type].get("one").get("publish")
+                publish = self.qlr_attr[type].get("one")
                 property.add_association_snowflake_one(schema, type, publish, attribute, item.get("col"), item.get("role"))
                         
             elif type in self.property.keys():
@@ -287,9 +292,10 @@ class Parsing :
                 schema = self.feature[renamed_type].get_schema()
                 property.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
 
-            elif type in self.assosication.keys():
+            elif type in self.feature_association_set.keys():
                 schema = self.assosication[type].get("schema")
-                property.add_association_feature_one(schema, type, item.get("role"),item.get("col"))
+                ref_types = self.feature_association_set[type].get("type")
+                property.add_association_feature_one(schema, type, item.get("role"),item.get("col"), ref_types)
             
             else : 
                 raise ValueError(f"[ERROR] {property.get_type()} {type} can not be found in property, feature, snowflake, ignore:")
@@ -304,7 +310,7 @@ class Parsing :
                 schema = self.formated_sql[type].get("schema")
                 argument = self.formated_sql[type].get("many").get("argument")
                 attribute = self.formated_sql[type].get("many").get("attribute")
-                publish = self.formated_sql[type].get("many").get("publish")
+                publish = self.qlr_attr[type].get("many")
                 property.add_association_snowflake_many(schema, type, publish, argument, attribute, item.get("col"), item.get("role"))
 
             elif type in self.property.keys():
@@ -316,9 +322,10 @@ class Parsing :
                 schema = self.feature[renamed_type].get_schema()
                 property.add_association_feature_many(schema, type, item.get("role"))
 
-            elif type in self.assosication.keys():
+            elif type in self.feature_association_set.keys():
                 schema = self.assosication[type].get("schema")
-                property.add_association_feature_many(schema, type, item.get("role"))
+                ref_types = self.feature_association_set[type].get("type")
+                property.add_association_feature_many(schema, type, item.get("role"), ref_types)
 
             else : 
                 raise ValueError(f"[ERROR] {property.get_type()} {type} can not be found in property, feature, snowflake, ignore:")

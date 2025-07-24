@@ -1,0 +1,77 @@
+{
+    "feature": {
+        "AirportHeliportProtectionAreaPropertyType": {
+            "type": [
+                "RunwayProtectAreaType",
+                "TouchDownLiftOffSafeAreaType"
+            ]
+        },
+        "ProcedurePropertyType" : {
+            "type" : [
+                "InstrumentApproachProcedureType",
+               "StandardInstrumentDepartureType",
+                "StandardInstrumentArrivalType"
+            ]
+        },
+        "NavaidEquipmentPropertyType" : {
+            "type" : [
+                "AzimuthType",
+                "DMEType",
+                "ElevationType",
+                "GlidepathType",
+                "LocalizerType",
+                "MarkerBeaconType",
+                "SDFType",
+                "NDBType",
+                "VORType",
+                "TACANType",
+                "DirectionFinderType"
+            ]
+        }, 
+        "GroundLightSystemPropertyType" : {
+            "type" : [
+                "VisualGlideSlopeIndicatorType",
+                "ApronLightSystemType",
+                "TaxiwayLightSystemType",
+                "RunwayDirectionLightSystemType",
+                "TouchDownLiftOffLightSystemType",
+                "GuidanceLineLightSystemType",
+                "RunwayProtectAreaLightSystemType",
+                "TaxiHoldingPositionLightSystemType",
+                "ApproachLightingSystemType"
+            ]
+        }, 
+        "SegmentLegPropertyType" : {
+            "type" : [
+                "ArrivalLegType",
+                "DepartureLegType",
+                "ArrivalFeederLegType",
+                "FinalLegType",
+                "InitialLegType",
+                "IntermediateLegType",
+                "MissedApproachLegType"
+            ]
+        }, 
+        "RadarEquipmentPropertyType" : {
+            "type" : [
+                "PrecisionApproachRadarType",
+                "PrimarySurveillanceRadarType",
+                "SecondarySurveillanceRadarType"
+            ]
+        },
+        "ServicePropertyType" : {
+            "type" : [
+                "InformationServiceType",
+                "GroundTrafficControlServiceType",
+                "AirTrafficControlServiceType",
+                "AirTrafficManagementServiceType",
+                "SearchRescueServiceType",
+                "PassengerServiceType",
+                "AircraftGroundServiceType",
+                "FireFightingServiceType",
+                "AirportClearanceServiceType",
+                "AirportSuppliesServiceType"
+            ]
+        }
+    }
+}

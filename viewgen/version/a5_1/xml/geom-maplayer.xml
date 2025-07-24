@@ -95,22 +95,6 @@
         <Private>0</Private>
     </flags>
     <temporal/>
-    <!-- <temporal enabled="1"
-				accumulate="0"
-				durationField="row"
-				startField="valid_time_begin"
-				durationUnit="min"
-				limitMode="0"
-				endField="valid_time_end"
-				startExpression=""
-				mode="2"
-				endExpression=""
-				fixedDuration="0">
-		<fixedRange>
-			<start/>
-			<end/>
-		</fixedRange>
-	</temporal> -->
     <elevation/>
     <renderer-v2/>
     <selection mode="Default">
@@ -170,10 +154,7 @@
                     exp=""/>
     </constraintExpressions>
     <expressionfields/>
-    <attributeactions>
-        <defaultAction key="Canvas"
-                       value="{00000000-0000-0000-0000-000000000000}"/>
-    </attributeactions>
+    <attributeactions/>
     <attributetableconfig sortOrder="0"
                           sortExpression=""
                           actionWidgetStyle="dropDown">

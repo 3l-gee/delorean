@@ -264,9 +264,6 @@
     "datatyes" : [
 
     ],
-    "feature_association" : [
-        "AirportHeliportProtectionAreaPropertyType"
-    ],
     "ignore": [
         "PointType",
         "ElevatedPointType",

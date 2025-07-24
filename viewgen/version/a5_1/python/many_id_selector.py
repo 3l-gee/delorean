@@ -1,23 +1,19 @@
 from qgis.core import QgsProject 
 from qgis.utils import iface
+import re
 
-target_parameters = [
-    {
-        "name": "navaidcomponent",
-        "field": "id"
-    }
-]
+target_parameters = YYYY
 
 # data can be one of:
 # - str: a raw string possibly containing a UUID
 # - dict: a JSON-like object with nested structures
 # - list[dict]: a list of such dicts, each potentially containing a UUID
-id = '[%array_to_string(navaidequipment)%]'
+id = '[% array_to_string(XXXX) %]'
 
 id_list = [i.strip() for i in id.split(',') if i.strip().isdigit()]
 
 if not id_list:
-    iface.messageBar().pushInfo("Info", "No valid ID found.")
+    iface.messageBar().pushInfo("Info", f"No valid ID found in: {id}")
     exit()
 
 id_list_str = ', '.join(id_list)
@@ -33,8 +29,8 @@ for param in target_parameters:
         continue
         
     if not id:
-        continue  # no UUID to search
-
+        continue
+    
     # Build the expression to filter features by UUID
     expression = f'"{param["field"]}" IN ({id_list_str})'
 

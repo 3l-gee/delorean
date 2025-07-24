@@ -1,29 +1,23 @@
 from qgis.core import QgsProject 
 from qgis.utils import iface
-
 import re
-import json
+
 
 UUID_PATTERN = r'[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
 
-target_parameters = [
-    {
-        "name": "dme (location)",
-        "field": "identifier"
-    }
-]
+target_parameters = YYYY
 
 # data can be one of:
 # - str: a raw string possibly containing a UUID
 # - dict: a JSON-like object with nested structures
 # - list[dict]: a list of such dicts, each potentially containing a UUID
 data = '[% thenavaidequipment_href %]'
+
 uuid = re.findall(UUID_PATTERN, data, re.IGNORECASE)
 
 if not uuid:
     iface.messageBar().pushInfo("Info", f"UUID not found in: {data}")
-else:
-    iface.messageBar().pushInfo("Info", f"UUID found: {uuid}")
+    exit()
 
 uuid_list_str = ', '.join(f"'{u}'" for u in uuid)
 
@@ -38,7 +32,7 @@ for param in target_parameters:
         continue
         
     if not uuid:
-        continue  # no UUID to search
+        continue
 
     # Build the expression to filter features by UUID
     expression = f'"{param["field"]}" IN ({uuid_list_str})'

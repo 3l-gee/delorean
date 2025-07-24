@@ -74,22 +74,7 @@
 		<Searchable>1</Searchable>
 		<Private>0</Private>
 	</flags>
-	<!-- <temporal durationUnit="min"
-		durationField=""
-		endField=""
-		mode="0"
-		endExpression=""
-		fixedDuration="0"
-		startExpression=""
-		enabled="0"
-		limitMode="0"
-		startField=""
-		accumulate="0">
-		<fixedRange>
-			<start/>
-			<end/>
-		</fixedRange>
-	</temporal> -->
+	<temporal/>
 	<elevation/>
 	<customproperties>
 		<Option type="Map">

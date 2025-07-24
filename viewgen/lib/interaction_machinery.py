@@ -12,6 +12,7 @@ class InteractionMachinery:
     def __init__(self, name, parsing, input_path, output_path, directory,):
         self.name = name
         # Attribute
+        self.association_attr = GenericHeleperFunction.load_json(input_path, "association.json")
         self.qlr_attr = GenericHeleperFunction.load_json(input_path, "qlr.json")
         self.inheritance_attr = GenericHeleperFunction.load_json(input_path, "inheritance.json")
         self.formated_sql = GenericHeleperFunction.load_json(input_path, "sql.json")
@@ -21,7 +22,7 @@ class InteractionMachinery:
         self.publisher_qgis = GenericHeleperFunction.load_xml(input_path, "xml/publisher.qgs.ftl")
         self.layer_tree_group = GenericHeleperFunction.load_xml(input_path, "xml/layer-tree-group.xml")
 
-        self.parsing = Parsing(parsing, self.inheritance_attr, self.formated_sql, input_path)
+        self.parsing = Parsing(parsing, self.inheritance_attr, self.formated_sql, self.association_attr, self.qlr_attr,  input_path)
         self.qlr_generator = QLRGenerator(input_path)
         self.files = self.get_file_path(directory)
         self.layers = self.get_layers()
@@ -76,19 +77,27 @@ class InteractionMachinery:
         layer_tree_group = prj.find(".//layer-tree-group")
 
         layer_tree_group_dict = {}
-        
+        aixm_type_to_layer = {}
+
         for layer, _ in self.layers.values():
             if layer.get_type() not in self.ignore_set:
-                # print(json.dumps({'publish': layer.publish}))
+
+                if layer.get_type() not in aixm_type_to_layer : 
+                    aixm_type_to_layer[layer.get_type()] = []
+
+                aixm_type_to_layer[layer.get_type()].extend(self.qlr_generator.get_qlr_layer_names(layer))
 
                 # Adds qlr to layer tree group
                 if layer.get_schema() not in layer_tree_group_dict:
                     layer_tree_group_schema = copy.deepcopy(self.layer_tree_group)
                     layer_tree_group_schema.set("name", layer.get_schema())
                     layer_tree_group_dict[layer.get_schema()] = layer_tree_group_schema
+        
+        for layer, _ in self.layers.values():
+            if layer.get_type() not in self.ignore_set:
 
                 # generates qlr layer from layer publish information
-                list_qlr_bundle = self.qlr_generator.genrate_publish_qlr(layer)
+                list_qlr_bundle = self.qlr_generator.genrate_publish_qlr(layer, aixm_type_to_layer)
                 for qlr_bundle in list_qlr_bundle:
                     project_layers.append(qlr_bundle.get("layer"))
                     layer_tree_group_dict[layer.get_schema()].append(qlr_bundle.get("layertree"))

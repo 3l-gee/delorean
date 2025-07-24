@@ -1,33 +1,28 @@
 { 
     "TimesheetPropertyType" : {
         "one" : {
-            "geometrytype" : [],
             "form" : []
         },
         "many" : {
-            "geometrytype" : ["Point"],
             "form" : [
                 {
                     "field" : "timeinterval",
                     "name" : "timeinterval",
-                    "html" : "viewgen/version/a5_1/html/timesheet.html"
+                    "html" : "html/timesheet.html"
                 }
             ]
         }
     },
     "ContactInformationPropertyType" : {
         "one" : {
-            "geometrytype" : [],
             "form" : []
         },
         "many" : {
-            "geometrytype" : [],
             "form" : []
         }
     },
     "NotePropertyType" : {
         "one" : {
-            "geometrytype" : [],
             "form" : []
         },
         "many" : {
@@ -35,18 +30,16 @@
                 {
                 "field" : "annotation",
                 "name" : "annotation",
-                "html" : "viewgen/version/a5_1/html/annotation.html"
+                "html" : "html/annotation.html"
                 }
             ]
         }
     },
     "LinguisticNotePropertyType" : {   
         "one" : {
-            "geometrytype" : [],
             "form" : []
         },
         "many" : {
-            "geometrytype" : [],
             "form" : []
         }
     },

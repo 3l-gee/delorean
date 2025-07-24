@@ -34,7 +34,7 @@ class GenericHeleperFunction:
             raise ValueError(f"Invalid XML in '{name}': {e}")
         
     @staticmethod
-    def load_html(path, name):
+    def load_txt(path, name):
         file_path = os.path.join(path, name)
 
         if not os.path.exists(file_path):

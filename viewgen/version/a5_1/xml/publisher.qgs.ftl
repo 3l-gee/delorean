@@ -625,6 +625,11 @@
 		<SpatialRefSys>
 			<ProjectionsEnabled type="int">1</ProjectionsEnabled>
 		</SpatialRefSys>
+		<TemporalControllerWidget>
+			<EndDateTime type="QString">2030-01-01T00:00:00.000Z</EndDateTime>
+			<NavigationMode type="int">1</NavigationMode>
+			<StartDateTime type="QString">2030-01-01T00:00:00.000Z</StartDateTime>
+		</TemporalControllerWidget>
 		<WCSLayers type="QStringList"/>
 		<WCSUrl type="QString"/>
 		<WFSLayers type="QStringList"/>

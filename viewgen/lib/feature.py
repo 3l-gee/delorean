@@ -163,7 +163,12 @@ class Feature(Layer) :
                 "name" : f"{role}",
             })
 
-    def add_association_feature_one(self, schema, type, role, col):
+    def add_association_feature_one(self, schema, type, role, col, ref_types = None):
+        if ref_types is None:
+            ref_types = []
+
+        ref_types.append(type.replace("Property",""))
+
         name = GenericHeleperFunction.remove_suffix(type)
 
         if not self.attributes["attributes"].get(type):
@@ -195,6 +200,17 @@ class Feature(Layer) :
                 "type" : f"{type}",
                 "field": f"{role}_href",
                 "name" : f"Ref",
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/one_uuid_selector.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
             }
         ])
     
@@ -224,10 +240,26 @@ class Feature(Layer) :
                 "type" : f"{type}",
                 "field": f"{role}",
                 "name" : f"{role}",
+            },            
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/one_id_selector.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
             }
         ])
 
-    def add_association_feature_many(self, schema, type, role):
+    def add_association_feature_many(self, schema, type, role, ref_types = None):
+        if ref_types is None:
+            ref_types = []
+
+        ref_types.append(type.replace("Property",""))
+
         name = GenericHeleperFunction.remove_suffix(type)
 
         if not self.attributes["attributes"].get(type):
@@ -263,6 +295,17 @@ class Feature(Layer) :
                 "field": f"{role}",
                 "name" : f"{role}",
             },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/many_uuid_selector.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
+            }
         ])
 
     def add_association_object_many(self, schema, type, role):
@@ -297,6 +340,17 @@ class Feature(Layer) :
                 "type" : f"{type}",
                 "field": f"{role}",
                 "name" : f"{role}",
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/many_id_selector.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
             }
         ])
 
