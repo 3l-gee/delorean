@@ -85,10 +85,10 @@ public class DirectFlightSegmentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "directflightsegment_annotation", joinColumns = {
-        @JoinColumn(name = "directflightsegment_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(name = "end_fixDesignatedPoint", nillable = true)

@@ -76,45 +76,40 @@ public class SpecialDateTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSpecialDateType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "dateday_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "dateday_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateMonthDayType dateDay;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "dateyear_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "dateyear_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateYearType dateYear;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialdate_ts_annotation", joinColumns = {
-        @JoinColumn(name = "specialdate_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

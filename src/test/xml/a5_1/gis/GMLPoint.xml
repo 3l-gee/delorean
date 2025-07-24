@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message:AIXMBasicMessage 
+	xmlns:message="http://www.aixm.aero/schema/5.1/message" 
+	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gco="http://www.isotc211.org/2005/gco" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:gss="http://www.isotc211.org/2005/gss" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gsr="http://www.isotc211.org/2005/gsr" 
+	xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message 
+	http://www.aixm.aero/schema/5.1.1/message/AIXM_BasicMessage.xsd" 
+	gml:id="1">
+    <gml:boundedBy>
+    </gml:boundedBy>
+    <aixm:messageMetadata>
+    </aixm:messageMetadata>
+	<message:hasMember>
+		<!-- A.1 : EPSG:4326 / NE -->
+		<!-- Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) -->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000000">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000000</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_A.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_A.1">
+							<gml:pos>52.51630693440871 13.377717264214601</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- A.2 : EPSG:4326 / NW -->
+		<!-- The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000001">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000001</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_A.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_A.2">
+							<gml:pos>38.89763528280979 -77.03654820204511</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- A.3 : EPSG:4326 / SW -->
+		<!-- Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000002">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000002</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_A.3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_A.3">
+							<gml:pos>-24.589287528217096 -70.1916580926402</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- A.4 : EPSG:4326 / SE -->
+		<!-- Sydney Opera House, Australia (EPSG:4326 : lat -33.85704607534651 / lon 151.21496554537183 )-->
+		<aixm:NDB gml:id="00000000-0000-4000-9000-000000000003">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000003</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_A.4">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_A.4">
+							<gml:pos>-33.85704607534651 151.21496554537183</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- B.1 : CRS:84 / NE -->
+		<!-- Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) -->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000004">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000004</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_B.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="Point_B.1">
+							<gml:pos>13.377717264214601 52.51630693440871</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- B.2 : EPSG:4326 / NW -->
+		<!-- The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000005">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000005</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_B.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="Point_B.2">
+							<gml:pos>-77.03654820204511 38.89763528280979</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- B.3 : EPSG:4326 / SW -->
+		<!-- Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000006">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000006</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_B.3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="Point_B.3">
+							<gml:pos>-70.1916580926402 -24.589287528217096</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- B.4 : EPSG:4326 / SE -->
+		<!-- Sydney Opera House, Australia (EPSG:4326 : lat -33.85704607534651 / lon 151.21496554537183 )-->
+		<aixm:NDB gml:id="00000000-0000-4000-9000-000000000006">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000007</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_B.4">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:OGC:1.3:CRS84" gml:id="Point_B.4">
+							<gml:pos>151.21496554537183 -33.85704607534651</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- C.1 : EPSG:4326 / NE -->
+		<!-- Brandenburg Gate, Berlin, Germany (EPSG:4326 : Lat 52.516266 / Lon 13.377775) -->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000007">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000007</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_C.1">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_C.1">
+							<gml:pos srsName="urn:ogc:def:crs:OGC:1.3:CRS84">13.377717264214601 52.51630693440871</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- C.2 : EPSG:4326 / NW -->
+		<!-- The White House, Washington DC, USA (EPSG:4326 : Lat 38.897957 / Lon -77.036560)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000008">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000008</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_C.2">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_C.2">
+							<gml:pos srsName="urn:ogc:def:crs:OGC:1.3:CRS84">-77.03654820204511 38.89763528280979</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- C.3 : EPSG:4326 / SW -->
+		<!-- Extremely Large Telescope, Atacama, Chili (EPSG:4325 : lat -24.589287528217096 lon -70.1916580926402)-->
+		<aixm:NDB gml:id="uuid.00000000-0000-4000-9000-000000000009">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-000000000009</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_C.3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_C.3">
+							<gml:pos srsName="urn:ogc:def:crs:OGC:1.3:CRS84">-70.1916580926402 -24.589287528217096</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+	<message:hasMember>
+		<!-- C.4 : EPSG:4326 / SE -->
+		<!-- Sydney Opera House, Australia (EPSG:4326 : lat -33.85704607534651 / lon 151.21496554537183 )-->
+		<aixm:NDB gml:id="00000000-0000-4000-9000-0000000000010">
+			<gml:identifier codeSpace="urn:uuid:">00000000-0000-4000-9000-0000000000010</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:NDBTimeSlice gml:id="Point_C.4">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="vtNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="ltNDBDON12">
+							<gml:beginPosition>2025-01-01T00:00:00Z</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:location>
+						<aixm:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" gml:id="Point_C.4">
+							<gml:pos srsName="urn:ogc:def:crs:OGC:1.3:CRS84">151.21496554537183 -33.85704607534651</gml:pos>
+							<aixm:horizontalAccuracy/>
+						</aixm:ElevatedPoint>
+					</aixm:location>
+				</aixm:NDBTimeSlice>
+			</aixm:timeSlice>
+		</aixm:NDB>
+	</message:hasMember>
+</message:AIXMBasicMessage>

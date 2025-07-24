@@ -63,8 +63,8 @@ public class ApronLightSystemTimeSlicePropertyType {
     @JoinColumn(name = "apronlightsystemtimeslice_id", referencedColumnName = "id")
     protected ApronLightSystemTimeSliceType apronLightSystemTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "apronlightsystem_tsp_seq")
-    @SequenceGenerator(name = "apronlightsystem_tsp_seq", sequenceName = "apronlightsystem_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

@@ -55,10 +55,10 @@ public class VORType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "vor_timeslice", joinColumns = {
-        @JoinColumn(name = "vor_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "vor_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VORTimeSlicePropertyType> timeSlice;
 

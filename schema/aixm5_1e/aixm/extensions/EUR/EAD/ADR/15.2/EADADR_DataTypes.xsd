@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    version="15.2" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ead-adr="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../../ISO_19136_Schemas/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../../AIXM_DataTypes.xsd"/>
+    <simpleType name="CodeConditionalRouteBaseType">
+        <annotation>
+            <documentation>The type of conditional route, according to the Flexible use of Airspace rules.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="CDR_1">
+                        <annotation>
+                            <documentation>Conditional Route Type 1 (normally available for flight planning).</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CDR_2">
+                        <annotation>
+                            <documentation>Conditional Route Type 2 (normally not available for flight planning).</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CDR_3">
+                        <annotation>
+                            <documentation>Conditional Route Type 3 (available as ATC re-routing only).</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeConditionalRouteType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="ead-adr:CodeConditionalRouteBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <annotation>
+                        <documentation>Indicates the reason for a null value.</documentation>
+                    </annotation>
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodePointUsageBaseType">
+        <!--No annotation found for this element.-->
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="EN_ROUTE">
+                        <annotation>
+                            <documentation>Significant point used in En-route operations</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="FRA_ENTRY">
+                        <annotation>
+                            <documentation>Significant point on the horizontal boundary of the Free Route Airspace from which FRA operations are allowed</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="FRA_EXIT">
+                        <annotation>
+                            <documentation>Significant point on the horizontal boundary of the Free Route Airspace to which FRA operations are allowed</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="FRA_INTERMEDIATE">
+                        <annotation>
+                            <documentation>Significant point or unpublished point, defined by geographical coordinates or by bearing and distance via which FRA operations are allowed</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="FRA_ARRIVAL">
+                        <annotation>
+                            <documentation>Significant point to which FRA operations are allowed for arriving traffic to specific aerodromes</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="FRA_DEPARTURE">
+                        <annotation>
+                            <documentation>Significant point from which FRA operations are allowed for departing traffic from specific aerodromes</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="MILITARY">
+                        <annotation>
+                            <documentation>Significant point used in military operations</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="OCEANIC_ENTRY_EXIT">
+                        <annotation>
+                            <documentation>Significant point used at the border of oceanic control areas</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="TERMINAL">
+                        <annotation>
+                            <documentation>Significant point used in terminal area procedures (SID, STAR, IAP), not connected to FRA operations</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="VFR">
+                        <annotation>
+                            <documentation>Significant point used in VFR operations</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodePointUsageType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-adr:CodePointUsageBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+</schema>

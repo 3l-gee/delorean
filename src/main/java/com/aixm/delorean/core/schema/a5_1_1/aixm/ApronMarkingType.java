@@ -55,10 +55,10 @@ public class ApronMarkingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "apronmarking_timeslice", joinColumns = {
-        @JoinColumn(name = "apronmarking_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronmarking_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApronMarkingTimeSlicePropertyType> timeSlice;
 

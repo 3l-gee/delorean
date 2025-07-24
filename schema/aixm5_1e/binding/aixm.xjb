@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:annox="urn:jaxb.jvnet.org:annox" version="3.0" jaxb:extensionBindingPrefixes="xjc annox">
+    <!-- Core -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/AIXM_DataTypes.xsd" node="/xs:schema">
+  </jaxb:bindings> -->
+    <jaxb:bindings schemaLocation="../aixm/AIXM_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm"/>
+        </jaxb:schemaBindings>
+        <jaxb:globalBindings fixedAttributeAsConstantProperty="true" typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" generateIsSetMethod="true">
+            <xjc:noValidator/>
+            <xjc:noValidatingUnmarshaller/>
+        </jaxb:globalBindings>
+        <jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='AerialRefuellingPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='ApronPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='CityPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='AirportHeliportPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='AirspacePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='GeoBorderPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='RadarEquipmentPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='StandardLevelTablePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='ContactInformationPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='SpecialDatePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='ServicePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='NavaidPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='NavaidEquipmentPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='SpecialNavigationStationPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='SpecialNavigationSystemPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='DesignatedPointPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='AeronauticalGroundLightPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='OrganisationAuthorityPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='UnitPropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='VerticalStructurePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='ProcedurePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='RoutePropertyGroup']//xs:element[@name='name']">
+                <jaxb:property name="AIXMName"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../aixm/AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings>
+    <jaxb:bindings schemaLocation="../aixm/message/AIXM_BasicMessage.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.message"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <!-- Event -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/event/Event_Features.xsd" node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.event"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	<	jaxb:bindings schemaLocation="../aixm/event/Event_DataTypes.xsd" node="/xs:schema">
+	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/event/version_5.1-e/Event_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.event"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../aixm/event/version_5.1-e/Event_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- Extension -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/AMDB/AMDB_Extension_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.amdb"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.adr"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings> -->
+	<!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/ADR/ADR_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/eASM/eASM_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.easm"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/EUR/eASM/eASM_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/EUR/XSNOWTAM/Contamination_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.xsnow"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/EUR/XSNOWTAM/Contamination_Data_Types.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="../aixm/extensions/FAA/FNSE/FNSE_Features.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.aixm.delorean.core.schema.a5_1e.aixm.fnse"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings> -->
+    <!-- <jaxb:bindings schemaLocation="./aixm/extensions/FAA/FNSE/FNSE_DataTypes.xsd" node="/xs:schema">
+  	</jaxb:bindings> -->
+</jaxb:bindings>

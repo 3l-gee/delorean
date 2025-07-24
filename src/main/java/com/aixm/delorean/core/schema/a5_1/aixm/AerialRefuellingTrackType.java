@@ -70,40 +70,36 @@ public class AerialRefuellingTrackType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected CurvePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_point", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingpoint_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingPointPropertyType> point;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_verticalextent", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspacelayer_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceLayerPropertyType> verticalExtent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuellingtrack_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

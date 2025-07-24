@@ -1,0 +1,637 @@
+from machinery import Machinery
+from annotation import Tag, Strategy
+from view import View
+from content import Content
+from control import Control
+
+
+
+View({
+    "Event" : {
+        "schema" : "event",
+        "list" : [
+
+        ],
+    },
+    "Aerial Refuelling" : {
+        "schema" : "aerial_refuelling",
+        "list" : [
+            "AerialRefuelling",
+            "AerialRefuellingAnchor",
+            "AerialRefuellingPoint",
+            "AerialRefuellingTrack",
+            "AuthorityForAerialRefuelling",
+        ],
+    },
+    "Airport Heliport" : {
+        "schema" : "airport_heliport",
+        "list" : [
+            "AirportHeliport",
+            "AirportHeliportAvailability",
+            "AirportHeliportCollocation",
+            "AirportHeliportProtectionArea",
+            "AirportHeliportResponsibilityOrganisation",
+            "AirportHeliportUsage",
+            "AirportHotSpot",
+            "AltimeterSource",
+            "AltimeterSourceStatus",
+            "City",
+            "ConditionCombination",
+            "NonMovementArea",
+            "SurfaceCharacteristics",
+            "SurveyControlPoint",
+            "UsageCondition",
+            "WorkArea",
+            "WorkareaActivity",
+            "AircraftStand",
+            "Apron",
+            "ApronAreaAvailability",
+            "ApronAreaUsage",
+            "ApronElement",
+            "DeicingArea",
+            "PassengerLoadingBridge",
+            "Road",
+            "TouchDownLiftOff",
+            "TouchDownLiftOffSafeArea",
+            "ApproachLightingSystem",
+            "ApronLightSystem",
+            "GroundLightSystem",
+            "GroundLightingAvailability",
+            "GuidanceLineLightSystem",
+            "LightActivation",
+            "RunwayDirectionLightSystem",
+            "RunwayProtectAreaLightSystem",
+            "TaxiHoldingPositionLightSystem",
+            "TaxiwayLightSystem",
+            "TouchDownLiftOffLightSystem",
+            "AirportProtectionAreaMarking",
+            "ApronMarking",
+            "DeicingAreaMarking",
+            "GuidanceLineMarking",
+            "Marking",
+            "MarkingElement",
+            "MarkingExtent",
+            "RunwayMarking",
+            "StandMarking",
+            "TaxiHoldingPositionMarking",
+            "TaxiwayMarking",
+            "TouchDownLiftOffMarking",
+            "ArrestingGear",
+            "ArrestingGearExtent",
+            "ManoeuvringAreaAvailability",
+            "ManoeuvringAreaUsage",
+            "NavaidEquipmentDistance",
+            "Runway",
+            "RunwayBlastPad",
+            "RunwayCentrelinePoint",
+            "RunwayDeclaredDistance",
+            "RunwayDeclaredDistanceValue",
+            "RunwayDirection",
+            "RunwayElement",
+            "RunwayProtectArea",
+            "RunwayVisualRange",
+            "VisualGlideSlopeIndicator",
+            "FloatingDockSite",
+            "MarkingBuoy",
+            "SeaplaneLandingArea",
+            "SeaplaneRampSite",
+            "AircraftStandContamination",
+            "AirportHeliportContamination",
+            "ApronContamination",
+            "Ridge",
+            "RunwayContamination",
+            "RunwaySectionContamination",
+            "SurfaceContamination",
+            "SurfaceContaminationLayer",
+            "TaxiwayContamination",
+            "TouchDownLiftOffContamination",
+            "GuidanceLine",
+            "TaxiHoldingPosition",
+            "Taxiway",
+            "TaxiwayElement",
+        ],
+    },
+    "Airspace" : {
+        "schema" : "airspace",
+        "list" : [
+            "Airspace",
+            "AirspaceActivation",
+            "AirspaceGeometryComponent",
+            "AirspaceLayerClass",
+            "AirspaceVolume",
+            "AirspaceVolumeDependency",
+            "AuthorityForAirspace",
+            "GeoBorder",
+        ],
+    },
+    "Geometry" : {
+        "schema" : "geometry",
+        "list" : [
+            "PointPropertyType",
+            "CurvePropertyType",
+            "SurfacePropertyType",
+            "ElevatedPointPropertyType",
+            "ElevatedCurvePropertyType",
+            "ElevatedSurfacePropertyType",
+            "ElevatedPoint",
+            "ElevatedCurve",
+            "ElevatedSurface",
+            "Point",
+            "Curve",
+            "Surface",
+        ],
+    },
+    "Holding" : {
+        "schema" : "holding",
+        "list" : [
+            "HoldingPattern",
+            "HoldingPatternDistance",
+            "HoldingPatternDuration",
+            "HoldingPatternLength",
+            "UnplannedHolding",
+        ],
+    },
+    "Navaids Points" : {
+        "schema" : "navaids_points",
+        "list" : [
+            "GuidanceService",
+            "AuthorityForNavaidEquipment",
+            "AuthorityForSpecialNavigationStation",
+            "AuthorityForSpecialNavigationSystem",
+            "Azimuth",
+            "CheckpointINS",
+            "CheckpointVOR",
+            "DME",
+            "DirectionFinder",
+            "Elevation",
+            "Glidepath",
+            "Localizer",
+            "MarkerBeacon",
+            "NDB",
+            "Navaid",
+            "NavaidComponent",
+            "NavaidEquipment",
+            "NavaidEquipmentMonitoring",
+            "NavaidOperationalStatus",
+            "NavigationSystemCheckpoint",
+            "SDF",
+            "SpecialNavigationStation",
+            "SpecialNavigationStationStatus",
+            "SpecialNavigationSystem",
+            "TACAN",
+            "VOR",
+            "AngleIndication",
+            "AngleUse",
+            "DistanceIndication",
+            "EnRouteSegmentPoint",
+            "PointReference",
+            "SegmentPoint",
+            "TerminalSegmentPoint",
+            "DesignatedPoint",
+            "SignificantPoint",
+            "SignificantPointInAirspace",
+            "AeronauticalGroundLight",
+        ],
+    },
+    "Notes" : {
+        "schema" : "notes",
+        "list" : [
+            "LinguisticNote",
+            "Note"
+            ],
+    },
+    "Obstacles" : {
+        "schema" : "obstacles",
+        "list" : [
+            "ObstacleArea",
+            "ObstacleAreaOrigin",
+            "VerticalStructure",
+            "VerticalStructureLightingStatus",
+            "VerticalStructurePart",
+            "VerticalStructurePartGeometry",
+        ],
+    },
+    "Organisation" : {
+        "schema" : "organisation",
+        "list" : [
+            "OrganisationAuthority",
+            "OrganisationAuthorityAssociation",
+            "Unit",
+            "UnitAvailability",
+            "UnitDependency",
+        ],
+    },
+    "Procedure" : {
+        "schema" : "procedure",
+        "list" : [
+            "ApproachAltitudeTable",
+            "ApproachCondition",
+            "ApproachDistanceTable",
+            "ApproachTimingTable",
+            "FinalProfile",
+            "InstrumentApproachProcedure",
+            "MissedApproachGroup",
+            "TerminalArrivalArea",
+            "TerminalArrivalAreaSector",
+            "FASDataBlock",
+            "CirclingArea",
+            "CirclingRestriction",
+            "EquipmentUnavailableAdjustment",
+            "EquipmentUnavailableAdjustmentColumn",
+            "Minima",
+            "StandardInstrumentArrival",
+            "DepartureArrivalCondition",
+            "NavigationArea",
+            "NavigationAreaSector",
+            "SectorDesign",
+            "StandardInstrumentDeparture",
+            "SafeAltitudeArea",
+            "SafeAltitudeAreaSector",
+            "ApproachLeg",
+            "ArrivalFeederLeg",
+            "ArrivalLeg",
+            "DepartureLeg",
+            "FinalLeg",
+            "HoldingUse",
+            "InitialLeg",
+            "IntermediateLeg",
+            "LandingTakeoffAreaCollection",
+            "MissedApproachLeg",
+            "NavigationAreaRestriction",
+            "Procedure",
+            "ProcedureDME",
+            "ProcedureTransition",  
+            "ProcedureTransitionLeg",
+            "SegmentLeg",
+            "ProcedureAvailability",
+        ],
+    },
+    "Routes" : {
+        "schema" : "routes",
+        "list" : [
+            "ChangeOverPoint",
+            "Route",
+            "RouteAvailability",
+            "RouteDME",
+            "RoutePortion",  
+            "RouteSegment",
+            "AirspaceBorderCrossing",
+            "DirectFlight",
+            "DirectFlightClass",
+            "DirectFlightSegment",
+            "FlightConditionCircumstance",
+            "FlightConditionCombination",
+            "FlightConditionElement",
+            "FlightConditionElementChoice",
+            "FlightRestriction",
+            "FlightRestrictionLevel",
+            "FlightRestrictionRoute",
+            "FlightRoutingElement",
+            "FlightRoutingElementChoice",
+        ],
+    },
+    "Rules Procedures" : {
+        "schema" : "rules_procedures",
+        "list" : [
+            "RulesProcedures",
+        ],
+    },
+    "Service" : {
+        "schema" : "service",
+        "list" : [
+            "AirTrafficControlService",
+            "AirTrafficManagementService",
+            "AircraftGroundService",
+            "AirportClearanceService",
+            "AirportGroundService",
+            "AirportSuppliesService",
+            "CallsignDetail",
+            "FireFightingService",
+            "Fuel",
+            "GroundTrafficControlService",
+            "InformationService",
+            "Nitrogen",
+            "Oil",
+            "Oxygen",
+            "PassengerService",
+            "PilotControlledLighting",
+            "RadioCommunicationChannel",
+            "RadioCommunicationOperationalStatus",
+            "SearchRescueService",
+            "Service",
+            "ServiceOperationalStatus",
+            "TrafficSeparationService",
+        ],
+    },
+    "Shared" : {
+        "schema" : "shared",
+        "list" : [
+            "ContactInformation",
+            "OnlineContact",
+            "PostalAddress",
+            "TelephoneContact",
+            "AircraftCharacteristic",
+            "FlightCharacteristic",
+            "AirspaceLayer",
+            "CircleSector",
+            "LightElement",
+            "LightElementStatus",
+            "Meteorology",
+            "EquipmentChoice",
+            "RadioFrequencyArea",
+            "PropertiesWithSchedule",
+            "SpecialDate",
+            "Timesheet",
+            "StandardLevel",
+            "StandardLevelColumn",
+            "StandardLevelSector",
+            "StandardLevelTable",
+            "AltitudeAdjustment",
+            "HoldingAssessment",
+            "ObstacleAssessmentArea",
+            "ObstaclePlacement",
+            "Obstruction"
+        ],
+    },
+    "Surveillance" : {
+        "schema" : "surveillance",
+        "list" : [
+            "PrecisionApproachRadar",
+            "PrimarySurveillanceRadar",
+            "RadarComponent",
+            "RadarEquipment",
+            "RadarSystem",
+            "Reflector",
+            "SecondarySurveillanceRadar",
+            "SurveillanceGroundStation",
+            "SurveillanceRadar",
+        ],
+    }
+})
+config = {
+    "ignore": [
+        # TODO solve this   
+        "XHTMLType",
+
+        # Core
+        "AIXMBasicMessageType",
+        "AIXMBasicMessagePropertyGroup",
+        "BasicMessageMemberAIXMPropertyType",
+        "MessageMetadataPropertyType",
+        "FeatureMetadataPropertyType",
+        "FeatureTimeSliceMetadataPropertyType",
+        "MessageMetadataPropertyType,",
+
+        # Abstract
+        "AbstractAIXMMessageBaseType",
+        "AbstractAIXMMessageType",
+        "AbstractAIXMFeatureBaseType",
+        "AbstractAIXMFeatureType",
+        "AbstractAIXMTimeSliceBaseType",
+        "AbstractAIXMTimeSliceType",
+        "AbstractAIXMPropertyType",
+        "AbstractAIXMObjectBaseType",
+        "AbstractAIXMObjectType",
+
+        # Gis
+        "PointPropertyType",
+        "CurvePropertyType",
+        "SurfacePropertyType",
+        "ElevatedPointPropertyType",
+        "ElevatedCurvePropertyType",
+        "ElevatedSurfacePropertyType",
+    ],
+    "transient" : [       
+        # TODO solve this         
+        "extension",
+        "aixm:XHTMLType",
+
+        # Core
+        "aixm:AIXMBasicMessageType",
+        "aixm:AIXMBasicMessagePropertyGroup",
+        "aixm:BasicMessageMemberAIXMPropertyType",
+        "aixm:MessageMetadataPropertyType",
+        "aixm:FeatureMetadataPropertyType",
+        "aixm:FeatureTimeSliceMetadataPropertyType",
+        "aixm:MessageMetadataPropertyType,",
+
+        # Abstract
+        "aixm:AbstractDirectFlight",
+        "aixm:AbstractPropertiesWithSchedule",
+        "aixm:AbstractUsageConditio",
+        "aixm:AbstractSurfaceContamination",
+        "aixm:AbstractSegmentPoint",
+        "aixm:AbstractUsageCondition",
+        "aixm:AbstractAIXMMessageBaseType",
+        "aixm:AbstractAIXMMessageType",
+        "aixm:AbstractAIXMFeatureBaseType",
+        "aixm:AbstractAIXMFeatureType",
+        "aixm:AbstractAIXMTimeSliceBaseType",
+        "aixm:AbstractAIXMTimeSliceType",
+        "aixm:AbstractAIXMPropertyType",
+        "aixm:AbstractAIXMObjectBaseType",
+        "aixm:AbstractAIXMObjectType",
+    ],
+    "embed": [
+        "PointType",
+        "ElevatedPointType",
+        "CurveType",
+        "ElevatedCurveType",
+        "SurfaceType",
+        "ElevatedSurfaceType",
+        "DateTimeType"
+    ],
+    "abstract": [
+        "AbstractMarkingType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractRadarEquipmentType",
+        "AbstractExtensionType",
+        "AbstractUsageConditionType",
+        "AbstractSurfaceContaminationType",
+        "AbstractSegmentPointType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+    ],
+    "output_path": "schema/aixm5_1_1/binding/aixm.xjb",
+    "version" : "a5_1_1",
+}
+
+feature = {
+    "name" : "../aixm/AIXM_Features",
+    "path" : "schema/aixm5_1_1/aixm/AIXM_Features.xsd",
+    "strategy" : Strategy.feature,
+    "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm",
+    "manual" : "codegen/manual/a5_1_1/AIXM_Features.xjb"
+}
+
+data_types = {
+    "name" : "../aixm/AIXM_DataTypes",
+    "path" : "schema/aixm5_1_1/aixm/AIXM_DataTypes.xsd",
+    "strategy" : Strategy.data_type,
+    "manual" : "codegen/manual/a5_1_1/AIXM_DataTypes.xjb"
+}
+
+abstract = {
+    "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
+    "path" : "schema/aixm5_1_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
+    "strategy" : Strategy.abstract,
+    "manual" : "codegen/manual/a5_1_1/AIXM_AbstractGML_ObjectTypes.xjb"
+}
+
+message = {
+    "name" : "../aixm/message/AIXM_BasicMessage",
+    "path" : "schema/aixm5_1_1/aixm/message/AIXM_BasicMessage.xsd",
+    "strategy" : Strategy.other,
+    "package" : "com.aixm.delorean.core.schema.a5_1_1.aixm.message",
+    "manual" : "codegen/manual/a5_1_1/AIXM_BasicMessage.xjb"
+}
+
+
+
+out = Machinery(config, [data_types, feature, abstract, message])
+
+config = {
+    "ignore": [
+        # TODO solve this  
+        "StandardLevelColumnPropertyGroup.unitOfMeasurement",
+        "XHTMLType",
+
+        # Adapter
+        "DateType",
+        "DateTimeType",
+
+        # Core
+        "AIXMBasicMessageType",
+        "AIXMBasicMessagePropertyGroup",
+        "BasicMessageMemberAIXMPropertyType",
+        "MessageMetadataPropertyType",
+        "FeatureMetadataPropertyType",
+        "FeatureTimeSliceMetadataPropertyType",
+        "MessageMetadataPropertyType,",
+
+        # Gis
+        "PointPropertyType",
+        "CurvePropertyType",
+        "SurfacePropertyType",
+        "ElevatedPointPropertyType",
+        "ElevatedCurvePropertyType",
+        "ElevatedSurfacePropertyType",
+
+        # Core Abstract
+        "AbstractAIXMMessageBaseType",
+        "AbstractAIXMMessageType",
+        "AbstractAIXMFeatureBaseType",
+        "AbstractAIXMFeatureType",
+        "AbstractAIXMTimeSliceBaseType",
+        "AbstractAIXMTimeSliceType",
+        "AbstractAIXMPropertyType",
+        "AbstractAIXMObjectBaseType",
+        "AbstractAIXMObjectType",
+    ],
+    "transient" : [
+        # TODO solve this    
+        "extension",
+        "aixm:XHTMLType",
+
+        # Core
+        "aixm:AIXMBasicMessageType",
+        "aixm:AIXMBasicMessagePropertyGroup",
+        "aixm:BasicMessageMemberAIXMPropertyType",
+        "aixm:MessageMetadataPropertyType",
+        "aixm:FeatureMetadataPropertyType",
+        "aixm:FeatureTimeSliceMetadataPropertyType",
+        "aixm:MessageMetadataPropertyType,",
+
+        # Feature Abstract
+        "aixm:AbstractDirectFlight",
+        "aixm:AbstractPropertiesWithSchedule",
+        "aixm:AbstractUsageConditio",
+        "aixm:AbstractSurfaceContamination",
+        "aixm:AbstractSegmentPoint",
+        "aixm:AbstractUsageCondition",
+        "aixm:AbstractAIXMMessageBaseType",
+        "aixm:AbstractAIXMMessageType",
+        "aixm:AbstractAIXMFeatureBaseType",
+        "aixm:AbstractAIXMFeatureType",
+        "aixm:AbstractAIXMTimeSliceBaseType",
+        "aixm:AbstractAIXMTimeSliceType",
+        "aixm:AbstractAIXMPropertyType",
+        "aixm:AbstractAIXMObjectBaseType",
+        "aixm:AbstractAIXMObjectType",
+    ],
+    "embed": [
+        "PointType",
+        "ElevatedPointType",
+        "CurveType",
+        "ElevatedCurveType",
+        "SurfaceType",
+        "ElevatedSurfaceType",
+        "DateTimeType",
+        "DateType"
+    ],
+    "abstract": [
+        "AbstractMarkingType",
+        "AbstractAirportHeliportProtectionAreaType",
+        "AbstractGroundLightSystemType",
+        "AbstractNavigationSystemCheckpointType",
+        "AbstractNavaidEquipmentType",
+        "AbstractProcedureType",
+        "AbstractSegmentLegType",
+        "AbstractApproachLegType",
+        "AbstractServiceType",
+        "AbstractTrafficSeparationServiceType",
+        "AbstractAirportGroundServiceType",
+        "AbstractRadarEquipmentType",
+        "AbstractExtensionType",
+        "AbstractUsageConditionType",
+        "AbstractSurfaceContaminationType",
+        "AbstractSegmentPointType",
+        "AbstractDirectFlightType",
+        "AbstractPropertiesWithScheduleType",
+    ],
+    "output_path": "schema/aixm5_1/binding/aixm.xjb",
+    "version" : "a5_1",
+}
+
+
+feature = {
+    "name" : "../aixm/AIXM_Features",
+    "path" : "schema/aixm5_1/aixm/AIXM_Features.xsd",
+    "strategy" : Strategy.feature,
+    "package" : "com.aixm.delorean.core.schema.a5_1.aixm",
+    "manual" : "codegen/manual/a5_1/AIXM_Features.xjb"
+}
+
+data_types = {
+    "name" : "../aixm/AIXM_DataTypes",
+    "path" : "schema/aixm5_1/aixm/AIXM_DataTypes.xsd",
+    "strategy" : Strategy.data_type,
+    "manual" : "codegen/manual/a5_1/AIXM_DataTypes.xjb"
+}
+
+abstract = {
+    "name" : "../aixm/AIXM_AbstractGML_ObjectTypes",
+    "path" : "schema/aixm5_1/aixm/AIXM_AbstractGML_ObjectTypes.xsd",
+    "strategy" : Strategy.abstract,
+    "manual" : "codegen/manual/a5_1/AIXM_AbstractGML_ObjectTypes.xjb"
+}
+
+message = {
+    "name" : "../aixm/message/AIXM_BasicMessage",
+    "path" : "schema/aixm5_1/aixm/message/AIXM_BasicMessage.xsd",
+    "strategy" : Strategy.other,
+    "package" : "com.aixm.delorean.core.schema.a5_1.aixm.message",
+    "manual" : "codegen/manual/a5_1/AIXM_BasicMessage.xjb"
+}
+
+out = Machinery(config, [data_types, feature, abstract, message])
+

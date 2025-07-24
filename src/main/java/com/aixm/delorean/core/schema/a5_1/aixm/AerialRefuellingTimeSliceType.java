@@ -91,168 +91,148 @@ public class AerialRefuellingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "designatorprefix_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designatorprefix_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAerialRefuellingPrefixType designatorPrefix;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "designatornumber_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designatornumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType designatorNumber;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designatorsuffix_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "designatorsuffix_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designatorsuffix_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType designatorSuffix;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "designatordirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designatordirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCardinalDirectionType designatorDirection;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAerialRefuellingType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "radarbeaconsetting_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radarbeaconsetting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType radarBeaconSetting;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "xbandradarsetting_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "xbandradarsetting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType xbandRadarSetting;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "tankerchannel_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "tankerchannel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTACANChannelType tankerChannel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "receiverchannel_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "receiverchannel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTACANChannelType receiverChannel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "helicopterroute_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "helicopterroute_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType helicopterRoute;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "specialrefuelling_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "specialrefuelling_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType specialRefuelling;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "bidirectionaluse_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "bidirectionaluse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType bidirectionalUse;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "reversedirectionturn_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "reversedirectionturn_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType reverseDirectionTurn;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_availability", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RouteAvailabilityPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_protectingairspace", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> protectingAirspace;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_track", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellingtrack_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingTrackPropertyType> track;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_anchor", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuellinganchor_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingAnchorPropertyType> anchor;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "oppositetrack_id", referencedColumnName = "id")
     protected AerialRefuellingPropertyType oppositeTrack;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_managingorganisation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "authorityforaerialrefuelling_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AuthorityForAerialRefuellingPropertyType> managingOrganisation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_ts_annotation", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

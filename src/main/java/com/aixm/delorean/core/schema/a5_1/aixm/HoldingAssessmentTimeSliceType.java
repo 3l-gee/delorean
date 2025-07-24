@@ -84,7 +84,6 @@ public class HoldingAssessmentTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -92,14 +91,12 @@ public class HoldingAssessmentTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -107,14 +104,12 @@ public class HoldingAssessmentTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -122,21 +117,18 @@ public class HoldingAssessmentTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speedLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "patterntemplate_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType patternTemplate;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "turbulentair_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turbulentair_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType turbulentAir;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "leglengthtoward_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -144,7 +136,6 @@ public class HoldingAssessmentTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "leglengthtoward_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType legLengthToward;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "leglengthaway_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -152,42 +143,37 @@ public class HoldingAssessmentTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "leglengthaway_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType legLengthAway;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "holdingpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "unplannedholding_id", referencedColumnName = "id")
     protected UnplannedHoldingPropertyType unplannedHolding;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "assessedholdingpattern_id", referencedColumnName = "id")
     protected HoldingPatternPropertyType assessedHoldingPattern;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_ts_obstacleassessment", joinColumns = {
-        @JoinColumn(name = "holdingassessment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> obstacleAssessment;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_ts_annotation", joinColumns = {
-        @JoinColumn(name = "holdingassessment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

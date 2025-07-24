@@ -1,0 +1,8 @@
+<layer-tree-group name="name"
+                  checked="Qt::Checked"
+                  expanded="0"
+                  groupLayer="">
+    <customproperties>
+        <Option/>
+    </customproperties>
+</layer-tree-group>

@@ -1,0 +1,2749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+      	elementFormDefault="qualified"
+      	targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit"
+      	version="5.1.b"
+      	xmlns="http://www.w3.org/2001/XMLSchema"
+      	xmlns:ead-audit="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit"
+      	xmlns:aixm="http://www.aixm.aero/schema/5.1"
+      	xmlns:gml="http://www.opengis.net/gml/3.2"
+      	xmlns:xlink="http://www.w3.org/1999/xlink"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<import namespace="http://www.w3.org/1999/xlink"
+      		schemaLocation="../../../../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2"
+      		schemaLocation="../../../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1"
+      		schemaLocation="../../../../../AIXM_Features.xsd"/>
+	<include schemaLocation="./EADAudit_DataTypes.xsd"/>
+	<element name="AerialRefuellingExtension"
+       		substitutionGroup="aixm:AbstractAerialRefuellingExtension"
+       		type="ead-audit:AerialRefuellingExtensionType"/>
+	<complexType name="AerialRefuellingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AerialRefuellingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AerialRefuellingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportExtension"
+       		substitutionGroup="aixm:AbstractAirportHeliportExtension"
+       		type="ead-audit:AirportHeliportExtensionType"/>
+	<complexType name="AirportHeliportExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportHeliportExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportHeliportCollocationExtension"
+       		substitutionGroup="aixm:AbstractAirportHeliportCollocationExtension"
+       		type="ead-audit:AirportHeliportCollocationExtensionType"/>
+	<complexType name="AirportHeliportCollocationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportHeliportCollocationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportCollocationExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportHotSpotExtension"
+       		substitutionGroup="aixm:AbstractAirportHotSpotExtension"
+       		type="ead-audit:AirportHotSpotExtensionType"/>
+	<complexType name="AirportHotSpotExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportHotSpotExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHotSpotExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AltimeterSourceExtension"
+       		substitutionGroup="aixm:AbstractAltimeterSourceExtension"
+       		type="ead-audit:AltimeterSourceExtensionType"/>
+	<complexType name="AltimeterSourceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AltimeterSourceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AltimeterSourceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="NonMovementAreaExtension"
+       		substitutionGroup="aixm:AbstractNonMovementAreaExtension"
+       		type="ead-audit:NonMovementAreaExtensionType"/>
+	<complexType name="NonMovementAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:NonMovementAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NonMovementAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SurveyControlPointExtension"
+       		substitutionGroup="aixm:AbstractSurveyControlPointExtension"
+       		type="ead-audit:SurveyControlPointExtensionType"/>
+	<complexType name="SurveyControlPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SurveyControlPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SurveyControlPointExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="WorkAreaExtension"
+       		substitutionGroup="aixm:AbstractWorkAreaExtension"
+       		type="ead-audit:WorkAreaExtensionType"/>
+	<complexType name="WorkAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:WorkAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="WorkAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AircraftStandExtension"
+       		substitutionGroup="aixm:AbstractAircraftStandExtension"
+       		type="ead-audit:AircraftStandExtensionType"/>
+	<complexType name="AircraftStandExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AircraftStandExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftStandExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ApronExtension"
+       		substitutionGroup="aixm:AbstractApronExtension"
+       		type="ead-audit:ApronExtensionType"/>
+	<complexType name="ApronExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ApronExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ApronElementExtension"
+       		substitutionGroup="aixm:AbstractApronElementExtension"
+       		type="ead-audit:ApronElementExtensionType"/>
+	<complexType name="ApronElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ApronElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronElementExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaExtension"
+       		substitutionGroup="aixm:AbstractDeicingAreaExtension"
+       		type="ead-audit:DeicingAreaExtensionType"/>
+	<complexType name="DeicingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DeicingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="PassengerLoadingBridgeExtension"
+       		substitutionGroup="aixm:AbstractPassengerLoadingBridgeExtension"
+       		type="ead-audit:PassengerLoadingBridgeExtensionType"/>
+	<complexType name="PassengerLoadingBridgeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:PassengerLoadingBridgeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerLoadingBridgeExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RoadExtension"
+       		substitutionGroup="aixm:AbstractRoadExtension"
+       		type="ead-audit:RoadExtensionType"/>
+	<complexType name="RoadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RoadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RoadExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffExtension"
+       		substitutionGroup="aixm:AbstractTouchDownLiftOffExtension"
+       		type="ead-audit:TouchDownLiftOffExtensionType"/>
+	<complexType name="TouchDownLiftOffExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TouchDownLiftOffExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffSafeAreaExtension"
+       		substitutionGroup="aixm:AbstractTouchDownLiftOffSafeAreaExtension"
+       		type="ead-audit:TouchDownLiftOffSafeAreaExtensionType"/>
+	<complexType name="TouchDownLiftOffSafeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TouchDownLiftOffSafeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffSafeAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ApproachLightingSystemExtension"
+       		substitutionGroup="aixm:AbstractApproachLightingSystemExtension"
+       		type="ead-audit:ApproachLightingSystemExtensionType"/>
+	<complexType name="ApproachLightingSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ApproachLightingSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApproachLightingSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ApronLightSystemExtension"
+       		substitutionGroup="aixm:AbstractApronLightSystemExtension"
+       		type="ead-audit:ApronLightSystemExtensionType"/>
+	<complexType name="ApronLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ApronLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineLightSystemExtension"
+       		substitutionGroup="aixm:AbstractGuidanceLineLightSystemExtension"
+       		type="ead-audit:GuidanceLineLightSystemExtensionType"/>
+	<complexType name="GuidanceLineLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GuidanceLineLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionLightSystemExtension"
+       		substitutionGroup="aixm:AbstractRunwayDirectionLightSystemExtension"
+       		type="ead-audit:RunwayDirectionLightSystemExtensionType"/>
+	<complexType name="RunwayDirectionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayDirectionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaLightSystemExtension"
+       		substitutionGroup="aixm:AbstractRunwayProtectAreaLightSystemExtension"
+       		type="ead-audit:RunwayProtectAreaLightSystemExtensionType"/>
+	<complexType name="RunwayProtectAreaLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayProtectAreaLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionLightSystemExtension"
+       		substitutionGroup="aixm:AbstractTaxiHoldingPositionLightSystemExtension"
+       		type="ead-audit:TaxiHoldingPositionLightSystemExtensionType"/>
+	<complexType name="TaxiHoldingPositionLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiHoldingPositionLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayLightSystemExtension"
+       		substitutionGroup="aixm:AbstractTaxiwayLightSystemExtension"
+       		type="ead-audit:TaxiwayLightSystemExtensionType"/>
+	<complexType name="TaxiwayLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiwayLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffLightSystemExtension"
+       		substitutionGroup="aixm:AbstractTouchDownLiftOffLightSystemExtension"
+       		type="ead-audit:TouchDownLiftOffLightSystemExtensionType"/>
+	<complexType name="TouchDownLiftOffLightSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TouchDownLiftOffLightSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffLightSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportProtectionAreaMarkingExtension"
+       		substitutionGroup="aixm:AbstractAirportProtectionAreaMarkingExtension"
+       		type="ead-audit:AirportProtectionAreaMarkingExtensionType"/>
+	<complexType name="AirportProtectionAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportProtectionAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportProtectionAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ApronMarkingExtension"
+       		substitutionGroup="aixm:AbstractApronMarkingExtension"
+       		type="ead-audit:ApronMarkingExtensionType"/>
+	<complexType name="ApronMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ApronMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ApronMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DeicingAreaMarkingExtension"
+       		substitutionGroup="aixm:AbstractDeicingAreaMarkingExtension"
+       		type="ead-audit:DeicingAreaMarkingExtensionType"/>
+	<complexType name="DeicingAreaMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DeicingAreaMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DeicingAreaMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineMarkingExtension"
+       		substitutionGroup="aixm:AbstractGuidanceLineMarkingExtension"
+       		type="ead-audit:GuidanceLineMarkingExtensionType"/>
+	<complexType name="GuidanceLineMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GuidanceLineMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayMarkingExtension"
+       		substitutionGroup="aixm:AbstractRunwayMarkingExtension"
+       		type="ead-audit:RunwayMarkingExtensionType"/>
+	<complexType name="RunwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandMarkingExtension"
+       		substitutionGroup="aixm:AbstractStandMarkingExtension"
+       		type="ead-audit:StandMarkingExtensionType"/>
+	<complexType name="StandMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionMarkingExtension"
+       		substitutionGroup="aixm:AbstractTaxiHoldingPositionMarkingExtension"
+       		type="ead-audit:TaxiHoldingPositionMarkingExtensionType"/>
+	<complexType name="TaxiHoldingPositionMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiHoldingPositionMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayMarkingExtension"
+       		substitutionGroup="aixm:AbstractTaxiwayMarkingExtension"
+       		type="ead-audit:TaxiwayMarkingExtensionType"/>
+	<complexType name="TaxiwayMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiwayMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TouchDownLiftOffMarkingExtension"
+       		substitutionGroup="aixm:AbstractTouchDownLiftOffMarkingExtension"
+       		type="ead-audit:TouchDownLiftOffMarkingExtensionType"/>
+	<complexType name="TouchDownLiftOffMarkingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TouchDownLiftOffMarkingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TouchDownLiftOffMarkingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ArrestingGearExtension"
+       		substitutionGroup="aixm:AbstractArrestingGearExtension"
+       		type="ead-audit:ArrestingGearExtensionType"/>
+	<complexType name="ArrestingGearExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ArrestingGearExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrestingGearExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayExtension"
+       		substitutionGroup="aixm:AbstractRunwayExtension"
+       		type="ead-audit:RunwayExtensionType"/>
+	<complexType name="RunwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayBlastPadExtension"
+       		substitutionGroup="aixm:AbstractRunwayBlastPadExtension"
+       		type="ead-audit:RunwayBlastPadExtensionType"/>
+	<complexType name="RunwayBlastPadExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayBlastPadExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayBlastPadExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayCentrelinePointExtension"
+       		substitutionGroup="aixm:AbstractRunwayCentrelinePointExtension"
+       		type="ead-audit:RunwayCentrelinePointExtensionType"/>
+	<complexType name="RunwayCentrelinePointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayCentrelinePointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayCentrelinePointExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayDirectionExtension"
+       		substitutionGroup="aixm:AbstractRunwayDirectionExtension"
+       		type="ead-audit:RunwayDirectionExtensionType"/>
+	<complexType name="RunwayDirectionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayDirectionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayDirectionExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayElementExtension"
+       		substitutionGroup="aixm:AbstractRunwayElementExtension"
+       		type="ead-audit:RunwayElementExtensionType"/>
+	<complexType name="RunwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayElementExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayProtectAreaExtension"
+       		substitutionGroup="aixm:AbstractRunwayProtectAreaExtension"
+       		type="ead-audit:RunwayProtectAreaExtensionType"/>
+	<complexType name="RunwayProtectAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayProtectAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayProtectAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RunwayVisualRangeExtension"
+       		substitutionGroup="aixm:AbstractRunwayVisualRangeExtension"
+       		type="ead-audit:RunwayVisualRangeExtensionType"/>
+	<complexType name="RunwayVisualRangeExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RunwayVisualRangeExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RunwayVisualRangeExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="VisualGlideSlopeIndicatorExtension"
+       		substitutionGroup="aixm:AbstractVisualGlideSlopeIndicatorExtension"
+       		type="ead-audit:VisualGlideSlopeIndicatorExtensionType"/>
+	<complexType name="VisualGlideSlopeIndicatorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:VisualGlideSlopeIndicatorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VisualGlideSlopeIndicatorExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="FloatingDockSiteExtension"
+       		substitutionGroup="aixm:AbstractFloatingDockSiteExtension"
+       		type="ead-audit:FloatingDockSiteExtensionType"/>
+	<complexType name="FloatingDockSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:FloatingDockSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FloatingDockSiteExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="MarkingBuoyExtension"
+       		substitutionGroup="aixm:AbstractMarkingBuoyExtension"
+       		type="ead-audit:MarkingBuoyExtensionType"/>
+	<complexType name="MarkingBuoyExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:MarkingBuoyExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkingBuoyExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneLandingAreaExtension"
+       		substitutionGroup="aixm:AbstractSeaplaneLandingAreaExtension"
+       		type="ead-audit:SeaplaneLandingAreaExtensionType"/>
+	<complexType name="SeaplaneLandingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SeaplaneLandingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneLandingAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SeaplaneRampSiteExtension"
+       		substitutionGroup="aixm:AbstractSeaplaneRampSiteExtension"
+       		type="ead-audit:SeaplaneRampSiteExtensionType"/>
+	<complexType name="SeaplaneRampSiteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SeaplaneRampSiteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SeaplaneRampSiteExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GuidanceLineExtension"
+       		substitutionGroup="aixm:AbstractGuidanceLineExtension"
+       		type="ead-audit:GuidanceLineExtensionType"/>
+	<complexType name="GuidanceLineExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GuidanceLineExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GuidanceLineExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiHoldingPositionExtension"
+       		substitutionGroup="aixm:AbstractTaxiHoldingPositionExtension"
+       		type="ead-audit:TaxiHoldingPositionExtensionType"/>
+	<complexType name="TaxiHoldingPositionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiHoldingPositionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiHoldingPositionExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayExtension"
+       		substitutionGroup="aixm:AbstractTaxiwayExtension"
+       		type="ead-audit:TaxiwayExtensionType"/>
+	<complexType name="TaxiwayExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiwayExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TaxiwayElementExtension"
+       		substitutionGroup="aixm:AbstractTaxiwayElementExtension"
+       		type="ead-audit:TaxiwayElementExtensionType"/>
+	<complexType name="TaxiwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TaxiwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayElementExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension"
+       		substitutionGroup="aixm:AbstractAirspaceExtension"
+       		type="ead-audit:AirspaceExtensionType"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AuthorityForAirspaceExtension"
+       		substitutionGroup="aixm:AbstractAuthorityForAirspaceExtension"
+       		type="ead-audit:AuthorityForAirspaceExtensionType"/>
+	<complexType name="AuthorityForAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AuthorityForAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AuthorityForAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GeoBorderExtension"
+       		substitutionGroup="aixm:AbstractGeoBorderExtension"
+       		type="ead-audit:GeoBorderExtensionType"/>
+	<complexType name="GeoBorderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GeoBorderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GeoBorderExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="HoldingPatternExtension"
+       		substitutionGroup="aixm:AbstractHoldingPatternExtension"
+       		type="ead-audit:HoldingPatternExtensionType"/>
+	<complexType name="HoldingPatternExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:HoldingPatternExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingPatternExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="UnplannedHoldingExtension"
+       		substitutionGroup="aixm:AbstractUnplannedHoldingExtension"
+       		type="ead-audit:UnplannedHoldingExtensionType"/>
+	<complexType name="UnplannedHoldingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:UnplannedHoldingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnplannedHoldingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AzimuthExtension"
+       		substitutionGroup="aixm:AbstractAzimuthExtension"
+       		type="ead-audit:AzimuthExtensionType"/>
+	<complexType name="AzimuthExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AzimuthExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AzimuthExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="CheckpointINSExtension"
+       		substitutionGroup="aixm:AbstractCheckpointINSExtension"
+       		type="ead-audit:CheckpointINSExtensionType"/>
+	<complexType name="CheckpointINSExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:CheckpointINSExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointINSExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="CheckpointVORExtension"
+       		substitutionGroup="aixm:AbstractCheckpointVORExtension"
+       		type="ead-audit:CheckpointVORExtensionType"/>
+	<complexType name="CheckpointVORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:CheckpointVORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CheckpointVORExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DirectionFinderExtension"
+       		substitutionGroup="aixm:AbstractDirectionFinderExtension"
+       		type="ead-audit:DirectionFinderExtensionType"/>
+	<complexType name="DirectionFinderExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DirectionFinderExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DirectionFinderExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DMEExtension"
+       		substitutionGroup="aixm:AbstractDMEExtension"
+       		type="ead-audit:DMEExtensionType"/>
+	<complexType name="DMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DMEExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ElevationExtension"
+       		substitutionGroup="aixm:AbstractElevationExtension"
+       		type="ead-audit:ElevationExtensionType"/>
+	<complexType name="ElevationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ElevationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ElevationExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GlidepathExtension"
+       		substitutionGroup="aixm:AbstractGlidepathExtension"
+       		type="ead-audit:GlidepathExtensionType"/>
+	<complexType name="GlidepathExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GlidepathExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GlidepathExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="LocalizerExtension"
+       		substitutionGroup="aixm:AbstractLocalizerExtension"
+       		type="ead-audit:LocalizerExtensionType"/>
+	<complexType name="LocalizerExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:LocalizerExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="LocalizerExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="MarkerBeaconExtension"
+       		substitutionGroup="aixm:AbstractMarkerBeaconExtension"
+       		type="ead-audit:MarkerBeaconExtensionType"/>
+	<complexType name="MarkerBeaconExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:MarkerBeaconExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MarkerBeaconExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="NavaidExtension"
+       		substitutionGroup="aixm:AbstractNavaidExtension"
+       		type="ead-audit:NavaidExtensionType"/>
+	<complexType name="NavaidExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:NavaidExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavaidExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="NDBExtension"
+       		substitutionGroup="aixm:AbstractNDBExtension"
+       		type="ead-audit:NDBExtensionType"/>
+	<complexType name="NDBExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:NDBExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NDBExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SDFExtension"
+       		substitutionGroup="aixm:AbstractSDFExtension"
+       		type="ead-audit:SDFExtensionType"/>
+	<complexType name="SDFExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SDFExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SDFExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationStationExtension"
+       		substitutionGroup="aixm:AbstractSpecialNavigationStationExtension"
+       		type="ead-audit:SpecialNavigationStationExtensionType"/>
+	<complexType name="SpecialNavigationStationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SpecialNavigationStationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationStationExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SpecialNavigationSystemExtension"
+       		substitutionGroup="aixm:AbstractSpecialNavigationSystemExtension"
+       		type="ead-audit:SpecialNavigationSystemExtensionType"/>
+	<complexType name="SpecialNavigationSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SpecialNavigationSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialNavigationSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TACANExtension"
+       		substitutionGroup="aixm:AbstractTACANExtension"
+       		type="ead-audit:TACANExtensionType"/>
+	<complexType name="TACANExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TACANExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TACANExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="VORExtension"
+       		substitutionGroup="aixm:AbstractVORExtension"
+       		type="ead-audit:VORExtensionType"/>
+	<complexType name="VORExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:VORExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VORExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AngleIndicationExtension"
+       		substitutionGroup="aixm:AbstractAngleIndicationExtension"
+       		type="ead-audit:AngleIndicationExtensionType"/>
+	<complexType name="AngleIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AngleIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AngleIndicationExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DistanceIndicationExtension"
+       		substitutionGroup="aixm:AbstractDistanceIndicationExtension"
+       		type="ead-audit:DistanceIndicationExtensionType"/>
+	<complexType name="DistanceIndicationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DistanceIndicationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DistanceIndicationExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DesignatedPointExtension"
+       		substitutionGroup="aixm:AbstractDesignatedPointExtension"
+       		type="ead-audit:DesignatedPointExtensionType"/>
+	<complexType name="DesignatedPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DesignatedPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DesignatedPointExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SignificantPointInAirspaceExtension"
+       		substitutionGroup="aixm:AbstractSignificantPointInAirspaceExtension"
+       		type="ead-audit:SignificantPointInAirspaceExtensionType"/>
+	<complexType name="SignificantPointInAirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SignificantPointInAirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SignificantPointInAirspaceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AeronauticalGroundLightExtension"
+       		substitutionGroup="aixm:AbstractAeronauticalGroundLightExtension"
+       		type="ead-audit:AeronauticalGroundLightExtensionType"/>
+	<complexType name="AeronauticalGroundLightExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AeronauticalGroundLightExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AeronauticalGroundLightExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ObstacleAreaExtension"
+       		substitutionGroup="aixm:AbstractObstacleAreaExtension"
+       		type="ead-audit:ObstacleAreaExtensionType"/>
+	<complexType name="ObstacleAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ObstacleAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ObstacleAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="VerticalStructureExtension"
+       		substitutionGroup="aixm:AbstractVerticalStructureExtension"
+       		type="ead-audit:VerticalStructureExtensionType"/>
+	<complexType name="VerticalStructureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:VerticalStructureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="VerticalStructureExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="OrganisationAuthorityExtension"
+       		substitutionGroup="aixm:AbstractOrganisationAuthorityExtension"
+       		type="ead-audit:OrganisationAuthorityExtensionType"/>
+	<complexType name="OrganisationAuthorityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:OrganisationAuthorityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="OrganisationAuthorityExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="UnitExtension"
+       		substitutionGroup="aixm:AbstractUnitExtension"
+       		type="ead-audit:UnitExtensionType"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="InstrumentApproachProcedureExtension"
+       		substitutionGroup="aixm:AbstractInstrumentApproachProcedureExtension"
+       		type="ead-audit:InstrumentApproachProcedureExtensionType"/>
+	<complexType name="InstrumentApproachProcedureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:InstrumentApproachProcedureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InstrumentApproachProcedureExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="TerminalArrivalAreaExtension"
+       		substitutionGroup="aixm:AbstractTerminalArrivalAreaExtension"
+       		type="ead-audit:TerminalArrivalAreaExtensionType"/>
+	<complexType name="TerminalArrivalAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:TerminalArrivalAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TerminalArrivalAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="CirclingAreaExtension"
+       		substitutionGroup="aixm:AbstractCirclingAreaExtension"
+       		type="ead-audit:CirclingAreaExtensionType"/>
+	<complexType name="CirclingAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:CirclingAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="CirclingAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentArrivalExtension"
+       		substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension"
+       		type="ead-audit:StandardInstrumentArrivalExtensionType"/>
+	<complexType name="StandardInstrumentArrivalExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandardInstrumentArrivalExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentArrivalExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaExtension"
+       		substitutionGroup="aixm:AbstractNavigationAreaExtension"
+       		type="ead-audit:NavigationAreaExtensionType"/>
+	<complexType name="NavigationAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:NavigationAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentDepartureExtension"
+       		substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension"
+       		type="ead-audit:StandardInstrumentDepartureExtensionType"/>
+	<complexType name="StandardInstrumentDepartureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandardInstrumentDepartureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentDepartureExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SafeAltitudeAreaExtension"
+       		substitutionGroup="aixm:AbstractSafeAltitudeAreaExtension"
+       		type="ead-audit:SafeAltitudeAreaExtensionType"/>
+	<complexType name="SafeAltitudeAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SafeAltitudeAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SafeAltitudeAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ArrivalFeederLegExtension"
+       		substitutionGroup="aixm:AbstractArrivalFeederLegExtension"
+       		type="ead-audit:ArrivalFeederLegExtensionType"/>
+	<complexType name="ArrivalFeederLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ArrivalFeederLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalFeederLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ArrivalLegExtension"
+       		substitutionGroup="aixm:AbstractArrivalLegExtension"
+       		type="ead-audit:ArrivalLegExtensionType"/>
+	<complexType name="ArrivalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ArrivalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ArrivalLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="DepartureLegExtension"
+       		substitutionGroup="aixm:AbstractDepartureLegExtension"
+       		type="ead-audit:DepartureLegExtensionType"/>
+	<complexType name="DepartureLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:DepartureLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="DepartureLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="FinalLegExtension"
+       		substitutionGroup="aixm:AbstractFinalLegExtension"
+       		type="ead-audit:FinalLegExtensionType"/>
+	<complexType name="FinalLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:FinalLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FinalLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="InitialLegExtension"
+       		substitutionGroup="aixm:AbstractInitialLegExtension"
+       		type="ead-audit:InitialLegExtensionType"/>
+	<complexType name="InitialLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:InitialLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InitialLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="IntermediateLegExtension"
+       		substitutionGroup="aixm:AbstractIntermediateLegExtension"
+       		type="ead-audit:IntermediateLegExtensionType"/>
+	<complexType name="IntermediateLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:IntermediateLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="IntermediateLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="MissedApproachLegExtension"
+       		substitutionGroup="aixm:AbstractMissedApproachLegExtension"
+       		type="ead-audit:MissedApproachLegExtensionType"/>
+	<complexType name="MissedApproachLegExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:MissedApproachLegExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="MissedApproachLegExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="NavigationAreaRestrictionExtension"
+       		substitutionGroup="aixm:AbstractNavigationAreaRestrictionExtension"
+       		type="ead-audit:NavigationAreaRestrictionExtensionType"/>
+	<complexType name="NavigationAreaRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:NavigationAreaRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="NavigationAreaRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ProcedureDMEExtension"
+       		substitutionGroup="aixm:AbstractProcedureDMEExtension"
+       		type="ead-audit:ProcedureDMEExtensionType"/>
+	<complexType name="ProcedureDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ProcedureDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ProcedureDMEExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="ChangeOverPointExtension"
+       		substitutionGroup="aixm:AbstractChangeOverPointExtension"
+       		type="ead-audit:ChangeOverPointExtensionType"/>
+	<complexType name="ChangeOverPointExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:ChangeOverPointExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ChangeOverPointExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RouteExtension"
+       		substitutionGroup="aixm:AbstractRouteExtension"
+       		type="ead-audit:RouteExtensionType"/>
+	<complexType name="RouteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RouteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RouteDMEExtension"
+       		substitutionGroup="aixm:AbstractRouteDMEExtension"
+       		type="ead-audit:RouteDMEExtensionType"/>
+	<complexType name="RouteDMEExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RouteDMEExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteDMEExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RouteSegmentExtension"
+       		substitutionGroup="aixm:AbstractRouteSegmentExtension"
+       		type="ead-audit:RouteSegmentExtensionType"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirspaceBorderCrossingExtension"
+       		substitutionGroup="aixm:AbstractAirspaceBorderCrossingExtension"
+       		type="ead-audit:AirspaceBorderCrossingExtensionType"/>
+	<complexType name="AirspaceBorderCrossingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirspaceBorderCrossingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceBorderCrossingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="FlightRestrictionExtension"
+       		substitutionGroup="aixm:AbstractFlightRestrictionExtension"
+       		type="ead-audit:FlightRestrictionExtensionType"/>
+	<complexType name="FlightRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:FlightRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RulesProceduresExtension"
+       		substitutionGroup="aixm:AbstractRulesProceduresExtension"
+       		type="ead-audit:RulesProceduresExtensionType"/>
+	<complexType name="RulesProceduresExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RulesProceduresExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RulesProceduresExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AircraftGroundServiceExtension"
+       		substitutionGroup="aixm:AbstractAircraftGroundServiceExtension"
+       		type="ead-audit:AircraftGroundServiceExtensionType"/>
+	<complexType name="AircraftGroundServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AircraftGroundServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AircraftGroundServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportClearanceServiceExtension"
+       		substitutionGroup="aixm:AbstractAirportClearanceServiceExtension"
+       		type="ead-audit:AirportClearanceServiceExtensionType"/>
+	<complexType name="AirportClearanceServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportClearanceServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportClearanceServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirportSuppliesServiceExtension"
+       		substitutionGroup="aixm:AbstractAirportSuppliesServiceExtension"
+       		type="ead-audit:AirportSuppliesServiceExtensionType"/>
+	<complexType name="AirportSuppliesServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirportSuppliesServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportSuppliesServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficControlServiceExtension"
+       		substitutionGroup="aixm:AbstractAirTrafficControlServiceExtension"
+       		type="ead-audit:AirTrafficControlServiceExtensionType"/>
+	<complexType name="AirTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="AirTrafficManagementServiceExtension"
+       		substitutionGroup="aixm:AbstractAirTrafficManagementServiceExtension"
+       		type="ead-audit:AirTrafficManagementServiceExtensionType"/>
+	<complexType name="AirTrafficManagementServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:AirTrafficManagementServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirTrafficManagementServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="FireFightingServiceExtension"
+       		substitutionGroup="aixm:AbstractFireFightingServiceExtension"
+       		type="ead-audit:FireFightingServiceExtensionType"/>
+	<complexType name="FireFightingServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:FireFightingServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FireFightingServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="GroundTrafficControlServiceExtension"
+       		substitutionGroup="aixm:AbstractGroundTrafficControlServiceExtension"
+       		type="ead-audit:GroundTrafficControlServiceExtensionType"/>
+	<complexType name="GroundTrafficControlServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:GroundTrafficControlServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="GroundTrafficControlServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="InformationServiceExtension"
+       		substitutionGroup="aixm:AbstractInformationServiceExtension"
+       		type="ead-audit:InformationServiceExtensionType"/>
+	<complexType name="InformationServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:InformationServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="InformationServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="PassengerServiceExtension"
+       		substitutionGroup="aixm:AbstractPassengerServiceExtension"
+       		type="ead-audit:PassengerServiceExtensionType"/>
+	<complexType name="PassengerServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:PassengerServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PassengerServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="PilotControlledLightingExtension"
+       		substitutionGroup="aixm:AbstractPilotControlledLightingExtension"
+       		type="ead-audit:PilotControlledLightingExtensionType"/>
+	<complexType name="PilotControlledLightingExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:PilotControlledLightingExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PilotControlledLightingExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RadioCommunicationChannelExtension"
+       		substitutionGroup="aixm:AbstractRadioCommunicationChannelExtension"
+       		type="ead-audit:RadioCommunicationChannelExtensionType"/>
+	<complexType name="RadioCommunicationChannelExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RadioCommunicationChannelExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioCommunicationChannelExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SearchRescueServiceExtension"
+       		substitutionGroup="aixm:AbstractSearchRescueServiceExtension"
+       		type="ead-audit:SearchRescueServiceExtensionType"/>
+	<complexType name="SearchRescueServiceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SearchRescueServiceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SearchRescueServiceExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RadioFrequencyAreaExtension"
+       		substitutionGroup="aixm:AbstractRadioFrequencyAreaExtension"
+       		type="ead-audit:RadioFrequencyAreaExtensionType"/>
+	<complexType name="RadioFrequencyAreaExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RadioFrequencyAreaExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadioFrequencyAreaExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SpecialDateExtension"
+       		substitutionGroup="aixm:AbstractSpecialDateExtension"
+       		type="ead-audit:SpecialDateExtensionType"/>
+	<complexType name="SpecialDateExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SpecialDateExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialDateExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelColumnExtension"
+       		substitutionGroup="aixm:AbstractStandardLevelColumnExtension"
+       		type="ead-audit:StandardLevelColumnExtensionType"/>
+	<complexType name="StandardLevelColumnExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandardLevelColumnExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelColumnExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelSectorExtension"
+       		substitutionGroup="aixm:AbstractStandardLevelSectorExtension"
+       		type="ead-audit:StandardLevelSectorExtensionType"/>
+	<complexType name="StandardLevelSectorExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandardLevelSectorExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelSectorExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="StandardLevelTableExtension"
+       		substitutionGroup="aixm:AbstractStandardLevelTableExtension"
+       		type="ead-audit:StandardLevelTableExtensionType"/>
+	<complexType name="StandardLevelTableExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:StandardLevelTableExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardLevelTableExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="HoldingAssessmentExtension"
+       		substitutionGroup="aixm:AbstractHoldingAssessmentExtension"
+       		type="ead-audit:HoldingAssessmentExtensionType"/>
+	<complexType name="HoldingAssessmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:HoldingAssessmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="HoldingAssessmentExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="PrecisionApproachRadarExtension"
+       		substitutionGroup="aixm:AbstractPrecisionApproachRadarExtension"
+       		type="ead-audit:PrecisionApproachRadarExtensionType"/>
+	<complexType name="PrecisionApproachRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:PrecisionApproachRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrecisionApproachRadarExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="PrimarySurveillanceRadarExtension"
+       		substitutionGroup="aixm:AbstractPrimarySurveillanceRadarExtension"
+       		type="ead-audit:PrimarySurveillanceRadarExtensionType"/>
+	<complexType name="PrimarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:PrimarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PrimarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="RadarSystemExtension"
+       		substitutionGroup="aixm:AbstractRadarSystemExtension"
+       		type="ead-audit:RadarSystemExtensionType"/>
+	<complexType name="RadarSystemExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:RadarSystemExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RadarSystemExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="SecondarySurveillanceRadarExtension"
+       		substitutionGroup="aixm:AbstractSecondarySurveillanceRadarExtension"
+       		type="ead-audit:SecondarySurveillanceRadarExtensionType"/>
+	<complexType name="SecondarySurveillanceRadarExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="ead-audit:SecondarySurveillanceRadarExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SecondarySurveillanceRadarExtensionPropertyGroup">
+		<sequence>
+			<element maxOccurs="1"
+       				minOccurs="0"
+       				name="auditInformation"
+       				nillable="true"
+       				type="ead-audit:AuditPropertyType"/>
+		</sequence>
+	</group>
+	<element name="Audit"
+       		type="ead-audit:AuditType">
+		<annotation>
+			<documentation>Records the metadata associated with the time slice management</documentation>
+		</annotation>
+	</element>
+	<complexType name="AuditType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="ead-audit:AuditPropertyGroup"/>
+					<element maxOccurs="unbounded"
+       						minOccurs="0"
+       						name="extension">
+						<complexType>
+							<choice>
+								<element ref="ead-audit:AbstractAuditExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AuditPropertyGroup">
+		<sequence>
+			<element minOccurs="0"
+       				name="createdBy"
+       				nillable="true"
+       				type="ead-audit:TextUserNameType">
+				<annotation>
+					<documentation>The user who created the feature time slice.</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0"
+       				name="creationDate"
+       				nillable="true"
+       				type="aixm:DateTimeType">
+				<annotation>
+					<documentation>The date and time  the feature time slice has been created in the EAD system (timestamp).</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0"
+       				name="createdByOrg"
+       				nillable="true"
+       				type="aixm:TextNameType">
+				<annotation>
+					<documentation>The organisation the user creating the feature time slice belongs to.</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0"
+       				name="createdOnBehalfOfUser"
+       				nillable="true"
+       				type="ead-audit:TextUserNameType">
+				<annotation>
+					<documentation>The user creating the feature time slice on behalf of another organisation.</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0"
+       				name="createdOnBehalfOfOrg"
+       				nillable="true"
+       				type="aixm:TextNameType">
+				<annotation>
+					<documentation>The organisation creating the feature time slice on behalf of another organisation.</documentation>
+				</annotation>
+			</element>
+			<element minOccurs="0"
+       				name="reasonForChange"
+       				nillable="true"
+       				type="aixm:TextRemarkType">
+				<!--No annotation found for this element.-->
+			</element>
+			<element minOccurs="0"
+       				name="responsibleSubsystem"
+       				nillable="true"
+       				type="ead-audit:CodeSubsystemType">
+				<!--No annotation found for this element.-->
+			</element>
+			<element minOccurs="0"
+       				name="transactionID"
+       				nillable="true"
+       				type="ead-audit:TransactionIDType">
+				<!--No annotation found for this element.-->
+			</element>
+			<element maxOccurs="unbounded"
+       				minOccurs="0"
+       				name="annotation"
+       				nillable="true"
+       				type="aixm:NotePropertyType"/>
+		</sequence>
+	</group>
+	<complexType name="AuditPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="ead-audit:Audit"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element abstract="true"
+       		name="AbstractAuditExtension"
+       		substitutionGroup="aixm:AbstractExtension"
+       		type="aixm:AbstractExtensionType"/>
+</schema>

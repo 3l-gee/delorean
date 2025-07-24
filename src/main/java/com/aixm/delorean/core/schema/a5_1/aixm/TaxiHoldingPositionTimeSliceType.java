@@ -76,50 +76,44 @@ public class TaxiHoldingPositionTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "landingcategory_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "landingcategory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHoldingCategoryType landingCategory;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "associatedguidanceline_id", referencedColumnName = "id")
     protected GuidanceLinePropertyType associatedGuidanceLine;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_ts_protectedrunway", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runway_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayPropertyType> protectedRunway;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_ts_annotation", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

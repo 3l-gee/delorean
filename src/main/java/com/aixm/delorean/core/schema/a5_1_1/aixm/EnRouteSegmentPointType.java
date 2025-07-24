@@ -121,10 +121,10 @@ public class EnRouteSegmentPointType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "enroutesegmentpoint_facilitymakeup", joinColumns = {
-        @JoinColumn(name = "enroutesegmentpoint_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "pointreference_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PointReferencePropertyType> facilityMakeup;
     @XmlElement(name = "pointChoice_fixDesignatedPoint", nillable = true)
@@ -173,10 +173,10 @@ public class EnRouteSegmentPointType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "enroutesegmentpoint_annotation", joinColumns = {
-        @JoinColumn(name = "enroutesegmentpoint_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)

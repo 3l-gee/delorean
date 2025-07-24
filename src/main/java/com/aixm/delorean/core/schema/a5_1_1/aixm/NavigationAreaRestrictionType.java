@@ -55,10 +55,10 @@ public class NavigationAreaRestrictionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarearestriction_timeslice", joinColumns = {
-        @JoinColumn(name = "navigationarearestriction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navigationarearestriction_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavigationAreaRestrictionTimeSlicePropertyType> timeSlice;
 

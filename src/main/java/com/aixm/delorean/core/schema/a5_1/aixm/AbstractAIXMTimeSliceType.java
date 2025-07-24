@@ -17,12 +17,8 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -50,7 +46,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         <element ref="{http://www.aixm.aero/schema/5.1}correctionNumber" minOccurs="0"/>
  *         <element name="timeSliceMetadata" type="{http://www.aixm.aero/schema/5.1}FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
  *         <element name="featureLifetime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         <element name="featureStatus" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -218,12 +214,9 @@ public abstract class AbstractAIXMTimeSliceType
         @AttributeOverride(name = "endPosition", column = @Column(name = "feature_lifetime_end"))
     })
     protected AixmTimeSliceType featureLifetime;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_time_slice_seq")
-    @SequenceGenerator(name = "aixm_time_slice_seq", sequenceName = "aixm_time_slice_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
+    @Column(name = "feature_status")
     @XmlTransient
-    protected long dbid;
+    protected String featureStatus = "APPROVED";
 
     /**
      * Gets the value of the interpretation property.
@@ -366,23 +359,31 @@ public abstract class AbstractAIXMTimeSliceType
     }
 
     /**
-     * Gets the value of the dbid property.
+     * Gets the value of the featureStatus property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public long getDbid() {
-        return dbid;
+    public String getFeatureStatus() {
+        return featureStatus;
     }
 
     /**
-     * Sets the value of the dbid property.
+     * Sets the value of the featureStatus property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setDbid(long value) {
-        this.dbid = value;
+    public void setFeatureStatus(String value) {
+        this.featureStatus = value;
     }
 
-    public boolean isSetDbid() {
-        return true;
+    public boolean isSetFeatureStatus() {
+        return (this.featureStatus!= null);
     }
 
 }

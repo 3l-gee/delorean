@@ -73,54 +73,47 @@ public class DeicingAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "associatedapron_id", referencedColumnName = "id")
     protected ApronPropertyType associatedApron;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "taxiwaylocation_id", referencedColumnName = "id")
     protected TaxiwayPropertyType taxiwayLocation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "standlocation_id", referencedColumnName = "id")
     protected AircraftStandPropertyType standLocation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "deicingarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "deicingarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "deicingarea_ts_availability", joinColumns = {
-        @JoinColumn(name = "deicingarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apronareaavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApronAreaAvailabilityPropertyType> availability;
     @Transient

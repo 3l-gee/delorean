@@ -90,7 +90,7 @@ public class RadarSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "model_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "model_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "model_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType model;
@@ -104,7 +104,7 @@ public class RadarSystemTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "broadcastidentifier_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "broadcastidentifier_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "broadcastidentifier_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType broadcastIdentifier;
@@ -112,20 +112,20 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_ts_radarequipment", joinColumns = {
-        @JoinColumn(name = "radarsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radarcomponent_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadarComponentPropertyType> radarEquipment;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_ts_office", joinColumns = {
-        @JoinColumn(name = "radarsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> office;
     @XmlElement(nillable = true)
@@ -138,10 +138,10 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_ts_parrunway", joinColumns = {
-        @JoinColumn(name = "radarsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runway_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayPropertyType> parRunway;
     @XmlElement(nillable = true)
@@ -154,10 +154,10 @@ public class RadarSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radarsystem_ts_annotation", joinColumns = {
-        @JoinColumn(name = "radarsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

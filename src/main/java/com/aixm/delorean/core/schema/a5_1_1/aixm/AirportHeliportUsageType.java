@@ -97,10 +97,10 @@ public class AirportHeliportUsageType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportusage_contact", joinColumns = {
-        @JoinColumn(name = "airportheliportusage_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
@@ -113,10 +113,10 @@ public class AirportHeliportUsageType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportheliportusage_annotation", joinColumns = {
-        @JoinColumn(name = "airportheliportusage_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)

@@ -84,20 +84,20 @@ public class RunwayDeclaredDistanceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistance_declaredvalue", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistance_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydeclareddistancevalue_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDeclaredDistanceValuePropertyType> declaredValue;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydeclareddistance_annotation", joinColumns = {
-        @JoinColumn(name = "runwaydeclareddistance_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

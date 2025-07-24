@@ -55,10 +55,10 @@ public class SignificantPointInAirspaceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "significantpointinairspace_timeslice", joinColumns = {
-        @JoinColumn(name = "significantpointinairspace_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "significantpointinairspace_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SignificantPointInAirspaceTimeSlicePropertyType> timeSlice;
 

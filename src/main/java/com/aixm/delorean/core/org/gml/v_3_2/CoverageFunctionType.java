@@ -47,7 +47,7 @@ public class CoverageFunctionType {
     /**
      * gml:CoverageMappingRule provides a formal or informal description of the coverage function.
      * The mapping rule may be defined as an in-line string (gml:ruleDefinition) or via a remote reference through xlink:href (gml:ruleReference).  
-     * If no rule name is specified, the default is ‘Linear’ with respect to members of the domain in document order.
+     * If no rule name is specified, the default is 'Linear' with respect to members of the domain in document order.
      * 
      */
     @XmlElement(name = "CoverageMappingRule")
@@ -91,7 +91,7 @@ public class CoverageFunctionType {
     /**
      * gml:CoverageMappingRule provides a formal or informal description of the coverage function.
      * The mapping rule may be defined as an in-line string (gml:ruleDefinition) or via a remote reference through xlink:href (gml:ruleReference).  
-     * If no rule name is specified, the default is ‘Linear’ with respect to members of the domain in document order.
+     * If no rule name is specified, the default is 'Linear' with respect to members of the domain in document order.
      * 
      * @return
      *     possible object is

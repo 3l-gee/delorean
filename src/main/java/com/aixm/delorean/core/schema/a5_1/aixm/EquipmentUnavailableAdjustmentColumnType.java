@@ -76,28 +76,24 @@ public class EquipmentUnavailableAdjustmentColumnType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "guidanceequipment_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "guidanceequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachType guidanceEquipment;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "landingsystemlights_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "landingsystemlights_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType landingSystemLights;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "equipmentrvr_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "equipmentrvr_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType equipmentRVR;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "visibilityadjustment_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -105,21 +101,19 @@ public class EquipmentUnavailableAdjustmentColumnType
         @AttributeOverride(name = "nilReason", column = @Column(name = "visibilityadjustment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType visibilityAdjustment;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "approachlightinginoperative_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "approachlightinginoperative_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType approachLightingInoperative;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "equipmentunavailableadjustmentcolumn_annotation", joinColumns = {
-        @JoinColumn(name = "equipmentunavailableadjustmentcolumn_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

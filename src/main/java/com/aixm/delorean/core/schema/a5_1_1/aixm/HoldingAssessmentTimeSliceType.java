@@ -125,7 +125,7 @@ public class HoldingAssessmentTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "patterntemplate_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "patterntemplate_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType patternTemplate;
@@ -174,20 +174,20 @@ public class HoldingAssessmentTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_ts_obstacleassessment", joinColumns = {
-        @JoinColumn(name = "holdingassessment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> obstacleAssessment;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_ts_annotation", joinColumns = {
-        @JoinColumn(name = "holdingassessment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -55,10 +55,10 @@ public class DeicingAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "deicingarea_timeslice", joinColumns = {
-        @JoinColumn(name = "deicingarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "deicingarea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<DeicingAreaTimeSlicePropertyType> timeSlice;
 

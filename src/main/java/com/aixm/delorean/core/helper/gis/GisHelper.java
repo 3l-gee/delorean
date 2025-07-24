@@ -24,113 +24,12 @@ import com.aixm.delorean.core.log.LogLevel;
 
 public class GisHelper {    
     
-    public static AixmElevatedGeometryType parseElevatedGeometry(AixmElevatedGeometryType target,
-        String id,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType horizontalElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType verticalElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType elevationElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType geoidElement,
-        com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType verticalDatumElement) {
-
-        if (id != null) {
-            target.setId(id);
-        }
-
-        // Handle Horizontal Accuracy
-        if (horizontalElement != null) {
-            target.setHorizontalAccuracy(horizontalElement.getValue());
-            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
-            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
-        }
-        
-        // Handle Vertical Accuracy
-        if (verticalElement != null) {
-            target.setVerticalAccuracy(verticalElement.getValue());
-            target.setVerticalAccuracy_uom(verticalElement.getUom());
-            target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
-        }
-        
-        // Handle Elevation
-        if (elevationElement != null) {
-            target.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
-            target.setElevation_uom(elevationElement.getUom());
-            target.setElevation_nilReason(elevationElement.getNilReason());
-        }
-        
-        // Handle Geoid Undulation
-        if (geoidElement != null) {
-            target.setGeoidUndulation(geoidElement.getValue());
-            target.setGeoidUndulation_uom(geoidElement.getUom());
-            target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
-        }
-        
-        // Handle Vertical Datum
-        if (verticalDatumElement != null) {
-            target.setVerticalDatum(verticalDatumElement.getValue());
-            target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
-        }
-
-        return target;  
-    }
-
-    public static AixmElevatedGeometryType parseElevatedGeometry(AixmElevatedGeometryType target,
-        String id,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType horizontalElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType verticalElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType elevationElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType geoidElement,
-        com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType verticalDatumElement) {
-
-        if (id != null) {
-            target.setId(id);
-        }
-
-        // Handle Horizontal Accuracy
-        if (horizontalElement != null) {
-            target.setHorizontalAccuracy(horizontalElement.getValue());
-            target.setHorizontalAccuracy_uom(horizontalElement.getUom());
-            target.setHorizontalAccuracy_nilReason(horizontalElement.getNilReason());
-        }
-        
-        // Handle Vertical Accuracy
-        if (verticalElement != null) {
-            target.setVerticalAccuracy(verticalElement.getValue());
-            target.setVerticalAccuracy_uom(verticalElement.getUom());
-            target.setVerticalAccuracy_nilReason(verticalElement.getNilReason());
-        }
-        
-        // Handle Elevation
-        if (elevationElement != null) {
-            target.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
-            target.setElevation_uom(elevationElement.getUom());
-            target.setElevation_nilReason(elevationElement.getNilReason());
-        }
-        
-        // Handle Geoid Undulation
-        if (geoidElement != null) {
-            target.setGeoidUndulation(geoidElement.getValue());
-            target.setGeoidUndulation_uom(geoidElement.getUom());
-            target.setGeoidUndulation_nilReason(geoidElement.getNilReason());
-        }
-        
-        // Handle Vertical Datum
-        if (verticalDatumElement != null) {
-            target.setVerticalDatum(verticalDatumElement.getValue());
-            target.setVerticalDatum_nilReason(verticalDatumElement.getNilReason());
-        }
-
-        return target;  
-    }
-
-
     public static <T extends AixmGeometryType> T aixmGeometryAttributesFactory(
         Class<T> target,
         String id,
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceType horizontalElement) {
+
+        ConsoleLogger.log(LogLevel.DEBUG, "aixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
 
         T obj;
         if (target == AixmPointType.class) {
@@ -144,10 +43,6 @@ public class GisHelper {
             throw new RuntimeException();
         }
             
-        if (id != null) {
-            obj.setId(id);
-        }
-
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
             obj.setHorizontalAccuracy(horizontalElement.getValue());
@@ -163,6 +58,8 @@ public class GisHelper {
         String id,
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceType horizontalElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "aixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmPointType.class) {
             obj = target.cast(new AixmPointType());
@@ -175,10 +72,6 @@ public class GisHelper {
             throw new RuntimeException();
         }
             
-        if (id != null) {
-            obj.setId(id);
-        }
-
         // Handle Horizontal Accuracy
         if (horizontalElement != null) {
             obj.setHorizontalAccuracy(horizontalElement.getValue());
@@ -198,6 +91,8 @@ public class GisHelper {
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceSignedType geoidElement,
         com.aixm.delorean.core.schema.a5_1_1.aixm.CodeVerticalDatumType verticalDatumElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "elevatedAixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmElevatedPointType.class) {
             obj = target.cast(new AixmElevatedPointType());
@@ -208,10 +103,6 @@ public class GisHelper {
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
             throw new RuntimeException();
-        }
-
-        if (id != null) {
-            obj.setId(id);
         }
 
         // Handle Horizontal Accuracy
@@ -230,9 +121,7 @@ public class GisHelper {
         
         // Handle Elevation
         if (elevationElement != null) {
-            obj.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
+            obj.setElevation(elevationElement.getValue());
             obj.setElevation_uom(elevationElement.getUom());
             obj.setElevation_nilReason(elevationElement.getNilReason());
         }
@@ -261,6 +150,8 @@ public class GisHelper {
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceSignedType geoidElement,
         com.aixm.delorean.core.schema.a5_1.aixm.CodeVerticalDatumType verticalDatumElement) {
 
+        ConsoleLogger.log(LogLevel.DEBUG, "elevatedAixmGeometryAttributesFactory :" + id, new Exception().getStackTrace()[0]);
+
         T obj;
         if (target == AixmElevatedPointType.class) {
             obj = target.cast(new AixmElevatedPointType());
@@ -271,10 +162,6 @@ public class GisHelper {
         } else {
             ConsoleLogger.log(LogLevel.FATAL, "Unsupported target type: " + target.getName(), new Exception().getStackTrace()[0]);
             throw new RuntimeException();
-        }
-
-        if (id != null) {
-            obj.setId(id);
         }
 
         // Handle Horizontal Accuracy
@@ -293,9 +180,7 @@ public class GisHelper {
         
         // Handle Elevation
         if (elevationElement != null) {
-            obj.setElevation(elevationElement.getValue() != null 
-                ? new BigDecimal(elevationElement.getValue()) 
-                : BigDecimal.ZERO);
+            obj.setElevation(elevationElement.getValue());
             obj.setElevation_uom(elevationElement.getUom());
             obj.setElevation_nilReason(elevationElement.getNilReason());
         }
@@ -348,7 +233,7 @@ public class GisHelper {
         }
 
         //setting id
-        pointType.setXmlId(value.getId());
+        pointType.setXmlId(value.getXmlId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -374,7 +259,7 @@ public class GisHelper {
         }
 
         //setting id
-        pointType.setXmlId(value.getId());
+        pointType.setXmlId(value.getXmlId());
     
         // setting direct position
         pointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -435,7 +320,7 @@ public class GisHelper {
         }
 
         // setting id
-        elevatedPointType.setXmlId(value.getId());
+        elevatedPointType.setXmlId(value.getXmlId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -452,7 +337,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedPointType.setElevation(valDistanceVertical);
@@ -489,7 +374,7 @@ public class GisHelper {
         }
 
         // setting id
-        elevatedPointType.setXmlId(value.getId());
+        elevatedPointType.setXmlId(value.getXmlId());
 
         // setting direct position
         elevatedPointType.setPos(PointGmlHelper.printDirectPosition( value.getPoint()));
@@ -506,7 +391,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedPointType.setElevation(valDistanceVertical);
@@ -568,7 +453,7 @@ public class GisHelper {
         }
 
         //setting id
-        curveType.setXmlId(value.getId());
+        curveType.setXmlId(value.getXmlId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -604,7 +489,7 @@ public class GisHelper {
         }
 
         //setting id
-        curveType.setXmlId(value.getId());
+        curveType.setXmlId(value.getXmlId());
 
         //setting segments
         curveType.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -670,7 +555,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedCurve.setXmlId(value.getId());
+        elevatedCurve.setXmlId(value.getXmlId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -696,7 +581,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedCurve.setElevation(valDistanceVertical);
@@ -733,7 +618,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedCurve.setXmlId(value.getId());
+        elevatedCurve.setXmlId(value.getXmlId());
 
         //setting segments
         elevatedCurve.setSegments(CurveGmlHelper.printCurveSegmentArrayPropertyType(value.getSegments()));
@@ -759,7 +644,7 @@ public class GisHelper {
 
         // setting vertical accuracy
         com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType valDistanceVertical = new com.aixm.delorean.core.schema.a5_1.aixm.ValDistanceVerticalType();
-        valDistanceVertical.setValue(value.getElevation() != null ? String.valueOf(value.getElevation().doubleValue()) : null);
+        valDistanceVertical.setValue(value.getElevation());
         valDistanceVertical.setUom(value.getElevation_uom());
         valDistanceVertical.setNilReason(value.getElevation_nilReason());
         elevatedCurve.setElevation(valDistanceVertical);
@@ -822,8 +707,8 @@ public class GisHelper {
             return surfaceType;
         }
 
-        //setting id
-        surfaceType.setXmlId(value.getId());
+        // setting id
+        surfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -873,7 +758,7 @@ public class GisHelper {
         }
         
         //setting id
-        surfaceType.setXmlId(value.getId());
+        surfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -891,7 +776,7 @@ public class GisHelper {
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
-        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
+        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, exterior);
         AbstractRingPropertyType abstractExteriorRing = new AbstractRingPropertyType();
         abstractExteriorRing.setAbstractRing(jaxbExterior);
         polygonPatch.setExterior(abstractExteriorRing);
@@ -899,16 +784,16 @@ public class GisHelper {
         //interior
         List<RingType> interior = SurfaceGmlHelper.printInteriorRing(value.getInteriorlinestring());
         for (RingType ring : interior) {
-            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, ring);
+            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, ring);
             AbstractRingPropertyType abstractInteriorRing = new AbstractRingPropertyType();
             abstractInteriorRing.setAbstractRing(jaxbInterior);
             polygonPatch.getInterior().add(abstractInteriorRing);
         }
         
-        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
+        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
         SurfacePatchArrayPropertyType surfacePatchArrayProperty = new SurfacePatchArrayPropertyType();
         surfacePatchArrayProperty.getAbstractSurfacePatch().add(jaxbPolygonPatch);
-        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
+        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
         surfaceType.setPatches(jaxbSurfacePatchArrayProperty);
 
         ConsoleLogger.log(LogLevel.DEBUG, "SurfaceType : " + surfaceType.toString(), new Exception().getStackTrace()[0]);
@@ -955,7 +840,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedSurfaceType.setXmlId(value.getId());
+        elevatedSurfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -1005,7 +890,7 @@ public class GisHelper {
         }
 
         //setting id
-        elevatedSurfaceType.setXmlId(value.getId());
+        elevatedSurfaceType.setXmlId(value.getXmlId());
 
         PolygonPatchType polygonPatch = new PolygonPatchType();
 
@@ -1023,7 +908,7 @@ public class GisHelper {
 
         //exterior
         RingType exterior = SurfaceGmlHelper.printExteriorRing(value.getExteriorlinestring());
-        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, exterior);
+        JAXBElement<RingType> jaxbExterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, exterior);
         AbstractRingPropertyType abstractExteriorRing = new AbstractRingPropertyType();
         abstractExteriorRing.setAbstractRing(jaxbExterior);
         polygonPatch.setExterior(abstractExteriorRing);
@@ -1031,16 +916,16 @@ public class GisHelper {
         //interior
         List<RingType> interior = SurfaceGmlHelper.printInteriorRing(value.getInteriorlinestring());
         for (RingType ring : interior) {
-            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractRing"), RingType.class, ring);
+            JAXBElement<RingType> jaxbInterior = new JAXBElement<RingType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractRing"), RingType.class, ring);
             AbstractRingPropertyType abstractInteriorRing = new AbstractRingPropertyType();
             abstractInteriorRing.setAbstractRing(jaxbInterior);
             polygonPatch.getInterior().add(abstractInteriorRing);
         }
         
-        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
+        JAXBElement<PolygonPatchType> jaxbPolygonPatch = new JAXBElement<PolygonPatchType>(new QName("http://www.aixm.aero/schema/5.1", "AbstractSurfacePatch"), PolygonPatchType.class, polygonPatch);
         SurfacePatchArrayPropertyType surfacePatchArrayProperty = new SurfacePatchArrayPropertyType();
         surfacePatchArrayProperty.getAbstractSurfacePatch().add(jaxbPolygonPatch);
-        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
+        JAXBElement<SurfacePatchArrayPropertyType> jaxbSurfacePatchArrayProperty = new JAXBElement<SurfacePatchArrayPropertyType>(new QName("http://www.aixm.aero/schema/5.1", "patches"), SurfacePatchArrayPropertyType.class, surfacePatchArrayProperty);
         elevatedSurfaceType.setPatches(jaxbSurfacePatchArrayProperty);
         
         ConsoleLogger.log(LogLevel.DEBUG, "ElevatedSurfaceType : " + elevatedSurfaceType.toString(), new Exception().getStackTrace()[0]);

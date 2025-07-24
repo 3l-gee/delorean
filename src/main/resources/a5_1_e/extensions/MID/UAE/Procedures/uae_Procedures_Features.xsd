@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Released:  December 2015-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2015, GCAA, United Arab Emirates
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the name of GCAA nor the names of the contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: UAE: Procedures: Features -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:uae_proc="http://www.aixm.aero/schema/5.1/extensions/UAE/Procedures" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/UAE/Procedures" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.a">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_Features.xsd"/>
+	<element name="FinalProfileExtension" type="uae_proc:FinalProfileExtensionType" substitutionGroup="aixm:AbstractFinalProfileExtension"/>
+	<complexType name="FinalProfileExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="uae_proc:FinalProfileExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FinalProfileExtensionPropertyGroup">
+		<sequence>
+			<element name="rateOfDescent" type="uae_proc:RateOfDescentPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RateOfDescent" type="uae_proc:RateOfDescentType"/>
+	<complexType name="RateOfDescentType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="uae_proc:RateOfDescentPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="uae_proc:AbstractRateOfDescentExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RateOfDescentPropertyGroup">
+		<sequence>
+			<element name="speed" type="aixm:ValSpeedType" nillable="true" minOccurs="0"/>
+			<element name="speedReference" type="aixm:CodeSpeedReferenceType" nillable="true" minOccurs="0"/>
+			<element name="rateOfDescent" type="aixm:ValSpeedType" nillable="true" minOccurs="0"/>
+			<element name="descentGradient" type="aixm:ValSlopeType" nillable="true" minOccurs="0"/>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="RateOfDescentPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="uae_proc:RateOfDescent"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AbstractRateOfDescentExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+</schema>

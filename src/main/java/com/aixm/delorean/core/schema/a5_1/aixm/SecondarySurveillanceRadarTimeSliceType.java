@@ -99,21 +99,19 @@ public class SecondarySurveillanceRadarTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "serialnumber_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "serialnumber_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "serialnumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType serialNumber;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "range_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -121,7 +119,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "range_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType range;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "rangeaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -129,103 +126,89 @@ public class SecondarySurveillanceRadarTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "rangeaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType rangeAccuracy;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "dualchannel_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "dualchannel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType dualChannel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "movingtargetindicator_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "movingtargetindicator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType movingTargetIndicator;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "standbypower_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "standbypower_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStandbyPowerType standbyPower;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "digital_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "digital_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType digital;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "militaryuseonly_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "militaryuseonly_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType militaryUseOnly;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "specialuseonly_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "specialuseonly_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType specialUseOnly;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "specialaircraftonly_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "specialaircraftonly_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType specialAircraftOnly;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "magneticvariation_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValMagneticVariationType magneticVariation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "magneticvariationaccuracy_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "magneticvariationaccuracy_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType magneticVariationAccuracy;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "datemagneticvariation_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "datemagneticvariation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected DateYearType dateMagneticVariation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "secondarysurveillanceradar_ts_contact", joinColumns = {
-        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "secondarysurveillanceradar_ts_annotation", joinColumns = {
-        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticalcoveragealtitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -233,7 +216,6 @@ public class SecondarySurveillanceRadarTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticalcoveragealtitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType verticalCoverageAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticalcoveragedistance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -241,59 +223,51 @@ public class SecondarySurveillanceRadarTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticalcoveragedistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType verticalCoverageDistance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticalcoverageazimuth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticalcoverageazimuth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType verticalCoverageAzimuth;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "antennatiltfixed_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "antennatiltfixed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType antennaTiltFixed;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "tiltangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "tiltangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType tiltAngle;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "automatedradarterminalsystem_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "automatedradarterminalsystem_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "automatedradarterminalsystem_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType automatedRadarTerminalSystem;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "secondarysurveillanceradar_ts_groundstation", joinColumns = {
-        @JoinColumn(name = "secondarysurveillanceradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surveillancegroundstation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SurveillanceGroundStationPropertyType> groundStation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "transponder_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "transponder_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTransponderType transponder;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "autonomous_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "autonomous_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType autonomous;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "monopulse_value", length = 255, nullable = true, unique = false)),

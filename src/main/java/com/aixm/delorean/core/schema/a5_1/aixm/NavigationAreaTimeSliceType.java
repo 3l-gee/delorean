@@ -82,14 +82,12 @@ public class NavigationAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "navigationareatype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigationareatype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavigationAreaType navigationAreaType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumceiling_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -97,7 +95,6 @@ public class NavigationAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumceiling_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumCeiling;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumvisibility_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -105,66 +102,63 @@ public class NavigationAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumvisibility_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType minimumVisibility;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "departure_id", referencedColumnName = "id")
     protected StandardInstrumentDeparturePropertyType departure;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_ts_sector", joinColumns = {
-        @JoinColumn(name = "navigationarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navigationareasector_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavigationAreaSectorPropertyType> sector;
-    @XmlElement(name = "centrePoint_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "centrePoint_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType centrePointFixDesignatedPoint;
-    @XmlElement(name = "centrePoint_navaidSystem", nillable = true)
+    @XmlElement(name = "centrePoint_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType centrePointNavaidSystem;
-    @XmlElement(name = "centrePoint_aimingPoint", nillable = true)
+    @XmlElement(name = "centrePoint_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType centrePointAimingPoint;
-    @XmlElement(name = "centrePoint_runwayPoint", nillable = true)
+    @XmlElement(name = "centrePoint_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType centrePointRunwayPoint;
-    @XmlElement(name = "centrePoint_airportReferencePoint", nillable = true)
+    @XmlElement(name = "centrePoint_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType centrePointAirportReferencePoint;
-    @XmlElement(name = "centrePoint_position", nillable = true)
+    @XmlElement(name = "centrePoint_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centrepoint_position_id", referencedColumnName = "id")
     protected PointPropertyType centrePointPosition;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "navigationarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "navigationarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

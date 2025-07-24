@@ -79,14 +79,12 @@ public class PilotControlledLightingTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodePilotControlledLightingType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "duration_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -94,21 +92,18 @@ public class PilotControlledLightingTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDurationType duration;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "intensitysteps_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "intensitysteps_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType intensitySteps;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "standbyintensity_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "standbyintensity_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeIntensityStandByType standByIntensity;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "radiofrequency_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -116,41 +111,37 @@ public class PilotControlledLightingTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "radiofrequency_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValFrequencyType radioFrequency;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "activationinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "activationinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "activationinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType activationInstruction;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_controlledlightintensity", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightactivation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightActivationPropertyType> controlledLightIntensity;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_activatedgroundlighting", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightsystem_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightSystemPropertyType> activatedGroundLighting;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_ts_annotation", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

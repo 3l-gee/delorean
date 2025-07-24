@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1.1 - ADR extension Schema for NM Version 18.5.0-->
+<!--Released:  September 2018-->
+<!--===================================================================-->
+<!--
+		Copyright (c) 2018, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+-->
+<schema xmlns:adr="http://www.aixm.aero/schema/5.1.1/extensions/EUR/ADR" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	targetNamespace="http://www.aixm.aero/schema/5.1.1/extensions/EUR/ADR" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://external.schemas.opengis.net/gmlAIXMProfile/1.1/gml321forAIXM.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../AIXM_Features.xsd"/>
+	<include schemaLocation="./ADR_DataTypes.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.0/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<annotation>
+		<appinfo source="www.aixm.aero/schema/5.0">AIXM_Features.xsd</appinfo>
+	</annotation>
+	<element name="FlightRestrictionExtension" type="adr:FlightRestrictionExtensionType" substitutionGroup="aixm:AbstractFlightRestrictionExtension"/>
+	<complexType name="FlightRestrictionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:FlightRestrictionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightRestrictionExtensionPropertyGroup">
+		<sequence>
+			<element name="processingIndicator" type="adr:CodeProcessingIndicatorType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Some free text to describe the operational instructions which form the FlightRestriction.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="enabled" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Some free text to describe the operational instructions which form the FlightRestriction.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="usage" type="adr:CodeFeatureUsageType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates whether the TimeSlice attributes are made available.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AirspaceActivationExtension" type="adr:AirspaceActivationExtensionType" substitutionGroup="aixm:AbstractAirspaceActivationExtension"/>
+	<complexType name="AirspaceActivationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:AirspaceActivationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceActivationExtensionPropertyGroup">
+		<sequence>
+			<element name="requestor" type="aixm:UnitPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="ConstrainingAirspaceActivityPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:ConstrainingAirspaceActivity"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="ConstrainingAirspaceActivity" type="adr:ConstrainingAirspaceActivityType"/>
+	<complexType name="ConstrainingAirspaceActivityType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:ConstrainingAirspaceActivityPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractConstrainingAirspaceActivityExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ConstrainingAirspaceActivityPropertyGroup">
+		<sequence>
+			<element name="effect" type="adr:CodeAirspaceReservationImpactType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The operational impact of the Airspace over the route segment.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="theAirspace" type="aixm:AirspacePropertyType" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractConstrainingAirspaceActivityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="TimesheetExtension" type="adr:TimesheetExtensionType" substitutionGroup="aixm:AbstractTimesheetExtension"/>
+	<complexType name="TimesheetExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:TimesheetExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TimesheetExtensionPropertyGroup">
+		<sequence>
+			<element ref="gml:validTime" minOccurs="0"/>
+			<element name="exclude" type="aixm:TimesheetPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension" type="adr:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="flexibleUse" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is not designated as either military or civil airspace but should be considered as one continuum and used flexibly on a day-to-day basis. Consequently, any necessary airspace segregation should be only of a temporary nature.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level1" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the strategic level. The act of defining and reviewing as required the national airspace policy taking into account national and international airspace requirements.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level2" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the pre-tactical level. The act operation of conducting operational management within the framework of pre-determined existing ATM structure and procedures defined in Level 1 and of reaching specific agreement between civil and military authorities involved. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level3" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the tactical level. The act on the day of operation of activating, de-activating or real-time reallocating of airspace allocated in Level 2 and of solving specific airspace problems and/or of individual OAT/GAT traffic situations in real-time between civil and military units and/or controllers, as appropriate. This co-ordination can take place either in active or passive mode with or without action by the controller. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="usage" type="adr:CodeFeatureUsageType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates whether the TimeSlice attributes are made available.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="responsibleAMC" type="aixm:UnitPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<element name="nearby" type="aixm:RoutePortionPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="offload" type="aixm:RoutePortionPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="notAffected" type="aixm:RoutePortionPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="rsaActivation" type="aixm:AirspaceActivationPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteAvailabilityExtension" type="adr:RouteAvailabilityExtensionType" substitutionGroup="aixm:AbstractRouteAvailabilityExtension"/>
+	<complexType name="RouteAvailabilityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RouteAvailabilityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteAvailabilityExtensionPropertyGroup">
+		<sequence>
+			<element name="conditionalRouteType" type="adr:CodeConditionalRouteType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The operational impact of the Airspace over the route segment.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="causeOfLimitation" type="adr:ConstrainingAirspaceActivityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RoutePortionExtension" type="adr:RoutePortionExtensionType" substitutionGroup="aixm:AbstractRoutePortionExtension"/>
+	<complexType name="RoutePortionExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RoutePortionExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RoutePortionExtensionPropertyGroup">
+		<sequence>
+			<element name="intermediatePoint" type="adr:IntermediateSignificantPointPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="referencedProcedure" type="aixm:ProcedurePropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<element name="range" type="aixm:AirspaceLayerPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</group>
+	<element name="FlightConditionElementExtension" type="adr:FlightConditionElementExtensionType" substitutionGroup="aixm:AbstractFlightConditionElementExtension"/>
+	<complexType name="FlightConditionElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:FlightConditionElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="FlightConditionElementExtensionPropertyGroup">
+		<sequence>
+			<element name="borderCrossingCondition" type="adr:AirspaceBorderCrossingObjectPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<element name="airportHeliportSetCondition" type="adr:AirportHeliportSetPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</group>
+	<complexType name="AirspaceBorderCrossingObjectPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:AirspaceBorderCrossingObject"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AirspaceBorderCrossingObject" type="adr:AirspaceBorderCrossingObjectType"/>
+	<complexType name="AirspaceBorderCrossingObjectType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:AirspaceBorderCrossingObjectPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractAirspaceBorderCrossingObjectExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceBorderCrossingObjectPropertyGroup">
+		<sequence>
+			<element name="exitedAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<element name="enteredAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</group>
+	<element name="AbstractAirspaceBorderCrossingObjectExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="StandardInstrumentArrivalExtension" type="adr:StandardInstrumentArrivalExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentArrivalExtension"/>
+	<complexType name="StandardInstrumentArrivalExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:StandardInstrumentArrivalExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentArrivalExtensionPropertyGroup">
+		<sequence>
+			<element name="connectingPoint" type="aixm:TerminalSegmentPointPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="initialApproachFix" type="aixm:TerminalSegmentPointPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</group>
+	<element name="StandardInstrumentDepartureExtension" type="adr:StandardInstrumentDepartureExtensionType" substitutionGroup="aixm:AbstractStandardInstrumentDepartureExtension"/>
+	<complexType name="StandardInstrumentDepartureExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:StandardInstrumentDepartureExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="StandardInstrumentDepartureExtensionPropertyGroup">
+		<sequence>
+			<element name="connectingPoint" type="aixm:TerminalSegmentPointPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="IntermediateSignificantPointPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:IntermediateSignificantPoint"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="IntermediateSignificantPoint" type="adr:IntermediateSignificantPointType"/>
+	<complexType name="IntermediateSignificantPointType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:IntermediateSignificantPointPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractIntermediateSignificantPointExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="IntermediateSignificantPointPropertyGroup">
+		<sequence>
+			<choice>
+				<element name="pointChoice_fixDesignatedPoint" type="aixm:DesignatedPointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>A selected point that may have references (distance and/or angle indications)</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+				<element name="pointChoice_navaidSystem" type="aixm:NavaidPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>A navaid used as significant point.</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+				<element name="pointChoice_aimingPoint" type="aixm:TouchDownLiftOffPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>The point at the centre of the TLOF.</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+				<element name="pointChoice_runwayPoint" type="aixm:RunwayCentrelinePointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>A designated point on the runway centreline.</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+				<element name="pointChoice_airportReferencePoint" type="aixm:AirportHeliportPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>the point designated as the center of the airport.</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+				<element name="pointChoice_position" type="aixm:PointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<appinfo>
+							<gml:description>An unnamed point designated only with a latitude/longitude.</gml:description>
+						</appinfo>
+					</annotation>
+				</element>
+			</choice>
+		</sequence>
+	</group>
+	<element name="AbstractIntermediateSignificantPointExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="RouteTrackPortionPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:RouteTrackPortion"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RouteTrackPortion" type="adr:RouteTrackPortionType"/>
+	<complexType name="RouteTrackPortionType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:RouteTrackPortionPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractRouteTrackPortionExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteTrackPortionPropertyGroup">
+		<sequence>
+			<element name="routeSegment" type="aixm:RouteSegmentPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractRouteTrackPortionExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="RouteExtension" type="adr:RouteExtensionType" substitutionGroup="aixm:AbstractRouteExtension"/>
+	<complexType name="RouteExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RouteExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteExtensionPropertyGroup">
+		<sequence>
+			<element name="routeTrackPortionDown" type="adr:RouteTrackPortionPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="routeTrackPortionUp" type="adr:RouteTrackPortionPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="RouteSegmentExtension" type="adr:RouteSegmentExtensionType" substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element name="verticalLimit" type="adr:RouteSegmentVerticalLimitPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="cdrUpdate" type="aixm:RouteAvailabilityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<complexType name="RouteSegmentVerticalLimitPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:RouteSegmentVerticalLimit"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RouteSegmentVerticalLimit" type="adr:RouteSegmentVerticalLimitType" substitutionGroup="aixm:AbstractPropertiesWithSchedule"/>
+	<complexType name="RouteSegmentVerticalLimitType">
+		<complexContent>
+			<extension base="aixm:AbstractPropertiesWithScheduleType">
+				<sequence>
+					<group ref="aixm:PropertiesWithSchedulePropertyGroup"/>
+					<group ref="adr:RouteSegmentVerticalLimitPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<choice>
+								<element ref="aixm:AbstractPropertiesWithScheduleExtension"/>
+								<element ref="adr:AbstractRouteSegmentVerticalLimitExtension"/>
+							</choice>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentVerticalLimitPropertyGroup">
+		<sequence>
+			<element name="range" type="aixm:AirspaceLayerPropertyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+	</group>
+	<element name="AbstractRouteSegmentVerticalLimitExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="AirportHeliportSetPropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="AirportHeliportSet" type="adr:AirportHeliportSetType" substitutionGroup="aixm:AbstractAIXMFeature"/>
+	<complexType name="AirportHeliportSetType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="adr:AirportHeliportSetTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="AirportHeliportSetTimeSlicePropertyType">
+		<sequence>
+			<element ref="adr:AirportHeliportSetTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="AirportHeliportSetTimeSlice" type="adr:AirportHeliportSetTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="AirportHeliportSetTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="adr:AirportHeliportSetPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractAirportHeliportSetExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportSetPropertyGroup">
+		<sequence>
+			<element name="airportHeliport" type="aixm:AirportHeliportPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="airportHeliportSetPattern" type="adr:AirportHeliportSetPatternPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractAirportHeliportSetExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="AirportHeliportSetPatternPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:AirportHeliportSetPattern"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="AirportHeliportSetPattern" type="adr:AirportHeliportSetPatternType"/>
+	<complexType name="AirportHeliportSetPatternType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:AirportHeliportSetPatternPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractAirportHeliportSetPatternExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirportHeliportSetPatternPropertyGroup">
+		<sequence>
+			<element name="pattern" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The full free text name of the city or town the aerodrome/heliport is serving.
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AbstractAirportHeliportSetPatternExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+</schema>

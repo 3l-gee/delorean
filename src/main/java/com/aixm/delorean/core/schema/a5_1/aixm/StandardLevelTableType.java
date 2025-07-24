@@ -55,10 +55,10 @@ public class StandardLevelTableType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardleveltable_timeslice", joinColumns = {
-        @JoinColumn(name = "standardleveltable_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "standardleveltable_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<StandardLevelTableTimeSlicePropertyType> timeSlice;
 

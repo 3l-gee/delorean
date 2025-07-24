@@ -55,10 +55,10 @@ public class RadioFrequencyAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_timeslice", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioFrequencyAreaTimeSlicePropertyType> timeSlice;
 

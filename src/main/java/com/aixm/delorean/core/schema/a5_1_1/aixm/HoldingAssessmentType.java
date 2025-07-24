@@ -55,10 +55,10 @@ public class HoldingAssessmentType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingassessment_timeslice", joinColumns = {
-        @JoinColumn(name = "holdingassessment_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "holdingassessment_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<HoldingAssessmentTimeSlicePropertyType> timeSlice;
 

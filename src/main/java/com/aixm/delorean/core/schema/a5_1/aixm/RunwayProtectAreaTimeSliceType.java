@@ -81,7 +81,6 @@ public class RunwayProtectAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -89,7 +88,6 @@ public class RunwayProtectAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -97,57 +95,49 @@ public class RunwayProtectAreaTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lighting_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lighting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType lighting;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obstaclefree_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstaclefree_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType obstacleFree;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surfaceproperties_id", referencedColumnName = "id")
     protected SurfaceCharacteristicsPropertyType surfaceProperties;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayprotectarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "runwayprotectarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRunwayProtectionAreaType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "status_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "status_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeStatusOperationsType status;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

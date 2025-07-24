@@ -63,8 +63,8 @@ public class ObstacleAreaTimeSlicePropertyType {
     @JoinColumn(name = "obstacleareatimeslice_id", referencedColumnName = "id")
     protected ObstacleAreaTimeSliceType obstacleAreaTimeSlice;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "obstaclearea_tsp_seq")
-    @SequenceGenerator(name = "obstaclearea_tsp_seq", sequenceName = "obstaclearea_tsp_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected long dbid;

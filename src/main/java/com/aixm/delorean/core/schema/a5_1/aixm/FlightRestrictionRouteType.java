@@ -74,41 +74,37 @@ public class FlightRestrictionRouteType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "priorpermission_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "priorpermission_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType priorPermission;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_routeelement", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightroutingelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FlightRoutingElementPropertyType> routeElement;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_contact", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestrictionroute_annotation", joinColumns = {
-        @JoinColumn(name = "flightrestrictionroute_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

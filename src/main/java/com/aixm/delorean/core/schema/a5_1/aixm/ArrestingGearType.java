@@ -55,10 +55,10 @@ public class ArrestingGearType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "arrestinggear_timeslice", joinColumns = {
-        @JoinColumn(name = "arrestinggear_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "arrestinggear_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ArrestingGearTimeSlicePropertyType> timeSlice;
 

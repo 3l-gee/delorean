@@ -7,23 +7,18 @@
 
 package com.aixm.delorean.core.schema.a5_1.aixm;
 
-import jakarta.persistence.Column;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractGMLType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * Adds the FeatureMetadata, which is common to all AIXM features
+ * Base type for AIXM complex types that are NOT features. For example, City, ContactInformation, AirspaceVolume, etc. It derives from AbstractGMLType so that AIXM objects are recognised as GML objects, thus ensuring that GML-aware applications recognise them properly. Retains only the mandatory gml:id attribute.
  * 
  * <p>Java class for AbstractAIXMObjectType complex type</p>.
  * 
@@ -32,11 +27,13 @@ import jakarta.xml.bind.annotation.XmlType;
  * <pre>{@code
  * <complexType name="AbstractAIXMObjectType">
  *   <complexContent>
- *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractAIXMObjectBaseType">
+ *     <restriction base="{http://www.opengis.net/gml/3.2}AbstractGMLType">
  *       <sequence>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         <sequence>
+ *         </sequence>
  *       </sequence>
- *     </extension>
+ *       <attribute ref="{http://www.opengis.net/gml/3.2}id use="required""/>
+ *     </restriction>
  *   </complexContent>
  * </complexType>
  * }</pre>
@@ -130,34 +127,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractAIXMObjectType
-    extends AbstractAIXMObjectBaseType
+    extends AbstractGMLType
 {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_object_seq")
-    @SequenceGenerator(name = "aixm_object_seq", sequenceName = "aixm_object_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected long dbid;
-
-    /**
-     * Gets the value of the dbid property.
-     * 
-     */
-    public long getDbid() {
-        return dbid;
-    }
-
-    /**
-     * Sets the value of the dbid property.
-     * 
-     */
-    public void setDbid(long value) {
-        this.dbid = value;
-    }
-
-    public boolean isSetDbid() {
-        return true;
-    }
 
 }

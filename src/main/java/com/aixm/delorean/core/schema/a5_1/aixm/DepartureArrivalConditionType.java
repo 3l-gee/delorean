@@ -77,7 +77,6 @@ public class DepartureArrivalConditionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumenroutealtitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -85,7 +84,6 @@ public class DepartureArrivalConditionType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumenroutealtitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumEnrouteAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumcrossingatend_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -93,14 +91,12 @@ public class DepartureArrivalConditionType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumcrossingatend_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumCrossingAtEnd;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumcrossingatendreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumcrossingatendreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType minimumCrossingAtEndReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maximumcrossingatend_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -108,27 +104,24 @@ public class DepartureArrivalConditionType
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximumcrossingatend_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType maximumCrossingAtEnd;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maximumcrossingatendreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximumcrossingatendreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType maximumCrossingAtEndReference;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "engine_id", referencedColumnName = "id")
     protected AircraftCharacteristicPropertyType engineType;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "departurearrivalcondition_annotation", joinColumns = {
-        @JoinColumn(name = "departurearrivalcondition_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -1,0 +1,210 @@
+{ 
+    "TimesheetPropertyType" : {
+        "one" : {
+            "form" : []
+        },
+        "many" : {
+            "form" : [
+                {
+                    "field" : "timeinterval",
+                    "name" : "timeinterval",
+                    "html" : "html/timesheet.html"
+                }
+            ]
+        }
+    },
+    "ContactInformationPropertyType" : {
+        "one" : {
+            "form" : []
+        },
+        "many" : {
+            "form" : []
+        }
+    },
+    "NotePropertyType" : {
+        "one" : {
+            "form" : []
+        },
+        "many" : {
+            "form" : [
+                {
+                "field" : "annotation",
+                "name" : "annotation",
+                "html" : "html/annotation.html"
+                }
+            ]
+        }
+    },
+    "LinguisticNotePropertyType" : {   
+        "one" : {
+            "form" : []
+        },
+        "many" : {
+            "form" : []
+        }
+    },
+    "PointPropertyType" : {
+        "one" : {
+            "geometrytype" : ["Point"],
+            "form" : [
+                {
+                    "field" : "{role}_longitude",
+                    "name" : "longitude"
+                },
+                {
+                    "field" : "{role}_latitude",
+                    "name" : "latitude"
+                },
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Point"],
+            "form" : [
+            ]
+        }
+    },
+    "CurvePropertyType" : {
+        "one" : {
+            "geometrytype" : ["Linestring"],
+            "form" : [
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Linestring"],
+            "form" : [
+            ]
+        }
+    },
+    "SurfacePropertyType" : {
+        "one" : {
+            "geometrytype" : ["Polygon"],
+            "form" : [
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Polygon"],
+            "form" : [
+            ]
+        }
+    },
+    "ElevatedPointPropertyType" : {
+        "one" : {
+            "geometrytype" : ["Point"],
+            "form" : [
+                {
+                    "field" : "{role}_longitude",
+                    "name" : "longitude"
+                },
+                {
+                    "field" : "{role}_latitude",
+                    "name" : "latitude"
+                },
+                {
+                    "field" : "{role}_elevation",
+                    "name" : "elevation"
+                },
+                {
+                    "field" : "{role}_geoidundulation",
+                    "name" : "geoidundulation"
+                },
+                {
+                    "field" : "{role}_verticalaccuracy",
+                    "name" : "verticalaccuracy"
+                },
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Point"],
+            "form" : [
+            ]
+        }
+    },
+    "ElevatedCurvePropertyType" : {
+        "one" : {
+            "geometrytype" : ["Linestring"],
+            "form" : [
+                {
+                    "field" : "{role}_elevation",
+                    "name" : "elevation"
+                },
+                {
+                    "field" : "{role}_geoidundulation",
+                    "name" : "geoidundulation"
+                },
+                {
+                    "field" : "{role}_verticalaccuracy",
+                    "name" : "verticalaccuracy"
+                },
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Linestring"],
+            "form" : [
+                {
+                    "field" : "{role}_elevation",
+                    "name" : "elevation"
+                },
+                {
+                    "field" : "{role}_geoidundulation",
+                    "name" : "geoidundulation"
+                },
+                {
+                    "field" : "{role}_verticalaccuracy",
+                    "name" : "verticalaccuracy"
+                },
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        }
+    },
+    "ElevatedSurfacePropertyType" : {
+        "one" : {
+            "geometrytype" : ["Polygon"],
+            "form" : [
+                {
+                    "field" : "{role}_elevation",
+                    "name" : "elevation"
+                },
+                {
+                    "field" : "{role}_geoidundulation",
+                    "name" : "geoidundulation"
+                },
+                {
+                    "field" : "{role}_verticalaccuracy",
+                    "name" : "verticalaccuracy"
+                },
+                {
+                    "field" : "{role}_horizontalaccuracy",
+                    "name" : "horizontalaccuracy"
+                }
+            ]
+        },
+        "many" : {
+            "geometrytype" : ["Polygon"],
+            "form" : [
+            ]
+        }
+    }
+}

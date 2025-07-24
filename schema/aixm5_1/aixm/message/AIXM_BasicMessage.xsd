@@ -43,6 +43,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</sequence>
 			</extension>
 		</complexContent>
+
 	</complexType>
 	<element name="AIXMBasicMessage" type="message:AIXMBasicMessageType" substitutionGroup="gml:AbstractFeature"/>
 	<complexType name="BasicMessageMemberAIXMPropertyType">

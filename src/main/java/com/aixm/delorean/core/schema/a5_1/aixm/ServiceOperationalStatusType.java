@@ -76,37 +76,33 @@ public class ServiceOperationalStatusType
     extends AbstractPropertiesWithScheduleType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "serviceoperationalstatus_timeinterval", joinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheet_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "serviceoperationalstatus_annotation", joinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "serviceoperationalstatus_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "operationalstatus_value", length = 255, nullable = true, unique = false)),

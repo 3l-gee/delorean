@@ -55,10 +55,10 @@ public class SeaplaneRampSiteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "seaplanerampsite_timeslice", joinColumns = {
-        @JoinColumn(name = "seaplanerampsite_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "seaplanerampsite_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SeaplaneRampSiteTimeSlicePropertyType> timeSlice;
 

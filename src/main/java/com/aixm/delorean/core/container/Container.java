@@ -2,9 +2,14 @@ package com.aixm.delorean.core.container;
 
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.database.DatabaseBinding;
+import com.aixm.delorean.core.log.ConsoleLogger;
+import com.aixm.delorean.core.log.LogLevel;
+import com.aixm.delorean.core.qgis.QgisProjectBinding;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import org.hibernate.Session;
 
 public class Container<T> {
     // the structure of the container 
@@ -17,6 +22,8 @@ public class Container<T> {
     private T record;
     public XMLBinding xmlBinding;
     public DatabaseBinding databaseBinding;
+    private QgisProjectBinding publisherPRJ;
+    private QgisProjectBinding editorPRJ;
     
 
     public Container(Class<T> structure) {
@@ -35,8 +42,32 @@ public class Container<T> {
         this.xmlBinding = xmlBinding;
     }
 
+    public XMLBinding getXmlBinding() {
+        return this.xmlBinding;
+    }
+
     public void setDbBiding(DatabaseBinding databaseBinding) {
         this.databaseBinding = databaseBinding;
+    }
+
+    public DatabaseBinding getDbBiding() {
+        return this.databaseBinding;
+    }
+
+    public void setPublisherProject(QgisProjectBinding binding) {
+        this.publisherPRJ = binding;
+    }
+
+    public QgisProjectBinding getPublisherProject() {
+        return this.publisherPRJ;
+    }
+
+    public void setEditorProject(QgisProjectBinding binding) {
+        this.editorPRJ = binding;
+    }
+
+    public QgisProjectBinding getEditorProject() {
+        return this.editorPRJ;
     }
 
     public void setValidationRule() {
@@ -61,17 +92,35 @@ public class Container<T> {
     }
 
     public void show() {
-        recursiveShow(this.record.getClass(), this.record);
+        recursiveShow(this.record.getClass(), this.record); 
     }
 
-    public void load() {
+    public void initQGIS(){
+        if (this.databaseBinding == null) {
+            throw new RuntimeException("DatabaseBinding is not set");
+        }
+
+        this.publisherPRJ.init(databaseBinding);
+        ConsoleLogger.log(LogLevel.INFO, "QGIS project successfully initialized.");
+    }
+
+    public void loadDB() {
         if (this.databaseBinding == null) {
             throw new RuntimeException("DatabaseBinding is not set");
         }
         this.databaseBinding.load(this.record);
+        
+        if (this.getEditorProject() != null) {
+        }
+
+        if (this.getPublisherProject() != null) {
+            Session session = this.databaseBinding.getSession();
+            String userName = this.databaseBinding.getUserName();
+            this.publisherPRJ.loadProject(session, userName);
+        }
     }
 
-    public void export(Object id) {
+    public void exportDB(Object id) {
         if (this.databaseBinding == null) {
             throw new RuntimeException("DatabaseBinding is not set");
         }   

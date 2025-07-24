@@ -94,185 +94,165 @@ public class AirTrafficControlServiceTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flightoperations_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flightoperations_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightDestinationType flightOperations;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "rank_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rank_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFacilityRankingType rank;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "complianticao_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "complianticao_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType compliantICAO;
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType location;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "serviceprovider_id", referencedColumnName = "id")
     protected UnitPropertyType serviceProvider;
-    @XmlElement(name = "call-sign", nillable = true)
+    @XmlElement(name = "call-sign")
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_call-sign", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "callsigndetail_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CallsignDetailPropertyType> callSign;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_radiocommunication", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "radiocommunicationchannel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RadioCommunicationChannelPropertyType> radioCommunication;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_groundcommunication", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> groundCommunication;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_availability", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "serviceoperationalstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServiceOperationalStatusPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolservice_ts_annotation", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "radarassisted_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "radarassisted_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType radarAssisted;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "datalinkenabled_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "datalinkenabled_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType dataLinkEnabled;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "datalinkchannel_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "datalinkchannel_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCommunicationChannelType dataLinkChannel;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeServiceATCType type;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientairport", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> clientAirport;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientairspace", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> clientAirspace;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientroute", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeportion_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RoutePortionPropertyType> clientRoute;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientprocedure", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedure_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedurePropertyType> clientProcedure;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientholding", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "holdingpattern_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<HoldingPatternPropertyType> clientHolding;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficcontrolairtrafficcontrolservice_ts_clientaerialrefuelling", joinColumns = {
-        @JoinColumn(name = "airtrafficcontrolairtrafficcontrolservice_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuelling_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingPropertyType> clientAerialRefuelling;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -9,6 +9,8 @@ package com.aixm.delorean.core.schema.a5_1.aixm;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aixm.delorean.core.adapter.a5_1.date.DateTypeAdapter;
+import com.aixm.delorean.core.adapter.type.date.AixmTimestamp;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
@@ -27,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -39,6 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://www.aixm.aero/schema/5.1}AbstractAIXMTimeSliceType">
  *       <sequence>
+ *         <element name="plannedOperational" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <group ref="{http://www.aixm.aero/schema/5.1}WorkAreaPropertyGroup"/>
  *         <element name="extension" maxOccurs="unbounded" minOccurs="0">
  *           <complexType>
@@ -62,8 +66,8 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "WorkAreaTimeSliceType", propOrder = {
-    "type",
     "plannedOperational",
+    "type",
     "associatedAirportHeliport",
     "extent",
     "activation",
@@ -76,54 +80,83 @@ public class WorkAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
+    /**
+     * snowflake:DateType
+     * 
+     */
+    @XmlElement(type = DateType.class, name = "plannedOperational", required = false)
+    @XmlJavaTypeAdapter(DateTypeAdapter.class)
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(name = "value", column = @Column(name = "plannedOperational_value", length = 255, columnDefinition = "TIMESTAMP", nullable = true, unique = false)),
+        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedOperational_nilreason", length = 255, nullable = true, unique = false))
+    })
+    protected AixmTimestamp plannedOperational;
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeWorkAreaType type;
-    @XmlElement(nillable = true)
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "plannedoperational_value", length = 255, columnDefinition = "DATE", nullable = true, unique = false)),
-        @AttributeOverride(name = "nilReason", column = @Column(name = "plannedoperational_nilreason", length = 255, nullable = true, unique = false))
-    })
-    protected DateType plannedOperational;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "associatedairportheliport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType associatedAirportHeliport;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected ElevatedSurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_ts_activation", joinColumns = {
-        @JoinColumn(name = "workarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "workareaactivity_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<WorkareaActivityPropertyType> activation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "workarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "workarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
     protected List<WorkAreaTimeSliceType.Extension> extension;
+
+    /**
+     * snowflake:DateType
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public AixmTimestamp getPlannedOperational() {
+        return plannedOperational;
+    }
+
+    /**
+     * Sets the value of the plannedOperational property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @see #getPlannedOperational()
+     */
+    public void setPlannedOperational(AixmTimestamp value) {
+        this.plannedOperational = value;
+    }
+
+    public boolean isSetPlannedOperational() {
+        return (this.plannedOperational!= null);
+    }
 
     /**
      * Gets the value of the type property.
@@ -151,34 +184,6 @@ public class WorkAreaTimeSliceType
 
     public boolean isSetType() {
         return (this.type!= null);
-    }
-
-    /**
-     * Gets the value of the plannedOperational property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DateType }
-     *     
-     */
-    public DateType getPlannedOperational() {
-        return plannedOperational;
-    }
-
-    /**
-     * Sets the value of the plannedOperational property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DateType }
-     *     
-     */
-    public void setPlannedOperational(DateType value) {
-        this.plannedOperational = value;
-    }
-
-    public boolean isSetPlannedOperational() {
-        return (this.plannedOperational!= null);
     }
 
     /**

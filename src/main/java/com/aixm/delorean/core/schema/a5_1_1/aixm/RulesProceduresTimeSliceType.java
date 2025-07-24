@@ -99,30 +99,30 @@ public class RulesProceduresTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_ts_affectedlocation", joinColumns = {
-        @JoinColumn(name = "rulesprocedures_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> affectedLocation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_ts_affectedarea", joinColumns = {
-        @JoinColumn(name = "rulesprocedures_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> affectedArea;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "rulesprocedures_ts_annotation", joinColumns = {
-        @JoinColumn(name = "rulesprocedures_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

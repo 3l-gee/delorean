@@ -55,10 +55,10 @@ public class RunwayProtectAreaLightSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwayprotectarealightsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "runwayprotectarealightsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwayprotectarealightsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayProtectAreaLightSystemTimeSlicePropertyType> timeSlice;
 

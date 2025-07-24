@@ -9,7 +9,7 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -75,12 +75,13 @@ public class SurfaceArrayPropertyType {
      * {@link JAXBElement }{@code <}{@link CompositeSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link OrientableSurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      * {@link JAXBElement }{@code <}{@link TinType }{@code >}
      * {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      * </p>
      * 
      * 

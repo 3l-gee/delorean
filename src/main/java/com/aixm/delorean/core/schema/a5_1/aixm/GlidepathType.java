@@ -55,10 +55,10 @@ public class GlidepathType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "glidepath_timeslice", joinColumns = {
-        @JoinColumn(name = "glidepath_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "glidepath_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GlidepathTimeSlicePropertyType> timeSlice;
 

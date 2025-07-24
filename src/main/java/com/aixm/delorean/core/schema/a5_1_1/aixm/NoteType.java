@@ -76,7 +76,7 @@ public class NoteType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "propertyname_value", length = 60, nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "propertyname_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "propertyname_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextPropertyNameType propertyName;
@@ -91,10 +91,10 @@ public class NoteType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "note_translatednote", joinColumns = {
-        @JoinColumn(name = "note_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "linguisticnote_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LinguisticNotePropertyType> translatedNote;
     @Transient

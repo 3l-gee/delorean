@@ -55,10 +55,10 @@ public class RunwayDirectionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "runwaydirection_timeslice", joinColumns = {
-        @JoinColumn(name = "runwaydirection_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaydirection_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayDirectionTimeSlicePropertyType> timeSlice;
 

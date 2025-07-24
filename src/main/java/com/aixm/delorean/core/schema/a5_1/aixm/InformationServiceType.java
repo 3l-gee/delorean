@@ -55,10 +55,10 @@ public class InformationServiceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "informationservice_timeslice", joinColumns = {
-        @JoinColumn(name = "informationservice_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "informationservice_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<InformationServiceTimeSlicePropertyType> timeSlice;
 

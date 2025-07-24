@@ -684,7 +684,6 @@ public class ObjectFactory {
     private static final QName _RulesProcedures_QNAME = new QName("http://www.aixm.aero/schema/5.1", "RulesProcedures");
     private static final QName _RulesProceduresTimeSlice_QNAME = new QName("http://www.aixm.aero/schema/5.1", "RulesProceduresTimeSlice");
     private static final QName _AbstractRulesProceduresExtension_QNAME = new QName("http://www.aixm.aero/schema/5.1", "AbstractRulesProceduresExtension");
-    private static final QName _RulesProceduresTimeSliceTypeContent_QNAME = new QName("http://www.aixm.aero/schema/5.1", "content");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.aixm.delorean.core.schema.a5_1.aixm
@@ -22103,19 +22102,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1", name = "AbstractRulesProceduresExtension", substitutionHeadNamespace = "http://www.aixm.aero/schema/5.1", substitutionHeadName = "AbstractExtension")
     public JAXBElement<AbstractExtensionType> createAbstractRulesProceduresExtension(AbstractExtensionType value) {
         return new JAXBElement<>(_AbstractRulesProceduresExtension_QNAME, AbstractExtensionType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link XHTMLType }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://www.aixm.aero/schema/5.1", name = "content", scope = RulesProceduresTimeSliceType.class)
-    public JAXBElement<XHTMLType> createRulesProceduresTimeSliceTypeContent(XHTMLType value) {
-        return new JAXBElement<>(_RulesProceduresTimeSliceTypeContent_QNAME, XHTMLType.class, RulesProceduresTimeSliceType.class, value);
     }
 
 }

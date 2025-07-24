@@ -55,10 +55,10 @@ public class PrecisionApproachRadarType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "precisionapproachradar_timeslice", joinColumns = {
-        @JoinColumn(name = "precisionapproachradar_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "precisionapproachradar_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PrecisionApproachRadarTimeSlicePropertyType> timeSlice;
 

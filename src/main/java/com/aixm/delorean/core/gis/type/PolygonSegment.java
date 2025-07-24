@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Index;
 
@@ -15,7 +16,7 @@ import jakarta.persistence.Index;
 @Entity
 @Table(
     name = "polygon_segment",
-    schema = "public",
+    schema = "geometry",
     indexes = {
         @Index(name = "idx_polygon_segment_order", columnList = "sequence"),
         @Index(name = "idx_polygon_segment_interpretation", columnList = "interpretation")
@@ -24,12 +25,12 @@ import jakarta.persistence.Index;
 public class PolygonSegment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "polygon_segment_seq")
-    @SequenceGenerator(name = "polygon_segment_seq", sequenceName = "polygon_segment_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", nullable = false)
     protected long dbid;
 
-    @Column(name = "curve_xml_id")
+    @Transient
     protected String id;
 
     @Column(name = "linestring", columnDefinition = "geometry(Linestring, 4326)")

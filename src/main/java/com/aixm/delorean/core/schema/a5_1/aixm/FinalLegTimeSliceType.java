@@ -123,56 +123,48 @@ public class FinalLegTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "endconditiondesignator_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "endconditiondesignator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSegmentTerminationType endConditionDesignator;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "legpath_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "legpath_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTrajectoryType legPath;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "legtypearinc_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "legtypearinc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSegmentPathType legTypeARINC;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "course_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "course_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType course;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "coursetype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "coursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType courseType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "coursedirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "coursedirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionReferenceType courseDirection;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "turndirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -180,28 +172,24 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speedLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSpeedReferenceType speedReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeUseType speedInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "bankangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "bankangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType bankAngle;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -209,7 +197,6 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "duration_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -217,14 +204,12 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDurationType duration;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "procedureturnrequired_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "procedureturnrequired_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType procedureTurnRequired;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimitaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -232,14 +217,12 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLimitAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimitaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -247,21 +230,18 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLimitAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudeinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAltitudeUseType altitudeInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudeoverrideatc_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -269,113 +249,97 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeoverrideatc_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType altitudeOverrideATC;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "altitudeoverridereference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "altitudeoverridereference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType altitudeOverrideReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticalangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticalangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType verticalAngle;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "startpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType startPoint;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "endpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType endPoint;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "trajectory_id", referencedColumnName = "id")
     protected CurvePropertyType trajectory;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "arccentre_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType arcCentre;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "angle_id", referencedColumnName = "id")
     protected AngleIndicationPropertyType angle;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "distance_id", referencedColumnName = "id")
     protected DistanceIndicationPropertyType distance;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalleg_ts_aircraftcategory", joinColumns = {
-        @JoinColumn(name = "finalleg_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCategory;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "holding_id", referencedColumnName = "id")
     protected HoldingUsePropertyType holding;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalleg_ts_designsurface", joinColumns = {
-        @JoinColumn(name = "finalleg_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleassessmentarea_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstacleAssessmentAreaPropertyType> designSurface;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalleg_ts_annotation", joinColumns = {
-        @JoinColumn(name = "finalleg_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "approach_id", referencedColumnName = "id")
     protected InstrumentApproachProcedurePropertyType approach;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "guidancesystem_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "guidancesystem_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFinalGuidanceType guidanceSystem;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "landingsystemcategory_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "landingsystemcategory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeApproachGuidanceType landingSystemCategory;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumbarovnavtemperature_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -383,28 +347,24 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumbarovnavtemperature_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValTemperatureType minimumBaroVnavTemperature;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "rnpdmeauthorized_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "rnpdmeauthorized_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType rnpDMEAuthorized;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "courseoffsetangle_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetangle_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType courseOffsetAngle;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "courseoffsetside_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetside_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType courseOffsetSide;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "coursecentrelinedistance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -412,7 +372,6 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "coursecentrelinedistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType courseCentrelineDistance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "courseoffsetdistance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -420,66 +379,63 @@ public class FinalLegTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "courseoffsetdistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType courseOffsetDistance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "coursecentrelineintersect_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "coursecentrelineintersect_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRelativePositionType courseCentrelineIntersect;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "finalleg_ts_condition", joinColumns = {
-        @JoinColumn(name = "finalleg_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "approachcondition_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApproachConditionPropertyType> condition;
-    @XmlElement(name = "finalPathAlignmentPoint_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType finalPathAlignmentPointFixDesignatedPoint;
-    @XmlElement(name = "finalPathAlignmentPoint_navaidSystem", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType finalPathAlignmentPointNavaidSystem;
-    @XmlElement(name = "finalPathAlignmentPoint_aimingPoint", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType finalPathAlignmentPointAimingPoint;
-    @XmlElement(name = "finalPathAlignmentPoint_runwayPoint", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType finalPathAlignmentPointRunwayPoint;
-    @XmlElement(name = "finalPathAlignmentPoint_airportReferencePoint", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType finalPathAlignmentPointAirportReferencePoint;
-    @XmlElement(name = "finalPathAlignmentPoint_position", nillable = true)
+    @XmlElement(name = "finalPathAlignmentPoint_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "finalpathalignmentpoint_position_id", referencedColumnName = "id")
     protected PointPropertyType finalPathAlignmentPointPosition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "visualdescentpoint_id", referencedColumnName = "id")
     protected TerminalSegmentPointPropertyType visualDescentPoint;
-    @XmlElement(name = "FASData", nillable = true)
+    @XmlElement(name = "FASData")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -77,58 +77,51 @@ public class StandardLevelSectorTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "flightrule_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "flightrule_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeFlightRuleType flightRule;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "fromtrack_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "fromtrack_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType fromTrack;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "totrack_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "totrack_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType toTrack;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "angletype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "angletype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNorthReferenceType angleType;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelsector_ts_applicableairspace", joinColumns = {
-        @JoinColumn(name = "standardlevelsector_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspacePropertyType> applicableAirspace;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "applicablelevelcolumn_id", referencedColumnName = "id")
     protected StandardLevelColumnPropertyType applicableLevelColumn;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "standardlevelsector_ts_annotation", joinColumns = {
-        @JoinColumn(name = "standardlevelsector_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

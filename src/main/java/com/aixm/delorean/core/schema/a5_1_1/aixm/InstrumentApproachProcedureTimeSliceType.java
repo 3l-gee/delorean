@@ -102,14 +102,14 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "communicationfailureinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "communicationfailureinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType communicationFailureInstruction;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
@@ -137,7 +137,7 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
@@ -152,40 +152,40 @@ public class InstrumentApproachProcedureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_ts_availability", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "procedureavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedureAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_ts_airportheliport", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportheliport_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportHeliportPropertyType> airportHeliport;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_ts_aircraftcharacteristic", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraftCharacteristic;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_ts_flighttransition", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "proceduretransition_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ProcedureTransitionPropertyType> flightTransition;
     @XmlElement(name = "guidanceFacility_specialNavigationSystem", nillable = true)
@@ -210,10 +210,10 @@ public class InstrumentApproachProcedureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachprocedure_ts_annotation", joinColumns = {
-        @JoinColumn(name = "instrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
@@ -260,7 +260,7 @@ public class InstrumentApproachProcedureTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "coursereversalinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "coursereversalinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "coursereversalinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType courseReversalInstruction;
@@ -295,10 +295,10 @@ public class InstrumentApproachProcedureTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "instrumentapproachinstrumentapproachprocedure_ts_missedinstruction", joinColumns = {
-        @JoinColumn(name = "instrumentapproachinstrumentapproachprocedure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "missedapproachgroup_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MissedApproachGroupPropertyType> missedInstruction;
     @XmlElement(nillable = true)

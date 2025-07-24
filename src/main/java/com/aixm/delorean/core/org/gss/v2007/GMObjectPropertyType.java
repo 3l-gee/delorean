@@ -13,6 +13,7 @@ import com.aixm.delorean.core.org.gml.v_3_2.AbstractCurveType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractGeometricAggregateType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractGeometricPrimitiveType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractGeometryType;
+import com.aixm.delorean.core.org.gml.v_3_2.AbstractRingType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractSolidType;
 import com.aixm.delorean.core.org.gml.v_3_2.AbstractSurfaceType;
 import com.aixm.delorean.core.org.gml.v_3_2.CompositeCurveType;
@@ -21,6 +22,7 @@ import com.aixm.delorean.core.org.gml.v_3_2.CompositeSurfaceType;
 import com.aixm.delorean.core.org.gml.v_3_2.GeometricComplexType;
 import com.aixm.delorean.core.org.gml.v_3_2.GridType;
 import com.aixm.delorean.core.org.gml.v_3_2.LineStringType;
+import com.aixm.delorean.core.org.gml.v_3_2.LinearRingType;
 import com.aixm.delorean.core.org.gml.v_3_2.MultiCurveType;
 import com.aixm.delorean.core.org.gml.v_3_2.MultiGeometryType;
 import com.aixm.delorean.core.org.gml.v_3_2.MultiPointType;
@@ -30,17 +32,23 @@ import com.aixm.delorean.core.org.gml.v_3_2.OrientableCurveType;
 import com.aixm.delorean.core.org.gml.v_3_2.OrientableSurfaceType;
 import com.aixm.delorean.core.org.gml.v_3_2.PolygonType;
 import com.aixm.delorean.core.org.gml.v_3_2.RectifiedGridType;
+import com.aixm.delorean.core.org.gml.v_3_2.RingType;
+import com.aixm.delorean.core.org.gml.v_3_2.ShellType;
 import com.aixm.delorean.core.org.gml.v_3_2.SolidType;
 import com.aixm.delorean.core.org.gml.v_3_2.TinType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ActuateType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ShowType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.TypeType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -82,51 +90,25 @@ public class GMObjectPropertyType {
     @XmlAttribute(name = "uuidref")
     protected String uuidref;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    public static final String TYPE = "simple";
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Column(name = "href")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String title;
-    /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
+    @Transient
+    protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
-    protected String show;
-    /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
+    @Transient
+    protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
-    protected String actuate;
+    @Transient
+    protected ActuateType actuate;
 
     /**
      * The AbstractGeometry element is the abstract head of the substitution group for all geometry elements of GML. This includes pre-defined and user-defined geometry elements. Any geometry element shall be a direct or indirect extension/restriction of AbstractGeometryType and shall be directly or indirectly in the substitution group of AbstractGeometry.
@@ -138,6 +120,7 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
@@ -147,6 +130,7 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiPointType }{@code >}
@@ -157,17 +141,19 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      *     {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TinType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      *     
      */
     public JAXBElement<? extends AbstractGeometryType> getAbstractGeometry() {
@@ -184,6 +170,7 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
@@ -193,6 +180,7 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiPointType }{@code >}
@@ -203,17 +191,19 @@ public class GMObjectPropertyType {
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      *     {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TinType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      *     
      * @see #getAbstractGeometry()
      */
@@ -378,53 +368,42 @@ public class GMObjectPropertyType {
     }
 
     /**
-     * Gets the value of the title property.
+     * Gets the value of the titleAttribute property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getTitleAttribute() {
+        return titleAttribute;
     }
 
     /**
-     * Sets the value of the title property.
+     * Sets the value of the titleAttribute property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setTitleAttribute(String value) {
+        this.titleAttribute = value;
     }
 
-    public boolean isSetTitle() {
-        return (this.title!= null);
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the show property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
      */
-    public String getShow() {
+    public ShowType getShow() {
         return show;
     }
 
@@ -433,11 +412,10 @@ public class GMObjectPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
-     * @see #getShow()
      */
-    public void setShow(String value) {
+    public void setShow(ShowType value) {
         this.show = value;
     }
 
@@ -446,24 +424,14 @@ public class GMObjectPropertyType {
     }
 
     /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the actuate property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
      */
-    public String getActuate() {
+    public ActuateType getActuate() {
         return actuate;
     }
 
@@ -472,11 +440,10 @@ public class GMObjectPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
-     * @see #getActuate()
      */
-    public void setActuate(String value) {
+    public void setActuate(ActuateType value) {
         this.actuate = value;
     }
 

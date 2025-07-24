@@ -1,38 +1,30 @@
 CREATE OR REPLACE VIEW notes.linguisticnote_view AS
 SELECT 
     notes.linguisticnote_pt.id,
-    jsonb_build_object(
-        'xml_id', notes.linguisticnote.xml_id,
-        'note_lang', notes.linguisticnote.note_lang,
-        'note_value', notes.linguisticnote.note_value,
-        'note_nilreason',  notes.linguisticnote.note_nilreason
-    ) AS linguisticnote
+    notes.linguisticnote.note_lang AS lang,
+    COALESCE(notes.linguisticnote.note_value, '('|| notes.linguisticnote.note_nilreason ||')') AS note
 FROM notes.linguisticnote_pt
-INNER JOIN notes.linguisticnote
-ON notes.linguisticnote_pt.linguisticnote_id = notes.linguisticnote.id;
+INNER JOIN notes.linguisticnote ON notes.linguisticnote_pt.linguisticnote_id = notes.linguisticnote.id;
 
 CREATE OR REPLACE VIEW notes.note_view AS
 SELECT
-	notes.note_pt.id,
+    notes.note_pt.id,
     jsonb_build_object(
-        'xml_id', notes.note.xml_id,
-        'propertyname_value', notes.note.propertyname_value,
-        'propertyname_nilreason', notes.note.propertyname_nilreason,
-        'purpose_value', notes.note.purpose_value,
-        'purpose_nilreason', notes.note.purpose_nilreason,
-		'linguisticnote', COALESCE(jsonb_agg(notes.linguisticnote_view.linguisticnote), '[]'::jsonb)
+        'propertyName', COALESCE(notes.note.propertyname_value, '(' || notes.note.propertyname_nilreason || ')'),
+        'purpose', COALESCE(notes.note.purpose_value, '(' || notes.note.purpose_nilreason || ')'),
+        'notes', translated_notes.notes_array
     ) AS note
 FROM notes.note_pt
-INNER JOIN notes.note
-ON notes.note_pt.note_id = notes.note.id
-LEFT JOIN note_translatednote
-ON notes.note.id = note_translatednote.note_id
-LEFT JOIN notes.linguisticnote_view
-ON note_translatednote.linguisticnote_pt_id = notes.linguisticnote_view.id
-GROUP BY
-    notes.note_pt.id,
-    notes.note.xml_id,
-    notes.note.propertyname_value,
-    notes.note.propertyname_nilreason,
-    notes.note.purpose_value,
-    notes.note.purpose_nilreason;
+INNER JOIN notes.note ON notes.note_pt.note_id = notes.note.id
+LEFT JOIN LATERAL (
+    SELECT jsonb_agg(
+        jsonb_build_object(
+            'id', notes.linguisticnote_view.id,
+            'lang', notes.linguisticnote_view.lang,
+            'note', notes.linguisticnote_view.note
+        )
+    ) AS notes_array
+    FROM master_join
+    JOIN notes.linguisticnote_view ON master_join.target_id = notes.linguisticnote_view.id
+    WHERE master_join.source_id = notes.note.id
+) AS translated_notes ON true;

@@ -19,12 +19,20 @@
 
 	<jaxb:bindings schemaLocation="../aixm/ISO_19136_Schemas/gmlBase.xsd" node="/xs:schema">
 	    <jaxb:bindings node="//xs:complexType[@name='AbstractGMLType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractGMLType", propOrder = {"metaDataProperty", "description", "descriptionReference", "identifier", "name"})</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
-			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
 			<jaxb:property name="xmlId"/>
         </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:element[@name='dbid']">
+			<annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+			<annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+		</jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>
@@ -45,7 +53,7 @@
 			<annox:annotate target="field">@jakarta.persistence.CollectionTable(name = "code_type_list", joinColumns = @jakarta.persistence.JoinColumn(name = "gml_type_id"))</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.AttributeOverrides({@jakarta.persistence.AttributeOverride(name = "value", column = @jakarta.persistence.Column(name = "name")),@jakarta.persistence.AttributeOverride(name = "codeSpace", column = @jakarta.persistence.Column(name = "name_code_space"))})</annox:annotate>
         </jaxb:bindings>
-		<jaxb:bindings node="xs:attributeGroup [@name='AggregationAttributeGroup']//xs:attribute[@name='aggregationType']">
+		<jaxb:bindings node="xs:attributeGroup[@name='AggregationAttributeGroup']//xs:attribute[@name='aggregationType']">
 			<annox:annotate target="field">@jakarta.persistence.Column(name = "aggregation_type")</annox:annotate>
 			<annox:annotate target="field">@jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)</annox:annotate>
 		</jaxb:bindings>

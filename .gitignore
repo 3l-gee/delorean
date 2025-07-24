@@ -28,6 +28,9 @@ hs_err_pid*
 # Maven target directory
 target/
 
+# Data directory
+data/
+
 # Gradle build directory
 build/
 
@@ -62,8 +65,8 @@ __pycache__/
 # Python virtual environments
 .venv/
 
-# Data
-data/
+# Qgis temporary project files
+*.qgs~
 
 
 util/__pycache__/Annotation.cpython-311.pyc

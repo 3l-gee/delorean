@@ -55,10 +55,10 @@ public class GuidanceLineLightSystemType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinelightsystem_timeslice", joinColumns = {
-        @JoinColumn(name = "guidancelinelightsystem_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "guidancelinelightsystem_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GuidanceLineLightSystemTimeSlicePropertyType> timeSlice;
 

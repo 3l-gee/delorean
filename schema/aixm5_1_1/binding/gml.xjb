@@ -19,12 +19,20 @@
 
 	<jaxb:bindings schemaLocation="../aixm/gml/3.2.1/gmlBase.xsd" node="/xs:schema">
 	    <jaxb:bindings node="//xs:complexType[@name='AbstractGMLType']">
+			<annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "AbstractGMLType", propOrder = {"metaDataProperty", "description", "descriptionReference", "identifier", "name"})</annox:annotate>
             <annox:annotate target="class">@jakarta.persistence.MappedSuperclass</annox:annotate>
         </jaxb:bindings>
 		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:attribute[@ref='gml:id']">
-			<annox:annotate target="field">@jakarta.persistence.Column(name = "xml_id")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
 			<jaxb:property name="xmlId"/>
         </jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']//xs:element[@name='dbid']">
+			<annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
+			<annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+			<annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+		</jaxb:bindings>
 		<jaxb:bindings node="xs:group[@name='StandardObjectProperties']//xs:element[@ref='gml:metaDataProperty']">
 			<annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
         </jaxb:bindings>

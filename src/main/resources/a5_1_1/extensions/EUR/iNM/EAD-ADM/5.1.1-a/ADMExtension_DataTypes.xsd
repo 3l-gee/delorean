@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ADMExtension="http://www.aixm.aero/schema/5.1.1/extensions/EUR/iNM/EAD-ADM" 
+	xmlns:aixm="http://www.aixm.aero/schema/5.1.1" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.aixm.aero/schema/5.1.1/extensions/EUR/iNM/EAD-ADM" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1-a">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../../../AIXM_DataTypes.xsd"/>
+	<simpleType name="CodeAdmInterpretation">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="Permanent_BASELINE">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="Permanent_PERMDELTA">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="Temporary_BASELINE">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="Temporary_PERMDELTA">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="TEMPDELTA">
+						<!--No annotation found for this element.-->
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+		<!--No annotation found for this element.-->
+	</simpleType>
+	<simpleType name="CodeTimesliceType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="Encoding">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="What_If">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="Encoding_with_Resolution">
+						<!--No annotation found for this element.-->
+					</enumeration>
+					<enumeration value="Resolution">
+						<!--No annotation found for this element.-->
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+		<!--No annotation found for this element.-->
+	</simpleType>
+	<simpleType name="CodeValidityStatus">
+		<annotation>
+			<documentation>Code list of time slice statuses</documentation>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="PLANNED">
+						<annotation>
+							<documentation>Time slice created in the context of data branch, yet not released into operational data.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="VALID">
+						<annotation>
+							<documentation>Time slice with the highest correction number within the particular sequence is considered as valid time slice.  &#xd;
+In context of the interest date, time slice is considered as valid if it is time slice with the highest correction number within the same sequence number which was created before required interest date and  there is no cancellation time slice in the same sequence. </documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="CORRECTED">
+						<annotation>
+							<documentation>All time slices within the same sequence number with lower correction number as the last valid one has status Corrected. &#xd;
+In context of the interest date, time slice has status corrected if there exists at least one time slice with higher correction number within the same sequence  which was was created before interest date and there is no cancellation time slice in the same sequence which was created before interest date.  </documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="CANCELLED">
+						<annotation>
+							<documentation>When time slice cancellation event is done then all time slices with the same sequence number has the status Cancelled.&#xd;
+In context of the interest date, time slice is considered as Cancelled if there is cancellation time slice (time slice with NIL valid date)  in the same sequence sequence number created before interest date.  If there is cancellation time slice, all time slices with the same sequence number has the status cancelled. </documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="PLANNED_INCONSISTENT">
+						<!--No annotation found for this element.-->
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+</schema>

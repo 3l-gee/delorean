@@ -55,8 +55,8 @@ import jakarta.xml.bind.annotation.XmlType;
 public class RunwayElementPropertyType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "runwayelement_pt_seq")
-    @SequenceGenerator(name = "runwayelement_pt_seq", sequenceName = "runwayelement_pt_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", length = 255, nullable = false, unique = true)
     @XmlTransient
     protected Long dbid;

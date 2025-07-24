@@ -55,10 +55,10 @@ public class SecondarySurveillanceRadarType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "secondarysurveillanceradar_timeslice", joinColumns = {
-        @JoinColumn(name = "secondarysurveillanceradar_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "secondarysurveillanceradar_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SecondarySurveillanceRadarTimeSlicePropertyType> timeSlice;
 

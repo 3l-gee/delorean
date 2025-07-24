@@ -75,7 +75,6 @@ public class SafeAltitudeAreaSectorType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "bufferwidth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -83,36 +82,32 @@ public class SafeAltitudeAreaSectorType
         @AttributeOverride(name = "nilReason", column = @Column(name = "bufferwidth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType bufferWidth;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected SurfacePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_significantobstacle", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstruction_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstructionPropertyType> significantObstacle;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "sectordefinition_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDefinition;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "safealtitudeareasector_annotation", joinColumns = {
-        @JoinColumn(name = "safealtitudeareasector_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

@@ -55,10 +55,10 @@ public class FlightRestrictionType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightrestriction_timeslice", joinColumns = {
-        @JoinColumn(name = "flightrestriction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestriction_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FlightRestrictionTimeSlicePropertyType> timeSlice;
 

@@ -80,81 +80,73 @@ public class ConditionCombinationType
     extends AbstractPropertiesWithScheduleType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_timeinterval", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheet_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_annotation", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "logicaloperator_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "logicaloperator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeLogicalOperatorType logicalOperator;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_weather", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "meteorology_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MeteorologyPropertyType> weather;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_aircraft", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftCharacteristicPropertyType> aircraft;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_flight", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightcharacteristic_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FlightCharacteristicPropertyType> flight;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "conditioncombination_subcondition", joinColumns = {
-        @JoinColumn(name = "conditioncombination_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "conditioncombination_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ConditionCombinationPropertyType> subCondition;
     @Transient

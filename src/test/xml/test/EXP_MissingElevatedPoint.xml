@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns8:AIXMBasicMessage xmlns:ns1="http://www.opengis.net/gml/3.2" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.aixm.aero/schema/5.1.1" xmlns:ns4="http://www.aixm.aero/schema/5.1" xmlns:ns5="http://www.isotc211.org/2005/gco" xmlns:ns6="http://www.isotc211.org/2005/gmd" xmlns:ns7="http://www.isotc211.org/2005/gts" xmlns:ns8="http://www.aixm.aero/schema/5.1/message" xmlns:ns9="http://www.aixm.aero/schema/5.1.1/message" ns1:id="1">
+    <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <ns4:messageMetadata/>
+    <ns8:hasMember ns2:type="simple">
+        <ns4:AirportHeliport ns1:id="gmlID9956596">
+            <ns1:identifier codeSpace="urn:uuid:">34da8ee8-080e-40d0-bf2a-f41cf7aa3c20</ns1:identifier>
+            <ns1:boundedBy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <ns4:timeSlice>
+                <ns4:AirportHeliportTimeSlice ns1:id="gmlID9956597">
+                    <ns1:validTime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2023-11-30T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns1:validTime>
+                    <ns4:interpretation>BASELINE</ns4:interpretation>
+                    <ns4:sequenceNumber>15</ns4:sequenceNumber>
+                    <ns4:correctionNumber>0</ns4:correctionNumber>
+                    <ns4:featureLifetime ns2:type="simple">
+                        <TimePeriod xmlns="http://www.example.com/schema">
+                            <ns1:beginPosition>2012-10-18T00:00:00Z</ns1:beginPosition>
+                            <ns1:endPosition indeterminatePosition="unknown"/>
+                        </TimePeriod>
+                    </ns4:featureLifetime>
+                    <ns4:designator>LSME</ns4:designator>
+                    <ns4:name>EMMEN</ns4:name>
+                    <ns4:locationIndicatorICAO>LSME</ns4:locationIndicatorICAO>
+                    <ns4:designatorIATA>EML</ns4:designatorIATA>
+                    <ns4:type>AH</ns4:type>
+                    <ns4:certifiedICAO nilReason="unknown"></ns4:certifiedICAO>
+                    <ns4:privateUse>NO</ns4:privateUse>
+                    <ns4:controlType>MIL</ns4:controlType>
+                    <ns4:fieldElevation uom="FT">1398</ns4:fieldElevation>
+                    <ns4:fieldElevationAccuracy nilReason="unknown"></ns4:fieldElevationAccuracy>
+                    <ns4:verticalDatum>OTHER:LN02</ns4:verticalDatum>
+                    <ns4:magneticVariation>2.497</ns4:magneticVariation>
+                    <ns4:magneticVariationAccuracy nilReason="unknown"/>
+                    <ns4:dateMagneticVariation>2018</ns4:dateMagneticVariation>
+                    <ns4:magneticVariationChange>0.163</ns4:magneticVariationChange>
+                    <ns4:referenceTemperature nilReason="unknown"/>
+                    <ns4:altimeterCheckLocation nilReason="unknown"></ns4:altimeterCheckLocation>
+                    <ns4:secondaryPowerSupply nilReason="unknown"></ns4:secondaryPowerSupply>
+                    <ns4:windDirectionIndicator>YES</ns4:windDirectionIndicator>
+                    <ns4:landingDirectionIndicator>NO</ns4:landingDirectionIndicator>
+                    <ns4:transitionAltitude nilReason="unknown"></ns4:transitionAltitude>
+                    <ns4:transitionLevel nilReason="unknown">0</ns4:transitionLevel>
+                    <ns4:lowestTemperature nilReason="unknown"/>
+                    <ns4:abandoned>NO</ns4:abandoned>
+                    <ns4:responsibleOrganisation>
+                        <ns4:AirportHeliportResponsibilityOrganisation ns1:id="gmlID9956603">
+                            <ns4:role nilReason="unknown"></ns4:role>
+                            <ns4:theOrganisationAuthority ns2:type="simple" ns2:href="urn:uuid:e602d475-7b0d-4e4c-a614-8a8230bf8cda"/>
+                        </ns4:AirportHeliportResponsibilityOrganisation>
+                    </ns4:responsibleOrganisation>
+                    <ns4:ARP>
+                        <ns4:ElevatedPoint srsName="urn:ogc:def:crs:EPSG::4326" ns1:id="gmlID9956604">
+                            <ns1:pos>47.092152778 8.304847222</ns1:pos>
+                            <ns4:horizontalAccuracy nilReason="unknown"/>
+                            <ns4:elevation nilReason="unknown"></ns4:elevation>
+                            <ns4:geoidUndulation nilReason="unknown"/>
+                            <ns4:verticalDatum nilReason="unknown"></ns4:verticalDatum>
+                            <ns4:verticalAccuracy nilReason="unknown"/>
+                        </ns4:ElevatedPoint>
+                    </ns4:ARP>
+                    <ns4:aviationBoundary nilReason="unknown">
+                        <ns4:ElevatedSurface>
+                            <ns3:patches>
+<ns3:AbstractSurfacePatch interpolation="planar">
+    <ns1:exterior>
+        <ns3:AbstractRing/>
+    </ns1:exterior>
+</ns3:AbstractSurfacePatch>
+                            </ns3:patches>
+                        </ns4:ElevatedSurface>
+                    </ns4:aviationBoundary>
+                    <ns4:availability>
+                        <ns4:AirportHeliportAvailability ns1:id="gmlID9956607">
+                            <ns4:operationalStatus nilReason="unknown"></ns4:operationalStatus>
+                            <ns4:warning nilReason="unknown"></ns4:warning>
+                            <ns4:usage>
+<ns4:AirportHeliportUsage ns1:id="gmlID9956608">
+    <ns4:type>PERMIT</ns4:type>
+    <ns4:priorPermission nilReason="unknown"/>
+    <ns4:selection>
+        <ns4:ConditionCombination ns1:id="gmlID9956609">
+            <ns4:logicalOperator nilReason="inapplicable"></ns4:logicalOperator>
+            <ns4:flight>
+                <ns4:FlightCharacteristic ns1:id="gmlID9956610">
+                    <ns4:type nilReason="unknown"></ns4:type>
+                    <ns4:rule nilReason="unknown"></ns4:rule>
+                    <ns4:status nilReason="unknown"></ns4:status>
+                    <ns4:military>MIL</ns4:military>
+                    <ns4:origin nilReason="unknown"></ns4:origin>
+                    <ns4:purpose nilReason="unknown"></ns4:purpose>
+                </ns4:FlightCharacteristic>
+            </ns4:flight>
+        </ns4:ConditionCombination>
+    </ns4:selection>
+    <ns4:operation nilReason="unknown"></ns4:operation>
+</ns4:AirportHeliportUsage>
+                            </ns4:usage>
+                        </ns4:AirportHeliportAvailability>
+                    </ns4:availability>
+                    <ns4:annotation>
+                        <ns4:Note ns1:id="gmlID9956611">
+                            <ns4:purpose>OTHER:to_EAD</ns4:purpose>
+                        </ns4:Note>
+                    </ns4:annotation>
+                </ns4:AirportHeliportTimeSlice>
+            </ns4:timeSlice>
+        </ns4:AirportHeliport>
+    </ns8:hasMember>
+</ns8:AIXMBasicMessage>

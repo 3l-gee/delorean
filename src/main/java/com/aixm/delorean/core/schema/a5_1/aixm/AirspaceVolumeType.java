@@ -83,7 +83,6 @@ public class AirspaceVolumeType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -91,14 +90,12 @@ public class AirspaceVolumeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maximumlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -106,14 +103,12 @@ public class AirspaceVolumeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximumlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType maximumLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "maximumlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "maximumlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType maximumLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -121,14 +116,12 @@ public class AirspaceVolumeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -136,14 +129,12 @@ public class AirspaceVolumeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType minimumLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -151,32 +142,28 @@ public class AirspaceVolumeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "horizontalprojection_id", referencedColumnName = "id")
     protected SurfacePropertyType horizontalProjection;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "centreline_id", referencedColumnName = "id")
     protected CurvePropertyType centreline;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "contributorairspace_id", referencedColumnName = "id")
     protected AirspaceVolumeDependencyPropertyType contributorAirspace;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspacevolume_annotation", joinColumns = {
-        @JoinColumn(name = "airspacevolume_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

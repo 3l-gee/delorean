@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - ADR extension Schema-->
+<!--Released:  January 2011-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2011, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: adr: Features -->
+<schema xmlns:adr="http://www.aixm.aero/schema/5.1/extensions/ADR" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:aixm="http://www.aixm.aero/schema/5.1" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/ADR" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../xlink/xlinks.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../AIXM_Features.xsd"/>
+	<include schemaLocation="./ADR_DataTypes.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.0/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<!-- Extension to PropertiesWithSchedule - uses TimeTable -->
+	<element name="PropertiesWithScheduleExtension" type="adr:PropertiesWithScheduleExtensionType" substitutionGroup="aixm:AbstractPropertiesWithScheduleExtension"/>
+	<complexType name="PropertiesWithScheduleExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:PropertiesWithScheduleExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="PropertiesWithScheduleExtensionPropertyGroup">
+		<sequence>
+			<element name="timeTable" type="adr:TimeTablePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<!-- Timetable -->
+	<complexType name="TimeTablePropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:TimeTable"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="TimeTable" type="adr:TimeTableType"/>
+	<complexType name="TimeTableType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:TimeTablePropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TimeTablePropertyGroup">
+		<sequence>
+			<element name="timeReference" type="aixm:CodeTimeReferenceType" nillable="true" minOccurs="0"/>
+			<element name="startDate" type="aixm:DateType" nillable="true" minOccurs="0"/>
+			<element name="endDate" type="aixm:DateType" nillable="true" minOccurs="0"/>
+			<element name="exclude" type="aixm:CodeYesNoType" nillable="true" minOccurs="0"/>
+			<element name="timePatternCombination" type="adr:TimePatternCombinationType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<!-- TimePatternCombination -->
+	<complexType name="TimePatternCombinationPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:TimePatternCombination"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="TimePatternCombination" type="adr:TimePatternCombinationType"/>
+	<complexType name="TimePatternCombinationType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:TimePatternCombinationPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TimePatternCombinationPropertyGroup">
+		<sequence>
+			<element name="weekDayPattern" type="adr:WeekDayPatternType" nillable="true" minOccurs="0"/>
+			<element name="timeOperand" type="adr:CodeMathOperandType" nillable="true" minOccurs="0"/>
+			<element name="specialDayPattern" type="adr:SpecialDayPatternType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<!-- WeekDayPattern -->
+	<complexType name="WeekDayPatternPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:WeekDayPattern"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="WeekDayPattern" type="adr:WeekDayPatternType"/>
+	<complexType name="WeekDayPatternType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:WeekDayPatternPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="WeekDayPatternPropertyGroup">
+		<sequence>
+			<element name="day" type="adr:CodeWeekDayType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="startTime" type="aixm:TimeType" nillable="true" minOccurs="0"/>
+			<element name="endTime" type="aixm:TimeType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<!-- SpecialDayPattern -->
+	<complexType name="SpecialDayPatternPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:SpecialDayPattern"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="SpecialDayPattern" type="adr:SpecialDayPatternType"/>
+	<complexType name="SpecialDayPatternType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:SpecialDayPatternPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="SpecialDayPatternPropertyGroup">
+		<sequence>
+			<element name="specialDay" type="adr:CodeSpecialDayType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="startTime" type="aixm:TimeType" nillable="true" minOccurs="0"/>
+			<element name="endTime" type="aixm:TimeType" nillable="true" minOccurs="0"/>
+		</sequence>
+	</group>
+	<!-- AirspaceLayer extension - to be used by the RouteSegment extension -->
+	<element name="AirspaceLayerExtension" type="adr:PropertiesWithScheduleExtensionType" substitutionGroup="aixm:AbstractAirspaceLayerExtension"/>
+	<complexType name="AirspaceLayerExtensionType">
+		<complexContent>
+			<extension base="adr:PropertiesWithScheduleExtensionType">
+				<sequence>
+					<group ref="aixm:AirspaceLayerPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="RouteSegmentExtension" type="adr:RouteSegmentExtensionType" substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+	<complexType name="RouteSegmentExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RouteSegmentExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteSegmentExtensionPropertyGroup">
+		<sequence>
+			<element name="levels" type="adr:AirspaceLayerExtensionType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AirspaceExtension" type="adr:AirspaceExtensionType" substitutionGroup="aixm:AbstractAirspaceExtension"/>
+	<complexType name="AirspaceExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:AirspaceExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceExtensionPropertyGroup">
+		<sequence>
+			<element name="flexibleUse" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is not designated as either military or civil airspace but should be considered as one continuum and used flexibly on a day-to-day basis. Consequently, any necessary airspace segregation should be only of a temporary nature.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level1" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the strategic level. The act of defining and reviewing as required the national airspace policy taking into account national and international airspace requirements.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level2" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the pre-tactical level. The act operation of conducting operational management within the framework of pre-determined existing ATM structure and procedures defined in Level 1 and of reaching specific agreement between civil and military authorities involved. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="level3" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The airspace is manageable at the tactical level. The act on the day of operation of activating, de-activating or real-time reallocating of airspace allocated in Level 2 and of solving specific airspace problems and/or of individual OAT/GAT traffic situations in real-time between civil and military units and/or controllers, as appropriate. This co-ordination can take place either in active or passive mode with or without action by the controller. 
+</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="responsibleAMC" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Airspace Management Cell which has the operational responsibility for the allocation of the Airspace.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="UnitExtension" type="adr:UnitExtensionType" substitutionGroup="aixm:AbstractUnitExtension"/>
+	<complexType name="UnitExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:UnitExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="UnitExtensionPropertyGroup">
+		<sequence>
+			<element name="airspaceManagementCell" type="aixm:CodeYesNoType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates whether the Unit is an AMC, a joint civil/military unit responsible for the day-to-day management and temporary allocation of national or sub-regional airspace under the jurisdiction of one or more ECAC state(s).</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<!-- Reverse association between Airspace and Unit -->
+			<element name="airspaceUnderResponsibility" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The Airspace the Unit is reponsible for.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<element name="AirspaceActivationExtension" type="adr:AirspaceActivationExtensionType" substitutionGroup="aixm:AbstractAirspaceActivationExtension"/>
+	<complexType name="AirspaceActivationExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:AirspaceActivationExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="AirspaceActivationExtensionPropertyGroup">
+		<sequence>
+			<element name="requestor" type="aixm:UnitPropertyType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The Unit that makes the request for the Airspace reservation. This may be different from the Unit (squadron) that will effectively use the airspace.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The Flight Information Region where the airspace reservation is located.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<complexType name="ConstrainingAirspaceActivityPropertyType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMPropertyType">
+				<sequence>
+					<element ref="adr:ConstrainingAirspaceActivity"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="ConstrainingAirspaceActivity" type="adr:ConstrainingAirspaceActivityType">
+		<annotation>
+			<appinfo>
+				<gml:description>An association class that qualifies the impact of an airspace reservation over a route segment.</gml:description>
+			</appinfo>
+		</annotation>
+	</element>
+	<complexType name="ConstrainingAirspaceActivityType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMObjectType">
+				<sequence>
+					<group ref="adr:ConstrainingAirspaceActivityPropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="adr:AbstractConstrainingAirspaceActivityExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ConstrainingAirspaceActivityPropertyGroup">
+		<sequence>
+			<element name="effect" type="adr:CodeAirspaceReservationImpactType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>The operational impact of the Airspace over the route segment.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="theAirspace" type="aixm:AirspacePropertyType" minOccurs="0"/>
+		</sequence>
+	</group>
+	<element name="AbstractConstrainingAirspaceActivityExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="RouteAvailabilityExtension" type="adr:RouteAvailabilityExtensionType" substitutionGroup="aixm:AbstractRouteAvailabilityExtension"/>
+	<complexType name="RouteAvailabilityExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="adr:RouteAvailabilityExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="RouteAvailabilityExtensionPropertyGroup">
+		<sequence>
+			<element name="conditionalRouteType" type="adr:CodeConditionalRouteType" nillable="true" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<gml:description>Indicates the category of the conditional route (CDR), according to the Flexible Use of Airspace rules.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="defaultApplicability" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>Defines the periods in which this RouteAvailability is applicable by deafault.</gml:description>
+					</appinfo>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="timeReference" type="aixm:CodeTimeReferenceType" nillable="true" minOccurs="0"/>
+						<element name="startDate" type="aixm:DateType" nillable="true" minOccurs="0"/>
+						<element name="endDate" type="aixm:DateType" nillable="true" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="nonDefaultApplicability" type="adr:PropertiesWithScheduleExtensionType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>Defines the timetables in which this RouteAvailability applicable not as default .</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="hostAirspace" type="aixm:AirspacePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<gml:description>The Flight Information Region where the route opening/closure is located.</gml:description>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="causeOfLimitation" type="adr:ConstrainingAirspaceActivityPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+</schema>

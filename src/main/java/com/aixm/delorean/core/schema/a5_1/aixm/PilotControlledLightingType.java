@@ -55,10 +55,10 @@ public class PilotControlledLightingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "pilotcontrolledlighting_timeslice", joinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "pilotcontrolledlighting_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PilotControlledLightingTimeSlicePropertyType> timeSlice;
 

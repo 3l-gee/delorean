@@ -78,62 +78,57 @@ public class ObstacleAreaTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeObstacleAreaType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obstructionidsurfacecondition_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstructionidsurfacecondition_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeObstacleAssessmentSurfaceType obstructionIdSurfaceCondition;
-    @XmlElement(name = "reference_ownerAirport", nillable = true)
+    @XmlElement(name = "reference_ownerAirport")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "reference_ownerairport_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType referenceOwnerAirport;
-    @XmlElement(name = "reference_ownerRunway", nillable = true)
+    @XmlElement(name = "reference_ownerRunway")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "reference_ownerrunway_id", referencedColumnName = "id")
     protected RunwayDirectionPropertyType referenceOwnerRunway;
-    @XmlElement(name = "reference_ownerOrganisation", nillable = true)
+    @XmlElement(name = "reference_ownerOrganisation")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "reference_ownerorganisation_id", referencedColumnName = "id")
     protected OrganisationAuthorityPropertyType referenceOwnerOrganisation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "surfaceextent_id", referencedColumnName = "id")
     protected SurfacePropertyType surfaceExtent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_ts_obstacle", joinColumns = {
-        @JoinColumn(name = "obstaclearea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructure_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructurePropertyType> obstacle;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstaclearea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "obstaclearea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

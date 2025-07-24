@@ -122,10 +122,10 @@ public class FlightRoutingElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightroutingelement_flightlevel", joinColumns = {
-        @JoinColumn(name = "flightroutingelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "flightrestrictionlevel_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<FlightRestrictionLevelPropertyType> flightLevel;
     @XmlElement(name = "element_directFlightElement", nillable = true)
@@ -210,10 +210,10 @@ public class FlightRoutingElementType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "flightroutingelement_annotation", joinColumns = {
-        @JoinColumn(name = "flightroutingelement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

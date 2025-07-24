@@ -1,0 +1,951 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <layer-tree-group expanded="1"
+                    checked="Qt::Checked"
+                    name=""
+                    groupLayer="">
+    <customproperties>
+      <Option/>
+    </customproperties>
+    <layer-tree-layer providerKey="postgres"
+                      source="dbname='delorean' port=5432 table=&quot;navaids_points&quot;.&quot;designatedpoint_publisher_view&quot; (geom)"
+                      expanded="1"
+                      checked="Qt::Checked"
+                      patch_size="-1,-1"
+                      id="designatedpoint_publisher_view_a4fdffff_ecc7_46f4_b5b0_ba172bb0abf9"
+                      legend_split_behavior="0"
+                      name="designatedpoint_publisher_view"
+                      legend_exp="">
+      <customproperties>
+        <Option/>
+      </customproperties>
+    </layer-tree-layer>
+  </layer-tree-group>
+  <maplayers>
+    <maplayer simplifyLocal="1"
+              minScale="100000000"
+              symbologyReferenceScale="-1"
+              styleCategories="AllStyleCategories"
+              refreshOnNotifyMessage=""
+              wkbType="Point"
+              simplifyDrawingTol="1"
+              geometry="Point"
+              maxScale="0"
+              simplifyAlgorithm="0"
+              autoRefreshTime="0"
+              legendPlaceholderImage=""
+              simplifyMaxScale="1"
+              type="vector"
+              labelsEnabled="0"
+              refreshOnNotifyEnabled="0"
+              autoRefreshMode="Disabled"
+              hasScaleBasedVisibilityFlag="0"
+              simplifyDrawingHints="0"
+              readOnly="0">
+      <id>designatedpoint_publisher_view_a4fdffff_ecc7_46f4_b5b0_ba172bb0abf9</id>
+      <datasource>dbname='delorean' port=5432 key='row' srid=4326 type=Point checkPrimaryKeyUnicity='1' table="navaids_points"."designatedpoint_publisher_view" (geom)</datasource>
+      <keywordList>
+        <value/>
+      </keywordList>
+      <layername>designatedpoint_publisher_view</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier/>
+        <parentidentifier/>
+        <language/>
+        <type>dataset</type>
+        <title/>
+        <abstract/>
+        <contact>
+          <name/>
+          <organization/>
+          <position/>
+          <voice/>
+          <fax/>
+          <email/>
+          <role/>
+        </contact>
+        <links/>
+        <dates/>
+        <fees/>
+        <encoding/>
+        <crs>
+          <spatialrefsys nativeFormat="Wkt">
+            <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+            <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+            <srsid>3452</srsid>
+            <srid>4326</srid>
+            <authid>EPSG:4326</authid>
+            <description>WGS 84</description>
+            <projectionacronym>longlat</projectionacronym>
+            <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+            <geographicflag>true</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="EPSG:4326"
+                   minz="0"
+                   dimensions="2"
+                   maxz="0"
+                   miny="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"
+                   maxx="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"
+                   minx="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"
+                   maxy="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"/>
+          <temporal>
+            <period>
+              <start/>
+              <end/>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="">postgres</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <metadataUrls/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+        <Private>0</Private>
+      </flags>
+      <temporal accumulate="0"
+                durationUnit="min"
+                limitMode="0"
+                endField="valid_time_end"
+                durationField="row"
+                endExpression=""
+                startField="valid_time_begin"
+                startExpression=""
+                fixedDuration="0"
+                enabled="1"
+                mode="2">
+        <fixedRange>
+          <start/>
+          <end/>
+        </fixedRange>
+      </temporal>
+      <attributeactions>
+        <defaultAction key="Canvas"
+                       value="{00000000-0000-0000-0000-000000000000}"/>
+        <actionsetting type="1"
+                       capture="0"
+                       notificationMessage=""
+                       shortTitle="open airportHeliport"
+                       action="from qgis.utils import iface&#xd;&#xa;from qgis.core import QgsProject&#xd;&#xa;&#xd;&#xa;layer = QgsProject.instance().mapLayersByName('airportheliport_publisher_view')[0]&#xd;&#xa;uuid = '[%regexp_substr(airportheliport_href,'([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})')%]'&#xd;&#xa;feature = next(layer.getFeatures(f'&quot;identifier&quot; = \'{uuid}\''), None)&#xd;&#xa;&#xd;&#xa;if feature:&#xd;&#xa;    print(feature)&#xd;&#xa;    iface.openFeatureForm(layer, feature, False)"
+                       id="{0f52155a-6bcb-4642-a5c2-2a23a928efcc}"
+                       icon=""
+                       name="using airportheliport_href will opne the right airportHeliport using uuid, valid_time_begin and valid_time_end "
+                       isEnabledOnlyWhenEditable="0">
+          <actionScope id="Form"/>
+        </actionsetting>
+      </attributeactions>
+      <attributetableconfig sortExpression="&quot;identifier&quot;"
+                            actionWidgetStyle="dropDown"
+                            sortOrder="0">
+        <columns>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="row"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="identifier"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="sequence_number"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="correction_number"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="valid_time_begin"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="valid_time_end"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="feature_lifetime_begin"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="feature_lifetime_end"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="designator"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="type"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="name"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="airportheliport"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="airportheliport_href"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="aimingpoint"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="touchdownliftoff_href"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="runwaypoint"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="runwaycentrelinepoint_href"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="longitude"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="latitude"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="horizontalaccuracy"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="note"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="id"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="ts_id"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="tsp_id"/>
+          <column type="field"
+                  hidden="0"
+                  width="-1"
+                  name="interpretation"/>
+          <column type="actions"
+                  hidden="1"
+                  width="-1"/>
+        </columns>
+      </attributetableconfig>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <storedexpressions/>
+      <editform tolerant="1"/>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>tablayout</editorlayout>
+      <attributeEditorForm>
+        <labelStyle overrideLabelFont="0"
+                    overrideLabelColor="0"
+                    labelColor="0,0,0,255">
+          <labelFont italic="0"
+                     strikethrough="0"
+                     style=""
+                     bold="0"
+                     underline="0"
+                     description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+        </labelStyle>
+        <attributeEditorContainer type="Tab"
+                                  collapsedExpression=""
+                                  visibilityExpression=""
+                                  visibilityExpressionEnabled="0"
+                                  horizontalStretch="0"
+                                  collapsedExpressionEnabled="0"
+                                  name="feature"
+                                  showLabel="1"
+                                  groupBox="0"
+                                  collapsed="0"
+                                  verticalStretch="0"
+                                  columnCount="1">
+          <labelStyle overrideLabelFont="0"
+                      overrideLabelColor="0"
+                      labelColor="0,0,0,255">
+            <labelFont italic="0"
+                       strikethrough="0"
+                       style=""
+                       bold="0"
+                       underline="0"
+                       description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+          <attributeEditorContainer type="GroupBox"
+                                    collapsedExpression=""
+                                    visibilityExpression=""
+                                    visibilityExpressionEnabled="0"
+                                    horizontalStretch="0"
+                                    collapsedExpressionEnabled="0"
+                                    name="generic"
+                                    showLabel="1"
+                                    groupBox="1"
+                                    collapsed="0"
+                                    verticalStretch="0"
+                                    columnCount="1">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+            <attributeEditorField horizontalStretch="0"
+                                  name="identifier"
+                                  showLabel="1"
+                                  index="1"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="sequence_number"
+                                  showLabel="1"
+                                  index="2"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="correction_number"
+                                  showLabel="1"
+                                  index="3"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="valid_time_begin"
+                                  showLabel="1"
+                                  index="4"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="valid_time_end"
+                                  showLabel="1"
+                                  index="5"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="feature_lifetime_begin"
+                                  showLabel="1"
+                                  index="6"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="feature_lifetime_end"
+                                  showLabel="1"
+                                  index="7"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+          </attributeEditorContainer>
+          <attributeEditorContainer type="GroupBox"
+                                    collapsedExpression=""
+                                    visibilityExpression=""
+                                    visibilityExpressionEnabled="0"
+                                    horizontalStretch="0"
+                                    collapsedExpressionEnabled="0"
+                                    name="attributes"
+                                    showLabel="1"
+                                    groupBox="1"
+                                    collapsed="0"
+                                    verticalStretch="0"
+                                    columnCount="1">
+            <labelStyle overrideLabelFont="1"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+            <attributeEditorField horizontalStretch="0"
+                                  name="designator"
+                                  showLabel="1"
+                                  index="8"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="type"
+                                  showLabel="1"
+                                  index="9"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+            <attributeEditorField horizontalStretch="0"
+                                  name="name"
+                                  showLabel="1"
+                                  index="10"
+                                  verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>
+            </attributeEditorField>
+          </attributeEditorContainer>
+          <attributeEditorContainer type="GroupBox"
+                                    collapsedExpression=""
+                                    visibilityExpression=""
+                                    visibilityExpressionEnabled="0"
+                                    horizontalStretch="0"
+                                    collapsedExpressionEnabled="0"
+                                    name="annotation"
+                                    showLabel="1"
+                                    groupBox="1"
+                                    collapsed="0"
+                                    verticalStretch="0"
+                                    columnCount="1">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+            <attributeEditorHtmlElement horizontalStretch="0"
+                                        name="annotation"
+                                        showLabel="0"
+                                        verticalStretch="0">
+              <labelStyle overrideLabelFont="0"
+                          overrideLabelColor="0"
+                          labelColor="0,0,0,255">
+                <labelFont italic="0"
+                           strikethrough="0"
+                           style=""
+                           bold="0"
+                           underline="0"
+                           description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+              </labelStyle>&lt;!DOCTYPE html>&#xd;&#xd;&#xd;
+&lt;html lang="en">&#xd;&#xd;&#xd;
+&lt;head>&#xd;&#xd;&#xd;
+  &lt;meta charset="UTF-8">&#xd;&#xd;&#xd;
+  &lt;title>Note List Viewer&lt;/title>&#xd;&#xd;&#xd;
+  &lt;style>&#xd;&#xd;&#xd;
+body {&#xd;&#xd;&#xd;
+  font-family: Arial, sans-serif;&#xd;&#xd;&#xd;
+  background-color: #323232;&#xd;&#xd;&#xd;
+  color: #e0e0e0;&#xd;&#xd;&#xd;
+  margin: 15px;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+h1 {&#xd;&#xd;&#xd;
+  font-size: 1.35em;&#xd;&#xd;&#xd;
+  color: #ffffff;&#xd;&#xd;&#xd;
+  margin-bottom: 15px;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.note {&#xd;&#xd;&#xd;
+  background-color: #1e1e1e;&#xd;&#xd;&#xd;
+  border: 2px solid #3a9aed;&#xd;&#xd;&#xd;
+  padding: 12px;&#xd;&#xd;&#xd;
+  margin-bottom: 15px;&#xd;&#xd;&#xd;
+  box-shadow: 0 0 5px rgba(58, 154, 237, 0.2);&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.note-header {&#xd;&#xd;&#xd;
+  background-color: #2a2a2a;&#xd;&#xd;&#xd;
+  padding: 6px;&#xd;&#xd;&#xd;
+  border-radius: 2px;&#xd;&#xd;&#xd;
+  margin-bottom: 6px;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.note-header h2,&#xd;&#xd;&#xd;
+.note-header p {&#xd;&#xd;&#xd;
+  margin: 0 0 4px 0;&#xd;&#xd;&#xd;
+  font-size: 1em;&#xd;&#xd;&#xd;
+  color: #4fc3f7;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.note p {&#xd;&#xd;&#xd;
+  margin: 4px 0;&#xd;&#xd;&#xd;
+  color: #d0d0d0;&#xd;&#xd;&#xd;
+  font-size: 0.9em;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.translated {&#xd;&#xd;&#xd;
+  margin-top: 8px;&#xd;&#xd;&#xd;
+  padding-left: 8px;&#xd;&#xd;&#xd;
+  border-left: 3px solid #4fc3f7;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.translated-note {&#xd;&#xd;&#xd;
+  margin-bottom: 4px;&#xd;&#xd;&#xd;
+  color: #bbbbbb;&#xd;&#xd;&#xd;
+  font-size: 0.85em;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+.translated-note span {&#xd;&#xd;&#xd;
+  font-weight: bold;&#xd;&#xd;&#xd;
+  color: #ffffff;&#xd;&#xd;&#xd;
+}&#xd;&#xd;&#xd;
+  &lt;/style>&#xd;&#xd;&#xd;
+&lt;/head>&#xd;&#xd;&#xd;
+&lt;body>&#xd;&#xd;&#xd;
+  &lt;h1>Annotation&lt;/h1>&#xd;&#xd;&#xd;
+  &lt;div id="notes-container">Loading...&lt;/div>&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+&lt;script>&#xd;&#xd;&#xd;
+  try {&#xd;&#xd;&#xd;
+    let raw = expression.evaluate("to_json(note)");&#xd;&#xd;&#xd;
+    let notes = JSON.parse(raw);&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+    if (!Array.isArray(notes)) {&#xd;&#xd;&#xd;
+      notes = [notes];&#xd;&#xd;&#xd;
+    }&#xd;&#xd;&#xd;
+    notes = notes.filter(n => n !== null &amp;&amp; typeof n === 'object');&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+    const container = document.getElementById('notes-container');&#xd;&#xd;&#xd;
+    container.innerHTML = '';&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+    if (notes.length === 0) {&#xd;&#xd;&#xd;
+      container.textContent = '';&#xd;&#xd;&#xd;
+    } else {&#xd;&#xd;&#xd;
+      notes.forEach(note => {&#xd;&#xd;&#xd;
+        const div = document.createElement('div');&#xd;&#xd;&#xd;
+        div.className = 'note';&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+        div.innerHTML = `&#xd;&#xd;&#xd;
+          &lt;div class="note-header">&#xd;&#xd;&#xd;
+            &lt;p>&lt;strong>Purpose:&lt;/strong> ${note.purpose}&lt;/p>&#xd;&#xd;&#xd;
+            &lt;p>&lt;strong>Property Name:&lt;/strong> ${note.propertyName}&lt;/p>&#xd;&#xd;&#xd;
+          &lt;/div>&#xd;&#xd;&#xd;
+          &lt;div class="translated">&#xd;&#xd;&#xd;
+            &lt;p>&lt;strong>Translated Notes:&lt;/strong>&lt;/p>&#xd;&#xd;&#xd;
+            ${&#xd;&#xd;&#xd;
+              Array.isArray(note.notes) &amp;&amp; note.notes.length > 0&#xd;&#xd;&#xd;
+                ? note.notes.map(n =>&#xd;&#xd;&#xd;
+                    `&lt;div class="translated-note">&#xd;&#xd;&#xd;
+                      &lt;span>[${n.lang}]&lt;/span> ${n.note}&#xd;&#xd;&#xd;
+                    &lt;/div>`).join('')&#xd;&#xd;&#xd;
+                : '&lt;em>None&lt;/em>'&#xd;&#xd;&#xd;
+            }&#xd;&#xd;&#xd;
+          &lt;/div>&#xd;&#xd;&#xd;
+        `;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+        container.appendChild(div);&#xd;&#xd;&#xd;
+      });&#xd;&#xd;&#xd;
+    }&#xd;&#xd;&#xd;
+  } catch (e) {&#xd;&#xd;&#xd;
+    document.getElementById('notes-container').textContent = "Error: " + e;&#xd;&#xd;&#xd;
+  }&#xd;&#xd;&#xd;
+&lt;/script>&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;
+&lt;/body>&#xd;&#xd;&#xd;
+&lt;/html>&#xd;&#xd;&#xd;
+</attributeEditorHtmlElement>
+          </attributeEditorContainer>
+        </attributeEditorContainer>
+        <attributeEditorContainer type="Tab"
+                                  collapsedExpression=""
+                                  visibilityExpression=""
+                                  visibilityExpressionEnabled="0"
+                                  horizontalStretch="0"
+                                  collapsedExpressionEnabled="0"
+                                  name="location"
+                                  showLabel="1"
+                                  groupBox="0"
+                                  collapsed="0"
+                                  verticalStretch="0"
+                                  columnCount="1">
+          <labelStyle overrideLabelFont="0"
+                      overrideLabelColor="0"
+                      labelColor="0,0,0,255">
+            <labelFont italic="0"
+                       strikethrough="0"
+                       style=""
+                       bold="0"
+                       underline="0"
+                       description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+          <attributeEditorField horizontalStretch="0"
+                                name="longitude"
+                                showLabel="1"
+                                index="17"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField horizontalStretch="0"
+                                name="latitude"
+                                showLabel="1"
+                                index="18"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField horizontalStretch="0"
+                                name="horizontalaccuracy"
+                                showLabel="1"
+                                index="19"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer type="Tab"
+                                  collapsedExpression=""
+                                  visibilityExpression=""
+                                  visibilityExpressionEnabled="0"
+                                  horizontalStretch="0"
+                                  collapsedExpressionEnabled="0"
+                                  name="aimingPoint"
+                                  showLabel="1"
+                                  groupBox="0"
+                                  collapsed="0"
+                                  verticalStretch="0"
+                                  columnCount="1">
+          <labelStyle overrideLabelFont="0"
+                      overrideLabelColor="0"
+                      labelColor="0,0,0,255">
+            <labelFont italic="0"
+                       strikethrough="0"
+                       style=""
+                       bold="0"
+                       underline="0"
+                       description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+          <attributeEditorField horizontalStretch="0"
+                                name="aimingpoint"
+                                showLabel="1"
+                                index="13"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+        <attributeEditorContainer type="Tab"
+                                  collapsedExpression=""
+                                  visibilityExpression=""
+                                  visibilityExpressionEnabled="0"
+                                  horizontalStretch="0"
+                                  collapsedExpressionEnabled="0"
+                                  name="airportHeliport"
+                                  showLabel="1"
+                                  groupBox="0"
+                                  collapsed="0"
+                                  verticalStretch="0"
+                                  columnCount="1">
+          <labelStyle overrideLabelFont="0"
+                      overrideLabelColor="0"
+                      labelColor="0,0,0,255">
+            <labelFont italic="0"
+                       strikethrough="0"
+                       style=""
+                       bold="0"
+                       underline="0"
+                       description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+          <attributeEditorField horizontalStretch="0"
+                                name="airportheliport"
+                                showLabel="1"
+                                index="11"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorField horizontalStretch="0"
+                                name="airportheliport_href"
+                                showLabel="1"
+                                index="12"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+          <attributeEditorAction ActionUUID="{0f52155a-6bcb-4642-a5c2-2a23a928efcc}"
+                                 horizontalStretch="0"
+                                 name="{00000000-0000-0000-0000-000000000000}"
+                                 showLabel="1"
+                                 verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorAction>
+        </attributeEditorContainer>
+        <attributeEditorContainer type="Tab"
+                                  collapsedExpression=""
+                                  visibilityExpression=""
+                                  visibilityExpressionEnabled="0"
+                                  horizontalStretch="0"
+                                  collapsedExpressionEnabled="0"
+                                  name="runwayPoint"
+                                  showLabel="1"
+                                  groupBox="0"
+                                  collapsed="0"
+                                  verticalStretch="0"
+                                  columnCount="1">
+          <labelStyle overrideLabelFont="0"
+                      overrideLabelColor="0"
+                      labelColor="0,0,0,255">
+            <labelFont italic="0"
+                       strikethrough="0"
+                       style=""
+                       bold="0"
+                       underline="0"
+                       description="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0"/>
+          </labelStyle>
+          <attributeEditorField horizontalStretch="0"
+                                name="runwaypoint"
+                                showLabel="1"
+                                index="15"
+                                verticalStretch="0">
+            <labelStyle overrideLabelFont="0"
+                        overrideLabelColor="0"
+                        labelColor="0,0,0,255">
+              <labelFont italic="0"
+                         strikethrough="0"
+                         style=""
+                         bold="0"
+                         underline="0"
+                         description="Segoe UI,8.25,-1,5,50,0,0,0,0,0"/>
+            </labelStyle>
+          </attributeEditorField>
+        </attributeEditorContainer>
+      </attributeEditorForm>
+      <labelOnTop>
+        <field labelOnTop="0"
+               name="aimingpoint"/>
+        <field labelOnTop="0"
+               name="airportheliport"/>
+        <field labelOnTop="0"
+               name="airportheliport_href"/>
+        <field labelOnTop="0"
+               name="correction_number"/>
+        <field labelOnTop="0"
+               name="designator"/>
+        <field labelOnTop="0"
+               name="feature_lifetime_begin"/>
+        <field labelOnTop="0"
+               name="feature_lifetime_end"/>
+        <field labelOnTop="0"
+               name="horizontalaccuracy"/>
+        <field labelOnTop="0"
+               name="id"/>
+        <field labelOnTop="0"
+               name="identifier"/>
+        <field labelOnTop="0"
+               name="interpretation"/>
+        <field labelOnTop="0"
+               name="latitude"/>
+        <field labelOnTop="0"
+               name="longitude"/>
+        <field labelOnTop="0"
+               name="name"/>
+        <field labelOnTop="0"
+               name="note"/>
+        <field labelOnTop="0"
+               name="propertyname"/>
+        <field labelOnTop="0"
+               name="purpose"/>
+        <field labelOnTop="0"
+               name="row"/>
+        <field labelOnTop="0"
+               name="runwaycentrelinepoint_href"/>
+        <field labelOnTop="0"
+               name="runwaypoint"/>
+        <field labelOnTop="0"
+               name="sequence_number"/>
+        <field labelOnTop="0"
+               name="touchdownliftoff_href"/>
+        <field labelOnTop="0"
+               name="ts_id"/>
+        <field labelOnTop="0"
+               name="tsp_id"/>
+        <field labelOnTop="0"
+               name="type"/>
+        <field labelOnTop="0"
+               name="valid_time_begin"/>
+        <field labelOnTop="0"
+               name="valid_time_end"/>
+      </labelOnTop>
+    </maplayer>
+  </maplayers>
+</qlr>

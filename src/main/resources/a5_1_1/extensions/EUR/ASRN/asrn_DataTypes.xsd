@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--ASRN extension 0.4.0 for AIXM 5.1.1-->
+<!--www.aixm.aero-->
+<!--Released:  March 2022-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2022, EUROCONTROL
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" xmlns:asrn="http://www.aixm.aero/schema/5.1.1/asrn" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.aixm.aero/schema/5.1.1/asrn" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1.a">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../AIXM_DataTypes.xsd"/>
+	<simpleType name="CodeASRNEdgeBaseType">
+		<annotation>
+			<documentation>Type of ASRN edge. </documentation>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="TAXIWAY_EDGE">
+						<annotation>
+							<documentation>Edge along taxiway(s).</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="RUNWAY_EDGE">
+						<annotation>
+							<documentation>Edge along runway(s).</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="RUNWAY_EXIT_EDGE">
+						<annotation>
+							<documentation>Edge connecting runway and taxiway.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="PARKING_EDGE">
+						<annotation>
+							<documentation>Edge connecting taxiway and parking entry/exit point.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="DEICING_EDGE">
+						<annotation>
+							<documentation>Edge connecting deicing and taxiway/parking/apron.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="STAND_EDGE">
+						<annotation>
+							<documentation>Edge connecting stand and parking entry/exit.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="APRON_EDGE">
+						<annotation>
+							<documentation>Edge along apron(s).</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeASRNEdgeDerivationBaseType">
+		<annotation>
+			<documentation>Derivation method of edge geometry. </documentation>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="FULLY_ABSTRACTED">
+						<annotation>
+							<documentation>Defined without using existing line data.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="PARTIALLY_ABSTRACTED">
+						<annotation>
+							<documentation>Partially derived from existing data and partially abstracted, for example in the cases where gaps exist.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="DERIVED">
+						<annotation>
+							<documentation>Fully derived from existing data.</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeASRNEdgeDerivationType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="asrn:CodeASRNEdgeDerivationBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeASRNEdgeType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="asrn:CodeASRNEdgeBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="CodeASRNNodeBaseType">
+		<annotation>
+			<documentation>Type of ASRN node. </documentation>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="TAXIWAY_NODE">
+						<annotation>
+							<documentation>Node where two taxiways meet.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="TAXIWAY_HOLDING_POSITION_NODE">
+						<annotation>
+							<documentation>Node on taxiway holding position.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="RUNWAY_ENTRY_EXIT_NODE">
+						<annotation>
+							<documentation>Node where a runway and taxiway meet.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="RUNWAY_EXIT_LINE_NODE">
+						<annotation>
+							<documentation>Node where a runway exit line and runway intersection meet.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="RUNWAY_INTERSECTION_NODE">
+						<annotation>
+							<documentation>Node where two runways meet.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="PARKING_ENTRY_EXIT_NODE">
+						<annotation>
+							<documentation>Node joining a parking area to a taxiway.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="APRON_ENTRY_EXIT_NODE">
+						<annotation>
+							<documentation>Node joining an apron area to a taxiway.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="TAXIWAY_LINK_NODE">
+						<annotation>
+							<documentation>Node on a taxiway abeam to a parking or apron entry/exit node.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="DEICING_NODE">
+						<annotation>
+							<documentation>Node where a deicing operation may be performed.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="STAND_NODE">
+						<annotation>
+							<documentation>Node where a stand is located.</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeASRNNodeType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="asrn:CodeASRNNodeBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

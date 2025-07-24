@@ -3,15 +3,14 @@ package com.aixm.delorean.core.adapter.type.gis;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Transient;
 
 @MappedSuperclass
 abstract public class AixmGeometryType {
     
-    @Column(name = "xml_id")
-    protected String id;
+    @Transient
+    protected String xmlId;
 
     @Column(name = "horizontalAccuracy")
     protected BigDecimal horizontalAccuracy;
@@ -22,12 +21,12 @@ abstract public class AixmGeometryType {
     @Column(name = "horizontalAccuracy_nilReason")
     protected String horizontalAccuracy_nilReason;
 
-    public String getId() {
-        return id;
+    public String getXmlId() {
+        return xmlId;
     }
 
-    public void setId(String value) {
-        this.id = value;
+    public void setXmlId(String value) {
+        this.xmlId = value;
     }
 
     public BigDecimal getHorizontalAccuracy() {

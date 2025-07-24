@@ -75,14 +75,12 @@ public class ObstaclePlacementType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obstaclebearing_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstaclebearing_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType obstacleBearing;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obstacledistance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -90,28 +88,25 @@ public class ObstaclePlacementType
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacledistance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType obstacleDistance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "pointtype_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "pointtype_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "pointtype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType pointType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "obstacleplacement_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "obstacleplacement_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType obstaclePlacement;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstacleplacement_annotation", joinColumns = {
-        @JoinColumn(name = "obstacleplacement_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

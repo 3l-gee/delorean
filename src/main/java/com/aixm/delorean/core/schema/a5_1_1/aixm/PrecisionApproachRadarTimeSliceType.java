@@ -95,14 +95,14 @@ public class PrecisionApproachRadarTimeSliceType
     @XmlElement(name = "name", nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "serialnumber_value", length = 16, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "serialnumber_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "serialnumber_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextDesignatorType serialNumber;
@@ -196,10 +196,10 @@ public class PrecisionApproachRadarTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "precisionapproachradar_ts_contact", joinColumns = {
-        @JoinColumn(name = "precisionapproachradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "contactinformation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ContactInformationPropertyType> contact;
     @XmlElement(nillable = true)
@@ -212,10 +212,10 @@ public class PrecisionApproachRadarTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "precisionapproachradar_ts_annotation", joinColumns = {
-        @JoinColumn(name = "precisionapproachradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
@@ -243,10 +243,10 @@ public class PrecisionApproachRadarTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "precisionapproachradar_ts_reflector", joinColumns = {
-        @JoinColumn(name = "precisionapproachradar_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "reflector_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ReflectorPropertyType> reflector;
     @Transient

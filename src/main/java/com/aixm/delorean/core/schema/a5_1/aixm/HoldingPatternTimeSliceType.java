@@ -88,42 +88,36 @@ public class HoldingPatternTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeHoldingUsageType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "outboundcourse_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcourse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType outboundCourse;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "outboundcoursetype_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "outboundcoursetype_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCourseType outboundCourseType;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "inboundcourse_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "inboundcourse_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValBearingType inboundCourse;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "turndirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -131,14 +125,12 @@ public class HoldingPatternTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType upperLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "upperlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "upperlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType upperLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimit_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -146,14 +138,12 @@ public class HoldingPatternTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType lowerLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lowerlimitreference_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lowerlimitreference_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalReferenceType lowerLimitReference;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedlimit_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -161,58 +151,53 @@ public class HoldingPatternTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedlimit_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speedLimit;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "nonstandardholding_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "nonstandardholding_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType nonStandardHolding;
-    @XmlElement(name = "outboundLegSpan_endTime", nillable = true)
+    @XmlElement(name = "outboundLegSpan_endTime")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "outboundlegspan_endtime_id", referencedColumnName = "id")
     protected HoldingPatternDurationPropertyType outboundLegSpanEndTime;
-    @XmlElement(name = "outboundLegSpan_endDistance", nillable = true)
+    @XmlElement(name = "outboundLegSpan_endDistance")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "outboundlegspan_enddistance_id", referencedColumnName = "id")
     protected HoldingPatternDistancePropertyType outboundLegSpanEndDistance;
-    @XmlElement(name = "outboundLegSpan_endPoint", nillable = true)
+    @XmlElement(name = "outboundLegSpan_endPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "outboundlegspan_endpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType outboundLegSpanEndPoint;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "holdingpoint_id", referencedColumnName = "id")
     protected SegmentPointPropertyType holdingPoint;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "extent_id", referencedColumnName = "id")
     protected CurvePropertyType extent;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpattern_ts_annotation", joinColumns = {
-        @JoinColumn(name = "holdingpattern_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

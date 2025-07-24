@@ -9,7 +9,7 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import com.aixm.delorean.core.adapter.time.TimePrimitivePropertyTypeAdapter;
 import com.aixm.delorean.core.adapter.type.time.AixmTimeSliceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMTimeSliceBaseType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMTimeSliceBaseType;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;

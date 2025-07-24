@@ -9,7 +9,10 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedPointType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ActuateType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ShowType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.TypeType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
@@ -35,8 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence minOccurs="0">
  *         <element ref="{http://www.opengis.net/gml/3.2}Point"/>
  *       </sequence>
- *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}OwnershipAttributeGroup"/>
+ *       <attGroup ref="{http://www.opengis.net/gml/3.2}AssociationAttributeGroup"/>
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -56,6 +59,9 @@ public class PointPropertyType {
      */
     @XmlElementRef(name = "Point", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends com.aixm.delorean.core.org.gml.v_3_2.PointType> point;
+    @XmlAttribute(name = "owns")
+    @Transient
+    protected java.lang.Boolean owns;
     @XmlAttribute(name = "nilReason")
     @Column(name = "nilReason")
     protected List<String> nilReason;
@@ -64,54 +70,25 @@ public class PointPropertyType {
     @Transient
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    public static final String TYPE = "simple";
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Column(name = "href")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String title;
-    /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
-    @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
-    protected String show;
-    /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
-    @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
-    protected String actuate;
-    @XmlAttribute(name = "owns")
     @Transient
-    protected java.lang.Boolean owns;
+    protected String titleAttribute;
+    @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
+    protected ShowType show;
+    @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
+    @Transient
+    protected ActuateType actuate;
 
     /**
      * A Point is defined by a single coordinate tuple. The direct position of a point is specified by the pos element which is of type DirectPositionType.
@@ -120,7 +97,7 @@ public class PointPropertyType {
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
      *     
      */
     public JAXBElement<? extends com.aixm.delorean.core.org.gml.v_3_2.PointType> getPoint() {
@@ -134,7 +111,7 @@ public class PointPropertyType {
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
      *     
      * @see #getPoint()
      */
@@ -144,6 +121,42 @@ public class PointPropertyType {
 
     public boolean isSetPoint() {
         return (this.point!= null);
+    }
+
+    /**
+     * Gets the value of the owns property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public boolean isOwns() {
+        if (owns == null) {
+            return false;
+        } else {
+            return owns;
+        }
+    }
+
+    /**
+     * Sets the value of the owns property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.Boolean }
+     *     
+     */
+    public void setOwns(boolean value) {
+        this.owns = value;
+    }
+
+    public boolean isSetOwns() {
+        return (this.owns!= null);
+    }
+
+    public void unsetOwns() {
+        this.owns = null;
     }
 
     /**
@@ -299,53 +312,42 @@ public class PointPropertyType {
     }
 
     /**
-     * Gets the value of the title property.
+     * Gets the value of the titleAttribute property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getTitleAttribute() {
+        return titleAttribute;
     }
 
     /**
-     * Sets the value of the title property.
+     * Sets the value of the titleAttribute property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setTitleAttribute(String value) {
+        this.titleAttribute = value;
     }
 
-    public boolean isSetTitle() {
-        return (this.title!= null);
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the show property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
      */
-    public String getShow() {
+    public ShowType getShow() {
         return show;
     }
 
@@ -354,11 +356,10 @@ public class PointPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
-     * @see #getShow()
      */
-    public void setShow(String value) {
+    public void setShow(ShowType value) {
         this.show = value;
     }
 
@@ -367,24 +368,14 @@ public class PointPropertyType {
     }
 
     /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the actuate property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
      */
-    public String getActuate() {
+    public ActuateType getActuate() {
         return actuate;
     }
 
@@ -393,52 +384,15 @@ public class PointPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
-     * @see #getActuate()
      */
-    public void setActuate(String value) {
+    public void setActuate(ActuateType value) {
         this.actuate = value;
     }
 
     public boolean isSetActuate() {
         return (this.actuate!= null);
-    }
-
-    /**
-     * Gets the value of the owns property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public boolean isOwns() {
-        if (owns == null) {
-            return false;
-        } else {
-            return owns;
-        }
-    }
-
-    /**
-     * Sets the value of the owns property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Boolean }
-     *     
-     */
-    public void setOwns(boolean value) {
-        this.owns = value;
-    }
-
-    public boolean isSetOwns() {
-        return (this.owns!= null);
-    }
-
-    public void unsetOwns() {
-        this.owns = null;
     }
 
 }

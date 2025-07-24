@@ -9,6 +9,8 @@ import com.aixm.delorean.core.log.ConsoleLogger;
 import com.aixm.delorean.core.log.LogLevel;
 import com.aixm.delorean.core.xml.XMLBinding;
 import com.aixm.delorean.core.xml.XMLConfig;
+import com.aixm.delorean.core.qgis.QgisProjectBinding;
+import com.aixm.delorean.core.qgis.QgisConfig;
 
 import java.io.Console;
 import java.util.Scanner;
@@ -43,9 +45,8 @@ public class Main {
 
         if (mainInstance.testOption) {
             mainInstance.testRun();
-        } else {
-            mainInstance.run();
-        }
+        }             
+        mainInstance.run();
     }
 
     private void run() {
@@ -57,11 +58,13 @@ public class Main {
         System.out.println(" ██║  ██║ █████╗   ██║      ██║   ██║ ██████╔╝ █████╗   ███████║ ██╔██╗ ██║ ");
         System.out.println(" ██║  ██║ ██╔══╝   ██║      ██║   ██║ ██╔══██╗ ██╔══╝   ██╔══██║ ██║╚██╗██║ ");
         System.out.println(" ██████╔╝ ███████╗ ███████╗ ╚██████╔╝ ██║  ██║ ███████╗ ██║  ██║ ██║ ╚████║ ");
-        System.out.println(" ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ ");
+        System.out.println(" ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝  v0.1.0");
         System.out.println("");
-        System.out.println("Author : Raphaël Gerth");
-        ConsoleLogger.log(LogLevel.INFO, "Delorean 0.1.0-SNAPSHOT");
-        ConsoleLogger.log(LogLevel.INFO, "type 'help' for a list of commands");
+        System.out.println("       version : 0.1.0-SNAPSHOT");
+        System.out.println("        author : Raphaël Gerth");
+        System.out.println("          repo : https://github.com/3l-gee/delorean");
+        System.out.println("          help : 'help' ");
+        System.out.println("");
 
         while (true) {
             System.out.print("> ");
@@ -85,26 +88,32 @@ public class Main {
 
     private void testRun() {
         Scanner scanner = new Scanner(System.in);
-        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1", scanner,  "", "");
+        ConsoleLogger.log(LogLevel.INFO, "new a5_1");
+        executeNewCommand("a5_1", scanner,  "", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
+        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1");
+        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1", "");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLpoint.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLpoint.xml");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner, "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLCurve.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner, "load", "src/test/xml/a5_1_1/gis/GMLCurve.xml");
 
         // ConsoleLogger.log(LogLevel.INFO, "xml - load src/test/xml/a5_1_1/gis/GMLSurface.xml");
         // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), "load", "src/test/xml/a5_1_1/gis/GMLSurface.xml");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/importExport.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/export.xml");
+
+        ConsoleLogger.log(LogLevel.INFO, "qgig_config - a5_1");
+        executeQgisConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
         
-        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
+        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1");
+        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1", "");
+
+        ConsoleLogger.log(LogLevel.INFO, "qgig_config - init");
+        executeQgisActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"init", "");
 
         ConsoleLogger.log(LogLevel.INFO, "db - startup");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
@@ -112,23 +121,23 @@ public class Main {
         ConsoleLogger.log(LogLevel.INFO, "db - load");
         executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"load", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
-        executeNewCommand("a5_1_1", scanner, "", "");
+        // ConsoleLogger.log(LogLevel.INFO, "new a5_1_1");
+        // executeNewCommand("a5_1_1", scanner, "", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
-        excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
+        // ConsoleLogger.log(LogLevel.INFO, "xml_config - a5_1_1");
+        // excuteXmlConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner, "a5_1_1", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
-        executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db_config - a5_1_1");
+        // executeDbConfigurationCommand(this.containerWarehouse.getLastContainerId(), scanner,"a5_1_1", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - startup");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
+        // ConsoleLogger.log(LogLevel.INFO, "db - startup");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"startup", "");
 
-        ConsoleLogger.log(LogLevel.INFO, "db - export 1");
-        executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
+        // ConsoleLogger.log(LogLevel.INFO, "db - export 1");
+        // executeDbActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"retrieve", "1");
 
-        ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
-        executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/retrive.xml");
+        // ConsoleLogger.log(LogLevel.INFO, "xml - export src/main/resources/test.xml");
+        // executeXmlActionCommand(this.containerWarehouse.getLastContainerId(), scanner,"export", "src/main/resources/retrive.xml");
 
         // logger.log(LogLevel.INFO, "Exiting...");
 
@@ -176,13 +185,15 @@ public class Main {
                -={ Delorean Shell Commands }=-
     help                                                             : Display this help message
     new         [a5_1, a5_1_1]                                       : Create a new container with the specified argument       
-    xml_config  <container id, - >      [a5_1, a5_1_1]               : Set the XML configuration for the specified container
-    db_config   <container id, - >      [a5_1, a5_1_1]               : Set the database configuration for the specified container
+    xml_config  <container id, - >      [a5_1, a5_1_1]               : Configures the xml schema to use for the specified container
+    db_config   <container id, - >      [a5_1, a5_1_1]               : Configures the db connection for the specified container
+    qgis_config <container id, - >      [a5_1, a5_1_1]               : Configures the qgis project for the specified container
     xml         <container id, - >      load             <path>      : load the xml data from the specified path
     xml         <container id, - >      export           <path>      : export the xml data to the specified path
     db          <container id, - >      startup                      : start the database
     db          <container id, - >      load                         : load the data into the database
     db          <container id, - >      export           <id>        : export the master aixmmessage with the specified id
+    qgis        <container id, - >      init                         : format the qgis project
     list                                                             : List all the containers
     exit                                                             : Exit the shell                                    
                 """);
@@ -206,6 +217,14 @@ public class Main {
 
             case "db" :
             executeDbActionCommand(argument, scanner, parameter, option);
+            break;
+
+            case "qgis_config" :
+            executeQgisConfigurationCommand(argument, scanner, parameter, option);
+            break;
+
+            case "qgis" :
+            executeQgisActionCommand(argument, scanner, parameter, option);
             break;
 
             case "list":
@@ -320,8 +339,11 @@ public class Main {
                 String username = scanner.nextLine();
 
                 // Ask for password (hidden input)
-                char[] passwordChars = console.readPassword("Enter password : ");
-                String password = new String(passwordChars);
+                // TODO dev phase only  
+                // char[] passwordChars = console.readPassword("Enter password : ");
+                System.out.print("Enter password : ");
+                String password = scanner.nextLine();
+                // String password = new String(passwordChars);
 
                 // Ask for hbm2ddl
                 System.out.print("Enter hbm2ddl, [create, update, validate, none] : ");
@@ -331,13 +353,61 @@ public class Main {
                 this.containerWarehouse.getContainer(argument).databaseBinding.setUsername(username);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setPassword(password);
                 this.containerWarehouse.getContainer(argument).databaseBinding.setHbm2ddl(hbm2ddl);
+                ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid argument: " + e.getMessage());
-            } finally {
-                ConsoleLogger.log(LogLevel.INFO, "Database configuration set");
             }
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeQgisConfigurationCommand(String argument, Scanner sacnner, String parameter, String option) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            QgisConfig qgisConfig = QgisConfig.fromString(parameter);
+            try{
+                QgisProjectBinding editBinding = new QgisProjectBinding(qgisConfig.getEditConfig());
+                QgisProjectBinding publisheBinding = new QgisProjectBinding(qgisConfig.getPublishConfig());
+                this.containerWarehouse.getContainer(argument).setEditorProject(editBinding);
+                this.containerWarehouse.getContainer(argument).setPublisherProject(publisheBinding);
+                ConsoleLogger.log(LogLevel.INFO, "Qgis project configuration set");
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid argument: " + e.getMessage());
+            }
+        } else {
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
+        }
+    }
+
+    private void executeQgisActionCommand(String argument, Scanner sacnner, String parameter, String option) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Argument is null");
+        }
+
+        if (parameter == null) {
+            throw new IllegalArgumentException("parameter is null");
+        }
+
+        if (this.containerWarehouse.getIds().contains(argument)) {
+            switch (parameter.toLowerCase()) {
+                case "init":
+                    this.containerWarehouse.getContainer(argument).initQGIS();
+                    break;
+
+                default:
+                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
+                    break;
+            }
+        } else {
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -361,18 +431,19 @@ public class Main {
                     break;
 
                 case "load":
-                    this.containerWarehouse.getContainer(argument).load();
-                    // this.containerWarehouse.getContainer(argument).databaseBinding.load(this.containerWarehouse.getContainer(argument).getDbLoadReady());
+                    this.containerWarehouse.getContainer(argument).loadDB();
                     break; 
                     
                 case "export":
-                    this.containerWarehouse.getContainer(argument).export(option);
+                    this.containerWarehouse.getContainer(argument).exportDB(option);
                     break;
+
                 default:
+                    ConsoleLogger.log(LogLevel.ERROR, "Parameter " + parameter + " does not exist");
                     break;
             }
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -384,7 +455,7 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).setValidationRule();
         } else {
-            System.err.println("Container " + argument + " does not exist");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 
@@ -396,7 +467,7 @@ public class Main {
         if (this.containerWarehouse.getIds().contains(argument)) {
             this.containerWarehouse.getContainer(argument).show();
         } else {
-            System.err.println("Container " + argument + " does not exist or parameter is missing");
+            ConsoleLogger.log(LogLevel.ERROR, "Container " + argument + " does not exist");
         }
     }
 }

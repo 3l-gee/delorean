@@ -103,30 +103,30 @@ public class GuidanceLineLightSystemTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinelightsystem_ts_element", joinColumns = {
-        @JoinColumn(name = "guidancelinelightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "lightelement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<LightElementPropertyType> element;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinelightsystem_ts_availability", joinColumns = {
-        @JoinColumn(name = "guidancelinelightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightingavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightingAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinelightsystem_ts_annotation", joinColumns = {
-        @JoinColumn(name = "guidancelinelightsystem_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)

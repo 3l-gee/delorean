@@ -55,10 +55,10 @@ public class AircraftStandType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aircraftstand_timeslice", joinColumns = {
-        @JoinColumn(name = "aircraftstand_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstand_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftStandTimeSlicePropertyType> timeSlice;
 

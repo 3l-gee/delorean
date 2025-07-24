@@ -69,7 +69,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<sequence>
 					<element name="featureMetadata" type="aixm:FeatureMetadataPropertyType" minOccurs="0"/>
 					<!-- Adding dbid as a new field -->
-                	<element name="dbid" type="xs:long"/>
+                	<!-- <element name="dbid" type="xs:long"/> -->
 				</sequence>
 			</extension>
 		</complexContent>
@@ -100,7 +100,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<extension base="aixm:AbstractAIXMObjectBaseType">
 				<sequence>
 					<!-- Adding dbid as a new field -->
-                	<element name="dbid" type="xs:long"/>
+                	<!-- <element name="dbid" type="xs:long"/> -->
 				</sequence>
 			</extension>
 		</complexContent>
@@ -157,7 +157,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<!-- <element name="aixm:featureLifetime" minOccurs="0"/> -->
 					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
 					<!-- Adding dbid as a new field -->
-                	<element name="dbid" type="xs:long"/>
+                	<!-- <element name="dbid" type="xs:long"/> -->
 				</sequence>
 			</extension>
 		</complexContent>
@@ -172,7 +172,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element name="messageMetadata" type="aixm:MessageMetadataPropertyType" minOccurs="0"/>
 					<!-- Adding dbid as a new field -->
-                	<element name="dbid" type="xs:long"/>
+                	<!-- <element name="dbid" type="xs:long"/> -->
 				</sequence>
 			</extension>
 		</complexContent>

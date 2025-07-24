@@ -26,16 +26,27 @@ import java.util.Comparator;
 
 public enum XMLConfig {
 
-    AIXM_5_1_1(
-        "a5_1_1", 
-        "aixm-5.1.1/AIXM_AbstractGML_ObjectTypes.xsd",
-        "a5_1_1"
+    TEST(
+        "test", 
+        "feature.xsd",
+        "test"
     ),
     AIXM_5_1(
         "a5_1", 
         "message/AIXM_BasicMessage.xsd",
         "a5_1"
+    ),
+    AIXM_5_1_E(
+        "a5_1_e", 
+        "message/AIXM_BasicMessage.xsd",
+        "a5_1_e"
+    ),
+    AIXM_5_1_1(
+        "a5_1_1", 
+        "message/AIXM_BasicMessage.xsd",
+        "a5_1_1"
     );
+
 
     private final String version;
     private final String root;

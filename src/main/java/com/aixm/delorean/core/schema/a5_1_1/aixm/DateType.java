@@ -7,8 +7,7 @@
 
 package com.aixm.delorean.core.schema.a5_1_1.aixm;
 
-import java.sql.Timestamp;
-import com.aixm.delorean.core.adapter.date.XMLGregorianCalendarAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -16,7 +15,6 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlValue;
-import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -44,8 +42,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class DateType {
 
     @XmlValue
-    @XmlJavaTypeAdapter(XMLGregorianCalendarAdapter.class)
-    protected Timestamp value;
+    protected XMLGregorianCalendar value;
     @XmlAttribute(name = "nilReason")
     @Column(name = "datetype_nilreason", length = 255, nullable = true, unique = false)
     protected String nilReason;
@@ -55,10 +52,10 @@ public class DateType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Timestamp getValue() {
+    public XMLGregorianCalendar getValue() {
         return value;
     }
 
@@ -67,10 +64,10 @@ public class DateType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setValue(Timestamp value) {
+    public void setValue(XMLGregorianCalendar value) {
         this.value = value;
     }
 

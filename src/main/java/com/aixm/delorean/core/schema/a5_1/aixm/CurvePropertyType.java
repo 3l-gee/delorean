@@ -11,6 +11,7 @@ import com.aixm.delorean.core.adapter.a5_1.gis.CurveTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmCurveType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -43,7 +44,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "curve"
 })
 @Entity
-@Table(name = "curve_pt", schema = "public")
+@Table(name = "curve_pt", schema = "geometry")
 public class CurvePropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,6 +53,13 @@ public class CurvePropertyType
     @XmlJavaTypeAdapter(CurveTypeAdapter.class)
     @Embedded
     protected AixmCurveType curve;
+
+    @PostLoad
+    public void setGmlFeatureXmlId() {
+        if (this.dbid != null && this.curve != null) {
+            this.curve.setXmlId("gmlID" + this.dbid.toString());
+        }
+    }
 
     /**
      * Gets the value of the curve property.

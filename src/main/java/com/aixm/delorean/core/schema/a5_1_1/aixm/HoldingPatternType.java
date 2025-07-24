@@ -55,10 +55,10 @@ public class HoldingPatternType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpattern_timeslice", joinColumns = {
-        @JoinColumn(name = "holdingpattern_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "holdingpattern_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<HoldingPatternTimeSlicePropertyType> timeSlice;
 

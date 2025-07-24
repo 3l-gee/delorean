@@ -18,8 +18,9 @@ organisation.organisationauthority_ts.valid_time_begin,
 organisation.organisationauthority_ts.valid_time_end,
 organisation.organisationauthority_ts.feature_lifetime_begin,
 organisation.organisationauthority_ts.feature_lifetime_end,
-COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS note,
-COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contactinformation
+COALESCE(jsonb_agg(notes.note_view.note), '[]'::jsonb) AS annotation,
+COALESCE(jsonb_agg(shared.contactinformation_view.contactinformation), '[]'::jsonb) AS contact,
+'[]'::jsonb AS relatedOrganisationAuthority
 FROM organisation.organisationauthority
 INNER JOIN organisationauthority_timeslice
     ON organisation.organisationauthority.id = organisationauthority_timeslice.organisationauthority_id

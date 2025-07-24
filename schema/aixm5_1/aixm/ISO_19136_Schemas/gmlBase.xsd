@@ -24,6 +24,7 @@ The gmlBase schema components establish the GML model and syntax, in particular
 	</element>
 	<complexType name="AbstractGMLType" abstract="true">
 		<sequence>
+			<element name="dbid" type="long" minOccurs="0"/>
 			<group ref="gml:StandardObjectProperties"/>
 		</sequence>
 		<attribute ref="gml:id" use="required"/>

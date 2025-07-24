@@ -55,10 +55,10 @@ public class AerialRefuellingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aerialrefuelling_timeslice", joinColumns = {
-        @JoinColumn(name = "aerialrefuelling_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aerialrefuelling_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AerialRefuellingTimeSlicePropertyType> timeSlice;
 

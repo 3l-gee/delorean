@@ -55,10 +55,10 @@ public class MissedApproachLegType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachleg_timeslice", joinColumns = {
-        @JoinColumn(name = "missedapproachleg_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "missedapproachleg_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MissedApproachLegTimeSlicePropertyType> timeSlice;
 

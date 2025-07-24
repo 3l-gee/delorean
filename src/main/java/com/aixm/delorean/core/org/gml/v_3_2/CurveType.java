@@ -38,7 +38,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "segments"
 })
 @XmlSeeAlso({
-    com.aixm.delorean.core.schema.a5_1.aixm.CurveType.class
+    com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType.class
 })
 public class CurveType
     extends AbstractCurveType

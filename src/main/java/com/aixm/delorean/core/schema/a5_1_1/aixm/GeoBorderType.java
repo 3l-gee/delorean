@@ -55,10 +55,10 @@ public class GeoBorderType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "geoborder_timeslice", joinColumns = {
-        @JoinColumn(name = "geoborder_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "geoborder_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GeoBorderTimeSlicePropertyType> timeSlice;
 

@@ -11,6 +11,7 @@ import com.aixm.delorean.core.adapter.a5_1.gis.ElevatedPointTypeAdapter;
 import com.aixm.delorean.core.adapter.type.gis.AixmElevatedPointType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -43,7 +44,7 @@ import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "elevatedPoint"
 })
 @Entity
-@Table(name = "elevated_point_pt", schema = "public")
+@Table(name = "elevated_point_pt", schema = "geometry")
 public class ElevatedPointPropertyType
     extends AbstractAIXMPropertyType
 {
@@ -52,6 +53,13 @@ public class ElevatedPointPropertyType
     @XmlJavaTypeAdapter(ElevatedPointTypeAdapter.class)
     @Embedded
     protected AixmElevatedPointType elevatedPoint;
+
+    @PostLoad
+    public void setGmlFeatureXmlId() {
+        if (this.dbid != null && this.elevatedPoint != null) {
+            this.elevatedPoint.setXmlId("gmlID" + this.dbid.toString());
+        }
+    }
 
     /**
      * Gets the value of the elevatedPoint property.

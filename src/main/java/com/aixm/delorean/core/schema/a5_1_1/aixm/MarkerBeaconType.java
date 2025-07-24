@@ -55,10 +55,10 @@ public class MarkerBeaconType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "markerbeacon_timeslice", joinColumns = {
-        @JoinColumn(name = "markerbeacon_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "markerbeacon_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<MarkerBeaconTimeSlicePropertyType> timeSlice;
 

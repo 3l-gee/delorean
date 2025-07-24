@@ -80,7 +80,6 @@ public class ObstructionType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "requiredclearance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -88,7 +87,6 @@ public class ObstructionType
         @AttributeOverride(name = "nilReason", column = @Column(name = "requiredclearance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType requiredClearance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "minimumaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -96,68 +94,60 @@ public class ObstructionType
         @AttributeOverride(name = "nilReason", column = @Column(name = "minimumaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType minimumAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "surfacepenetration_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surfacepenetration_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType surfacePenetration;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "slopepenetration_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "slopepenetration_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValAngleType slopePenetration;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "controlling_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "controlling_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType controlling;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "closein_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "closein_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType closeIn;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "theverticalstructure_id", referencedColumnName = "id")
     protected VerticalStructurePropertyType theVerticalStructure;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_adjustment", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altitudeadjustment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltitudeAdjustmentPropertyType> adjustment;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_obstacleplacement", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "obstacleplacement_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ObstaclePlacementPropertyType> obstaclePlacement;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "obstruction_annotation", joinColumns = {
-        @JoinColumn(name = "obstruction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

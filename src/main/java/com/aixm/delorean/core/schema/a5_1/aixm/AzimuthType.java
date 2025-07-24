@@ -55,10 +55,10 @@ public class AzimuthType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "azimuth_timeslice", joinColumns = {
-        @JoinColumn(name = "azimuth_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "azimuth_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AzimuthTimeSlicePropertyType> timeSlice;
 

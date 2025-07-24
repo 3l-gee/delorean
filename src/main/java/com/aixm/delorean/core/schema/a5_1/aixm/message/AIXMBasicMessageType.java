@@ -13,7 +13,9 @@ import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMMessageType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -53,9 +55,14 @@ public class AIXMBasicMessageType
 {
 
     @XmlElement(required = true)
-    @OneToMany(cascade = {
+    @ManyToMany(cascade = {
         CascadeType.ALL
-    }, orphanRemoval = true, fetch = FetchType.EAGER)
+    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "aixm_basic_message_basic_message_member", joinColumns = {
+        @JoinColumn(name = "aixm_basic_message_id")
+    }, inverseJoinColumns = {
+        @JoinColumn(name = "basic_message_member_id")
+    })
     protected List<BasicMessageMemberAIXMPropertyType> hasMember;
 
     /**

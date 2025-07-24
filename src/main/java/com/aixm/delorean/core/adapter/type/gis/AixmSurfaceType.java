@@ -15,17 +15,17 @@ import jakarta.persistence.OneToMany;
 public class AixmSurfaceType extends AixmGeometryType {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "surface_exterior", 
-        joinColumns ={@JoinColumn(name = "surfacepropertytype_id")},
-        inverseJoinColumns = {@JoinColumn(name = "exteriorlinestring_id")}
+    @JoinTable(name = "master_join_geometry", 
+        joinColumns ={@JoinColumn(name = "source_id")},
+        inverseJoinColumns = {@JoinColumn(name = "target_id")}
     )
     protected List<PolygonSegment> exteriorlinestring;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "surface_interior", 
-        joinColumns ={@JoinColumn(name = "surfacepropertytype_id")},
-        inverseJoinColumns = {@JoinColumn(name = "interiorlinestring_id")}
+    @JoinTable(name = "master_join_geometry", 
+        joinColumns ={@JoinColumn(name = "source_id")},
+        inverseJoinColumns = {@JoinColumn(name = "target_id")}
     )
     protected List<PolygonSegment> interiorlinestring;
 

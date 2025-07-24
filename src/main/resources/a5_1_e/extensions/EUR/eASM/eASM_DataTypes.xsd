@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--====================================================================-->
+<!--AIXM 5.1 - eASM (Flexible Use of Airspace Managament) Schema-->
+<!--www.aixm.aero-->
+<!--Released:  February 2011-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2011, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<!-- Component: eASM: Data Types -->
+<schema xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:easm="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/eASM" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1">
+	<import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../AIXM_DataTypes.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../ISO_19136_Schemas/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://www.aixm.aero/schema/5.1/profile/gml4aixm.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<simpleType name="CodeConditionalRouteBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CDR_1"/>
+					<enumeration value="CDR_2"/>
+					<enumeration value="CDR_3"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeAirspaceReservationImpactBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="WITHIN"/>
+					<enumeration value="NEARBY"/>
+					<enumeration value="OFFLOAD"/>
+					<enumeration value="NOT_AFFECTED"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeMilitaryActivityCategoryBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="ATA_INTERCEPT_BVR"/>
+					<enumeration value="ATA_INTERCEPT_NON_BVR"/>
+					<enumeration value="ATA_COMBAT_TRAINING"/>
+					<enumeration value="ATA_OPERATIONAL_TRAINING"/>
+					<enumeration value="ATA_REFUELLING"/>
+					<enumeration value="ATA_OTHER"/>
+					<enumeration value="ATG_WEAPONS_TRAINING"/>
+					<enumeration value="ATG_OPERATIONAL_TRAINING"/>
+					<enumeration value="ATG_OTHER"/>
+					<enumeration value="SURVEILLANCE_BARIER"/>
+					<enumeration value="SURVEILLANCE_PATROL"/>
+					<enumeration value="SURVEILLANCE_OTHER"/>
+					<enumeration value="TEST_FLIGHT"/>
+					<enumeration value="FLIGHT_TRAINING"/>
+					<enumeration value="SUPPORT_FLIGHTS"/>
+					<enumeration value="EXERCISE"/>
+					<enumeration value="COMAO"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeReasonCancellationBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="WEATHER"/>
+					<enumeration value="AIRSPACE_SIZE"/>
+					<enumeration value="TIME_LENGTH"/>
+					<enumeration value="TIME_DAY"/>
+					<enumeration value="EARLY_FINISH"/>
+					<enumeration value="NON_AIRSPACE"/>
+					<enumeration value="AIRSPACE_WITHDRAWN"/>
+					<enumeration value="REPLAN"/>
+					<enumeration value="TECHNICAL"/>
+					<enumeration value="PERSONNEL"/>
+					<enumeration value="NO_SERVICE"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="ValCostBaseType">
+		<restriction base="xsd:decimal"/>
+	</simpleType>
+	<simpleType name="CodeMissionFormationBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="SINGLE"/>
+					<enumeration value="1V1"/>
+					<enumeration value="1V2"/>
+					<enumeration value="2V2"/>
+					<enumeration value="2V3"/>
+					<enumeration value="2V4"/>
+					<enumeration value="4V4"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeAirspaceReservationPhaseBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="INITAL_REQUEST"/>
+					<enumeration value="CONFIRMED_REQUEST"/>
+					<enumeration value="ACCEPTED_REQUEST"/>
+					<enumeration value="EARMARKED"/>
+					<enumeration value="IN_QUEUE"/>
+					<enumeration value="ALLOCATED"/>
+					<enumeration value="REFERENCE_ALLOCATED"/>
+					<enumeration value="PRE_ACTIVE"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="UomCurrencyType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="EURO"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<simpleType name="CodeMilitaryActivityBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CAS"/>
+					<enumeration value="PARADROP"/>
+					<enumeration value="FIRING"/>
+					<enumeration value="NAV_WARNING"/>
+					<enumeration value="FLY_BY"/>
+					<enumeration value="GLIDER"/>
+					<enumeration value="HTA"/>
+					<enumeration value="INFO"/>
+					<enumeration value="AWACS"/>
+					<enumeration value="AIR_DEF"/>
+					<enumeration value="AIR_REFUEL"/>
+					<enumeration value="TLP"/>
+					<enumeration value="TEST_FLT"/>
+					<enumeration value="ATC"/>
+					<enumeration value="CAP"/>
+					<enumeration value="SWP"/>
+					<enumeration value="STRK"/>
+					<enumeration value="SAR"/>
+					<enumeration value="COMAO"/>
+					<enumeration value="SPARE"/>
+					<enumeration value="BACK_UP"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeAirspaceReservationImpactType">
+		<simpleContent>
+			<extension base="easm:CodeAirspaceReservationImpactBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeMilitaryActivityCategoryType">
+		<simpleContent>
+			<extension base="easm:CodeMilitaryActivityCategoryBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeMilitaryActivityType">
+		<simpleContent>
+			<extension base="easm:CodeMilitaryActivityBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeAirspaceReservationPhaseType">
+		<simpleContent>
+			<extension base="easm:CodeAirspaceReservationPhaseBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeReasonCancellationType">
+		<simpleContent>
+			<extension base="easm:CodeReasonCancellationBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeMissionFormationType">
+		<simpleContent>
+			<extension base="easm:CodeMissionFormationBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeConditionalRouteType">
+		<simpleContent>
+			<extension base="easm:CodeConditionalRouteBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ValCostType">
+		<simpleContent>
+			<extension base="easm:ValCostBaseType">
+				<attribute name="uom" type="easm:UomCurrencyType"/>
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

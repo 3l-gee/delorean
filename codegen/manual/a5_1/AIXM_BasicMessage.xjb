@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jaxb:bindings 
+    version="3.0"
+	xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:annox="urn:jaxb.jvnet.org:annox"
+    jaxb:extensionBindingPrefixes="xjc annox">
+	<jaxb:bindings schemaLocation="AIXM_BasicMessage.xsd" node="/xs:schema">
+        <jaxb:bindings node="manual">
+            <jaxb:bindings node="xs:complexType[@name='AIXMBasicMessageType']">
+                <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlRootElement</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "aixm_basic_message")</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:group[@name='AIXMBasicMessagePropertyGroup']//xs:element[@name='hasMember']">
+                <annox:annotate target="field">@jakarta.persistence.ManyToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)</annox:annotate>
+                <annox:annotate target="field">@jakarta.persistence.JoinTable(name = "master_join", joinColumns = @jakarta.persistence.JoinColumn(name = "source_id"), inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "target_id"))</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
+                <annox:annotate target="class">@jakarta.xml.bind.annotation.XmlType(name = "BasicMessageMemberAIXMPropertyType", propOrder = {"abstractAIXMFeature"})</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Entity</annox:annotate>
+                <annox:annotate target="class">@jakarta.persistence.Table(name = "basic_message_member")</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
+                <jaxb:bindings node="//xs:element[@name='abstractAIXMFeature']">
+                    <jaxb:javaType name="com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMFeatureType"/>
+                    <annox:removeAnnotation class="jakarta.xml.bind.annotation.XmlElement" target="field"/>
+                    <annox:annotate target="field">@jakarta.persistence.OneToOne(cascade = CascadeType.ALL)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.JoinColumn(name = "abstract_aixm_feature_id")</annox:annotate>
+                    <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlElementRef(name = "AbstractAIXMFeature", namespace = "http://www.aixm.aero/schema/5.1", type = jakarta.xml.bind.JAXBElement.class, required = false)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter(com.aixm.delorean.core.adapter.a5_1.feature.AbstractFeatureAdapter.class)</annox:annotate>
+                    <jaxb:property name="abstractAIXMFeature"/>
+                </jaxb:bindings>
+            </jaxb:bindings>
+            <jaxb:bindings node="xs:complexType[@name='BasicMessageMemberAIXMPropertyType']">
+                <jaxb:bindings node="//xs:element[@name='dbid']">
+                    <annox:annotate target="field">@jakarta.persistence.Id</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.SEQUENCE, generator = "delorean_seq_gen")</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.persistence.Column(name = "id", length = 255, nullable = false, unique = true)</annox:annotate>
+                    <annox:annotate target="field">@jakarta.xml.bind.annotation.XmlTransient</annox:annotate>
+                </jaxb:bindings>
+            </jaxb:bindings>
+        </jaxb:bindings>
+	</jaxb:bindings>
+</jaxb:bindings>

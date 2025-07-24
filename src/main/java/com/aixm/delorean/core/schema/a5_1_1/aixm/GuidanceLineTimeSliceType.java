@@ -84,7 +84,7 @@ public class GuidanceLineTimeSliceType
     @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "designator_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designator_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType designator;
@@ -114,40 +114,40 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedtouchdownliftoff", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoff_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffPropertyType> connectedTouchDownLiftOff;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedrunwaycentrelinepoint", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runwaycentrelinepoint_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayCentrelinePointPropertyType> connectedRunwayCentrelinePoint;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedapron", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "apron_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ApronPropertyType> connectedApron;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedstand", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "aircraftstand_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AircraftStandPropertyType> connectedStand;
     @XmlElement(nillable = true)
@@ -160,20 +160,20 @@ public class GuidanceLineTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_connectedtaxiway", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "taxiway_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TaxiwayPropertyType> connectedTaxiway;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidanceline_ts_annotation", joinColumns = {
-        @JoinColumn(name = "guidanceline_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

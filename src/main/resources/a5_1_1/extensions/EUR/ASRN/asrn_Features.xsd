@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--====================================================================-->
+<!--ASRN extension 0.4.0 for AIXM 5.1.1-->
+<!--www.aixm.aero-->
+<!--Released:  March 2022-->
+<!--====================================================================-->
+<!--
+		Copyright (c) 2022, EUROCONTROL
+		=====================================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+	-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:aixm="http://www.aixm.aero/schema/5.1.1" xmlns:asrn="http://www.aixm.aero/schema/5.1.1/asrn" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.aixm.aero/schema/5.1.1/asrn" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.1.1.a">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../AIXM_Features.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+	<include schemaLocation="./asrn_DataTypes.xsd"/>
+	<complexType name="ASRNEdgePropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="ASRNEdge" type="asrn:ASRNEdgeType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<documentation>A directional or bi-directional connection between nodes having an attached geometry which can be used for a graphical depiction of the taxi route. </documentation>
+		</annotation>
+	</element>
+	<complexType name="ASRNEdgeType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="asrn:ASRNEdgeTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ASRNEdgeTimeSlicePropertyType">
+		<sequence>
+			<element ref="asrn:ASRNEdgeTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="ASRNEdgeTimeSlice" type="asrn:ASRNEdgeTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="ASRNEdgeTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="asrn:ASRNEdgePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="asrn:AbstractASRNEdgeExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ASRNEdgePropertyGroup">
+		<sequence>
+			<element name="nameInNetwork" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Logical names from associated features</documentation>
+				</annotation>
+			</element>
+			<element name="directionality" type="aixm:CodeDirectionType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>The directionality of the edge.</documentation>
+				</annotation>
+			</element>
+			<element name="type" type="asrn:CodeASRNEdgeType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>The type of edge.</documentation>
+				</annotation>
+			</element>
+			<element name="derivationMethod" type="asrn:CodeASRNEdgeDerivationType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>The derivation method of the edge geometry.</documentation>
+				</annotation>
+			</element>
+			<element name="length" type="aixm:ValDistanceType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Length of the edge.</documentation>
+				</annotation>
+			</element>
+			<element name="curvature" type="aixm:ValAngleType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Total course change along the edge.</documentation>
+				</annotation>
+			</element>
+			<element name="nodeOne" type="asrn:ASRNNodePropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The ASRN Node corresponding to the start point of the ASRN Edge geometry.</documentation>
+				</annotation>
+			</element>
+			<element name="nodeTwo" type="asrn:ASRNNodePropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The ASRN Node corresponding to the end point of the ASRN Edge geometry.</documentation>
+				</annotation>
+			</element>
+			<element name="deicingArea" type="aixm:DeicingAreaPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>Deicing area association with the ASRN Edge.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedAirportHeliport" type="aixm:AirportHeliportPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The AirportHeliport where the ASRN edge is located.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedApron" type="aixm:ApronPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>Apron associated with the ASRN edge.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedTaxiwayElement" type="aixm:TaxiwayElementPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>Taxiway element associated with the ASRN Edge.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedAircraftStand" type="aixm:AircraftStandPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>AircraftStand associated with the ASRN Edge.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedRunwayElement" type="aixm:RunwayElementPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>Runway element associated with the ASRN Edge.</documentation>
+				</annotation>
+			</element>
+			<element name="curveExtent" type="aixm:ElevatedCurvePropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The geometry of the feature expressed as a curve which is a connected sequence of points.</documentation>
+				</annotation>
+			</element>
+			<element name="aircraftCategory" type="aixm:AircraftCharacteristicPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>The characterists of the aricraft that can use the ASRN edge.</documentation>
+				</annotation>
+			</element>
+			<element name="surfaceProperties" type="aixm:SurfaceCharacteristicsPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The surface properties detailing the bearing strength of a pavement for unrestricted operations.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedApronElement" type="aixm:ApronElementPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>Apron element associated with the ASRN Edge.</documentation>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractASRNEdgeExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<complexType name="ASRNNodePropertyType">
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+	</complexType>
+	<element name="ASRNNode" type="asrn:ASRNNodeType" substitutionGroup="aixm:AbstractAIXMFeature">
+		<annotation>
+			<documentation>Representation of the intersection of two or more aerodrome features related to taxi operations, or other special location such as holding position or entry or exit to a parking area. </documentation>
+		</annotation>
+	</element>
+	<complexType name="ASRNNodeType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMFeatureType">
+				<sequence>
+					<element name="timeSlice" type="asrn:ASRNNodeTimeSlicePropertyType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ASRNNodeTimeSlicePropertyType">
+		<sequence>
+			<element ref="asrn:ASRNNodeTimeSlice"/>
+		</sequence>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<element name="ASRNNodeTimeSlice" type="asrn:ASRNNodeTimeSliceType" substitutionGroup="gml:AbstractTimeSlice"/>
+	<complexType name="ASRNNodeTimeSliceType">
+		<complexContent>
+			<extension base="aixm:AbstractAIXMTimeSliceType">
+				<sequence>
+					<group ref="asrn:ASRNNodePropertyGroup"/>
+					<element name="extension" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element ref="asrn:AbstractASRNNodeExtension"/>
+							</sequence>
+							<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="ASRNNodePropertyGroup">
+		<sequence>
+			<element name="nameInNetwork" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>Logical names from associated features</documentation>
+				</annotation>
+			</element>
+			<element name="terminalBuilding" type="aixm:TextNameType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>The terminal building associated with the node.</documentation>
+				</annotation>
+			</element>
+			<element name="type" type="asrn:CodeASRNNodeType" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>The type of node. </documentation>
+				</annotation>
+			</element>
+			<element name="associatedTaxiHoldingPosition" type="aixm:TaxiHoldingPositionPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The associated TaxiHoldingPosition to assess the landing category of the node.</documentation>
+				</annotation>
+			</element>
+			<element name="associatedAirportHeliport" type="aixm:AirportHeliportPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The AirportHeliport where the ASRN node is located.</documentation>
+				</annotation>
+			</element>
+			<element name="nearestRunwayThreshold" type="aixm:RunwayCentrelinePointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The runway threshold nearest to the node.</documentation>
+				</annotation>
+			</element>
+			<element name="deicingArea" type="aixm:DeicingAreaPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>Deicing area association with the ASRN Node.</documentation>
+				</annotation>
+			</element>
+			<choice>
+				<annotation>
+					<documentation>The reference to the underlying feature to which the ASRN Node corresponds.</documentation>
+				</annotation>
+				<element name="featureReference_landAndHoldShortOperations" type="aixm:RunwayCentrelinePointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<!--No annotation found for this element.-->
+				</element>
+				<element name="featureReference_taxiHoldingPosition" type="aixm:TaxiHoldingPositionPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<!--No annotation found for this element.-->
+				</element>
+				<element name="featureReference_taxiwayIntersectionMarking" type="aixm:TaxiwayMarkingPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+					<!--No annotation found for this element.-->
+				</element>
+			</choice>
+			<element name="position" type="aixm:ElevatedPointPropertyType" nillable="true" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>The geometry of the feature expressed as the position of a point on the surface of the Earth. </documentation>
+				</annotation>
+			</element>
+			<element name="annotation" type="aixm:NotePropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+	<element name="AbstractASRNNodeExtension" type="aixm:AbstractExtensionType" abstract="true" substitutionGroup="aixm:AbstractExtension"/>
+	<element name="TaxiwayElementExtension" type="asrn:TaxiwayElementExtensionType" substitutionGroup="aixm:AbstractTaxiwayElementExtension">
+		<annotation>
+			<documentation>Part of a Taxiway.</documentation>
+		</annotation>
+	</element>
+	<complexType name="TaxiwayElementExtensionType">
+		<complexContent>
+			<extension base="aixm:AbstractExtensionType">
+				<sequence>
+					<group ref="asrn:TaxiwayElementExtensionPropertyGroup"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<group name="TaxiwayElementExtensionPropertyGroup">
+		<sequence>
+			<element name="associatedTaxiway" type="aixm:TaxiwayPropertyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</group>
+</schema>

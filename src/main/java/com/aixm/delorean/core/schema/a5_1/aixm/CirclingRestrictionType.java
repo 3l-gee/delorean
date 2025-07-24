@@ -73,43 +73,38 @@ public class CirclingRestrictionType
     extends AbstractPropertiesWithScheduleType
 {
 
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestriction_timeinterval", joinColumns = {
-        @JoinColumn(name = "circlingrestriction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheet_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestriction_annotation", joinColumns = {
-        @JoinColumn(name = "circlingrestriction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "circlingrestriction_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "circlingrestriction_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "sectordescription_id", referencedColumnName = "id")
     protected CircleSectorPropertyType sectorDescription;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)

@@ -1,0 +1,16 @@
+<temporal enabled="1"
+     accumulate="0"
+     durationField="row"
+     startField="valid_time_begin"
+     durationUnit="min"
+     limitMode="0"
+     endField="valid_time_end"
+     startExpression=""
+     mode="2"
+     endExpression=""
+     fixedDuration="0">
+     <fixedRange>
+     <start/>
+     <end/>
+     </fixedRange>
+</temporal>

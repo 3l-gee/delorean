@@ -55,10 +55,10 @@ public class AirTrafficManagementServiceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airtrafficmanagementservice_timeslice", joinColumns = {
-        @JoinColumn(name = "airtrafficmanagementservice_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airtrafficmanagementservice_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirTrafficManagementServiceTimeSlicePropertyType> timeSlice;
 

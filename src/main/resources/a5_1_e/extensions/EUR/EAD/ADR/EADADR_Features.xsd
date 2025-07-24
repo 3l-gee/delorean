@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    version="23.5" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ead-adr="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../../../xlink/xlinks.xsd"/>
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_Features.xsd"/>
+    <include schemaLocation="./EADADR_DataTypes.xsd"/>
+    <element name="AirspaceExtension"
+        substitutionGroup="aixm:AbstractAirspaceExtension" type="ead-adr:AirspaceExtensionType">
+        <annotation>
+            <documentation>An extension of the Airspace class with properties that indicate by which extent a particular airspace is subject to shared (flexible) civil and military use.</documentation>
+        </annotation>
+    </element>
+    <complexType name="AirspaceExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-adr:AirspaceExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="AirspaceExtensionPropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="flexibleUse" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>The airspace is not designated as either military or civil airspace but should be considered as one continuum and used flexibly on a day-to-day basis. Consequently, any necessary airspace segregation should be only of a temporary nature.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="level1" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>The airspace is manageable at the strategic level. The act of defining and reviewing as required the national airspace policy taking into account national and international airspace requirements.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="level2" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>The airspace is manageable at the pre-tactical level. The act operation of conducting operational management within the framework of pre-determined existing ATM structure and procedures defined in Level 1 and of reaching specific agreement between civil and military authorities involved.</documentation>
+                </annotation>
+            </element>
+            <element minOccurs="0" name="level3" nillable="true" type="aixm:CodeYesNoType">
+                <annotation>
+                    <documentation>The airspace is manageable at the tactical level. The act on the day of operation of activating, de-activating or real-time reallocating of airspace allocated in Level 2 and of solving specific airspace problems and/or of individual OAT/GAT traffic situations in real-time between civil and military units and/or controllers, as appropriate. This co-ordination can take place either in active or passive mode with or without action by the controller.</documentation>
+                </annotation>
+            </element>
+            <element maxOccurs="1" minOccurs="0" name="responsibleAMC"
+                nillable="true" type="aixm:UnitPropertyType"/>
+            <element maxOccurs="1" minOccurs="0" name="ownerRSA"
+                nillable="true" type="aixm:AirspacePropertyType"/>
+        </sequence>
+    </group>
+    <element name="DesignatedPointExtension"
+        substitutionGroup="aixm:AbstractDesignatedPointExtension" type="ead-adr:DesignatedPointExtensionType">
+        <!--No annotation found for this element.-->
+    </element>
+    <complexType name="DesignatedPointExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-adr:DesignatedPointExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="DesignatedPointExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="pointUsage" nillable="true" type="ead-adr:PointUsagePropertyType"/>
+        </sequence>
+    </group>
+    <element name="NavaidExtension"
+        substitutionGroup="aixm:AbstractNavaidExtension" type="ead-adr:NavaidExtensionType">
+        <!--No annotation found for this element.-->
+    </element>
+    <complexType name="NavaidExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-adr:NavaidExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="NavaidExtensionPropertyGroup">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="pointUsage" nillable="true" type="ead-adr:PointUsagePropertyType"/>
+        </sequence>
+    </group>
+    <element name="PointUsage"
+        substitutionGroup="aixm:AbstractPropertiesWithSchedule" type="ead-adr:PointUsageType">
+        <!--No annotation found for this element.-->
+    </element>
+    <complexType name="PointUsageType">
+        <complexContent>
+            <extension base="aixm:AbstractPropertiesWithScheduleType">
+                <sequence>
+                    <group ref="aixm:PropertiesWithSchedulePropertyGroup"/>
+                    <group ref="ead-adr:PointUsagePropertyGroup"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="extension">
+                        <complexType>
+                            <choice>
+                                <element ref="aixm:AbstractPropertiesWithScheduleExtension"/>
+                                <element ref="ead-adr:AbstractPointUsageExtension"/>
+                            </choice>
+                            <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+                        </complexType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="PointUsagePropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="relativeLocation"
+                nillable="true" type="aixm:CodeAirspacePointPositionType">
+                <!--No annotation found for this element.-->
+            </element>
+            <element minOccurs="0" name="reportingATC" nillable="true" type="aixm:CodeATCReportingType">
+                <!--No annotation found for this element.-->
+            </element>
+            <element minOccurs="0" name="role" nillable="true" type="ead-adr:CodePointUsageType">
+                <!--No annotation found for this element.-->
+            </element>
+            <choice>
+                <!--No annotation found for this element.-->
+                <element maxOccurs="unbounded" minOccurs="0"
+                    name="reference_airspace" nillable="true" type="aixm:AirspacePropertyType">
+                    <!--No annotation found for this element.-->
+                </element>
+                <element maxOccurs="unbounded" minOccurs="0"
+                    name="reference_airportHeliport" nillable="true" type="aixm:AirportHeliportPropertyType">
+                    <!--No annotation found for this element.-->
+                </element>
+            </choice>
+            <element maxOccurs="unbounded" minOccurs="0" name="levels"
+                nillable="true" type="aixm:AirspaceLayerPropertyType"/>
+        </sequence>
+    </group>
+    <complexType name="PointUsagePropertyType">
+        <complexContent>
+            <extension base="aixm:AbstractAIXMPropertyType">
+                <sequence>
+                    <element ref="ead-adr:PointUsage"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <element abstract="true" name="AbstractPointUsageExtension"
+        substitutionGroup="aixm:AbstractExtension" type="aixm:AbstractExtensionType"/>
+    <element name="RouteAvailabilityExtension"
+        substitutionGroup="aixm:AbstractRouteAvailabilityExtension" type="ead-adr:RouteAvailabilityExtensionType">
+        <!--No annotation found for this element.-->
+    </element>
+    <complexType name="RouteAvailabilityExtensionType">
+        <complexContent>
+            <extension base="aixm:AbstractExtensionType">
+                <sequence>
+                    <group ref="ead-adr:RouteAvailabilityExtensionPropertyGroup"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <group name="RouteAvailabilityExtensionPropertyGroup">
+        <sequence>
+            <element minOccurs="0" name="conditionalRouteType"
+                nillable="true" type="ead-adr:CodeConditionalRouteType">
+                <annotation>
+                    <documentation>The operational impact of the Airspace over the route segment.</documentation>
+                </annotation>
+            </element>
+            <element maxOccurs="unbounded" minOccurs="0"
+                name="hostAirspace" nillable="true" type="aixm:AirspacePropertyType"/>
+        </sequence>
+    </group>
+</schema>

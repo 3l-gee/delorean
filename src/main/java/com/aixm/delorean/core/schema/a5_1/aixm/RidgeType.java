@@ -74,14 +74,12 @@ public class RidgeType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "side_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "side_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSideType side;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -89,7 +87,6 @@ public class RidgeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "depth_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -97,14 +94,13 @@ public class RidgeType
         @AttributeOverride(name = "nilReason", column = @Column(name = "depth_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDepthType depth;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "ridge_annotation", joinColumns = {
-        @JoinColumn(name = "ridge_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

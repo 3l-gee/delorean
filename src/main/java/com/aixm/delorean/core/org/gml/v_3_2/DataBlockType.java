@@ -51,7 +51,7 @@ public class DataBlockType {
     protected AssociationRoleType rangeParameters;
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
-     * The gml:tupleList encoding is effectively “band-interleaved”.
+     * The gml:tupleList encoding is effectively "band-interleaved".
      * 
      */
     protected CoordinatesType tupleList;
@@ -92,7 +92,7 @@ public class DataBlockType {
 
     /**
      * gml:CoordinatesType consists of a list of coordinate tuples, with each coordinate tuple separated by the ts or tuple separator (whitespace), and each coordinate in the tuple by the cs or coordinate separator (comma).
-     * The gml:tupleList encoding is effectively “band-interleaved”.
+     * The gml:tupleList encoding is effectively "band-interleaved".
      * 
      * @return
      *     possible object is

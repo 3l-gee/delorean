@@ -55,10 +55,10 @@ public class RouteDMEType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routedme_timeslice", joinColumns = {
-        @JoinColumn(name = "routedme_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routedme_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RouteDMETimeSlicePropertyType> timeSlice;
 

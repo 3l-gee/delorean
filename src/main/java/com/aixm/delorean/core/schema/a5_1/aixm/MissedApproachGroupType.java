@@ -75,21 +75,18 @@ public class MissedApproachGroupType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "instruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "instruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType instruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbinstruction_value", length = 10000, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "alternateclimbinstruction_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbinstruction_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextInstructionType alternateClimbInstruction;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "alternateclimbaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -97,24 +94,22 @@ public class MissedApproachGroupType
         @AttributeOverride(name = "nilReason", column = @Column(name = "alternateclimbaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType alternateClimbAltitude;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_altimeter", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "altimetersource_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AltimeterSourcePropertyType> altimeter;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "missedapproachgroup_annotation", joinColumns = {
-        @JoinColumn(name = "missedapproachgroup_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

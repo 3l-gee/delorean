@@ -55,10 +55,10 @@ public class AirportProtectionAreaMarkingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airportprotectionareamarking_timeslice", joinColumns = {
-        @JoinColumn(name = "airportprotectionareamarking_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airportprotectionareamarking_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirportProtectionAreaMarkingTimeSlicePropertyType> timeSlice;
 

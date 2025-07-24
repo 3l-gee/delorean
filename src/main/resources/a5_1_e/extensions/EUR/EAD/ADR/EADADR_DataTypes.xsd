@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    version="23.5" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ead-adr="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/ADR"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_DataTypes.xsd"/>
+    <simpleType name="CodeConditionalRouteBaseType">
+        <annotation>
+            <documentation>The type of conditional route, according to the Flexible use of Airspace rules.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="CDR_1">
+                        <annotation>
+                            <documentation>Conditional Route Type 1 (normally available for flight planning).</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CDR_2">
+                        <annotation>
+                            <documentation>Conditional Route Type 2 (normally not available for flight planning).</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CDR_3">
+                        <annotation>
+                            <documentation>Conditional Route Type 3 (available as ATC re-routing only).</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeConditionalRouteType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-adr:CodeConditionalRouteBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodePointUsageBaseType">
+        <!--No annotation found for this element.-->
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="EN_ROUTE">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="ENTRY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="ENTRY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="FRA_ENTRY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="FRA_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="FRA_INTERMEDIATE">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="FRA_ARRIVAL">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="FRA_DEPARTURE">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="LAND_FALL">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="MILITARY">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="OCEANIC_ENTRY_EXIT">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="TERMINAL">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="VFR">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodePointUsageType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-adr:CodePointUsageBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+</schema>

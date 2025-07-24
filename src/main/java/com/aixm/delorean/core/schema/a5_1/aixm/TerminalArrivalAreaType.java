@@ -55,10 +55,10 @@ public class TerminalArrivalAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "terminalarrivalarea_timeslice", joinColumns = {
-        @JoinColumn(name = "terminalarrivalarea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "terminalarrivalarea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TerminalArrivalAreaTimeSlicePropertyType> timeSlice;
 

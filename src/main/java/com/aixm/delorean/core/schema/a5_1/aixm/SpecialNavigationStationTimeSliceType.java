@@ -79,21 +79,19 @@ public class SpecialNavigationStationTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeSpecialNavigationStationType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "frequency_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -101,49 +99,43 @@ public class SpecialNavigationStationTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "frequency_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValFrequencyType frequency;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "emission_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "emission_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRadioEmissionType emission;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "systemchain_id", referencedColumnName = "id")
     protected SpecialNavigationSystemPropertyType systemChain;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "responsibleorganisation_id", referencedColumnName = "id")
     protected AuthorityForSpecialNavigationStationPropertyType responsibleOrganisation;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     protected ElevatedPointPropertyType position;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstation_ts_availability", joinColumns = {
-        @JoinColumn(name = "specialnavigationstation_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialnavigationstationstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SpecialNavigationStationStatusPropertyType> availability;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "specialnavigationstation_ts_annotation", joinColumns = {
-        @JoinColumn(name = "specialnavigationstation_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

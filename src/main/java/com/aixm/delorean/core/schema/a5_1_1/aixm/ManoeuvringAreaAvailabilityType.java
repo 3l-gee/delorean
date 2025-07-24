@@ -82,30 +82,30 @@ public class ManoeuvringAreaAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailability_timeinterval", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailability_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "timesheet_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TimesheetPropertyType> timeInterval;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailability_annotation", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailability_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailability_specialdateauthority", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailability_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> specialDateAuthority;
     @XmlElement(nillable = true)
@@ -126,10 +126,10 @@ public class ManoeuvringAreaAvailabilityType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "manoeuvringareaavailability_usage", joinColumns = {
-        @JoinColumn(name = "manoeuvringareaavailability_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "manoeuvringareausage_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ManoeuvringAreaUsagePropertyType> usage;
     @Transient

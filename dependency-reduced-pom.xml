@@ -53,24 +53,6 @@
             <version>4.0.8</version>
             <executions>
               <execution>
-                <id>generate-aixm5_1_1</id>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>generate</goal>
-                </goals>
-                <configuration>
-                  <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
-                  <schemaIncludes>
-                    <include>AIXM_BasicMessage.xsd</include>
-                  </schemaIncludes>
-                  <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
-                  <bindingIncludes>
-                    <include>*.xjb</include>
-                  </bindingIncludes>
-                  <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-                </configuration>
-              </execution>
-              <execution>
                 <id>generate-aixm5_1</id>
                 <phase>generate-sources</phase>
                 <goals>
@@ -82,6 +64,24 @@
                     <include>AIXM_BasicMessage.xsd</include>
                   </schemaIncludes>
                   <bindingDirectory>${project.basedir}/schema/aixm5_1/binding</bindingDirectory>
+                  <bindingIncludes>
+                    <include>*.xjb</include>
+                  </bindingIncludes>
+                  <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                </configuration>
+              </execution>
+              <execution>
+                <id>generate-aixm5_1_1</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <schemaDirectory>${project.basedir}/schema/aixm5_1_1/aixm/message</schemaDirectory>
+                  <schemaIncludes>
+                    <include>AIXM_BasicMessage.xsd</include>
+                  </schemaIncludes>
+                  <bindingDirectory>${project.basedir}/schema/aixm5_1_1/binding</bindingDirectory>
                   <bindingIncludes>
                     <include>*.xjb</include>
                   </bindingIncludes>
@@ -109,6 +109,11 @@
                 <groupId>org.jvnet.jaxb</groupId>
                 <artifactId>hyperjaxb3-ejb-plugin</artifactId>
                 <version>4.0.8</version>
+              </dependency>
+              <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>6.6.13.Final</version>
               </dependency>
             </dependencies>
             <configuration>

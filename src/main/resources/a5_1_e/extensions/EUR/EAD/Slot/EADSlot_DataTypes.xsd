@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot"
+    version="5.1.a" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:ead-slot="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Slot"
+    xmlns:aixm="http://www.aixm.aero/schema/5.1"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../../ISO_19136_Schemas/gml.xsd"/>
+    <import namespace="http://www.aixm.aero/schema/5.1" schemaLocation="../../../../AIXM_DataTypes.xsd"/>
+    <simpleType name="CodePrivateSlotStatusBaseType">
+        <annotation>
+            <documentation>The status of the private slot.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="CONSISTENT">
+                        <annotation>
+                            <documentation>After successful private slot checking.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="COMMITTED">
+                        <annotation>
+                            <documentation>After successful committing of the Public Slot.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="CLOSED">
+                        <annotation>
+                            <documentation>After successful closing of the private slot for static data element changes.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="INCONSISTENT">
+                        <annotation>
+                            <documentation>After unsuccessful private slot checking.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="UNKNOWN">
+                        <annotation>
+                            <documentation>After adding, modifying, removing static data element changes.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="EXPIRED">
+                        <annotation>
+                            <documentation>When the planned commit date is reached and the status is not Committed.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="EMTPY">
+                        <annotation>
+                            <documentation>After its creation.</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodePrivateSlotStatusType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-slot:CodePrivateSlotStatusBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodePublicSlotStatusBaseType">
+        <annotation>
+            <documentation>The status indicator of the public slot.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="CONSISTENT">
+                        <annotation>
+                            <documentation>After successful public slot checking.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="COMMITTED">
+                        <annotation>
+                            <documentation>After successful committing of the Public Slot.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="INCONSISTENT">
+                        <annotation>
+                            <documentation>After unsuccessful public slot checking.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="UNKNOWN">
+                        <annotation>
+                            <documentation>After adding, modifying, removing private slots.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="DELETED">
+                        <annotation>
+                            <documentation>After deletion.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="EXPIRED">
+                        <annotation>
+                            <documentation>When the planned commit date is reached and the status is not Committed.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="EMTPY">
+                        <annotation>
+                            <documentation>After its creation.</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodePublicSlotStatusType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-slot:CodePublicSlotStatusBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="CodeSlotSourceBaseType">
+        <annotation>
+            <documentation>The source of the private slot.</documentation>
+        </annotation>
+        <union>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <enumeration value="AIRAC_AMDT">
+                        <annotation>
+                            <documentation>AIRAC AIP Amendment.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AMDT">
+                        <annotation>
+                            <documentation>Non-AIRAC AIP Amendment.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIRAC_SUP">
+                        <!--No annotation found for this element.-->
+                    </enumeration>
+                    <enumeration value="SUP">
+                        <annotation>
+                            <documentation>Non-AIRAC AIP Supplement.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="AIC">
+                        <annotation>
+                            <documentation>Aeronautical Information Circular.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="NOTAM">
+                        <annotation>
+                            <documentation>NOTAM Message.</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="UPDATE">
+                        <annotation>
+                            <documentation>Database update (no source).</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+            <simpleType>
+                <restriction base="xsd:string">
+                    <pattern value="OTHER(:(\w|_){1,58})?"/>
+                </restriction>
+            </simpleType>
+        </union>
+    </simpleType>
+    <complexType name="CodeSlotSourceType">
+        <annotation>
+            <documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="ead-slot:CodeSlotSourceBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="TextSlotNameBaseType">
+        <!--No annotation found for this element.-->
+        <restriction base="aixm:Character2Type">
+            <minLength value="1"/>
+            <maxLength value="60"/>
+        </restriction>
+    </simpleType>
+    <complexType name="TextSlotNameType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-slot:TextSlotNameBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+    <simpleType name="TextUserNameBaseType">
+        <!--No annotation found for this element.-->
+        <restriction base="aixm:Character2Type">
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+    </simpleType>
+    <complexType name="TextUserNameType">
+        <!--No annotation found for this element.-->
+        <simpleContent>
+            <extension base="ead-slot:TextUserNameBaseType">
+                <attribute name="nilReason" type="gml:NilReasonEnumeration">
+                    <!--No annotation found for this element.-->
+                </attribute>
+            </extension>
+        </simpleContent>
+    </complexType>
+</schema>

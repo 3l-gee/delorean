@@ -55,10 +55,10 @@ public class TouchDownLiftOffSafeAreaType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "touchdownliftoffsafearea_timeslice", joinColumns = {
-        @JoinColumn(name = "touchdownliftoffsafearea_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "touchdownliftoffsafearea_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<TouchDownLiftOffSafeAreaTimeSlicePropertyType> timeSlice;
 

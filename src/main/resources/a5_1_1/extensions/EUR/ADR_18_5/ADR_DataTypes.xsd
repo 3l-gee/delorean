@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--====================================================================-->
+<!--AIXM 5.1.1 - ADR EXtension Schema for NM Version 18.5.0-->
+<!--Released:  September 2018-->
+<!--===================================================================-->
+<!--
+		Copyright (c) 2018, EUROCONTROL
+		==============================
+		All rights reserved.
+		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+			* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+			* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+			* Neither the names of EUROCONTROL or FAA nor the names of their contributors may be used to endorse or promote products derived from this specification without specific prior written permission.
+
+		THIS SPECIFICATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		==========================================
+		Editorial note: this license is an instance of the BSD license template as
+		provided by the Open Source Initiative:
+		http://www.opensource.org/licenses/bsd-license.php
+-->
+<schema xmlns:adr="http://www.aixm.aero/schema/5.1.1/extensions/EUR/ADR" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:ns1="http://www.aixm.aero/schema/5.1.1" 
+	targetNamespace="http://www.aixm.aero/schema/5.1.1/extensions/EUR/ADR" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.aixm.aero/schema/5.1.1" schemaLocation="../../../AIXM_DataTypes.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+	<annotation>
+		<appinfo>
+			<gml:gmlProfileSchema>http://external.schemas.opengis.net/gmlAIXMProfile/1.1/gml321forAIXM.xsd</gml:gmlProfileSchema>
+		</appinfo>
+	</annotation>
+	<annotation>
+		<appinfo source="www.aixm.aero/schema/5.1">AIXM_DataTypes.xsd</appinfo>
+	</annotation>
+	<simpleType name="CodeProcessingIndicatorBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>Two types that should disappear in the future:
+OTHER:__ADR__AD_FLIGHT_RULE
+OTHER:__ADR__FLIGHT_PROPERTY_ON_TP</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="AD_CP">
+						<annotation>
+							<appinfo>
+								<gml:description>This is Aerodrome DCT or Aerodrome Connecting Points. 
+It corresponds to the FlightRestrictions in RAD Appendix 5.
+</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="FRA_DCT">
+						<annotation>
+							<appinfo>
+								<gml:description>FRA DCT restrictions. Airspace or Airspace Border.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="FPR">
+						<annotation>
+							<appinfo>
+								<gml:description>Flight Profile Restriction. 
+Restrictions which reflect known agreements between ATCs to transfer flights between them (often formulated into "letters of agreement" (LOAs). They are used by NM to calculate a more reliable vertical flight profile, but not in flight plan validation</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="RAD_DCT">
+						<annotation>
+							<appinfo>
+								<gml:description>Restrictions used to define direct flight limitations traversing or crossing the border of an Airspace.
+</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="TFR">
+						<annotation>
+							<appinfo>
+								<gml:description>This is the normal RAD restriction.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeProcessingIndicatorType">
+		<simpleContent>
+			<extension base="adr:CodeProcessingIndicatorBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="CodeConditionalRouteBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>The type of conditional route, according to the Flexible use of Airspace rules.</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="CDR_1">
+						<annotation>
+							<appinfo>
+								<gml:description>Conditional Route Type 1 (normally available for flight planning).</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="CDR_2">
+						<annotation>
+							<appinfo>
+								<gml:description>Conditional Route Type 2 (normally not available for flight planning).</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="CDR_3">
+						<annotation>
+							<appinfo>
+								<gml:description>Conditional Route Type 3 (available as ATC re-routing only).</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeConditionalRouteType">
+		<simpleContent>
+			<extension base="adr:CodeConditionalRouteBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="CodeAirspaceReservationImpactBaseType">
+		<annotation>
+			<appinfo>
+				<gml:description>A list of coded values indicating the operational impact of the Airspace over the route segment.</gml:description>
+			</appinfo>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="WITHIN">
+						<annotation>
+							<appinfo>
+								<gml:description>The route segment is located within the Airspace and it is available only when the AIrspace is not reserved.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="NEARBY">
+						<annotation>
+							<appinfo>
+								<gml:description>The route segment is located in the vicinity of the Airspace and it is available only when the Airspace is not active (because of upstream/downstream segments that are located within the airspace).</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="OFFLOAD">
+						<annotation>
+							<appinfo>
+								<gml:description>The route segment recuperates the traffic affected by the activation of the airspace.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="NOT_AFFECTED">
+						<annotation>
+							<appinfo>
+								<gml:description>Even if geographically located within the horizontal border of the Airspace, the route segment is not affected by the reservation of the Airspace.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeAirspaceReservationImpactType">
+		<simpleContent>
+			<extension base="adr:CodeAirspaceReservationImpactBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="CodeFeatureUsageBaseType">
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="OPERATIONAL">
+						<annotation>
+							<appinfo>
+								<gml:description>The attributes of the TimeSlice are exposed.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+					<enumeration value="WITHHELD">
+						<annotation>
+							<appinfo>
+								<gml:description>The attributes of the TimeSlice are not visible, they are 'withheld'.</gml:description>
+							</appinfo>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeFeatureUsageType">
+		<simpleContent>
+			<extension base="adr:CodeFeatureUsageBaseType">
+				<attribute name="nilReason" type="gml:NilReasonEnumeration"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

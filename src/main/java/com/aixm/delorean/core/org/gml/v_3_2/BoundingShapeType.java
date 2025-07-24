@@ -51,7 +51,7 @@ public class BoundingShapeType {
 
     /**
      * Envelope defines an extent using a pair of positions defining opposite corners in arbitrary dimensions. The first direct position is the "lower corner" (a coordinate position consisting of all the minimal ordinates for each dimension for all points within the envelope), the second one the "upper corner" (a coordinate position consisting of all the maximal ordinates for each dimension for all points within the envelope).
-     * The use of the properties “coordinates” and “pos” has been deprecated. The explicitly named properties “lowerCorner” and “upperCorner” shall be used instead.
+     * The use of the properties "coordinates" and "pos" has been deprecated. The explicitly named properties "lowerCorner" and "upperCorner" shall be used instead.
      * 
      */
     @XmlElementRef(name = "Envelope", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
@@ -64,7 +64,7 @@ public class BoundingShapeType {
 
     /**
      * Envelope defines an extent using a pair of positions defining opposite corners in arbitrary dimensions. The first direct position is the "lower corner" (a coordinate position consisting of all the minimal ordinates for each dimension for all points within the envelope), the second one the "upper corner" (a coordinate position consisting of all the maximal ordinates for each dimension for all points within the envelope).
-     * The use of the properties “coordinates” and “pos” has been deprecated. The explicitly named properties “lowerCorner” and “upperCorner” shall be used instead.
+     * The use of the properties "coordinates" and "pos" has been deprecated. The explicitly named properties "lowerCorner" and "upperCorner" shall be used instead.
      * 
      * @return
      *     possible object is

@@ -15,7 +15,7 @@ import jakarta.persistence.Index;
 @Entity
 @Table(
     name = "linestring_segment",
-    schema = "public",
+    schema = "geometry",
     indexes = {
         @Index(name = "idx_linestring_segment_order", columnList = "sequence"),
         @Index(name = "idx_linestring_segment_interpretation", columnList = "interpretation")
@@ -24,8 +24,8 @@ import jakarta.persistence.Index;
 public class LinestringSegment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "linestring_segment_seq")
-    @SequenceGenerator(name = "linestring_segment_seq", sequenceName = "linestring_segment_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delorean_seq_gen")
+    @SequenceGenerator(name = "delorean_seq_gen", sequenceName = "delorean_seq_gen", allocationSize = 1)
     @Column(name = "id", nullable = false)
     protected long dbid;
 

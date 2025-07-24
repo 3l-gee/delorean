@@ -136,30 +136,30 @@ public class RadioFrequencyAreaTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_ts_sector", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "circlesector_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<CircleSectorPropertyType> sector;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_ts_extent", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "surface_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SurfacePropertyType> extent;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "radiofrequencyarea_ts_annotation", joinColumns = {
-        @JoinColumn(name = "radiofrequencyarea_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

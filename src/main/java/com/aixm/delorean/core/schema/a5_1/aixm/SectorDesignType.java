@@ -75,21 +75,18 @@ public class SectorDesignType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "turndirection_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turndirection_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeDirectionTurnType turnDirection;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "designgradient_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "designgradient_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSlopeType designGradient;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "terminationaltitude_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
@@ -97,21 +94,19 @@ public class SectorDesignType
         @AttributeOverride(name = "nilReason", column = @Column(name = "terminationaltitude_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceVerticalType terminationAltitude;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "turnpermitted_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "turnpermitted_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType turnPermitted;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "sectordesign_annotation", joinColumns = {
-        @JoinColumn(name = "sectordesign_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

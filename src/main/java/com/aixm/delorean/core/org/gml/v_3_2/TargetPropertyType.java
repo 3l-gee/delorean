@@ -9,149 +9,152 @@ package com.aixm.delorean.core.org.gml.v_3_2;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAIXMFeatureType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAirportGroundServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractAirportHeliportProtectionAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractApproachLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractGroundLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractNavaidEquipmentType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractNavigationSystemCheckpointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractProcedureType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractRadarEquipmentType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractSegmentLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractSurveillanceRadarType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AbstractTrafficSeparationServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AerialRefuellingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AeronauticalGroundLightType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirTrafficControlServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirTrafficManagementServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AircraftGroundServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AircraftStandType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportClearanceServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportHeliportCollocationType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportHeliportType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportHotSpotType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportProtectionAreaMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirportSuppliesServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirspaceBorderCrossingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AirspaceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AltimeterSourceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AngleIndicationType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ApproachLightingSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ApronElementType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ApronLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ApronMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ApronType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ArrestingGearType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ArrivalFeederLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ArrivalLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AuthorityForAirspaceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.AzimuthType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ChangeOverPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.CheckpointINSType;
-import com.aixm.delorean.core.schema.a5_1.aixm.CheckpointVORType;
-import com.aixm.delorean.core.schema.a5_1.aixm.CirclingAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DMEType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DeicingAreaMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DeicingAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DepartureLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DesignatedPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DirectionFinderType;
-import com.aixm.delorean.core.schema.a5_1.aixm.DistanceIndicationType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedCurveType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevatedSurfaceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ElevationType;
-import com.aixm.delorean.core.schema.a5_1.aixm.FinalLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.FireFightingServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.FlightRestrictionType;
-import com.aixm.delorean.core.schema.a5_1.aixm.FloatingDockSiteType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GeoBorderType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GlidepathType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GroundTrafficControlServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GuidanceLineLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GuidanceLineMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.GuidanceLineType;
-import com.aixm.delorean.core.schema.a5_1.aixm.HoldingAssessmentType;
-import com.aixm.delorean.core.schema.a5_1.aixm.HoldingPatternType;
-import com.aixm.delorean.core.schema.a5_1.aixm.InformationServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.InitialLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.InstrumentApproachProcedureType;
-import com.aixm.delorean.core.schema.a5_1.aixm.IntermediateLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.LocalizerType;
-import com.aixm.delorean.core.schema.a5_1.aixm.MarkerBeaconType;
-import com.aixm.delorean.core.schema.a5_1.aixm.MarkingBuoyType;
-import com.aixm.delorean.core.schema.a5_1.aixm.MissedApproachLegType;
-import com.aixm.delorean.core.schema.a5_1.aixm.NDBType;
-import com.aixm.delorean.core.schema.a5_1.aixm.NavaidType;
-import com.aixm.delorean.core.schema.a5_1.aixm.NavigationAreaRestrictionType;
-import com.aixm.delorean.core.schema.a5_1.aixm.NavigationAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.NonMovementAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ObstacleAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.OrganisationAuthorityType;
-import com.aixm.delorean.core.schema.a5_1.aixm.PassengerLoadingBridgeType;
-import com.aixm.delorean.core.schema.a5_1.aixm.PassengerServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.PilotControlledLightingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.PrecisionApproachRadarType;
-import com.aixm.delorean.core.schema.a5_1.aixm.PrimarySurveillanceRadarType;
-import com.aixm.delorean.core.schema.a5_1.aixm.ProcedureDMEType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RadarSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RadioCommunicationChannelType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RadioFrequencyAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RoadType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RouteDMEType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RouteSegmentType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RouteType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RulesProceduresType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayBlastPadType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayCentrelinePointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayDirectionLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayDirectionType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayElementType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayProtectAreaLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayProtectAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayType;
-import com.aixm.delorean.core.schema.a5_1.aixm.RunwayVisualRangeType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SDFType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SafeAltitudeAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SeaplaneLandingAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SeaplaneRampSiteType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SearchRescueServiceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SecondarySurveillanceRadarType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SignificantPointInAirspaceType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SpecialDateType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SpecialNavigationStationType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SpecialNavigationSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandardInstrumentArrivalType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandardInstrumentDepartureType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandardLevelColumnType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandardLevelSectorType;
-import com.aixm.delorean.core.schema.a5_1.aixm.StandardLevelTableType;
-import com.aixm.delorean.core.schema.a5_1.aixm.SurveyControlPointType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TACANType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiHoldingPositionLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiHoldingPositionMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiHoldingPositionType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiwayElementType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiwayLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiwayMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TaxiwayType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TerminalArrivalAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TouchDownLiftOffLightSystemType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TouchDownLiftOffMarkingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TouchDownLiftOffSafeAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.TouchDownLiftOffType;
-import com.aixm.delorean.core.schema.a5_1.aixm.UnitType;
-import com.aixm.delorean.core.schema.a5_1.aixm.UnplannedHoldingType;
-import com.aixm.delorean.core.schema.a5_1.aixm.VORType;
-import com.aixm.delorean.core.schema.a5_1.aixm.VerticalStructureType;
-import com.aixm.delorean.core.schema.a5_1.aixm.VisualGlideSlopeIndicatorType;
-import com.aixm.delorean.core.schema.a5_1.aixm.WorkAreaType;
-import com.aixm.delorean.core.schema.a5_1.aixm.message.AIXMBasicMessageType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ActuateType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.ShowType;
+import com.aixm.delorean.core.org.w3.xlink.v1999.TypeType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAIXMFeatureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAirportGroundServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractAirportHeliportProtectionAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractApproachLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractGroundLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractNavaidEquipmentType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractNavigationSystemCheckpointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractProcedureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractRadarEquipmentType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractSegmentLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractSurveillanceRadarType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AbstractTrafficSeparationServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AerialRefuellingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AeronauticalGroundLightType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirTrafficControlServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirTrafficManagementServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AircraftGroundServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AircraftStandType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportClearanceServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportHeliportCollocationType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportHeliportType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportHotSpotType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportProtectionAreaMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirportSuppliesServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirspaceBorderCrossingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AirspaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AltimeterSourceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AngleIndicationType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ApproachLightingSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ApronElementType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ApronLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ApronMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ApronType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ArrestingGearType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ArrivalFeederLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ArrivalLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AuthorityForAirspaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.AzimuthType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ChangeOverPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.CheckpointINSType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.CheckpointVORType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.CirclingAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DMEType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DeicingAreaMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DeicingAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DepartureLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DesignatedPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DirectionFinderType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.DistanceIndicationType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedCurveType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevatedSurfaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ElevationType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.FinalLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.FireFightingServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.FlightRestrictionType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.FloatingDockSiteType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GeoBorderType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GlidepathType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GroundTrafficControlServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GuidanceLineLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GuidanceLineMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.GuidanceLineType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.HoldingAssessmentType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.HoldingPatternType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.InformationServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.InitialLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.InstrumentApproachProcedureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.IntermediateLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.LocalizerType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.MarkerBeaconType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.MarkingBuoyType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.MissedApproachLegType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.NDBType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.NavaidType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.NavigationAreaRestrictionType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.NavigationAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.NonMovementAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ObstacleAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.OrganisationAuthorityType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.PassengerLoadingBridgeType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.PassengerServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.PilotControlledLightingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.PrecisionApproachRadarType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.PrimarySurveillanceRadarType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.ProcedureDMEType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RadarSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RadioCommunicationChannelType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RadioFrequencyAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RoadType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RouteDMEType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RouteSegmentType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RouteType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RulesProceduresType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayBlastPadType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayCentrelinePointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayDirectionLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayDirectionType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayElementType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayProtectAreaLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayProtectAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.RunwayVisualRangeType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SDFType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SafeAltitudeAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SeaplaneLandingAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SeaplaneRampSiteType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SearchRescueServiceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SecondarySurveillanceRadarType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SignificantPointInAirspaceType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SpecialDateType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SpecialNavigationStationType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SpecialNavigationSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandardInstrumentArrivalType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandardInstrumentDepartureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandardLevelColumnType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandardLevelSectorType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.StandardLevelTableType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.SurveyControlPointType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TACANType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiHoldingPositionLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiHoldingPositionMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiHoldingPositionType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiwayElementType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiwayLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiwayMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TaxiwayType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TerminalArrivalAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TouchDownLiftOffLightSystemType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TouchDownLiftOffMarkingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TouchDownLiftOffSafeAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.TouchDownLiftOffType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.UnitType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.UnplannedHoldingType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.VORType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.VerticalStructureType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.VisualGlideSlopeIndicatorType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.WorkAreaType;
+import com.aixm.delorean.core.schema.a5_1_1.aixm.message.AIXMBasicMessageType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Transient;
 import jakarta.xml.bind.JAXBElement;
@@ -194,7 +197,7 @@ public class TargetPropertyType {
 
     /**
      * This abstract element serves as the head of a substitution group which may contain any elements whose content model is derived from gml:AbstractFeatureType.  This may be used as a variable in the construction of content models.  
-     * gml:AbstractFeature may be thought of as “anything that is a GML feature” and may be used to define variables or templates in which the value of a GML property is “any feature”. This occurs in particular in a GML feature collection where the feature member properties contain one or multiple copies of gml:AbstractFeature respectively.
+     * gml:AbstractFeature may be thought of as "anything that is a GML feature" and may be used to define variables or templates in which the value of a GML property is "any feature". This occurs in particular in a GML feature collection where the feature member properties contain one or multiple copies of gml:AbstractFeature respectively.
      * 
      */
     @XmlElementRef(name = "AbstractFeature", namespace = "http://www.opengis.net/gml/3.2", type = JAXBElement.class, required = false)
@@ -213,58 +216,32 @@ public class TargetPropertyType {
     @Transient
     protected String remoteSchema;
     @XmlAttribute(name = "type", namespace = "http://www.w3.org/1999/xlink")
-    public static final String TYPE = "simple";
+    public static final TypeType TYPE = TypeType.SIMPLE;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Column(name = "href")
     protected String href;
     @XmlAttribute(name = "role", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String role;
     @XmlAttribute(name = "arcrole", namespace = "http://www.w3.org/1999/xlink")
-    @XmlSchemaType(name = "anyURI")
+    @Transient
     protected String arcrole;
     @XmlAttribute(name = "title", namespace = "http://www.w3.org/1999/xlink")
-    protected String title;
-    /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
+    @Transient
+    protected String titleAttribute;
     @XmlAttribute(name = "show", namespace = "http://www.w3.org/1999/xlink")
-    protected String show;
-    /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
-     * 
-     */
+    @Transient
+    protected ShowType show;
     @XmlAttribute(name = "actuate", namespace = "http://www.w3.org/1999/xlink")
-    protected String actuate;
+    @Transient
+    protected ActuateType actuate;
     @XmlAttribute(name = "owns")
     @Transient
     protected java.lang.Boolean owns;
 
     /**
      * This abstract element serves as the head of a substitution group which may contain any elements whose content model is derived from gml:AbstractFeatureType.  This may be used as a variable in the construction of content models.  
-     * gml:AbstractFeature may be thought of as “anything that is a GML feature” and may be used to define variables or templates in which the value of a GML property is “any feature”. This occurs in particular in a GML feature collection where the feature member properties contain one or multiple copies of gml:AbstractFeature respectively.
+     * gml:AbstractFeature may be thought of as "anything that is a GML feature" and may be used to define variables or templates in which the value of a GML property is "any feature". This occurs in particular in a GML feature collection where the feature member properties contain one or multiple copies of gml:AbstractFeature respectively.
      * 
      * @return
      *     possible object is
@@ -614,6 +591,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
@@ -623,6 +601,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiPointType }{@code >}
@@ -633,17 +612,19 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      *     {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TinType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      *     
      */
     public JAXBElement<? extends AbstractGeometryType> getAbstractGeometry() {
@@ -660,6 +641,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link AbstractGeometricPrimitiveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractGeometryType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractSurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CompositeCurveType }{@code >}
@@ -669,6 +651,7 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link GeometricComplexType }{@code >}
      *     {@link JAXBElement }{@code <}{@link GridType }{@code >}
      *     {@link JAXBElement }{@code <}{@link LineStringType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LinearRingType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiGeometryType }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultiPointType }{@code >}
@@ -679,17 +662,19 @@ public class TargetPropertyType {
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.PointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link PolygonType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RectifiedGridType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RingType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ShellType }{@code >}
      *     {@link JAXBElement }{@code <}{@link SolidType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.org.gml.v_3_2.SurfaceType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TinType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.CurveType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.CurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedCurveType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedPointType }{@code >}
      *     {@link JAXBElement }{@code <}{@link ElevatedSurfaceType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.PointType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1.aixm.SurfaceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.PointType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link com.aixm.delorean.core.schema.a5_1_1.aixm.SurfaceType }{@code >}
      *     
      * @see #getAbstractGeometry()
      */
@@ -854,53 +839,42 @@ public class TargetPropertyType {
     }
 
     /**
-     * Gets the value of the title property.
+     * Gets the value of the titleAttribute property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getTitleAttribute() {
+        return titleAttribute;
     }
 
     /**
-     * Sets the value of the title property.
+     * Sets the value of the titleAttribute property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setTitleAttribute(String value) {
+        this.titleAttribute = value;
     }
 
-    public boolean isSetTitle() {
-        return (this.title!= null);
+    public boolean isSetTitleAttribute() {
+        return (this.titleAttribute!= null);
     }
 
     /**
-     * The 'show' attribute is used to communicate the desired presentation 
-     *         of the ending resource on traversal from the starting resource; it's 
-     *         value should be treated as follows: 
-     *         new - load ending resource in a new window, frame, pane, or other 
-     *               presentation context
-     *         replace - load the resource in the same window, frame, pane, or 
-     *                   other presentation context
-     *         embed - load ending resource in place of the presentation of the 
-     *                 starting resource
-     *         other - behavior is unconstrained; examine other markup in the 
-     *                 link for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the show property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
      */
-    public String getShow() {
+    public ShowType getShow() {
         return show;
     }
 
@@ -909,11 +883,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ShowType }
      *     
-     * @see #getShow()
      */
-    public void setShow(String value) {
+    public void setShow(ShowType value) {
         this.show = value;
     }
 
@@ -922,24 +895,14 @@ public class TargetPropertyType {
     }
 
     /**
-     * The 'actuate' attribute is used to communicate the desired timing 
-     *         of traversal from the starting resource to the ending resource; 
-     *         it's value should be treated as follows:
-     *         onLoad - traverse to the ending resource immediately on loading 
-     *                  the starting resource 
-     *         onRequest - traverse from the starting resource to the ending 
-     *                     resource only on a post-loading event triggered for 
-     *                     this purpose 
-     *         other - behavior is unconstrained; examine other markup in link 
-     *                 for hints 
-     *         none - behavior is unconstrained
+     * Gets the value of the actuate property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
      */
-    public String getActuate() {
+    public ActuateType getActuate() {
         return actuate;
     }
 
@@ -948,11 +911,10 @@ public class TargetPropertyType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ActuateType }
      *     
-     * @see #getActuate()
      */
-    public void setActuate(String value) {
+    public void setActuate(ActuateType value) {
         this.actuate = value;
     }
 

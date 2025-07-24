@@ -27,12 +27,12 @@ import jakarta.xml.bind.annotation.XmlType;
  * <pre>{@code
  * <complexType name="ShellType">
  *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     <extension base="{http://www.opengis.net/gml/3.2}AbstractSurfaceType">
  *       <sequence>
  *         <element ref="{http://www.opengis.net/gml/3.2}surfaceMember" maxOccurs="unbounded"/>
  *       </sequence>
  *       <attGroup ref="{http://www.opengis.net/gml/3.2}AggregationAttributeGroup"/>
- *     </restriction>
+ *     </extension>
  *   </complexContent>
  * </complexType>
  * }</pre>
@@ -43,7 +43,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ShellType", propOrder = {
     "surfaceMember"
 })
-public class ShellType {
+public class ShellType
+    extends AbstractSurfaceType
+{
 
     /**
      * This property element either references a surface via the XLink-attributes or contains the surface element. A surface element is any element, which is substitutable for gml:AbstractSurface.

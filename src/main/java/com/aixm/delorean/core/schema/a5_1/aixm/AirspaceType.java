@@ -55,10 +55,10 @@ public class AirspaceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "airspace_timeslice", joinColumns = {
-        @JoinColumn(name = "airspace_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "airspace_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<AirspaceTimeSlicePropertyType> timeSlice;
 

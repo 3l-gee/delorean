@@ -92,42 +92,36 @@ public class AircraftCharacteristicType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "engine_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "engine_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftEngineType engine;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "numberengine_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "numberengine_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftEngineNumberType numberEngine;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "typeaircrafticao_value", length = 4, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "typeaircrafticao_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "typeaircrafticao_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftICAOType typeAircraftICAO;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "aircraftlandingcategory_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "aircraftlandingcategory_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftCategoryType aircraftLandingCategory;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "wingspan_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -135,21 +129,18 @@ public class AircraftCharacteristicType
         @AttributeOverride(name = "nilReason", column = @Column(name = "wingspan_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType wingSpan;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "wingspaninterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "wingspaninterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType wingSpanInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "classwingspan_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "classwingspan_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeAircraftWingspanClassType classWingSpan;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "weight_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -157,28 +148,24 @@ public class AircraftCharacteristicType
         @AttributeOverride(name = "nilReason", column = @Column(name = "weight_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValWeightType weight;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "weightinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "weightinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType weightInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "passengers_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "passengers_nilreason", length = 255, nullable = true, unique = false))
     })
     protected NoNumberType passengers;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "passengersinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "passengersinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType passengersInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speed_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -186,70 +173,61 @@ public class AircraftCharacteristicType
         @AttributeOverride(name = "nilReason", column = @Column(name = "speed_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValSpeedType speed;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "speedinterpretation_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "speedinterpretation_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeValueInterpretationType speedInterpretation;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "waketurbulence_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "waketurbulence_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeWakeTurbulenceType wakeTurbulence;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "navigationequipment_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigationequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavigationEquipmentType navigationEquipment;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "navigationspecification_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "navigationspecification_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeNavigationSpecificationType navigationSpecification;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "verticalseparationcapability_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "verticalseparationcapability_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeRVSMType verticalSeparationCapability;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "anticollisionandseparationequipment_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "anticollisionandseparationequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeEquipmentAntiCollisionType antiCollisionAndSeparationEquipment;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "communicationequipment_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "communicationequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeCommunicationModeType communicationEquipment;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "surveillanceequipment_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "surveillanceequipment_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeTransponderType surveillanceEquipment;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "aircraftcharacteristic_annotation", joinColumns = {
-        @JoinColumn(name = "aircraftcharacteristic_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

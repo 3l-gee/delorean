@@ -91,42 +91,37 @@ public class VerticalStructureTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(name = "name", nillable = true)
+    @XmlElement(name = "name")
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 60, columnDefinition = "TEXT", nullable = true, unique = false)),
+        @AttributeOverride(name = "value", column = @Column(name = "name_value", length = 255, columnDefinition = "TEXT", nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "name_nilreason", length = 255, nullable = true, unique = false))
     })
     protected TextNameType aixmName;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "type_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "type_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeVerticalStructureType type;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lighted_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lighted_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType lighted;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "markingicaostandard_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "markingicaostandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType markingICAOStandard;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "group_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "group_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType group;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -134,7 +129,6 @@ public class VerticalStructureTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "width_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -142,7 +136,6 @@ public class VerticalStructureTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "width_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType width;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "radius_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -150,124 +143,111 @@ public class VerticalStructureTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "radius_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType radius;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "lightingicaostandard_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "lightingicaostandard_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType lightingICAOStandard;
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "synchronisedlighting_value", length = 255, nullable = true, unique = false)),
         @AttributeOverride(name = "nilReason", column = @Column(name = "synchronisedlighting_nilreason", length = 255, nullable = true, unique = false))
     })
     protected CodeYesNoType synchronisedLighting;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "marker_id", referencedColumnName = "id")
     protected MarkerBeaconPropertyType marker;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_part", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructurepart_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructurePartPropertyType> part;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedpassengerservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "passengerservice_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<PassengerServicePropertyType> hostedPassengerService;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_supportedgroundlight", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "groundlightsystem_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GroundLightSystemPropertyType> supportedGroundLight;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostednavaidequipment", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "navaidequipment_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NavaidEquipmentPropertyType> hostedNavaidEquipment;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedspecialnavstation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "specialnavigationstation_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<SpecialNavigationStationPropertyType> hostedSpecialNavStation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedunit", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "unit_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<UnitPropertyType> hostedUnit;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_hostedorganisation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "organisationauthority_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<OrganisationAuthorityPropertyType> hostedOrganisation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_supportedservice", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "service_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ServicePropertyType> supportedService;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_annotation", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "verticalstructure_ts_lightingavailability", joinColumns = {
-        @JoinColumn(name = "verticalstructure_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "verticalstructurelightingstatus_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<VerticalStructureLightingStatusPropertyType> lightingAvailability;
     @Transient

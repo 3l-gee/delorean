@@ -13,7 +13,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * This enumeration type specifies values for the knots’ type (see ISO 19107:2003, 6.4.25).
+ * This enumeration type specifies values for the knots' type (see ISO 19107:2003, 6.4.25).
  * 
  * <p>Java class for KnotTypesType</p>.
  * 

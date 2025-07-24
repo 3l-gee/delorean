@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+      	elementFormDefault="qualified"
+      	targetNamespace="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit"
+      	version="5.1.b"
+      	xmlns="http://www.w3.org/2001/XMLSchema"
+      	xmlns:ead-audit="http://www.aixm.aero/schema/5.1/extensions/EUR/EAD/Audit"
+      	xmlns:aixm="http://www.aixm.aero/schema/5.1"
+      	xmlns:gml="http://www.opengis.net/gml/3.2"
+      	xmlns:xlink="http://www.w3.org/1999/xlink"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<import namespace="http://www.opengis.net/gml/3.2"
+      		schemaLocation="../../../../../ISO_19136_Schemas/gml.xsd"/>
+	<import namespace="http://www.aixm.aero/schema/5.1"
+      		schemaLocation="../../../../../AIXM_DataTypes.xsd"/>
+	<simpleType name="CodeSubsystemBaseType">
+		<annotation>
+			<documentation>The sub-system the time slice has been managed into.</documentation>
+		</annotation>
+		<union>
+			<simpleType>
+				<restriction base="xsd:string">
+					<enumeration value="SDD">
+						<annotation>
+							<documentation>The feature is maintained in SDD.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="SDO">
+						<annotation>
+							<documentation>The feature is maintained in SDO and is forward mapped to SDD.</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="IDL">
+						<annotation>
+							<documentation>The feature is maintained in iNM data layer (iDL) and mapped to SDD.</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="xsd:string">
+					<pattern value="OTHER(:(\w|_){1,58})?"/>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="CodeSubsystemType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="ead-audit:CodeSubsystemBaseType">
+				<attribute name="nilReason"
+         					type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="TextUserNameBaseType">
+		<annotation>
+			<documentation>The user name of the user creating / providing the feature time slice.</documentation>
+		</annotation>
+		<restriction base="aixm:Character2Type">
+			<minLength value="1"/>
+			<maxLength value="15"/>
+		</restriction>
+	</simpleType>
+	<complexType name="TextUserNameType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="ead-audit:TextUserNameBaseType">
+				<attribute name="nilReason"
+         					type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="TransactionIDBaseType">
+		<annotation>
+			<documentation>An identifier of the transaction in which this feature timeslice was created, e.g. an upload job identifier.</documentation>
+		</annotation>
+		<restriction base="aixm:CodeUUIDBaseType">
+			<minLength value="36"/>
+			<maxLength value="36"/>
+		</restriction>
+	</simpleType>
+	<complexType name="TransactionIDType">
+		<annotation>
+			<documentation>A complex data type that enables the provision of a NIL reason for any attribute using this type.</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="ead-audit:TransactionIDBaseType">
+				<attribute name="nilReason"
+         					type="gml:NilReasonEnumeration">
+					<!--No annotation found for this element.-->
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>

@@ -312,20 +312,20 @@ public class RouteSegmentTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegment_ts_availability", joinColumns = {
-        @JoinColumn(name = "routesegment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "routeavailability_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RouteAvailabilityPropertyType> availability;
     @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "routesegment_ts_annotation", joinColumns = {
-        @JoinColumn(name = "routesegment_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

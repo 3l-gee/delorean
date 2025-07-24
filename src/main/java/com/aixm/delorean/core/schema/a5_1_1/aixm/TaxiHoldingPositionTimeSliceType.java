@@ -100,10 +100,10 @@ public class TaxiHoldingPositionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_ts_protectedrunway", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "runway_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<RunwayPropertyType> protectedRunway;
     @XmlElement(nillable = true)
@@ -116,10 +116,10 @@ public class TaxiHoldingPositionTimeSliceType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "taxiholdingposition_ts_annotation", joinColumns = {
-        @JoinColumn(name = "taxiholdingposition_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

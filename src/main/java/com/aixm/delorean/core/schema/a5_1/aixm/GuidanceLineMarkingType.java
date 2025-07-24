@@ -55,10 +55,10 @@ public class GuidanceLineMarkingType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "guidancelinemarking_timeslice", joinColumns = {
-        @JoinColumn(name = "guidancelinemarking_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "guidancelinemarking_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<GuidanceLineMarkingTimeSlicePropertyType> timeSlice;
 

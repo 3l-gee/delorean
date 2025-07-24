@@ -1,0 +1,32 @@
+<jaxb:bindings 
+	version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:annox="urn:jaxb.jvnet.org:annox"
+	jaxb:extensionBindingPrefixes="xjc annox">
+    <jaxb:bindings schemaLocation="AIXM_DataTypes.xsd" node="/xs:schema">
+        <jaxb:bindings node="manual">
+            <jaxb:bindings node="//xs:simpleType[@name='DateBaseType']">
+                <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='DateType']">
+                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='DateType']//xs:attribute[@name='nilReason']">
+                <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:simpleType[@name='DateTimeBaseType']">
+                <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='DateTimeType']">
+                <annox:annotate target="class">@jakarta.persistence.Embeddable</annox:annotate>
+            </jaxb:bindings>
+            <jaxb:bindings node="//xs:complexType[@name='DateTimeType']//xs:attribute[@name='nilReason']">
+                <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

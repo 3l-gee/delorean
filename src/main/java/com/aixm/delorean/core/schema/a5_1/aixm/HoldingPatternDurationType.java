@@ -72,7 +72,6 @@ public class HoldingPatternDurationType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "duration_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -80,14 +79,13 @@ public class HoldingPatternDurationType
         @AttributeOverride(name = "nilReason", column = @Column(name = "duration_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDurationType duration;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpatternduration_annotation", joinColumns = {
-        @JoinColumn(name = "holdingpatternduration_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

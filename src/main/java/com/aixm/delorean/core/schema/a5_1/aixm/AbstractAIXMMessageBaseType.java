@@ -10,16 +10,11 @@ package com.aixm.delorean.core.schema.a5_1.aixm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
-import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -35,7 +30,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element ref="{http://www.aixm.aero/schema/5.1}sequenceNumber" minOccurs="0"/>
  *         <element name="messageMetadata" type="{http://www.aixm.aero/schema/5.1}MessageMetadataPropertyType" minOccurs="0"/>
- *         <element name="dbid" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -63,12 +57,6 @@ public abstract class AbstractAIXMMessageBaseType
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     protected MessageMetadataPropertyType messageMetadata;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aixm_basic_message_seq")
-    @SequenceGenerator(name = "aixm_basic_message_seq", sequenceName = "aixm_basic_message_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
-    @XmlTransient
-    protected long dbid;
 
     /**
      * Gets the value of the sequenceNumber property.
@@ -124,26 +112,6 @@ public abstract class AbstractAIXMMessageBaseType
 
     public boolean isSetMessageMetadata() {
         return (this.messageMetadata!= null);
-    }
-
-    /**
-     * Gets the value of the dbid property.
-     * 
-     */
-    public long getDbid() {
-        return dbid;
-    }
-
-    /**
-     * Sets the value of the dbid property.
-     * 
-     */
-    public void setDbid(long value) {
-        this.dbid = value;
-    }
-
-    public boolean isSetDbid() {
-        return true;
     }
 
 }

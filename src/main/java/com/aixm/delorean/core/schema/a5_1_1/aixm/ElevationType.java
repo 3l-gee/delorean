@@ -55,10 +55,10 @@ public class ElevationType
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "elevation_timeslice", joinColumns = {
-        @JoinColumn(name = "elevation_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "elevation_tsp_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<ElevationTimeSlicePropertyType> timeSlice;
 

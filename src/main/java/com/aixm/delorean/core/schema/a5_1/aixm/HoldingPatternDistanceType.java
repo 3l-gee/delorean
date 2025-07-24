@@ -72,7 +72,6 @@ public class HoldingPatternDistanceType
     extends AbstractAIXMObjectType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "length_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -80,14 +79,13 @@ public class HoldingPatternDistanceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "length_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType length;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "holdingpatterndistance_annotation", joinColumns = {
-        @JoinColumn(name = "holdingpatterndistance_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient

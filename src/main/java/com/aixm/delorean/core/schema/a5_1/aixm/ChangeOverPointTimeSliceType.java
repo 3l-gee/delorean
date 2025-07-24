@@ -79,7 +79,6 @@ public class ChangeOverPointTimeSliceType
     extends AbstractAIXMTimeSliceType
 {
 
-    @XmlElement(nillable = true)
     @Embedded
     @AttributeOverrides({
         @AttributeOverride(name = "value", column = @Column(name = "distance_value", length = 255, columnDefinition = "DECIMAL", nullable = true, unique = false)),
@@ -87,56 +86,54 @@ public class ChangeOverPointTimeSliceType
         @AttributeOverride(name = "nilReason", column = @Column(name = "distance_nilreason", length = 255, nullable = true, unique = false))
     })
     protected ValDistanceType distance;
-    @XmlElement(name = "location_fixDesignatedPoint", nillable = true)
+    @XmlElement(name = "location_fixDesignatedPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_fixdesignatedpoint_id", referencedColumnName = "id")
     protected DesignatedPointPropertyType locationFixDesignatedPoint;
-    @XmlElement(name = "location_navaidSystem", nillable = true)
+    @XmlElement(name = "location_navaidSystem")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_navaidsystem_id", referencedColumnName = "id")
     protected NavaidPropertyType locationNavaidSystem;
-    @XmlElement(name = "location_aimingPoint", nillable = true)
+    @XmlElement(name = "location_aimingPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_aimingpoint_id", referencedColumnName = "id")
     protected TouchDownLiftOffPropertyType locationAimingPoint;
-    @XmlElement(name = "location_runwayPoint", nillable = true)
+    @XmlElement(name = "location_runwayPoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_runwaypoint_id", referencedColumnName = "id")
     protected RunwayCentrelinePointPropertyType locationRunwayPoint;
-    @XmlElement(name = "location_airportReferencePoint", nillable = true)
+    @XmlElement(name = "location_airportReferencePoint")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_airportreferencepoint_id", referencedColumnName = "id")
     protected AirportHeliportPropertyType locationAirportReferencePoint;
-    @XmlElement(name = "location_position", nillable = true)
+    @XmlElement(name = "location_position")
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_position_id", referencedColumnName = "id")
     protected PointPropertyType locationPosition;
-    @XmlElement(nillable = true)
     @OneToOne(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "applicablerouteportion_id", referencedColumnName = "id")
     protected RoutePortionPropertyType applicableRoutePortion;
-    @XmlElement(nillable = true)
     @OneToMany(cascade = {
         CascadeType.ALL
     }, fetch = FetchType.EAGER)
-    @JoinTable(name = "changeoverpoint_ts_annotation", joinColumns = {
-        @JoinColumn(name = "changeoverpoint_ts_id")
+    @JoinTable(name = "master_join", joinColumns = {
+        @JoinColumn(name = "source_id")
     }, inverseJoinColumns = {
-        @JoinColumn(name = "note_pt_id")
+        @JoinColumn(name = "target_id")
     })
     protected List<NotePropertyType> annotation;
     @Transient
