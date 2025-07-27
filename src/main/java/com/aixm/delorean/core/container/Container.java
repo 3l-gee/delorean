@@ -117,6 +117,9 @@ public class Container<T> {
             Session session = this.databaseBinding.getSession();
             String userName = this.databaseBinding.getUserName();
             this.publisherPRJ.loadProject(session, userName);
+            ConsoleLogger.log(LogLevel.INFO, "AIXM and project successfully loaded");
+        } else {
+            ConsoleLogger.log(LogLevel.INFO, "AIXM successfully loaded");
         }
     }
 

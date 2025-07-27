@@ -92,9 +92,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(linestring, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
+		linestring AS geom,
+		ST_StartPoint(linestring) as first_point,
+		ST_EndPoint(linestring) as last_point
     FROM 
         geometry.polygon_segment 
     WHERE 
@@ -106,9 +106,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-        ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 10000)::geometry as geom,
-		ST_StartPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(linestring, 0.000000000000001)) as last_point
+        ST_Segmentize(linestring::geography, 10000)::geometry as geom,
+		ST_StartPoint(linestring) as first_point,
+		ST_EndPoint(linestring) as last_point
     FROM 
         geometry.polygon_segment 
     WHERE 
@@ -120,9 +120,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
+		geom AS geom,
+		ST_StartPoint(geom) as first_point,
+		ST_EndPoint(geom) as last_point
 	FROM
 		arc_line
 	UNION ALL
@@ -132,9 +132,9 @@ segment_union AS (
 		member,
 		sequence,
 		interpretation,
-		ST_ReducePrecision(geom, 0.000000000000001) AS geom,
-		ST_StartPoint(ST_ReducePrecision(geom, 0.000000000000001)) as first_point,
-		ST_EndPoint(ST_ReducePrecision(geom, 0.000000000000001)) as last_point
+		geom AS geom,
+		ST_StartPoint(geom) as first_point,
+		ST_EndPoint(geom) as last_point
 	FROM segment_ref
 	INNER JOIN segment_value ON segment_ref.uuid = segment_value.uuid
 ),

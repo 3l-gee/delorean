@@ -273,15 +273,24 @@ public class DatabaseBinding<T> {
             List<MutationFeatureTimeslice> mutationFeatureTimeslices = this.getTopTimeslice(session, this.databaseConfig.getFeatureSqlList());
 
             // 4. merge timeslice
-            for (BasicMessageMemberAIXMPropertyType bmm : basicMessageMembers){
-                AbstractAIXMFeatureType abstractFeature = bmm.getAbstractAIXMFeature();
-                String identifier = abstractFeature.getIdentifier().getValue();
-                MutationFeatureTimeslice existing = mutationFeatureTimeslices.stream()
-                    .filter(f -> f.getIdentifier().equals(identifier))
-                    .findFirst()
-                    .orElse(null);
-                DatabaseFunctionHelper.A5_1HandelTimeSlice(bmm, existing, session);
-            }
+            basicMessageMembers.parallelStream().forEach(bmm -> {
+                try (Session threadSession = this.sessionFactory.openSession()) {
+                    threadSession.beginTransaction();
+
+                    AbstractAIXMFeatureType abstractFeature = bmm.getAbstractAIXMFeature();
+                    String identifier = abstractFeature.getIdentifier().getValue();
+                    MutationFeatureTimeslice existing = mutationFeatureTimeslices.stream()
+                        .filter(f -> f.getIdentifier().equals(identifier))
+                        .findFirst()
+                        .orElse(null);
+
+                    DatabaseFunctionHelper.A5_1HandelTimeSlice(bmm, existing, threadSession);
+
+                    threadSession.getTransaction().commit();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
 
             // 5. flush and close original session after persisting message
             session.flush();
@@ -395,8 +404,14 @@ public class DatabaseBinding<T> {
             session.close();
         }
 
-        ConsoleLogger.log(LogLevel.INFO, "Successfully exported");
+        ConsoleLogger.log(LogLevel.INFO, "AIXM Successfully exported");
         return object;
+    }
+
+    public void computeDBView() {
+        this.executeSQLScript(this.databaseConfig.getSqlDBViewFilePath());
+
+        ConsoleLogger.log(LogLevel.INFO, "Database views successfully created.");
     }
 
 
