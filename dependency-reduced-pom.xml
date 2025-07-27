@@ -4,7 +4,7 @@
   <groupId>com.aixm.delorean</groupId>
   <artifactId>delorean</artifactId>
   <name>delorean</name>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0</version>
   <url>https://github.com/3l-gee/delorean</url>
   <build>
     <plugins>
