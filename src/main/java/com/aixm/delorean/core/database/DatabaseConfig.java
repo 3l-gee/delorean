@@ -6,27 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 public enum DatabaseConfig {
 
-    TEST(
-        "test", 
-        5,
-        20,
-        false,
-        "test/postgres/init/schema.sql",
-        "test/postgres/init/schema.sql",
-        new Class<?>[]{
-            com.aixm.delorean.core.schema.test.aixm.FeatureCollectionType.class,
-            com.aixm.delorean.core.schema.test.aixm.FeatureType.class,  
-            com.aixm.delorean.core.schema.test.aixm.DistanceType.class,
-        },
-        Arrays.asList()
-    ),
     A5_1(
-        "a5_1",                                 // version
-        5,                                      // Connection pool min size
-        20,                                     // Connection pool max size
-        false,                                  // Hibernate show_sql
+        "a5_1",
         "a5_1/postgres/schema.sql",
         "a5_1/postgres/post_init.sql",
+        "a5_1/postgres/view.sql",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -927,12 +911,10 @@ public enum DatabaseConfig {
         )
     ),    
     AIXM_5_1_1(
-        "a5_1_1",               // version
-        5,                      // Connection pool min size
-        20,                     // Connection pool max size
-        false,                  // Hibernate show_sql
+        "a5_1_1",
         "a5_1_1/postgres/schema.sql",
         "a5_1_1/postgres/post_init.sql",
+        "",
         new Class<?>[]{
             // gis
             com.aixm.delorean.core.gis.type.LinestringSegment.class,
@@ -1728,24 +1710,20 @@ public enum DatabaseConfig {
     
 
     private final String name;
-    private final int connectionPoolMinSize;
-    private final int connectionPoolMaxSize;
-    private final boolean showSql;
     private final Class<?>[] mappingClasses;
     private final Configuration configuration;
     private final String sqlPreInitFilePath;
     private final String sqlPostInitFilePath;
+    private final String sqlDBViewFilePath;
     private final List<String> feature;
 
-    DatabaseConfig(String version, int connectionPoolMinSize, int connectionPoolMaxSize, boolean showSql, String sqlPreInitFilePath, String sqlPostInitFilePath, Class<?>[] mappingClasses, List<String> feature) {
+    DatabaseConfig(String version, String sqlPreInitFilePath, String sqlPostInitFilePath, String sqlDBViewFilePath, Class<?>[] mappingClasses, List<String> feature) {
         this.name = version;
-        this.connectionPoolMinSize = connectionPoolMinSize;
-        this.connectionPoolMaxSize = connectionPoolMaxSize;
-        this.showSql = showSql;
         this.mappingClasses = mappingClasses;
         this.configuration = getHibernateConfiguration();
         this.sqlPreInitFilePath = sqlPreInitFilePath;
         this.sqlPostInitFilePath = sqlPostInitFilePath;
+        this.sqlDBViewFilePath = sqlDBViewFilePath;
         this.feature = feature;
     }
 
@@ -1762,38 +1740,45 @@ public enum DatabaseConfig {
     }
 
     // Method to get a pre-configured Hibernate Configuration object
-    public Configuration getHibernateConfiguration() {
-        Configuration configuration = new Configuration();
+        public Configuration getHibernateConfiguration() {
+            Configuration configuration = new Configuration();
 
-        // Set database connection properties
-        configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
+            // Set database connection properties
+            configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
+            configuration.setProperty("hibernate.connection.provider_class", "com.zaxxer.hikari.hibernate.HikariConnectionProvider");
 
-        // Set JDBC connection pool settings
-        configuration.setProperty("hibernate.c3p0.min_size", String.valueOf(this.connectionPoolMinSize));
-        configuration.setProperty("hibernate.c3p0.max_size", String.valueOf(this.connectionPoolMaxSize));
+            configuration.setProperty("hibernate.hikari.minimumIdle", "8");
+            configuration.setProperty("hibernate.hikari.maximumPoolSize", "32");
+            configuration.setProperty("hibernate.hikari.idleTimeout", "300000");
+            configuration.setProperty("hibernate.hikari.connectionTimeout", "30000");
+            configuration.setProperty("hibernate.hikari.maxLifetime", "1800000");
+            configuration.setProperty("hibernate.hikari.keepaliveTime", "300000");
+            configuration.setProperty("hibernate.hikari.poolName", "MyHikariPool");
 
-        // Set Hibernate settings
-        configuration.setProperty("hibernate.show_sql", String.valueOf(this.showSql));
-        configuration.setProperty("hibernate.format_sql", true);  // Formats the SQL for readability
-        configuration.setProperty("hibernate.generate_statistics", true);  // Enables detailed statistics
-        configuration.setProperty("hibernate.use_sql_comments", true);  // Adds comments to the generated SQL for context
+            // Set Hibernate settings
+            configuration.setProperty("hibernate.show_sql", "false");
+            configuration.setProperty("hibernate.format_sql", "false");  
+            configuration.setProperty("hibernate.generate_statistics", "false");  
+            configuration.setProperty("hibernate.use_sql_comments", "false");
 
-        // Set Hibernate batching
-        configuration.setProperty("hibernate.jdbc.batch_size", 50);
-        configuration.setProperty("hibernate.order_inserts", true);
-        configuration.setProperty("hibernate.order_updates", true);
-        configuration.setProperty("hibernate.jdbc.batch_versioned_data", true);
+            // Set Hibernate batching
+            configuration.setProperty("hibernate.jdbc.batch_size", "50");           // the mean batch size was observerd to be around 36
+            configuration.setProperty("hibernate.jdbc.batch_fetch_size", "50");
+            configuration.setProperty("hibernate.jdbc.fetch_size", "100");
+            configuration.setProperty("hibernate.order_inserts", "true");
+            configuration.setProperty("hibernate.order_updates", "true");
+            configuration.setProperty("hibernate.jdbc.batch_versioned_data", "true");
 
-        //Set PostgreSQL dialect
-        configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
+            //Set PostgreSQL dialect
+            configuration.setProperty("hibernate.dialect.PostgreSQLDialect", "org.hibernate.spatial.dialect.postgis.PostgisDialect");
 
-        // Add mapping classes
-        for (Class<?> mappingClass : this.mappingClasses) {
-            configuration.addAnnotatedClass(mappingClass);
+            // Add mapping classes
+            for (Class<?> mappingClass : this.mappingClasses) {
+                configuration.addAnnotatedClass(mappingClass);
+            }
+
+            return configuration;
         }
-
-        return configuration;
-    }
 
     public static DatabaseConfig fromString(String version) {
         for (DatabaseConfig Schema : DatabaseConfig.values()) {
@@ -1810,6 +1795,10 @@ public enum DatabaseConfig {
 
     public String getSqlPostInitFilePath() {
         return sqlPostInitFilePath;
+    }
+
+    public String getSqlDBViewFilePath() {
+        return sqlDBViewFilePath;
     }
     
     public List<String> getFeatureSqlList() {

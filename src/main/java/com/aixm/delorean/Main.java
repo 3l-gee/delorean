@@ -183,19 +183,20 @@ public class Main {
             case "help":
             System.out.println("""
                -={ Delorean Shell Commands }=-
-    help                                                             : Display this help message
-    new         [a5_1, a5_1_1]                                       : Create a new container with the specified argument       
-    xml_config  <container id, - >      [a5_1, a5_1_1]               : Configures the xml schema to use for the specified container
-    db_config   <container id, - >      [a5_1, a5_1_1]               : Configures the db connection for the specified container
-    qgis_config <container id, - >      [a5_1, a5_1_1]               : Configures the qgis project for the specified container
-    xml         <container id, - >      load             <path>      : load the xml data from the specified path
-    xml         <container id, - >      export           <path>      : export the xml data to the specified path
-    db          <container id, - >      startup                      : start the database
-    db          <container id, - >      load                         : load the data into the database
-    db          <container id, - >      export           <id>        : export the master aixmmessage with the specified id
-    qgis        <container id, - >      init                         : format the qgis project
-    list                                                             : List all the containers
-    exit                                                             : Exit the shell                                    
+    help                                                              : Display this help message
+    new         [a5_1, a5_1_1]                                        : Create a new container with the specified argument       
+    xml_config  <container id, - >      [a5_1, a5_1_1]                : Configures the xml schema to use for the specified container
+    db_config   <container id, - >      [a5_1, a5_1_1]                : Configures the db connection for the specified container
+    qgis_config <container id, - >      [a5_1, a5_1_1]                : Configures the qgis project for the specified container
+    xml         <container id, - >      load             <path>       : load the xml data from the specified path
+    xml         <container id, - >      export           <path>       : export the xml data to the specified path
+    db          <container id, - >      startup                       : start the database
+    db          <container id, - >      load                          : load the data into the database
+    db          <container id, - >      compute                       : generates the views required for visualisation
+    db          <container id, - >      export           <id>         : export the master aixmmessage with the specified id
+    qgis        <container id, - >      init                          : format the qgis project
+    list                                                              : List all the containers
+    exit                                                              : Exit the shell                                    
                 """);
             break;
 
@@ -339,11 +340,9 @@ public class Main {
                 String username = scanner.nextLine();
 
                 // Ask for password (hidden input)
-                // TODO dev phase only  
-                // char[] passwordChars = console.readPassword("Enter password : ");
                 System.out.print("Enter password : ");
-                String password = scanner.nextLine();
-                // String password = new String(passwordChars);
+                char[] passwordChars = console.readPassword();
+                String password = new String(passwordChars);
 
                 // Ask for hbm2ddl
                 System.out.print("Enter hbm2ddl, [create, update, validate, none] : ");
@@ -432,6 +431,10 @@ public class Main {
 
                 case "load":
                     this.containerWarehouse.getContainer(argument).loadDB();
+                    break; 
+
+                case "compute":
+                    this.containerWarehouse.getContainer(argument).databaseBinding.computeDBView();
                     break; 
                     
                 case "export":

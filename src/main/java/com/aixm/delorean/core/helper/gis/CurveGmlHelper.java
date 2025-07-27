@@ -3,11 +3,9 @@ package com.aixm.delorean.core.helper.gis;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.IllegalFormatException;
 import java.util.LinkedHashMap;
 import java.util.Arrays;
 
-import org.hibernate.boot.jaxb.mapping.JaxbHbmFilter.JaxbAliases;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.Point;

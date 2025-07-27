@@ -43,7 +43,7 @@ arc_line AS (
 segment_union AS (
     SELECT 
 		id, 
-		ST_ReducePrecision(linestring,0.000000000000001) AS geom
+		linestring AS geom
     FROM
 		geometry.linestring_segment 
     WHERE 
@@ -51,7 +51,7 @@ segment_union AS (
     UNION ALL 
     SELECT 
 		id, 
-		ST_Segmentize((ST_ReducePrecision(linestring, 0.000000000000001)::geography), 1000)::geometry AS geom
+		ST_Segmentize(linestring::geography, 1000)::geometry AS geom
     FROM 
 		geometry.linestring_segment 
     WHERE 
@@ -59,7 +59,7 @@ segment_union AS (
     UNION ALL 
     SELECT 
 		id, 
-		ST_ReducePrecision(arc_geom, 0.000000000000001) AS geom
+		arc_geom AS geom
     FROM 
 		arc_line
 ),
