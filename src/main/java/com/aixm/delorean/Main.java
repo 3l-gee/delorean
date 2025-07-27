@@ -60,7 +60,7 @@ public class Main {
         System.out.println(" ██████╔╝ ███████╗ ███████╗ ╚██████╔╝ ██║  ██║ ███████╗ ██║  ██║ ██║ ╚████║ ");
         System.out.println(" ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝  v0.1.0");
         System.out.println("");
-        System.out.println("       version : 0.1.0-SNAPSHOT");
+        System.out.println("       version : 0.2.0-SNAPSHOT");
         System.out.println("        author : Raphaël Gerth");
         System.out.println("          repo : https://github.com/3l-gee/delorean");
         System.out.println("          help : 'help' ");
@@ -193,7 +193,7 @@ public class Main {
     db          <container id, - >      startup                       : start the database
     db          <container id, - >      load                          : load the data into the database
     db          <container id, - >      compute                       : generates the views required for visualisation
-    db          <container id, - >      export           <id>         : export the master aixmmessage with the specified id
+    db          <container id, - >      export           <id / time>  : (export the master aixmmessage with the specified id) broken
     qgis        <container id, - >      init                          : format the qgis project
     list                                                              : List all the containers
     exit                                                              : Exit the shell                                    
