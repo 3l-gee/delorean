@@ -40,7 +40,7 @@ class Layer:
             "where": self.generate_where(self.name, schema),
             "group": self.generate_group(self.name, schema),
             "order": self.generate_order(self.name, schema),
-            "index" : [f"create index on {self.schema}.{self.name}_view (id)"]
+            "index" : [f"create index if not exists {self.schema}_{self.name}_id on {self.schema}.{self.name}_view (id)"]
         }
 
     def get_schema(self):
@@ -81,8 +81,8 @@ class Layer:
         lateral_sql = "\n".join(self.attributes["lateral"])
         where_clause = "where " + "\n  and ".join(self.attributes["where"]) if self.attributes["where"] else ""
         group_clause = "group by\n    " + ",\n    ".join(self.attributes["group"]) if self.attributes["group"] else ""
-        order_clause = ", ".join(self.attributes["order"])
-        # index_clause = ";\n".join(self.attributes["index"])
+        order_clause = ", ".join(self.attributes["order"]) + ";"
+        index_clause = ";\n".join(self.attributes["index"])
 
         # Assemble final SQL
         sql_parts = [
@@ -95,6 +95,7 @@ class Layer:
             where_clause,
             # group_clause,
             order_clause,
+            index_clause
         ]
         self.full_sql = "\n".join(part for part in sql_parts if part.strip()) + ";"
 
@@ -158,4 +159,6 @@ class Layer:
                 "geometrytype" : publish_param.get("geometrytype")[0], # TODO why did i make them a list ?
                 "role" : role,
                 "fullname" : full_name,
-        })
+            })
+
+            self.attributes["index"].append(f"create index if not exists {self.schema}_{self.name}_{role}_gist on {self.schema}.{self.name}_view using GIST ({role}_geom)")

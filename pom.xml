@@ -7,7 +7,7 @@
 
 	<groupId>com.aixm.delorean</groupId>
 	<artifactId>delorean</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.2.0</version>
 	<name>delorean</name>
 	<url>https://github.com/3l-gee/delorean</url>
 
@@ -71,6 +71,12 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
             <version>6.6.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.1.0</version>
         </dependency>
 
         <dependency>

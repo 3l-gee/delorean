@@ -17,8 +17,8 @@ mindmap
             export
             validate
         postgres
-            persist
-            retrive
+            load
+            export
             view
         filter
             feature
@@ -36,10 +36,10 @@ mindmap
 
 Delorean support all features types found in aixm for the following aixm versions : 
 * [ ] 5_2 (in dev)
-* [x] 5_1_1
+* [ ] 5_1_1 (in dev)
 * [x] 5_1
 * [ ] 5_0
-* [ ] 4_5
+* [ ] 4_5 
 
 ## License
 
