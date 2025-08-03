@@ -182,7 +182,7 @@ class QLRGenerator:
             for field in fields:
                 if field.get("action"):
                     action = field["action"]
-                    name = "open " + field.get("name")
+                    name = "identify " + field.get("name")
 
                     script = GenericHeleperFunction.load_txt(self.input_path, action["path"])
                     script = re.sub(r'XXXX', f"{field.get('field')}", script)
