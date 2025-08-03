@@ -169,7 +169,7 @@ class Property(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.attributes["attributes"][type].extend([
-            f"to_jsonb({hash}.id)::jsonb AS {role}"
+            f"{hash}.id AS {role}"
         ])
         
         self.add_group(hash, "id")

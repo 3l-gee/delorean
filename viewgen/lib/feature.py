@@ -237,7 +237,7 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.attributes["attributes"][type].extend([
-            f"to_jsonb({hash}.id)::jsonb AS {role}",
+            f"{hash}.id AS {role}",
             f"{hash}.annotation::jsonb AS {role}_annotation"
         ])
 

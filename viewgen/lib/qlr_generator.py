@@ -182,7 +182,7 @@ class QLRGenerator:
             for field in fields:
                 if field.get("action"):
                     action = field["action"]
-                    name = "identify " + field.get("name")
+                    name = action.get("name")
 
                     script = GenericHeleperFunction.load_txt(self.input_path, action["path"])
                     script = re.sub(r'XXXX', f"{field.get('field')}", script)
@@ -222,11 +222,11 @@ class QLRGenerator:
                         scope_elem = etree.SubElement(actionsetting, "actionScope")
                         scope_elem.set("id", scope)
 
-                    # Append to the attributeactions root node
-                    attribute_actions.append(actionsetting)
-
                     # Store action UUID in the layer structure
                     action["id"] = "{" + action_id + "}"
+
+                    # Append to the attributeactions root node
+                    attribute_actions.append(actionsetting)
 
     def _generate_form(self, layer, attribut_edit_form):
         copy_label_style = copy.deepcopy(self.label_style_template)
