@@ -136,16 +136,29 @@ class Property(Layer) :
                 "name" : f"Ref"
             },
             {
-                "field" : f"{role}",
+                "field" : f"{role}_href",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "uuid",
-                    "path" : "python/one_uuid_selector.py",
+                    "path" : "python/one_uuid_identify.py",
                     "source" : f"{role}",
                     "target" : ref_types
                 }
             },
+            {
+                "field" : f"{role}_href",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/one_uuid_select.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
+            }
         ])
 
     def add_association_object_one(self, schema, type, role, col):
@@ -156,7 +169,7 @@ class Property(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_pt"))
 
         self.attributes["attributes"][type].extend([
-            f"to_jsonb({hash}.id)::jsonb AS {role}"
+            f"{hash}.id AS {role}"
         ])
         
         self.add_group(hash, "id")
@@ -176,9 +189,22 @@ class Property(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "id",
-                    "path" : "python/one_id_selector.py",
+                    "path" : "python/one_id_identify.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/one_id_select.py",
                     "source" : f"{role}",
                     "target" : [type]
                 }
@@ -220,9 +246,22 @@ class Property(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "id",
-                    "path" : "python/many_id_selector.py",
+                    "path" : "python/many_id_identify.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/many_id_select.py",
                     "source" : f"{role}",
                     "target" : [type]
                 }
@@ -273,9 +312,22 @@ class Property(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "uuid",
-                    "path" : "python/many_uuid_selector.py",
+                    "path" : "python/many_uuid_identify.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/many_uuid_select.py",
                     "source" : f"{role}",
                     "target" : ref_types
                 }

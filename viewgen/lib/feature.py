@@ -205,9 +205,22 @@ class Feature(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "uuid",
-                    "path" : "python/one_uuid_selector.py",
+                    "path" : "python/one_uuid_identify.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/one_uuid_select.py",
                     "source" : f"{role}",
                     "target" : ref_types
                 }
@@ -224,7 +237,7 @@ class Feature(Layer) :
         hash = self.generate_letter_hash(str(schema + "_" + name + "_view"))
 
         self.attributes["attributes"][type].extend([
-            f"to_jsonb({hash}.id)::jsonb AS {role}",
+            f"{hash}.id AS {role}",
             f"{hash}.annotation::jsonb AS {role}_annotation"
         ])
 
@@ -245,9 +258,22 @@ class Feature(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "id",
-                    "path" : "python/one_id_selector.py",
+                    "path" : "python/one_id_identify.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/one_id_select.py",
                     "source" : f"{role}",
                     "target" : [type]
                 }
@@ -299,9 +325,22 @@ class Feature(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "uuid",
-                    "path" : "python/many_uuid_selector.py",
+                    "path" : "python/many_uuid_identify.py",
+                    "source" : f"{role}",
+                    "target" : ref_types
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "uuid",
+                    "path" : "python/many_uuid_select.py",
                     "source" : f"{role}",
                     "target" : ref_types
                 }
@@ -345,9 +384,22 @@ class Feature(Layer) :
                 "field" : f"{role}",
                 "name" : f"{role}",
                 "action" : {
+                    "name" : f"identify {role}",
                     "id" : None,
                     "method" : "id",
-                    "path" : "python/many_id_selector.py",
+                    "path" : "python/many_id_identify.py",
+                    "source" : f"{role}",
+                    "target" : [type]
+                }
+            },
+            {
+                "field" : f"{role}",
+                "name" : f"{role}",
+                "action" : {
+                    "name" : f"select {role}",
+                    "id" : None,
+                    "method" : "id",
+                    "path" : "python/many_id_select.py",
                     "source" : f"{role}",
                     "target" : [type]
                 }
