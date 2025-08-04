@@ -9,16 +9,13 @@
                     "field" : "timeinterval",
                     "name" : "timeinterval",
                     "html" : "html/timesheet.html"
+                },
+                {
+                    "field" : "timeinterval_annotation",
+                    "name" : "timeinterval_annotation",
+                    "html" : "html/annotation.html"
                 }
             ]
-        }
-    },
-    "ContactInformationPropertyType" : {
-        "one" : {
-            "form" : []
-        },
-        "many" : {
-            "form" : []
         }
     },
     "NotePropertyType" : {

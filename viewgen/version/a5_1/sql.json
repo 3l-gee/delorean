@@ -15,39 +15,12 @@
         },
         "many" : {
             "attribute" : [
-                "{alias}.timeinterval::jsonb as timeinterval"
+                "{alias}.timeinterval::jsonb as timeinterval",
+                "{alias}.annotation::jsonb as timeinterval_annotation"
             ], 
             "argument" : [
-                "jsonb_agg(DISTINCT {alias}.*) AS timeinterval"
-            ],
-            "group" : [
-                
-            ]
-        }
-    },
-    "ContactInformationPropertyType" : {
-        "path" : "sql/ContactInformationPropertyType.sql",
-        "schema" : "shared",
-        "dependency" : [
-            "notes.note_view",
-            "shared.postaladdress_view",
-            "shared.onlinecontact_view",
-            "shared.telephonecontact_view"
-        ],
-        "one" : {
-            "attribute" : [
-
-            ], 
-            "group" : [
-                
-            ]
-        },
-        "many" : {
-            "attribute" : [
-
-            ], 
-            "argument" : [
-
+                "jsonb_agg(DISTINCT {alias}.timeinterval) AS timeinterval,",
+                "jsonb_agg(DISTINCT {alias}.annotation) AS annotation"
             ],
             "group" : [
                 
