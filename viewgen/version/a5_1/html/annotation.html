@@ -69,24 +69,14 @@ td.title {
 
 <script>
   try {
-    let raw = expression.evaluate("to_json(annotation)");
-    if (raw === null) {
-      raw = {};
-    }
+    const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
+    const annotation = JSON.parse(raw);
+	  const container = document.getElementById('notes-container');
 
-    let annotation = JSON.parse(raw);
-
-    if (!Array.isArray(annotation)) {
-      annotation = [annotation];
-    }
-    annotation = annotation.filter(n => n !== null && typeof n === 'object');
-
-    const container = document.getElementById('notes-container');
-    container.innerHTML = '';
-
-    if (annotation.length === 0) {
-      container.textContent = '';
-    } else {
+    if (Object.keys(annotation).length === 0) {
+      container.textContent = "Null";
+	  } else {
+	    container.innerHTML = '';
       annotation.forEach(annotation => {
         const div = document.createElement('div');
         div.className = 'note';
@@ -118,7 +108,7 @@ td.title {
 
         container.appendChild(div);
       });
-    }
+	  }
   } catch (e) {
     document.getElementById('notes-container').textContent = "Error: " + e;
   }

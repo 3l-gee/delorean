@@ -282,6 +282,7 @@ class QLRGenerator:
             raw_html = GenericHeleperFunction.load_txt(self.input_path, field.get("html"))
 
             raw_html = re.sub(r'to_json\(\s*annotation\s*\)', f"to_json({field.get('field')})", raw_html)
+            raw_html = re.sub (r'XXXX', f"{field.get('field')}", raw_html)
 
             wrapped = f"<#noparse>\n{raw_html}\n</#noparse>"
 

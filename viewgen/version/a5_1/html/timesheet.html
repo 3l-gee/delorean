@@ -67,74 +67,112 @@ td.title {
   <div id="timesheet-container">Loading...</div>
 
 <script>
-let raw = expression.evaluate("to_json(timeinterval)");
-let timesheetData = JSON.parse(raw);
+try {
+  const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
+  const timesheetData = JSON.parse(raw);
+  const container = document.getElementById('timesheet-container');
 
-// const timesheetData = [
+  if (Object.keys(timesheetData).length === 0) {
+    container.textContent = "Null";
+  } else {
+    const grouped = {};
+    timesheetData.forEach(entry => {
+      if (!grouped[entry.day]) grouped[entry.day] = [];
+      grouped[entry.day].push(entry);
+    });
 
-//   { id: 157, timeReference: "UTC", startDate: "01-03", endDate: "31-10", day: "ANY", startEvent: "SR", endEvent: "SS", daylightSavingAdjust: "NO", excluded: "NO" },
-//   { id: 310, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "04:45", endTime: "22:30", daylightSavingAdjust: "YES", excluded: "NO" },
-//   { id: 1210, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "ANY", startTime: "00:00", endTime: "23:59", daylightSavingAdjust: "NO", excluded: "NO" },
-//   { id: 2154, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "WORK_DAY", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
-//   { id: 2156, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SAT", startTime: "07:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" },
-//   { id: 2158, timeReference: "UTC", startDate: "01-01", endDate: "31-12", day: "SUN", startTime: "09:00", endEvent: "OTHER:HRH", daylightSavingAdjust: "YES", excluded: "NO" }
-// ];
+    const container = document.getElementById('timesheet-container');
+    container.innerHTML = '';
 
-// Group timesheets by day
-const grouped = {};
-timesheetData.forEach(entry => {
-  if (!grouped[entry.day]) grouped[entry.day] = [];
-  grouped[entry.day].push(entry);
-});
+    function formatTimePoint(time, event, relative, interpretation) {
+      // Clean empty or null
+      time = time?.trim() || '';
+      event = event?.trim() || '';
+      relative = (relative && relative !== '(unknown)') ? relative.trim() : '';
+      interpretation = interpretation?.trim() || '';
 
-const container = document.getElementById('timesheet-container');
-container.innerHTML = '';
+      // Priority rules based on AIXM:
+      if (time && !event) {
+        return time;
+      } else if (!time && event) {
+        return relative ? `${event} ${relative}` : event;
+      } else if (time && event) {
+        let interpStr = '';
+        switch (interpretation.toLowerCase()) {
+          case 'after':
+            interpStr = `after ${event} by ${relative || '0min'} or ${time}`;
+            break;
+          case 'before':
+            interpStr = `before ${event} by ${relative || '0min'} or ${time}`;
+            break;
+          case 'coincides':
+            interpStr = `at ${event} (${time})`;
+            break;
+          default:
+            interpStr = `${event} ${relative || ''} and ${time}`;
+        }
+        return interpStr.trim();
+      }
 
-for (const day in grouped) {
-  grouped[day].forEach(entry => {
-    const block = document.createElement('div');
-    block.className = 'annotation-block';
-
-    let timeRange = '';
-    if (entry.startTime || entry.endTime) {
-      timeRange = `${entry.startTime ?? '??'} → ${entry.endTime ?? '??'}`;
-    } else if (entry.startEvent || entry.endEvent) {
-      timeRange = `${entry.startEvent ?? '??'} → ${entry.endEvent ?? '??'}`;
-    } else {
-      timeRange = 'Unknown';
+      return '??';
     }
 
-    block.innerHTML = `
-      <table>
-        <tr>
-          <td class="title">Day</td>
-          <td><div class="value">${entry.day}</div></td>
-        </tr>
-        <tr>
-          <td class="title">Valid From</td>
-          <td><div class="value">${entry.startDate} to ${entry.endDate}</div></td>
-        </tr>
-        <tr>
-          <td class="title">Time Reference</td>
-          <td><div class="value">${entry.timeReference}</div></td>
-        </tr>
-        <tr>
-          <td class="title">Time Range</td>
-          <td><div class="value">${timeRange}</div></td>
-        </tr>
-        <tr>
-          <td class="title">DST Adjustment</td>
-          <td><div class="value">${entry.daylightSavingAdjust}</div></td>
-        </tr>
-        <tr>
-          <td class="title">Excluded</td>
-          <td><div class="value">${entry.excluded}</div></td>
-        </tr>
-      </table>
-    `;
+    for (const day in grouped) {
+      grouped[day].forEach(entry => {
+        const block = document.createElement('div');
+        block.className = 'annotation-block';
 
-    container.appendChild(block);
-  });
+        let start = formatTimePoint(
+          entry.starttime,
+          entry.startevent,
+          entry.starttimerelativeevent,
+          entry.starteventinterpretation
+        );
+
+        let end = formatTimePoint(
+          entry.endtime,
+          entry.endevent,
+          entry.endtimerelativeevent,
+          entry.endeventinterpretation
+        );
+
+        let timeRange = `${start} → ${end}`;
+
+        block.innerHTML = `
+          <table>
+            <tr>
+              <td class="title">Valid Days</td>
+              <td><div class="value">${entry.day}${entry.daytil ? ` to ${entry.daytil}` : ''}</div></td>
+            </tr>
+            <tr>
+              <td class="title">Date Range</td>
+              <td><div class="value">${entry.startdate} to ${entry.enddate}</div></td>
+            </tr>
+            <tr>
+              <td class="title">Time Reference</td>
+              <td><div class="value">${entry.timereference}</div></td>
+            </tr>
+            <tr>
+              <td class="title">Time Range</td>
+              <td><div class="value">${timeRange}</div></td>
+            </tr>
+            <tr>
+              <td class="title">DST Adjustment</td>
+              <td><div class="value">${entry.daylightsavingadjust}</div></td>
+            </tr>
+            <tr>
+              <td class="title">Excluded</td>
+              <td><div class="value">${entry.excluded}</div></td>
+            </tr>
+          </table>
+        `;
+
+        container.appendChild(block);
+      });
+    }
+  }
+} catch (e) {
+  document.getElementById('timesheet-container').textContent = "Error: " + e;
 }
 </script>
 

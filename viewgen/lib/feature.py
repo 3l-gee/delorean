@@ -202,7 +202,7 @@ class Feature(Layer) :
                 "name" : f"Ref",
             },
             {
-                "field" : f"{role}",
+                "field" : f"{role}_href",
                 "name" : f"{role}",
                 "action" : {
                     "name" : f"identify {role}",
@@ -214,7 +214,7 @@ class Feature(Layer) :
                 }
             },
             {
-                "field" : f"{role}",
+                "field" : f"{role}_href",
                 "name" : f"{role}",
                 "action" : {
                     "name" : f"select {role}",
