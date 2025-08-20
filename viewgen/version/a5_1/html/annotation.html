@@ -68,50 +68,50 @@ td.title {
   <div id="notes-container">Loading...</div>
 
 <script>
-  try {
-    const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
-    const annotation = JSON.parse(raw);
-	  const container = document.getElementById('notes-container');
+try {
+  const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
+  const annotation = JSON.parse(raw);
+  const container = document.getElementById('notes-container');
 
-    if (Object.keys(annotation).length === 0) {
-      container.textContent = "Null";
-	  } else {
-	    container.innerHTML = '';
-      annotation.forEach(annotation => {
-        const div = document.createElement('div');
-        div.className = 'note';
+  if (Object.keys(annotation).length === 0) {
+    container.textContent = "Null";
+  } else {
+    container.innerHTML = '';
+    annotation.forEach(annotation => {
+      const div = document.createElement('div');
+      div.className = 'note';
 
-        div.innerHTML = `
-          <div class="annotation-block">
-            <table>
-              <tr>
-                <td class="title">Purpose</td>
-                <td><div class="value">${annotation.note.purpose}</div></td>
-              </tr>
-              <tr>
-                <td class="title">Property Name</td>
-                <td><div class="value">${annotation.note.propertyName}</div></td>
-              </tr>
-            </table>
-            <div class="translated">
-              ${
-                Array.isArray(annotation.note.notes) && annotation.note.notes.length > 0
-                  ? annotation.note.notes.map(n =>
-                      `<div class="translated-text">
-                        <span>[${n.lang}]</span><br> ${n.note.replace(/\n/g, '<br>')}
-                      </div>`).join('')
-                  : ''
-              }
+      div.innerHTML = `
+            <div class="annotation-block">
+              <table>
+                <tr>
+                  <td class="title">Purpose</td>
+                  <td><div class="value">${annotation.note.purpose}</div></td>
+                </tr>
+                <tr>
+                  <td class="title">Property Name</td>
+                  <td><div class="value">${annotation.note.propertyName}</div></td>
+                </tr>
+              </table>
+              <div class="translated">
+                ${
+      Array.isArray(annotation.note.notes) && annotation.note.notes.length > 0
+        ? annotation.note.notes.map(n =>
+                                    `<div class="translated-text">
+                          <span>[${n.lang}]</span><br> ${n.note.replace(/\n/g, '<br>')}
+                        </div>`).join('')
+      : ''
+    }
+              </div>
             </div>
-          </div>
-        `;
+          `;
 
-        container.appendChild(div);
-      });
-	  }
-  } catch (e) {
-    document.getElementById('notes-container').textContent = "Error: " + e;
+      container.appendChild(div);
+    });
   }
+} catch (e) {
+  document.getElementById('notes-container').textContent = "Error: " + e;
+}
 </script>
 
 </body>
