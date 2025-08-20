@@ -8,9 +8,9 @@
   font-weight: 400;
 
   /* 3-color rule */
-  --color-bg: #ffffff;
-  --color-primary: #947e99;   /* bright blue */
-  --color-secondary: #1e293b; /* dark slate for text */
+  --color-bg: #e7e1cf ;
+  --color-primary: #947e99;
+  --color-secondary: #1e293b;
 
   color: var(--color-secondary);
   background-color: var(--color-bg);
@@ -19,16 +19,20 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} 
 
 /* Dark mode */
 [data-theme="dark"] {
-  --color-bg: #323232;
-  --color-primary: #947e99;   /* lighter blue for contrast */
-  --color-secondary: #e5e7eb; /* light gray for text */
+  --color-bg: #000000;
+  --color-primary: #947e99;
+  --color-secondary: #e5e7eb;
 
   color: var(--color-secondary);
   background-color: var(--color-bg);
+}
+
+:root[data-theme="dark"] .navbar-icons img {
+  filter: invert(1);
 }
 
 /* Reset body layout */

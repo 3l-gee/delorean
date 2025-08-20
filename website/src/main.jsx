@@ -1,13 +1,22 @@
-import { render } from 'preact'
-import './index.css'
-import { App } from './page.jsx'
-import { Navbar } from "./components/navbar"
-import { Footer } from './components/footer.jsx'
-render(  
-<>
-    <Navbar />
-    <App />
-    <Footer />
-</>,
-    
-    document.getElementById('app'))
+import { render } from "preact";
+import { useState } from "preact/hooks";
+import "./index.css";
+import { Navbar } from "./components/navbar";
+import { Content } from "./content.jsx";
+import { Footer } from "./components/footer.jsx";
+import { Background } from "./components/background.jsx";
+
+function App() {
+  const [page, setPage] = useState("main");
+
+  return (
+    <>
+      <Navbar onNavigate={setPage} />
+      <Content page={page} />
+      <Background />
+      <Footer />
+    </>
+  );
+}
+
+render(<App />, document.getElementById("app"));
