@@ -1,54 +1,48 @@
-import './mainPage.css'
+import './pages.css'
 
 export function MainPage() {
-  const sections = [
-    { id: 1, title: "First Section", text: "Some text here...", image: "📦" },
-    { id: 2, title: "Second Section", text: "More text here...", image: "🚀" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-    { id: 3, title: "Third Section", text: "Even more text here...", image: "🌍" },
-  ];
 
   return (
-    <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-32">
-      {sections.map((section, idx) => (
-        <section
-          key={section.id}
-          className="grid grid-cols-1 md:grid-cols-3 items-center gap-12"
-        >
-          {/* Left/Right alternating */}
-          {idx % 2 === 0 ? (
-            <>
-              {/* Text 2/3 */}
-              <div className="md:col-span-2 space-y-4">
-                <h2 className="text-2xl font-bold">{section.title}</h2>
-                <p className="text-gray-600">{section.text}</p>
-              </div>
-              {/* Image 1/3 */}
-              <div className="md:col-span-1 flex justify-center">
-                <div className="text-6xl">{section.image}</div>
-              </div>
-            </>
-          ) : (
-            <>
-              {/* Image 1/3 */}
-              <div className="md:col-span-1 flex justify-center">
-                <div className="text-6xl">{section.image}</div>
-              </div>
-              {/* Text 2/3 */}
-              <div className="md:col-span-2 space-y-4">
-                <h2 className="text-2xl font-bold">{section.title}</h2>
-                <p className="text-gray-600">{section.text}</p>
-              </div>
-            </>
-          )}
-        </section>
-      ))}
-    </main>
+<main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
+  {/* Hero Section */}
+  <section className="space-y-6">
+    <h1 className="text-4xl font-bold tracking-tight">Delorean</h1>
+    <p>
+      <strong>Delorean</strong> is an open-source tool written in Java and targeted at PostgreSQL, 
+      allowing users to create, visualize, and work with AIXM datasets. It acts as a link 
+      between <code>XML</code>, <code>PostgreSQL</code> and <code>QGIS</code>.
+    </p>
+  </section>
+
+  {/* Supported Versions */}
+  <section className="space-y-4">
+    <h2 className="text-2xl font-semibold">Supported AIXM Versions</h2>
+    <ul className="list-disc list-inside space-y-2">
+      <li>5.2 (in dev)</li>
+      <li>5.1.1 (in dev)</li>
+      <li>5.1</li>
+      <li>5.0</li>
+      <li>4.5</li>
+    </ul>
+  </section>
+
+  {/* Background / Context */}
+  <section className="space-y-4">
+    <h2 className="text-2xl font-semibold">Why Delorean?</h2>
+    <p>
+      The world of aeronautical data management is in transition from paper to digital products. 
+      This transition is supported by the Aeronautical Information Exchange Model (AIXM). 
+      While AIXM provides guidance on how data should be stored and exchanged, the actual 
+      creation, manipulation, or visualization of such data remains a challenge.
+    </p>
+    <p>
+      While a range of commercial products offer based on AIXM exists, Delorean aims to fill a gap - 
+      providing an open source alternative to such tools. Delorean combines the roles of an aeronautical 
+      database schema builder, QGIS project generator, and XML transformation engine. 
+      It does all this through a simple, robust cli interface that handles your data safely and precisely.
+    </p>
+  </section>
+</main>
+
   );
 }
