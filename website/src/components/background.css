@@ -1,0 +1,34 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  /* opacity: 0.6; */
+  filter: blur(150px);
+  animation: move linear infinite;
+  transform-origin: center center;
+  animation: orbit linear infinite;
+}
+
+/* Color examples */
+.shape1 { background: color-mix(in srgb, var(--color-bg) 70%, #ff0033); }
+.shape2 { background: color-mix(in srgb, var(--color-bg) 70%, #7b00ff); }
+.shape3 { background: color-mix(in srgb, var(--color-bg) 70%, #ff00b7); }
+.shape4 { background: color-mix(in srgb, var(--color-bg) 70%, #00d0ff); }
+.shape5 { background: color-mix(in srgb, var(--color-bg) 70%, #00ff00); }
+.shape6 { background: color-mix(in srgb, var(--color-bg) 70%, #e100ff); }
+.shape7 { background: color-mix(in srgb, var(--color-bg) 70%, #00ffd5); }
+
+/* Move shapes without rotation */
+@keyframes orbit {
+  0%   { transform: rotate(0deg) translateX(400px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(400px) rotate(180deg); }
+}
