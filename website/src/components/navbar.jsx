@@ -41,7 +41,7 @@ export function Navbar({ onNavigate }) {
       <button
         className="navbar-logo cursor-pointer bg-transparent border-none p-0 m-0 text-left"
       >
-        <pre className="m-0 p-0" onClick={() => onNavigate("main")}>
+        <pre className="m-0 p-0 text-secondary" onClick={() => onNavigate("main")}>
 {` ██████╗  ███████╗ ██╗       ██████╗  ██████╗  ███████╗  █████╗  ███╗   ██╗ 
  ██╔══██╗ ██╔════╝ ██║      ██╔═══██╗ ██╔══██╗ ██╔════╝ ██╔══██╗ ████╗  ██║ 
  ██║  ██║ █████╗   ██║      ██║   ██║ ██████╔╝ █████╗   ███████║ ██╔██╗ ██║ 

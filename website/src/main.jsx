@@ -13,7 +13,7 @@ function App() {
     <>
       <Navbar onNavigate={setPage} />
       <Content page={page} />
-      <Background />
+      <Background page={page}/>
       <Footer />
     </>
   );
