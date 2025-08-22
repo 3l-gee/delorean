@@ -6,7 +6,7 @@ import LinkedinIcon from "../assets/linkedin.svg";
 import MastodonIcon from "../assets/mastodon.svg";
 import "./navbar.css";
 
-export function Navbar({ onNavigate }) {
+export function Navbar({ onNavigate , onCleanBackground}) {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -57,8 +57,8 @@ export function Navbar({ onNavigate }) {
           label="About"
           options={[
             { label: "Features", onClick: () => onNavigate("features") },
-            { label: "Changelogs", href: "#" },
-            { label: "Road Map", href: "#" },
+            { label: "Changelogs",onClick: () => onCleanBackground(true)},
+            { label: "Road Map", onClick: () => onCleanBackground(false)},
             { label: "Use Case", href: "#" },
           ]}
         />

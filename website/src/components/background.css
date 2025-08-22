@@ -8,27 +8,44 @@
   z-index: -1;
 }
 
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .shape {
   position: absolute;
   border-radius: 50%;
-  /* opacity: 0.6; */
-  filter: blur(150px);
+  opacity: 0.8;
+  /* filter: blur(100px); */
   animation: move linear infinite;
   transform-origin: center center;
-  animation: orbit linear infinite;
+  animation: orbit var(--duration) linear infinite;
 }
 
+.shape.out {
+  animation: none !important;   /* stop orbit completely */
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+
 /* Color examples */
-.shape1 { background: color-mix(in srgb, var(--color-bg) 70%, #ff0033); }
-.shape2 { background: color-mix(in srgb, var(--color-bg) 70%, #7b00ff); }
-.shape3 { background: color-mix(in srgb, var(--color-bg) 70%, #ff00b7); }
-.shape4 { background: color-mix(in srgb, var(--color-bg) 70%, #00d0ff); }
-.shape5 { background: color-mix(in srgb, var(--color-bg) 70%, #00ff00); }
-.shape6 { background: color-mix(in srgb, var(--color-bg) 70%, #e100ff); }
-.shape7 { background: color-mix(in srgb, var(--color-bg) 70%, #00ffd5); }
+.shape1 { background: color-mix(in srgb, var(--color-bg) 30%, #1e90ff); }
+.shape2 { background: color-mix(in srgb, var(--color-bg) 30%, #f5f5f5); }
+.shape3 { background: color-mix(in srgb, var(--color-bg) 30%, #a9a9a9); }
+.shape4 { background: color-mix(in srgb, var(--color-bg) 20%, #003366); }
+.shape5 { background: color-mix(in srgb, var(--color-bg) 20%, #00ced1); }
+.shape6 { background: color-mix(in srgb, var(--color-bg) 20%, #ff4500); }
+.shape7 { background: color-mix(in srgb, var(--color-bg) 20%, #dc143c); }
 
 /* Move shapes without rotation */
 @keyframes orbit {
-  0%   { transform: rotate(0deg) translateX(400px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(400px) rotate(180deg); }
+  0%   { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--radius)) rotate(360deg); }
 }
+
+/* .page-shift {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+} */
