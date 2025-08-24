@@ -9,7 +9,7 @@
 
   /* 3-color rule */
   --color-bg: #ffffff ;
-  --color-primary: #988e9b;
+  --color-primary: #647b96;
   --color-secondary: #1e293b;
 
   color: var(--color-secondary);
@@ -24,7 +24,7 @@
 /* Dark mode */
 [data-theme="dark"] {
   --color-bg: #000000;
-  --color-primary: #8e8391;
+  --color-primary: #647b96;
   --color-secondary: #e5e7eb;
 
   color: var(--color-secondary);

@@ -4,6 +4,7 @@ import { useState, useEffect } from "preact/hooks";
 import GithubIcon from "../assets/github.svg";
 import LinkedinIcon from "../assets/linkedin.svg";
 import MastodonIcon from "../assets/mastodon.svg";
+import AtIcon from "../assets/at.svg"
 import "./navbar.css";
 
 export function Navbar({ onNavigate , onCleanBackground}) {
@@ -66,8 +67,8 @@ export function Navbar({ onNavigate , onCleanBackground}) {
           label="Resources"
           options={[
             { label: "Documentation", href: "#" },
-            { label: "Profile", href: "#" },
-            { label: "Settings", href: "#" },
+            { label: "Tutorial", href: "#" },
+            { label: "FAQ", href: "#" },
           ]}
         />
         <DropDownButton
@@ -91,7 +92,7 @@ export function Navbar({ onNavigate , onCleanBackground}) {
         </a>
 
         <a
-          href="https://www.linkedin.com/in/yourusername"
+          href="https://www.linkedin.com/in/raphaelgerth/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -99,11 +100,17 @@ export function Navbar({ onNavigate , onCleanBackground}) {
         </a>
 
         <a
-          href="https://mastodon.social/@yourusername"
+          href="https://mastodon.social/@3l_gee"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img src={MastodonIcon} alt="Mastodon" className="w-[32px] h-[32px]" />
+        </a>
+
+        <a
+          href="mailto:delorean.aixm@gmail.com"
+        >
+          <img src={AtIcon} alt="At" className="w-[32px] h-[32px]" />
         </a>
 
         <ToggleSwitch

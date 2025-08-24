@@ -10,42 +10,43 @@
 
 .orbit-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  animation: orbit var(--duration) linear infinite;
+  transform-origin: center center;
 }
+
+.rotation-container{
+  animation: none !important;
+  animation: rotate var(--duration) linear infinite;
+  transform-origin: center center;
+} 
 
 .shape {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.8;
-  /* filter: blur(100px); */
-  animation: move linear infinite;
   transform-origin: center center;
-  animation: orbit var(--duration) linear infinite;
+  animation: none !important;
+  /* opacity: 0.8;  */
+  filter: blur(100px);
+  transform: translate(var(--radius-x), var(--radius-y));
+  transition: transform 2s ease;
 }
-
-.shape.out {
-  animation: none !important;   /* stop orbit completely */
-  transition: transform 0.8s ease, opacity 0.8s ease;
-}
-
 
 /* Color examples */
-.shape1 { background: color-mix(in srgb, var(--color-bg) 30%, #1e90ff); }
+.shape1 { background: color-mix(in srgb, var(--color-bg) 30%, #0054a8); }
 .shape2 { background: color-mix(in srgb, var(--color-bg) 30%, #f5f5f5); }
 .shape3 { background: color-mix(in srgb, var(--color-bg) 30%, #a9a9a9); }
 .shape4 { background: color-mix(in srgb, var(--color-bg) 20%, #003366); }
-.shape5 { background: color-mix(in srgb, var(--color-bg) 20%, #00ced1); }
-.shape6 { background: color-mix(in srgb, var(--color-bg) 20%, #ff4500); }
-.shape7 { background: color-mix(in srgb, var(--color-bg) 20%, #dc143c); }
+.shape5 { background: color-mix(in srgb, var(--color-bg) 20%, #009da0); }
+.shape6 { background: color-mix(in srgb, var(--color-bg) 20%, #9e2a00); }
+.shape7 { background: color-mix(in srgb, var(--color-bg) 20%, #7a0018); }
 
 /* Move shapes without rotation */
 @keyframes orbit {
-  0%   { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(var(--radius)) rotate(360deg); }
+  0%   { transform: rotate(0deg) translateX(var(--radius)) }
+  100% { transform: rotate(360deg) translateX(var(--radius))}
 }
 
-/* .page-shift {
-  transition: transform 0.6s ease, opacity 0.6s ease;
-} */
+@keyframes rotate {
+  0%   { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}

@@ -4,7 +4,7 @@ import "./background.css";
 export function Background({ page, clean}) {
   const [positions, setPositions] = useState([]);
   const randomOffset = (spread) => (Math.random() * 2 - 1) * spread;
-  const randomRadius = () => `${20 + Math.random() * 25}vmin`;
+  const randomRadius = () => `${15 + Math.random() * 20}vmin`;
 
   const moveShapesOut = () => {
     const shapes = document.querySelectorAll(".shape");
@@ -12,49 +12,28 @@ export function Background({ page, clean}) {
     const vh = window.innerHeight;
     const cx = vw / 2;
     const cy = vh / 2;
+    shapes.forEach((el) => {
+      const angle = Math.random() * 2 * Math.PI; // random direction
+      const distance = 200 + Math.random() * 200; // random distance from center
 
-      shapes.forEach((el) => {
-        // el.classList.add("out");
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
 
-        const rect = el.getBoundingClientRect();
-        const style = window.getComputedStyle(el);
-        const matrix = new DOMMatrix(style.transform);
-
-        const visualLeft = rect.left + matrix.m41;
-        const visualTop = rect.top + matrix.m42;
-
-        el.style.transition = "transform 0.8s ease, opacity 0.8s ease";
-        el.style.position = "absolute";
-        el.style.left = visualLeft + "px";
-        el.style.top = visualTop + "px";
-
-        el.style.transform = "translate(0,0)";  
-
-        const shapeX = visualLeft + rect.width/2;
-        const shapeY = visualTop + rect.height/2;
-        const dx = shapeX - cx;
-        const dy = shapeY - cy;
-        const distance = Math.sqrt(dx*dx + dy*dy);
-        const factor = Math.max(vw, vh);
-
-        const moveX = (dx / distance) * factor;
-        const moveY = (dy / distance) * factor;
-
-      // el.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.5)`;
+      el.style.setProperty("--radius-x", `${x}vh`);
+      el.style.setProperty("--radius-y", `${y}vh`);
     });
   };
 
   const bringShapesBack = () => {
     const shapes = document.querySelectorAll(".shape");
     shapes.forEach((el) => {
-      el.classList.remove("out");
-      el.style.transform = "translate(0,0) scale(1)";
-      el.style.opacity = "1";
+      el.style.setProperty("--radius-x", `0vh`);
+      el.style.setProperty("--radius-y", `0vh`);
     });
   };
 
   const triggerSpeedUp = () => {
-    document.querySelectorAll(".shape").forEach((el) => {
+    document.querySelectorAll(".orbit-container", ".rotation-container").forEach((el) => {
       const anim = el.getAnimations()[0];
       if (!anim) return;
 
@@ -69,15 +48,33 @@ export function Background({ page, clean}) {
   };
 
   useEffect(() => {
-    const randomPositions = Array.from({ length: 6 }, () => ({
-      top: 40 + randomOffset(40) + "vh",
-      left: 50 + randomOffset(30) + "vw",
-      width: Math.random() * 150 + 150 + "px",
-      height: Math.random() * 150 + 150 + "px",
+    const randomPositions = Array.from({ length: 7 }, () => ({
+      top: 40 + randomOffset(25) + "vh",
+      left: 40 + randomOffset(40) + "vw",
+      width: Math.random() * 100 + 100 + "px",
+      height: Math.random() * 100 + 100 + "px",
       duration: Math.random() * 90 + 45 + "s",
       radius: randomRadius(),
     }));
     setPositions(randomPositions);
+
+    setTimeout(() => {
+      const shapes = document.querySelectorAll(".shape");
+      shapes.forEach((el) => {
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = 200 + Math.random() * 200;
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        el.style.setProperty("--radius-x", `${x}vh`);
+        el.style.setProperty("--radius-y", `${y}vh`);
+      });
+    }, 0);
+
+    // Bring shapes back after 1 second
+    setTimeout(() => {
+      triggerSpeedUp();
+      bringShapesBack();
+    }, 0);
 
     let lastScrollY = window.scrollY;
 
@@ -115,19 +112,28 @@ export function Background({ page, clean}) {
   return (
     <div className={`background`}>
       {positions.map((pos, i) => 
-        <div className={`box-shape`}>
-          <div
-            key={i}
-            className={`shape shape${i + 1}`}
-            style={{
+        <div className={`orbit-container`}
+          style={{
               top: pos.top,
               left: pos.left,
-              width: pos.width,
-              height: pos.height,
               "--duration": pos.duration,
               "--radius": pos.radius,
             }}
-          ></div>
+          >
+          <div className={`rotation-container`}
+              style={{
+                  "--duration": pos.duration
+              }}
+            >
+            <div
+              key={i}
+              className={`shape shape${i + 1}`}
+              style={{
+                width: pos.width,
+                height: pos.height,
+              }}
+            ></div>
+          </div>
         </div>
       )}
     </div>
