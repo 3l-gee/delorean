@@ -15,8 +15,6 @@
     "compile": "^0.0.2",
     "mermaid": "^11.10.1",
     "preact": "^10.27.0",
-    "react-mermaid": "^0.1.3",
-    "react-mermaid2": "^0.1.4",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {

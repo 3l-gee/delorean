@@ -7,27 +7,49 @@ export function RoadMapMermaid() {
 
   const content = `
 gitGraph TB:
-    commit id: "Delorean"
-    commit id: "jaxb code generation script"
-    commit id: "xml marshalling"
-    commit id: "xml unmarshalling"
-    commit id: "db schema generation"
-    commit id: "xml adapters"
-    commit id: "db persistence"
-    commit id: "db extraction" tag: "v0.1.0"
-    branch explo
-    commit id: "extended aimx models"
+    commit id: "Delorean init"
+    branch codegen
+    commit id: "JAXB generation"
+    commit id: "XJB generation"
+    branch xml
+    commit id: "adapters"
+    commit id: "marshalling"
+    commit id: "unmarshalling"
+    branch db
+    commit id: "schema generation"
+    commit id: "persistence"
+    commit id: "extraction"
+    branch testing
+    commit id: "test data set"
     checkout main
-    commit id: "db persisting"
-    commit id: "geometry rendering script"
-    checkout explo
-    commit id: "edit aixm feature"
+    merge db type: HIGHLIGHT tag: "v0.1.0"
+    checkout db
+    commit id: "geometry rendering"
+    commit id: "view generation"
+    branch qgis
+    commit id: "visualisation project generation"
+    commit id: "action"
+    commit id: "htmlwidget"
     checkout main
-    commit id: "db view generation script"
-    commit id: "qgis project generation"
-    commit id: "datasets mergers"
-    branch dev
-    branch future
+    merge qgis type: HIGHLIGHT tag: "v0.2.0"
+    checkout codegen
+    merge main id: "5.1.1 / 5.2" type:REVERSE
+    checkout db
+    merge main id: "geo, temporal, source filter & merger" type:REVERSE
+    checkout testing
+    merge main id: "automated testing" type:REVERSE
+    checkout qgis 
+    merge main id: "edition project generation" type:REVERSE
+    checkout codegen
+    commit id: "extended schema" type:REVERSE
+    checkout db
+    commit id: "edition & creation" type:REVERSE
+    checkout codegen
+    commit id: "digital notam" type:REVERSE
+    checkout db
+    commit id: "temp delta & perm delta" type:REVERSE
+    checkout main
+    commit "release"  type:REVERSE tag: "v1.0.0"
   `;
 
   useEffect(() => {
@@ -39,7 +61,9 @@ gitGraph TB:
       theme: "dark",
       securityLevel: "loose",
       themeVariables: {
-        gitNoteBkg: "#ccc",
+        commitLabelColor: 'var(--color-secondary)',
+        commitLabelBackground: 'var(--color-bg)',
+        gitNoteBkg: "#cccccc",
         gitBranchLabelColor: "#000",
         gitLabelColor: "#000",
       },

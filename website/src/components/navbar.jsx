@@ -42,7 +42,7 @@ export function Navbar({ onNavigate , onCleanBackground}) {
       <button
         className="navbar-logo cursor-pointer bg-transparent border-none p-0 m-0 text-left"
       >
-        <pre className="m-0 p-0 text-secondary" onClick={() => onNavigate("main")}>
+        <pre className="m-0 p-0 text-secondary" onClick={() => {onNavigate("main"), onCleanBackground(false)}}>
 {` ██████╗  ███████╗ ██╗       ██████╗  ██████╗  ███████╗  █████╗  ███╗   ██╗ 
  ██╔══██╗ ██╔════╝ ██║      ██╔═══██╗ ██╔══██╗ ██╔════╝ ██╔══██╗ ████╗  ██║ 
  ██║  ██║ █████╗   ██║      ██║   ██║ ██████╔╝ █████╗   ███████║ ██╔██╗ ██║ 
@@ -57,25 +57,25 @@ export function Navbar({ onNavigate , onCleanBackground}) {
         <DropDownButton
           label="About"
           options={[
-            { label: "Features", onClick: () => onNavigate("features") },
-            { label: "Changelogs",onClick: () => onCleanBackground(true)},
+            { label: "Features", onClick: () => {onCleanBackground(false), onNavigate("features")} },
+            // { label: "Changelogs",onClick: () => onCleanBackground(true)},
             { label: "Road Map", onClick: () => {onCleanBackground(true), onNavigate("roadmap")}},
-            { label: "Use Case", href: "#" },
+            { label: "Use Case", onClick: () => {onCleanBackground(false), onNavigate("usecase")} },
           ]}
         />
         <DropDownButton
           label="Resources"
           options={[
-            { label: "Documentation", href: "#" },
-            { label: "Tutorial", href: "#" },
-            { label: "FAQ", href: "#" },
+            { label: "Documentation", onClick: () => {onCleanBackground(false), onNavigate("documentation")}},
+            { label: "Tutorial", onClick: () => {onCleanBackground(false), onNavigate("tutorial")} },
+            { label: "FAQ", onClick: () => {onCleanBackground(false), onNavigate("faq")} },
           ]}
         />
         <DropDownButton
           label="Get involve"
           options={[
             { label: "Ask a question", href: "#" },
-            { label: "Open a ticket", href: "#" },
+            { label: "Open a ticket", href: "https://github.com/3l-gee/delorean/issues" },
             { label: "Organisation", href: "#" },
           ]}
         />

@@ -37,7 +37,7 @@ export function Features() {
           creation of the database schema while maintaining strict alignment with the AIXM specification.
         </p>
       </div>
-      <div className="flex flex-col flex-1 w-full h-full space-y-4 border-t pl-6 text-base leading-relaxed justify-center items-center">
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
         <ul className="learnmore-list">
           <LinkIcon 
@@ -87,7 +87,7 @@ export function Features() {
         accurately while preserving both spatial precision and temporal context.
       </p>
     </div>
-      <div className="flex flex-col flex-1 w-full h-full space-y-4 border-t pl-6 text-base leading-relaxed justify-center items-center">
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
         <ul className="learnmore-list">
           <LinkIcon 
@@ -111,10 +111,10 @@ export function Features() {
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
 
-    </div>
-    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+      </div>
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="space-y-3">
+        <ul className="learnmore-list">
         </ul>
       </div>
     </div>
@@ -126,10 +126,10 @@ export function Features() {
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Create and Edit</h2>
 
-    </div>
-    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+      </div>
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="space-y-3">
+        <ul className="learnmore-list">
         </ul>
       </div>
     </div>
@@ -141,10 +141,10 @@ export function Features() {
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Validate and Control</h2>
 
-    </div>
-    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+      </div>
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="space-y-3">
+        <ul className="learnmore-list">
         </ul>
       </div>
     </div>

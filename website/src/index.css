@@ -35,17 +35,13 @@
   filter: invert(1);
 }
 
-/* Reset body layout */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
-  /* remove flex (this was causing everything to stack weirdly) */
   display: block;
 }
 
-/* Headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

@@ -3,6 +3,7 @@ import "./content.css";
 import { MainPage } from "./components/pages/mainPage.jsx";
 import { Features } from "./components/pages/features.jsx";
 import { RoadMapMermaid } from "./components/pages/roadMapMermaid.jsx";
+import { FAQ } from "./components/pages/faq.jsx";
 
 // Smooth scroll behavior
 export function Content({ page }) {
@@ -15,6 +16,7 @@ export function Content({ page }) {
       {page === "main" && <MainPage />}
       {page === "features" && <Features />}
       {page === "roadmap" && <RoadMapMermaid />}
+      {page === "faq" && <FAQ />}
     </div>
   );
 }
