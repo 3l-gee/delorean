@@ -1,41 +1,149 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
+import QgisIcon from "../../assets/qgis.svg";
 export function Features() {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
-  {/* Definition */}
-  <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-    {/* Left: Text */}
-    <div className="space-y-6">
-      <h1 className="text-4xl font-bold tracking-tight">The Bases</h1>
+  {/* Features */}
+
+  {/* Management */}
+  <section className="space-y-4">
+    <h1 className="text-4xl font-bold tracking-tight">Features</h1>
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+        <h2 className="text-4xl font-bold tracking-tight">OSGi-Compliant & Extensible</h2>
+        <p>
+          Delorean is fully OSGi-compliant, enabling seamless integration into modular 
+          environments. It guarantees strict adherence to the official AIXM XML schemas while 
+          simultaneously generating a consistent PostgreSQL data model. This dual compliance ensures 
+          that aeronautical information can be loaded, queried, and extracted reliably across both 
+          the XML layer and the database backend.
+        </p>
+
+        <p>
+          The platform is designed for extensibility: common AIXM extensions are supported
+          natively, and additional extensions can be integrated without friction, making Delorean
+          future-proof and adaptable to evolving standards.
+        </p>
+
+        <p>
+          Under the hood, Delorean leverages official <code>XSD</code> schema definitions to generate
+          Java XML bindings enriched with persistence annotations. This approach enables automatic
+          creation of the database schema while maintaining strict alignment with the AIXM specification.
+        </p>
+      </div>
+      <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1 justify-center">
+        <h3 className="text-2xl font-semibold">Learn More</h3>
+        <ul className="space-y-3">
+          <li className="flex items-center space-x-2">
+            <a
+              href="https://qgis.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h3>qgis.org</h3>
+            </a>
+            <a
+              className='navbar-icons'
+              href="https://qgis.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={QgisIcon} alt="qgis" className="w-[30px] h-[30px]" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  {/* Visualize */}
+  <section className="space-y-4">
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+      <h2 className="text-4xl font-bold tracking-tight">QGIS Integration</h2>
       <p>
-        <strong>Delorean</strong> is an open-source tool written in Java and targeted at PostgreSQL, 
-        allowing users to create, visualize, and work with AIXM datasets. It acts as a link 
-        between <code>XML</code>, <code>PostgreSQL</code> and <code>QGIS</code>.
+        Leveraging the robust QGIS and PostgreSQL ecosystem, Delorean
+        creates views that combine temporal and geographic data, and automatically generates a QGIS
+        project to display it. This project mirrors the AIXM structure as closely as possible, preserving
+        feature groups and including all features and objects defined in the dataset. To simplify
+        navigation, related features can be connected through QGIS actions, allowing users to move
+        seamlessly through the AIXM tree directly within the map.
+      </p>
+
+      <p>
+        Once inside QGIS, this representation of AIXM data becomes fully interactive. Users can take
+        advantage of QGIS's wide range of tools to process, analyze, 
+        transform, and publish aeronautical data into different formats
+        or services. This turns static XML into actionable geospatial layers that fit naturally into
+        existing GIS workflows.
+      </p>
+
+      <p>
+        To achieve this, Delorean preprocesses the extended GML geometries found in AIXM
+        before loading them into QGIS. AIXM relies on GML to express complex spatial constructs—
+        including multi-geometries, polygons with holes, and temporally bounded shapes—that cannot be
+        consumed directly by most GIS tools. Delorean translates these into 
+        PostGIS-compatible geometries, ensuring that QGIS can render and manipulate them
+        accurately while preserving both spatial precision and temporal context.
       </p>
     </div>
+    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+        <h3 className="text-2xl font-semibold">Learn More</h3>
+        <ul className="space-y-3">
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    {/* Right: Graph */}
-    <div className="flex justify-center">
+  {/* Merge */}
+  <section className="space-y-4">
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+
+    </div>
+    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+        <h3 className="text-2xl font-semibold">Learn More</h3>
+        <ul className="space-y-3">
+        </ul>
+      </div>
+    </div>
+  </section>
+
+   {/* Create */}
+  <section className="space-y-4">
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+
+    </div>
+    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+        <h3 className="text-2xl font-semibold">Learn More</h3>
+        <ul className="space-y-3">
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* Validate */}
+  <section className="space-y-4">
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+
+    </div>
+    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+        <h3 className="text-2xl font-semibold">Learn More</h3>
+        <ul className="space-y-3">
+        </ul>
+      </div>
     </div>
   </section>
 
 
-  {/* XML */}
-  <section className="space-y-4">
-
-  </section>
-
-   {/* SQL */}
-  <section className="space-y-4">
-
-  </section>
-
-  {/* QGIS */}
-  <section className="space-y-4">
-
-  </section>
 </main>
   );
 }
