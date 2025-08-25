@@ -1,6 +1,10 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
 import QgisIcon from "../../assets/qgis.svg";
+import OsgiIcon from "../../assets/osgi.svg";
+import AixmIcon from "../../assets/aixm.svg";
+import PostgresqlIcon from "../../assets/postgresql.svg";
+import { LinkIcon } from "../util/linkicon";
 export function Features() {
 
   return (
@@ -33,26 +37,19 @@ export function Features() {
           creation of the database schema while maintaining strict alignment with the AIXM specification.
         </p>
       </div>
-      <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1 justify-center">
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 border-t pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="space-y-3">
-          <li className="flex items-center space-x-2">
-            <a
-              href="https://qgis.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h3>qgis.org</h3>
-            </a>
-            <a
-              className='navbar-icons'
-              href="https://qgis.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={QgisIcon} alt="qgis" className="w-[30px] h-[30px]" />
-            </a>
-          </li>
+        <ul className="learnmore-list">
+          <LinkIcon 
+            label = "osgi.org"
+            url = "https://www.osgi.org/"
+            icon = {OsgiIcon}
+          />
+          <LinkIcon 
+            label = "aixm.aero"
+            url = "https://aixm.aero/"
+            icon = {AixmIcon}
+          />
         </ul>
       </div>
     </div>
@@ -90,9 +87,19 @@ export function Features() {
         accurately while preserving both spatial precision and temporal context.
       </p>
     </div>
-    <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 border-t pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="space-y-3">
+        <ul className="learnmore-list">
+          <LinkIcon 
+            label = "qgis.org"
+            url = "https://qgis.org/"
+            icon = {QgisIcon}
+          />
+          <LinkIcon 
+            label = "postgresql.org"
+            url = "https://www.postgresql.org/"
+            icon = {PostgresqlIcon}
+          />
         </ul>
       </div>
     </div>
@@ -117,7 +124,7 @@ export function Features() {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+      <h2 className="text-4xl font-bold tracking-tight">Create and Edit</h2>
 
     </div>
     <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">
@@ -132,7 +139,7 @@ export function Features() {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+      <h2 className="text-4xl font-bold tracking-tight">Validate and Control</h2>
 
     </div>
     <div className="space-y-4 border-t pl-6 text-base leading-relaxed flex-1">

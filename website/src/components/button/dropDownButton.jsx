@@ -17,9 +17,9 @@ export function DropDownButton({ label, options }) {
 
   return (
     <div className={`dropdown-container ${open ? "open" : ""}`} ref={dropdownRef}>
-        <button className="button" onClick={() => setOpen(!open)}>
+        <button className="drop-down-button" onClick={() => setOpen(!open)}>
             <span className="button-label">{label}</span>
-            <span className={`arrow ${open ? "open" : ""}`}>▼</span>
+            <span className={`button-arrow ${open ? "open" : ""}`}>▼</span>
         </button>
 
       {open && (

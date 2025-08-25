@@ -59,7 +59,7 @@ export function Navbar({ onNavigate , onCleanBackground}) {
           options={[
             { label: "Features", onClick: () => onNavigate("features") },
             { label: "Changelogs",onClick: () => onCleanBackground(true)},
-            { label: "Road Map", onClick: () => onCleanBackground(false)},
+            { label: "Road Map", onClick: () => {onCleanBackground(true), onNavigate("roadmap")}},
             { label: "Use Case", href: "#" },
           ]}
         />
@@ -82,7 +82,7 @@ export function Navbar({ onNavigate , onCleanBackground}) {
       </div>
 
       {/* Right: Icons */}
-      <div className="navbar-icons">
+      <div className="icons navbar-icons">
         <a
           href="https://github.com/3l-gee/delorean"
           target="_blank"

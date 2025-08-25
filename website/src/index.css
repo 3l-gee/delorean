@@ -31,7 +31,7 @@
   background-color: var(--color-bg);
 }
 
-:root[data-theme="dark"] .navbar-icons img {
+:root[data-theme="dark"] .icons img {
   filter: invert(1);
 }
 

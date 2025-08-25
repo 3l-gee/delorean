@@ -2,6 +2,7 @@ import { useEffect } from "preact/hooks";
 import "./content.css";
 import { MainPage } from "./components/pages/mainPage.jsx";
 import { Features } from "./components/pages/features.jsx";
+import { RoadMapMermaid } from "./components/pages/roadMapMermaid.jsx";
 
 // Smooth scroll behavior
 export function Content({ page }) {
@@ -13,6 +14,7 @@ export function Content({ page }) {
     <div id="page" className="font-sans pt-[88px]">
       {page === "main" && <MainPage />}
       {page === "features" && <Features />}
+      {page === "roadmap" && <RoadMapMermaid />}
     </div>
   );
 }
