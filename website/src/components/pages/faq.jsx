@@ -15,8 +15,8 @@ export function FAQ() {
         <h3 className="text-4xl font-bold tracking-tight">My aixm file uses extension what will hapen to them ?</h3>
         <div className="p-6 bg-gray-100 rounded-xl border-l-4 border-blue-500 shadow-sm">
             <p className="pl-[10px] italic text-gray-700">
-                The current (v0.2.0) version of delorean does not support extension and will simply ignore them. 
-                Common extension are planned for future release of delorean.
+              The current (v0.2.0) version of delorean does not support extension and will simply ignore them. 
+              Common extension are planned for future release of delorean.
             </p>
         </div>
       </div>
@@ -25,17 +25,32 @@ export function FAQ() {
         </ul>
       </div>
     </div>
-        <div className="flex space-y-8">
+    <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
         <h3 className="text-4xl font-bold tracking-tight">Loading data in a remote databae is really slow why is that ?</h3>
         <div className="p-6 bg-gray-100 rounded-xl border-l-4 border-blue-500 shadow-sm">
             <p className="pl-[10px] italic text-gray-700">
-            Dolorean relies on transactions to ensure data consistency during loading,
-            extraction, and schema generation. Over a remote connection, each transaction
-            involves multiple round-trips, which can make the process noticeably slower
-            when latency is high. Performance can be improved by reducing network latency,
-            or using a connection pooler like pgBouncer to manage
-            multiple connections efficiently.
+              Dolorean relies on stated transactions to ensure data consistency during loading,
+              extraction, and schema generation. Over a remote connection, each transaction
+              involves multiple round-trips, which can make the process noticeably slower
+              when latency is high. Performance can be improved by reducing network latency,
+              or using a connection pooler like pgBouncer to manage
+              multiple connections efficiently.
+            </p>
+        </div>
+      </div>
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
+        <ul className="learnmore-list">
+        </ul>
+      </div>
+    </div>
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+        <h3 className="text-4xl font-bold tracking-tight">I get an error when I export AIXM layers from QGIS into a different format (gpkg).</h3>
+        <div className="p-6 bg-gray-100 rounded-xl border-l-4 border-blue-500 shadow-sm">
+            <p className="pl-[10px] italic text-gray-700">
+              AIXM is unique as feature contain multiple types of geometry. This is something only postgresql / postgis handel correctly. 
+              When exporting geometrique layers make sure to unselect fields of type geometry (or change their types before hand).
             </p>
         </div>
       </div>

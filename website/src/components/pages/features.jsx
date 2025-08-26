@@ -5,7 +5,7 @@ import OsgiIcon from "../../assets/osgi.svg";
 import AixmIcon from "../../assets/aixm.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
 import { LinkIcon } from "../util/linkicon";
-export function Features() {
+export function Features({ onNavigate }) {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
@@ -32,9 +32,14 @@ export function Features() {
         </p>
 
         <p>
-          Under the hood, Delorean leverages official <code>XSD</code> schema definitions to generate
+          Under the hood, Delorean leverages official XSD schema definitions to generate
           Java XML bindings enriched with persistence annotations. This approach enables automatic
           creation of the database schema while maintaining strict alignment with the AIXM specification.
+        </p>
+
+        <p className="border-l-4 pl-[10px] italic text-gray-700">
+          Planned improvements will include support for aixm 5.1.1, 5.2 (wich is probably a few tweaks to codegen and viewgen away). 
+          Furthermore, public extensions (event, asrn, ADR) and common private extensions will be suported.
         </p>
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
@@ -48,6 +53,16 @@ export function Features() {
           <LinkIcon 
             label = "aixm.aero"
             url = "https://aixm.aero/"
+            icon = {AixmIcon}
+          />
+          <LinkIcon 
+            label = "ext.eurocontrol.int"
+            url = "https://ext.eurocontrol.int/aixm_confluence/display/EXT"
+            icon = {AixmIcon}
+          />
+          <LinkIcon 
+            label = "aixm.aero/schema"
+            url = "https://aixm.aero/schema/index.html"
             icon = {AixmIcon}
           />
         </ul>
@@ -110,7 +125,21 @@ export function Features() {
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+        <p>
+          At this time (v0.2.0), merges can only be performed between AIXM datasets, and the entire dataset is either merged or not. 
+          Once merged, the datasets cannot be distinguished from each other.
+        </p>
 
+        <p>
+          Currently (v0.2.0), there are no options to filter out data.
+        </p>
+
+        <p className="border-l-4 pl-[10px] italic text-gray-700">
+          Planned improvements will include fine-grained options for merging, filtering, deleting, and migrating data. 
+          This will allow users to divide the dataset into smaller, more manageable chunks based on feature type, temporality, 
+          or geographic extent. In the AIXM context, such operations must also respect temporal consistency (sequence and correction numbers), 
+          maintain feature identity across datasets, and preserve cross-feature relationships.
+        </p>
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
@@ -125,11 +154,32 @@ export function Features() {
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Create and Edit</h2>
+        <p>
+          Currently (v0.2.0), there are no options to create or modify the loaded aixm data. 
+        </p>
+
+
+        <p className="border-l-4 pl-[10px] italic text-gray-700">
+          Planned improvements include an editor integrated into the QGIS project, allowing users to create and 
+          modify AIXM features while respecting validation rules, temporality, and feature-object relationships.
+          This will likely be implemented through machine-generated trigger functions in PostgreSQL, which will 
+          automatically copy, update, and increment the derived AIXM attributes and objects.
+        </p>
 
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold">Learn More</h3>
         <ul className="learnmore-list">
+          <LinkIcon 
+            label = "aixm-temporality-1.0"
+            url = "https://aixm.aero/sites/default/files/imce/AIXM51/aixm_temporality_1.0.pdf"
+            icon = {AixmIcon}
+          />
+          <LinkIcon 
+            label = "aixm-temporality-1.1"
+            url = "https://aixm.aero/sites/default/files/imce/AIXM511/aixm_temporality_1.1.pdf"
+            icon = {AixmIcon}
+          />
         </ul>
       </div>
     </div>
@@ -140,6 +190,21 @@ export function Features() {
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">Validate and Control</h2>
+        <p>
+          Currently (v0.2.0), validation of AIXM data is limited to basic schema checks and database integrity constraints. 
+          More advanced business rules, such as temporality or feature-object consistency, are not yet enforced.
+        </p>
+
+        <p className="border-l-4 pl-[10px] italic text-gray-700">
+          Planned improvements include a multi-layered validation workflow implemented entirely in PostgreSQL. 
+          Standard database constraints will enforce structural rules such as unique identifiers, mandatory attributes, 
+          and valid geometries. Machine-generated trigger functions will extend this by maintaining temporal integrity: 
+          updating sequence and correction numbers, closing validity intervals, and preventing overlaps or gaps between 
+          time slices. Additional triggers and stored procedures will handle higher-level business rules such as ensuring 
+          that every feature timeline begins with a baseline, that events remain consistent with their baselines, and that 
+          cross-feature relationships (e.g. between airspaces and volumes) remain valid. All validation feedback will be 
+          enforced directly in the database and surfaced immediately to users editing in QGIS.
+        </p>
 
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">

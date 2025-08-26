@@ -6,7 +6,7 @@ import { RoadMapMermaid } from "./components/pages/roadMapMermaid.jsx";
 import { FAQ } from "./components/pages/faq.jsx";
 
 // Smooth scroll behavior
-export function Content({ page }) {
+export function Content({ onNavigate, page }) {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
@@ -15,7 +15,7 @@ export function Content({ page }) {
     <div id="page" className="font-sans pt-[88px]">
       {page === "main" && <MainPage />}
       {page === "features" && <Features />}
-      {page === "roadmap" && <RoadMapMermaid />}
+      {page === "roadmap" && <RoadMapMermaid onNavigate={onNavigate}/>}
       {page === "faq" && <FAQ />}
     </div>
   );
