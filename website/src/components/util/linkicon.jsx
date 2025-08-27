@@ -10,12 +10,12 @@ export function LinkIcon({ label, url, icon, onAction = null}) {
   };
 
   return (
-    <li className="learnmore-item">
+    <li className="link-item">
       {/* First column: right-aligned label */}
       <a
         href={url}
         onClick={handleClick}
-        className="learnmore-label"
+        className="link-label"
         target={!onAction ? "_blank" : undefined}
         rel={!onAction ? "noopener noreferrer" : undefined}
       >
@@ -23,15 +23,15 @@ export function LinkIcon({ label, url, icon, onAction = null}) {
       </a>
 
       {/* Second column: left-aligned icon */}
-      <div className="learnmore-icon-wrapper">
+      <div className="link-icon-wrapper">
         <a
           href={url}
           onClick={handleClick}
-          className="icons learnmore-icon"
+          className="icons link-icon"
           target={!onAction ? "_blank" : undefined}
           rel={!onAction ? "noopener noreferrer" : undefined}
         >
-          <img src={icon} alt={label} className="learnmore-img navbar-icons" />
+          <img src={icon} alt={label} className="link-img navbar-icons" />
         </a>
       </div>
     </li>

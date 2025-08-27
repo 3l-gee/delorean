@@ -5,3 +5,44 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     
 }
+
+.ol-custom {
+  counter-reset: item;
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.ol-custom > li {
+  counter-increment: item;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.ol-custom > li::before {
+  content: counter(item) ". ";
+  font-weight: bold;
+  position: absolute;
+  left: -1rem;
+}
+
+/* Sub list */
+.ol-custom ol {
+  counter-reset: subitem;
+  list-style: none;
+  padding-left: 2rem;
+  margin-top: 0.25rem;
+}
+
+.ol-custom ol > li {
+  counter-increment: subitem;
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+
+.ol-custom ol > li::before {
+  content: counter(item) "." counter(subitem, lower-alpha) " ";
+  font-weight: bold;
+  position: absolute;
+  left: -2rem;
+}
+

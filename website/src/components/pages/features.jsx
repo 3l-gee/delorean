@@ -5,6 +5,7 @@ import OsgiIcon from "../../assets/osgi.svg";
 import AixmIcon from "../../assets/aixm.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
 import { LinkIcon } from "../util/linkicon";
+
 export function Features({ onNavigate }) {
 
   return (
@@ -43,8 +44,8 @@ export function Features({ onNavigate }) {
         </p>
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-        <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="learnmore-list">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
           <LinkIcon 
             label = "osgi.org"
             url = "https://www.osgi.org/"
@@ -103,8 +104,8 @@ export function Features({ onNavigate }) {
       </p>
     </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-        <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="learnmore-list">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
           <LinkIcon 
             label = "qgis.org"
             url = "https://qgis.org/"
@@ -142,8 +143,8 @@ export function Features({ onNavigate }) {
         </p>
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-        <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="learnmore-list">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
         </ul>
       </div>
     </div>
@@ -168,8 +169,8 @@ export function Features({ onNavigate }) {
 
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-        <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="learnmore-list">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
           <LinkIcon 
             label = "aixm-temporality-1.0"
             url = "https://aixm.aero/sites/default/files/imce/AIXM51/aixm_temporality_1.0.pdf"
@@ -208,8 +209,8 @@ export function Features({ onNavigate }) {
 
       </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-        <h3 className="text-2xl font-semibold">Learn More</h3>
-        <ul className="learnmore-list">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
         </ul>
       </div>
     </div>

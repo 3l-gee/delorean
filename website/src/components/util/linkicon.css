@@ -1,33 +1,33 @@
-.learnmore-item {
+.link-item {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* equal halves */
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   width: 100%;
-  height: 100%;       /* stretch vertically */
-  flex: 1;            /* allow it to grow inside flex parent */
-  align-items: stretch; /* children stretch full height of the row */
+  height: 100%; 
+  flex: 1;
+  align-items: center; 
 }
 
-.learnmore-label {
+.link-label {
   text-align: right;
   font-weight: 600;
   text-decoration: none;
   color: var(--color-secondary);
 }
 
-.learnmore-label:hover {
+.link-label:hover {
   text-decoration: underline;
 }
 
-.learnmore-icon-wrapper {
+.link-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.learnmore-icon img,
-.learnmore-img {
-  max-height: 25px;
+.link-icon img,
+.link-img {
+  max-height: 30px;
 }
 
 .ul{
@@ -35,6 +35,6 @@
   padding: 0px;
 }
 
-ul.learnmore-list > li {
+ul.link-list > li {
   margin-bottom: 1rem; /* or whatever size */
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import mermaid from "mermaid";
 import "./roadMapMermaid.css";
+import './pages.css'
 
 export function RoadMapMermaid() {
   const containerRef1 = useRef(null);
@@ -30,7 +31,7 @@ gitGraph TB:
     branch qgis
     commit id: "visualisation project generation"
     commit id: "action"
-    commit id: "htmlwidget"
+    commit id: "html widget"
     checkout main
     merge qgis type: HIGHLIGHT tag: "v0.2.0"
     checkout codegen
@@ -48,7 +49,7 @@ gitGraph TB:
     checkout codegen
     commit id: "extended schema" type:REVERSE
     checkout db
-    commit id: "edition & creation" type:REVERSE
+    commit id: "create & edit" type:REVERSE
     checkout codegen
     commit id: "digital notam" type:REVERSE
     checkout db
@@ -114,7 +115,7 @@ gitGraph TB:
             </p>
           </div>
           <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
-            <div className="learnmore-list">
+            <div className="link-list">
               <div ref={containerRef2} className="" />
             </div>
           </div>

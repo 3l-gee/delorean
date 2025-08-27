@@ -33,9 +33,9 @@
 
 .shape1 { background: #0068cf; }
 .shape2 { background: #f5f5f5; }
-.shape3 { background: #585858; }
+.shape3 { background: #4b4b4b; }
 .shape4 { background: #0052a3; }
-.shape5 { background: #00d8db; }
+.shape5 { background: #00c4aa; }
 .shape6 { background: #d13800; }
 .shape7 { background: #c20027; }
 
@@ -52,10 +52,10 @@
   background: #003366; 
 }
 [data-theme="dark"] .shape5 { 
-  background: #009da0; 
+  background: #00c4aa; 
 }
 [data-theme="dark"] .shape6 { 
-  background: #b63000; 
+  background: #b33000; 
 }
 [data-theme="dark"] .shape7 { 
   background: #b40024; 
