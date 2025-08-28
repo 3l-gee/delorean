@@ -51,8 +51,8 @@ export function Background({ page, clean}) {
     const randomPositions = Array.from({ length: 7 }, () => ({
       top: 40 + randomOffset(25) + "vh",
       left: 40 + randomOffset(40) + "vw",
-      width: Math.random() * 100 + 100 + "px",
-      height: Math.random() * 100 + 100 + "px",
+      width: Math.random() * 50 + 50 + "px",
+      height: Math.random() * 50 + 300 + "px",
       duration: Math.random() * 90 + 45 + "s",
       radius: randomRadius(),
     }));

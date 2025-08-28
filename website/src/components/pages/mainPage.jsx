@@ -1,29 +1,34 @@
 import './pages.css'
+import { Button } from "../button/button.jsx";
 
 export function MainPage() {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
   {/* Hero Section */}
-  <section className="space-y-6">
-    <h1 className="text-4xl font-bold tracking-tight">Delorean</h1>
-    <p>
-      <strong>Delorean</strong> is an open-source tool written in Java and targeted at PostgreSQL, 
-      allowing users to create, visualize, and work with AIXM datasets. It acts as a link 
-      between <code>XML</code>, <code>PostgreSQL</code> and <code>QGIS</code>.
-    </p>
-  </section>
-
-  {/* Supported Versions */}
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">Supported AIXM Versions</h2>
-    <ul className="list-disc list-inside space-y-2">
-      <li>5.2 (in dev)</li>
-      <li>5.1.1 (in dev)</li>
-      <li>5.1</li>
-      <li>5.0</li>
-      <li>4.5</li>
-    </ul>
+  <div className="p-[80px]"></div>
+  <section className="space-y-8 hero-page">
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+        <div className=''> 
+          <h1 className="text-4xl font-bold tracking-tight">AIXM, Made Simple</h1>
+          <h2 className="text-4xl font-bold tracking-tight">Collection, verification, dissemination and transformation of digital aeronautical information accessible to everyone.</h2>
+        </div>
+        <div className="p-[40px]"></div>
+        <div className="grid grid-cols-2 items-center">
+          <Button
+            label="Download Delorean"
+            href="https://github.com/3l-gee/delorean/releases"
+            className='main-page-button'
+          />
+          <span className="text-gray-500">
+            Available on Windows, Mac, Linux
+          </span>
+        </div>
+      </div>
+      <div className="pace-y-6 flex-1">
+      </div>
+    </div>
   </section>
 
   {/* Background / Context */}

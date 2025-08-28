@@ -63,116 +63,111 @@ td.title {
   </style>
 </head>
 <body>
-  <h1>Timesheet Calendar</h1>
+  <h1>Timesheet</h1>
   <div id="timesheet-container">Loading...</div>
 
 <script>
 try {
-  const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
-  const timesheetData = JSON.parse(raw);
-  const container = document.getElementById('timesheet-container');
-
-  if (Object.keys(timesheetData).length === 0) {
-    container.textContent = "Null";
-  } else {
-    const grouped = {};
-    timesheetData.forEach(entry => {
-      if (!grouped[entry.day]) grouped[entry.day] = [];
-      grouped[entry.day].push(entry);
-    });
-
+    const raw = expression.evaluate("CASE WHEN XXXX is NULL THEN '{}' WHEN XXXX is not NULL THEN to_json(XXXX) END");
+    const timesheetData = JSON.parse(raw);
     const container = document.getElementById('timesheet-container');
-    container.innerHTML = '';
 
-    function formatTimePoint(time, event, relative, interpretation) {
-      // Clean empty or null
-      time = time?.trim() || '';
-      event = event?.trim() || '';
-      relative = (relative && relative !== '(unknown)') ? relative.trim() : '';
-      interpretation = interpretation?.trim() || '';
+    if (Object.keys(timesheetData).length === 0) {
+        container.textContent = "Null";
+    } else {
+        container.innerHTML = '';
+        timesheetData.forEach(entry => {
+            const div = document.createElement('div');
+            div.className = 'annotation-block';
 
-      // Priority rules based on AIXM:
-      if (time && !event) {
-        return time;
-      } else if (!time && event) {
-        return relative ? `${event} ${relative}` : event;
-      } else if (time && event) {
-        let interpStr = '';
-        switch (interpretation.toLowerCase()) {
-          case 'after':
-            interpStr = `after ${event} by ${relative || '0min'} or ${time}`;
-            break;
-          case 'before':
-            interpStr = `before ${event} by ${relative || '0min'} or ${time}`;
-            break;
-          case 'coincides':
-            interpStr = `at ${event} (${time})`;
-            break;
-          default:
-            interpStr = `${event} ${relative || ''} and ${time}`;
-        }
-        return interpStr.trim();
-      }
+            let start = "";
+            let end = "";
 
-      return '??';
+            if (entry.starteventinterpretation && !entry.starteventinterpretation.includes('(') && !entry.starteventinterpretation.includes(')')) {
+                start += `${entry.starteventinterpretation} ( `;
+            }
+
+            if (entry.endeventinterpretation && !entry.endeventinterpretation.includes('(') && !entry.endeventinterpretation.includes(')')) {
+                end += `${entry.endeventinterpretation} ( `;
+            }
+
+            if (entry.starttime && !entry.starttime.includes('(') && !entry.starttime.includes(')')) {
+                start += `${entry.starttime} `;
+            }
+
+            if (entry.endtime && !entry.endtime.includes('(') && !entry.endtime.includes(')')) {
+                end += `${entry.endtime} `;
+            }
+
+            if (entry.starteventinterpretation && !entry.starteventinterpretation.includes('(') && !entry.starteventinterpretation.includes(')')) {
+                start += `/ `;
+            }
+
+            if (entry.endeventinterpretation && !entry.endeventinterpretation.includes('(') && !entry.endeventinterpretation.includes(')')) {
+                end += `/ `;
+            }
+
+            if (entry.startevent && !entry.startevent.includes('(') && !entry.startevent.includes(')')) {
+                start += `${entry.startevent} `;
+            }
+
+            if (entry.endevent && !entry.endevent.includes('(') && !entry.endevent.includes(')')) {
+                end += `${entry.endevent} `;
+            }
+
+            if (entry.starttimerelativeevent && !entry.starttimerelativeevent.includes('(') && !entry.starttimerelativeevent.includes(')')) {
+                start += `${entry.starttimerelativeevent} `;
+            }
+
+            if (entry.endtimerelativeevent && !entry.endtimerelativeevent.includes('(') && !entry.endtimerelativeevent.includes(')')) {
+                end += `${entry.endtimerelativeevent} `;
+            }
+
+            if (entry.starteventinterpretation && !entry.starteventinterpretation.includes('(') && !entry.starteventinterpretation.includes('(')) {
+                start += `)`;
+            }
+
+            if (entry.endeventinterpretation && !entry.endeventinterpretation.includes(')') && !entry.endeventinterpretation.includes(')')) {
+                end += `)`;
+            }
+
+            let timeRange = start + " -> " + end;
+            day = `${entry.day}${entry.daytil ? ` till ${entry.daytil}` : ''}`;
+
+            div.innerHTML = `
+        <table>
+          <tr>
+            <td class="title">Valid Days</td>
+            <td><div class="value">${day}</div></td>
+          </tr>
+          <tr>
+            <td class="title">Excluded</td>
+            <td><div class="value">${entry.excluded}</div></td>
+          </tr>
+          <tr>
+            <td class="title">Date Range</td>
+            <td><div class="value">${entry.startdate} to ${entry.enddate}</div></td>
+          </tr>
+          <tr>
+            <td class="title">Time Reference</td>
+            <td><div class="value">${entry.timereference}</div></td>
+          </tr>
+          <tr>
+            <td class="title">Time Range</td>
+            <td><div class="value">${timeRange}</div></td>
+          </tr>
+          <tr>
+            <td class="title">DST Adjustment</td>
+            <td><div class="value">${entry.daylightsavingadjust}</div></td>
+          </tr>
+        </table>
+      `;
+
+            container.appendChild(div);
+        });
     }
-
-    for (const day in grouped) {
-      grouped[day].forEach(entry => {
-        const block = document.createElement('div');
-        block.className = 'annotation-block';
-
-        let start = formatTimePoint(
-          entry.starttime,
-          entry.startevent,
-          entry.starttimerelativeevent,
-          entry.starteventinterpretation
-        );
-
-        let end = formatTimePoint(
-          entry.endtime,
-          entry.endevent,
-          entry.endtimerelativeevent,
-          entry.endeventinterpretation
-        );
-
-        let timeRange = `${start} → ${end}`;
-
-        block.innerHTML = `
-          <table>
-            <tr>
-              <td class="title">Valid Days</td>
-              <td><div class="value">${entry.day}${entry.daytil ? ` to ${entry.daytil}` : ''}</div></td>
-            </tr>
-            <tr>
-              <td class="title">Date Range</td>
-              <td><div class="value">${entry.startdate} to ${entry.enddate}</div></td>
-            </tr>
-            <tr>
-              <td class="title">Time Reference</td>
-              <td><div class="value">${entry.timereference}</div></td>
-            </tr>
-            <tr>
-              <td class="title">Time Range</td>
-              <td><div class="value">${timeRange}</div></td>
-            </tr>
-            <tr>
-              <td class="title">DST Adjustment</td>
-              <td><div class="value">${entry.daylightsavingadjust}</div></td>
-            </tr>
-            <tr>
-              <td class="title">Excluded</td>
-              <td><div class="value">${entry.excluded}</div></td>
-            </tr>
-          </table>
-        `;
-
-        container.appendChild(block);
-      });
-    }
-  }
 } catch (e) {
-  document.getElementById('timesheet-container').textContent = "Error: " + e;
+    document.getElementById('timesheet-container').textContent = "Error: " + e;
 }
 </script>
 

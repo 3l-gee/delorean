@@ -1,0 +1,9 @@
+.roadmap-mermaid svg {
+  transform: scale(1.6); 
+  transform-origin: top left;
+}
+
+.roadmap-mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+}

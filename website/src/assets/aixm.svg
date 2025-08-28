@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20.60165mm"
+   height="6.2700715mm"
+   viewBox="0 0 20.60165 6.2700715"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="111.57865"
+       y="197.18642"
+       width="304.91751"
+       height="57.713093"
+       id="rect1" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-29.642288,-53.618947)">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-size:33.3333px;font-family:Roboto;-inkscape-font-specification:Roboto;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#000000"><tspan
+         x="111.57812"
+         y="226.35219"
+         id="tspan2">AIXM</tspan></text>
+  </g>
+</svg>
