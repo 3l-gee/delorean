@@ -101,6 +101,20 @@ export function Tutorial() {
             <li>Schema: Defines the data structure and validation rules.</li>
             <li>Dataset: The actual data, which is loaded separately using other functions.</li>
         </ul>
+        <p>
+            To reference a container you can either type its ID : 
+            <pre className="code-block">
+                <code className="language-bash">
+                    {`35591d`}
+                </code>
+            </pre>
+            or to reference the last container used :
+            <pre className="code-block">
+                <code className="language-bash">
+                    {`-`}
+                </code>
+            </pre>
+        </p>
         <div className="w-full border-t border-gray-300 my-6"></div>
         <ol className="ol-custom list-decimal list-inside space-y-2">
             <li>
@@ -119,6 +133,24 @@ export function Tutorial() {
                         <pre className="code-block">
                             <code className="language-bash">
                                 {`[INFO] New container: 35591d`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                List existing containers
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> list`}
+                    </code>
+                </pre>
+                <ol className="space-y-2">
+                    <li>
+                        Output message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[d28832, 083c94]`}
                             </code>
                         </pre>
                     </li>
@@ -171,15 +203,30 @@ export function Tutorial() {
                         {`> xml 35591d load C:\\Users\\Downloads\\aixm.xml`}
                     </code>
                 </pre>
-                <p className="border-l-4 pl-[10px] italic text-gray-700">
-                a5_1 is the abbreviation for AIXM 5.1
-                </p>
                 <ol className="space-y-2">
                     <li>
                         Confirmation message
                         <pre className="code-block">
                             <code className="language-bash">
                                 {`[INFO] Successfully unmarshalled`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Export aixm xml data
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> xml 35591d export C:\\Users\\Downloads\\aixm.xml`}
+                    </code>
+                </pre>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] Successfully marshalled`}
                             </code>
                         </pre>
                     </li>
@@ -194,7 +241,7 @@ export function Tutorial() {
         </ul>
       </div>
     </div>
-<div className="flex space-y-8">
+    <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
         <h2 className="text-4xl font-bold tracking-tight">Database</h2>
         <p>
@@ -287,6 +334,16 @@ INFO: HHH000412: Hibernate ORM core version [WORKING]`}
                     <li>none - Disables automatic schema generation</li>
                 </ul>
                 </p>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] Database configuration set`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
             </li>
             <li>
                 Open the database connection
@@ -300,9 +357,10 @@ INFO: HHH000412: Hibernate ORM core version [WORKING]`}
                         Confirmation message
                         <pre className="code-block">
                             <code className="language-bash">
-                                {`[INFO] Sucessfully generated schema and extensions
+                                {`[INFO] Successfully executed script: a5_1/postgres/schema.sql
 # Hibernate logs...
-[INFO] Successfully generated mappings`}
+[INFO] Successfully executed script: a5_1/postgres/post_init.sql
+[INFO] Successfully initialized Hibernate session factory`}
                             </code>
                         </pre>
                     </li>
@@ -320,8 +378,7 @@ INFO: HHH000412: Hibernate ORM core version [WORKING]`}
                         Confirmation message
                         <pre className="code-block">
                             <code className="language-bash">
-                                {`# INFO: Session Metrics { ... } 
-[INFO] Successfully loaded`}
+                                {`[INFO] AIXM and project successfully loaded`}
                             </code>
                         </pre>
                     </li>
@@ -345,8 +402,108 @@ INFO: HHH000412: Hibernate ORM core version [WORKING]`}
                     </li>
                 </ol>
             </li>
+            <li>
+                Export database content by aixm basic message id 
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> db 35591d export 1 `}
+                    </code>
+                </pre>
+                <p className="border-l-4 pl-[10px] italic text-gray-700">
+                    Currently broken in v0.2.0
+                </p>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] AIXM Successfully exported`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Export database content by valid time cut off
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> db 35591d export 2011-01-01 `}
+                    </code>
+                </pre>
+                <p className="border-l-4 pl-[10px] italic text-gray-700">
+                    Currently broken in v0.2.0
+                </p>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] AIXM Successfully exported`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
         </ol>
       </div>
+      <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
+        <h3 className="text-2xl font-semibold"></h3>
+        <ul className="link-list">
+
+        </ul>
+      </div>
+    </div>
+    <div className="flex space-y-8">
+      <div className="space-y-6 flex-2">
+        <h2 className="text-4xl font-bold tracking-tight">QGIS Configuration</h2>
+        <p>
+            To visualize the aixm data in qgis we must create a qgis project. 
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+        </ul>
+        <div className="w-full border-t border-gray-300 my-6"></div>
+        <ol className="ol-custom list-decimal list-inside space-y-2">
+            <li>
+                Configure qgis project
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> qgis_config 35591d a5_1`}
+                    </code>
+                </pre>
+                <p className="border-l-4 pl-[10px] italic text-gray-700">
+                a5_1 is the abbreviation for AIXM 5.1
+                </p>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] Qgis project configuration set`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Configure qgis project
+                <pre className="code-block">
+                    <code className="language-bash">
+                        {`> qgis 35591d init`}
+                    </code>
+                </pre>
+                <ol className="space-y-2">
+                    <li>
+                        Confirmation message
+                        <pre className="code-block">
+                            <code className="language-bash">
+                                {`[INFO] QGIS project successfully initialized.`}
+                            </code>
+                        </pre>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold"></h3>
         <ul className="link-list">

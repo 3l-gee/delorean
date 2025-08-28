@@ -58,15 +58,14 @@ export function Navbar({ onNavigate , onCleanBackground}) {
           label="About"
           options={[
             { label: "Features", onClick: () => {onCleanBackground(false), onNavigate("features")} },
-            // { label: "Changelogs",onClick: () => onCleanBackground(true)},
             { label: "Road Map", onClick: () => {onCleanBackground(true), onNavigate("roadmap")}},
-            { label: "Use Case", onClick: () => {onCleanBackground(false), onNavigate("usecase")} },
+            // { label: "Use Case", onClick: () => {onCleanBackground(false), onNavigate("usecase")} },
           ]}
         />
         <DropDownButton
           label="Resources"
           options={[
-            { label: "Documentation", onClick: () => {onCleanBackground(false), onNavigate("documentation")}},
+            // { label: "Documentation", onClick: () => {onCleanBackground(false), onNavigate("documentation")}},
             { label: "Tutorial", onClick: () => {onCleanBackground(false), onNavigate("tutorial")} },
             { label: "FAQ", onClick: () => {onCleanBackground(false), onNavigate("faq")} },
           ]}
@@ -74,9 +73,8 @@ export function Navbar({ onNavigate , onCleanBackground}) {
         <DropDownButton
           label="Get involve"
           options={[
-            { label: "Ask a question", href: "#" },
-            { label: "Open a ticket", href: "https://github.com/3l-gee/delorean/issues" },
-            { label: "Organisation", href: "#" },
+            { label: "Ask a question", href: "https://github.com/3l-gee/delorean/discussions" },
+            { label: "Open a ticket", href: "https://github.com/3l-gee/delorean/issues" }
           ]}
         />
       </div>

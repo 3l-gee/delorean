@@ -31,17 +31,6 @@ export function MainPage() {
     </div>
   </section>
 
-
-  
-
-  {/* Supported Versions */}
-  <section className="space-y-4">
-    <h2 className="text-2xl font-semibold">Supported AIXM Versions</h2>
-    <ul className="list-disc list-inside space-y-2">
-      <li>AIXM 5.1</li>
-    </ul>
-  </section>
-
   {/* Background / Context */}
   <section className="space-y-4">
     <h2 className="text-2xl font-semibold">Why Delorean?</h2>

@@ -22,7 +22,7 @@
   content: counter(item) ". ";
   font-weight: bold;
   position: absolute;
-  left: -1rem;
+  left: -2rem;
 }
 
 /* Sub list */
