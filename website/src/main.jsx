@@ -14,7 +14,7 @@ import { Tutorial } from "./components/pages/tutorial.jsx";
 import { GML } from "./components/pages/gml.jsx";
 import { Footer } from "./components/footer.jsx";
 import { Background } from "./components/background.jsx";
-import { QGIS } from "./components/pages/QGIS.jsx";
+import { QGIS } from "./components/pages/qgis.jsx";
 
 function App() {
   const [cleanBackground, setCleanBackground] = useState(false);
