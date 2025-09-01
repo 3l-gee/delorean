@@ -1,14 +1,20 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
 import Helmet from "preact-helmet";
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark.css"; 
+
 import QgisIcon from "../../assets/qgis.svg";
 import OsgiIcon from "../../assets/osgi.svg";
 import JavaIcon from "../../assets/java.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
 import GithubIcon from "../../assets/github.svg"
-import { LinkIcon } from "../util/linkicon";
+import { LinkIcon } from "../util/Linkicon";
 
 export function Tutorial() {
+    useEffect(() => {
+        hljs.highlightAll(); 
+    }, []);
 
   return (
   <section className="space-y-4">

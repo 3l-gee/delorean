@@ -5,7 +5,7 @@ import QgisIcon from "../../assets/qgis.svg";
 import OsgiIcon from "../../assets/osgi.svg";
 import AixmIcon from "../../assets/aixm.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
-import { LinkIcon } from "../util/linkicon";
+import { LinkIcon } from "../util/Linkicon";
 import { Button } from '../button/button';
 
 export function Features({ onNavigate }) {
@@ -93,11 +93,6 @@ export function Features({ onNavigate }) {
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">GML rendering & QGIS</h2>
-      <Button 
-        label="GML & QGIS" 
-        href="/features/gml" 
-      />
-
       <p>
         Leveraging the robust QGIS and PostgreSQL ecosystem, Delorean
         creates views that combine temporal and geographic data, and automatically generates a QGIS
@@ -123,6 +118,16 @@ export function Features({ onNavigate }) {
         PostGIS-compatible geometries, ensuring that QGIS can render and manipulate them
         accurately while preserving both spatial precision and temporal context.
       </p>
+      <div className="flex space-x-8">
+        <Button 
+          label="GML Rendering" 
+          href="/features/gml" 
+        />
+        <Button 
+          label="QGIS Interaction" 
+          href="/features/qgis" 
+        />
+      </div>
     </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold"></h3>

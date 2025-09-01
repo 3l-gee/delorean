@@ -14,30 +14,37 @@ import { Tutorial } from "./components/pages/tutorial.jsx";
 import { GML } from "./components/pages/gml.jsx";
 import { Footer } from "./components/footer.jsx";
 import { Background } from "./components/background.jsx";
+import { QGIS } from "./components/pages/QGIS.jsx";
 
 function App() {
   const [cleanBackground, setCleanBackground] = useState(false);
+  const [currentPath, setCurrentPath] = useState("/");
 
   useEffect(() => {
     hljs.highlightAll(); 
   }, []);
+
+  const handleRouteChange = (e) => {
+    setCurrentPath(e.url);
+  };
 
   return (
     <>
       <Navbar onCleanBackground={setCleanBackground} />
       
       <div id="page">
-        <Router>
+        <Router onChange={handleRouteChange}>
           <MainPage path="/" />
           <Features path="/features" />
           <RoadMapMermaid path="/roadmap" />
           <FAQ path="/faq" />
           <Tutorial path="/tutorial" />
           <GML path="/features/gml" />
+          <QGIS path="/features/qgis" />
         </Router>
       </div>
 
-      <Background clean={cleanBackground}/>
+      <Background clean={cleanBackground} page={currentPath}/>
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
 import Helmet from "preact-helmet";
-import { LinkIcon } from "../util/linkicon";
+import { LinkIcon } from "../util/Linkicon";
 export function FAQ() {
 
   return (

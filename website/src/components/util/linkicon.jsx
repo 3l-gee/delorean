@@ -1,5 +1,5 @@
 // src/components/learnmore/linkicon.jsx
-import "./linkicon.css";
+import "./Linkicon.css";
 
 export function LinkIcon({ label, url, icon, onAction = null}) {
   const handleClick = (e) => {
