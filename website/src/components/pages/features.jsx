@@ -1,18 +1,34 @@
 import './pages.css'
-import { useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
+import Helmet from "preact-helmet";
 import QgisIcon from "../../assets/qgis.svg";
 import OsgiIcon from "../../assets/osgi.svg";
 import AixmIcon from "../../assets/aixm.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
 import { LinkIcon } from "../util/linkicon";
+import { Button } from '../button/button';
 
 export function Features({ onNavigate }) {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
-  {/* Features */}
-
-  {/* Management */}
+  <Helmet
+    defaultTitle="Delorean AIXM"
+    titleTemplate="%s - Features"
+  >
+    <meta 
+      name="description" 
+      content="Explore the features and capabilities of Delorean AIXM, the open-source tool for managing AIXM and digital aeronautical data. Learn about its data modeling, AIM integration, SWIM compatibility, and developer tools."
+    />
+    <meta 
+      name="keywords" 
+      content="Delorean, AIXM, Features, Capabilities, Open source, AIM, Aeronautical data, SWIM, Aviation software"
+    />
+    <meta property="og:title" content="Delorean AIXM - Features" />
+    <meta property="og:description" content="Discover Delorean AIXM features, from aeronautical data modeling to SWIM integration, for developers and aviation professionals." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://delorean-aixm.io/features" />
+  </Helmet>
   <section className="space-y-4">
     <h1 className="text-4xl font-bold tracking-tight">Features</h1>
     <div className="flex space-y-8">
@@ -77,6 +93,11 @@ export function Features({ onNavigate }) {
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
       <h2 className="text-4xl font-bold tracking-tight">GML rendering & QGIS</h2>
+      <Button 
+        label="GML & QGIS" 
+        href="/features/gml" 
+      />
+
       <p>
         Leveraging the robust QGIS and PostgreSQL ecosystem, Delorean
         creates views that combine temporal and geographic data, and automatically generates a QGIS

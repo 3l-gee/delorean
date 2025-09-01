@@ -1,11 +1,14 @@
 import { DropDownButton } from "./button/dropDownButton";
 import { ToggleSwitch } from "./button/toggleButton";
 import { useState, useEffect } from "preact/hooks";
+import { Link } from "preact-router/match";
+
+import "./navbar.css";
 import GithubIcon from "../assets/github.svg";
 import LinkedinIcon from "../assets/linkedin.svg";
 import MastodonIcon from "../assets/mastodon.svg";
 import AtIcon from "../assets/at.svg"
-import "./navbar.css";
+
 
 export function Navbar({ onNavigate , onCleanBackground}) {
   const [dark, setDark] = useState(false);
@@ -39,10 +42,12 @@ export function Navbar({ onNavigate , onCleanBackground}) {
   return (
     <div className={`navbar ${show ? "show" : "hide"}`}>
       {/* Left: Logo */}
-      <button
-        className="navbar-logo cursor-pointer bg-transparent border-none p-0 m-0 text-left"
+      <Link
+        href="/"
+        className="navbar-logo no-underline text-inherit cursor-pointer bg-transparent border-none p-0 m-0 text-left"
+        onClick={() => onCleanBackground(false)}
       >
-        <pre className="m-0 p-0 text-secondary" onClick={() => {onNavigate("main"), onCleanBackground(false)}}>
+        <pre className="m-0 p-0 text-secondary">
 {` ██████╗  ███████╗ ██╗       ██████╗  ██████╗  ███████╗  █████╗  ███╗   ██╗ 
  ██╔══██╗ ██╔════╝ ██║      ██╔═══██╗ ██╔══██╗ ██╔════╝ ██╔══██╗ ████╗  ██║ 
  ██║  ██║ █████╗   ██║      ██║   ██║ ██████╔╝ █████╗   ███████║ ██╔██╗ ██║ 
@@ -50,24 +55,22 @@ export function Navbar({ onNavigate , onCleanBackground}) {
  ██████╔╝ ███████╗ ███████╗ ╚██████╔╝ ██║  ██║ ███████╗ ██║  ██║ ██║ ╚████║ 
  ╚═════╝  ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝  ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝ `}
         </pre>
-      </button>
+      </Link>
 
       {/* Middle: Links */}
       <div className="navbar-links">
         <DropDownButton
           label="About"
           options={[
-            { label: "Features", onClick: () => {onCleanBackground(false), onNavigate("features")} },
-            { label: "Road Map", onClick: () => {onCleanBackground(true), onNavigate("roadmap")}},
-            // { label: "Use Case", onClick: () => {onCleanBackground(false), onNavigate("usecase")} },
+            { label: "Features", href: "/features" },
+            { label: "Road Map", href: "/roadmap" },
           ]}
         />
         <DropDownButton
           label="Resources"
           options={[
-            // { label: "Documentation", onClick: () => {onCleanBackground(false), onNavigate("documentation")}},
-            { label: "Tutorial", onClick: () => {onCleanBackground(false), onNavigate("tutorial")} },
-            { label: "FAQ", onClick: () => {onCleanBackground(false), onNavigate("faq")} },
+            { label: "Tutorial", href: "/tutorial" },
+            { label: "FAQ", href: "/faq" },
           ]}
         />
         <DropDownButton

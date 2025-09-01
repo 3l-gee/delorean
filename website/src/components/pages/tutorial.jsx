@@ -1,5 +1,6 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
+import Helmet from "preact-helmet";
 import QgisIcon from "../../assets/qgis.svg";
 import OsgiIcon from "../../assets/osgi.svg";
 import JavaIcon from "../../assets/java.svg";
@@ -11,6 +12,23 @@ export function Tutorial() {
 
   return (
   <section className="space-y-4">
+    <Helmet
+        defaultTitle="Delorean AIXM"
+        titleTemplate="%s - Tutorial"
+      >
+        <meta 
+          name="description" 
+          content="Delorean AIXM tutorial page, with guides, explanations, and examples for managing AIXM data."
+        />
+        <meta 
+          name="keywords" 
+          content="Delorean, AIXM, Tutorial, Guide, Explanation, Aeronautical Data, Open Source"
+        />
+        <meta property="og:title" content="Delorean AIXM - Tutorial" />
+        <meta property="og:description" content="Learn how to use Delorean AIXM with detailed tutorials, guides, and examples for managing digital aeronautical data." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://delorean-aixm.io/tutorial" />
+    </Helmet>
     <h1 className="text-4xl font-bold tracking-tight">Tutorial</h1>
     <div className="flex space-y-8">
     <div className="space-y-6 flex-2">

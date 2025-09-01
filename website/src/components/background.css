@@ -25,7 +25,6 @@
   border-radius: 50%;
   transform-origin: center center;
   animation: none !important;
-  /* opacity: 0.8;  */
   filter: blur(100px);
   transform: translate(var(--radius-x), var(--radius-y));
   transition: transform 2s ease;

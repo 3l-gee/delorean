@@ -16,6 +16,8 @@
     "highlight.js": "^11.11.1",
     "mermaid": "^11.10.1",
     "preact": "^10.27.0",
+    "preact-helmet": "^4.0.0-alpha-3",
+    "preact-router": "^4.1.2",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
