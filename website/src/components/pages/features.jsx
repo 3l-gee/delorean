@@ -1,23 +1,39 @@
 import './pages.css'
-import { useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
+import Helmet from "preact-helmet";
 import QgisIcon from "../../assets/qgis.svg";
 import OsgiIcon from "../../assets/osgi.svg";
 import AixmIcon from "../../assets/aixm.svg";
 import PostgresqlIcon from "../../assets/postgresql.svg";
-import { LinkIcon } from "../util/linkicon";
+import { LinkIcon } from "../util/Linkicon";
+import { Button } from '../button/button';
 
 export function Features({ onNavigate }) {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
-  {/* Features */}
-
-  {/* Management */}
+  <Helmet
+    defaultTitle="Delorean AIXM"
+    titleTemplate="%s - Features"
+  >
+    <meta 
+      name="description" 
+      content="Explore the features and capabilities of Delorean AIXM, the open-source tool for managing AIXM and digital aeronautical data. Learn about its data modeling, AIM integration, SWIM compatibility, and developer tools."
+    />
+    <meta 
+      name="keywords" 
+      content="Delorean, AIXM, Features, Capabilities, Open source, AIM, Aeronautical data, SWIM, Aviation software"
+    />
+    <meta property="og:title" content="Delorean AIXM - Features" />
+    <meta property="og:description" content="Discover Delorean AIXM features, from aeronautical data modeling to SWIM integration, for developers and aviation professionals." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://delorean-aixm.io/features" />
+  </Helmet>
   <section className="space-y-4">
     <h1 className="text-4xl font-bold tracking-tight">Features</h1>
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-        <h2 className="text-4xl font-bold tracking-tight">OSGi-Compliant & Extensible</h2>
+        <h2 className="text-4xl font-bold tracking-tight">AIXM-Compliant & Extensions</h2>
         <p>
           Delorean is fully OSGi-compliant, enabling seamless integration into modular 
           environments. It guarantees strict adherence to the official AIXM XML schemas while 
@@ -76,7 +92,7 @@ export function Features({ onNavigate }) {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">QGIS Integration</h2>
+      <h2 className="text-4xl font-bold tracking-tight">GML rendering & QGIS</h2>
       <p>
         Leveraging the robust QGIS and PostgreSQL ecosystem, Delorean
         creates views that combine temporal and geographic data, and automatically generates a QGIS
@@ -102,6 +118,16 @@ export function Features({ onNavigate }) {
         PostGIS-compatible geometries, ensuring that QGIS can render and manipulate them
         accurately while preserving both spatial precision and temporal context.
       </p>
+      <div className="flex space-x-8">
+        <Button 
+          label="GML Rendering" 
+          href="/features/gml" 
+        />
+        <Button 
+          label="QGIS Interaction" 
+          href="/features/qgis" 
+        />
+      </div>
     </div>
       <div className="flex flex-col flex-1 w-full h-full space-y-4 pl-6 text-base leading-relaxed justify-center items-center">
         <h3 className="text-2xl font-semibold"></h3>
@@ -125,7 +151,7 @@ export function Features({ onNavigate }) {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">Merges and Filter</h2>
+      <h2 className="text-4xl font-bold tracking-tight">Merges & Filter</h2>
         <p>
           At this time (v0.2.0), merges can only be performed between AIXM datasets, and the entire dataset is either merged or not. 
           Once merged, the datasets cannot be distinguished from each other.
@@ -154,7 +180,7 @@ export function Features({ onNavigate }) {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">Create and Edit</h2>
+      <h2 className="text-4xl font-bold tracking-tight">Create & Edit</h2>
         <p>
           Currently (v0.2.0), there are no options to create or modify the loaded aixm data. 
         </p>
@@ -190,7 +216,7 @@ export function Features({ onNavigate }) {
   <section className="space-y-4">
     <div className="flex space-y-8">
       <div className="space-y-6 flex-2">
-      <h2 className="text-4xl font-bold tracking-tight">Validate and Control</h2>
+      <h2 className="text-4xl font-bold tracking-tight">Validate & Control</h2>
         <p>
           Currently (v0.2.0), validation of AIXM data is limited to basic schema checks and database integrity constraints. 
           More advanced business rules, such as temporality or feature-object consistency, are not yet enforced.

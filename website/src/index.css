@@ -47,6 +47,31 @@ h1 {
   line-height: 1.1;
 }
 
+#page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+section {
+  padding: 4rem 0; 
+}
+section:last-of-type {
+  border-bottom: none;
+}
+
+.card {
+  padding: 2em;
+  border-radius: 8px;
+  background-color: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 .custom-shadow {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
@@ -56,10 +81,8 @@ h1 {
 }
 
 .code-block {
-  background-color: color-mix(in srgb, var(--color-secondary) 10%, var(--color-bg));
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  color: var(--color-secondary);
-  padding: 0.75rem 1rem;
+  background-color: #0d1117;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.486);
   border-radius: 0.5rem;
   font-size: 1rem;
   line-height: 1.5;

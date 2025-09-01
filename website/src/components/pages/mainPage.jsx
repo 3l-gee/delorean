@@ -1,5 +1,7 @@
 import './pages.css'
 import { Button } from "../button/button.jsx";
+import { Figure } from '../util/Figure.jsx';
+import MainImg from "../../images/main.jpg";
 
 export function MainPage() {
 
@@ -47,6 +49,17 @@ export function MainPage() {
       It does all this through a simple, robust cli interface that handles your data safely and precisely.
     </p>
   </section>
+
+  <section className="space-y-4">
+    <Figure
+      src={MainImg}
+      alt="AIXM in QGIS with Delorean"
+      caption="Figure 1 — AIXM in QGIS with Delorean"
+      className="w-[90%] max-w-[90%]"
+    />
+  </section>
+
+
 </main>
 
   );

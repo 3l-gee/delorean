@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Helmet from "preact-helmet";
 import mermaid from "mermaid";
 import "./roadMapMermaid.css";
 import './pages.css'
@@ -99,6 +100,23 @@ gitGraph TB:
 
   return (
     <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
+      <Helmet
+        defaultTitle="Delorean AIXM"
+        titleTemplate="%s - Roadmap"
+      >
+        <meta 
+          name="description" 
+          content="Explore the roadmap of the Delorean AIXM open-source project, including milestones, planned features, and development timeline for digital aeronautical data management."
+        />
+        <meta 
+          name="keywords" 
+          content="Delorean, AIXM, Roadmap, Milestones, Planning, Development, Open source"
+        />
+        <meta property="og:title" content="Delorean AIXM - Roadmap" />
+        <meta property="og:description" content="Follow the Delorean AIXM roadmap with milestones, planned features, and development timeline for modern aeronautical data management." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://delorean-aixm.io/roadmap" />
+      </Helmet>
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">Road Map</h1>
         <div className="flex space-y-8">

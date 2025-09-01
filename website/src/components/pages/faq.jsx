@@ -1,13 +1,28 @@
 import './pages.css'
 import { useEffect, useRef } from "preact/hooks";
-import { LinkIcon } from "../util/linkicon";
+import Helmet from "preact-helmet";
+import { LinkIcon } from "../util/Linkicon";
 export function FAQ() {
 
   return (
 <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-16 leading-relaxed text-lg">
-  {/* Features */}
-
-  {/* Management */}
+  <Helmet
+    defaultTitle="Delorean AIXM"
+    titleTemplate="%s - FAQ"
+  >
+    <meta 
+      name="description" 
+      content="Frequently Asked Questions about Delorean AIXM, the open-source tool for managing AIXM and digital aeronautical data. Get answers on features, installation, tutorials, and integration with AIM and SWIM."
+    />
+    <meta 
+      name="keywords" 
+      content="Delorean, AIXM, FAQ, Questions, Answers, Open source, AIM, SWIM, Aeronautical data, Tutorial"
+    />
+    <meta property="og:title" content="Delorean AIXM - FAQ" />
+    <meta property="og:description" content="Find answers to common questions about Delorean AIXM, including features, tutorials, installation, and integration with aeronautical data management standards like AIM and SWIM." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://delorean-aixm.io/faq" />
+  </Helmet>
   <section className="space-y-4">
     <h1 className="text-4xl font-bold tracking-tight">FAQ</h1>
     <div className="flex space-y-8">
