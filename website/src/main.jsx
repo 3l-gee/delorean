@@ -1,6 +1,7 @@
 import { render } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import Router from "preact-router";
+import { createHashHistory } from 'history';
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css"; 
 
@@ -28,12 +29,14 @@ function App() {
     setCurrentPath(e.url);
   };
 
+  const hashHistory = createHashHistory();
+
   return (
     <>
       <Navbar onCleanBackground={setCleanBackground} />
       
       <div id="page">
-        <Router onChange={handleRouteChange} history="hash">
+        <Router onChange={handleRouteChange} history={hashHistory}>
           <MainPage path="/" />
           <Features path="/features" />
           <RoadMapMermaid path="/roadmap" />
