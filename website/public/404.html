@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      const redirect = '/' + window.location.pathname.replace(/^\//, '');
+      window.location.replace('/#' + redirect + window.location.search);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

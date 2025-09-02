@@ -33,7 +33,7 @@ function App() {
       <Navbar onCleanBackground={setCleanBackground} />
       
       <div id="page">
-        <Router onChange={handleRouteChange}>
+        <Router onChange={handleRouteChange} history="hash">
           <MainPage path="/" />
           <Features path="/features" />
           <RoadMapMermaid path="/roadmap" />
