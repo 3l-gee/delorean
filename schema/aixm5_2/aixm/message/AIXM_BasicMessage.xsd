@@ -34,8 +34,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<!--====================================================================-->
 	<!-- ==== IMPORT GML 3.2 (corrigendum 3.2.2 of version 3.2.1) ==== -->
 	<!-- <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/> -->
-	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../gml/3.2.1/gml.xsd"/>
-	<!--==== IMPORT AIXM core SCHEMA ====-->
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../ISO_19136_Schemas/gml.xsd"/>
 	<import namespace="http://www.aixm.aero/schema/5.2" schemaLocation="../AIXM_Features.xsd"/>
 	<annotation>
 		<appinfo>Basic Message.xsd</appinfo>

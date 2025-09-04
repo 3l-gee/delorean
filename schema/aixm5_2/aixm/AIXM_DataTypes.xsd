@@ -33,8 +33,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
     <!--Schema Imports and Includes-->
     <!--====================================================================-->
     <!-- ==== IMPORT GML 3.2 (corrigendum 3.2.2 of version 3.2.1) ==== -->
-    <!-- <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/> -->
-    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./gml/3.2.1/gml.xsd"/>
+    <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./ISO_19136_Schemas/gml.xsd"/>
     <simpleType name="CodeAircraftFieldLengthBaseType">
         <union>
             <simpleType>

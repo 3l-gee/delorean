@@ -21,6 +21,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		http://www.opensource.org/licenses/bsd-license.php
 	-->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:aixm="http://www.aixm.aero/schema/5.2" 
 	xmlns:gml="http://www.opengis.net/gml/3.2" 
 	xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -38,11 +39,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<!--Schema Imports and Includes-->
 	<!--====================================================================-->
 	<!-- ==== IMPORT GML 3.2 (corrigendum 3.2.2 of version 3.2.1) ==== -->
-	<!-- <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/> -->
-	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./gml/3.2.1/gml.xsd"/>
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="./ISO_19136_Schemas/gml.xsd"/>
 	<!--==== IMPORT ISO19139 METADATA SCHEMA ====-->
-	<!-- <import namespace="http://www.isotc211.org/2005/gmd" schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd"/> -->
-	<import namespace="http://www.isotc211.org/2005/gmd" schemaLocation="./iso/19139/20070417/gmd/gmd.xsd"/>
+	<import namespace="http://www.isotc211.org/2005/gmd" schemaLocation="./ISO_19139_Schemas/gmd/gmd.xsd"/>
 	<!--====================================================================-->
 	<!--Base AIXM Feature/Object Constructs-->
 	<!--====================================================================-->
@@ -124,7 +123,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						<annotation>
 							<documentation>The efffectivity of the TimeSlice.</documentation>
 						</annotation>
-						<element ref="gml:validTime"/>
+						<!-- <element ref="gml:validTime"/> -->
+						<element ref="gml:aixmValidTime"/>
 					</sequence>
 				</sequence>
 				<attribute ref="gml:id" use="required"/>
@@ -142,7 +142,10 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					<element ref="aixm:sequenceNumber" minOccurs="0"/>
 					<element ref="aixm:correctionNumber" minOccurs="0"/>
 					<element name="timeSliceMetadata" type="aixm:FeatureTimeSliceMetadataPropertyType" minOccurs="0"/>
-					<element ref="aixm:featureLifetime" minOccurs="0"/>
+					<!-- <element ref="aixm:featureLifetime" minOccurs="0"/> -->
+					<element name="featureLifetime" type="xs:string" minOccurs="0"/>
+					<!-- status field for filtering  -->
+					<element name="featureStatus" type="xs:string" minOccurs="0" default="APPROVED"/>
 				</sequence>
 			</extension>
 		</complexContent>
