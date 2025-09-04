@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:annox="urn:jaxb.jvnet.org:annox" version="3.0" jaxb:extensionBindingPrefixes="xjc annox">
+<jaxb:bindings 
+  xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" 
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+  xmlns:hj="http://jvnet.org/hyperjaxb/jpa"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:annox="urn:jaxb.jvnet.org:annox" 
+  version="3.0" 
+  jaxb:extensionBindingPrefixes="xjc annox hj">
   <jaxb:bindings schemaLocation="../aixm/AIXM_DataTypes.xsd" node="/xs:schema">
     <!-- section : manual -->
     <!-- part : default -->

@@ -7,38 +7,14 @@
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	xmlns:annox="urn:jaxb.jvnet.org:annox"
 	jaxb:extensionBindingPrefixes="xjc annox">
-    <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
-    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
 
     <jaxb:bindings schemaLocation="../aixm/xlink/xlinks.xsd">
     	<jaxb:schemaBindings>
-			<!-- <jaxb:package name="org.w3.xlink.v1999" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.w3.xlink"/>
 			<jaxb:nameXmlTransform>
 				<jaxb:elementName suffix="Element" />
 			</jaxb:nameXmlTransform>
 		</jaxb:schemaBindings>
-        <!-- <jaxb:bindings node="//xs:attribute[@name='title']">
-            <jaxb:property name="titleAttribute"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:href']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:role']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:arcrole']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:title']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:show']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:actuate']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings> -->
     </jaxb:bindings>
     
 </jaxb:bindings>

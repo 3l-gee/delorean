@@ -20,6 +20,14 @@
             <releases><enabled>true</enabled></releases>
         </repository>
     </repositories>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>hisrc-maven-repository</id>
+            <name>Hi-s-rc Maven Repository</name>
+            <url>https://storage.googleapis.com/hisrc-maven-repository/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -139,6 +147,12 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.34</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.patrodyne.jvnet</groupId>
+            <artifactId>hisrc-hyperjaxb-ejb-schemas-persistence</artifactId>
+            <version>2.2.1</version>
+        </dependency>
 
 	</dependencies>
 	<build>
@@ -182,6 +196,59 @@
 	</build>
 
     <profiles>
+        <profile>
+            <id>enable-hyper-jaxb</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jvnet.jaxb</groupId>
+                        <artifactId>jaxb-maven-plugin</artifactId>
+                        <version>4.0.8</version>
+                        <configuration>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-Xannotate</arg>
+                                <arg>-XremoveAnnotation</arg>
+                                <arg>-Xhyperjaxb-jpa</arg>
+                            </args>
+                            <plugins>
+                                <plugin>
+                                    <groupId>org.jvnet.jaxb</groupId>
+                                    <artifactId>jaxb-plugin-annotate</artifactId>
+                                    <version>4.0.8</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.patrodyne.jvnet</groupId>
+                                    <artifactId>hisrc-hyperjaxb-ejb-plugin</artifactId>
+                                    <version>2.2.1</version>
+                                </plugin>
+                            </plugins>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-aixm5_2</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <schemaDirectory>${project.basedir}/schema/aixm5_2/aixm/message</schemaDirectory>
+                                    <schemaIncludes>
+                                        <include>AIXM_BasicMessage.xsd</include>
+                                    </schemaIncludes>
+                                    <bindingDirectory>${project.basedir}/schema/aixm5_2/binding</bindingDirectory>
+                                    <bindingIncludes>
+                                        <include>*.xjb</include>
+                                    </bindingIncludes>
+                                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>enable-jaxb</id>
                 <build>
@@ -296,6 +363,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution> -->
+                            <!-- JAXB codegen -->
                             <execution>
                                 <id>generate-aixm5_2</id>
                                 <phase>generate-sources</phase>
@@ -314,6 +382,7 @@
                                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                                 </configuration>
                             </execution>
+
                             <!-- <execution>
                                 <id>generate-aixmTest</id>
                                 <phase>generate-sources</phase>
@@ -333,7 +402,7 @@
                                 </configuration>
                             </execution>-->
                         </executions>
-                        <dependencies>
+                        <!-- <dependencies>
                             <dependency>
                                 <groupId>com.fillumina</groupId>
                                 <artifactId>krasa-jaxb-tools</artifactId>
@@ -359,7 +428,7 @@
                                 <artifactId>hibernate-core</artifactId>
                                 <version>6.6.13.Final</version>
                             </dependency>
-                        </dependencies>
+                        </dependencies> -->
                     </plugin>
                 </plugins>
             </build>
