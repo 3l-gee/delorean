@@ -1,60 +1,57 @@
-<jaxb:bindings 
-	version="3.0"
+<jaxb:bindings version="3.0"
     xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
-	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	jaxb:extensionBindingPrefixes="xjc annox">
-    <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
-    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
-    
+    xmlns:annox="urn:jaxb.jvnet.org:annox"
+    xmlns:hj="http://jvnet.org/hyperjaxb/jpa"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
+    jaxb:extensionBindingPrefixes="xjc annox hj orm">
+
     <jaxb:bindings schemaLocation="../aixm/ISO_19139_Schemas/gmd/gmd.xsd"
-        node="/xs:schema">
+                   node="/xs:schema">
         <jaxb:schemaBindings>
-            <!-- <jaxb:package name="org.isotc211.gmd.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.gmd.v2007"/>
         </jaxb:schemaBindings>
-    </jaxb:bindings>
+        
+        <hj:ignored/>
 
+    </jaxb:bindings>
     <jaxb:bindings schemaLocation="../aixm/ISO_19139_Schemas/gco/gco.xsd"
-        node="/xs:schema">
+                   node="/xs:schema">
         <jaxb:schemaBindings>
-            <!-- <jaxb:package name="org.isotc211.gco.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.gco.v2007"/>
         </jaxb:schemaBindings>
+        
+        <hj:ignored/>
+        
     </jaxb:bindings>
-
     <jaxb:bindings schemaLocation="../aixm/ISO_19139_Schemas/gsr/gsr.xsd"
-        node="/xs:schema">
+                   node="/xs:schema">
         <jaxb:schemaBindings>
-            <!-- <jaxb:package name="org.isotc211.gsr.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.gsr.v2007"/>
         </jaxb:schemaBindings>
+        
+        <hj:ignored/>
+        
     </jaxb:bindings>
-
     <jaxb:bindings schemaLocation="../aixm/ISO_19139_Schemas/gss/gss.xsd"
-        node="/xs:schema">
+                   node="/xs:schema">
         <jaxb:schemaBindings>
-            <!-- <jaxb:package name="org.isotc211.gss.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.gss.v2007"/>
         </jaxb:schemaBindings>
+        
+        <hj:ignored/>
+        
     </jaxb:bindings>
-
     <jaxb:bindings schemaLocation="../aixm/ISO_19139_Schemas/gts/gts.xsd"
-        node="/xs:schema">
+                   node="/xs:schema">
         <jaxb:schemaBindings>
-            <!-- <jaxb:package name="org.isotc211.gts.v2007" /> -->
             <jaxb:package name="com.aixm.delorean.core.org.gts.v2007"/>
         </jaxb:schemaBindings>
+        
+        <hj:ignored/>
+        
     </jaxb:bindings>
-
-    <!-- <jaxb:bindings schemaLocation="../xlink/xml.xsd"
-        node="/xs:schema">
-        <jaxb:schemaBindings> -->
-            <!-- <jaxb:package name="org.w3.x2001" /> -->
-            <!-- <jaxb:package name="com.aixm.delorean.core.schema.a5_1_1.org.w3"/>
-        </jaxb:schemaBindings>
-    </jaxb:bindings> -->
-</jaxb:bindings>
+ </jaxb:bindings>

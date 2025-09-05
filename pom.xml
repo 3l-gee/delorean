@@ -10,6 +10,18 @@
 	<version>0.2.0</version>
 	<name>delorean</name>
 	<url>https://github.com/3l-gee/delorean</url>
+    
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <geotools.version>32.0</geotools.version>
+        <jaxb.version>4.0.2</jaxb.version>
+        <hibernate.version>6.6.1.Final</hibernate.version>
+        <hyperjaxb.version>2.2.1</hyperjaxb.version>
+        <jpa.version>3.2.0</jpa.version>
+        <!-- <maven.deploy.skip>true</maven.deploy.skip> -->
+    </properties>
 
     <repositories>
         <repository>
@@ -29,25 +41,17 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <geotools.version>32.0</geotools.version>
-        <!-- <maven.deploy.skip>true</maven.deploy.skip> -->
-    </properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>4.0.2</version>
+			<version>${jaxb.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
-			<version>4.0.2</version>
+			<version>${jaxb.version}</version>
 		</dependency>
 
         <dependency>
@@ -72,13 +76,13 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.6.1.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
-            <version>6.6.1.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
@@ -90,7 +94,7 @@
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.2.0</version>
+            <version>${jpa.version}</version>
         </dependency>
 
         <dependency>
@@ -150,11 +154,18 @@
         
         <dependency>
             <groupId>org.patrodyne.jvnet</groupId>
-            <artifactId>hisrc-hyperjaxb-ejb-schemas-persistence</artifactId>
-            <version>2.2.1</version>
+            <artifactId>hisrc-basicjaxb-runtime</artifactId>
+            <version>${hyperjaxb.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.patrodyne.jvnet</groupId>
+            <artifactId>hisrc-hyperjaxb-ejb-runtime</artifactId>
+            <version>${hyperjaxb.version}</version>
         </dependency>
 
 	</dependencies>
+
 	<build>
 		<plugins>
             <plugin>
@@ -220,7 +231,7 @@
                                 <plugin>
                                     <groupId>org.patrodyne.jvnet</groupId>
                                     <artifactId>hisrc-hyperjaxb-ejb-plugin</artifactId>
-                                    <version>2.2.1</version>
+                                    <version>${hyperjaxb.version}</version>
                                 </plugin>
                             </plugins>
                             <verbose>true</verbose>
@@ -233,6 +244,8 @@
                                     <goal>generate</goal>
                                 </goals>
                                 <configuration>
+                                    <noFileHeader>true</noFileHeader>
+                                    <extension>true</extension>
                                     <schemaDirectory>${project.basedir}/schema/aixm5_2/aixm/message</schemaDirectory>
                                     <schemaIncludes>
                                         <include>AIXM_BasicMessage.xsd</include>
@@ -249,6 +262,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>enable-jaxb</id>
                 <build>

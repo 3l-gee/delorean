@@ -1,31 +1,81 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:annox="urn:jaxb.jvnet.org:annox" version="3.0" jaxb:extensionBindingPrefixes="xjc annox">
-  <jaxb:bindings schemaLocation="../aixm/AIXM_DataTypes.xsd" node="/xs:schema">
+<jaxb:bindings version="3.0"
+    xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:annox="urn:jaxb.jvnet.org:annox"
+    xmlns:hj="http://jvnet.org/hyperjaxb/jpa"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
+    jaxb:extensionBindingPrefixes="xjc annox hj orm">
+
+  <jaxb:bindings schemaLocation="../aixm/AIXM_DataTypes.xsd"
+                 node="/xs:schema">
     <!-- section : manual -->
     <!-- part : default -->
     <!-- section : auto -->
     <!-- part : default -->
+
+    <hj:embeddable/>
+
   </jaxb:bindings>
-  <jaxb:bindings schemaLocation="../aixm/AIXM_Features.xsd" node="/xs:schema">
+  <jaxb:bindings schemaLocation="../aixm/AIXM_Features.xsd"
+                 node="/xs:schema">
     <jaxb:schemaBindings>
       <jaxb:package name="com.aixm.delorean.core.schema.a5_2.aixm"/>
     </jaxb:schemaBindings>
-    <!-- section : manual -->
-    <!-- part : default -->
-    <jaxb:globalBindings fixedAttributeAsConstantProperty="true" typesafeEnumBase="xs:string" typesafeEnumMemberName="generateName" generateIsSetMethod="true">
+    
+      <jaxb:globalBindings fixedAttributeAsConstantProperty="true"
+                         typesafeEnumBase="xs:string"
+                         typesafeEnumMemberName="generateName"
+                         generateIsSetMethod="true">
       <xjc:noValidator/>
       <xjc:noValidatingUnmarshaller/>
     </jaxb:globalBindings>
+
+    <hj:ignored/>
+
+    <hj:persistence>
+      <!-- Default sequence-based ID -->
+      <hj:default-generated-id>
+        <orm:generated-value strategy="SEQUENCE" generator="global_seq"/>
+        <orm:sequence-generator 
+          name="global_seq" 
+          sequence-name="my_seq" 
+          allocation-size="1"/>
+      </hj:default-generated-id>
+      
+      <!-- Keep the rest of your defaults -->
+      <hj:default-one-to-one fetch="EAGER"/>
+      <hj:default-one-to-many fetch="EAGER"/>
+      <hj:default-many-to-many fetch="LAZY"/>
+      <hj:default-many-to-one merge="false" fetch="EAGER">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-refresh/>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-detach/>
+        </orm:cascade>
+      </hj:default-many-to-one>
+      
+    </hj:persistence>
+
     <!-- section : auto -->
     <!-- part : default -->
   </jaxb:bindings>
-  <jaxb:bindings schemaLocation="../aixm/AIXM_AbstractGML_ObjectTypes.xsd" node="/xs:schema">
+  <jaxb:bindings schemaLocation="../aixm/AIXM_AbstractGML_ObjectTypes.xsd"
+                 node="/xs:schema">
     <!-- section : manual -->
     <!-- part : default -->
     <!-- section : auto -->
     <!-- part : default -->
+    <hj:mapped-superclass/>
+
   </jaxb:bindings>
-  <jaxb:bindings schemaLocation="../aixm/message/AIXM_BasicMessage.xsd" node="/xs:schema">
+  <jaxb:bindings schemaLocation="../aixm/message/AIXM_BasicMessage.xsd"
+                 node="/xs:schema">
     <jaxb:schemaBindings>
       <jaxb:package name="com.aixm.delorean.core.schema.a5_2.aixm.message"/>
     </jaxb:schemaBindings>
@@ -33,5 +83,7 @@
     <!-- part : default -->
     <!-- section : auto -->
     <!-- part : default -->
+    <hj:enity/>
+
   </jaxb:bindings>
 </jaxb:bindings>

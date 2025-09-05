@@ -1,44 +1,23 @@
-<jaxb:bindings 
-	version="3.0"
+<jaxb:bindings version="3.0"
     xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
-	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-	xmlns:annox="urn:jaxb.jvnet.org:annox"
-	jaxb:extensionBindingPrefixes="xjc annox">
-    <!-- xmlns:hj="urn:hyperjaxb3.jvnet.org:ejb:schemas:customizations"
-    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm" -->
+    xmlns:annox="urn:jaxb.jvnet.org:annox"
+    xmlns:hj="http://jvnet.org/hyperjaxb/jpa"
+    xmlns:orm="https://jakarta.ee/xml/ns/persistence/orm"
+    jaxb:extensionBindingPrefixes="xjc annox hj orm">
 
     <jaxb:bindings schemaLocation="../aixm/xlink/xlinks.xsd">
-    	<jaxb:schemaBindings>
-			<!-- <jaxb:package name="org.w3.xlink.v1999" /> -->
+        <jaxb:schemaBindings>
             <jaxb:package name="com.aixm.delorean.core.org.w3.xlink"/>
-			<jaxb:nameXmlTransform>
-				<jaxb:elementName suffix="Element" />
-			</jaxb:nameXmlTransform>
-		</jaxb:schemaBindings>
-        <!-- <jaxb:bindings node="//xs:attribute[@name='title']">
-            <jaxb:property name="titleAttribute"/>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:href']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:role']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:arcrole']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:title']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:show']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings>
-        <jaxb:bindings node="//xs:attributeGroup[@name='simpleAttrs']//xs:attribute[@ref='xlink:actuate']">
-            <annox:annotate target="field">@jakarta.persistence.Transient</annox:annotate>
-        </jaxb:bindings> -->
-    </jaxb:bindings>
-    
+            <jaxb:nameXmlTransform>
+                <jaxb:elementName suffix="Element"/>
+            </jaxb:nameXmlTransform>
+        </jaxb:schemaBindings>
+        
+        <hj:ignored/>
+        
+     </jaxb:bindings>
 </jaxb:bindings>
